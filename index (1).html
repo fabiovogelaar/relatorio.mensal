@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Relatórios Mensais | Fábio Carlucci</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --verde-escuro: #1a2e25;
+    --verde-medio: #243d30;
+    --verde-claro: #2f5240;
+    --dourado: #c9a84c;
+    --dourado-claro: #e2c47a;
+    --creme: #f5ede0;
+    --texto-claro: rgba(245,237,224,0.85);
+    --texto-muted: rgba(245,237,224,0.45);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background-color: var(--verde-escuro);
+    color: var(--creme);
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(ellipse at 15% 15%, rgba(201,168,76,0.07) 0%, transparent 55%),
+      radial-gradient(ellipse at 85% 85%, rgba(47,82,64,0.4) 0%, transparent 55%),
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ── HEADER ── */
+  header {
+    position: relative;
+    z-index: 1;
+    padding: 72px 8% 56px;
+    border-bottom: 1px solid rgba(201,168,76,0.15);
+  }
+
+  .header-tag {
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--dourado);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+    opacity: 0;
+    animation: fadeUp 0.7s ease 0.1s forwards;
+  }
+
+  .header-tag::before {
+    content: '';
+    width: 30px;
+    height: 1px;
+    background: var(--dourado);
+  }
+
+  h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.4rem, 6vw, 4.5rem);
+    font-weight: 300;
+    line-height: 1.1;
+    color: var(--creme);
+    opacity: 0;
+    animation: fadeUp 0.7s ease 0.25s forwards;
+  }
+
+  h1 strong {
+    font-weight: 700;
+    color: var(--dourado-claro);
+    display: block;
+  }
+
+  .header-sub {
+    margin-top: 16px;
+    font-size: 0.88rem;
+    color: var(--texto-muted);
+    letter-spacing: 0.05em;
+    opacity: 0;
+    animation: fadeUp 0.7s ease 0.4s forwards;
+  }
+
+  /* Assinatura no header */
+  .header-assinatura {
+    margin-top: 32px;
+    opacity: 0;
+    animation: fadeUp 0.7s ease 0.55s forwards;
+  }
+
+  .assinatura-svg { width: 140px; height: auto; opacity: 0.85; }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── GRID DE RELATÓRIOS ── */
+  main {
+    position: relative;
+    z-index: 1;
+    padding: 64px 8%;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .year-label {
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--dourado);
+    margin-bottom: 28px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .year-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: rgba(201,168,76,0.2);
+  }
+
+  .reports-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 20px;
+    margin-bottom: 60px;
+  }
+
+  /* Card de relatório disponível */
+  .report-card {
+    display: block;
+    text-decoration: none;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(201,168,76,0.2);
+    border-radius: 6px;
+    padding: 28px 28px 24px;
+    transition: background 0.3s, border-color 0.3s, transform 0.3s;
+    position: relative;
+    overflow: hidden;
+    opacity: 0;
+    animation: fadeUp 0.6s ease forwards;
+  }
+
+  .report-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px;
+    height: 100%;
+    background: var(--dourado);
+    transform: scaleY(0);
+    transform-origin: bottom;
+    transition: transform 0.3s ease;
+  }
+
+  .report-card:hover {
+    background: rgba(201,168,76,0.07);
+    border-color: rgba(201,168,76,0.45);
+    transform: translateY(-3px);
+  }
+
+  .report-card:hover::before { transform: scaleY(1); }
+
+  .card-month {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.9rem;
+    font-weight: 600;
+    color: var(--creme);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .card-year {
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    color: var(--texto-muted);
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+
+  .card-topics {
+    list-style: none;
+    margin-bottom: 24px;
+  }
+
+  .card-topics li {
+    font-size: 0.8rem;
+    color: var(--texto-muted);
+    padding: 3px 0;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    line-height: 1.5;
+  }
+
+  .card-topics li::before {
+    content: '·';
+    color: var(--dourado);
+    font-size: 1rem;
+    line-height: 1.3;
+    flex-shrink: 0;
+  }
+
+  .card-cta {
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--dourado);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .card-cta::after {
+    content: '→';
+    transition: transform 0.2s;
+  }
+
+  .report-card:hover .card-cta::after { transform: translateX(4px); }
+
+  /* Card em breve */
+  .report-card-soon {
+    background: rgba(255,255,255,0.015);
+    border: 1px dashed rgba(255,255,255,0.1);
+    border-radius: 6px;
+    padding: 28px 28px 24px;
+    opacity: 0.45;
+    cursor: default;
+  }
+
+  .card-soon-badge {
+    font-size: 0.62rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--texto-muted);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 20px;
+    padding: 3px 10px;
+    display: inline-block;
+    margin-top: 16px;
+  }
+
+  /* ── RODAPÉ ── */
+  footer {
+    position: relative;
+    z-index: 1;
+    border-top: 1px solid rgba(201,168,76,0.12);
+    padding: 40px 8%;
+    text-align: center;
+  }
+
+  .footer-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem;
+    font-weight: 300;
+    color: var(--texto-muted);
+  }
+
+  .footer-contact {
+    font-size: 0.78rem;
+    color: rgba(245,237,224,0.3);
+    margin-top: 10px;
+    line-height: 1.9;
+  }
+
+  .footer-contact a { color: var(--dourado); text-decoration: none; }
+
+  @media (max-width: 640px) {
+    header { padding: 48px 5% 40px; }
+    main   { padding: 48px 5%; }
+    footer { padding: 32px 5%; }
+    .reports-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ── HEADER ── -->
+<header>
+  <div class="header-tag">Relatórios Mensais</div>
+  <h1>
+    Análise de<br>
+    <strong>Mercado</strong>
+  </h1>
+  <p class="header-sub">Uma visão mensal do cenário econômico nacional e global.</p>
+  <div class="header-assinatura">
+    <svg class="assinatura-svg" viewBox="0 0 200 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M10 40 C20 20, 35 15, 50 30 C60 40, 55 50, 45 48 C35 46, 38 35, 50 28 C65 20, 80 22, 90 32 C100 42, 95 52, 85 50 C75 48, 77 38, 88 30 C100 22, 118 20, 130 35 C140 48, 135 55, 122 52" stroke="rgba(201,168,76,0.8)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      <path d="M128 30 C138 18, 155 15, 168 25 C178 32, 180 42, 172 48" stroke="rgba(201,168,76,0.8)" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+      <path d="M8 50 L195 50" stroke="rgba(201,168,76,0.2)" stroke-width="0.5"/>
+      <text x="8" y="58" font-family="Georgia, serif" font-size="7" fill="rgba(201,168,76,0.5)" letter-spacing="1">Fábio Carlucci</text>
+    </svg>
+  </div>
+</header>
+
+<!-- ── RELATÓRIOS ── -->
+<main>
+  <div class="year-label">2026</div>
+
+  <div class="reports-grid">
+
+    <!-- MARÇO 2026 — disponível -->
+    <a class="report-card" href="marco-2026.html" style="animation-delay: 0.1s">
+      <div class="card-month">Março</div>
+      <div class="card-year">2026</div>
+      <ul class="card-topics">
+        <li>Copom corta Selic para 14,75%</li>
+        <li>Guerra EUA/Israel × Irã</li>
+        <li>Petróleo perto de US$ 120</li>
+        <li>Ouro acumula +30% no ano</li>
+      </ul>
+      <div class="card-cta">Ler relatório</div>
+    </a>
+
+    <!-- ABRIL 2026 — em breve -->
+    <div class="report-card-soon" style="animation-delay: 0.2s">
+      <div class="card-month">Abril</div>
+      <div class="card-year">2026</div>
+      <div class="card-soon-badge">Em breve</div>
+    </div>
+
+    <!-- MAIO 2026 — em breve -->
+    <div class="report-card-soon" style="animation-delay: 0.3s">
+      <div class="card-month">Maio</div>
+      <div class="card-year">2026</div>
+      <div class="card-soon-badge">Em breve</div>
+    </div>
+
+    <!-- JUNHO 2026 — em breve -->
+    <div class="report-card-soon" style="animation-delay: 0.4s">
+      <div class="card-month">Junho</div>
+      <div class="card-year">2026</div>
+      <div class="card-soon-badge">Em breve</div>
+    </div>
+
+  </div>
+</main>
+
+<!-- ── RODAPÉ ── -->
+<footer>
+  <div class="footer-name">Fábio Vogelaar Carlucci</div>
+  <div class="footer-contact">
+    +55 (16) 98148-8260 &nbsp;·&nbsp;
+    <a href="mailto:fabio.carlucci@ficus.capital">fabio.carlucci@ficus.capital</a>
+  </div>
+</footer>
+
+</body>
+</html>
