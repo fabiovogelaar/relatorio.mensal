@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dólar, Ativos Reais e o Novo Regime Econômico | Fábio Carlucci</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --verde-escuro: #1a2e25;
+    --dourado: #c9a84c;
+    --dourado-claro: #e2c47a;
+    --creme: #f5ede0;
+    --texto-claro: rgba(245,237,224,0.85);
+    --texto-muted: rgba(245,237,224,0.45);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background-color: var(--verde-escuro);
+    color: var(--creme);
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(ellipse at 10% 10%, rgba(201,168,76,0.06) 0%, transparent 55%),
+      radial-gradient(ellipse at 90% 90%, rgba(47,82,64,0.35) 0%, transparent 55%),
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ── VOLTAR ── */
+  .back-link {
+    position: relative;
+    z-index: 10;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 28px 8%;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--texto-muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .back-link:hover { color: var(--dourado); }
+  .back-link::before { content: '←'; font-size: 0.9rem; }
+
+  /* ── HERO ── */
+  .hero {
+    position: relative;
+    z-index: 1;
+    padding: 20px 8% 64px;
+    border-bottom: 1px solid rgba(201,168,76,0.15);
+    max-width: 860px;
+  }
+
+  .hero-tag {
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--dourado);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 24px;
+    opacity: 0;
+    animation: fadeUp 0.7s ease 0.1s forwards;
+  }
+  .hero-tag::before { content: ''; width: 30px; height: 1px; background: var(--dourado); }
+
+  .hero-date {
+    font-size: 0.72rem;
+    letter-spacing: 0.15em;
+    color: var(--texto-muted);
+    margin-bottom: 20px;
+    opacity: 0;
+    animation: fadeUp 0.7s ease 0.2s forwards;
+  }
+
+  h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 5vw, 3.6rem);
+    font-weight: 300;
+    line-height: 1.15;
+    color: var(--creme);
+    margin-bottom: 12px;
+    opacity: 0;
+    animation: fadeUp 0.7s ease 0.3s forwards;
+  }
+  h1 em { font-style: italic; color: var(--dourado-claro); }
+
+  .hero-sub {
+    font-size: 1rem;
+    color: var(--texto-muted);
+    line-height: 1.7;
+    margin-top: 12px;
+    opacity: 0;
+    animation: fadeUp 0.7s ease 0.45s forwards;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── CONTEÚDO ── */
+  article {
+    position: relative;
+    z-index: 1;
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 60px 8% 80px;
+  }
+
+  .lead {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.1rem, 2.5vw, 1.35rem);
+    font-weight: 400;
+    line-height: 1.8;
+    color: var(--creme);
+    margin-bottom: 40px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid rgba(201,168,76,0.15);
+  }
+
+  p {
+    font-size: 0.97rem;
+    line-height: 1.9;
+    color: var(--texto-claro);
+    margin-bottom: 24px;
+  }
+
+  strong { font-weight: 600; color: var(--creme); }
+
+  /* Título de seção */
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: var(--dourado-claro);
+    margin: 48px 0 16px;
+    padding-top: 40px;
+    border-top: 1px solid rgba(201,168,76,0.12);
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+  }
+
+  .section-num {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    color: var(--dourado);
+    opacity: 0.6;
+  }
+
+  /* Insight box */
+  .insight-box {
+    background: linear-gradient(135deg, rgba(201,168,76,0.1) 0%, rgba(26,46,37,0.4) 100%);
+    border: 1px solid rgba(201,168,76,0.25);
+    border-left: 3px solid var(--dourado);
+    border-radius: 4px;
+    padding: 28px 32px;
+    margin: 36px 0;
+  }
+  .insight-box p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem;
+    color: var(--creme);
+    line-height: 1.75;
+    margin: 0;
+  }
+
+  /* Mito vs Realidade */
+  .mito-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin: 32px 0;
+  }
+  @media (max-width: 600px) { .mito-grid { grid-template-columns: 1fr; } }
+
+  .mito-card {
+    border-radius: 4px;
+    padding: 22px 24px;
+  }
+  .mito-card.mito {
+    background: rgba(224,112,112,0.07);
+    border: 1px solid rgba(224,112,112,0.2);
+  }
+  .mito-card.realidade {
+    background: rgba(94,201,138,0.07);
+    border: 1px solid rgba(94,201,138,0.2);
+  }
+  .mito-label {
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .mito-card.mito .mito-label { color: #e07070; }
+  .mito-card.realidade .mito-label { color: #5ec98a; }
+  .mito-text {
+    font-size: 0.88rem;
+    line-height: 1.65;
+    color: var(--texto-claro);
+  }
+
+  /* Beneficiados */
+  .beneficiados-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+    margin: 32px 0;
+  }
+  @media (max-width: 600px) { .beneficiados-grid { grid-template-columns: 1fr; } }
+
+  .benef-card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(201,168,76,0.15);
+    border-radius: 4px;
+    padding: 18px 20px;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    transition: border-color 0.25s, background 0.25s;
+  }
+  .benef-card:hover {
+    border-color: rgba(201,168,76,0.35);
+    background: rgba(201,168,76,0.05);
+  }
+  .benef-icon { font-size: 1.3rem; flex-shrink: 0; margin-top: 2px; }
+  .benef-title {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--dourado);
+    margin-bottom: 4px;
+    letter-spacing: 0.05em;
+  }
+  .benef-desc { font-size: 0.8rem; color: var(--texto-muted); line-height: 1.5; }
+
+  /* Conclusão */
+  .conclusao {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    font-weight: 400;
+    line-height: 1.85;
+    color: var(--creme);
+    margin-top: 48px;
+    padding: 40px;
+    border: 1px solid rgba(201,168,76,0.2);
+    border-radius: 6px;
+    background: rgba(255,255,255,0.02);
+    position: relative;
+  }
+  .conclusao::before {
+    content: '"';
+    position: absolute;
+    top: -10px; left: 32px;
+    font-size: 5rem;
+    color: rgba(201,168,76,0.15);
+    font-family: 'Cormorant Garamond', serif;
+    line-height: 1;
+  }
+
+  /* ── RODAPÉ ── */
+  footer {
+    position: relative;
+    z-index: 1;
+    border-top: 1px solid rgba(201,168,76,0.12);
+    padding: 40px 8%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  .footer-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-weight: 300;
+    color: var(--texto-muted);
+  }
+  .footer-contact {
+    font-size: 0.75rem;
+    color: rgba(245,237,224,0.25);
+    line-height: 1.9;
+    text-align: right;
+  }
+  .footer-contact a { color: var(--dourado); text-decoration: none; }
+
+  @media (max-width: 640px) {
+    .back-link { padding: 20px 5%; }
+    .hero { padding: 10px 5% 48px; }
+    article { padding: 48px 5% 60px; }
+    footer { padding: 32px 5%; flex-direction: column; }
+    .footer-contact { text-align: left; }
+  }
+</style>
+</head>
+<body>
+
+<a class="back-link" href="index.html">Voltar</a>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-tag">Memorando</div>
+  <div class="hero-date">30 de março de 2026</div>
+  <h1>Dólar, Ativos Reais e<br><em>o Novo Regime Econômico</em></h1>
+  <p class="hero-sub">Desdolarização ou reposicionamento? Uma leitura sobre o enfraquecimento do dólar, o fluxo global de capitais e as implicações práticas para portfólios.</p>
+</header>
+
+<!-- ARTIGO -->
+<article>
+
+  <p class="lead">
+    A desvalorização do dólar tem alimentado uma narrativa recorrente: estaríamos diante de uma "desdolarização" global. Essa interpretação, embora intuitiva, nos parece <strong>inadequada e conceitualmente imprecisa</strong>. Nossa leitura é diferente — e tem implicações diretas para a construção de portfólios.
+  </p>
+
+  <!-- 1 -->
+  <div class="section-title"><span class="section-num">01</span> Dólar mais fraco ≠ perda de hegemonia</div>
+
+  <p>
+    A primeira distinção essencial: <strong>valor de mercado de uma moeda</strong> e <strong>hegemonia monetária</strong> são coisas diferentes. O dólar pode cair sem deixar de ser o eixo do sistema financeiro global.
+  </p>
+
+  <div class="mito-grid">
+    <div class="mito-card mito">
+      <div class="mito-label">✗ Narrativa equivocada</div>
+      <div class="mito-text">O dólar está perdendo relevância global. Países estão migrando para outras moedas. O sistema está se fragmentando.</div>
+    </div>
+    <div class="mito-card realidade">
+      <div class="mito-label">✓ Nossa leitura</div>
+      <div class="mito-text">O dólar continua sendo a principal moeda de liquidação, reserva e precificação de ativos. O que ocorre é um ajuste tático de cotação — não uma ruptura estrutural.</div>
+    </div>
+  </div>
+
+  <p>
+    O euro preserva relevância regional e o yuan ganha visibilidade política, mas nenhum deles reúne, simultaneamente, liquidez, convertibilidade, profundidade de mercado e confiança institucional que o dólar possui. A hegemonia não está sendo desmontada.
+  </p>
+
+  <!-- 2 -->
+  <div class="section-title"><span class="section-num">02</span> O capital continua indo para os EUA</div>
+
+  <p>
+    Se houvesse perda estrutural de relevância do dólar, esperaríamos migração consistente de capital para outras geografias. Os dados apontam na direção oposta. Mesmo com dólar mais fraco, o fluxo global continua privilegiando os Estados Unidos.
+  </p>
+
+  <div class="insight-box">
+    <p>Desde 2020, os EUA continuam absorvendo parcela desproporcionalmente elevada da alocação global em ações. O investidor global <strong>não abandona os ativos americanos</strong> — em muitos casos, apenas separa a tese de investimento da exposição cambial, via hedge.</p>
+  </div>
+
+  <p>
+    Isso é fundamental: a queda do dólar <strong>não está sendo acompanhada por retirada de capital dos EUA</strong>. O enfraquecimento da moeda não deve ser confundido com perda de atratividade dos ativos americanos.
+  </p>
+
+  <!-- 3 -->
+  <div class="section-title"><span class="section-num">03</span> Dólar fraco como instrumento de política</div>
+
+  <p>
+    A hipótese de que o enfraquecimento seja <strong>funcional à estratégia americana</strong> ganha força quando observamos os incentivos econômicos. Um dólar mais fraco torna exportações americanas mais competitivas, favorece a produção doméstica e facilita o serviço da dívida pública em termos reais.
+  </p>
+
+  <p>
+    Não se trata de uma fragilidade inesperada, mas de uma <strong>ferramenta que, em determinadas circunstâncias, pode ser economicamente conveniente</strong>. Em ciclos de elevada dívida e necessidade de sustentar o crescimento, o enfraquecimento controlado da moeda funciona como mecanismo de ajuste.
+  </p>
+
+  <!-- 4 -->
+  <div class="section-title"><span class="section-num">04</span> O paralelo com 2017–2018</div>
+
+  <p>
+    No primeiro mandato de Trump, o mercado vivenciou combinação semelhante: retórica crítica ao dólar forte, pressão por condições monetárias menos restritivas e ambiente que favoreceu o enfraquecimento da moeda. Naquele ciclo, a desvalorização inicial coincidiu com desempenho mais forte de commodities, mercados emergentes e ativos reais.
+  </p>
+
+  <p>
+    A análise histórica mais longa também ajuda a evitar exageros: o índice DXY continua se movendo dentro de uma faixa histórica compatível com ciclos anteriores. Estamos diante de um <strong>movimento cíclico e estratégico</strong>, não de uma ruptura definitiva.
+  </p>
+
+  <!-- 5 -->
+  <div class="section-title"><span class="section-num">05</span> Quem tende a se beneficiar</div>
+
+  <p>
+    Nossa principal tese estratégica pode ser resumida assim: <strong>ativos reais voltam a ocupar papel central como componente de proteção patrimonial e captura de assimetrias</strong>.
+  </p>
+
+  <div class="beneficiados-grid">
+    <div class="benef-card">
+      <div class="benef-icon">⛏️</div>
+      <div>
+        <div class="benef-title">Mineração e Metais</div>
+        <div class="benef-desc">Beneficiados diretamente pelo ciclo de dólar fraco e aumento de demanda por proteção real.</div>
+      </div>
+    </div>
+    <div class="benef-card">
+      <div class="benef-icon">🌾</div>
+      <div>
+        <div class="benef-title">Commodities</div>
+        <div class="benef-desc">Precificadas em dólar, tendem a se valorizar quando a moeda americana enfraquece.</div>
+      </div>
+    </div>
+    <div class="benef-card">
+      <div class="benef-icon">⚡</div>
+      <div>
+        <div class="benef-title">Energia e Infraestrutura</div>
+        <div class="benef-desc">Ativos reais com fluxo de caixa previsível e proteção contra erosão monetária.</div>
+      </div>
+    </div>
+    <div class="benef-card">
+      <div class="benef-icon">🌍</div>
+      <div>
+        <div class="benef-title">Emergentes Seletivos</div>
+        <div class="benef-desc">Não como bloco homogêneo, mas mercados com sensibilidade positiva a commodities e boa qualidade institucional.</div>
+      </div>
+    </div>
+  </div>
+
+  <p>
+    Em vários casos, já se observa valorização relevante ao longo de 2026. Isso não significa que a oportunidade esteja esgotada — esse tipo de movimento costuma se desenvolver ao longo de <strong>ciclos mais longos</strong>, especialmente quando amparado por contexto macro e fluxo de capitais.
+  </p>
+
+  <!-- CONCLUSÃO -->
+  <div class="section-title"><span class="section-num">06</span> Conclusão e implicações para portfólios</div>
+
+  <p>
+    Não estamos diante de desdolarização global, tampouco de erosão estrutural da posição americana. O que observamos é um período em que o enfraquecimento do dólar parece funcional aos interesses da política econômica dos EUA — e isso gera reprecificações importantes entre classes de ativos.
+  </p>
+
+  <p>
+    Permanecer excessivamente líquido ou concentrado em uma única geografia pode representar, paradoxalmente, uma <strong>forma silenciosa de deterioração patrimonial</strong> em termos reais.
+  </p>
+
+  <div class="conclusao">
+    O cenário atual não recomenda retirada do mundo. Recomenda <strong>melhor leitura do mundo</strong>. Para o investidor disciplinado, isso significa reconhecer que o capital continua sendo recompensado quando está bem distribuído entre moeda, geografia, liquidez e proteção real.
+  </div>
+
+</article>
+
+<footer>
+  <div class="footer-name">Fábio Vogelaar Carlucci</div>
+  <div class="footer-contact">
+    +55 (16) 98148-8260<br>
+    <a href="mailto:fabio.carlucci@ficus.capital">fabio.carlucci@ficus.capital</a>
+  </div>
+</footer>
+
+</body>
+</html>

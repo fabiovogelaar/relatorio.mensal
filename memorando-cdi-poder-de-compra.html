@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>O CDI protege seu dinheiro — mas não sua riqueza | Fábio Carlucci</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --verde-escuro: #1a2e25;
+    --dourado: #c9a84c;
+    --dourado-claro: #e2c47a;
+    --creme: #f5ede0;
+    --texto-claro: rgba(245,237,224,0.85);
+    --texto-muted: rgba(245,237,224,0.45);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background-color: var(--verde-escuro);
+    color: var(--creme);
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(ellipse at 10% 10%, rgba(201,168,76,0.06) 0%, transparent 55%),
+      radial-gradient(ellipse at 90% 90%, rgba(47,82,64,0.35) 0%, transparent 55%),
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ── VOLTAR ── */
+  .back-link {
+    position: relative;
+    z-index: 10;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 28px 8%;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--texto-muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .back-link:hover { color: var(--dourado); }
+  .back-link::before { content: '←'; font-size: 0.9rem; }
+
+  /* ── HERO ── */
+  .hero {
+    position: relative;
+    z-index: 1;
+    padding: 20px 8% 64px;
+    border-bottom: 1px solid rgba(201,168,76,0.15);
+    max-width: 860px;
+  }
+
+  .hero-tag {
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--dourado);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 24px;
+    opacity: 0;
+    animation: fadeUp 0.7s ease 0.1s forwards;
+  }
+  .hero-tag::before { content: ''; width: 30px; height: 1px; background: var(--dourado); }
+
+  .hero-date {
+    font-size: 0.72rem;
+    letter-spacing: 0.15em;
+    color: var(--texto-muted);
+    margin-bottom: 20px;
+    opacity: 0;
+    animation: fadeUp 0.7s ease 0.2s forwards;
+  }
+
+  h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 5vw, 3.6rem);
+    font-weight: 300;
+    line-height: 1.15;
+    color: var(--creme);
+    margin-bottom: 12px;
+    opacity: 0;
+    animation: fadeUp 0.7s ease 0.3s forwards;
+  }
+  h1 em {
+    font-style: italic;
+    color: var(--dourado-claro);
+  }
+
+  .hero-sub {
+    font-size: 1rem;
+    color: var(--texto-muted);
+    line-height: 1.7;
+    margin-top: 12px;
+    opacity: 0;
+    animation: fadeUp 0.7s ease 0.45s forwards;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── CONTEÚDO ── */
+  article {
+    position: relative;
+    z-index: 1;
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 60px 8% 80px;
+  }
+
+  .lead {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.15rem, 2.5vw, 1.4rem);
+    font-weight: 400;
+    line-height: 1.75;
+    color: var(--creme);
+    margin-bottom: 40px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid rgba(201,168,76,0.15);
+  }
+
+  p {
+    font-size: 0.97rem;
+    line-height: 1.9;
+    color: var(--texto-claro);
+    margin-bottom: 24px;
+  }
+
+  strong {
+    font-weight: 600;
+    color: var(--creme);
+  }
+
+  /* Destaque numérico */
+  .numbers-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin: 40px 0;
+  }
+
+  @media (max-width: 600px) {
+    .numbers-row { grid-template-columns: 1fr; }
+  }
+
+  .number-card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(201,168,76,0.2);
+    border-top: 3px solid var(--dourado);
+    border-radius: 4px;
+    padding: 24px 20px;
+    text-align: center;
+    opacity: 0;
+    animation: fadeUp 0.6s ease forwards;
+  }
+
+  .number-card:nth-child(1) { animation-delay: 0.1s; }
+  .number-card:nth-child(2) { animation-delay: 0.25s; }
+  .number-card:nth-child(3) { animation-delay: 0.4s; }
+
+  .number-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.8rem;
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+
+  .number-label {
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--texto-muted);
+    margin-bottom: 8px;
+  }
+
+  .number-desc {
+    font-size: 0.78rem;
+    color: var(--texto-muted);
+    line-height: 1.5;
+  }
+
+  .n-nominal { color: #5ec98a; }
+  .n-real    { color: var(--dourado); }
+  .n-dolar   { color: #e07070; }
+
+  /* Bloco de destaque */
+  .insight-box {
+    background: linear-gradient(135deg, rgba(201,168,76,0.1) 0%, rgba(26,46,37,0.4) 100%);
+    border: 1px solid rgba(201,168,76,0.25);
+    border-left: 3px solid var(--dourado);
+    border-radius: 4px;
+    padding: 28px 32px;
+    margin: 36px 0;
+  }
+
+  .insight-box p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem;
+    font-weight: 400;
+    color: var(--creme);
+    line-height: 1.75;
+    margin: 0;
+  }
+
+  /* Seção de uso correto do CDI */
+  .uso-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin: 32px 0;
+  }
+  @media (max-width: 600px) { .uso-grid { grid-template-columns: 1fr; } }
+
+  .uso-card {
+    border-radius: 4px;
+    padding: 20px 22px;
+  }
+  .uso-card.sim {
+    background: rgba(94,201,138,0.08);
+    border: 1px solid rgba(94,201,138,0.2);
+  }
+  .uso-card.nao {
+    background: rgba(224,112,112,0.08);
+    border: 1px solid rgba(224,112,112,0.2);
+  }
+
+  .uso-card-title {
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .uso-card.sim .uso-card-title { color: #5ec98a; }
+  .uso-card.nao .uso-card-title { color: #e07070; }
+
+  .uso-card ul { list-style: none; }
+  .uso-card ul li {
+    font-size: 0.84rem;
+    color: var(--texto-claro);
+    padding: 4px 0;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    line-height: 1.5;
+  }
+  .uso-card.sim ul li::before { content: '✓'; color: #5ec98a; flex-shrink: 0; }
+  .uso-card.nao ul li::before { content: '✗'; color: #e07070; flex-shrink: 0; }
+
+  /* Seção title */
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: var(--dourado-claro);
+    margin: 48px 0 16px;
+    padding-top: 40px;
+    border-top: 1px solid rgba(201,168,76,0.12);
+  }
+
+  /* Conclusão */
+  .conclusao {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.25rem;
+    font-weight: 400;
+    line-height: 1.8;
+    color: var(--creme);
+    margin-top: 48px;
+    padding: 40px;
+    border: 1px solid rgba(201,168,76,0.2);
+    border-radius: 6px;
+    background: rgba(255,255,255,0.02);
+    position: relative;
+  }
+
+  .conclusao::before {
+    content: '"';
+    position: absolute;
+    top: -10px;
+    left: 32px;
+    font-size: 5rem;
+    color: rgba(201,168,76,0.15);
+    font-family: 'Cormorant Garamond', serif;
+    line-height: 1;
+  }
+
+  /* ── RODAPÉ ── */
+  footer {
+    position: relative;
+    z-index: 1;
+    border-top: 1px solid rgba(201,168,76,0.12);
+    padding: 40px 8%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .footer-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-weight: 300;
+    color: var(--texto-muted);
+  }
+
+  .footer-contact {
+    font-size: 0.75rem;
+    color: rgba(245,237,224,0.25);
+    line-height: 1.9;
+    text-align: right;
+  }
+  .footer-contact a { color: var(--dourado); text-decoration: none; }
+
+  @media (max-width: 640px) {
+    .back-link { padding: 20px 5%; }
+    .hero { padding: 10px 5% 48px; }
+    article { padding: 48px 5% 60px; }
+    footer { padding: 32px 5%; flex-direction: column; }
+    .footer-contact { text-align: left; }
+  }
+</style>
+</head>
+<body>
+
+<a class="back-link" href="index.html">Voltar</a>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-tag">Memorando</div>
+  <div class="hero-date">30 de março de 2026</div>
+  <h1>O CDI protege seu dinheiro —<br><em>mas não necessariamente sua riqueza.</em></h1>
+  <p class="hero-sub">Uma análise sobre retorno nominal, poder de compra real e a ilusão monetária que muitos investidores não percebem.</p>
+</header>
+
+<!-- ARTIGO -->
+<article>
+
+  <p class="lead">
+    Ao observar a evolução de um investimento, é muito comum que a análise fique restrita ao retorno nominal. Mas quando o objetivo é <strong>construir patrimônio de verdade</strong>, essa leitura isolada se torna insuficiente — e, em muitos casos, enganosa.
+  </p>
+
+  <p>
+    Modelei a evolução de um investimento atrelado ao CDI desde 2016 sob três perspectivas: <strong>nominal</strong>, <strong>real</strong> (descontando a inflação) e <strong>em dólar</strong>. A pergunta central não é "quanto rendeu?", mas: <strong>quanto de poder de compra esse capital efetivamente preservou ou ampliou ao longo do tempo?</strong>
+  </p>
+
+  <!-- NÚMEROS -->
+  <div class="numbers-row">
+    <div class="number-card">
+      <div class="number-value n-nominal">+147%</div>
+      <div class="number-label">Retorno Nominal</div>
+      <div class="number-desc">O que aparece no extrato. Parece ótimo, mas esconde a história real.</div>
+    </div>
+    <div class="number-card">
+      <div class="number-value n-real">+52%</div>
+      <div class="number-label">Retorno Real</div>
+      <div class="number-desc">Descontando a inflação (IPCA). O verdadeiro crescimento do poder de compra no Brasil.</div>
+    </div>
+    <div class="number-card">
+      <div class="number-value n-dolar">+7%</div>
+      <div class="number-label">Retorno em Dólar</div>
+      <div class="number-desc">Convertendo para USD. O crescimento real quando medido em moeda forte.</div>
+    </div>
+  </div>
+
+  <p>
+    À primeira vista, o resultado parece muito forte. Em termos nominais, o investimento acumulou cerca de <strong>+147% no período</strong> — uma sensação bastante positiva de crescimento. O problema começa quando saímos da ilusão monetária e analisamos o que realmente aconteceu com esse patrimônio.
+  </p>
+
+  <div class="insight-box">
+    <p>Boa parte daquilo que parecia "crescimento patrimonial" era, na prática, apenas <strong>reposição da perda do valor da moeda</strong> ao longo do tempo. O CDI correu atrás da inflação, não à frente dela.</p>
+  </div>
+
+  <p>
+    A análise fica ainda mais interessante — e desconfortável — quando adicionamos a dimensão cambial. Convertido para dólar, o crescimento acumulado desde 2016 fica em torno de <strong>+7%</strong>. Isso revela algo que muitos investidores ignoram: uma parte significativa da vida econômica moderna está exposta a preços globais. Tecnologia, viagens, educação internacional, equipamentos e ativos financeiros estão, em maior ou menor grau, conectados ao dólar. <strong>Crescer em reais não significa necessariamente enriquecer em termos globais.</strong>
+  </p>
+
+  <div class="section-title">Então o CDI é inútil?</div>
+
+  <p>
+    Não. O ponto aqui não é desmerecê-lo. O CDI tem um papel extremamente relevante dentro de uma estratégia patrimonial bem construída. Há, porém, uma diferença importante entre um ativo que <strong>protege capital no curto e médio prazo</strong> e uma estratégia capaz de <strong>expandir patrimônio de forma estrutural no longo prazo</strong>.
+  </p>
+
+  <div class="uso-grid">
+    <div class="uso-card sim">
+      <div class="uso-card-title">✓ CDI é ideal para</div>
+      <ul>
+        <li>Reserva de emergência e liquidez</li>
+        <li>Estabilidade e proteção de curto prazo</li>
+        <li>Gestão de caixa</li>
+        <li>Parte do patrimônio que não pode ter volatilidade</li>
+      </ul>
+    </div>
+    <div class="uso-card nao">
+      <div class="uso-card-title">✗ CDI não substitui</div>
+      <ul>
+        <li>Diversificação geográfica</li>
+        <li>Exposição a ativos reais</li>
+        <li>Renda variável e empresas de qualidade</li>
+        <li>Proteção cambial estrutural</li>
+      </ul>
+    </div>
+  </div>
+
+  <p>
+    Em muitos momentos, o CDI foi um dos ativos mais eficientes da economia brasileira em termos de relação risco-retorno. Mas ele pode ser um <strong>componente importante da estratégia</strong> — não a estratégia inteira.
+  </p>
+
+  <div class="section-title">A pergunta certa</div>
+
+  <p>
+    Para quem pensa em patrimônio de forma mais madura, a discussão deixa de ser "quanto rendeu?" e passa a ser: <strong>"quanto meu dinheiro realmente passou a valer no mundo real?"</strong> Essa mudança de lente faz toda a diferença.
+  </p>
+
+  <p>
+    Construir patrimônio não é simplesmente acumular mais reais ao longo dos anos. É aumentar a capacidade de sustentar o próprio padrão de vida, proteger a família, manter opcionalidade futura, acessar oportunidades e preservar poder de compra — inclusive fora do Brasil.
+  </p>
+
+  <div class="conclusao">
+    A pergunta realmente relevante não é se o capital cresceu no extrato. A pergunta importante é: <strong>o quanto seu poder de compra realmente evoluiu ao longo do tempo?</strong> É essa resposta — e não apenas o retorno nominal — que separa preservação de caixa de verdadeira construção de riqueza.
+  </div>
+
+</article>
+
+<footer>
+  <div class="footer-name">Fábio Vogelaar Carlucci</div>
+  <div class="footer-contact">
+    +55 (16) 98148-8260<br>
+    <a href="mailto:fabio.carlucci@ficus.capital">fabio.carlucci@ficus.capital</a>
+  </div>
+</footer>
+
+</body>
+</html>
