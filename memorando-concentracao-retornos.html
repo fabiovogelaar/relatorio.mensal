@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Concentração de Retornos e Diversificação | Fábio Carlucci</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --verde-escuro: #1a2e25;
+    --dourado: #c9a84c;
+    --dourado-claro: #e2c47a;
+    --creme: #f5ede0;
+    --texto-claro: rgba(245,237,224,0.85);
+    --texto-muted: rgba(245,237,224,0.45);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background-color: var(--verde-escuro);
+    color: var(--creme);
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(ellipse at 10% 10%, rgba(201,168,76,0.06) 0%, transparent 55%),
+      radial-gradient(ellipse at 90% 90%, rgba(47,82,64,0.35) 0%, transparent 55%),
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ── VOLTAR ── */
+  .back-link {
+    position: relative;
+    z-index: 10;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 28px 8%;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--texto-muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .back-link:hover { color: var(--dourado); }
+  .back-link::before { content: '←'; font-size: 0.9rem; }
+
+  /* ── HERO ── */
+  .hero {
+    position: relative;
+    z-index: 1;
+    padding: 20px 8% 64px;
+    border-bottom: 1px solid rgba(201,168,76,0.15);
+    max-width: 900px;
+  }
+
+  .hero-tag {
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--dourado);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 24px;
+    opacity: 0;
+    animation: fadeUp 0.7s ease 0.1s forwards;
+  }
+  .hero-tag::before { content: ''; width: 30px; height: 1px; background: var(--dourado); }
+
+  .hero-date {
+    font-size: 0.72rem;
+    letter-spacing: 0.15em;
+    color: var(--texto-muted);
+    margin-bottom: 20px;
+    opacity: 0;
+    animation: fadeUp 0.7s ease 0.2s forwards;
+  }
+
+  h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 5vw, 3.8rem);
+    font-weight: 300;
+    line-height: 1.12;
+    color: var(--creme);
+    opacity: 0;
+    animation: fadeUp 0.7s ease 0.3s forwards;
+  }
+  h1 em { font-style: italic; color: var(--dourado-claro); }
+
+  .hero-sub {
+    font-size: 0.97rem;
+    color: var(--texto-muted);
+    line-height: 1.75;
+    margin-top: 16px;
+    max-width: 620px;
+    opacity: 0;
+    animation: fadeUp 0.7s ease 0.45s forwards;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── ARTIGO ── */
+  article {
+    position: relative;
+    z-index: 1;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 64px 8% 88px;
+  }
+
+  .lead {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.1rem, 2.5vw, 1.35rem);
+    font-weight: 400;
+    line-height: 1.8;
+    color: var(--creme);
+    margin-bottom: 48px;
+    padding-bottom: 48px;
+    border-bottom: 1px solid rgba(201,168,76,0.15);
+  }
+
+  p {
+    font-size: 0.97rem;
+    line-height: 1.9;
+    color: var(--texto-claro);
+    margin-bottom: 24px;
+  }
+
+  strong { font-weight: 600; color: var(--creme); }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.55rem;
+    font-weight: 600;
+    color: var(--dourado-claro);
+    margin: 56px 0 18px;
+    padding-top: 44px;
+    border-top: 1px solid rgba(201,168,76,0.12);
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .section-icon { font-size: 1.3rem; flex-shrink: 0; }
+
+  /* ── STAT HERO ── */
+  .stat-banner {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 2px;
+    margin: 40px 0;
+    border-radius: 6px;
+    overflow: hidden;
+  }
+
+  .stat-block {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(201,168,76,0.15);
+    padding: 28px 20px;
+    text-align: center;
+  }
+
+  .stat-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.2rem, 5vw, 3.2rem);
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+
+  .stat-label {
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--texto-muted);
+    line-height: 1.5;
+  }
+
+  @media (max-width: 520px) {
+    .stat-banner { grid-template-columns: 1fr; }
+  }
+
+  /* ── TREEMAP VISUAL ── */
+  .treemap-section {
+    margin: 40px 0;
+  }
+
+  .treemap-label {
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--dourado);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .treemap-label::before { content: ''; width: 20px; height: 1px; background: var(--dourado); opacity: 0.5; }
+
+  .treemap-wrap {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1.8fr;
+    grid-template-rows: auto auto auto;
+    gap: 4px;
+    border-radius: 6px;
+    overflow: hidden;
+  }
+
+  .tm-cell {
+    background: rgba(94,201,138,0.18);
+    border: 1px solid rgba(94,201,138,0.25);
+    padding: 18px 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    transition: background 0.25s;
+  }
+  .tm-cell:hover { background: rgba(94,201,138,0.28); }
+
+  .tm-cell.large {
+    grid-row: span 2;
+    padding: 24px 20px;
+  }
+
+  .tm-rest {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    grid-column: 3;
+    grid-row: 1 / 4;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    text-align: center;
+    gap: 8px;
+  }
+
+  .tm-company {
+    font-family: 'Jost', sans-serif;
+    font-weight: 600;
+    font-size: 0.82rem;
+    color: var(--verde-escuro);
+    color: #1a2e25;
+  }
+
+  .tm-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #1a3020;
+  }
+
+  .tm-pct {
+    font-size: 0.68rem;
+    color: rgba(26,46,37,0.7);
+    font-weight: 500;
+  }
+
+  .tm-rest-title {
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--texto-muted);
+  }
+
+  .tm-rest-sub {
+    font-size: 0.78rem;
+    color: var(--texto-muted);
+    line-height: 1.5;
+    margin-top: 4px;
+  }
+
+  /* Grid de pequenas células simulando "the rest" */
+  .tm-rest-grid {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    gap: 3px;
+    width: 100%;
+    margin-top: 12px;
+  }
+  .tm-rest-dot {
+    aspect-ratio: 1;
+    background: rgba(255,255,255,0.08);
+    border-radius: 1px;
+  }
+
+  /* ── INSIGHT BOX ── */
+  .insight-box {
+    background: linear-gradient(135deg, rgba(201,168,76,0.1) 0%, rgba(26,46,37,0.4) 100%);
+    border: 1px solid rgba(201,168,76,0.25);
+    border-left: 3px solid var(--dourado);
+    border-radius: 4px;
+    padding: 28px 32px;
+    margin: 36px 0;
+  }
+  .insight-box p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.12rem;
+    color: var(--creme);
+    line-height: 1.8;
+    margin: 0;
+  }
+
+  /* ── ERROS COMUNS ── */
+  .erros-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin: 28px 0;
+  }
+  @media (max-width: 580px) { .erros-grid { grid-template-columns: 1fr; } }
+
+  .erro-card {
+    background: rgba(224,112,112,0.07);
+    border: 1px solid rgba(224,112,112,0.18);
+    border-radius: 5px;
+    padding: 20px 20px;
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    transition: background 0.25s;
+  }
+  .erro-card:hover { background: rgba(224,112,112,0.12); }
+
+  .erro-icon { font-size: 1.3rem; flex-shrink: 0; }
+  .erro-titulo {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #e07070;
+    margin-bottom: 5px;
+    letter-spacing: 0.03em;
+  }
+  .erro-desc { font-size: 0.8rem; color: var(--texto-muted); line-height: 1.55; }
+
+  /* ── PRINCÍPIOS ── */
+  .principios-list {
+    margin: 28px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .principio-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+    padding: 20px 22px;
+    background: rgba(201,168,76,0.05);
+    border: 1px solid rgba(201,168,76,0.15);
+    border-radius: 5px;
+    transition: border-color 0.25s, background 0.25s;
+  }
+  .principio-item:hover {
+    border-color: rgba(201,168,76,0.3);
+    background: rgba(201,168,76,0.09);
+  }
+
+  .principio-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: rgba(201,168,76,0.25);
+    line-height: 1;
+    flex-shrink: 0;
+    width: 32px;
+    text-align: center;
+  }
+
+  .principio-titulo {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--dourado);
+    margin-bottom: 5px;
+    letter-spacing: 0.04em;
+  }
+  .principio-desc { font-size: 0.84rem; color: var(--texto-claro); line-height: 1.6; }
+
+  /* ── CONCLUSÃO ── */
+  .conclusao {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    font-weight: 400;
+    line-height: 1.85;
+    color: var(--creme);
+    margin-top: 52px;
+    padding: 40px;
+    border: 1px solid rgba(201,168,76,0.2);
+    border-radius: 6px;
+    background: rgba(255,255,255,0.02);
+    position: relative;
+  }
+  .conclusao::before {
+    content: '"';
+    position: absolute;
+    top: -10px; left: 32px;
+    font-size: 5rem;
+    color: rgba(201,168,76,0.15);
+    font-family: 'Cormorant Garamond', serif;
+    line-height: 1;
+  }
+
+  /* ── FONTE ── */
+  .fonte {
+    margin-top: 32px;
+    padding: 16px 20px;
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 4px;
+    font-size: 0.75rem;
+    color: var(--texto-muted);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .fonte::before { content: '📄'; font-size: 1rem; flex-shrink: 0; }
+
+  /* ── RODAPÉ ── */
+  footer {
+    position: relative;
+    z-index: 1;
+    border-top: 1px solid rgba(201,168,76,0.12);
+    padding: 40px 8%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  .footer-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-weight: 300;
+    color: var(--texto-muted);
+  }
+  .footer-contact {
+    font-size: 0.75rem;
+    color: rgba(245,237,224,0.25);
+    line-height: 1.9;
+    text-align: right;
+  }
+  .footer-contact a { color: var(--dourado); text-decoration: none; }
+
+  @media (max-width: 640px) {
+    .back-link { padding: 20px 5%; }
+    .hero { padding: 10px 5% 48px; }
+    article { padding: 48px 5% 64px; }
+    footer { padding: 32px 5%; flex-direction: column; }
+    .footer-contact { text-align: left; }
+  }
+</style>
+</head>
+<body>
+
+<a class="back-link" href="index.html">Voltar</a>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-tag">Memorando · Renda Variável</div>
+  <div class="hero-date">Abril de 2026</div>
+  <h1>Mercado, concentração<br>de retornos e <em>diversificação</em></h1>
+  <p class="hero-sub">Um estudo sobre 100 anos do mercado americano revela uma verdade desconfortável: o resultado extraordinário da bolsa vem de um grupo surpreendentemente pequeno de empresas.</p>
+</header>
+
+<article>
+
+  <p class="lead">
+    Um novo estudo de Hendrik Bessembinder analisou quase <strong>30.000 empresas</strong> ao longo de 100 anos de mercado americano. A principal conclusão mexe com uma ideia que muita gente tem de forma intuitiva, mas incompleta — e tem implicações diretas para como construímos carteiras.
+  </p>
+
+  <!-- STATS -->
+  <div class="stat-banner">
+    <div class="stat-block">
+      <div class="stat-number" style="color: var(--dourado);">~30K</div>
+      <div class="stat-label">empresas analisadas em 100 anos</div>
+    </div>
+    <div class="stat-block">
+      <div class="stat-number" style="color: #5ec98a;">1%</div>
+      <div class="stat-label">das ações responsáveis por</div>
+    </div>
+    <div class="stat-block">
+      <div class="stat-number" style="color: #e07070;">44%</div>
+      <div class="stat-label">de toda a riqueza gerada</div>
+    </div>
+  </div>
+
+  <p>
+    Só 1% das ações gerou 44% de toda a riqueza criada pelo mercado americano no último século. E as 30 maiores empresas — sozinhas — respondem por <strong>43,7% de toda a riqueza gerada</strong> ao longo desse período.
+  </p>
+
+  <!-- TREEMAP -->
+  <div class="treemap-section">
+    <div class="treemap-label">Os maiores geradores de riqueza do século</div>
+    <div class="treemap-wrap">
+
+      <div class="tm-cell large">
+        <div class="tm-company">🍎 Apple</div>
+        <div class="tm-value">$5,02T</div>
+        <div class="tm-pct">5,5% de toda a riqueza</div>
+      </div>
+
+      <div class="tm-cell">
+        <div class="tm-company">⚡ Nvidia</div>
+        <div class="tm-value">$4,58T</div>
+        <div class="tm-pct">5,0%</div>
+      </div>
+
+      <div class="tm-rest">
+        <div class="tm-rest-title">O Restante do Mercado</div>
+        <div class="tm-rest-sub">~29.970 outras empresas dividindo os demais 56% da riqueza gerada</div>
+        <div class="tm-rest-grid">
+          <!-- 64 pequenos quadradinhos simulando a massa de empresas -->
+          <div class="tm-rest-dot"></div><div class="tm-rest-dot"></div><div class="tm-rest-dot"></div><div class="tm-rest-dot"></div><div class="tm-rest-dot"></div><div class="tm-rest-dot"></div><div class="tm-rest-dot"></div><div class="tm-rest-dot"></div>
+          <div class="tm-rest-dot"></div><div class="tm-rest-dot"></div><div class="tm-rest-dot"></div><div class="tm-rest-dot"></div><div class="tm-rest-dot"></div><div class="tm-rest-dot"></div><div class="tm-rest-dot"></div><div class="tm-rest-dot"></div>
+          <div class="tm-rest-dot"></div><div class="tm-rest-dot"></div><div class="tm-rest-dot"></div><div class="tm-rest-dot"></div><div class="tm-rest-dot"></div><div class="tm-rest-dot"></div><div class="tm-rest-dot"></div><div class="tm-rest-dot"></div>
+          <div class="tm-rest-dot"></div><div class="tm-rest-dot"></div><div class="tm-rest-dot"></div><div class="tm-rest-dot"></div><div class="tm-rest-dot"></div><div class="tm-rest-dot"></div><div class="tm-rest-dot"></div><div class="tm-rest-dot"></div>
+          <div class="tm-rest-dot"></div><div class="tm-rest-dot"></div><div class="tm-rest-dot"></div><div class="tm-rest-dot"></div><div class="tm-rest-dot"></div><div class="tm-rest-dot"></div><div class="tm-rest-dot"></div><div class="tm-rest-dot"></div>
+          <div class="tm-rest-dot"></div><div class="tm-rest-dot"></div><div class="tm-rest-dot"></div><div class="tm-rest-dot"></div><div class="tm-rest-dot"></div><div class="tm-rest-dot"></div><div class="tm-rest-dot"></div><div class="tm-rest-dot"></div>
+          <div class="tm-rest-dot"></div><div class="tm-rest-dot"></div><div class="tm-rest-dot"></div><div class="tm-rest-dot"></div><div class="tm-rest-dot"></div><div class="tm-rest-dot"></div><div class="tm-rest-dot"></div><div class="tm-rest-dot"></div>
+          <div class="tm-rest-dot"></div><div class="tm-rest-dot"></div><div class="tm-rest-dot"></div><div class="tm-rest-dot"></div><div class="tm-rest-dot"></div><div class="tm-rest-dot"></div><div class="tm-rest-dot"></div><div class="tm-rest-dot"></div>
+        </div>
+      </div>
+
+      <div class="tm-cell">
+        <div class="tm-company">🖥️ Microsoft</div>
+        <div class="tm-value">$4,03T</div>
+        <div class="tm-pct">4,4%</div>
+      </div>
+
+      <div class="tm-cell">
+        <div class="tm-company">🔍 Alphabet</div>
+        <div class="tm-value">$3,57T</div>
+        <div class="tm-pct">3,9%</div>
+      </div>
+
+      <div class="tm-cell" style="grid-column: span 2;">
+        <div class="tm-company">📦 Amazon</div>
+        <div class="tm-value">$2,27T</div>
+        <div class="tm-pct">2,5%</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- O QUE ISSO SIGNIFICA -->
+  <div class="section-title"><span class="section-icon">🔍</span> O que isso realmente significa</div>
+
+  <p>
+    O índice vai bem no longo prazo — mas uma grande parte das ações individualmente não entrega esse mesmo resultado. O retorno extraordinário da bolsa costuma vir de um grupo <strong>bastante restrito de vencedoras de longo prazo</strong>, enquanto a maioria das empresas entrega retornos mediocres ou negativos.
+  </p>
+
+  <div class="insight-box">
+    <p>O grande risco do investidor não é apenas escolher ativos ruins. Muitas vezes, <strong>o grande risco é ficar de fora das poucas empresas que realmente fazem diferença</strong> no resultado final da carteira. E como ninguém prevê isso com consistência, a diversificação é a resposta racional.</p>
+  </div>
+
+  <!-- ERROS COMUNS -->
+  <div class="section-title"><span class="section-icon">⚠️</span> Os erros que mais custam caro</div>
+
+  <p>
+    Esse estudo também reforça uma reflexão importante sobre comportamento. Algumas atitudes que parecem sofisticadas frequentemente aumentam a probabilidade de erro:
+  </p>
+
+  <div class="erros-grid">
+    <div class="erro-card">
+      <span class="erro-icon">🔄</span>
+      <div>
+        <div class="erro-titulo">Trocar demais de posição</div>
+        <div class="erro-desc">Giragem excessiva aumenta custos e a chance de sair cedo das grandes vencedoras.</div>
+      </div>
+    </div>
+    <div class="erro-card">
+      <span class="erro-icon">⏱️</span>
+      <div>
+        <div class="erro-titulo">Tentar antecipar o mercado</div>
+        <div class="erro-desc">Market timing consistente é impossível. Quem tenta perde mais do que ganha no longo prazo.</div>
+      </div>
+    </div>
+    <div class="erro-card">
+      <span class="erro-icon">🎯</span>
+      <div>
+        <div class="erro-titulo">Concentrar em poucas convicções</div>
+        <div class="erro-desc">Parece sofisticado, mas aumenta muito o risco de não estar nas empresas que realmente importam.</div>
+      </div>
+    </div>
+    <div class="erro-card">
+      <span class="erro-icon">😰</span>
+      <div>
+        <div class="erro-titulo">Perder paciência no caminho</div>
+        <div class="erro-desc">Sair no momento errado, assustado pela volatilidade, é uma das formas mais comuns de destruir retorno.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PRINCÍPIOS -->
+  <div class="section-title"><span class="section-icon">🧭</span> O que realmente importa</div>
+
+  <p>
+    Construção de patrimônio em bolsa não depende de acertar o tempo inteiro, nem de encontrar a próxima grande ação a cada ano. O que mais pesa é uma combinação de:
+  </p>
+
+  <div class="principios-list">
+    <div class="principio-item">
+      <div class="principio-num">1</div>
+      <div>
+        <div class="principio-titulo">Boa alocação e diversificação</div>
+        <div class="principio-desc">Distribuir o capital de forma que você esteja exposto a um número suficiente de empresas — aumentando a chance de capturar os grandes vencedores.</div>
+      </div>
+    </div>
+    <div class="principio-item">
+      <div class="principio-num">2</div>
+      <div>
+        <div class="principio-titulo">Permanência e horizonte longo</div>
+        <div class="principio-desc">Os retornos extraordinários se revelam ao longo de anos, não de meses. Quem sai cedo perde justamente o trecho que mais importa.</div>
+      </div>
+    </div>
+    <div class="principio-item">
+      <div class="principio-num">3</div>
+      <div>
+        <div class="principio-titulo">Disciplina nos ciclos adversos</div>
+        <div class="principio-desc">Não desmontar a estratégia toda vez que o mercado muda de humor. Robustez e resiliência valem mais do que reatividade.</div>
+      </div>
+    </div>
+    <div class="principio-item">
+      <div class="principio-num">4</div>
+      <div>
+        <div class="principio-titulo">Consistência acima da ansiedade</div>
+        <div class="principio-desc">O mercado premia muito mais quem é consistente do que quem é ansioso. Isso é o que os dados de 100 anos confirmam.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONCLUSÃO -->
+  <div class="conclusao">
+    Quem investe com horizonte longo precisa montar carteira pensando não apenas em retorno esperado, mas também em <strong>robustez, resiliência e permanência</strong>. Porque, ao longo de muitos anos, uma pequena minoria de empresas tende a explicar uma parte enorme do resultado — e o investidor bem posicionado e paciente tem muito mais chance de capturar esse movimento.
+  </div>
+
+  <div class="fonte">
+    Estudo de referência: Hendrik Bessembinder — <em>"Which U.S. Stocks Generated the Most Wealth? 1926–2023"</em> (2024). Análise baseada em ~30.000 empresas ao longo de 100 anos do mercado americano.
+  </div>
+
+</article>
+
+<footer>
+  <div class="footer-name">Fábio Vogelaar Carlucci</div>
+  <div class="footer-contact">
+    +55 (16) 98148-8260<br>
+    <a href="mailto:fabio.carlucci@ficus.capital">fabio.carlucci@ficus.capital</a>
+  </div>
+</footer>
+
+</body>
+</html>
