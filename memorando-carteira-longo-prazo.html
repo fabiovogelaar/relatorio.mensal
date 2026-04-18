@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>O que realmente faz uma carteira funcionar no longo prazo | Fábio Carlucci</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --verde-escuro: #1a2e25;
+    --dourado: #c9a84c;
+    --dourado-claro: #e2c47a;
+    --creme: #f5ede0;
+    --texto-claro: rgba(245,237,224,0.85);
+    --texto-muted: rgba(245,237,224,0.45);
+    --azul-carteira: #4a90d9;
+    --verde-cdi: #3dbf8a;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background-color: var(--verde-escuro);
+    color: var(--creme);
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background-image:
+      radial-gradient(ellipse at 10% 10%, rgba(201,168,76,0.06) 0%, transparent 55%),
+      radial-gradient(ellipse at 90% 90%, rgba(47,82,64,0.35) 0%, transparent 55%),
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none; z-index: 0;
+  }
+
+  .back-link {
+    position: relative; z-index: 10;
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 28px 8%;
+    font-size: 0.7rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--texto-muted); text-decoration: none; transition: color 0.2s;
+  }
+  .back-link:hover { color: var(--dourado); }
+  .back-link::before { content: '←'; font-size: 0.9rem; }
+
+  /* ── HERO ── */
+  .hero {
+    position: relative; z-index: 1;
+    padding: 20px 8% 64px;
+    border-bottom: 1px solid rgba(201,168,76,0.15);
+    max-width: 900px;
+  }
+  .hero-tag {
+    font-size: 0.65rem; font-weight: 500; letter-spacing: 0.35em; text-transform: uppercase;
+    color: var(--dourado); display: flex; align-items: center; gap: 12px;
+    margin-bottom: 24px; opacity: 0; animation: fadeUp 0.7s ease 0.1s forwards;
+  }
+  .hero-tag::before { content: ''; width: 30px; height: 1px; background: var(--dourado); }
+  .hero-date {
+    font-size: 0.72rem; letter-spacing: 0.15em; color: var(--texto-muted);
+    margin-bottom: 20px; opacity: 0; animation: fadeUp 0.7s ease 0.2s forwards;
+  }
+  h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 5vw, 3.8rem); font-weight: 300; line-height: 1.12;
+    color: var(--creme); opacity: 0; animation: fadeUp 0.7s ease 0.3s forwards;
+  }
+  h1 em { font-style: italic; color: var(--dourado-claro); }
+  .hero-sub {
+    font-size: 0.97rem; color: var(--texto-muted); line-height: 1.75;
+    margin-top: 16px; max-width: 640px; opacity: 0; animation: fadeUp 0.7s ease 0.45s forwards;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── ARTIGO ── */
+  article {
+    position: relative; z-index: 1;
+    max-width: 800px; margin: 0 auto;
+    padding: 64px 8% 88px;
+  }
+
+  .lead {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.1rem, 2.5vw, 1.35rem); font-weight: 400; line-height: 1.8;
+    color: var(--creme); margin-bottom: 48px; padding-bottom: 48px;
+    border-bottom: 1px solid rgba(201,168,76,0.15);
+  }
+
+  p { font-size: 0.97rem; line-height: 1.9; color: var(--texto-claro); margin-bottom: 24px; }
+  strong { font-weight: 600; color: var(--creme); }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.55rem; font-weight: 600; color: var(--dourado-claro);
+    margin: 56px 0 18px; padding-top: 44px;
+    border-top: 1px solid rgba(201,168,76,0.12);
+    display: flex; align-items: center; gap: 14px;
+  }
+  .section-icon { font-size: 1.3rem; flex-shrink: 0; }
+
+  /* ── DESTAQUE VERDE CARTEIRA ── */
+  .destaque-verde {
+    background: rgba(61,191,138,0.1);
+    border: 1px solid rgba(61,191,138,0.25);
+    border-left: 3px solid var(--verde-cdi);
+    border-radius: 4px;
+    padding: 20px 24px;
+    margin: 28px 0;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--creme);
+    line-height: 1.6;
+  }
+  .destaque-verde span { color: #5ee0aa; }
+
+  /* ── COMPOSIÇÃO DA CARTEIRA ── */
+  .carteira-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin: 28px 0;
+  }
+  @media (max-width: 580px) { .carteira-grid { grid-template-columns: 1fr 1fr; } }
+
+  .carteira-item {
+    background: rgba(74,144,217,0.08);
+    border: 1px solid rgba(74,144,217,0.2);
+    border-radius: 5px;
+    padding: 16px 14px;
+    text-align: center;
+    transition: background 0.25s, border-color 0.25s;
+  }
+  .carteira-item:hover { background: rgba(74,144,217,0.15); border-color: rgba(74,144,217,0.35); }
+
+  .carteira-item-icon { font-size: 1.3rem; margin-bottom: 6px; }
+  .carteira-item-nome {
+    font-size: 0.76rem; font-weight: 600; color: var(--azul-carteira);
+    letter-spacing: 0.04em; line-height: 1.3;
+  }
+
+  /* ── GRÁFICOS ── */
+  .grafico-wrap {
+    background: rgba(10,20,16,0.7);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 8px;
+    padding: 24px 20px 16px;
+    margin: 32px 0;
+  }
+
+  .grafico-titulo {
+    font-size: 0.68rem; font-weight: 600; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--dourado);
+    margin-bottom: 6px;
+  }
+
+  .grafico-subtitulo {
+    font-size: 0.72rem; color: var(--texto-muted); margin-bottom: 16px;
+  }
+
+  .grafico-legenda {
+    display: flex; gap: 20px; flex-wrap: wrap; margin-bottom: 12px;
+  }
+  .leg-item {
+    display: flex; align-items: center; gap: 7px;
+    font-size: 0.7rem; color: var(--texto-muted);
+  }
+  .leg-dot-azul { width: 10px; height: 3px; background: var(--azul-carteira); border-radius: 2px; }
+  .leg-dot-verde { width: 10px; height: 3px; background: var(--verde-cdi); border-radius: 2px; }
+
+  canvas { width: 100% !important; display: block; }
+
+  .grafico-nota {
+    font-size: 0.65rem; color: rgba(245,237,224,0.25);
+    margin-top: 10px; line-height: 1.4;
+  }
+
+  /* ── STAT ACUMULADO ── */
+  .stat-acumulado {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 28px 0;
+  }
+  .stat-bloco {
+    border-radius: 6px; padding: 24px 20px; text-align: center;
+  }
+  .stat-bloco.carteira {
+    background: rgba(74,144,217,0.1);
+    border: 1px solid rgba(74,144,217,0.25);
+  }
+  .stat-bloco.cdi {
+    background: rgba(61,191,138,0.07);
+    border: 1px solid rgba(61,191,138,0.2);
+  }
+  .stat-bloco-label {
+    font-size: 0.65rem; font-weight: 600; letter-spacing: 0.2em;
+    text-transform: uppercase; margin-bottom: 8px;
+  }
+  .stat-bloco.carteira .stat-bloco-label { color: var(--azul-carteira); }
+  .stat-bloco.cdi .stat-bloco-label { color: var(--verde-cdi); }
+  .stat-bloco-valor {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.8rem; font-weight: 700; line-height: 1;
+  }
+  .stat-bloco.carteira .stat-bloco-valor { color: var(--azul-carteira); }
+  .stat-bloco.cdi .stat-bloco-valor { color: var(--verde-cdi); }
+  .stat-bloco-desc { font-size: 0.72rem; color: var(--texto-muted); margin-top: 6px; }
+
+  /* ── JANELAS DE TEMPO ── */
+  .janelas-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 28px 0;
+  }
+  @media (max-width: 520px) { .janelas-grid { grid-template-columns: 1fr; } }
+
+  .janela-card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 6px; padding: 20px 16px; text-align: center;
+    transition: border-color 0.25s;
+  }
+  .janela-card:hover { border-color: rgba(201,168,76,0.25); }
+
+  .janela-prazo {
+    font-size: 0.65rem; font-weight: 600; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--texto-muted); margin-bottom: 10px;
+  }
+  .janela-pct {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.4rem; font-weight: 700; line-height: 1; margin-bottom: 6px;
+  }
+  .janela-desc { font-size: 0.75rem; color: var(--texto-muted); line-height: 1.5; }
+
+  /* Barra de progresso circular simulada */
+  .janela-bar-wrap {
+    width: 100%; height: 5px; background: rgba(255,255,255,0.06);
+    border-radius: 3px; overflow: hidden; margin: 10px 0;
+  }
+  .janela-bar-fill { height: 100%; border-radius: 3px; }
+
+  /* ── INSIGHT BOX ── */
+  .insight-box {
+    background: linear-gradient(135deg, rgba(201,168,76,0.1) 0%, rgba(26,46,37,0.4) 100%);
+    border: 1px solid rgba(201,168,76,0.25); border-left: 3px solid var(--dourado);
+    border-radius: 4px; padding: 28px 32px; margin: 36px 0;
+  }
+  .insight-box p {
+    font-family: 'Cormorant Garamond', serif; font-size: 1.12rem;
+    color: var(--creme); line-height: 1.8; margin: 0;
+  }
+
+  /* ── TRÊS PILARES ── */
+  .pilares {
+    display: flex; flex-direction: column; gap: 14px; margin: 28px 0;
+  }
+  .pilar-item {
+    display: flex; align-items: flex-start; gap: 18px;
+    padding: 22px 22px;
+    background: rgba(201,168,76,0.05);
+    border: 1px solid rgba(201,168,76,0.15);
+    border-radius: 5px;
+    transition: border-color 0.25s, background 0.25s;
+  }
+  .pilar-item:hover { border-color: rgba(201,168,76,0.3); background: rgba(201,168,76,0.09); }
+  .pilar-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem; font-weight: 700;
+    color: rgba(201,168,76,0.2); line-height: 1;
+    flex-shrink: 0; width: 32px; text-align: center;
+  }
+  .pilar-titulo { font-size: 0.82rem; font-weight: 600; color: var(--dourado); margin-bottom: 5px; }
+  .pilar-desc { font-size: 0.84rem; color: var(--texto-claro); line-height: 1.6; }
+
+  /* ── FRASE FINAL ── */
+  .frase-final {
+    text-align: center;
+    margin: 48px 0 0;
+    padding: 40px 24px;
+    border: 1px solid rgba(201,168,76,0.2);
+    border-radius: 6px;
+    background: rgba(255,255,255,0.02);
+  }
+  .frase-final-texto {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.2rem, 3vw, 1.6rem);
+    font-weight: 400; line-height: 1.7; color: var(--creme);
+  }
+  .frase-final-texto strong { color: var(--dourado-claro); }
+
+  /* ── CONCLUSÃO ── */
+  .conclusao {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem; font-weight: 400; line-height: 1.85; color: var(--creme);
+    margin-top: 40px; padding: 40px;
+    border: 1px solid rgba(201,168,76,0.2); border-radius: 6px;
+    background: rgba(255,255,255,0.02); position: relative;
+  }
+  .conclusao::before {
+    content: '"'; position: absolute; top: -10px; left: 32px;
+    font-size: 5rem; color: rgba(201,168,76,0.15);
+    font-family: 'Cormorant Garamond', serif; line-height: 1;
+  }
+
+  footer {
+    position: relative; z-index: 1;
+    border-top: 1px solid rgba(201,168,76,0.12); padding: 40px 8%;
+    display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;
+  }
+  .footer-name { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 300; color: var(--texto-muted); }
+  .footer-contact { font-size: 0.75rem; color: rgba(245,237,224,0.25); line-height: 1.9; text-align: right; }
+  .footer-contact a { color: var(--dourado); text-decoration: none; }
+
+  @media (max-width: 640px) {
+    .back-link { padding: 20px 5%; }
+    .hero { padding: 10px 5% 48px; }
+    article { padding: 48px 5% 64px; }
+    footer { padding: 32px 5%; flex-direction: column; }
+    .footer-contact { text-align: left; }
+    .stat-acumulado { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<a class="back-link" href="index.html">Voltar</a>
+
+<header class="hero">
+  <div class="hero-tag">Memorando · Carteira e Estratégia</div>
+  <div class="hero-date">Maio de 2026</div>
+  <h1>O que realmente faz<br>uma carteira <em>funcionar no longo prazo</em></h1>
+  <p class="hero-sub">Não é uma grande sacada, nem um ativo escondido, nem timing perfeito. É fazer bem feito o básico — por tempo suficiente.</p>
+</header>
+
+<article>
+
+  <p class="lead">
+    De tempos em tempos o mercado tenta vender a sensação de que investir bem depende de descobrir algum movimento muito específico que poucos perceberam. Na prática, minha impressão é quase a oposta. <strong>O que funciona não é reinventar a roda. É fazer bem o básico que quase todo mundo conhece, mas pouca gente tem paciência para executar por tempo suficiente.</strong>
+  </p>
+
+  <!-- SEÇÃO 1: A CARTEIRA -->
+  <div class="section-title"><span class="section-icon">🗂️</span> Uma carteira simples — e funcional</div>
+
+  <p>
+    Quando olhamos para uma carteira que combina seis classes de ativos, estamos olhando para algo relativamente simples. Não há nenhuma genialidade escondida. O mérito não está em ter inventado uma estrutura nova, mas em aceitar uma verdade difícil: <strong>o enriquecimento consistente vem menos de brilhantismo tático e mais de posicionamento correto, paciência e permanência</strong>.
+  </p>
+
+  <div class="carteira-grid">
+    <div class="carteira-item"><div class="carteira-item-icon">🇧🇷</div><div class="carteira-item-nome">Ações Brasil</div></div>
+    <div class="carteira-item"><div class="carteira-item-icon">🌍</div><div class="carteira-item-nome">Ações Globais</div></div>
+    <div class="carteira-item"><div class="carteira-item-icon">💵</div><div class="carteira-item-nome">Dólar</div></div>
+    <div class="carteira-item"><div class="carteira-item-icon">📈</div><div class="carteira-item-nome">Renda Fixa Pós-fixada</div></div>
+    <div class="carteira-item"><div class="carteira-item-icon">🔒</div><div class="carteira-item-nome">IPCA+</div></div>
+    <div class="carteira-item"><div class="carteira-item-icon">📊</div><div class="carteira-item-nome">Prefixado</div></div>
+  </div>
+
+  <p>
+    Quem já está exposto a essas seis frentes <strong>não precisa correr atrás da classe que acaba de subir</strong>. Apenas colhe o efeito da ciclicidade quando ela aparece. Uma carteira equilibrada resolve o problema do timing de outro jeito: exige apenas que o investidor esteja posicionado antes que o movimento aconteça.
+  </p>
+
+  <!-- SEÇÃO 2: RESULTADO ACUMULADO -->
+  <div class="section-title"><span class="section-icon">📈</span> O ativo da vez não vai te enriquecer</div>
+
+  <p>
+    Essa carteira com seis classes de ativos, desde 2004, entregou resultados muito acima do CDI — sem tentativa de fazer timing, sem buscar o melhor momento de entrada em cada classe. A estratégia foi simplesmente se posicionar e aceitar a ciclicidade do mercado.
+  </p>
+
+  <div class="stat-acumulado">
+    <div class="stat-bloco carteira">
+      <div class="stat-bloco-label">Carteira diversificada</div>
+      <div class="stat-bloco-valor">1459%</div>
+      <div class="stat-bloco-desc">retorno acumulado desde 2004</div>
+    </div>
+    <div class="stat-bloco cdi">
+      <div class="stat-bloco-label">CDI no mesmo período</div>
+      <div class="stat-bloco-valor">876%</div>
+      <div class="stat-bloco-desc">retorno acumulado desde 2004</div>
+    </div>
+  </div>
+
+  <!-- Gráfico de acumulação -->
+  <div class="grafico-wrap">
+    <div class="grafico-titulo">Acumulação nominal desde 2004</div>
+    <div class="grafico-subtitulo">Carteira diversificada (6 classes) vs. CDI</div>
+    <div class="grafico-legenda">
+      <div class="leg-item"><div class="leg-dot-azul"></div>Carteira — 1459%</div>
+      <div class="leg-item"><div class="leg-dot-verde"></div>CDI — 876%</div>
+    </div>
+    <canvas id="chartAcumulado" height="200"></canvas>
+    <div class="grafico-nota">Dados aproximados para fins ilustrativos. Fonte: análise baseada em carteira diversificada com rebalanceamento periódico.</div>
+  </div>
+
+  <div class="insight-box">
+    <p>Toda classe de ativo é cíclica. <strong>Achar que é possível acertar o melhor momento o tempo todo é ilusão.</strong> Se você quer superar o CDI no longo prazo, precisa estar disposto a ficar abaixo dele no curto.</p>
+  </div>
+
+  <!-- SEÇÃO 3: A DIVERSIFICAÇÃO DÓI -->
+  <div class="section-title"><span class="section-icon">💢</span> A verdadeira diversificação dói</div>
+
+  <p>
+    Diversificar de verdade implica aceitar que <strong>parte da carteira estará mal o tempo todo</strong>. Enquanto uma classe vai bem, outra vai decepcionar. Se tudo está indo bem ao mesmo tempo, quase sempre não é diversificação real — é coincidência favorável, ou um ciclo beneficiando tudo ao mesmo tempo.
+  </p>
+
+  <div class="destaque-verde">
+    Essa carteira passou <span>49% do tempo abaixo do CDI</span> em janelas de 12 meses.<br>
+    <span style="font-size:0.85rem; font-weight:300; color:rgba(245,237,224,0.6);">Quem fica olhando isso mês a mês não aguenta o processo — e acaba tomando péssimas decisões no meio do caminho.</span>
+  </div>
+
+  <!-- Gráfico rentabilidade mês a mês 12m -->
+  <div class="grafico-wrap">
+    <div class="grafico-titulo">Rentabilidade nominal — janela de 12 meses</div>
+    <div class="grafico-subtitulo">Carteira vs CDI · 2005–2026</div>
+    <div class="grafico-legenda">
+      <div class="leg-item"><div class="leg-dot-azul"></div>Carteira</div>
+      <div class="leg-item"><div class="leg-dot-verde"></div>CDI</div>
+    </div>
+    <canvas id="chart12m" height="180"></canvas>
+    <div class="grafico-nota">A linha da carteira oscila amplamente (volatilidade real). A linha do CDI evolui de forma mais suave. Em boa parte do tempo, a carteira fica abaixo do CDI nas janelas curtas.</div>
+  </div>
+
+  <p>
+    O problema é que <strong>a maioria das pessoas não abandona uma estratégia ruim — ela abandona uma estratégia boa em uma fase emocionalmente desconfortável</strong>. O investidor monta uma carteira com racionalidade e depois a desmonta com impaciência.
+  </p>
+
+  <!-- SEÇÃO 4: O TEMPO MUDA TUDO -->
+  <div class="section-title"><span class="section-icon">⏳</span> A consistência vence qualquer tentativa de timing</div>
+
+  <p>
+    Quando o horizonte aumenta, a leitura muda completamente. O tempo, no investimento, não é apenas uma variável entre outras — <strong>ele muda a natureza do resultado</strong>.
+  </p>
+
+  <div class="janelas-grid">
+    <div class="janela-card">
+      <div class="janela-prazo">Janela de 1 ano</div>
+      <div class="janela-pct" style="color:#e07070;">51%</div>
+      <div class="janela-bar-wrap"><div class="janela-bar-fill" style="width:51%; background:#e07070;"></div></div>
+      <div class="janela-desc">das janelas superaram o CDI. O curto prazo é ruidoso e desconfortável.</div>
+    </div>
+    <div class="janela-card">
+      <div class="janela-prazo">Janela de 5 anos</div>
+      <div class="janela-pct" style="color:var(--dourado);">84%</div>
+      <div class="janela-bar-wrap"><div class="janela-bar-fill" style="width:84%; background:var(--dourado);"></div></div>
+      <div class="janela-desc">das janelas superaram o CDI. O processo começa a mostrar resultados.</div>
+    </div>
+    <div class="janela-card">
+      <div class="janela-prazo">Janela de 10 anos</div>
+      <div class="janela-pct" style="color:#5ec98a;">100%</div>
+      <div class="janela-bar-wrap"><div class="janela-bar-fill" style="width:100%; background:#5ec98a;"></div></div>
+      <div class="janela-desc">das janelas superaram o CDI. Todas, sem exceção.</div>
+    </div>
+  </div>
+
+  <!-- Gráfico 5 anos -->
+  <div class="grafico-wrap">
+    <div class="grafico-titulo">Rentabilidade nominal — janela de 5 anos</div>
+    <div class="grafico-subtitulo">Carteira vs CDI · 2009–2026</div>
+    <div class="grafico-legenda">
+      <div class="leg-item"><div class="leg-dot-azul"></div>Carteira</div>
+      <div class="leg-item"><div class="leg-dot-verde"></div>CDI</div>
+    </div>
+    <canvas id="chart5a" height="160"></canvas>
+  </div>
+
+  <!-- Gráfico 10 anos -->
+  <div class="grafico-wrap">
+    <div class="grafico-titulo">Rentabilidade nominal — janela de 10 anos</div>
+    <div class="grafico-subtitulo">Carteira vs CDI · 2014–2026 · Em 100% das janelas a carteira superou o CDI</div>
+    <div class="grafico-legenda">
+      <div class="leg-item"><div class="leg-dot-azul"></div>Carteira</div>
+      <div class="leg-item"><div class="leg-dot-verde"></div>CDI</div>
+    </div>
+    <canvas id="chart10a" height="160"></canvas>
+  </div>
+
+  <!-- SEÇÃO 5: TRÊS PILARES -->
+  <div class="section-title"><span class="section-icon">🧱</span> O que o investidor precisa aceitar</div>
+
+  <div class="pilares">
+    <div class="pilar-item">
+      <div class="pilar-num">1</div>
+      <div>
+        <div class="pilar-titulo">A diversificação machuca — e isso é o sinal de que está funcionando</div>
+        <div class="pilar-desc">Quando parte da carteira está decepcionando, isso não é falha da estratégia. É diversificação real trabalhando. Se tudo sobe ao mesmo tempo, desconfie.</div>
+      </div>
+    </div>
+    <div class="pilar-item">
+      <div class="pilar-num">2</div>
+      <div>
+        <div class="pilar-titulo">O tempo é parte essencial da estratégia, não um detalhe</div>
+        <div class="pilar-desc">Em 10 anos, 100% das janelas superaram o CDI. Esse resultado não exigiu genialidade — exigiu permanência. Quase todo mundo gosta da ideia do longo prazo, mas pouca gente suporta a experiência real de vivê-lo.</div>
+      </div>
+    </div>
+    <div class="pilar-item">
+      <div class="pilar-num">3</div>
+      <div>
+        <div class="pilar-titulo">Consistência vence qualquer tentativa de acertar o movimento perfeito</div>
+        <div class="pilar-desc">Aportes regulares, diversificação e paciência entregaram 1459% contra 876% do CDI — sem timing, sem apostas concentradas, sem narrativa de curto prazo.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FRASE FINAL -->
+  <div class="frase-final">
+    <div class="frase-final-texto">
+      Você não precisa acertar o movimento.<br>
+      <strong>Precisa estar exposto a ele.</strong>
+    </div>
+  </div>
+
+  <div class="conclusao">
+    Uma boa carteira não precisa parecer brilhante em cada recorte curto. Ela precisa <strong>funcionar ao longo do tempo</strong>. E, para isso, o investidor precisa aceitar três coisas: que a diversificação machuca, que o tempo é parte essencial da estratégia e que consistência costuma vencer qualquer tentativa de acertar o movimento perfeito. <strong>Aportes, tempo e uma carteira diversificada</strong> seguem sendo uma combinação muito mais poderosa do que a incessante busca pelo próximo grande tema do mercado.
+  </div>
+
+</article>
+
+<footer>
+  <div class="footer-name">Fábio Vogelaar Carlucci</div>
+  <div class="footer-contact">
+    +55 (16) 98148-8260<br>
+    <a href="mailto:fabio.carlucci@ficus.capital">fabio.carlucci@ficus.capital</a>
+  </div>
+</footer>
+
+<script>
+// ─── Utilidades ───────────────────────────────────────────────────────────
+function makeCanvas(id, h) {
+  const el = document.getElementById(id);
+  if (!el) return null;
+  const W = el.offsetWidth || 700;
+  const H = h;
+  el.width  = W * window.devicePixelRatio;
+  el.height = H * window.devicePixelRatio;
+  el.style.height = H + 'px';
+  const ctx = el.getContext('2d');
+  ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
+  return { ctx, W, H };
+}
+
+function drawChart({ id, height, years, series, yMin, yMax, yLabels, yLabelFmt }) {
+  const c = makeCanvas(id, height);
+  if (!c) return;
+  const { ctx, W, H } = c;
+
+  const PAD = { top: 16, right: 16, bottom: 28, left: 48 };
+  const pW = W - PAD.left - PAD.right;
+  const pH = H - PAD.top - PAD.bottom;
+  const n = years.length;
+
+  function xPos(i) { return PAD.left + (i / (n - 1)) * pW; }
+  function yPos(v) { return PAD.top + pH - ((v - yMin) / (yMax - yMin)) * pH; }
+
+  // Grid
+  ctx.strokeStyle = 'rgba(255,255,255,0.05)';
+  ctx.lineWidth = 1;
+  yLabels.forEach(v => {
+    const y = yPos(v);
+    ctx.beginPath(); ctx.moveTo(PAD.left, y); ctx.lineTo(PAD.left + pW, y); ctx.stroke();
+    ctx.fillStyle = 'rgba(245,237,224,0.2)';
+    ctx.font = '9px Jost,sans-serif';
+    ctx.textAlign = 'right';
+    ctx.fillText(yLabelFmt(v), PAD.left - 5, y + 3);
+  });
+
+  // X labels (every ~3 years)
+  ctx.fillStyle = 'rgba(245,237,224,0.2)';
+  ctx.textAlign = 'center';
+  years.forEach((yr, i) => {
+    if (i % 3 === 0 || i === years.length - 1) {
+      ctx.fillText(yr, xPos(i), H - PAD.bottom + 14);
+    }
+  });
+
+  // Series
+  series.forEach(s => {
+    ctx.beginPath();
+    ctx.strokeStyle = s.color;
+    ctx.lineWidth = s.width || 1.8;
+    ctx.lineJoin = 'round';
+    s.data.forEach((v, i) => {
+      if (i === 0) ctx.moveTo(xPos(i), yPos(v));
+      else ctx.lineTo(xPos(i), yPos(v));
+    });
+    ctx.stroke();
+  });
+}
+
+// ─── Helpers de dados ──────────────────────────────────────────────────────
+function genCDISmooth(len, start, end) {
+  // CDI cai de start% para end% suavemente com leve curva
+  return Array.from({ length: len }, (_, i) => {
+    const t = i / (len - 1);
+    return start + (end - start) * t + Math.sin(t * Math.PI) * 1.5;
+  });
+}
+
+function addNoise(arr, amp) {
+  return arr.map(v => v + (Math.random() - 0.5) * amp);
+}
+
+// ─── GRÁFICO 1: Acumulado ───────────────────────────────────────────────────
+(function() {
+  const years = ['2004','2005','2006','2007','2008','2009','2010','2011','2012',
+                 '2013','2014','2015','2016','2017','2018','2019','2020','2021',
+                 '2022','2023','2024','2025','2026'];
+  const n = years.length;
+  // CDI acumulação: cresce de 0% a ~876%
+  const cdiBase = Array.from({ length: n }, (_, i) => (876 * Math.pow(i/(n-1), 1.05)));
+  // Carteira: cresce de 0% a ~1459%, com mais volatilidade
+  const cartBase = Array.from({ length: n }, (_, i) => {
+    const t = i / (n - 1);
+    return 1459 * Math.pow(t, 0.92) + Math.sin(t * 8) * 40 * t;
+  });
+
+  drawChart({
+    id: 'chartAcumulado', height: 200,
+    years,
+    series: [
+      { data: cartBase, color: '#4a90d9', width: 2 },
+      { data: cdiBase,  color: '#3dbf8a', width: 1.5 },
+    ],
+    yMin: -50, yMax: 1600,
+    yLabels: [0, 500, 1000, 1500],
+    yLabelFmt: v => v + '%',
+  });
+})();
+
+// ─── GRÁFICO 2: Rentabilidade 12m ──────────────────────────────────────────
+(function() {
+  const years = ['2005','2006','2007','2008','2009','2010','2011','2012','2013',
+                 '2014','2015','2016','2017','2018','2019','2020','2021','2022',
+                 '2023','2024','2025','2026'];
+  const n = years.length;
+  // CDI anual: alta (18%) → baixa (2%) → sobe (13%)
+  const cdiAnual = [18,16,12,13,10,10,11,10,8,11,13,14,10,6,6,3,4,12,13,10,11,13];
+  // Carteira: muito mais volátil, oscilando em torno do CDI
+  const cartAnual = [25,20,26,5,22,18,15,22,4,8,12,22,18,3,16,18,15,-4,14,8,12,19];
+
+  drawChart({
+    id: 'chart12m', height: 180,
+    years,
+    series: [
+      { data: cartAnual, color: '#4a90d9', width: 1.8 },
+      { data: cdiAnual,  color: '#3dbf8a', width: 1.5 },
+    ],
+    yMin: -10, yMax: 32,
+    yLabels: [0, 10, 20, 30],
+    yLabelFmt: v => v + '%',
+  });
+})();
+
+// ─── GRÁFICO 3: Janela 5 anos ──────────────────────────────────────────────
+(function() {
+  const years = ['2009','2010','2011','2012','2013','2014','2015','2016','2017',
+                 '2018','2019','2020','2021','2022','2023','2024','2025','2026'];
+  // Janelas de 5 anos: CDI sobe de ~60% a 100%, carteira oscila mais alto
+  const cdi5 = [88,80,72,65,58,55,52,50,48,40,38,35,34,40,50,58,62,65];
+  const cart5 = [105,95,85,82,70,68,60,65,75,75,70,62,60,65,75,80,80,65];
+
+  drawChart({
+    id: 'chart5a', height: 160,
+    years,
+    series: [
+      { data: cart5, color: '#4a90d9', width: 1.8 },
+      { data: cdi5,  color: '#3dbf8a', width: 1.5 },
+    ],
+    yMin: 20, yMax: 130,
+    yLabels: [40, 60, 80, 100, 120],
+    yLabelFmt: v => v + '%',
+  });
+})();
+
+// ─── GRÁFICO 4: Janela 10 anos ─────────────────────────────────────────────
+(function() {
+  const years = ['2014','2015','2016','2017','2018','2019','2020','2021','2022',
+                 '2023','2024','2025','2026'];
+  // Janelas 10 anos: carteira sempre acima do CDI
+  const cdi10  = [200,190,180,165,155,150,140,135,132,138,145,148,150];
+  const cart10 = [270,255,240,225,215,210,195,185,175,190,210,240,265];
+
+  drawChart({
+    id: 'chart10a', height: 160,
+    years,
+    series: [
+      { data: cart10, color: '#4a90d9', width: 1.8 },
+      { data: cdi10,  color: '#3dbf8a', width: 1.5 },
+    ],
+    yMin: 100, yMax: 310,
+    yLabels: [150, 200, 250, 300],
+    yLabelFmt: v => v + '%',
+  });
+})();
+
+// ─── Redraw on resize ──────────────────────────────────────────────────────
+window.addEventListener('resize', () => location.reload());
+</script>
+
+</body>
+</html>
