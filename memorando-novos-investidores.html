@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>O que os novos investidores esperam de seus consultores | Fábio Carlucci</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --verde-escuro: #1a2e25;
+    --dourado: #c9a84c;
+    --dourado-claro: #e2c47a;
+    --creme: #f5ede0;
+    --texto-claro: rgba(245,237,224,0.85);
+    --texto-muted: rgba(245,237,224,0.45);
+    --azul-gen: #4a90c4;
+    --azul-claro-gen: #6ab8e8;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background-color: var(--verde-escuro);
+    color: var(--creme);
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(ellipse at 10% 10%, rgba(201,168,76,0.06) 0%, transparent 55%),
+      radial-gradient(ellipse at 90% 90%, rgba(47,82,64,0.35) 0%, transparent 55%),
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .back-link {
+    position: relative; z-index: 10;
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 28px 8%;
+    font-size: 0.7rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--texto-muted); text-decoration: none;
+    transition: color 0.2s;
+  }
+  .back-link:hover { color: var(--dourado); }
+  .back-link::before { content: '←'; font-size: 0.9rem; }
+
+  /* ── HERO ── */
+  .hero {
+    position: relative; z-index: 1;
+    padding: 20px 8% 64px;
+    border-bottom: 1px solid rgba(201,168,76,0.15);
+    max-width: 900px;
+  }
+  .hero-tag {
+    font-size: 0.65rem; font-weight: 500; letter-spacing: 0.35em; text-transform: uppercase;
+    color: var(--dourado); display: flex; align-items: center; gap: 12px;
+    margin-bottom: 24px; opacity: 0; animation: fadeUp 0.7s ease 0.1s forwards;
+  }
+  .hero-tag::before { content: ''; width: 30px; height: 1px; background: var(--dourado); }
+  .hero-date { font-size: 0.72rem; letter-spacing: 0.15em; color: var(--texto-muted); margin-bottom: 20px; opacity: 0; animation: fadeUp 0.7s ease 0.2s forwards; }
+  h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 5vw, 3.8rem); font-weight: 300; line-height: 1.12;
+    color: var(--creme); opacity: 0; animation: fadeUp 0.7s ease 0.3s forwards;
+  }
+  h1 em { font-style: italic; color: var(--dourado-claro); }
+  .hero-sub {
+    font-size: 0.97rem; color: var(--texto-muted); line-height: 1.75;
+    margin-top: 16px; max-width: 620px; opacity: 0; animation: fadeUp 0.7s ease 0.45s forwards;
+  }
+  .hero-fonte {
+    margin-top: 20px; font-size: 0.72rem; color: rgba(245,237,224,0.3);
+    letter-spacing: 0.05em; opacity: 0; animation: fadeUp 0.7s ease 0.55s forwards;
+  }
+  .hero-fonte span { color: var(--dourado); opacity: 0.7; }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── ARTIGO ── */
+  article {
+    position: relative; z-index: 1;
+    max-width: 800px; margin: 0 auto;
+    padding: 64px 8% 88px;
+  }
+
+  .lead {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.1rem, 2.5vw, 1.35rem); font-weight: 400; line-height: 1.8;
+    color: var(--creme); margin-bottom: 48px; padding-bottom: 48px;
+    border-bottom: 1px solid rgba(201,168,76,0.15);
+  }
+
+  p { font-size: 0.97rem; line-height: 1.9; color: var(--texto-claro); margin-bottom: 24px; }
+  strong { font-weight: 600; color: var(--creme); }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.55rem; font-weight: 600; color: var(--dourado-claro);
+    margin: 56px 0 18px; padding-top: 44px;
+    border-top: 1px solid rgba(201,168,76,0.12);
+    display: flex; align-items: center; gap: 14px;
+  }
+  .section-icon { font-size: 1.3rem; flex-shrink: 0; }
+
+  /* ── LEGENDA GERAÇÕES ── */
+  .gen-legend {
+    display: flex; gap: 20px; flex-wrap: wrap;
+    margin-bottom: 16px;
+  }
+  .gen-dot {
+    display: flex; align-items: center; gap: 7px;
+    font-size: 0.72rem; font-weight: 500; color: var(--texto-muted);
+  }
+  .gen-dot-circle {
+    width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0;
+  }
+
+  /* ── GRÁFICO 1: FREQUÊNCIA DE CONTATO ── */
+  .freq-chart {
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 8px;
+    padding: 28px 24px;
+    margin: 28px 0;
+  }
+
+  .freq-chart-title {
+    font-size: 0.72rem; font-weight: 600; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--dourado);
+    margin-bottom: 24px;
+  }
+
+  .freq-row {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 14px;
+  }
+
+  .freq-label {
+    font-size: 0.78rem; color: var(--texto-muted);
+    text-align: right; padding-right: 8px;
+    line-height: 1.3;
+  }
+
+  .freq-bars { display: flex; flex-direction: column; gap: 4px; }
+
+  .freq-bar-wrap {
+    display: flex; align-items: center; gap: 8px;
+  }
+
+  .freq-bar-track {
+    flex: 1; height: 14px;
+    background: rgba(255,255,255,0.04);
+    border-radius: 2px; overflow: hidden;
+    position: relative;
+  }
+
+  .freq-bar-fill {
+    height: 100%; border-radius: 2px;
+    transition: width 1.2s cubic-bezier(0.4,0,0.2,1);
+  }
+
+  .freq-bar-fill.genz  { background: #2d5a8a; }
+  .freq-bar-fill.genx  { background: #4ab8d8; }
+
+  .freq-bar-val {
+    font-size: 0.72rem; font-weight: 600;
+    min-width: 28px; text-align: right;
+  }
+  .freq-bar-val.genz { color: #6a9cc4; }
+  .freq-bar-val.genx { color: #4ab8d8; }
+
+  /* ── GRÁFICO 2: CRITÉRIOS DE DECISÃO ── */
+  .decisao-chart {
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 8px;
+    padding: 28px 24px;
+    margin: 28px 0;
+  }
+
+  .decisao-item {
+    display: grid;
+    grid-template-columns: 1fr 80px 80px;
+    gap: 12px;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+  .decisao-item:last-child { border-bottom: none; }
+
+  .decisao-nome {
+    font-size: 0.82rem; color: var(--texto-claro); line-height: 1.35;
+  }
+
+  .decisao-bar-wrap {
+    display: flex; flex-direction: column; gap: 3px;
+  }
+
+  .decisao-bar {
+    height: 5px; border-radius: 2px;
+    transition: width 1.2s ease;
+  }
+  .decisao-bar.genz { background: #2d5a8a; }
+  .decisao-bar.genx { background: #4ab8d8; }
+
+  .decisao-val {
+    font-size: 0.75rem; font-weight: 600;
+    text-align: right;
+  }
+  .decisao-val.genz { color: #6a9cc4; }
+  .decisao-val.genx { color: #4ab8d8; }
+
+  /* ── FOMO CHART ── */
+  .fomo-chart {
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 8px;
+    padding: 28px 24px;
+    margin: 28px 0;
+  }
+
+  .fomo-item {
+    margin-bottom: 16px;
+  }
+
+  .fomo-item-header {
+    display: flex; justify-content: space-between; align-items: baseline;
+    margin-bottom: 6px;
+  }
+
+  .fomo-item-name {
+    font-size: 0.82rem; color: var(--texto-claro);
+  }
+
+  .fomo-bars-row {
+    display: flex; flex-direction: column; gap: 3px;
+  }
+
+  .fomo-bar-line {
+    display: flex; align-items: center; gap: 8px;
+  }
+
+  .fomo-gen-label {
+    font-size: 0.62rem; width: 14px; flex-shrink: 0;
+    color: var(--texto-muted); font-weight: 600;
+  }
+
+  .fomo-track {
+    flex: 1; height: 10px; background: rgba(255,255,255,0.04);
+    border-radius: 2px; overflow: hidden;
+  }
+
+  .fomo-fill { height: 100%; border-radius: 2px; }
+  .fomo-fill.c1 { background: #2d5a8a; }
+  .fomo-fill.c2 { background: #4ab8d8; }
+  .fomo-fill.c3 { background: #7b68c8; }
+  .fomo-fill.c4 { background: #e87b3a; }
+
+  .fomo-val {
+    font-size: 0.7rem; font-weight: 600; min-width: 28px; text-align: right;
+  }
+  .fomo-val.c1 { color: #6a9cc4; }
+  .fomo-val.c2 { color: #4ab8d8; }
+  .fomo-val.c3 { color: #9b88d8; }
+  .fomo-val.c4 { color: #e89a6a; }
+
+  /* ── INSIGHT BOX ── */
+  .insight-box {
+    background: linear-gradient(135deg, rgba(201,168,76,0.1) 0%, rgba(26,46,37,0.4) 100%);
+    border: 1px solid rgba(201,168,76,0.25); border-left: 3px solid var(--dourado);
+    border-radius: 4px; padding: 28px 32px; margin: 36px 0;
+  }
+  .insight-box p {
+    font-family: 'Cormorant Garamond', serif; font-size: 1.12rem;
+    color: var(--creme); line-height: 1.8; margin: 0;
+  }
+
+  /* ── O QUE MUDA NO PAPEL ── */
+  .papel-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 28px 0;
+  }
+  @media (max-width: 580px) { .papel-grid { grid-template-columns: 1fr; } }
+
+  .papel-card {
+    border-radius: 5px; padding: 22px 20px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.07);
+    transition: border-color 0.25s, background 0.25s;
+  }
+  .papel-card:hover { border-color: rgba(201,168,76,0.25); background: rgba(201,168,76,0.04); }
+
+  .papel-de {
+    font-size: 0.62rem; font-weight: 600; letter-spacing: 0.2em;
+    text-transform: uppercase; color: #e07070; margin-bottom: 6px;
+  }
+  .papel-para {
+    font-size: 0.62rem; font-weight: 600; letter-spacing: 0.2em;
+    text-transform: uppercase; color: #5ec98a; margin-bottom: 4px; margin-top: 12px;
+  }
+  .papel-texto-de { font-size: 0.84rem; color: var(--texto-muted); line-height: 1.5; }
+  .papel-texto-para { font-size: 0.84rem; color: var(--texto-claro); line-height: 1.5; }
+  .papel-arrow { color: var(--dourado); font-size: 1rem; margin: 8px 0; display: block; }
+
+  /* ── CONCLUSÃO ── */
+  .conclusao {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem; font-weight: 400; line-height: 1.85; color: var(--creme);
+    margin-top: 52px; padding: 40px;
+    border: 1px solid rgba(201,168,76,0.2); border-radius: 6px;
+    background: rgba(255,255,255,0.02); position: relative;
+  }
+  .conclusao::before {
+    content: '"'; position: absolute; top: -10px; left: 32px;
+    font-size: 5rem; color: rgba(201,168,76,0.15);
+    font-family: 'Cormorant Garamond', serif; line-height: 1;
+  }
+
+  footer {
+    position: relative; z-index: 1;
+    border-top: 1px solid rgba(201,168,76,0.12); padding: 40px 8%;
+    display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;
+  }
+  .footer-name { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 300; color: var(--texto-muted); }
+  .footer-contact { font-size: 0.75rem; color: rgba(245,237,224,0.25); line-height: 1.9; text-align: right; }
+  .footer-contact a { color: var(--dourado); text-decoration: none; }
+
+  @media (max-width: 640px) {
+    .back-link { padding: 20px 5%; }
+    .hero { padding: 10px 5% 48px; }
+    article { padding: 48px 5% 64px; }
+    footer { padding: 32px 5%; flex-direction: column; }
+    .footer-contact { text-align: left; }
+    .freq-row { grid-template-columns: 90px 1fr; }
+    .decisao-item { grid-template-columns: 1fr 60px 60px; }
+  }
+</style>
+</head>
+<body>
+
+<a class="back-link" href="index.html">Voltar</a>
+
+<header class="hero">
+  <div class="hero-tag">Memorando · Comportamento do Investidor</div>
+  <div class="hero-date">Abril de 2026</div>
+  <h1>O que os novos investidores<br><em>esperam de seus consultores</em></h1>
+  <p class="hero-sub">As novas gerações não querem menos aconselhamento — querem um aconselhamento diferente. Um estudo do CFA Institute revela o que está mudando.</p>
+  <div class="hero-fonte">Fonte: <span>CFA Institute — Next-Gen Investors: A Guide for Wealth Managers and Financial Advisers</span></div>
+</header>
+
+<article>
+
+  <p class="lead">
+    Há uma mudança importante acontecendo no mercado de investimentos, e ela não está apenas nos produtos, nas plataformas ou na tecnologia. Ela está no <strong>comportamento do investidor</strong>. Mesmo com a expansão das redes sociais, das plataformas digitais e da inteligência artificial, o consultor financeiro continua ocupando um espaço central — mas seu papel está se redefinindo.
+  </p>
+
+  <!-- SEÇÃO 1: CONFIANÇA -->
+  <div class="section-title"><span class="section-icon">🤝</span> O consultor ainda lidera a confiança</div>
+
+  <p>
+    O profissional de investimentos segue como uma das <strong>fontes de maior confiança</strong> para aprendizado sobre finanças, mesmo entre jovens. Isso desmonta a ideia de que o avanço tecnológico tornaria o aconselhamento humano menos relevante. O que parece acontecer é o contrário: <strong>quanto mais informação existe, mais valor tem quem consegue organizá-la, contextualizá-la e transformá-la em decisão</strong>.
+  </p>
+
+  <p>
+    O que muda é o papel. Antes, o consultor era o guardião do acesso à informação. Hoje, esse monopólio não existe mais. O valor passou a estar no <strong>discernimento</strong> — na capacidade de separar ruído de sinal e ajudar o cliente a navegar em um mar de dados e opiniões.
+  </p>
+
+  <!-- SEÇÃO 2: FREQUÊNCIA -->
+  <div class="section-title"><span class="section-icon">📅</span> Com que frequência o investidor quer contato?</div>
+
+  <p>
+    Uma das descobertas mais claras do estudo é a diferença de expectativa de interação entre gerações. Jovens investidores não querem um relacionamento distante e esporádico — eles querem <strong>acompanhamento frequente, acessível e integrado ao seu ritmo</strong>.
+  </p>
+
+  <div class="freq-chart">
+    <div class="freq-chart-title">Frequência de contato com profissional financeiro</div>
+
+    <div class="gen-legend">
+      <div class="gen-dot"><div class="gen-dot-circle" style="background:#2d5a8a"></div>Gen Z / Millennial</div>
+      <div class="gen-dot"><div class="gen-dot-circle" style="background:#4ab8d8"></div>Gen X / Baby Boomer</div>
+    </div>
+
+    <div class="freq-row">
+      <div class="freq-label">Várias vezes<br>ao dia</div>
+      <div class="freq-bars">
+        <div class="freq-bar-wrap">
+          <div class="freq-bar-track"><div class="freq-bar-fill genz" style="width:6%"></div></div>
+          <span class="freq-bar-val genz">3%</span>
+        </div>
+        <div class="freq-bar-wrap">
+          <div class="freq-bar-track"><div class="freq-bar-fill genx" style="width:6%"></div></div>
+          <span class="freq-bar-val genx">3%</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="freq-row">
+      <div class="freq-label">Diariamente</div>
+      <div class="freq-bars">
+        <div class="freq-bar-wrap">
+          <div class="freq-bar-track"><div class="freq-bar-fill genz" style="width:22%"></div></div>
+          <span class="freq-bar-val genz">11%</span>
+        </div>
+        <div class="freq-bar-wrap">
+          <div class="freq-bar-track"><div class="freq-bar-fill genx" style="width:14%"></div></div>
+          <span class="freq-bar-val genx">7%</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="freq-row">
+      <div class="freq-label">Semanalmente</div>
+      <div class="freq-bars">
+        <div class="freq-bar-wrap">
+          <div class="freq-bar-track"><div class="freq-bar-fill genz" style="width:52%"></div></div>
+          <span class="freq-bar-val genz">26%</span>
+        </div>
+        <div class="freq-bar-wrap">
+          <div class="freq-bar-track"><div class="freq-bar-fill genx" style="width:26%"></div></div>
+          <span class="freq-bar-val genx">13%</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="freq-row">
+      <div class="freq-label">Mensalmente</div>
+      <div class="freq-bars">
+        <div class="freq-bar-wrap">
+          <div class="freq-bar-track"><div class="freq-bar-fill genz" style="width:58%"></div></div>
+          <span class="freq-bar-val genz">29%</span>
+        </div>
+        <div class="freq-bar-wrap">
+          <div class="freq-bar-track"><div class="freq-bar-fill genx" style="width:56%"></div></div>
+          <span class="freq-bar-val genx">28%</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="freq-row">
+      <div class="freq-label">Trimestralmente</div>
+      <div class="freq-bars">
+        <div class="freq-bar-wrap">
+          <div class="freq-bar-track"><div class="freq-bar-fill genz" style="width:44%"></div></div>
+          <span class="freq-bar-val genz">22%</span>
+        </div>
+        <div class="freq-bar-wrap">
+          <div class="freq-bar-track"><div class="freq-bar-fill genx" style="width:68%"></div></div>
+          <span class="freq-bar-val genx">34%</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="freq-row">
+      <div class="freq-label">Anualmente</div>
+      <div class="freq-bars">
+        <div class="freq-bar-wrap">
+          <div class="freq-bar-track"><div class="freq-bar-fill genz" style="width:16%"></div></div>
+          <span class="freq-bar-val genz">8%</span>
+        </div>
+        <div class="freq-bar-wrap">
+          <div class="freq-bar-track"><div class="freq-bar-fill genx" style="width:30%"></div></div>
+          <span class="freq-bar-val genx">15%</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="insight-box">
+    <p>Gen Z e Millennials preferem contato <strong>semanal ou mais frequente</strong> — enquanto gerações anteriores se satisfazem com reuniões trimestrais. Isso não é apenas uma diferença de estilo: é uma mudança de expectativa sobre o que significa ser bem assessorado.</p>
+  </div>
+
+  <!-- SEÇÃO 3: CRITÉRIOS DE DECISÃO -->
+  <div class="section-title"><span class="section-icon">⚖️</span> O que importa na hora de investir?</div>
+
+  <p>
+    Retorno e risco seguem importantes, como é natural. Mas entre os mais jovens, <strong>outros critérios ganharam peso</strong>: transparência de custos, diversificação, alinhamento com valores pessoais e interesse por temas inovadores aparecem com força crescente.
+  </p>
+
+  <div class="decisao-chart">
+    <div class="freq-chart-title" style="margin-bottom:16px;">Critérios de decisão de investimento — Gen Z/Millennial vs. Gen X/Baby Boomer</div>
+    <div class="gen-legend" style="margin-bottom:20px;">
+      <div class="gen-dot"><div class="gen-dot-circle" style="background:#2d5a8a"></div>Gen Z / Millennial</div>
+      <div class="gen-dot"><div class="gen-dot-circle" style="background:#4ab8d8"></div>Gen X / Baby Boomer</div>
+    </div>
+
+    <div class="decisao-item">
+      <div class="decisao-nome">Retorno esperado</div>
+      <div class="decisao-bar-wrap">
+        <div class="decisao-bar genz" style="width:100%"></div>
+        <div class="decisao-bar genx" style="width:95%"></div>
+      </div>
+      <div>
+        <div class="decisao-val genz">50%</div>
+        <div class="decisao-val genx">48%</div>
+      </div>
+    </div>
+
+    <div class="decisao-item">
+      <div class="decisao-nome">Conforto com o nível de risco</div>
+      <div class="decisao-bar-wrap">
+        <div class="decisao-bar genz" style="width:100%"></div>
+        <div class="decisao-bar genx" style="width:94%"></div>
+      </div>
+      <div>
+        <div class="decisao-val genz">59%*</div>
+        <div class="decisao-val genx">~55%*</div>
+      </div>
+    </div>
+
+    <div class="decisao-item">
+      <div class="decisao-nome">Diversificação do portfólio</div>
+      <div class="decisao-bar-wrap">
+        <div class="decisao-bar genz" style="width:82%"></div>
+        <div class="decisao-bar genx" style="width:96%"></div>
+      </div>
+      <div>
+        <div class="decisao-val genz">48%</div>
+        <div class="decisao-val genx">47%</div>
+      </div>
+    </div>
+
+    <div class="decisao-item">
+      <div class="decisao-nome">Custos do produto / taxas</div>
+      <div class="decisao-bar-wrap">
+        <div class="decisao-bar genz" style="width:70%"></div>
+        <div class="decisao-bar genx" style="width:84%"></div>
+      </div>
+      <div>
+        <div class="decisao-val genz">41%</div>
+        <div class="decisao-val genx">41%</div>
+      </div>
+    </div>
+
+    <div class="decisao-item">
+      <div class="decisao-nome">Alinhamento com valores pessoais</div>
+      <div class="decisao-bar-wrap">
+        <div class="decisao-bar genz" style="width:63%"></div>
+        <div class="decisao-bar genx" style="width:40%"></div>
+      </div>
+      <div>
+        <div class="decisao-val genz">37%</div>
+        <div class="decisao-val genx" style="color:#7ab8c8">~24%</div>
+      </div>
+    </div>
+
+    <div class="decisao-item">
+      <div class="decisao-nome">Empresas que inovam</div>
+      <div class="decisao-bar-wrap">
+        <div class="decisao-bar genz" style="width:60%"></div>
+        <div class="decisao-bar genx" style="width:59%"></div>
+      </div>
+      <div>
+        <div class="decisao-val genz">35%</div>
+        <div class="decisao-val genx">29%</div>
+      </div>
+    </div>
+  </div>
+
+  <p style="font-size:0.72rem; color:var(--texto-muted); margin-top:-12px; margin-bottom:28px;">* Valores aproximados com base na leitura do gráfico original. Fonte: CFA Institute.</p>
+
+  <!-- SEÇÃO 4: FOMO -->
+  <div class="section-title"><span class="section-icon">😰</span> FOMO: quando o medo de ficar de fora guia a decisão</div>
+
+  <p>
+    Uma parcela relevante dos jovens investidores admite ter investido em determinados ativos por <strong>FOMO</strong> — o medo de ficar de fora. O dado é especialmente alto em criptomoedas entre Gen Z e Millennials. Isso revela algo muito humano: <strong>boa parte das decisões financeiras nasce de contexto social e pressão narrativa</strong>, não apenas de convicção técnica.
+  </p>
+
+  <div class="fomo-chart">
+    <div class="freq-chart-title" style="margin-bottom:16px;">Investimentos realizados por FOMO — por geração</div>
+    <div class="gen-legend" style="margin-bottom:20px;">
+      <div class="gen-dot"><div class="gen-dot-circle" style="background:#2d5a8a"></div>Gen Z</div>
+      <div class="gen-dot"><div class="gen-dot-circle" style="background:#4ab8d8"></div>Millennial</div>
+      <div class="gen-dot"><div class="gen-dot-circle" style="background:#7b68c8"></div>Gen X</div>
+      <div class="gen-dot"><div class="gen-dot-circle" style="background:#e87b3a"></div>Baby Boomer</div>
+    </div>
+
+    <!-- Criptomoedas -->
+    <div class="fomo-item">
+      <div class="fomo-item-header"><span class="fomo-item-name">Criptomoedas</span></div>
+      <div class="fomo-bars-row">
+        <div class="fomo-bar-line"><span class="fomo-gen-label">Z</span><div class="fomo-track"><div class="fomo-fill c1" style="width:88%"></div></div><span class="fomo-val c1">44%</span></div>
+        <div class="fomo-bar-line"><span class="fomo-gen-label">M</span><div class="fomo-track"><div class="fomo-fill c2" style="width:98%"></div></div><span class="fomo-val c2">49%</span></div>
+        <div class="fomo-bar-line"><span class="fomo-gen-label">X</span><div class="fomo-track"><div class="fomo-fill c3" style="width:64%"></div></div><span class="fomo-val c3">32%</span></div>
+        <div class="fomo-bar-line"><span class="fomo-gen-label">B</span><div class="fomo-track"><div class="fomo-fill c4" style="width:62%"></div></div><span class="fomo-val c4">31%</span></div>
+      </div>
+    </div>
+
+    <!-- Ações individuais -->
+    <div class="fomo-item">
+      <div class="fomo-item-header"><span class="fomo-item-name">Ações individuais específicas</span></div>
+      <div class="fomo-bars-row">
+        <div class="fomo-bar-line"><span class="fomo-gen-label">Z</span><div class="fomo-track"><div class="fomo-fill c1" style="width:62%"></div></div><span class="fomo-val c1">31%</span></div>
+        <div class="fomo-bar-line"><span class="fomo-gen-label">M</span><div class="fomo-track"><div class="fomo-fill c2" style="width:74%"></div></div><span class="fomo-val c2">37%</span></div>
+        <div class="fomo-bar-line"><span class="fomo-gen-label">X</span><div class="fomo-track"><div class="fomo-fill c3" style="width:82%"></div></div><span class="fomo-val c3">41%</span></div>
+        <div class="fomo-bar-line"><span class="fomo-gen-label">B</span><div class="fomo-track"><div class="fomo-fill c4" style="width:80%"></div></div><span class="fomo-val c4">40%</span></div>
+      </div>
+    </div>
+
+    <!-- Private equity -->
+    <div class="fomo-item">
+      <div class="fomo-item-header"><span class="fomo-item-name">Private equity</span></div>
+      <div class="fomo-bars-row">
+        <div class="fomo-bar-line"><span class="fomo-gen-label">Z</span><div class="fomo-track"><div class="fomo-fill c1" style="width:58%"></div></div><span class="fomo-val c1">29%</span></div>
+        <div class="fomo-bar-line"><span class="fomo-gen-label">M</span><div class="fomo-track"><div class="fomo-fill c2" style="width:58%"></div></div><span class="fomo-val c2">29%</span></div>
+        <div class="fomo-bar-line"><span class="fomo-gen-label">X</span><div class="fomo-track"><div class="fomo-fill c3" style="width:68%"></div></div><span class="fomo-val c3">34%</span></div>
+        <div class="fomo-bar-line"><span class="fomo-gen-label">B</span><div class="fomo-track"><div class="fomo-fill c4" style="width:72%"></div></div><span class="fomo-val c4">36%</span></div>
+      </div>
+    </div>
+
+    <!-- Imóveis -->
+    <div class="fomo-item">
+      <div class="fomo-item-header"><span class="fomo-item-name">Imóveis</span></div>
+      <div class="fomo-bars-row">
+        <div class="fomo-bar-line"><span class="fomo-gen-label">Z</span><div class="fomo-track"><div class="fomo-fill c1" style="width:64%"></div></div><span class="fomo-val c1">32%</span></div>
+        <div class="fomo-bar-line"><span class="fomo-gen-label">M</span><div class="fomo-track"><div class="fomo-fill c2" style="width:50%"></div></div><span class="fomo-val c2">25%</span></div>
+        <div class="fomo-bar-line"><span class="fomo-gen-label">X</span><div class="fomo-track"><div class="fomo-fill c3" style="width:62%"></div></div><span class="fomo-val c3">31%</span></div>
+        <div class="fomo-bar-line"><span class="fomo-gen-label">B</span><div class="fomo-track"><div class="fomo-fill c4" style="width:56%"></div></div><span class="fomo-val c4">28%</span></div>
+      </div>
+    </div>
+  </div>
+
+  <p>
+    Para quem trabalha com clientes, isso tem uma implicação prática direta: <strong>não basta apresentar uma carteira tecnicamente bem construída</strong>. É preciso compreender as forças comportamentais que atuam sobre o investidor. Em muitos casos, a função mais valiosa do consultor não será empurrar o cliente para uma decisão — será <strong>protegê-lo de uma decisão precipitada</strong>.
+  </p>
+
+  <!-- SEÇÃO 5: NOVO PAPEL -->
+  <div class="section-title"><span class="section-icon">🔄</span> O papel do consultor está mudando</div>
+
+  <p>
+    A confiança deixa de ser apenas relacional e passa a ser também <strong>operacional e informacional</strong>. O investidor mais novo quer perceber competência técnica atualizada, clareza na explicação dos produtos, honestidade sobre riscos e transparência sobre custos. Ele não quer menos gente e mais máquina — quer uma <strong>combinação melhor entre inteligência humana e eficiência tecnológica</strong>.
+  </p>
+
+  <div class="papel-grid">
+    <div class="papel-card">
+      <div class="papel-de">Antes</div>
+      <div class="papel-texto-de">Guardião do acesso à informação financeira</div>
+      <span class="papel-arrow">↓</span>
+      <div class="papel-para">Agora</div>
+      <div class="papel-texto-para">Intérprete de contexto — organiza, hierarquiza e dá sentido ao excesso de informação</div>
+    </div>
+    <div class="papel-card">
+      <div class="papel-de">Antes</div>
+      <div class="papel-texto-de">Distribuidor de produtos com reuniões pontuais</div>
+      <span class="papel-arrow">↓</span>
+      <div class="papel-para">Agora</div>
+      <div class="papel-texto-para">Parceiro de decisão com presença contínua e comunicação de alta frequência</div>
+    </div>
+    <div class="papel-card">
+      <div class="papel-de">Antes</div>
+      <div class="papel-texto-de">Confiança baseada em reputação pessoal e marca</div>
+      <span class="papel-arrow">↓</span>
+      <div class="papel-para">Agora</div>
+      <div class="papel-texto-para">Confiança que exige também competência técnica visível, transparência e familiaridade com novas classes de ativos</div>
+    </div>
+    <div class="papel-card">
+      <div class="papel-de">Antes</div>
+      <div class="papel-texto-de">Emissor de opinião sobre o mercado</div>
+      <span class="papel-arrow">↓</span>
+      <div class="papel-para">Agora</div>
+      <div class="papel-texto-para">Protetor comportamental — ajuda o cliente a distinguir convicção de impulso, tendência de fundamento</div>
+    </div>
+  </div>
+
+  <div class="conclusao">
+    As novas gerações continuam querendo aconselhamento financeiro profissional — mas querem isso de outro jeito. Querem <strong>proximidade sem superficialidade, tecnologia sem desumanização, orientação sem paternalismo</strong>. Querem um profissional que não apenas fale sobre investimentos, mas que ajude a transformar complexidade em clareza.
+  </div>
+
+</article>
+
+<footer>
+  <div class="footer-name">Fábio Vogelaar Carlucci</div>
+  <div class="footer-contact">
+    +55 (16) 98148-8260<br>
+    <a href="mailto:fabio.carlucci@ficus.capital">fabio.carlucci@ficus.capital</a>
+  </div>
+</footer>
+
+</body>
+</html>

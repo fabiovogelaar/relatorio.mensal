@@ -41,13 +41,24 @@
     z-index: 0;
   }
 
-  /* ── HEADER ── */
+  /* ── HEADER — centralizado ── */
   header {
     position: relative;
     z-index: 1;
     padding: 72px 8% 56px;
     border-bottom: 1px solid rgba(201,168,76,0.15);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
+
+  .header-assinatura {
+    margin-bottom: 28px;
+    opacity: 0;
+    animation: fadeUp 0.7s ease 0.05s forwards;
+  }
+  .assinatura-svg { width: 150px; height: auto; opacity: 0.85; }
 
   .header-tag {
     font-size: 0.65rem;
@@ -55,14 +66,10 @@
     letter-spacing: 0.35em;
     text-transform: uppercase;
     color: var(--dourado);
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 20px;
+    margin-bottom: 16px;
     opacity: 0;
-    animation: fadeUp 0.7s ease 0.1s forwards;
+    animation: fadeUp 0.7s ease 0.2s forwards;
   }
-  .header-tag::before { content: ''; width: 30px; height: 1px; background: var(--dourado); }
 
   h1 {
     font-family: 'Cormorant Garamond', serif;
@@ -71,25 +78,18 @@
     line-height: 1.1;
     color: var(--creme);
     opacity: 0;
-    animation: fadeUp 0.7s ease 0.25s forwards;
+    animation: fadeUp 0.7s ease 0.35s forwards;
   }
   h1 strong { font-weight: 700; color: var(--dourado-claro); display: block; }
 
   .header-sub {
-    margin-top: 16px;
+    margin-top: 14px;
     font-size: 0.88rem;
     color: var(--texto-muted);
     letter-spacing: 0.05em;
     opacity: 0;
-    animation: fadeUp 0.7s ease 0.4s forwards;
+    animation: fadeUp 0.7s ease 0.5s forwards;
   }
-
-  .header-assinatura {
-    margin-top: 32px;
-    opacity: 0;
-    animation: fadeUp 0.7s ease 0.55s forwards;
-  }
-  .assinatura-svg { width: 140px; height: auto; opacity: 0.85; }
 
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(16px); }
@@ -166,40 +166,23 @@
 
   .card-month {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 1.9rem;
-    font-weight: 600;
-    color: var(--creme);
-    line-height: 1;
-    margin-bottom: 4px;
+    font-size: 1.9rem; font-weight: 600; color: var(--creme);
+    line-height: 1; margin-bottom: 4px;
   }
   .card-year {
-    font-size: 0.7rem;
-    letter-spacing: 0.2em;
-    color: var(--texto-muted);
-    text-transform: uppercase;
-    margin-bottom: 20px;
+    font-size: 0.7rem; letter-spacing: 0.2em; color: var(--texto-muted);
+    text-transform: uppercase; margin-bottom: 20px;
   }
   .card-topics { list-style: none; margin-bottom: 24px; }
   .card-topics li {
-    font-size: 0.8rem;
-    color: var(--texto-muted);
-    padding: 3px 0;
-    display: flex;
-    align-items: flex-start;
-    gap: 8px;
-    line-height: 1.5;
+    font-size: 0.8rem; color: var(--texto-muted); padding: 3px 0;
+    display: flex; align-items: flex-start; gap: 8px; line-height: 1.5;
   }
   .card-topics li::before { content: '·'; color: var(--dourado); font-size: 1rem; line-height: 1.3; flex-shrink: 0; }
 
   .card-cta {
-    font-size: 0.7rem;
-    font-weight: 500;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--dourado);
-    display: flex;
-    align-items: center;
-    gap: 8px;
+    font-size: 0.7rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--dourado); display: flex; align-items: center; gap: 8px;
   }
   .card-cta::after { content: '→'; transition: transform 0.2s; }
   .report-card:hover .card-cta::after { transform: translateX(4px); }
@@ -207,22 +190,13 @@
   .report-card-soon {
     background: rgba(255,255,255,0.015);
     border: 1px dashed rgba(255,255,255,0.1);
-    border-radius: 6px;
-    padding: 28px 28px 24px;
-    opacity: 0.4;
-    cursor: default;
+    border-radius: 6px; padding: 28px 28px 24px;
+    opacity: 0.4; cursor: default;
   }
   .card-soon-badge {
-    font-size: 0.62rem;
-    font-weight: 500;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--texto-muted);
-    border: 1px solid rgba(255,255,255,0.12);
-    border-radius: 20px;
-    padding: 3px 10px;
-    display: inline-block;
-    margin-top: 16px;
+    font-size: 0.62rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--texto-muted); border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 20px; padding: 3px 10px; display: inline-block; margin-top: 16px;
   }
 
   /* ── GRID MEMORANDOS ── */
@@ -234,75 +208,46 @@
   }
 
   .memo-card {
-    display: block;
-    text-decoration: none;
+    display: block; text-decoration: none;
     background: rgba(255,255,255,0.03);
     border: 1px solid rgba(255,255,255,0.08);
-    border-radius: 6px;
-    padding: 32px 28px 28px;
+    border-radius: 6px; padding: 32px 28px 28px;
     transition: background 0.3s, border-color 0.3s, transform 0.3s;
-    position: relative;
-    overflow: hidden;
-    opacity: 0;
-    animation: fadeUp 0.6s ease forwards;
+    position: relative; overflow: hidden;
+    opacity: 0; animation: fadeUp 0.6s ease forwards;
   }
   .memo-card::after {
-    content: '';
-    position: absolute;
-    bottom: 0; left: 0;
+    content: ''; position: absolute; bottom: 0; left: 0;
     width: 100%; height: 3px;
     background: linear-gradient(90deg, var(--dourado), transparent);
-    transform: scaleX(0);
-    transform-origin: left;
+    transform: scaleX(0); transform-origin: left;
     transition: transform 0.35s ease;
   }
   .memo-card:hover { background: rgba(201,168,76,0.06); border-color: rgba(201,168,76,0.3); transform: translateY(-3px); }
   .memo-card:hover::after { transform: scaleX(1); }
 
   .memo-tag {
-    font-size: 0.62rem;
-    font-weight: 600;
-    letter-spacing: 0.25em;
-    text-transform: uppercase;
-    color: var(--dourado);
-    margin-bottom: 14px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
+    font-size: 0.62rem; font-weight: 600; letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--dourado); margin-bottom: 14px;
+    display: flex; align-items: center; gap: 8px;
   }
   .memo-tag::before { content: ''; width: 20px; height: 1px; background: var(--dourado); opacity: 0.5; }
 
   .memo-date {
-    font-size: 0.68rem;
-    letter-spacing: 0.1em;
-    color: var(--texto-muted);
-    margin-bottom: 12px;
+    font-size: 0.68rem; letter-spacing: 0.1em; color: var(--texto-muted); margin-bottom: 12px;
   }
   .memo-title {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 1.45rem;
-    font-weight: 600;
-    color: var(--creme);
-    line-height: 1.3;
-    margin-bottom: 14px;
+    font-size: 1.45rem; font-weight: 600; color: var(--creme);
+    line-height: 1.3; margin-bottom: 14px;
   }
   .memo-excerpt {
-    font-size: 0.82rem;
-    color: var(--texto-muted);
-    line-height: 1.7;
-    margin-bottom: 24px;
+    font-size: 0.82rem; color: var(--texto-muted); line-height: 1.7; margin-bottom: 24px;
   }
   .memo-cta {
-    font-size: 0.68rem;
-    font-weight: 500;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--dourado);
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    opacity: 0.7;
-    transition: opacity 0.2s;
+    font-size: 0.68rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--dourado); display: flex; align-items: center; gap: 8px;
+    opacity: 0.7; transition: opacity 0.2s;
   }
   .memo-card:hover .memo-cta { opacity: 1; }
   .memo-cta::after { content: '→'; transition: transform 0.2s; }
@@ -310,23 +255,17 @@
 
   /* ── RODAPÉ ── */
   footer {
-    position: relative;
-    z-index: 1;
+    position: relative; z-index: 1;
     border-top: 1px solid rgba(201,168,76,0.12);
-    padding: 40px 8%;
-    text-align: center;
+    padding: 40px 8%; text-align: center;
   }
   .footer-name {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 1.3rem;
-    font-weight: 300;
-    color: var(--texto-muted);
+    font-size: 1.3rem; font-weight: 300; color: var(--texto-muted);
   }
   .footer-contact {
-    font-size: 0.78rem;
-    color: rgba(245,237,224,0.3);
-    margin-top: 10px;
-    line-height: 1.9;
+    font-size: 0.78rem; color: rgba(245,237,224,0.3);
+    margin-top: 10px; line-height: 1.9;
   }
   .footer-contact a { color: var(--dourado); text-decoration: none; }
 
@@ -340,10 +279,8 @@
 </head>
 <body>
 
+<!-- HEADER — centralizado, assinatura no topo -->
 <header>
-  <div class="header-tag">Análise de Mercado</div>
-  <h1>Conteúdo<br><strong>financeiro</strong></h1>
-  <p class="header-sub">Relatórios mensais e memorandos temáticos sobre o cenário econômico.</p>
   <div class="header-assinatura">
     <svg class="assinatura-svg" viewBox="0 0 200 60" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M10 40 C20 20, 35 15, 50 30 C60 40, 55 50, 45 48 C35 46, 38 35, 50 28 C65 20, 80 22, 90 32 C100 42, 95 52, 85 50 C75 48, 77 38, 88 30 C100 22, 118 20, 130 35 C140 48, 135 55, 122 52" stroke="rgba(201,168,76,0.8)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
@@ -352,6 +289,9 @@
       <text x="8" y="58" font-family="Georgia, serif" font-size="7" fill="rgba(201,168,76,0.5)" letter-spacing="1">Fábio Carlucci</text>
     </svg>
   </div>
+  <div class="header-tag">Análise de Mercado</div>
+  <h1>Conteúdo<br><strong>financeiro</strong></h1>
+  <p class="header-sub">Relatórios mensais e memorandos temáticos sobre o cenário econômico.</p>
 </header>
 
 <main>
@@ -400,22 +340,24 @@
   <p class="section-desc">Análises temáticas aprofundadas sobre temas relevantes para a construção e gestão de patrimônio.</p>
 
   <div class="memos-grid">
-    <a class="memo-card" href="memorando-dolar-ativos-reais.html" style="animation-delay:0.15s">
+
+    <a class="memo-card" href="memorando-dolar-ativos-reais.html" style="animation-delay:0.1s">
       <div class="memo-tag">Macro Global</div>
-      <div class="memo-date">30 de março de 2026</div>
+      <div class="memo-date">Março de 2026</div>
       <div class="memo-title">Dólar, Ativos Reais e o Novo Regime Econômico</div>
       <div class="memo-excerpt">O dólar está perdendo hegemonia global? Nossa leitura aponta para outra direção: o que ocorre é um reposicionamento estratégico — com implicações diretas para portfólios.</div>
       <div class="memo-cta">Ler memorando</div>
     </a>
-    <a class="memo-card" href="memorando-cdi-poder-de-compra.html" style="animation-delay:0.3s">
+
+    <a class="memo-card" href="memorando-cdi-poder-de-compra.html" style="animation-delay:0.2s">
       <div class="memo-tag">Renda Fixa · Patrimônio</div>
-      <div class="memo-date">30 de março de 2026</div>
+      <div class="memo-date">Março de 2026</div>
       <div class="memo-title">O CDI protege seu dinheiro — mas não sua riqueza</div>
       <div class="memo-excerpt">+147% nominal, +52% real, +7% em dólar. Os três números de um mesmo investimento revelam por que avaliar performance apenas pelo extrato pode ser enganoso.</div>
       <div class="memo-cta">Ler memorando</div>
     </a>
 
-    <a class="memo-card" href="memorando-imovel-patrimonio.html" style="animation-delay:0.45s">
+    <a class="memo-card" href="memorando-imovel-patrimonio.html" style="animation-delay:0.3s">
       <div class="memo-tag">Patrimônio · Imóveis</div>
       <div class="memo-date">Abril de 2026</div>
       <div class="memo-title">O mito do imóvel como proteção patrimonial</div>
@@ -423,13 +365,22 @@
       <div class="memo-cta">Ler memorando</div>
     </a>
 
-    <a class="memo-card" href="memorando-concentracao-retornos.html" style="animation-delay:0.6s">
+    <a class="memo-card" href="memorando-concentracao-retornos.html" style="animation-delay:0.4s">
       <div class="memo-tag">Renda Variável · Comportamento</div>
       <div class="memo-date">Abril de 2026</div>
       <div class="memo-title">Mercado, concentração de retornos e diversificação</div>
       <div class="memo-excerpt">100 anos de bolsa americana, 30 mil empresas. Só 1% delas gerou 44% de toda a riqueza. O que isso revela sobre como construir — e manter — uma boa carteira.</div>
       <div class="memo-cta">Ler memorando</div>
     </a>
+
+    <a class="memo-card" href="memorando-novos-investidores.html" style="animation-delay:0.5s">
+      <div class="memo-tag">Comportamento · Assessoria</div>
+      <div class="memo-date">Abril de 2026</div>
+      <div class="memo-title">O que os novos investidores esperam de seus consultores</div>
+      <div class="memo-excerpt">Frequência de contato, FOMO, critérios de decisão: um estudo do CFA Institute revela como as novas gerações se relacionam com o dinheiro — e o que esperam de quem os assessora.</div>
+      <div class="memo-cta">Ler memorando</div>
+    </a>
+
   </div>
 
 </main>
