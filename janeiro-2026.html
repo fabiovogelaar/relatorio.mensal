@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Relatório Mensal — Janeiro 2026 | Fábio Carlucci</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --verde-escuro: #1a2e25;
+    --verde-medio: #243d30;
+    --dourado: #c9a84c;
+    --dourado-claro: #e2c47a;
+    --creme: #f5ede0;
+    --texto-claro: rgba(245,237,224,0.85);
+    --texto-muted: rgba(245,237,224,0.45);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background-color: var(--verde-escuro);
+    color: var(--creme);
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background-image:
+      radial-gradient(ellipse at 15% 15%, rgba(201,168,76,0.07) 0%, transparent 55%),
+      radial-gradient(ellipse at 85% 85%, rgba(47,82,64,0.4) 0%, transparent 55%),
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none; z-index: 0;
+  }
+
+  /* ── NAV ── */
+  .back-link {
+    position: relative; z-index: 10;
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 28px 8%;
+    font-size: 0.7rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--texto-muted); text-decoration: none; transition: color 0.2s;
+  }
+  .back-link:hover { color: var(--dourado); }
+  .back-link::before { content: '←'; font-size: 0.9rem; }
+
+  /* ── HERO ── */
+  .hero {
+    position: relative; z-index: 1;
+    padding: 20px 8% 64px;
+    border-bottom: 1px solid rgba(201,168,76,0.15);
+  }
+
+  .hero-tag {
+    font-size: 0.65rem; font-weight: 500; letter-spacing: 0.35em; text-transform: uppercase;
+    color: var(--dourado); display: flex; align-items: center; gap: 12px;
+    margin-bottom: 20px; opacity: 0; animation: fadeUp 0.7s ease 0.1s forwards;
+  }
+  .hero-tag::before { content: ''; width: 30px; height: 1px; background: var(--dourado); }
+
+  .hero-eyebrow {
+    font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--texto-muted); margin-bottom: 16px;
+    opacity: 0; animation: fadeUp 0.7s ease 0.2s forwards;
+  }
+
+  h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3rem, 8vw, 6rem); font-weight: 300; line-height: 1.05;
+    color: var(--creme); opacity: 0; animation: fadeUp 0.7s ease 0.3s forwards;
+  }
+  h1 strong { font-weight: 700; color: var(--dourado-claro); display: block; }
+
+  .hero-month {
+    font-family: 'Jost', sans-serif; font-weight: 300;
+    font-size: clamp(0.8rem, 2vw, 0.95rem); letter-spacing: 0.3em; text-transform: uppercase;
+    color: var(--texto-muted); margin-top: 16px;
+    opacity: 0; animation: fadeUp 0.7s ease 0.5s forwards;
+  }
+
+  .hero-assinatura {
+    margin-top: 36px; opacity: 0; animation: fadeUp 0.7s ease 0.65s forwards;
+  }
+  .assinatura-svg { width: 140px; height: auto; opacity: 0.85; }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── SEÇÕES ── */
+  .section { position: relative; z-index: 1; padding: 64px 8%; max-width: 900px; margin: 0 auto; }
+
+  .section-tag {
+    font-family: 'Jost', sans-serif; font-weight: 500;
+    font-size: 0.65rem; letter-spacing: 0.35em; text-transform: uppercase;
+    color: var(--dourado); display: flex; align-items: center; gap: 12px; margin-bottom: 20px;
+  }
+  .section-tag::before { content: ''; width: 30px; height: 1px; background: var(--dourado); }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 600;
+    line-height: 1.15; color: var(--creme); margin-bottom: 36px;
+  }
+
+  .divider {
+    width: 100%; height: 1px;
+    background: linear-gradient(90deg, rgba(201,168,76,0.3) 0%, transparent 100%);
+    margin: 0 8%;
+    width: calc(100% - 16%);
+  }
+
+  /* ── PILLS RESUMO ── */
+  .pills-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 8px;
+  }
+  @media (max-width: 580px) { .pills-grid { grid-template-columns: 1fr; } }
+
+  .pill {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(201,168,76,0.2);
+    border-left: 3px solid var(--dourado);
+    border-radius: 4px; padding: 20px 22px;
+    transition: background 0.3s, transform 0.3s;
+  }
+  .pill:hover { background: rgba(201,168,76,0.07); transform: translateY(-2px); }
+  .pill-icon { font-size: 1.1rem; margin-bottom: 7px; display: block; }
+  .pill-title {
+    font-family: 'Jost', sans-serif; font-weight: 600; font-size: 0.75rem;
+    letter-spacing: 0.08em; color: var(--dourado); margin-bottom: 7px;
+  }
+  .pill-text { font-size: 0.88rem; color: var(--texto-claro); line-height: 1.65; }
+
+  /* ── CONTEÚDO ── */
+  .block { margin-bottom: 40px; }
+  .block-title {
+    font-family: 'Cormorant Garamond', serif; font-size: 1.35rem; font-weight: 600;
+    color: var(--dourado-claro); margin-bottom: 10px;
+    border-bottom: 1px solid rgba(201,168,76,0.15); padding-bottom: 8px;
+  }
+  .block-text { font-size: 0.95rem; color: var(--texto-claro); line-height: 1.85; }
+  .block-text strong { font-weight: 600; color: var(--creme); }
+
+  .implicacao {
+    margin-top: 12px; padding: 14px 18px;
+    background: rgba(201,168,76,0.07);
+    border-left: 2px solid rgba(201,168,76,0.4);
+    border-radius: 2px;
+    font-size: 0.86rem; color: var(--texto-claro); line-height: 1.7;
+  }
+  .implicacao strong { color: var(--dourado); font-weight: 600; }
+
+  /* SELIC CARD */
+  .selic-card {
+    background: linear-gradient(135deg, rgba(201,168,76,0.12) 0%, rgba(47,82,64,0.3) 100%);
+    border: 1px solid rgba(201,168,76,0.3); border-radius: 8px;
+    padding: 24px 28px; margin: 24px 0;
+    display: flex; align-items: center; gap: 28px; flex-wrap: wrap;
+  }
+  .selic-number {
+    font-family: 'Cormorant Garamond', serif; font-size: 3.2rem; font-weight: 700;
+    color: var(--dourado); line-height: 1;
+  }
+  .selic-label { font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--texto-muted); margin-top: 4px; }
+  .selic-desc { font-size: 0.88rem; color: var(--texto-claro); line-height: 1.7; flex: 1; min-width: 200px; }
+
+  /* ── RENTABILIDADES ── */
+  .bar-chart { margin-top: 24px; }
+  .bar-row { display: flex; align-items: center; gap: 12px; margin-bottom: 13px; }
+  .bar-label { font-size: 0.82rem; color: var(--texto-claro); width: 150px; flex-shrink: 0; text-align: right; }
+  .bar-track { flex: 1; height: 9px; background: rgba(255,255,255,0.06); border-radius: 3px; overflow: hidden; }
+  .bar-fill { height: 100%; border-radius: 3px; transition: width 1.2s cubic-bezier(0.4,0,0.2,1); }
+  .bar-fill.pos { background: linear-gradient(90deg, #3a8c5e, #5ec98a); }
+  .bar-fill.neg { background: linear-gradient(90deg, #9e3a3a, #e07070); }
+  .bar-value { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 600; width: 70px; flex-shrink: 0; }
+  .pos-val { color: #5ec98a; }
+  .neg-val { color: #e07070; }
+
+  /* ── GLOSSÁRIO ── */
+  .glossario-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 8px; }
+  @media (max-width: 580px) { .glossario-grid { grid-template-columns: 1fr; } }
+  .glossario-item { padding: 14px 18px; border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .glossario-term { font-family: 'Jost', sans-serif; font-weight: 600; font-size: 0.78rem; color: var(--dourado); margin-bottom: 4px; }
+  .glossario-def { font-size: 0.8rem; color: var(--texto-muted); line-height: 1.6; }
+
+  /* ── ALERTA GLOBAL ── */
+  .alert-box {
+    background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 6px; padding: 22px 24px; margin-bottom: 28px;
+  }
+  .alert-title {
+    font-size: 0.75rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--dourado); margin-bottom: 8px;
+  }
+  .alert-text { font-size: 0.9rem; color: var(--texto-claro); line-height: 1.75; }
+
+  /* ── RODAPÉ ── */
+  footer {
+    position: relative; z-index: 1;
+    border-top: 1px solid rgba(201,168,76,0.12); padding: 40px 8%;
+    display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;
+  }
+  .footer-name { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 300; color: var(--texto-muted); }
+  .footer-contact { font-size: 0.75rem; color: rgba(245,237,224,0.25); line-height: 1.9; text-align: right; }
+  .footer-contact a { color: var(--dourado); text-decoration: none; }
+  .footer-fonte { font-size: 0.65rem; color: rgba(245,237,224,0.2); margin-top: 28px; text-align: center; letter-spacing: 0.08em; }
+
+  /* NAV LATERAL */
+  .side-nav {
+    position: fixed; right: 24px; top: 50%; transform: translateY(-50%);
+    display: flex; flex-direction: column; gap: 12px; z-index: 100;
+  }
+  .side-dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: rgba(201,168,76,0.3); transition: background 0.3s, transform 0.3s; cursor: pointer;
+  }
+  .side-dot.active { background: var(--dourado); transform: scale(1.5); }
+
+  /* FADE IN */
+  .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .fade-in.visible { opacity: 1; transform: none; }
+
+  @media (max-width: 768px) {
+    .side-nav { display: none; }
+    .hero { padding: 20px 5% 48px; }
+    .section { padding: 48px 5%; }
+    footer { padding: 32px 5%; flex-direction: column; }
+    .footer-contact { text-align: left; }
+    .selic-card { flex-direction: column; gap: 16px; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="side-nav">
+  <div class="side-dot active" data-section="hero"></div>
+  <div class="side-dot" data-section="resumo"></div>
+  <div class="side-dot" data-section="nacional"></div>
+  <div class="side-dot" data-section="global"></div>
+  <div class="side-dot" data-section="rentabilidades"></div>
+  <div class="side-dot" data-section="glossario"></div>
+</nav>
+
+<a class="back-link" href="index.html">Voltar</a>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-tag">Relatório Mensal</div>
+  <div class="hero-eyebrow">Fábio Carlucci</div>
+  <h1>O que aconteceu<br><strong>em janeiro?</strong></h1>
+  <p class="hero-month">Janeiro de 2026</p>
+  <div class="hero-assinatura">
+    <svg class="assinatura-svg" viewBox="0 0 200 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M10 40 C20 20, 35 15, 50 30 C60 40, 55 50, 45 48 C35 46, 38 35, 50 28 C65 20, 80 22, 90 32 C100 42, 95 52, 85 50 C75 48, 77 38, 88 30 C100 22, 118 20, 130 35 C140 48, 135 55, 122 52" stroke="rgba(201,168,76,0.8)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      <path d="M128 30 C138 18, 155 15, 168 25 C178 32, 180 42, 172 48" stroke="rgba(201,168,76,0.8)" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+      <path d="M8 50 L195 50" stroke="rgba(201,168,76,0.2)" stroke-width="0.5"/>
+      <text x="8" y="58" font-family="Georgia, serif" font-size="7" fill="rgba(201,168,76,0.5)" letter-spacing="1">Fábio Carlucci</text>
+    </svg>
+  </div>
+</section>
+
+<!-- RESUMO EXECUTIVO -->
+<div class="divider"></div>
+<section class="section fade-in" id="resumo">
+  <div class="section-tag">01</div>
+  <h2 class="section-title">Resumo<br>Executivo</h2>
+  <div class="pills-grid">
+    <div class="pill fade-in">
+      <span class="pill-icon">🚀</span>
+      <div class="pill-title">Ibovespa explode em janeiro</div>
+      <div class="pill-text">O Ibovespa subiu +12,56% — o melhor janeiro desde 2006. Capital estrangeiro entrou forte, com saldo de R$ 23 bilhões no mês. Oito recordes nominais foram batidos.</div>
+    </div>
+    <div class="pill fade-in">
+      <span class="pill-icon">🏦</span>
+      <div class="pill-title">Selic em 15% — corte previsto para março</div>
+      <div class="pill-text">O Copom manteve a Selic em 15% ao ano mas sinalizou início do ciclo de cortes em março. Política monetária permanece restritiva por ora.</div>
+    </div>
+    <div class="pill fade-in">
+      <span class="pill-icon">📉</span>
+      <div class="pill-title">Inflação desacelera levemente</div>
+      <div class="pill-text">O IPCA-15 de janeiro veio em 0,20%, abaixo dos 0,25% de dezembro. Acumulado em 12 meses: 4,50% — ainda no teto da meta do Banco Central.</div>
+    </div>
+    <div class="pill fade-in">
+      <span class="pill-icon">🇺🇸</span>
+      <div class="pill-title">Fed em pausa, dólar mais fraco</div>
+      <div class="pill-text">O Fed manteve juros entre 3,50%–3,75%. Tensões geopolíticas e ameaças de tarifas dos EUA geraram volatilidade, mas no geral o dólar enfraqueceu ante o real.</div>
+    </div>
+    <div class="pill fade-in">
+      <span class="pill-icon">🌍</span>
+      <div class="pill-title">Emergentes ganham fluxo global</div>
+      <div class="pill-text">A rotação de capital saindo dos EUA para mercados emergentes foi o grande motor do mês. Brasil foi um dos principais destinos desse movimento.</div>
+    </div>
+    <div class="pill fade-in">
+      <span class="pill-icon">🗳️</span>
+      <div class="pill-title">Ruídos políticos no radar</div>
+      <div class="pill-text">Ano eleitoral e crescimento dos gastos tributários projetados para 2026 mantiveram o prêmio de risco fiscal elevado e o câmbio sensível.</div>
+    </div>
+  </div>
+</section>
+
+<!-- VISÃO NACIONAL -->
+<div class="divider"></div>
+<section class="section fade-in" id="nacional">
+  <div class="section-tag">02</div>
+  <h2 class="section-title">Visão<br>Nacional</h2>
+
+  <div class="block fade-in">
+    <div class="block-title">Copom mantém Selic e sinaliza corte para março</div>
+    <p class="block-text">Na reunião de 28/01/2026, o Copom decidiu <strong>manter a Selic em 15,00% ao ano</strong> — o maior nível em quase 20 anos. O comunicado reforçou que a política monetária deve permanecer em território restritivo por um período prolongado, mas o comitê abriu a porta para o início dos cortes em março, caso os dados confirmem a trajetória de desinflação.</p>
+    <div class="selic-card">
+      <div>
+        <div class="selic-number">15,00%</div>
+        <div class="selic-label">Selic ao ano</div>
+      </div>
+      <div class="selic-desc">
+        Taxa mantida pela quinta reunião consecutiva. O Copom indicou <strong>início do ciclo de flexibilização em março</strong> — mas deixou claro que o ritmo e a duração dos cortes dependerão dos dados de inflação.
+      </div>
+    </div>
+    <div class="implicacao"><strong>Implicação para investimentos:</strong> o cenário segue favorável para renda fixa (pós-fixados e IPCA+), com maior seletividade em crédito privado.</div>
+  </div>
+
+  <div class="block fade-in">
+    <div class="block-title">Inflação: melhora pontual, mas ainda no teto da meta</div>
+    <p class="block-text">O <strong>IPCA-15 de janeiro</strong> veio em <strong>0,20%</strong>, abaixo dos 0,25% de dezembro — uma melhora bem-vinda. Porém, o acumulado em 12 meses ficou em <strong>4,50%</strong>, exatamente no teto do intervalo de tolerância (3% ± 1,5 ponto). Isso significa que a inflação melhorou na margem, mas ainda não está confortável o suficiente para o BC acelerar os cortes.</p>
+    <div class="implicacao"><strong>Implicação para investimentos:</strong> renda fixa segue como pilar central. A desinflação está acontecendo, mas de forma gradual — o investidor ainda é remunerado por manter posição em pós-fixados e IPCA+.</div>
+  </div>
+
+  <div class="block fade-in">
+    <div class="block-title">Bolsa brasileira: o melhor janeiro em 20 anos</div>
+    <p class="block-text">Janeiro foi excepcional para a bolsa. O <strong>Ibovespa subiu +12,56%</strong>, o melhor desempenho para o mês desde 2006. O índice registrou <strong>oito recordes nominais</strong> ao longo do período, sustentado pela entrada de R$ 23 bilhões em capital estrangeiro até o dia 28. O real se valorizou ante o dólar, e 28 ações do Ibovespa atingiram máximas históricas no mês.</p>
+    <div class="implicacao"><strong>Implicação para investimentos:</strong> o movimento sugere apetite por risco e melhora de fluxo, mas com alta dependência do ambiente externo e do custo de capital doméstico.</div>
+  </div>
+
+  <div class="block fade-in">
+    <div class="block-title">Fiscal e eleições: risco crescente em 2026</div>
+    <p class="block-text">Reportagens de janeiro apontaram crescimento relevante nos <strong>gastos tributários projetados para 2026</strong> e o risco de maior pressão sobre o ajuste fiscal em ano eleitoral. Esse tema segue como variável-chave para o prêmio de risco doméstico.</p>
+    <div class="implicacao"><strong>Implicação para investimentos:</strong> fiscal influencia diretamente a curva de juros, o câmbio e os setores da bolsa mais sensíveis ao risco-país.</div>
+  </div>
+</section>
+
+<!-- VISÃO GLOBAL -->
+<div class="divider"></div>
+<section class="section fade-in" id="global">
+  <div class="section-tag">03</div>
+  <h2 class="section-title">Visão<br>Global</h2>
+
+  <div class="alert-box fade-in">
+    <div class="alert-title">📌 Fed mantém juros em 3,50%–3,75%</div>
+    <p class="alert-text">Na reunião de 28/01/2026, o FOMC decidiu manter os juros americanos, reiterando que avaliará "dados recebidos, perspectiva e balanço de riscos" para futuras decisões. A manutenção era esperada pelo mercado, mas o tom cauteloso manteve a sensibilidade a dados de inflação e emprego. Para o Brasil, isso significa que o diferencial de juros segue alto — o que favorece o fluxo de capitais para cá.</p>
+  </div>
+
+  <div class="block fade-in">
+    <div class="block-title">Geopolítica e tarifas: ruído de curto prazo</div>
+    <p class="block-text">Em janeiro, o mercado reagiu às <strong>ameaças de tarifas dos EUA</strong> contra países europeus no contexto das tensões sobre a Groenlândia. O episódio reacendeu a discussão do "Sell America trade" — a ideia de que investidores globais reduziriam exposição a ativos americanos. Dias depois, as ameaças recuaram e houve retorno do apetite por risco, fortalecendo bolsas globais e enfraquecendo o dólar. Para o investidor, isso é um lembrete de que movimentos bruscos muitas vezes são táticos e reversíveis.</p>
+    <div class="implicacao"><strong>Implicação para investimentos:</strong> risco geopolítico e tarifário entram como fonte de volatilidade, afetando dólar e prêmio de risco. Quem tem carteira diversificada atravessa esses momentos com mais tranquilidade.</div>
+  </div>
+</section>
+
+<!-- RENTABILIDADES -->
+<div class="divider"></div>
+<section class="section fade-in" id="rentabilidades">
+  <div class="section-tag">04</div>
+  <h2 class="section-title">Rentabilidades<br>do Mês</h2>
+  <p style="font-size:0.88rem; color:var(--texto-muted); margin-bottom:28px;">Desempenho dos principais ativos em janeiro de 2026.</p>
+
+  <div class="bar-chart fade-in" id="barChart">
+    <div class="bar-row">
+      <span class="bar-label">Ibovespa (Brasil)</span>
+      <div class="bar-track"><div class="bar-fill pos" data-width="100" style="width:0%"></div></div>
+      <span class="bar-value pos-val">+12,56%</span>
+    </div>
+    <div class="bar-row">
+      <span class="bar-label">Ouro</span>
+      <div class="bar-track"><div class="bar-fill pos" data-width="95" style="width:0%"></div></div>
+      <span class="bar-value pos-val">+11,97%</span>
+    </div>
+    <div class="bar-row">
+      <span class="bar-label">IFIX (fundos imob.)</span>
+      <div class="bar-track"><div class="bar-fill pos" data-width="18" style="width:0%"></div></div>
+      <span class="bar-value pos-val">+2,27%</span>
+    </div>
+    <div class="bar-row">
+      <span class="bar-label">CDI</span>
+      <div class="bar-track"><div class="bar-fill pos" data-width="9" style="width:0%"></div></div>
+      <span class="bar-value pos-val">+1,11%</span>
+    </div>
+    <div class="bar-row">
+      <span class="bar-label">Poupança</span>
+      <div class="bar-track"><div class="bar-fill pos" data-width="5" style="width:0%"></div></div>
+      <span class="bar-value pos-val">+0,67%</span>
+    </div>
+    <div class="bar-row">
+      <span class="bar-label">S&P 500 (EUA)</span>
+      <div class="bar-track"><div class="bar-fill neg" data-width="29" style="width:0%"></div></div>
+      <span class="bar-value neg-val">−3,65%</span>
+    </div>
+    <div class="bar-row">
+      <span class="bar-label">Dólar</span>
+      <div class="bar-track"><div class="bar-fill neg" data-width="39" style="width:0%"></div></div>
+      <span class="bar-value neg-val">−4,95%</span>
+    </div>
+    <div class="bar-row">
+      <span class="bar-label">Bitcoin</span>
+      <div class="bar-track"><div class="bar-fill neg" data-width="66" style="width:0%"></div></div>
+      <span class="bar-value neg-val">−8,31%</span>
+    </div>
+  </div>
+</section>
+
+<!-- GLOSSÁRIO -->
+<div class="divider"></div>
+<section class="section fade-in" id="glossario">
+  <div class="section-tag">05</div>
+  <h2 class="section-title">Glossário</h2>
+  <div class="glossario-grid fade-in">
+    <div class="glossario-item"><div class="glossario-term">Selic</div><div class="glossario-def">Taxa básica de juros do Brasil, definida pelo Copom. Serve de referência para todos os outros juros da economia.</div></div>
+    <div class="glossario-item"><div class="glossario-term">IPCA</div><div class="glossario-def">Índice oficial de inflação do Brasil, medido pelo IBGE. Mede a variação de preços de uma cesta de produtos e serviços.</div></div>
+    <div class="glossario-item"><div class="glossario-term">Copom</div><div class="glossario-def">Comitê do Banco Central que define a taxa Selic a cada 45 dias. Principal ferramenta de controle da inflação.</div></div>
+    <div class="glossario-item"><div class="glossario-term">CDI</div><div class="glossario-def">Taxa de referência usada em investimentos de renda fixa. Anda colado à Selic e indica o rendimento básico de aplicações conservadoras.</div></div>
+    <div class="glossario-item"><div class="glossario-term">Ibovespa</div><div class="glossario-def">Principal índice da Bolsa de Valores brasileira (B3). Mede o desempenho das ações mais negociadas do país.</div></div>
+    <div class="glossario-item"><div class="glossario-term">Fed</div><div class="glossario-def">Banco Central dos EUA. Suas decisões de juros impactam fluxos de capital globais e afetam mercados emergentes como o Brasil.</div></div>
+    <div class="glossario-item"><div class="glossario-term">IPCA-15</div><div class="glossario-def">Prévia da inflação oficial, divulgada antes do IPCA final. Serve de antecipação do dado e influencia expectativas do mercado.</div></div>
+    <div class="glossario-item"><div class="glossario-term">IFIX</div><div class="glossario-def">Índice que mede o desempenho dos fundos imobiliários (FIIs) negociados na B3. Alternativa à renda fixa com renda mensal.</div></div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-name">Fábio Vogelaar Carlucci</div>
+  <div class="footer-contact">+55 (16) 98148-8260<br><a href="mailto:fabio.carlucci@ficus.capital">fabio.carlucci@ficus.capital</a></div>
+</footer>
+<div class="footer-fonte" style="position:relative;z-index:1;padding:0 8% 28px;text-align:center;">Fontes: XP Research · B3 · Banco Central do Brasil · Reuters · IBGE</div>
+
+<script>
+// Fade in on scroll
+const faders = document.querySelectorAll('.fade-in');
+const obs = new IntersectionObserver(e => e.forEach(x => { if(x.isIntersecting){ x.target.classList.add('visible'); obs.unobserve(x.target); } }), { threshold: 0.1 });
+faders.forEach(f => obs.observe(f));
+
+// Barras animadas
+const barObs = new IntersectionObserver(e => e.forEach(x => { if(x.isIntersecting){ x.target.querySelectorAll('.bar-fill').forEach(f => { setTimeout(() => { f.style.width = f.getAttribute('data-width') + '%'; }, 150); }); barObs.unobserve(x.target); } }), { threshold: 0.3 });
+const bc = document.getElementById('barChart'); if(bc) barObs.observe(bc);
+
+// Nav lateral
+const dots = document.querySelectorAll('.side-dot');
+const sections = ['hero','resumo','nacional','global','rentabilidades','glossario'];
+function updateDots() {
+  const sy = window.scrollY + window.innerHeight / 2;
+  sections.forEach((id,i) => {
+    const el = document.getElementById(id); if(!el) return;
+    const t = el.getBoundingClientRect().top + window.scrollY;
+    const b = t + el.offsetHeight;
+    if(sy >= t && sy < b) { dots.forEach(d => d.classList.remove('active')); if(dots[i]) dots[i].classList.add('active'); }
+  });
+}
+window.addEventListener('scroll', updateDots, { passive: true });
+dots.forEach((d,i) => d.addEventListener('click', () => { const el = document.getElementById(sections[i]); if(el) el.scrollIntoView({ behavior:'smooth' }); }));
+</script>
+</body>
+</html>
