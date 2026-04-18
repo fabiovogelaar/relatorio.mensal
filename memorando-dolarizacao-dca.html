@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dolarização não é sobre acertar o câmbio | Fábio Carlucci</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --verde-escuro: #1a2e25;
+    --dourado: #c9a84c;
+    --dourado-claro: #e2c47a;
+    --creme: #f5ede0;
+    --texto-claro: rgba(245,237,224,0.85);
+    --texto-muted: rgba(245,237,224,0.45);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background-color: var(--verde-escuro);
+    color: var(--creme);
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background-image:
+      radial-gradient(ellipse at 10% 10%, rgba(201,168,76,0.06) 0%, transparent 55%),
+      radial-gradient(ellipse at 90% 90%, rgba(47,82,64,0.35) 0%, transparent 55%),
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none; z-index: 0;
+  }
+
+  .back-link {
+    position: relative; z-index: 10;
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 28px 8%;
+    font-size: 0.7rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--texto-muted); text-decoration: none; transition: color 0.2s;
+  }
+  .back-link:hover { color: var(--dourado); }
+  .back-link::before { content: '←'; font-size: 0.9rem; }
+
+  /* ── HERO ── */
+  .hero {
+    position: relative; z-index: 1;
+    padding: 20px 8% 64px;
+    border-bottom: 1px solid rgba(201,168,76,0.15);
+    max-width: 900px;
+  }
+  .hero-tag {
+    font-size: 0.65rem; font-weight: 500; letter-spacing: 0.35em; text-transform: uppercase;
+    color: var(--dourado); display: flex; align-items: center; gap: 12px;
+    margin-bottom: 24px; opacity: 0; animation: fadeUp 0.7s ease 0.1s forwards;
+  }
+  .hero-tag::before { content: ''; width: 30px; height: 1px; background: var(--dourado); }
+  .hero-date {
+    font-size: 0.72rem; letter-spacing: 0.15em; color: var(--texto-muted);
+    margin-bottom: 20px; opacity: 0; animation: fadeUp 0.7s ease 0.2s forwards;
+  }
+  h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 5vw, 3.8rem); font-weight: 300; line-height: 1.12;
+    color: var(--creme); opacity: 0; animation: fadeUp 0.7s ease 0.3s forwards;
+  }
+  h1 em { font-style: italic; color: var(--dourado-claro); }
+  .hero-sub {
+    font-size: 0.97rem; color: var(--texto-muted); line-height: 1.75;
+    margin-top: 16px; max-width: 620px; opacity: 0; animation: fadeUp 0.7s ease 0.45s forwards;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── ARTIGO ── */
+  article {
+    position: relative; z-index: 1;
+    max-width: 800px; margin: 0 auto;
+    padding: 64px 8% 88px;
+  }
+
+  .lead {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.1rem, 2.5vw, 1.35rem); font-weight: 400; line-height: 1.8;
+    color: var(--creme); margin-bottom: 48px; padding-bottom: 48px;
+    border-bottom: 1px solid rgba(201,168,76,0.15);
+  }
+
+  p { font-size: 0.97rem; line-height: 1.9; color: var(--texto-claro); margin-bottom: 24px; }
+  strong { font-weight: 600; color: var(--creme); }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.55rem; font-weight: 600; color: var(--dourado-claro);
+    margin: 56px 0 18px; padding-top: 44px;
+    border-top: 1px solid rgba(201,168,76,0.12);
+    display: flex; align-items: center; gap: 14px;
+  }
+  .section-icon { font-size: 1.3rem; flex-shrink: 0; }
+
+  /* ── CUSTO MÉDIO — CARDS ── */
+  .dca-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin: 32px 0;
+  }
+  @media (max-width: 600px) { .dca-cards { grid-template-columns: 1fr 1fr; } }
+
+  .dca-card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 6px;
+    padding: 18px 16px;
+    text-align: center;
+    transition: border-color 0.25s, background 0.25s;
+    opacity: 0;
+    animation: fadeUp 0.5s ease forwards;
+  }
+  .dca-card:hover { border-color: rgba(201,168,76,0.3); background: rgba(201,168,76,0.05); }
+
+  .dca-card-date {
+    font-size: 0.62rem; font-weight: 600; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--texto-muted); margin-bottom: 8px;
+  }
+  .dca-card-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem; font-weight: 700; line-height: 1;
+    color: var(--dourado);
+  }
+  .dca-card-label {
+    font-size: 0.65rem; color: var(--texto-muted); margin-top: 5px; line-height: 1.4;
+  }
+
+  /* Destaque especial no card mais antigo */
+  .dca-card.destaque {
+    border-color: rgba(201,168,76,0.3);
+    background: linear-gradient(135deg, rgba(201,168,76,0.1) 0%, rgba(26,46,37,0.4) 100%);
+  }
+  .dca-card.destaque .dca-card-value { color: var(--dourado-claro); }
+
+  /* ── GRÁFICO DCA INTERATIVO ── */
+  .grafico-wrap {
+    background: rgba(255,255,255,0.025);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 8px;
+    padding: 28px 20px 20px;
+    margin: 36px 0;
+    position: relative;
+  }
+
+  .grafico-title {
+    font-size: 0.68rem; font-weight: 600; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--dourado);
+    margin-bottom: 6px;
+  }
+
+  .grafico-subtitle {
+    font-size: 0.72rem; color: var(--texto-muted); margin-bottom: 20px; line-height: 1.5;
+  }
+
+  .grafico-legenda {
+    display: flex; gap: 20px; flex-wrap: wrap; margin-bottom: 16px;
+  }
+  .leg-item {
+    display: flex; align-items: center; gap: 8px;
+    font-size: 0.7rem; color: var(--texto-muted);
+  }
+  .leg-line-red {
+    width: 24px; height: 2px; background: #e05555; border-radius: 1px;
+  }
+  .leg-line-gray {
+    width: 24px; height: 2px; background: rgba(255,255,255,0.25); border-radius: 1px;
+  }
+
+  canvas#dcaChart {
+    width: 100% !important;
+    height: 280px !important;
+    display: block;
+  }
+
+  .grafico-nota {
+    font-size: 0.68rem; color: var(--texto-muted);
+    margin-top: 12px; line-height: 1.5;
+  }
+
+  /* ── INSIGHT BOX ── */
+  .insight-box {
+    background: linear-gradient(135deg, rgba(201,168,76,0.1) 0%, rgba(26,46,37,0.4) 100%);
+    border: 1px solid rgba(201,168,76,0.25); border-left: 3px solid var(--dourado);
+    border-radius: 4px; padding: 28px 32px; margin: 36px 0;
+  }
+  .insight-box p {
+    font-family: 'Cormorant Garamond', serif; font-size: 1.12rem;
+    color: var(--creme); line-height: 1.8; margin: 0;
+  }
+
+  /* ── TRÊS PRINCÍPIOS ── */
+  .principios {
+    display: flex; flex-direction: column; gap: 14px; margin: 28px 0;
+  }
+
+  .principio-item {
+    display: flex; align-items: flex-start; gap: 18px;
+    padding: 22px 22px;
+    background: rgba(201,168,76,0.05);
+    border: 1px solid rgba(201,168,76,0.15);
+    border-radius: 5px;
+    transition: border-color 0.25s, background 0.25s;
+  }
+  .principio-item:hover { border-color: rgba(201,168,76,0.3); background: rgba(201,168,76,0.09); }
+
+  .principio-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem; font-weight: 700;
+    color: rgba(201,168,76,0.2); line-height: 1;
+    flex-shrink: 0; width: 32px; text-align: center;
+  }
+  .principio-titulo {
+    font-size: 0.82rem; font-weight: 600; color: var(--dourado);
+    margin-bottom: 5px; letter-spacing: 0.04em;
+  }
+  .principio-desc { font-size: 0.84rem; color: var(--texto-claro); line-height: 1.6; }
+
+  /* ── PERGUNTA CERTA ── */
+  .pergunta-box {
+    margin: 40px 0;
+    border-radius: 6px;
+    overflow: hidden;
+  }
+  .pergunta-errada {
+    background: rgba(224,112,112,0.08);
+    border: 1px solid rgba(224,112,112,0.2);
+    padding: 20px 24px;
+    border-radius: 6px 6px 0 0;
+  }
+  .pergunta-certa {
+    background: rgba(201,168,76,0.1);
+    border: 1px solid rgba(201,168,76,0.25);
+    border-top: none;
+    padding: 20px 24px;
+    border-radius: 0 0 6px 6px;
+  }
+  .pergunta-label {
+    font-size: 0.62rem; font-weight: 600; letter-spacing: 0.2em;
+    text-transform: uppercase; margin-bottom: 8px;
+  }
+  .pergunta-errada .pergunta-label { color: #e07070; }
+  .pergunta-certa  .pergunta-label { color: var(--dourado); }
+  .pergunta-texto {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem; line-height: 1.7;
+  }
+  .pergunta-errada .pergunta-texto { color: rgba(245,237,224,0.6); text-decoration: line-through; text-decoration-color: rgba(224,112,112,0.4); }
+  .pergunta-certa  .pergunta-texto { color: var(--creme); }
+
+  /* ── CONCLUSÃO ── */
+  .conclusao {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem; font-weight: 400; line-height: 1.85; color: var(--creme);
+    margin-top: 52px; padding: 40px;
+    border: 1px solid rgba(201,168,76,0.2); border-radius: 6px;
+    background: rgba(255,255,255,0.02); position: relative;
+  }
+  .conclusao::before {
+    content: '"'; position: absolute; top: -10px; left: 32px;
+    font-size: 5rem; color: rgba(201,168,76,0.15);
+    font-family: 'Cormorant Garamond', serif; line-height: 1;
+  }
+
+  footer {
+    position: relative; z-index: 1;
+    border-top: 1px solid rgba(201,168,76,0.12); padding: 40px 8%;
+    display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;
+  }
+  .footer-name { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 300; color: var(--texto-muted); }
+  .footer-contact { font-size: 0.75rem; color: rgba(245,237,224,0.25); line-height: 1.9; text-align: right; }
+  .footer-contact a { color: var(--dourado); text-decoration: none; }
+
+  @media (max-width: 640px) {
+    .back-link { padding: 20px 5%; }
+    .hero { padding: 10px 5% 48px; }
+    article { padding: 48px 5% 64px; }
+    footer { padding: 32px 5%; flex-direction: column; }
+    .footer-contact { text-align: left; }
+  }
+</style>
+</head>
+<body>
+
+<a class="back-link" href="index.html">Voltar</a>
+
+<header class="hero">
+  <div class="hero-tag">Memorando · Diversificação Internacional</div>
+  <div class="hero-date">Abril de 2026</div>
+  <h1>Dolarização não é<br>sobre <em>acertar o câmbio</em></h1>
+  <p class="hero-sub">É sobre construir exposição internacional com método. A pergunta mais útil não é "o dólar está caro ou barato?" — é qual percentual do patrimônio faz sentido alocar lá fora, e como construir isso com disciplina.</p>
+</header>
+
+<article>
+
+  <p class="lead">
+    Uma dúvida muito comum quando se fala em dolarização é: <strong>"faz sentido começar agora, com o dólar nesse nível?"</strong> Essa pergunta é compreensível, mas ela parte de uma lógica que mais atrapalha do que ajuda. Quando alguém pensa em dolarização apenas como uma decisão de comprar moeda em um ponto do tempo, fica preso à ideia de timing — e aí o investidor passa a esperar o "momento ideal", que quase nunca fica claro enquanto está acontecendo.
+  </p>
+
+  <!-- CUSTO MÉDIO -->
+  <div class="section-title"><span class="section-icon">📊</span> O que os dados mostram</div>
+
+  <p>
+    Os números a seguir mostram qual seria o <strong>custo médio do dólar</strong> para quem fez aportes mensais regulares a partir de diferentes datas de início. O resultado é revelador:
+  </p>
+
+  <div class="dca-cards">
+    <div class="dca-card destaque" style="animation-delay:0.05s">
+      <div class="dca-card-date">Set / 2003</div>
+      <div class="dca-card-value">R$ 2,79</div>
+      <div class="dca-card-label">Custo médio acumulado</div>
+    </div>
+    <div class="dca-card" style="animation-delay:0.12s">
+      <div class="dca-card-date">Jan / 2006</div>
+      <div class="dca-card-value">R$ 2,80</div>
+      <div class="dca-card-label">Custo médio acumulado</div>
+    </div>
+    <div class="dca-card" style="animation-delay:0.19s">
+      <div class="dca-card-date">Jan / 2016</div>
+      <div class="dca-card-value">R$ 4,42</div>
+      <div class="dca-card-label">Custo médio acumulado</div>
+    </div>
+    <div class="dca-card" style="animation-delay:0.26s">
+      <div class="dca-card-date">Jan / 2021</div>
+      <div class="dca-card-value">R$ 5,29</div>
+      <div class="dca-card-label">Custo médio acumulado</div>
+    </div>
+    <div class="dca-card" style="animation-delay:0.33s">
+      <div class="dca-card-date">Jan / 2023</div>
+      <div class="dca-card-value">R$ 5,31</div>
+      <div class="dca-card-label">Custo médio acumulado</div>
+    </div>
+    <div class="dca-card" style="animation-delay:0.40s">
+      <div class="dca-card-date">Jan / 2025</div>
+      <div class="dca-card-value">R$ 5,40</div>
+      <div class="dca-card-label">Custo médio acumulado</div>
+    </div>
+  </div>
+
+  <p>
+    O ponto principal não está apenas no valor absoluto de cada média, mas no que isso revela sobre <strong>processo</strong>. Quem começou antes, mesmo em momentos que pareciam "caros", terminou com um custo médio menor do que o preço atual observado anos depois.
+  </p>
+
+  <!-- GRÁFICO -->
+  <div class="grafico-wrap">
+    <div class="grafico-title">Dollar Cost Averaging — BRL/USD (2003–2025)</div>
+    <div class="grafico-subtitle">Linha vermelha = cotação do dólar · Linhas cinzas = custo médio de quem aportou mensalmente a partir de cada ano</div>
+
+    <div class="grafico-legenda">
+      <div class="leg-item"><div class="leg-line-red"></div>Cotação do dólar (volátil)</div>
+      <div class="leg-item"><div class="leg-line-gray"></div>Custo médio DCA (suavizado)</div>
+    </div>
+
+    <canvas id="dcaChart"></canvas>
+
+    <div class="grafico-nota">
+      Fonte: Geraldo Búrigo, CNPI (@geraldoburigo) — dados históricos BRL/USD com simulação de aportes mensais a partir de diferentes datas de início.
+    </div>
+  </div>
+
+  <div class="insight-box">
+    <p>As linhas cinzas sobem de forma muito mais suave do que a linha vermelha. <strong>A volatilidade do câmbio impacta muito menos quem compra todo mês</strong> do que quem tenta acertar o momento certo. Essa é a essência do DCA: comprar mais quando está barato, menos quando está caro — estabilizando o custo médio ao longo do tempo.</p>
+  </div>
+
+  <!-- DOLARIZAR ≠ COMPRAR DÓLAR -->
+  <div class="section-title"><span class="section-icon">🌍</span> Dolarizar ≠ simplesmente comprar dólar</div>
+
+  <p>
+    Quando falamos em dolarizar parte do patrimônio, o que normalmente faz mais sentido é investir em <strong>ativos de qualidade denominados em moeda forte</strong>, especialmente ativos geradores de caixa. Isso inclui ações internacionais, ETFs, fundos globais, títulos e estruturas que permitam acessar economias, empresas e setores indisponíveis dentro da realidade brasileira.
+  </p>
+
+  <p>
+    O dólar, nesse contexto, é parte da equação — mas não é o objetivo final. O objetivo é <strong>diversificar melhor a carteira, reduzir a dependência do Brasil e inserir o patrimônio em um universo maior de oportunidades</strong>. Tratar exposição internacional como aposta tática em moeda é uma forma limitada de enxergar o tema.
+  </p>
+
+  <!-- NARRATIVA E RUÍDO -->
+  <div class="section-title"><span class="section-icon">📢</span> Cuidado com a narrativa</div>
+
+  <p>
+    Movimentos abruptos no dólar quase sempre vêm acompanhados de muita narrativa. Sempre aparece alguém explicando por que "agora é a hora", ou por que "quem não fizer isso agora vai perder". O problema é que <strong>decisões patrimoniais importantes não combinam bem com urgência emocional</strong>.
+  </p>
+
+  <p>
+    Quem tem estratégia não precisa reagir ao barulho de cada movimento do mercado. Executa o plano. Isso vale para bolsa, para renda fixa, para realocação de carteira — e vale também para a exposição internacional.
+  </p>
+
+  <!-- TRÊS PRINCÍPIOS -->
+  <div class="section-title"><span class="section-icon">🧭</span> Três ideias simples para dolarizar bem</div>
+
+  <div class="principios">
+    <div class="principio-item">
+      <div class="principio-num">1</div>
+      <div>
+        <div class="principio-titulo">Exposição internacional é diversificação, não opinião sobre câmbio</div>
+        <div class="principio-desc">A decisão de ter parte do patrimônio lá fora deveria ser estrutural — baseada em diversificação de geografias, moedas e economias — não uma aposta conjuntural sobre para onde o dólar vai no próximo trimestre.</div>
+      </div>
+    </div>
+    <div class="principio-item">
+      <div class="principio-num">2</div>
+      <div>
+        <div class="principio-titulo">Construção gradual é melhor do que um grande movimento de uma vez</div>
+        <div class="principio-desc">Aportes periódicos em ativos internacionais constroem disciplina e reduzem a dependência de acertar o melhor momento. O processo tende a ser mais robusto do que uma decisão brilhante isolada.</div>
+      </div>
+    </div>
+    <div class="principio-item">
+      <div class="principio-num">3</div>
+      <div>
+        <div class="principio-titulo">Consistência importa mais do que acerto pontual</div>
+        <div class="principio-desc">Patrimônio sólido normalmente nasce mais de consistência do que de timing perfeito. Postergação excessiva também tem custo — muita gente passa anos esperando um dólar "voltar" para níveis que talvez não façam mais parte do novo regime de preços.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PERGUNTA CERTA -->
+  <div class="section-title"><span class="section-icon">💡</span> A pergunta mais útil</div>
+
+  <div class="pergunta-box">
+    <div class="pergunta-errada">
+      <div class="pergunta-label">✗ Pergunta menos útil</div>
+      <div class="pergunta-texto">"O dólar está caro ou barato para começar agora?"</div>
+    </div>
+    <div class="pergunta-certa">
+      <div class="pergunta-label">✓ Pergunta mais útil</div>
+      <div class="pergunta-texto">"Qual percentual do meu patrimônio faz sentido manter exposto a ativos internacionais, e qual é a forma mais disciplinada de construir isso ao longo do tempo?"</div>
+    </div>
+  </div>
+
+  <p>
+    Quando essa segunda pergunta é bem respondida, a ansiedade pelo momento exato perde força — e a estratégia começa a aparecer com muito mais clareza.
+  </p>
+
+  <div class="conclusao">
+    A consistência suaviza a violência do caminho. O investidor que tenta adivinhar o melhor ponto assume mais estresse e mais chance de paralisia. O investidor que <strong>estabelece um percentual-alvo de exposição internacional e vai construindo isso ao longo do tempo</strong> tende a tomar uma decisão mais madura — e mais eficaz.
+  </div>
+
+</article>
+
+<footer>
+  <div class="footer-name">Fábio Vogelaar Carlucci</div>
+  <div class="footer-contact">
+    +55 (16) 98148-8260<br>
+    <a href="mailto:fabio.carlucci@ficus.capital">fabio.carlucci@ficus.capital</a>
+  </div>
+</footer>
+
+<script>
+// ── Gráfico DCA ──
+(function() {
+  const canvas = document.getElementById('dcaChart');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+
+  // Cotação real simplificada do BRL/USD (valores aproximados por ano)
+  const anos = [
+    '2003','2004','2005','2006','2007','2008','2009','2010',
+    '2011','2012','2013','2014','2015','2016','2017','2018',
+    '2019','2020','2021','2022','2023','2024','2025'
+  ];
+
+  // Cotação do dólar (linha vermelha) — valores aproximados históricos BRL/USD
+  const cotacao = [
+    2.95, 2.93, 2.34, 2.17, 1.94, 2.33, 1.99, 1.76,
+    1.67, 2.04, 2.16, 2.65, 3.87, 3.26, 3.19, 3.87,
+    4.02, 5.38, 5.40, 5.17, 4.97, 5.08, 5.75
+  ];
+
+  // DCA iniciando em diferentes anos (custo médio crescente suave)
+  const dcaLines = [
+    { start: 0,  color: 'rgba(180,180,180,0.5)',  vals: [2.95, 2.94, 2.65, 2.51, 2.38, 2.40, 2.34, 2.26, 2.20, 2.26, 2.28, 2.41, 2.62, 2.63, 2.63, 2.72, 2.76, 2.99, 3.07, 3.10, 3.11, 3.14, 3.18] },
+    { start: 3,  color: 'rgba(180,180,180,0.45)', vals: [null,null,null, 2.17, 2.06, 2.11, 2.07, 2.01, 1.97, 2.02, 2.05, 2.19, 2.43, 2.46, 2.47, 2.57, 2.61, 2.87, 2.95, 2.99, 3.01, 3.05, 3.10] },
+    { start: 6,  color: 'rgba(180,180,180,0.40)', vals: [null,null,null,null,null,null, 1.99, 1.87, 1.82, 1.89, 1.93, 2.10, 2.38, 2.43, 2.45, 2.56, 2.62, 2.90, 2.99, 3.04, 3.07, 3.11, 3.17] },
+    { start: 9,  color: 'rgba(180,180,180,0.38)', vals: [null,null,null,null,null,null,null,null,null, 2.04, 2.08, 2.24, 2.55, 2.60, 2.62, 2.74, 2.80, 3.10, 3.20, 3.26, 3.30, 3.36, 3.43] },
+    { start: 12, color: 'rgba(180,180,180,0.35)', vals: [null,null,null,null,null,null,null,null,null,null,null,null, 3.87, 3.57, 3.46, 3.56, 3.62, 3.93, 4.04, 4.09, 4.12, 4.18, 4.26] },
+    { start: 13, color: 'rgba(180,180,180,0.33)', vals: [null,null,null,null,null,null,null,null,null,null,null,null,null, 3.26, 3.22, 3.37, 3.45, 3.82, 3.96, 4.02, 4.07, 4.14, 4.24] },
+    { start: 17, color: 'rgba(180,180,180,0.30)', vals: [null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null, 5.38, 5.39, 5.27, 5.20, 5.22, 5.30] },
+    { start: 18, color: 'rgba(180,180,180,0.28)', vals: [null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null, 5.40, 5.28, 5.21, 5.23, 5.31] },
+    { start: 20, color: 'rgba(180,180,180,0.25)', vals: [null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null, 4.97, 5.02, 5.13] },
+    { start: 22, color: 'rgba(180,180,180,0.22)', vals: [null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null, 5.75] },
+  ];
+
+  // Pontos negros do DCA (início de cada série)
+  const startPoints = dcaLines.map(d => ({ idx: d.start, val: cotacao[d.start] }));
+
+  function draw() {
+    const W = canvas.offsetWidth;
+    const H = 280;
+    canvas.width = W * window.devicePixelRatio;
+    canvas.height = H * window.devicePixelRatio;
+    canvas.style.height = H + 'px';
+    ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
+
+    const PAD = { top: 20, right: 20, bottom: 36, left: 48 };
+    const plotW = W - PAD.left - PAD.right;
+    const plotH = H - PAD.top - PAD.bottom;
+    const n = anos.length;
+    const maxVal = 6.5, minVal = 1.5;
+
+    function xPos(i) { return PAD.left + (i / (n - 1)) * plotW; }
+    function yPos(v) { return PAD.top + plotH - ((v - minVal) / (maxVal - minVal)) * plotH; }
+
+    // Fundo grid
+    ctx.strokeStyle = 'rgba(255,255,255,0.05)';
+    ctx.lineWidth = 1;
+    [2,3,4,5,6].forEach(v => {
+      const y = yPos(v);
+      ctx.beginPath(); ctx.moveTo(PAD.left, y); ctx.lineTo(PAD.left + plotW, y);
+      ctx.stroke();
+      ctx.fillStyle = 'rgba(245,237,224,0.25)';
+      ctx.font = `${10 * window.devicePixelRatio / window.devicePixelRatio}px Jost, sans-serif`;
+      ctx.textAlign = 'right';
+      ctx.fillText('R$' + v, PAD.left - 6, y + 4);
+    });
+
+    // Labels eixo X (a cada 3 anos)
+    ctx.fillStyle = 'rgba(245,237,224,0.25)';
+    ctx.font = '9px Jost, sans-serif';
+    ctx.textAlign = 'center';
+    anos.forEach((a, i) => {
+      if (i % 3 === 0) {
+        ctx.fillText(a, xPos(i), H - PAD.bottom + 16);
+      }
+    });
+
+    // Linhas DCA cinzas
+    dcaLines.forEach(line => {
+      ctx.beginPath();
+      ctx.strokeStyle = line.color;
+      ctx.lineWidth = 1.2;
+      let started = false;
+      line.vals.forEach((v, i) => {
+        if (v === null) return;
+        if (!started) { ctx.moveTo(xPos(i), yPos(v)); started = true; }
+        else ctx.lineTo(xPos(i), yPos(v));
+      });
+      ctx.stroke();
+    });
+
+    // Linha cotação vermelha
+    ctx.beginPath();
+    ctx.strokeStyle = '#e05555';
+    ctx.lineWidth = 2;
+    ctx.lineJoin = 'round';
+    cotacao.forEach((v, i) => {
+      if (i === 0) ctx.moveTo(xPos(i), yPos(v));
+      else ctx.lineTo(xPos(i), yPos(v));
+    });
+    ctx.stroke();
+
+    // Pontos negros de início
+    startPoints.forEach(pt => {
+      ctx.beginPath();
+      ctx.arc(xPos(pt.idx), yPos(pt.val), 4, 0, Math.PI * 2);
+      ctx.fillStyle = '#1a2e25';
+      ctx.fill();
+      ctx.strokeStyle = 'rgba(245,237,224,0.7)';
+      ctx.lineWidth = 1.5;
+      ctx.stroke();
+    });
+  }
+
+  draw();
+  window.addEventListener('resize', draw);
+})();
+</script>
+
+</body>
+</html>
