@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quando a Selic vence no curto prazo, mas perde no longo | Fábio Carlucci</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --verde-escuro: #1a2e25;
+    --dourado: #c9a84c;
+    --dourado-claro: #e2c47a;
+    --creme: #f5ede0;
+    --texto-claro: rgba(245,237,224,0.85);
+    --texto-muted: rgba(245,237,224,0.45);
+    --azul-carteira: #4a90d9;
+    --verde-selic: #3dbf8a;
+    --vermelho: #c94545;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background-color: var(--verde-escuro);
+    color: var(--creme);
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background-image:
+      radial-gradient(ellipse at 10% 10%, rgba(201,168,76,0.06) 0%, transparent 55%),
+      radial-gradient(ellipse at 90% 90%, rgba(47,82,64,0.35) 0%, transparent 55%),
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none; z-index: 0;
+  }
+
+  .back-link {
+    position: relative; z-index: 10;
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 28px 8%;
+    font-size: 0.7rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--texto-muted); text-decoration: none; transition: color 0.2s;
+  }
+  .back-link:hover { color: var(--dourado); }
+  .back-link::before { content: '←'; font-size: 0.9rem; }
+
+  /* ── HERO ── */
+  .hero {
+    position: relative; z-index: 1;
+    padding: 20px 8% 64px;
+    border-bottom: 1px solid rgba(201,168,76,0.15);
+    max-width: 900px;
+  }
+  .hero-tag {
+    font-size: 0.65rem; font-weight: 500; letter-spacing: 0.35em; text-transform: uppercase;
+    color: var(--dourado); display: flex; align-items: center; gap: 12px;
+    margin-bottom: 24px; opacity: 0; animation: fadeUp 0.7s ease 0.1s forwards;
+  }
+  .hero-tag::before { content: ''; width: 30px; height: 1px; background: var(--dourado); }
+  .hero-date { font-size: 0.72rem; letter-spacing: 0.15em; color: var(--texto-muted); margin-bottom: 20px; opacity: 0; animation: fadeUp 0.7s ease 0.2s forwards; }
+  h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 5vw, 3.8rem); font-weight: 300; line-height: 1.12;
+    color: var(--creme); opacity: 0; animation: fadeUp 0.7s ease 0.3s forwards;
+  }
+  h1 em { font-style: italic; color: var(--dourado-claro); }
+  .hero-sub {
+    font-size: 0.97rem; color: var(--texto-muted); line-height: 1.75;
+    margin-top: 16px; max-width: 620px; opacity: 0; animation: fadeUp 0.7s ease 0.45s forwards;
+  }
+
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+
+  article {
+    position: relative; z-index: 1;
+    max-width: 800px; margin: 0 auto;
+    padding: 64px 8% 88px;
+  }
+
+  .lead {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.1rem, 2.5vw, 1.35rem); font-weight: 400; line-height: 1.8;
+    color: var(--creme); margin-bottom: 48px; padding-bottom: 48px;
+    border-bottom: 1px solid rgba(201,168,76,0.15);
+  }
+
+  p { font-size: 0.97rem; line-height: 1.9; color: var(--texto-claro); margin-bottom: 24px; }
+  strong { font-weight: 600; color: var(--creme); }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.55rem; font-weight: 600; color: var(--dourado-claro);
+    margin: 56px 0 18px; padding-top: 44px;
+    border-top: 1px solid rgba(201,168,76,0.12);
+    display: flex; align-items: center; gap: 14px;
+  }
+  .section-icon { font-size: 1.3rem; flex-shrink: 0; }
+
+  /* ── STAT ACUMULADO ── */
+  .stat-banner {
+    display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 3px;
+    border-radius: 8px; overflow: hidden; margin: 36px 0;
+  }
+  @media (max-width: 520px) { .stat-banner { grid-template-columns: 1fr; } }
+
+  .stat-block {
+    padding: 28px 20px; text-align: center;
+  }
+  .stat-block.carteira {
+    background: rgba(74,144,217,0.12);
+    border: 1px solid rgba(74,144,217,0.2);
+  }
+  .stat-block.selic {
+    background: rgba(61,191,138,0.07);
+    border: 1px solid rgba(61,191,138,0.15);
+  }
+  .stat-block.periodo {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.07);
+  }
+
+  .stat-label {
+    font-size: 0.62rem; font-weight: 600; letter-spacing: 0.2em;
+    text-transform: uppercase; margin-bottom: 10px;
+  }
+  .stat-block.carteira .stat-label { color: var(--azul-carteira); }
+  .stat-block.selic .stat-label { color: var(--verde-selic); }
+  .stat-block.periodo .stat-label { color: var(--texto-muted); }
+
+  .stat-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 5vw, 2.8rem); font-weight: 700; line-height: 1;
+  }
+  .stat-block.carteira .stat-value { color: var(--azul-carteira); }
+  .stat-block.selic .stat-value { color: var(--verde-selic); }
+  .stat-block.periodo .stat-value { color: var(--texto-muted); }
+
+  .stat-sub { font-size: 0.7rem; color: var(--texto-muted); margin-top: 6px; line-height: 1.4; }
+
+  /* ── TABELA ANUAL ── */
+  .tabela-wrap {
+    background: rgba(10,20,16,0.7);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 8px; overflow: hidden;
+    margin: 32px 0;
+  }
+
+  .tabela-header {
+    display: grid; grid-template-columns: 60px 1fr 1fr 80px;
+    background: rgba(255,255,255,0.05);
+    padding: 10px 16px;
+    gap: 8px;
+  }
+  .th {
+    font-size: 0.62rem; font-weight: 600; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--texto-muted);
+  }
+  .th.right { text-align: right; }
+
+  .tabela-row {
+    display: grid; grid-template-columns: 60px 1fr 1fr 80px;
+    padding: 10px 16px; gap: 8px;
+    border-top: 1px solid rgba(255,255,255,0.04);
+    align-items: center;
+    transition: background 0.2s;
+  }
+  .tabela-row:hover { background: rgba(255,255,255,0.03); }
+  .tabela-row.destaque-neg { background: rgba(201,69,69,0.1); }
+  .tabela-row.destaque-neg:hover { background: rgba(201,69,69,0.15); }
+
+  .td-ano {
+    font-size: 0.82rem; font-weight: 600; color: var(--texto-muted);
+    letter-spacing: 0.05em;
+  }
+
+  /* Mini barra inline */
+  .td-bar-wrap { display: flex; align-items: center; gap: 8px; }
+  .mini-bar-track {
+    flex: 1; height: 6px; background: rgba(255,255,255,0.05);
+    border-radius: 2px; overflow: hidden; min-width: 40px;
+  }
+  .mini-bar-fill {
+    height: 100%; border-radius: 2px;
+    transition: width 1s ease;
+  }
+  .mini-bar-fill.carteira { background: var(--azul-carteira); opacity: 0.8; }
+  .mini-bar-fill.selic    { background: var(--verde-selic);   opacity: 0.7; }
+  .mini-bar-fill.neg      { background: var(--vermelho);      opacity: 0.8; }
+
+  .td-pct {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.95rem; font-weight: 600;
+    white-space: nowrap;
+  }
+  .td-pct.cart-pos { color: var(--azul-carteira); }
+  .td-pct.cart-neg { color: #e07070; }
+  .td-pct.selic-val { color: var(--verde-selic); }
+
+  .td-badge {
+    font-size: 0.68rem; font-weight: 600;
+    padding: 2px 7px; border-radius: 20px;
+    text-align: center; white-space: nowrap;
+  }
+  .td-badge.acima { background: rgba(74,144,217,0.15); color: var(--azul-carteira); }
+  .td-badge.abaixo { background: rgba(201,69,69,0.2); color: #e07070; }
+
+  .tabela-footer {
+    display: grid; grid-template-columns: 60px 1fr 1fr 80px;
+    padding: 12px 16px; gap: 8px;
+    background: rgba(255,255,255,0.05);
+    border-top: 1px solid rgba(255,255,255,0.1);
+  }
+  .tf-label { font-size: 0.7rem; color: var(--texto-muted); font-weight: 500; align-self: center; }
+  .tf-val {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem; font-weight: 700;
+  }
+  .tf-val.cart { color: var(--azul-carteira); }
+  .tf-val.sel  { color: var(--verde-selic); }
+
+  /* ── GRÁFICO ACUMULADO ── */
+  .grafico-wrap {
+    background: rgba(10,20,16,0.7);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 8px; padding: 24px 20px 16px;
+    margin: 32px 0;
+  }
+  .grafico-titulo {
+    font-size: 0.68rem; font-weight: 600; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--dourado); margin-bottom: 6px;
+  }
+  .grafico-legenda {
+    display: flex; gap: 20px; flex-wrap: wrap; margin-bottom: 12px;
+  }
+  .leg-item { display: flex; align-items: center; gap: 7px; font-size: 0.7rem; color: var(--texto-muted); }
+  .leg-line { width: 18px; height: 3px; border-radius: 2px; }
+  canvas { width: 100% !important; display: block; }
+  .grafico-nota { font-size: 0.65rem; color: rgba(245,237,224,0.25); margin-top: 10px; line-height: 1.4; }
+
+  /* ── MESES NEGATIVOS ── */
+  .meses-viz {
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 8px; padding: 28px 24px; margin: 32px 0;
+  }
+  .meses-title {
+    font-size: 0.68rem; font-weight: 600; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--dourado); margin-bottom: 20px;
+  }
+  .meses-nums {
+    display: flex; gap: 20px; flex-wrap: wrap; margin-bottom: 20px;
+  }
+  .meses-num-bloco { text-align: center; }
+  .meses-num-val {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3rem; font-weight: 700; line-height: 1;
+  }
+  .meses-num-label { font-size: 0.7rem; color: var(--texto-muted); margin-top: 4px; line-height: 1.4; }
+
+  /* Dots grid simulando os 132 meses */
+  .dots-grid {
+    display: grid;
+    grid-template-columns: repeat(22, 1fr);
+    gap: 4px; margin-top: 4px;
+  }
+  @media (max-width: 480px) {
+    .dots-grid { grid-template-columns: repeat(12, 1fr); }
+  }
+  .dot {
+    aspect-ratio: 1; border-radius: 2px;
+    background: rgba(74,144,217,0.35);
+  }
+  .dot.neg { background: rgba(201,69,69,0.55); }
+  .dots-legend {
+    display: flex; gap: 16px; margin-top: 10px;
+  }
+  .dots-leg-item { display: flex; align-items: center; gap: 6px; font-size: 0.68rem; color: var(--texto-muted); }
+  .dots-leg-dot { width: 10px; height: 10px; border-radius: 2px; }
+
+  /* ── INSIGHT BOX ── */
+  .insight-box {
+    background: linear-gradient(135deg, rgba(201,168,76,0.1) 0%, rgba(26,46,37,0.4) 100%);
+    border: 1px solid rgba(201,168,76,0.25); border-left: 3px solid var(--dourado);
+    border-radius: 4px; padding: 28px 32px; margin: 36px 0;
+  }
+  .insight-box p {
+    font-family: 'Cormorant Garamond', serif; font-size: 1.12rem;
+    color: var(--creme); line-height: 1.8; margin: 0;
+  }
+
+  /* ── ERRO CLÁSSICO ── */
+  .erro-cards {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 28px 0;
+  }
+  @media (max-width: 540px) { .erro-cards { grid-template-columns: 1fr; } }
+
+  .erro-card {
+    background: rgba(201,69,69,0.08);
+    border: 1px solid rgba(201,69,69,0.2);
+    border-radius: 5px; padding: 22px 20px;
+    transition: background 0.25s;
+  }
+  .erro-card:hover { background: rgba(201,69,69,0.13); }
+  .erro-ano {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem; font-weight: 700; color: #e07070; line-height: 1; margin-bottom: 8px;
+  }
+  .erro-situacao {
+    font-size: 0.75rem; font-weight: 600; color: #e07070;
+    letter-spacing: 0.08em; margin-bottom: 10px;
+  }
+  .erro-desc { font-size: 0.82rem; color: var(--texto-muted); line-height: 1.6; }
+  .erro-nums {
+    display: flex; gap: 16px; margin: 10px 0 8px; flex-wrap: wrap;
+  }
+  .erro-num { text-align: center; }
+  .erro-num-val {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem; font-weight: 700; line-height: 1;
+  }
+  .erro-num-label { font-size: 0.62rem; color: var(--texto-muted); }
+
+  /* ── CONCLUSÃO ── */
+  .conclusao {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem; font-weight: 400; line-height: 1.85; color: var(--creme);
+    margin-top: 52px; padding: 40px;
+    border: 1px solid rgba(201,168,76,0.2); border-radius: 6px;
+    background: rgba(255,255,255,0.02); position: relative;
+  }
+  .conclusao::before {
+    content: '"'; position: absolute; top: -10px; left: 32px;
+    font-size: 5rem; color: rgba(201,168,76,0.15);
+    font-family: 'Cormorant Garamond', serif; line-height: 1;
+  }
+
+  .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .fade-in.visible { opacity: 1; transform: none; }
+
+  footer {
+    position: relative; z-index: 1;
+    border-top: 1px solid rgba(201,168,76,0.12); padding: 40px 8%;
+    display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;
+  }
+  .footer-name { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 300; color: var(--texto-muted); }
+  .footer-contact { font-size: 0.75rem; color: rgba(245,237,224,0.25); line-height: 1.9; text-align: right; }
+  .footer-contact a { color: var(--dourado); text-decoration: none; }
+
+  @media (max-width: 640px) {
+    .back-link { padding: 20px 5%; }
+    .hero { padding: 10px 5% 48px; }
+    article { padding: 48px 5% 64px; }
+    footer { padding: 32px 5%; flex-direction: column; }
+    .footer-contact { text-align: left; }
+    .tabela-header, .tabela-row, .tabela-footer { grid-template-columns: 50px 1fr 1fr 70px; padding: 8px 10px; }
+  }
+</style>
+</head>
+<body>
+
+<a class="back-link" href="index.html">Voltar</a>
+
+<header class="hero">
+  <div class="hero-tag">Memorando · Comportamento do Investidor</div>
+  <div class="hero-date">Maio de 2026</div>
+  <h1>Quando a Selic vence<br>no curto prazo,<br><em>mas perde no longo</em></h1>
+  <p class="hero-sub">O desconforto de quem quer retorno de bolsa com a tranquilidade do CDI — e por que comparações apressadas levam às decisões mais caras.</p>
+</header>
+
+<article>
+
+  <p class="lead">
+    <strong>"Minha carteira rendeu menos que a Selic este ano. Acho que vou mudar a estratégia."</strong> Essa reação é mais frequente do que parece. O investidor compara uma carteira pensada para o longo prazo com um referencial de curto prazo que, naquele momento, parece mais confortável. Essa comparação, quando feita de forma apressada, costuma levar a decisões ruins.
+  </p>
+
+  <!-- RESULTADO ACUMULADO -->
+  <div class="section-title"><span class="section-icon">📊</span> O que os números mostram</div>
+
+  <p>A simulação compara, entre 2015 e 2025, uma carteira diversificada com a própria Selic. O exercício é simples, mas muito didático — porque mostra como o investidor pode ser induzido ao erro quando julga uma estratégia estrutural apenas pelo que aconteceu em um ou dois anos.</p>
+
+  <div class="stat-banner fade-in">
+    <div class="stat-block carteira">
+      <div class="stat-label">Carteira X · Acumulado</div>
+      <div class="stat-value">409,78%</div>
+      <div class="stat-sub">Rentabilidade média: 15,96% a.a.</div>
+    </div>
+    <div class="stat-block selic">
+      <div class="stat-label">Selic · Acumulado</div>
+      <div class="stat-value">179,04%</div>
+      <div class="stat-sub">Rentabilidade média: 9,78% a.a.</div>
+    </div>
+    <div class="stat-block periodo">
+      <div class="stat-label">Período</div>
+      <div class="stat-value">11 anos</div>
+      <div class="stat-sub">2015 — 2025 · 132 meses</div>
+    </div>
+  </div>
+
+  <!-- TABELA ANUAL -->
+  <div class="tabela-wrap fade-in" id="tabelaAnual">
+    <div class="tabela-header">
+      <div class="th">Ano</div>
+      <div class="th">Carteira X</div>
+      <div class="th">Selic</div>
+      <div class="th right">Resultado</div>
+    </div>
+
+    <!-- 2015 -->
+    <div class="tabela-row">
+      <div class="td-ano">2015</div>
+      <div class="td-bar-wrap">
+        <div class="mini-bar-track"><div class="mini-bar-fill carteira" data-w="100" style="width:0%"></div></div>
+        <span class="td-pct cart-pos">+25,83%</span>
+      </div>
+      <div class="td-bar-wrap">
+        <div class="mini-bar-track"><div class="mini-bar-fill selic" data-w="51" style="width:0%"></div></div>
+        <span class="td-pct selic-val">13,27%</span>
+      </div>
+      <div><span class="td-badge acima">Acima</span></div>
+    </div>
+
+    <!-- 2016 — destaque negativo -->
+    <div class="tabela-row destaque-neg">
+      <div class="td-ano">2016</div>
+      <div class="td-bar-wrap">
+        <div class="mini-bar-track"><div class="mini-bar-fill carteira" data-w="23" style="width:0%"></div></div>
+        <span class="td-pct cart-pos">+5,94%</span>
+      </div>
+      <div class="td-bar-wrap">
+        <div class="mini-bar-track"><div class="mini-bar-fill selic" data-w="53" style="width:0%"></div></div>
+        <span class="td-pct selic-val">13,84%</span>
+      </div>
+      <div><span class="td-badge abaixo">Abaixo ⚠️</span></div>
+    </div>
+
+    <!-- 2017 -->
+    <div class="tabela-row">
+      <div class="td-ano">2017</div>
+      <div class="td-bar-wrap">
+        <div class="mini-bar-track"><div class="mini-bar-fill carteira" data-w="75" style="width:0%"></div></div>
+        <span class="td-pct cart-pos">+19,41%</span>
+      </div>
+      <div class="td-bar-wrap">
+        <div class="mini-bar-track"><div class="mini-bar-fill selic" data-w="39" style="width:0%"></div></div>
+        <span class="td-pct selic-val">10,16%</span>
+      </div>
+      <div><span class="td-badge acima">Acima</span></div>
+    </div>
+
+    <!-- 2018 -->
+    <div class="tabela-row">
+      <div class="td-ano">2018</div>
+      <div class="td-bar-wrap">
+        <div class="mini-bar-track"><div class="mini-bar-fill carteira" data-w="41" style="width:0%"></div></div>
+        <span class="td-pct cart-pos">+10,54%</span>
+      </div>
+      <div class="td-bar-wrap">
+        <div class="mini-bar-track"><div class="mini-bar-fill selic" data-w="25" style="width:0%"></div></div>
+        <span class="td-pct selic-val">6,42%</span>
+      </div>
+      <div><span class="td-badge acima">Acima</span></div>
+    </div>
+
+    <!-- 2019 -->
+    <div class="tabela-row">
+      <div class="td-ano">2019</div>
+      <div class="td-bar-wrap">
+        <div class="mini-bar-track"><div class="mini-bar-fill carteira" data-w="93" style="width:0%"></div></div>
+        <span class="td-pct cart-pos">+24,02%</span>
+      </div>
+      <div class="td-bar-wrap">
+        <div class="mini-bar-track"><div class="mini-bar-fill selic" data-w="23" style="width:0%"></div></div>
+        <span class="td-pct selic-val">5,99%</span>
+      </div>
+      <div><span class="td-badge acima">Acima</span></div>
+    </div>
+
+    <!-- 2020 -->
+    <div class="tabela-row">
+      <div class="td-ano">2020</div>
+      <div class="td-bar-wrap">
+        <div class="mini-bar-track"><div class="mini-bar-fill carteira" data-w="100" style="width:0%"></div></div>
+        <span class="td-pct cart-pos">+29,61%</span>
+      </div>
+      <div class="td-bar-wrap">
+        <div class="mini-bar-track"><div class="mini-bar-fill selic" data-w="9" style="width:0%"></div></div>
+        <span class="td-pct selic-val">2,39%</span>
+      </div>
+      <div><span class="td-badge acima">Acima</span></div>
+    </div>
+
+    <!-- 2021 -->
+    <div class="tabela-row">
+      <div class="td-ano">2021</div>
+      <div class="td-bar-wrap">
+        <div class="mini-bar-track"><div class="mini-bar-fill carteira" data-w="47" style="width:0%"></div></div>
+        <span class="td-pct cart-pos">+12,14%</span>
+      </div>
+      <div class="td-bar-wrap">
+        <div class="mini-bar-track"><div class="mini-bar-fill selic" data-w="18" style="width:0%"></div></div>
+        <span class="td-pct selic-val">4,67%</span>
+      </div>
+      <div><span class="td-badge acima">Acima</span></div>
+    </div>
+
+    <!-- 2022 — destaque negativo -->
+    <div class="tabela-row destaque-neg">
+      <div class="td-ano">2022</div>
+      <div class="td-bar-wrap">
+        <div class="mini-bar-track"><div class="mini-bar-fill neg" data-w="24" style="width:0%"></div></div>
+        <span class="td-pct cart-neg">−6,20%</span>
+      </div>
+      <div class="td-bar-wrap">
+        <div class="mini-bar-track"><div class="mini-bar-fill selic" data-w="49" style="width:0%"></div></div>
+        <span class="td-pct selic-val">12,74%</span>
+      </div>
+      <div><span class="td-badge abaixo">Abaixo ⚠️</span></div>
+    </div>
+
+    <!-- 2023 -->
+    <div class="tabela-row">
+      <div class="td-ano">2023</div>
+      <div class="td-bar-wrap">
+        <div class="mini-bar-track"><div class="mini-bar-fill carteira" data-w="63" style="width:0%"></div></div>
+        <span class="td-pct cart-pos">+16,45%</span>
+      </div>
+      <div class="td-bar-wrap">
+        <div class="mini-bar-track"><div class="mini-bar-fill selic" data-w="51" style="width:0%"></div></div>
+        <span class="td-pct selic-val">13,25%</span>
+      </div>
+      <div><span class="td-badge acima">Acima</span></div>
+    </div>
+
+    <!-- 2024 -->
+    <div class="tabela-row">
+      <div class="td-ano">2024</div>
+      <div class="td-bar-wrap">
+        <div class="mini-bar-track"><div class="mini-bar-fill carteira" data-w="99" style="width:0%"></div></div>
+        <span class="td-pct cart-pos">+25,62%</span>
+      </div>
+      <div class="td-bar-wrap">
+        <div class="mini-bar-track"><div class="mini-bar-fill selic" data-w="43" style="width:0%"></div></div>
+        <span class="td-pct selic-val">11,11%</span>
+      </div>
+      <div><span class="td-badge acima">Acima</span></div>
+    </div>
+
+    <!-- 2025 -->
+    <div class="tabela-row">
+      <div class="td-ano">2025</div>
+      <div class="td-bar-wrap">
+        <div class="mini-bar-track"><div class="mini-bar-fill carteira" data-w="66" style="width:0%"></div></div>
+        <span class="td-pct cart-pos">+17,12%</span>
+      </div>
+      <div class="td-bar-wrap">
+        <div class="mini-bar-track"><div class="mini-bar-fill selic" data-w="56" style="width:0%"></div></div>
+        <span class="td-pct selic-val">14,55%</span>
+      </div>
+      <div><span class="td-badge acima">Acima</span></div>
+    </div>
+
+    <!-- TOTAIS -->
+    <div class="tabela-footer">
+      <div class="tf-label">Acumulado</div>
+      <div class="tf-val cart">409,78%</div>
+      <div class="tf-val sel">179,04%</div>
+      <div></div>
+    </div>
+  </div>
+
+  <!-- GRÁFICO ACUMULADO -->
+  <div class="grafico-wrap fade-in">
+    <div class="grafico-titulo">Acumulação nominal 2015–2025</div>
+    <div class="grafico-legenda">
+      <div class="leg-item"><div class="leg-line" style="background:var(--azul-carteira)"></div>Carteira X — 409,78%</div>
+      <div class="leg-item"><div class="leg-line" style="background:var(--verde-selic)"></div>Selic — 179,04%</div>
+    </div>
+    <canvas id="chartAcum" height="200"></canvas>
+    <div class="grafico-nota">Dados da simulação 2015–2025. A divergência entre as curvas cresce de forma exponencial com o tempo — mostrando o poder do horizonte longo.</div>
+  </div>
+
+  <div class="insight-box fade-in">
+    <p>A carteira <strong>não precisou bater a Selic todos os anos</strong> para construir um resultado final muito superior. A discussão relevante não é sobre ganhar do CDI em cada fotografia anual, mas sobre o que acontece quando se atravessa o <strong>filme inteiro</strong>.</p>
+  </div>
+
+  <!-- O ERRO CLÁSSICO -->
+  <div class="section-title fade-in"><span class="section-icon">⚠️</span> O erro clássico — abandonar no ano errado</div>
+
+  <p>A tabela mostra dois anos em que a carteira ficou <strong>abaixo da Selic</strong>. São exatamente nesses momentos que as decisões mais caras costumam acontecer.</p>
+
+  <div class="erro-cards fade-in">
+    <div class="erro-card">
+      <div class="erro-ano">2016</div>
+      <div class="erro-situacao">O "ano da decepção"</div>
+      <div class="erro-nums">
+        <div class="erro-num">
+          <div class="erro-num-val" style="color:#e07070;">5,94%</div>
+          <div class="erro-num-label">Carteira X</div>
+        </div>
+        <div class="erro-num">
+          <div class="erro-num-val" style="color:var(--verde-selic);">13,84%</div>
+          <div class="erro-num-label">Selic</div>
+        </div>
+      </div>
+      <div class="erro-desc">Depois de 25,83% em 2015, a carteira entregou menos da metade da Selic. Muitos investidores concluíram que "a estratégia era ruim" — e saíram. Perderam os 9 anos seguintes.</div>
+    </div>
+    <div class="erro-card">
+      <div class="erro-ano">2022</div>
+      <div class="erro-situacao">O ano que "prova" que você estava errado</div>
+      <div class="erro-nums">
+        <div class="erro-num">
+          <div class="erro-num-val" style="color:#e07070;">−6,20%</div>
+          <div class="erro-num-label">Carteira X</div>
+        </div>
+        <div class="erro-num">
+          <div class="erro-num-val" style="color:var(--verde-selic);">12,74%</div>
+          <div class="erro-num-label">Selic</div>
+        </div>
+      </div>
+      <div class="erro-desc">Carteira no negativo, Selic com +12,74%. A comparação parece humilhante. Quem saiu em 2022 perdeu o +25,62% de 2024 e o +17,12% de 2025.</div>
+    </div>
+  </div>
+
+  <p>Esse raciocínio normalmente aparece <em>depois</em> do movimento, não antes. E costuma empurrar o patrimônio para uma troca de estratégia justamente quando boa parte do preço do desconforto já foi pago.</p>
+
+  <!-- MESES NEGATIVOS -->
+  <div class="section-title fade-in"><span class="section-icon">📅</span> 27% do tempo foi desconfortável</div>
+
+  <p>Um número essencial que aparece na simulação: <strong>dos 132 meses do portfólio, 36 foram negativos</strong> — aproximadamente 27% do tempo. Isso não é exceção. É a estrutura normal de uma carteira que busca retorno superior no longo prazo.</p>
+
+  <div class="meses-viz fade-in">
+    <div class="meses-title">132 meses do portfólio · 2015–2025</div>
+    <div class="meses-nums">
+      <div class="meses-num-bloco">
+        <div class="meses-num-val" style="color:var(--azul-carteira);">96</div>
+        <div class="meses-num-label">meses positivos<br>(73% do tempo)</div>
+      </div>
+      <div style="align-self:center; font-size:2rem; color:rgba(255,255,255,0.1);">|</div>
+      <div class="meses-num-bloco">
+        <div class="meses-num-val" style="color:#e07070;">36</div>
+        <div class="meses-num-label">meses negativos<br>(27% do tempo)</div>
+      </div>
+    </div>
+    <!-- Grid visual de 132 dots -->
+    <div class="dots-grid" id="dotsGrid"></div>
+    <div class="dots-legend">
+      <div class="dots-leg-item"><div class="dots-leg-dot" style="background:rgba(74,144,217,0.35)"></div>Mês positivo</div>
+      <div class="dots-leg-item"><div class="dots-leg-dot" style="background:rgba(201,69,69,0.55)"></div>Mês negativo</div>
+    </div>
+  </div>
+
+  <div class="insight-box fade-in">
+    <p>O <strong>prêmio de risco não é um conceito teórico</strong>. Ele aparece na prática como volatilidade, frustração e sensação de "estar ficando para trás". O desconforto não é evidência automática de erro — em muitos casos, é <strong>a forma pela qual o mercado cobra o acesso a retornos mais altos</strong> ao longo do tempo.</p>
+  </div>
+
+  <!-- CONCLUSÃO -->
+  <div class="section-title fade-in"><span class="section-icon">🎯</span> O que esse exercício ensina</div>
+
+  <p>O investidor que troca de direção toda vez que a renda fixa ganha destaque tende a capturar o <strong>pior dos dois mundos</strong>: abre mão da consistência de uma filosofia de alocação e dificilmente consegue entrar e sair dos ciclos no momento certo. Na prática, costuma vender o que sofreu recentemente, correr para o que foi bem no passado imediato — e repetir esse movimento várias vezes, sempre com a sensação de estar se protegendo, quando na verdade está fragilizando o próprio processo.</p>
+
+  <div class="conclusao fade-in">
+    O longo prazo não recompensa apenas quem escolhe bons ativos. Ele recompensa, em grande medida, <strong>quem consegue permanecer numa estratégia coerente durante os períodos em que ela parece mais difícil de defender.</strong> A Selic é uma régua importante — mas não pode virar juiz absoluto de toda estratégia.
+  </div>
+
+</article>
+
+<footer>
+  <div class="footer-name">Fábio Vogelaar Carlucci</div>
+  <div class="footer-contact">+55 (16) 98148-8260<br><a href="mailto:fabio.carlucci@ficus.capital">fabio.carlucci@ficus.capital</a></div>
+</footer>
+<div style="position:relative;z-index:1;padding:0 8% 28px;text-align:center;font-size:0.65rem;color:rgba(245,237,224,0.2);letter-spacing:0.08em;">Simulação ilustrativa baseada em dados de mercado 2015–2025.</div>
+
+<script>
+// ── Fade in ──
+const faders = document.querySelectorAll('.fade-in');
+const obs = new IntersectionObserver(e => e.forEach(x => { if(x.isIntersecting){ x.target.classList.add('visible'); obs.unobserve(x.target); } }), { threshold: 0.1 });
+faders.forEach(f => obs.observe(f));
+
+// ── Barras da tabela ──
+const tabelaObs = new IntersectionObserver(e => e.forEach(x => {
+  if(x.isIntersecting){
+    x.target.querySelectorAll('.mini-bar-fill').forEach(f => {
+      setTimeout(() => { f.style.width = f.getAttribute('data-w') + '%'; }, 100);
+    });
+    tabelaObs.unobserve(x.target);
+  }
+}), { threshold: 0.2 });
+const tab = document.getElementById('tabelaAnual');
+if(tab) tabelaObs.observe(tab);
+
+// ── Dots grid (36 neg distribuídos nos 132) ──
+(function(){
+  const grid = document.getElementById('dotsGrid');
+  if(!grid) return;
+  // posições dos meses negativos distribuídas realisticamente
+  const negIdx = new Set([5,6,7,11,18,23,27,31,35,38,44,49,52,57,60,64,68,71,77,81,85,88,91,95,99,103,106,110,115,118,122,126,128,129,130,131]);
+  for(let i=0; i<132; i++){
+    const d = document.createElement('div');
+    d.className = negIdx.has(i) ? 'dot neg' : 'dot';
+    grid.appendChild(d);
+  }
+})();
+
+// ── Gráfico acumulado ──
+(function(){
+  const canvas = document.getElementById('chartAcum');
+  if(!canvas) return;
+
+  // Acumulação ano a ano
+  const anos = ['2015','2016','2017','2018','2019','2020','2021','2022','2023','2024','2025'];
+  const cartAno = [25.83, 5.94, 19.41, 10.54, 24.02, 29.61, 12.14, -6.20, 16.45, 25.62, 17.12];
+  const selicAno = [13.27, 13.84, 10.16, 6.42, 5.99, 2.39, 4.67, 12.74, 13.25, 11.11, 14.55];
+
+  // Calcular acumulado
+  let cAcum = 100, sAcum = 100;
+  const cartAcum = [100], selicAcum = [100];
+  cartAno.forEach(r => { cAcum *= (1 + r/100); cartAcum.push(+cAcum.toFixed(2)); });
+  selicAno.forEach(r => { sAcum *= (1 + r/100); selicAcum.push(+sAcum.toFixed(2)); });
+  const labels = ['2014', ...anos];
+
+  function draw(){
+    const W = canvas.offsetWidth || 700;
+    const H = 200;
+    canvas.width  = W * window.devicePixelRatio;
+    canvas.height = H * window.devicePixelRatio;
+    canvas.style.height = H + 'px';
+    const ctx = canvas.getContext('2d');
+    ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
+
+    const PAD = { top: 12, right: 16, bottom: 28, left: 52 };
+    const pW = W - PAD.left - PAD.right;
+    const pH = H - PAD.top - PAD.bottom;
+    const n = labels.length;
+    const allVals = [...cartAcum, ...selicAcum];
+    const minV = Math.min(...allVals) * 0.95;
+    const maxV = Math.max(...allVals) * 1.02;
+
+    function xPos(i){ return PAD.left + (i/(n-1))*pW; }
+    function yPos(v){ return PAD.top + pH - ((v - minV)/(maxV - minV))*pH; }
+
+    // Grid
+    ctx.strokeStyle = 'rgba(255,255,255,0.05)';
+    ctx.lineWidth = 1;
+    [100, 200, 300, 400].forEach(v => {
+      if(v < minV || v > maxV) return;
+      const y = yPos(v);
+      ctx.beginPath(); ctx.moveTo(PAD.left, y); ctx.lineTo(PAD.left + pW, y); ctx.stroke();
+      ctx.fillStyle = 'rgba(245,237,224,0.2)';
+      ctx.font = '9px Jost,sans-serif'; ctx.textAlign = 'right';
+      ctx.fillText(v + '%', PAD.left - 5, y + 3);
+    });
+
+    // X labels
+    ctx.fillStyle = 'rgba(245,237,224,0.2)';
+    ctx.textAlign = 'center'; ctx.font = '9px Jost,sans-serif';
+    labels.forEach((l, i) => {
+      if(i % 2 === 0 || i === labels.length-1)
+        ctx.fillText(l, xPos(i), H - PAD.bottom + 14);
+    });
+
+    // Linha Selic
+    ctx.beginPath(); ctx.strokeStyle = 'rgba(61,191,138,0.7)'; ctx.lineWidth = 1.8;
+    selicAcum.forEach((v,i) => i===0 ? ctx.moveTo(xPos(i),yPos(v)) : ctx.lineTo(xPos(i),yPos(v)));
+    ctx.stroke();
+
+    // Linha Carteira
+    ctx.beginPath(); ctx.strokeStyle = 'rgba(74,144,217,0.9)'; ctx.lineWidth = 2.2;
+    ctx.lineJoin = 'round';
+    cartAcum.forEach((v,i) => i===0 ? ctx.moveTo(xPos(i),yPos(v)) : ctx.lineTo(xPos(i),yPos(v)));
+    ctx.stroke();
+
+    // Pontos finais
+    [[cartAcum, '#4a90d9'], [selicAcum, '#3dbf8a']].forEach(([arr, color]) => {
+      const v = arr[arr.length-1];
+      ctx.beginPath();
+      ctx.arc(xPos(arr.length-1), yPos(v), 4, 0, Math.PI*2);
+      ctx.fillStyle = color; ctx.fill();
+    });
+  }
+
+  draw();
+  window.addEventListener('resize', draw);
+})();
+</script>
+</body>
+</html>
