@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A ordem em que o dinheiro chega também importa | Fábio Carlucci</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --verde-escuro: #1a2e25;
+    --dourado: #c9a84c;
+    --dourado-claro: #e2c47a;
+    --creme: #f5ede0;
+    --texto-claro: rgba(245,237,224,0.85);
+    --texto-muted: rgba(245,237,224,0.45);
+    --azul: #4ab8d8;
+    --vermelho: #c94545;
+    --verde-gain: #3dbf8a;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background-color: var(--verde-escuro);
+    color: var(--creme);
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background-image:
+      radial-gradient(ellipse at 10% 10%, rgba(201,168,76,0.06) 0%, transparent 55%),
+      radial-gradient(ellipse at 90% 90%, rgba(47,82,64,0.35) 0%, transparent 55%),
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none; z-index: 0;
+  }
+
+  .back-link {
+    position: relative; z-index: 10;
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 28px 8%;
+    font-size: 0.7rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--texto-muted); text-decoration: none; transition: color 0.2s;
+  }
+  .back-link:hover { color: var(--dourado); }
+  .back-link::before { content: '←'; font-size: 0.9rem; }
+
+  /* ── HERO ── */
+  .hero {
+    position: relative; z-index: 1;
+    padding: 20px 8% 64px;
+    border-bottom: 1px solid rgba(201,168,76,0.15);
+    max-width: 900px;
+  }
+  .hero-tag {
+    font-size: 0.65rem; font-weight: 500; letter-spacing: 0.35em; text-transform: uppercase;
+    color: var(--dourado); display: flex; align-items: center; gap: 12px;
+    margin-bottom: 24px; opacity: 0; animation: fadeUp 0.7s ease 0.1s forwards;
+  }
+  .hero-tag::before { content: ''; width: 30px; height: 1px; background: var(--dourado); }
+  .hero-date { font-size: 0.72rem; letter-spacing: 0.15em; color: var(--texto-muted); margin-bottom: 20px; opacity: 0; animation: fadeUp 0.7s ease 0.2s forwards; }
+  h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 5vw, 3.8rem); font-weight: 300; line-height: 1.12;
+    color: var(--creme); opacity: 0; animation: fadeUp 0.7s ease 0.3s forwards;
+  }
+  h1 em { font-style: italic; color: var(--dourado-claro); }
+  .hero-sub {
+    font-size: 0.97rem; color: var(--texto-muted); line-height: 1.75;
+    margin-top: 16px; max-width: 620px; opacity: 0; animation: fadeUp 0.7s ease 0.45s forwards;
+  }
+
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+
+  article {
+    position: relative; z-index: 1;
+    max-width: 800px; margin: 0 auto;
+    padding: 64px 8% 88px;
+  }
+
+  .lead {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.1rem, 2.5vw, 1.35rem); font-weight: 400; line-height: 1.8;
+    color: var(--creme); margin-bottom: 48px; padding-bottom: 48px;
+    border-bottom: 1px solid rgba(201,168,76,0.15);
+  }
+
+  p { font-size: 0.97rem; line-height: 1.9; color: var(--texto-claro); margin-bottom: 24px; }
+  strong { font-weight: 600; color: var(--creme); }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.55rem; font-weight: 600; color: var(--dourado-claro);
+    margin: 56px 0 18px; padding-top: 44px;
+    border-top: 1px solid rgba(201,168,76,0.12);
+    display: flex; align-items: center; gap: 14px;
+  }
+  .section-icon { font-size: 1.3rem; flex-shrink: 0; }
+
+  /* ── CANTILLON QUOTE ── */
+  .cantillon-box {
+    background: linear-gradient(135deg, rgba(201,168,76,0.1) 0%, rgba(26,46,37,0.5) 100%);
+    border: 1px solid rgba(201,168,76,0.2);
+    border-radius: 8px; padding: 36px 32px; margin: 36px 0;
+    position: relative; overflow: hidden;
+  }
+  .cantillon-box::before {
+    content: '"';
+    position: absolute; top: -16px; left: 24px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 7rem; color: rgba(201,168,76,0.1); line-height: 1; pointer-events: none;
+  }
+  .cantillon-nome {
+    font-size: 0.6rem; font-weight: 600; letter-spacing: 0.3em;
+    text-transform: uppercase; color: var(--dourado); margin-bottom: 14px;
+  }
+  .cantillon-texto {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.1rem, 2.5vw, 1.4rem); font-weight: 400; line-height: 1.75;
+    color: var(--creme);
+  }
+  .cantillon-texto strong { color: var(--dourado-claro); }
+
+  /* ── CADEIA DO DINHEIRO ── */
+  .cadeia-wrap { margin: 32px 0; }
+  .cadeia-step {
+    display: flex; align-items: flex-start; gap: 16px;
+    padding: 16px 20px; border-radius: 5px;
+    border-left: 3px solid transparent;
+    transition: background 0.25s;
+    margin-bottom: 3px;
+  }
+  .cadeia-step:hover { background: rgba(255,255,255,0.03); }
+
+  .cadeia-step:nth-child(1) { border-color: rgba(74,184,216,0.6); background: rgba(74,184,216,0.05); }
+  .cadeia-step:nth-child(2) { border-color: rgba(74,184,216,0.5); background: rgba(74,184,216,0.04); }
+  .cadeia-step:nth-child(3) { border-color: rgba(74,184,216,0.4); background: rgba(74,184,216,0.03); }
+  .cadeia-step:nth-child(4) { border-color: rgba(74,184,216,0.3); background: rgba(74,184,216,0.02); }
+  .cadeia-step:nth-child(5) { border-color: rgba(201,69,69,0.5); background: rgba(201,69,69,0.06); }
+
+  .cadeia-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem; font-weight: 700; line-height: 1;
+    color: rgba(74,184,216,0.4); flex-shrink: 0; width: 28px; text-align: center;
+  }
+  .cadeia-step:nth-child(5) .cadeia-num { color: rgba(201,69,69,0.5); }
+
+  .cadeia-icon { font-size: 1.2rem; flex-shrink: 0; margin-top: 2px; }
+  .cadeia-titulo { font-size: 0.82rem; font-weight: 600; color: var(--creme); margin-bottom: 3px; }
+  .cadeia-desc { font-size: 0.8rem; color: var(--texto-muted); line-height: 1.5; }
+
+  /* ── DIFERENCIAL DE JUROS ── */
+  .juros-cards {
+    display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin: 32px 0;
+  }
+  @media (max-width: 520px) { .juros-cards { grid-template-columns: 1fr; } }
+
+  .juros-card {
+    border-radius: 6px; padding: 22px 18px; text-align: center;
+  }
+  .juros-card.brasil {
+    background: rgba(201,168,76,0.1); border: 1px solid rgba(201,168,76,0.25);
+  }
+  .juros-card.eua {
+    background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08);
+  }
+  .juros-card.spread {
+    background: rgba(74,184,216,0.1); border: 1px solid rgba(74,184,216,0.25);
+  }
+  .juros-label {
+    font-size: 0.62rem; font-weight: 600; letter-spacing: 0.2em;
+    text-transform: uppercase; margin-bottom: 8px;
+  }
+  .juros-card.brasil .juros-label { color: var(--dourado); }
+  .juros-card.eua .juros-label { color: var(--texto-muted); }
+  .juros-card.spread .juros-label { color: var(--azul); }
+  .juros-valor {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.2rem; font-weight: 700; line-height: 1; margin-bottom: 4px;
+  }
+  .juros-card.brasil .juros-valor { color: var(--dourado); }
+  .juros-card.eua .juros-valor { color: var(--texto-muted); }
+  .juros-card.spread .juros-valor { color: var(--azul); }
+  .juros-sub { font-size: 0.68rem; color: var(--texto-muted); line-height: 1.4; }
+
+  /* ── GRÁFICO BARRAS RETORNO NOMINAL ── */
+  .grafico-wrap {
+    background: rgba(10,20,16,0.7);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 8px; padding: 24px 20px 16px; margin: 32px 0;
+  }
+  .grafico-titulo {
+    font-size: 0.68rem; font-weight: 600; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--dourado); margin-bottom: 4px;
+  }
+  .grafico-sub { font-size: 0.72rem; color: var(--texto-muted); margin-bottom: 20px; }
+
+  /* Barras horizontais manuais */
+  .hbar-wrap { display: flex; flex-direction: column; gap: 10px; }
+  .hbar-row { display: flex; align-items: center; gap: 10px; }
+  .hbar-label { font-size: 0.78rem; color: var(--texto-claro); width: 120px; flex-shrink: 0; text-align: right; }
+  .hbar-track { flex: 1; height: 14px; background: rgba(255,255,255,0.05); border-radius: 3px; overflow: hidden; }
+  .hbar-fill {
+    height: 100%; border-radius: 3px;
+    transition: width 1.3s cubic-bezier(0.4,0,0.2,1);
+  }
+  .hbar-val {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem; font-weight: 700; width: 70px; flex-shrink: 0;
+  }
+  .grafico-nota { font-size: 0.65rem; color: rgba(245,237,224,0.25); margin-top: 10px; line-height: 1.4; }
+
+  /* Cores das barras */
+  .fill-btc   { background: linear-gradient(90deg, rgba(74,184,216,0.5), var(--azul)); }
+  .fill-ouro  { background: linear-gradient(90deg, rgba(201,168,76,0.5), var(--dourado)); }
+  .fill-sp    { background: linear-gradient(90deg, rgba(74,184,216,0.4), rgba(74,184,216,0.8)); }
+  .fill-cdi   { background: linear-gradient(90deg, rgba(94,201,138,0.5), #5ec98a); }
+  .fill-ibov  { background: linear-gradient(90deg, rgba(94,201,138,0.4), rgba(94,201,138,0.7)); }
+  .fill-sal   { background: linear-gradient(90deg, rgba(201,168,76,0.25), rgba(201,168,76,0.5)); }
+  .fill-ipca  { background: linear-gradient(90deg, rgba(201,69,69,0.3), rgba(201,69,69,0.6)); }
+
+  /* cor do valor */
+  .val-btc  { color: var(--azul); }
+  .val-ouro { color: var(--dourado); }
+  .val-sp   { color: rgba(74,184,216,0.8); }
+  .val-cdi  { color: #5ec98a; }
+  .val-ibov { color: rgba(94,201,138,0.7); }
+  .val-sal  { color: rgba(201,168,76,0.6); }
+  .val-ipca { color: rgba(201,69,69,0.7); }
+
+  /* Linha de referência IPCA */
+  .ipca-ref-label {
+    font-size: 0.62rem; color: rgba(201,69,69,0.6);
+    letter-spacing: 0.1em; text-align: right; margin-top: 4px;
+    padding-right: 4px;
+  }
+
+  /* ── GANHO REAL ── */
+  .real-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 32px 0;
+  }
+  @media (max-width: 540px) { .real-grid { grid-template-columns: 1fr 1fr; } }
+
+  .real-card {
+    border-radius: 6px; padding: 18px 14px; text-align: center;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.07);
+    transition: border-color 0.25s, background 0.25s;
+  }
+  .real-card:hover { border-color: rgba(201,168,76,0.25); background: rgba(201,168,76,0.04); }
+  .real-card.destaque {
+    background: rgba(74,184,216,0.07);
+    border-color: rgba(74,184,216,0.2);
+  }
+  .real-card.baixo {
+    background: rgba(201,69,69,0.06);
+    border-color: rgba(201,69,69,0.15);
+  }
+  .real-ativo {
+    font-size: 0.65rem; font-weight: 600; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--texto-muted); margin-bottom: 8px;
+  }
+  .real-val {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.7rem; font-weight: 700; line-height: 1; margin-bottom: 4px;
+  }
+  .real-desc { font-size: 0.68rem; color: var(--texto-muted); line-height: 1.4; }
+
+  /* ── DOIS MUNDOS ── */
+  .dois-mundos {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 32px 0;
+  }
+  @media (max-width: 500px) { .dois-mundos { grid-template-columns: 1fr; } }
+
+  .mundo-card { border-radius: 6px; padding: 26px 22px; }
+  .mundo-card.ativos {
+    background: rgba(94,201,138,0.08);
+    border: 1px solid rgba(94,201,138,0.2);
+  }
+  .mundo-card.salario {
+    background: rgba(201,69,69,0.08);
+    border: 1px solid rgba(201,69,69,0.2);
+  }
+  .mundo-label {
+    font-size: 0.65rem; font-weight: 600; letter-spacing: 0.2em;
+    text-transform: uppercase; margin-bottom: 10px;
+  }
+  .mundo-card.ativos .mundo-label { color: #5ec98a; }
+  .mundo-card.salario .mundo-label { color: #e07070; }
+  .mundo-titulo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.25rem; font-weight: 600; color: var(--creme); margin-bottom: 10px; line-height: 1.3;
+  }
+  .mundo-desc { font-size: 0.82rem; color: var(--texto-muted); line-height: 1.6; }
+  .mundo-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.2rem; font-weight: 700; line-height: 1; margin: 10px 0 4px;
+  }
+  .mundo-card.ativos .mundo-num { color: #5ec98a; }
+  .mundo-card.salario .mundo-num { color: #e07070; }
+
+  /* ── LIÇÕES PRÁTICAS ── */
+  .licoes-list { display: flex; flex-direction: column; gap: 12px; margin: 28px 0; }
+  .licao-item {
+    display: flex; align-items: flex-start; gap: 16px;
+    padding: 20px 22px;
+    background: rgba(201,168,76,0.05);
+    border: 1px solid rgba(201,168,76,0.15);
+    border-radius: 5px;
+    transition: border-color 0.25s, background 0.25s;
+  }
+  .licao-item:hover { border-color: rgba(201,168,76,0.3); background: rgba(201,168,76,0.09); }
+  .licao-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem; font-weight: 700;
+    color: rgba(201,168,76,0.2); line-height: 1; flex-shrink: 0; width: 32px; text-align: center;
+  }
+  .licao-titulo { font-size: 0.82rem; font-weight: 600; color: var(--dourado); margin-bottom: 4px; }
+  .licao-desc { font-size: 0.84rem; color: var(--texto-claro); line-height: 1.6; }
+
+  /* ── INSIGHT BOX ── */
+  .insight-box {
+    background: linear-gradient(135deg, rgba(201,168,76,0.1) 0%, rgba(26,46,37,0.4) 100%);
+    border: 1px solid rgba(201,168,76,0.25); border-left: 3px solid var(--dourado);
+    border-radius: 4px; padding: 28px 32px; margin: 36px 0;
+  }
+  .insight-box p {
+    font-family: 'Cormorant Garamond', serif; font-size: 1.12rem;
+    color: var(--creme); line-height: 1.8; margin: 0;
+  }
+
+  /* ── CONCLUSÃO ── */
+  .conclusao {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem; font-weight: 400; line-height: 1.85; color: var(--creme);
+    margin-top: 52px; padding: 40px;
+    border: 1px solid rgba(201,168,76,0.2); border-radius: 6px;
+    background: rgba(255,255,255,0.02); position: relative;
+  }
+  .conclusao::before {
+    content: '"'; position: absolute; top: -10px; left: 32px;
+    font-size: 5rem; color: rgba(201,168,76,0.15);
+    font-family: 'Cormorant Garamond', serif; line-height: 1;
+  }
+
+  .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .fade-in.visible { opacity: 1; transform: none; }
+
+  footer {
+    position: relative; z-index: 1;
+    border-top: 1px solid rgba(201,168,76,0.12); padding: 40px 8%;
+    display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;
+  }
+  .footer-name { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 300; color: var(--texto-muted); }
+  .footer-contact { font-size: 0.75rem; color: rgba(245,237,224,0.25); line-height: 1.9; text-align: right; }
+  .footer-contact a { color: var(--dourado); text-decoration: none; }
+
+  @media (max-width: 640px) {
+    .back-link { padding: 20px 5%; }
+    .hero { padding: 10px 5% 48px; }
+    article { padding: 48px 5% 64px; }
+    footer { padding: 32px 5%; flex-direction: column; }
+    .footer-contact { text-align: left; }
+    .hbar-label { width: 80px; font-size: 0.72rem; }
+  }
+</style>
+</head>
+<body>
+
+<a class="back-link" href="index.html">Voltar</a>
+
+<header class="hero">
+  <div class="hero-tag">Memorando · Educação Financeira</div>
+  <div class="hero-date">Maio de 2026</div>
+  <h1>A ordem em que<br>o dinheiro chega<br><em>também importa</em></h1>
+  <p class="hero-sub">Existe uma camada anterior ao índice de inflação que explica por que algumas pessoas protegem patrimônio enquanto outras apenas tentam recompor o poder de compra perdido.</p>
+</header>
+
+<article>
+
+  <p class="lead">
+    Quando se fala em inflação, a discussão normalmente fica presa ao número final: IPCA, juros, salário, CDI. Mas existe uma camada anterior, menos comentada, que tem a ver com o <strong>caminho que o dinheiro percorre dentro da economia</strong> — e quem está na fila na hora certa.
+  </p>
+
+  <!-- CANTILLON -->
+  <div class="section-title"><span class="section-icon">📜</span> O Efeito Cantillon</div>
+
+  <div class="cantillon-box fade-in">
+    <div class="cantillon-nome">Richard Cantillon · Século XVIII</div>
+    <div class="cantillon-texto">
+      O dinheiro novo <strong>não chega ao mesmo tempo para todos</strong>. Ele entra por determinados canais — governo, bancos, crédito, grandes empresas, mercado financeiro — e só depois vai se espalhando. Quem recebe antes compra ativos a preço antigo. Quem recebe por último encontra tudo mais caro. <strong>Mesmo dinheiro. Resultado oposto. A ordem importa mais do que a quantidade.</strong>
+    </div>
+  </div>
+
+  <p>
+    A inflação não é apenas um índice divulgado no jornal. Ela <strong>reorganiza poder de compra, muda o preço relativo dos ativos e altera incentivos</strong> — premiando quem entende o ciclo antes.
+  </p>
+
+  <!-- CADEIA DO DINHEIRO -->
+  <div class="section-title fade-in"><span class="section-icon">🔗</span> O caminho do dinheiro novo</div>
+
+  <div class="cadeia-wrap fade-in">
+    <div class="cadeia-step">
+      <div class="cadeia-num">1</div>
+      <div class="cadeia-icon">🏦</div>
+      <div>
+        <div class="cadeia-titulo">Banco Central cria → vai para os bancos</div>
+        <div class="cadeia-desc">O dinheiro entra primeiro no sistema financeiro, onde os grandes players já podem se posicionar.</div>
+      </div>
+    </div>
+    <div class="cadeia-step">
+      <div class="cadeia-num">2</div>
+      <div class="cadeia-icon">🏢</div>
+      <div>
+        <div class="cadeia-titulo">Bancos emprestam → fundos e empresas grandes</div>
+        <div class="cadeia-desc">Crédito barato chega primeiro para quem já tem acesso. Fundos compram ativos, empresas se capitalizam.</div>
+      </div>
+    </div>
+    <div class="cadeia-step">
+      <div class="cadeia-num">3</div>
+      <div class="cadeia-icon">📈</div>
+      <div>
+        <div class="cadeia-titulo">Empresas investem → mercado de ações sobe</div>
+        <div class="cadeia-desc">Ativos financeiros são reprecificados antes do varejo. Quem estava posicionado colhe a valorização.</div>
+      </div>
+    </div>
+    <div class="cadeia-step">
+      <div class="cadeia-num">4</div>
+      <div class="cadeia-icon">🏠</div>
+      <div>
+        <div class="cadeia-titulo">Ativos sobem → imóveis, ouro, cripto disparam</div>
+        <div class="cadeia-desc">Os ativos reais sobem antes de qualquer ajuste salarial. Quem não estava posicionado paga mais caro para entrar.</div>
+      </div>
+    </div>
+    <div class="cadeia-step">
+      <div class="cadeia-num">5</div>
+      <div class="cadeia-icon">👷</div>
+      <div>
+        <div class="cadeia-titulo">Meses depois → salário é reajustado pela inflação que JÁ veio</div>
+        <div class="cadeia-desc">O trabalhador recebe o reajuste depois que os preços já subiram. Compra menos com mais. Esse é o fim da fila.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DIFERENCIAL DE JUROS -->
+  <div class="section-title fade-in"><span class="section-icon">⚖️</span> O Brasil tem uma camada extra</div>
+
+  <p>Com a Selic em 14,75% ao ano e o juro americano entre 3,50% e 3,75%, o diferencial bruto chega a aproximadamente <strong>11 pontos percentuais</strong>. Isso cria um incentivo estrutural para o fluxo de capital externo — mas também tem custos.</p>
+
+  <div class="juros-cards fade-in">
+    <div class="juros-card brasil">
+      <div class="juros-label">Selic · Brasil</div>
+      <div class="juros-valor">14,75%</div>
+      <div class="juros-sub">ao ano · Copom março/2026</div>
+    </div>
+    <div class="juros-card eua">
+      <div class="juros-label">Fed Funds · EUA</div>
+      <div class="juros-valor">3,75%</div>
+      <div class="juros-sub">ao ano · teto da faixa atual</div>
+    </div>
+    <div class="juros-card spread">
+      <div class="juros-label">Diferencial bruto</div>
+      <div class="juros-valor">~11 p.p.</div>
+      <div class="juros-sub">antes de impostos e câmbio</div>
+    </div>
+  </div>
+
+  <div class="insight-box fade-in">
+    <p>Dinheiro entra → real se valoriza → exportador sofre → BC mantém juro alto → trabalhador paga mais caro no crédito. <strong>O Efeito Cantillon no Brasil não é só sobre impressão de moeda — é também sobre o diferencial de juros que remunera primeiro o capital externo.</strong></p>
+  </div>
+
+  <!-- RETORNO NOMINAL -->
+  <div class="section-title fade-in"><span class="section-icon">📊</span> Brasil desde janeiro de 2020 — retorno nominal</div>
+
+  <p>Quem tinha dinheiro investido em ativos multiplicou patrimônio. Quem vive de salário praticamente empatou com a inflação. Os números mostram essa divergência com clareza.</p>
+
+  <div class="grafico-wrap fade-in" id="barChart">
+    <div class="grafico-titulo">Retorno acumulado desde jan/2020</div>
+    <div class="grafico-sub">Quem tem ativos ganhou. Quem vive de salário perdeu para a inflação.</div>
+    <div class="hbar-wrap">
+      <div class="hbar-row">
+        <span class="hbar-label">Bitcoin</span>
+        <div class="hbar-track"><div class="hbar-fill fill-btc" data-w="100" style="width:0%"></div></div>
+        <span class="hbar-val val-btc">+1.020%</span>
+      </div>
+      <div class="hbar-row">
+        <span class="hbar-label">Ouro</span>
+        <div class="hbar-track"><div class="hbar-fill fill-ouro" data-w="21" style="width:0%"></div></div>
+        <span class="hbar-val val-ouro">+210%</span>
+      </div>
+      <div class="hbar-row">
+        <span class="hbar-label">S&P 500 (em R$)</span>
+        <div class="hbar-track"><div class="hbar-fill fill-sp" data-w="12" style="width:0%"></div></div>
+        <span class="hbar-val val-sp">+119%</span>
+      </div>
+      <div class="hbar-row">
+        <span class="hbar-label">CDI</span>
+        <div class="hbar-track"><div class="hbar-fill fill-cdi" data-w="6.7" style="width:0%"></div></div>
+        <span class="hbar-val val-cdi">+68%</span>
+      </div>
+      <div class="hbar-row">
+        <span class="hbar-label">Ibovespa</span>
+        <div class="hbar-track"><div class="hbar-fill fill-ibov" data-w="6.2" style="width:0%"></div></div>
+        <span class="hbar-val val-ibov">+63%</span>
+      </div>
+      <div class="hbar-row">
+        <span class="hbar-label">Salário Mínimo</span>
+        <div class="hbar-track"><div class="hbar-fill fill-sal" data-w="4.5" style="width:0%"></div></div>
+        <span class="hbar-val val-sal">+45%</span>
+      </div>
+      <div class="hbar-row">
+        <span class="hbar-label">IPCA (inflação)</span>
+        <div class="hbar-track"><div class="hbar-fill fill-ipca" data-w="4.1" style="width:0%"></div></div>
+        <span class="hbar-val val-ipca">+41%</span>
+      </div>
+    </div>
+    <div class="grafico-nota">Dados nominais acumulados desde jan/2020. Bitcoin e S&P 500 em reais. Salário mínimo base R$ 1.045 → R$ 1.518. IPCA até mar/2026.</div>
+  </div>
+
+  <!-- GANHO REAL -->
+  <div class="section-title fade-in"><span class="section-icon">💡</span> Ganho real acima da inflação</div>
+
+  <p>Quando descontamos o IPCA acumulado (~42%), o verdadeiro crescimento do poder de compra de cada ativo fica ainda mais evidente — e o contraste com quem vive de salário se torna mais nítido.</p>
+
+  <div class="real-grid fade-in">
+    <div class="real-card destaque">
+      <div class="real-ativo">Bitcoin</div>
+      <div class="real-val" style="color:var(--azul);">+690%</div>
+      <div class="real-desc">ganho real acima da inflação</div>
+    </div>
+    <div class="real-card">
+      <div class="real-ativo">Ouro</div>
+      <div class="real-val" style="color:var(--dourado);">+119%</div>
+      <div class="real-desc">ganho real acima da inflação</div>
+    </div>
+    <div class="real-card">
+      <div class="real-ativo">S&P 500</div>
+      <div class="real-val" style="color:rgba(74,184,216,0.8);">+54%</div>
+      <div class="real-desc">ganho real em reais</div>
+    </div>
+    <div class="real-card">
+      <div class="real-ativo">CDI</div>
+      <div class="real-val" style="color:#5ec98a;">+18%</div>
+      <div class="real-desc">ganho real acima da inflação</div>
+    </div>
+    <div class="real-card">
+      <div class="real-ativo">Ibovespa</div>
+      <div class="real-val" style="color:rgba(94,201,138,0.7);">+15%</div>
+      <div class="real-desc">ganho real acima da inflação</div>
+    </div>
+    <div class="real-card baixo">
+      <div class="real-ativo">Salário Mínimo</div>
+      <div class="real-val" style="color:#e07070;">+2~3%</div>
+      <div class="real-desc">ganho real em 6 anos</div>
+    </div>
+  </div>
+
+  <!-- DOIS MUNDOS -->
+  <div class="section-title fade-in"><span class="section-icon">🔀</span> Dois mundos, mesmo período</div>
+
+  <div class="dois-mundos fade-in">
+    <div class="mundo-card ativos">
+      <div class="mundo-label">✓ Quem tinha ativos</div>
+      <div class="mundo-titulo">Multiplicou patrimônio</div>
+      <div class="mundo-num">+15% a +690%</div>
+      <div class="mundo-desc">ganho real acima da inflação, dependendo da classe de ativo. Capital cresceu mais rápido do que os preços subiram.</div>
+    </div>
+    <div class="mundo-card salario">
+      <div class="mundo-label">✗ Quem vive de salário</div>
+      <div class="mundo-titulo">Empatou com a inflação</div>
+      <div class="mundo-num">+2~3%</div>
+      <div class="mundo-desc">ganho real em 6 anos. O reajuste salarial veio depois que os preços já tinham subido. A fila importa.</div>
+    </div>
+  </div>
+
+  <p>Esse resultado não é sobre culpa ou sorte. É sobre a mecânica de como o dinheiro se move. O problema não é apenas "ganhar pouco" ou "gastar muito" — existe uma diferença profunda entre depender exclusivamente de reajustes salariais e <strong>construir uma carteira que participe dos movimentos de capital, juros, câmbio e lucro das empresas</strong>.</p>
+
+  <!-- LIÇÕES PRÁTICAS -->
+  <div class="section-title fade-in"><span class="section-icon">🎯</span> Três lições práticas</div>
+
+  <p>O Efeito Cantillon não é teoria conspiratória. É mecânica monetária. Não dá para mudar o sistema — mas dá para <strong>entender a ordem da fila</strong> e tomar decisões melhores dentro dele.</p>
+
+  <div class="licoes-list fade-in">
+    <div class="licao-item">
+      <div class="licao-num">1</div>
+      <div>
+        <div class="licao-titulo">Dinheiro parado é dinheiro perdendo valor</div>
+        <div class="licao-desc">Caixa parado não protege contra a inflação — apenas preserva o número nominal enquanto o poder de compra deteriora. Liquidez tem função, mas precisa ter tamanho certo dentro da carteira.</div>
+      </div>
+    </div>
+    <div class="licao-item">
+      <div class="licao-num">2</div>
+      <div>
+        <div class="licao-titulo">Quem entende o ciclo monetário se posiciona antes da multidão</div>
+        <div class="licao-desc">Não é sobre prever o futuro — é sobre entender que ativos tendem a se ajustar antes dos salários, e que estar posicionado antes da reprecificação faz toda a diferença no longo prazo.</div>
+      </div>
+    </div>
+    <div class="licao-item">
+      <div class="licao-num">3</div>
+      <div>
+        <div class="licao-titulo">Educação financeira não é luxo — é defesa patrimonial</div>
+        <div class="licao-desc">Entender como o dinheiro circula, onde estão os gargalos e como construir uma carteira com função clara é a forma prática de não ficar sempre no fim da fila.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="conclusao fade-in">
+    A inflação reorganiza poder de compra silenciosamente. <strong>Quem tem patrimônio exposto a bons ativos pode atravessar ciclos inflacionários com mais alternativas.</strong> Quem tem apenas caixa parado fica sempre tentando alcançar preços que já andaram. A conclusão correta não é correr atrás do ativo que mais subiu — é construir uma carteira com função clara para cada ciclo da economia.
+  </div>
+
+</article>
+
+<footer>
+  <div class="footer-name">Fábio Vogelaar Carlucci</div>
+  <div class="footer-contact">+55 (16) 98148-8260<br><a href="mailto:fabio.carlucci@ficus.capital">fabio.carlucci@ficus.capital</a></div>
+</footer>
+<div style="position:relative;z-index:1;padding:0 8% 28px;text-align:center;font-size:0.65rem;color:rgba(245,237,224,0.2);letter-spacing:0.08em;">Fontes: Banco Central do Brasil · IBGE · CoinMarketCap · B3 · Banco Mundial · dados de mercado compilados.</div>
+
+<script>
+// Fade in
+const faders = document.querySelectorAll('.fade-in');
+const obs = new IntersectionObserver(e => e.forEach(x => {
+  if(x.isIntersecting){ x.target.classList.add('visible'); obs.unobserve(x.target); }
+}), { threshold: 0.1 });
+faders.forEach(f => obs.observe(f));
+
+// Barras animadas
+const barObs = new IntersectionObserver(e => e.forEach(x => {
+  if(x.isIntersecting){
+    x.target.querySelectorAll('.hbar-fill').forEach(f => {
+      setTimeout(() => { f.style.width = f.getAttribute('data-w') + '%'; }, 150);
+    });
+    barObs.unobserve(x.target);
+  }
+}), { threshold: 0.3 });
+const bc = document.getElementById('barChart');
+if(bc) barObs.observe(bc);
+</script>
+</body>
+</html>
