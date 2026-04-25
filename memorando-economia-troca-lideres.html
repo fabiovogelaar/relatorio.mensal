@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A economia não para: ela troca de líderes | Fábio Carlucci</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --verde-escuro: #1a2e25;
+    --dourado: #c9a84c;
+    --dourado-claro: #e2c47a;
+    --creme: #f5ede0;
+    --texto-claro: rgba(245,237,224,0.85);
+    --texto-muted: rgba(245,237,224,0.45);
+    --azul: #4a90d9;
+    --verde-gain: #3dbf8a;
+    --vermelho: #c94545;
+
+    /* cores das décadas */
+    --c85: #4a7c4e;
+    --c95: #3a7a8f;
+    --c05: #c9a030;
+    --c15: #2a5a3a;
+    --c25: #8b3030;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background-color: var(--verde-escuro);
+    color: var(--creme);
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background-image:
+      radial-gradient(ellipse at 10% 10%, rgba(201,168,76,0.06) 0%, transparent 55%),
+      radial-gradient(ellipse at 90% 90%, rgba(47,82,64,0.35) 0%, transparent 55%),
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none; z-index: 0;
+  }
+
+  .back-link {
+    position: relative; z-index: 10;
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 28px 8%;
+    font-size: 0.7rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--texto-muted); text-decoration: none; transition: color 0.2s;
+  }
+  .back-link:hover { color: var(--dourado); }
+  .back-link::before { content: '←'; font-size: 0.9rem; }
+
+  /* ── HERO ── */
+  .hero {
+    position: relative; z-index: 1;
+    padding: 20px 8% 64px;
+    border-bottom: 1px solid rgba(201,168,76,0.15);
+    max-width: 900px;
+  }
+  .hero-tag {
+    font-size: 0.65rem; font-weight: 500; letter-spacing: 0.35em; text-transform: uppercase;
+    color: var(--dourado); display: flex; align-items: center; gap: 12px;
+    margin-bottom: 24px; opacity: 0; animation: fadeUp 0.7s ease 0.1s forwards;
+  }
+  .hero-tag::before { content: ''; width: 30px; height: 1px; background: var(--dourado); }
+  .hero-date { font-size: 0.72rem; letter-spacing: 0.15em; color: var(--texto-muted); margin-bottom: 20px; opacity: 0; animation: fadeUp 0.7s ease 0.2s forwards; }
+  h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 5vw, 3.8rem); font-weight: 300; line-height: 1.12;
+    color: var(--creme); opacity: 0; animation: fadeUp 0.7s ease 0.3s forwards;
+  }
+  h1 em { font-style: italic; color: var(--dourado-claro); }
+  .hero-sub {
+    font-size: 0.97rem; color: var(--texto-muted); line-height: 1.75;
+    margin-top: 16px; max-width: 640px; opacity: 0; animation: fadeUp 0.7s ease 0.45s forwards;
+  }
+  .hero-fonte {
+    margin-top: 18px; font-size: 0.7rem; color: rgba(245,237,224,0.3);
+    opacity: 0; animation: fadeUp 0.7s ease 0.55s forwards;
+  }
+
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+
+  article {
+    position: relative; z-index: 1;
+    max-width: 800px; margin: 0 auto;
+    padding: 64px 8% 88px;
+  }
+
+  .lead {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.1rem, 2.5vw, 1.35rem); font-weight: 400; line-height: 1.8;
+    color: var(--creme); margin-bottom: 48px; padding-bottom: 48px;
+    border-bottom: 1px solid rgba(201,168,76,0.15);
+  }
+
+  p { font-size: 0.97rem; line-height: 1.9; color: var(--texto-claro); margin-bottom: 24px; }
+  strong { font-weight: 600; color: var(--creme); }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.55rem; font-weight: 600; color: var(--dourado-claro);
+    margin: 56px 0 18px; padding-top: 44px;
+    border-top: 1px solid rgba(201,168,76,0.12);
+    display: flex; align-items: center; gap: 14px;
+  }
+  .section-icon { font-size: 1.3rem; flex-shrink: 0; }
+
+  /* ── CRESCIMENTO DO MERCADO ── */
+  .mktcap-timeline {
+    display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; margin: 36px 0;
+  }
+  @media (max-width: 600px) {
+    .mktcap-timeline { grid-template-columns: 1fr 1fr; gap: 10px; }
+  }
+
+  .mktcap-card {
+    border-radius: 6px; padding: 18px 14px; text-align: center;
+    position: relative; overflow: hidden;
+    transition: transform 0.25s;
+  }
+  .mktcap-card:hover { transform: translateY(-3px); }
+
+  .mktcap-card.y85 { background: rgba(74,124,78,0.2);  border: 1px solid rgba(74,124,78,0.3); }
+  .mktcap-card.y95 { background: rgba(58,122,143,0.2); border: 1px solid rgba(58,122,143,0.3); }
+  .mktcap-card.y05 { background: rgba(201,160,48,0.15); border: 1px solid rgba(201,160,48,0.3); }
+  .mktcap-card.y15 { background: rgba(42,90,58,0.2);   border: 1px solid rgba(42,90,58,0.3); }
+  .mktcap-card.y25 { background: rgba(139,48,48,0.18); border: 1px solid rgba(139,48,48,0.35); }
+
+  .mktcap-ano {
+    font-size: 0.65rem; font-weight: 600; letter-spacing: 0.2em;
+    text-transform: uppercase; margin-bottom: 8px;
+  }
+  .mktcap-card.y85 .mktcap-ano { color: var(--c85); }
+  .mktcap-card.y95 .mktcap-ano { color: var(--c95); }
+  .mktcap-card.y05 .mktcap-ano { color: var(--c05); }
+  .mktcap-card.y15 .mktcap-ano { color: var(--c15); }
+  .mktcap-card.y25 .mktcap-ano { color: #c07070; }
+
+  .mktcap-valor {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem; font-weight: 700; line-height: 1; margin-bottom: 4px;
+  }
+  .mktcap-card.y85 .mktcap-valor { color: #7faf83; }
+  .mktcap-card.y95 .mktcap-valor { color: #6ab8d8; }
+  .mktcap-card.y05 .mktcap-valor { color: var(--dourado); }
+  .mktcap-card.y15 .mktcap-valor { color: #7fc77f; }
+  .mktcap-card.y25 .mktcap-valor { color: #e07070; }
+
+  .mktcap-sub { font-size: 0.65rem; color: var(--texto-muted); line-height: 1.3; margin-bottom: 10px; }
+
+  .mktcap-mult {
+    font-size: 0.68rem; font-weight: 600; letter-spacing: 0.1em;
+    padding: 2px 7px; border-radius: 20px;
+    display: inline-block;
+  }
+  .mktcap-card.y25 .mktcap-mult { background: rgba(224,112,112,0.15); color: #e07070; }
+  .mktcap-card.y15 .mktcap-mult { background: rgba(127,199,127,0.15); color: #7fc77f; }
+  .mktcap-card.y05 .mktcap-mult { background: rgba(201,160,48,0.15); color: var(--dourado); }
+  .mktcap-card.y95 .mktcap-mult { background: rgba(106,184,216,0.15); color: #6ab8d8; }
+  .mktcap-card.y85 .mktcap-mult { background: rgba(127,175,131,0.15); color: #7faf83; }
+
+  /* ── GRÁFICO DE BARRAS POR DÉCADAS ── */
+  .decada-chart-wrap {
+    background: rgba(10,20,16,0.7);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 8px; padding: 24px 20px 18px; margin: 32px 0;
+  }
+  .chart-titulo {
+    font-size: 0.68rem; font-weight: 600; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--dourado); margin-bottom: 4px;
+  }
+  .chart-sub { font-size: 0.72rem; color: var(--texto-muted); margin-bottom: 20px; }
+
+  /* Legenda de cores */
+  .decada-legenda {
+    display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 20px;
+  }
+  .leg-item { display: flex; align-items: center; gap: 6px; font-size: 0.68rem; color: var(--texto-muted); }
+  .leg-dot { width: 10px; height: 10px; border-radius: 2px; flex-shrink: 0; }
+
+  /* Cada coluna de empresas por ano */
+  .decadas-grid {
+    display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px;
+  }
+  @media (max-width: 560px) { .decadas-grid { grid-template-columns: 1fr 1fr; gap: 10px; } }
+
+  .decada-col { }
+  .decada-col-header {
+    text-align: center; margin-bottom: 8px;
+  }
+  .decada-col-ano {
+    font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em;
+  }
+  .decada-col-cap {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.85rem; font-weight: 600; line-height: 1; margin-top: 2px;
+  }
+
+  .empresa-tag {
+    font-size: 0.65rem; font-weight: 500;
+    padding: 4px 7px; border-radius: 3px; margin-bottom: 3px;
+    line-height: 1.3; display: block; text-align: center;
+    cursor: default; transition: opacity 0.2s;
+  }
+  .empresa-tag:hover { opacity: 0.8; }
+
+  .tag-85  { background: rgba(74,124,78,0.25);  color: #7faf83; border: 1px solid rgba(74,124,78,0.3); }
+  .tag-95  { background: rgba(58,122,143,0.25); color: #6ab8d8; border: 1px solid rgba(58,122,143,0.3); }
+  .tag-05  { background: rgba(201,160,48,0.2);  color: var(--dourado); border: 1px solid rgba(201,160,48,0.3); }
+  .tag-15  { background: rgba(42,90,58,0.25);   color: #7fc77f; border: 1px solid rgba(42,90,58,0.3); }
+  .tag-25  { background: rgba(139,48,48,0.22);  color: #e07070; border: 1px solid rgba(139,48,48,0.35); }
+
+  /* ── LONGEVIDADE ── */
+  .longevidade-row {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin: 32px 0;
+  }
+  @media (max-width: 560px) { .longevidade-row { grid-template-columns: 1fr 1fr; } }
+
+  .long-card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 6px; padding: 20px 16px; text-align: center;
+    transition: border-color 0.25s;
+  }
+  .long-card:hover { border-color: rgba(201,168,76,0.25); }
+  .long-ano-ref { font-size: 0.62rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--texto-muted); margin-bottom: 8px; }
+  .long-val {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.2rem; font-weight: 700; line-height: 1; margin-bottom: 4px;
+  }
+  .long-desc { font-size: 0.68rem; color: var(--texto-muted); line-height: 1.4; }
+
+  /* Seta decrescente */
+  .longevidade-seta {
+    display: flex; align-items: center; justify-content: center;
+    gap: 0; margin: -20px 0 8px;
+  }
+  .seta-line {
+    flex: 1; height: 2px;
+    background: linear-gradient(90deg, rgba(74,124,78,0.5), rgba(201,168,76,0.5), rgba(201,69,69,0.5));
+  }
+  .seta-txt {
+    font-size: 0.65rem; color: var(--texto-muted);
+    padding: 0 10px; white-space: nowrap;
+  }
+
+  /* ── IA INVESTIMENTO ── */
+  .ia-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 32px 0;
+  }
+  @media (max-width: 500px) { .ia-grid { grid-template-columns: 1fr; } }
+
+  .ia-card {
+    border-radius: 6px; padding: 22px 20px;
+    background: rgba(74,144,217,0.08);
+    border: 1px solid rgba(74,144,217,0.2);
+    transition: border-color 0.25s;
+  }
+  .ia-card:hover { border-color: rgba(74,144,217,0.35); }
+  .ia-card.destaque {
+    background: rgba(139,48,48,0.1);
+    border-color: rgba(224,112,112,0.25);
+  }
+  .ia-label {
+    font-size: 0.62rem; font-weight: 600; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--azul); margin-bottom: 8px;
+  }
+  .ia-card.destaque .ia-label { color: #e07070; }
+  .ia-val {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem; font-weight: 700; color: var(--azul); line-height: 1; margin-bottom: 6px;
+  }
+  .ia-card.destaque .ia-val { color: #e07070; }
+  .ia-desc { font-size: 0.82rem; color: var(--texto-muted); line-height: 1.6; }
+
+  /* ── RENOVAÇÃO EMPRESARIAL ── */
+  .renovacao-stats {
+    display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; margin: 32px 0;
+  }
+  @media (max-width: 520px) { .renovacao-stats { grid-template-columns: 1fr; } }
+
+  .reno-card {
+    background: rgba(61,191,138,0.07);
+    border: 1px solid rgba(61,191,138,0.18);
+    border-radius: 6px; padding: 20px 18px; text-align: center;
+  }
+  .reno-label { font-size: 0.62rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--verde-gain); margin-bottom: 8px; }
+  .reno-val {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem; font-weight: 700; color: var(--verde-gain); line-height: 1; margin-bottom: 4px;
+  }
+  .reno-desc { font-size: 0.72rem; color: var(--texto-muted); line-height: 1.4; }
+
+  /* ── INSIGHT BOX ── */
+  .insight-box {
+    background: linear-gradient(135deg, rgba(201,168,76,0.1) 0%, rgba(26,46,37,0.4) 100%);
+    border: 1px solid rgba(201,168,76,0.25); border-left: 3px solid var(--dourado);
+    border-radius: 4px; padding: 28px 32px; margin: 36px 0;
+  }
+  .insight-box p {
+    font-family: 'Cormorant Garamond', serif; font-size: 1.12rem;
+    color: var(--creme); line-height: 1.8; margin: 0;
+  }
+
+  /* ── LIÇÕES PRÁTICAS ── */
+  .licoes { display: flex; flex-direction: column; gap: 12px; margin: 28px 0; }
+  .licao-item {
+    display: flex; align-items: flex-start; gap: 16px;
+    padding: 20px 22px;
+    background: rgba(201,168,76,0.05);
+    border: 1px solid rgba(201,168,76,0.15);
+    border-radius: 5px; transition: border-color 0.25s, background 0.25s;
+  }
+  .licao-item:hover { border-color: rgba(201,168,76,0.3); background: rgba(201,168,76,0.09); }
+  .licao-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem; font-weight: 700; color: rgba(201,168,76,0.2);
+    line-height: 1; flex-shrink: 0; width: 32px; text-align: center;
+  }
+  .licao-titulo { font-size: 0.82rem; font-weight: 600; color: var(--dourado); margin-bottom: 4px; }
+  .licao-desc { font-size: 0.84rem; color: var(--texto-claro); line-height: 1.6; }
+
+  /* ── CONCLUSÃO ── */
+  .conclusao {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem; font-weight: 400; line-height: 1.85; color: var(--creme);
+    margin-top: 52px; padding: 40px;
+    border: 1px solid rgba(201,168,76,0.2); border-radius: 6px;
+    background: rgba(255,255,255,0.02); position: relative;
+  }
+  .conclusao::before {
+    content: '"'; position: absolute; top: -10px; left: 32px;
+    font-size: 5rem; color: rgba(201,168,76,0.15);
+    font-family: 'Cormorant Garamond', serif; line-height: 1;
+  }
+
+  .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .fade-in.visible { opacity: 1; transform: none; }
+
+  footer {
+    position: relative; z-index: 1;
+    border-top: 1px solid rgba(201,168,76,0.12); padding: 40px 8%;
+    display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;
+  }
+  .footer-name { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 300; color: var(--texto-muted); }
+  .footer-contact { font-size: 0.75rem; color: rgba(245,237,224,0.25); line-height: 1.9; text-align: right; }
+  .footer-contact a { color: var(--dourado); text-decoration: none; }
+
+  @media (max-width: 640px) {
+    .back-link { padding: 20px 5%; }
+    .hero { padding: 10px 5% 48px; }
+    article { padding: 48px 5% 64px; }
+    footer { padding: 32px 5%; flex-direction: column; }
+    .footer-contact { text-align: left; }
+  }
+</style>
+</head>
+<body>
+
+<a class="back-link" href="index.html">Voltar</a>
+
+<header class="hero">
+  <div class="hero-tag">Memorando · Mercados Globais</div>
+  <div class="hero-date">Maio de 2026</div>
+  <h1>A economia não para:<br><em>ela troca de líderes</em></h1>
+  <p class="hero-sub">O gráfico da J.P. Morgan é uma das imagens mais simples e mais fortes para explicar a capacidade da economia americana de se reinventar — década após década.</p>
+  <div class="hero-fonte">Fonte: J.P. Morgan Asset Management · Guide to the Markets (mar/2026) · Bloomberg · S&P Global</div>
+</header>
+
+<article>
+
+  <p class="lead">
+    Em 1985, as dez maiores empresas do S&P 500 eram IBM, Exxon, GE, General Motors, AT&T, Shell Oil, Amoco, Royal Dutch, Kodak e DuPont. Em 2025: Apple, Nvidia, Microsoft, Amazon, Alphabet, Meta, Tesla, Broadcom, Berkshire Hathaway e J.P. Morgan. <strong>A lista mudou quase completamente. A economia não morreu. Ela apenas deslocou capital, talento e atenção para novos setores.</strong>
+  </p>
+
+  <!-- CRESCIMENTO DO MARKET CAP -->
+  <div class="section-title"><span class="section-icon">📊</span> O mercado que não para de crescer</div>
+
+  <p>O market cap combinado das dez maiores empresas saltou de US$ 251 bilhões em 1985 para US$ 19,4 trilhões em 2025 — <strong>um crescimento de 77 vezes em quatro décadas</strong>. Cada troca de liderança veio acompanhada de uma nova onda de criação de valor.</p>
+
+  <div class="mktcap-timeline fade-in">
+    <div class="mktcap-card y85">
+      <div class="mktcap-ano">1985</div>
+      <div class="mktcap-valor">$251B</div>
+      <div class="mktcap-sub">Energia · Indústria · Telecom</div>
+      <span class="mktcap-mult">base</span>
+    </div>
+    <div class="mktcap-card y95">
+      <div class="mktcap-ano">1995</div>
+      <div class="mktcap-valor">$597B</div>
+      <div class="mktcap-sub">Consumo · Energia · Indústria</div>
+      <span class="mktcap-mult">2,4×</span>
+    </div>
+    <div class="mktcap-card y05">
+      <div class="mktcap-ano">2005</div>
+      <div class="mktcap-valor">$2,4T</div>
+      <div class="mktcap-sub">Energia · Bancos · Saúde</div>
+      <span class="mktcap-mult">9,5×</span>
+    </div>
+    <div class="mktcap-card y15">
+      <div class="mktcap-ano">2015</div>
+      <div class="mktcap-valor">$3,2T</div>
+      <div class="mktcap-sub">Tech · Energia · Bancos</div>
+      <span class="mktcap-mult">12,7×</span>
+    </div>
+    <div class="mktcap-card y25">
+      <div class="mktcap-ano">2025</div>
+      <div class="mktcap-valor">$19,4T</div>
+      <div class="mktcap-sub">Tech · IA · Plataformas</div>
+      <span class="mktcap-mult">77×</span>
+    </div>
+  </div>
+
+  <!-- TABELA DE EMPRESAS POR DÉCADA -->
+  <div class="decada-chart-wrap fade-in">
+    <div class="chart-titulo">Top 10 S&P 500 por Década</div>
+    <div class="chart-sub">As 10 maiores empresas como % do market cap do índice</div>
+
+    <div class="decada-legenda">
+      <div class="leg-item"><div class="leg-dot" style="background:rgba(74,124,78,0.5)"></div>1985</div>
+      <div class="leg-item"><div class="leg-dot" style="background:rgba(58,122,143,0.5)"></div>1995</div>
+      <div class="leg-item"><div class="leg-dot" style="background:rgba(201,160,48,0.5)"></div>2005</div>
+      <div class="leg-item"><div class="leg-dot" style="background:rgba(42,90,58,0.5)"></div>2015</div>
+      <div class="leg-item"><div class="leg-dot" style="background:rgba(139,48,48,0.5)"></div>2025</div>
+    </div>
+
+    <div class="decadas-grid">
+      <!-- 1985 -->
+      <div class="decada-col">
+        <div class="decada-col-header">
+          <div class="decada-col-ano" style="color:#7faf83">1985</div>
+          <div class="decada-col-cap" style="color:#7faf83">$251B</div>
+        </div>
+        <span class="empresa-tag tag-85">IBM</span>
+        <span class="empresa-tag tag-85">Exxon</span>
+        <span class="empresa-tag tag-85">GE</span>
+        <span class="empresa-tag tag-85">Gen. Motors</span>
+        <span class="empresa-tag tag-85">AT&T</span>
+        <span class="empresa-tag tag-85">Shell Oil</span>
+        <span class="empresa-tag tag-85">Amoco</span>
+        <span class="empresa-tag tag-85">Royal Dutch</span>
+        <span class="empresa-tag tag-85">Kodak</span>
+        <span class="empresa-tag tag-85">DuPont</span>
+      </div>
+      <!-- 1995 -->
+      <div class="decada-col">
+        <div class="decada-col-header">
+          <div class="decada-col-ano" style="color:#6ab8d8">1995</div>
+          <div class="decada-col-cap" style="color:#6ab8d8">$597B</div>
+        </div>
+        <span class="empresa-tag tag-95">GE</span>
+        <span class="empresa-tag tag-95">AT&T</span>
+        <span class="empresa-tag tag-95">Exxon</span>
+        <span class="empresa-tag tag-95">Coca-Cola</span>
+        <span class="empresa-tag tag-95">Walmart</span>
+        <span class="empresa-tag tag-95">Merck</span>
+        <span class="empresa-tag tag-95">IBM</span>
+        <span class="empresa-tag tag-95">Altria</span>
+        <span class="empresa-tag tag-95">Royal Dutch</span>
+        <span class="empresa-tag tag-95">P&G</span>
+      </div>
+      <!-- 2005 -->
+      <div class="decada-col">
+        <div class="decada-col-header">
+          <div class="decada-col-ano" style="color:var(--dourado)">2005</div>
+          <div class="decada-col-cap" style="color:var(--dourado)">$2,4T</div>
+        </div>
+        <span class="empresa-tag tag-05">GE</span>
+        <span class="empresa-tag tag-05">Exxon</span>
+        <span class="empresa-tag tag-05">Microsoft</span>
+        <span class="empresa-tag tag-05">Citigroup</span>
+        <span class="empresa-tag tag-05">Walmart</span>
+        <span class="empresa-tag tag-05">Pfizer</span>
+        <span class="empresa-tag tag-05">BofA</span>
+        <span class="empresa-tag tag-05">J&J</span>
+        <span class="empresa-tag tag-05">AIG</span>
+        <span class="empresa-tag tag-05">IBM</span>
+      </div>
+      <!-- 2015 -->
+      <div class="decada-col">
+        <div class="decada-col-header">
+          <div class="decada-col-ano" style="color:#7fc77f">2015</div>
+          <div class="decada-col-cap" style="color:#7fc77f">$3,2T</div>
+        </div>
+        <span class="empresa-tag tag-15">Apple</span>
+        <span class="empresa-tag tag-15">Exxon</span>
+        <span class="empresa-tag tag-15">Microsoft</span>
+        <span class="empresa-tag tag-15">Berkshire</span>
+        <span class="empresa-tag tag-15">Wells Fargo</span>
+        <span class="empresa-tag tag-15">GE</span>
+        <span class="empresa-tag tag-15">J.P. Morgan</span>
+        <span class="empresa-tag tag-15">J&J</span>
+        <span class="empresa-tag tag-15">P&G</span>
+        <span class="empresa-tag tag-15">Chevron</span>
+      </div>
+      <!-- 2025 -->
+      <div class="decada-col">
+        <div class="decada-col-header">
+          <div class="decada-col-ano" style="color:#e07070">2025</div>
+          <div class="decada-col-cap" style="color:#e07070">$19,4T</div>
+        </div>
+        <span class="empresa-tag tag-25">Apple</span>
+        <span class="empresa-tag tag-25">Nvidia</span>
+        <span class="empresa-tag tag-25">Microsoft</span>
+        <span class="empresa-tag tag-25">Amazon</span>
+        <span class="empresa-tag tag-25">Alphabet</span>
+        <span class="empresa-tag tag-25">Meta</span>
+        <span class="empresa-tag tag-25">Tesla</span>
+        <span class="empresa-tag tag-25">Broadcom</span>
+        <span class="empresa-tag tag-25">Berkshire</span>
+        <span class="empresa-tag tag-25">J.P. Morgan</span>
+      </div>
+    </div>
+  </div>
+
+  <p>Em 2026, <strong>apenas Nvidia, Apple e Microsoft respondem por cerca de 18% de um índice de US$ 57,6 trilhões</strong>. As 10 maiores empresas juntas somam mais de 36% do S&P 500 — concentração acima do que se via em 2000, no auge da bolha de tecnologia.</p>
+
+  <!-- LONGEVIDADE ── -->
+  <div class="section-title fade-in"><span class="section-icon">⏳</span> A liderança dura cada vez menos</div>
+
+  <p>A Innosight, consultoria especializada em inovação, acompanha há décadas a chamada "longevidade corporativa" no S&P 500. O resultado mostra uma tendência clara e sem reversão.</p>
+
+  <div class="longevidade-row fade-in">
+    <div class="long-card">
+      <div class="long-ano-ref">1965</div>
+      <div class="long-val" style="color:#7faf83;">33 anos</div>
+      <div class="long-desc">permanência média das empresas no índice</div>
+    </div>
+    <div class="long-card">
+      <div class="long-ano-ref">1990</div>
+      <div class="long-val" style="color:var(--dourado);">20 anos</div>
+      <div class="long-desc">queda de 40% em apenas 25 anos</div>
+    </div>
+    <div class="long-card">
+      <div class="long-ano-ref">2021</div>
+      <div class="long-val" style="color:#e0a070;">15–20 anos</div>
+      <div class="long-desc">projeção Innosight para esta década</div>
+    </div>
+    <div class="long-card">
+      <div class="long-ano-ref">Próx. 10 anos</div>
+      <div class="long-val" style="color:#e07070;">~50%</div>
+      <div class="long-desc">das empresas atuais devem ser substituídas</div>
+    </div>
+  </div>
+
+  <div class="insight-box fade-in">
+    <p>A troca de liderança não é acidente. É o <strong>funcionamento normal de uma economia competitiva</strong>. Em 1985, a Kodak parecia imutável. A IBM parecia etterna. A GE parecia invencível. O mercado lembrou a todos que permanência não é garantida — e que isso é, paradoxalmente, o que o torna tão poderoso.</p>
+  </div>
+
+  <!-- IA E O CICLO ATUAL -->
+  <div class="section-title fade-in"><span class="section-icon">🤖</span> O ciclo atual: IA e semicondutores</div>
+
+  <p>O que chama atenção no ciclo de 2025 é a velocidade e a magnitude do investimento. A liderança está muito concentrada em tecnologia, inteligência artificial, semicondutores e plataformas digitais — e o capital que flui para esse setor é histórico.</p>
+
+  <div class="ia-grid fade-in">
+    <div class="ia-card">
+      <div class="ia-label">Inv. privado em IA · EUA (2024)</div>
+      <div class="ia-val">$109B</div>
+      <div class="ia-desc">Quase 12× o volume da China e 24× o do Reino Unido. (Stanford HAI, 2025)</div>
+    </div>
+    <div class="ia-card">
+      <div class="ia-label">IA generativa · global (2024)</div>
+      <div class="ia-val">$33,9B</div>
+      <div class="ia-desc">Alta de 18,7% vs. 2023 e mais de 8,5× o nível de 2022. (Stanford HAI)</div>
+    </div>
+    <div class="ia-card destaque">
+      <div class="ia-label">Big Tech em infraestrutura IA (2025)</div>
+      <div class="ia-val">$350B</div>
+      <div class="ia-desc">Microsoft, Amazon, Meta e Alphabet somados. (Reuters)</div>
+    </div>
+    <div class="ia-card destaque">
+      <div class="ia-label">Infraestrutura IA global (até 2030)</div>
+      <div class="ia-val">$3–4T</div>
+      <div class="ia-desc">Estimativa Goldman Sachs em data centers, chips e redes. (Reuters)</div>
+    </div>
+  </div>
+
+  <p>Em 2026, apenas Amazon, Microsoft, Alphabet e Meta devem gastar cerca de <strong>US$ 630 bilhões em data centers e chips de IA</strong> — valor equivalente a aproximadamente <strong>2,2% do PIB americano</strong>.</p>
+
+  <!-- RENOVAÇÃO EMPRESARIAL -->
+  <div class="section-title fade-in"><span class="section-icon">🌱</span> A fila permanente de novos concorrentes</div>
+
+  <p>A renovação começa muito antes de uma empresa entrar no S&P 500. Antes de existir uma Apple gigante ou uma Nvidia dominante, existe um período de tentativa, produto, capital, erro, escala e adaptação. Os dados sobre formação de novos negócios nos EUA mostram que essa fila está maior do que nunca.</p>
+
+  <div class="renovacao-stats fade-in">
+    <div class="reno-card">
+      <div class="reno-label">Novos negócios · 2021 e 2022</div>
+      <div class="reno-val">5M+</div>
+      <div class="reno-desc">aplicações por ano — nível sem precedentes históricos. (U.S. Census Bureau)</div>
+    </div>
+    <div class="reno-card">
+      <div class="reno-label">Recorde · 2023</div>
+      <div class="reno-val">5,5M</div>
+      <div class="reno-desc">novas aplicações em um único ano — o maior já registrado. (AP News)</div>
+    </div>
+    <div class="reno-card">
+      <div class="reno-label">Média mensal · 2024</div>
+      <div class="reno-val">430K</div>
+      <div class="reno-desc">novas aplicações/mês — 50% acima da média pré-pandemia de 2019. (Reuters)</div>
+    </div>
+  </div>
+
+  <p>A maioria dessas empresas não se tornará líder global. Mas o conjunto dessas tentativas cria o ambiente de onde saem os próximos grandes vencedores. A economia se reinventa porque existe uma <strong>fila permanente de empresas tentando resolver problemas antigos com tecnologias novas</strong>.</p>
+
+  <!-- O S&P COMO SISTEMA VIVO -->
+  <div class="section-title fade-in"><span class="section-icon">🔄</span> O S&P 500 não é uma fotografia — é um filme</div>
+
+  <p>O índice se atualiza. Quando uma empresa perde relevância, pode sair. Quando outra cresce o suficiente, pode entrar. <strong>Entre 1962 e 2014, mais de 1.100 empresas foram substituídas no índice.</strong> Para o investidor de longo prazo, essa é uma diferença essencial entre comprar uma empresa isolada e estar exposto a um índice amplo: a empresa individual pode envelhecer; o índice, quando bem construído, tende a incorporar parte da renovação da economia.</p>
+
+  <div class="insight-box fade-in">
+    <p>O S&P 500 cobre cerca de <strong>80% do valor de mercado disponível das ações americanas de grande porte</strong>. Sua força não está em congelar o passado — está em permitir que o capital migre para onde encontra produtividade, escala e retorno. Esse movimento não é linear, não é limpo, e não acontece sem crises. Mas é o que explica por que os líderes de ontem sempre deixam espaço para os líderes de amanhã.</p>
+  </div>
+
+  <!-- LIÇÕES ── -->
+  <div class="section-title fade-in"><span class="section-icon">🎯</span> O que isso significa para o investidor</div>
+
+  <div class="licoes fade-in">
+    <div class="licao-item">
+      <div class="licao-num">1</div>
+      <div>
+        <div class="licao-titulo">Não se apaixone demais por uma empresa ou setor</div>
+        <div class="licao-desc">A IBM, a Exxon e a Kodak pareciam eternas. A história mostra que a liderança muda — e o mercado não perdoa apego excessivo a teses do passado.</div>
+      </div>
+    </div>
+    <div class="licao-item">
+      <div class="licao-num">2</div>
+      <div>
+        <div class="licao-titulo">Também não aposte contra a capacidade de renovação da economia</div>
+        <div class="licao-desc">Os líderes atuais podem parecer concentrados ou caros. Mas desconfiar da economia americana como um todo é uma aposta com um histórico muito ruim.</div>
+      </div>
+    </div>
+    <div class="licao-item">
+      <div class="licao-num">3</div>
+      <div>
+        <div class="licao-titulo">Exposição estrutural à inovação vale mais que apostas táticas</div>
+        <div class="licao-desc">Os próximos grandes vencedores raramente são óbvios com muita antecedência. Diversificação, revisão periódica e humildade epistêmica costumam vencer a confiança excessiva em previsões.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="conclusao fade-in">
+    Empresas passam. Setores passam. Narrativas passam. A capacidade de uma economia aberta, competitiva e financiada por capital abundante de criar novos ciclos de crescimento continua sendo uma das forças mais relevantes para quem investe pensando em décadas — e não apenas no próximo trimestre. <strong>O gráfico da J.P. Morgan conta uma história de substituição, mas também de continuidade.</strong>
+  </div>
+
+</article>
+
+<footer>
+  <div class="footer-name">Fábio Vogelaar Carlucci</div>
+  <div class="footer-contact">+55 (16) 98148-8260<br><a href="mailto:fabio.carlucci@ficus.capital">fabio.carlucci@ficus.capital</a></div>
+</footer>
+<div style="position:relative;z-index:1;padding:0 8% 28px;text-align:center;font-size:0.65rem;color:rgba(245,237,224,0.2);letter-spacing:0.08em;">Fontes: J.P. Morgan Asset Management · Bloomberg · S&P Global · Innosight · Stanford HAI · Reuters · U.S. Census Bureau · Goldman Sachs</div>
+
+<script>
+const faders = document.querySelectorAll('.fade-in');
+const obs = new IntersectionObserver(e => e.forEach(x => {
+  if(x.isIntersecting){ x.target.classList.add('visible'); obs.unobserve(x.target); }
+}), { threshold: 0.1 });
+faders.forEach(f => obs.observe(f));
+</script>
+</body>
+</html>
