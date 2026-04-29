@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CDI nominal, real e em dólar | Fábio Carlucci</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --verde-escuro: #1a2e25;
+    --dourado: #c9a84c;
+    --dourado-claro: #e2c47a;
+    --creme: #f5ede0;
+    --texto-claro: rgba(245,237,224,0.85);
+    --texto-muted: rgba(245,237,224,0.45);
+    --azul: #4a90d9;
+    --verde-real: #3dbf8a;
+    --oliva: #8aaa50;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background-color: var(--verde-escuro);
+    color: var(--creme);
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background-image:
+      radial-gradient(ellipse at 10% 10%, rgba(201,168,76,0.06) 0%, transparent 55%),
+      radial-gradient(ellipse at 90% 90%, rgba(47,82,64,0.35) 0%, transparent 55%),
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none; z-index: 0;
+  }
+
+  .back-link {
+    position: relative; z-index: 10;
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 28px 8%;
+    font-size: 0.7rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--texto-muted); text-decoration: none; transition: color 0.2s;
+  }
+  .back-link:hover { color: var(--dourado); }
+  .back-link::before { content: '←'; font-size: 0.9rem; }
+
+  .hero {
+    position: relative; z-index: 1;
+    padding: 20px 8% 64px;
+    border-bottom: 1px solid rgba(201,168,76,0.15);
+    max-width: 900px;
+  }
+  .hero-tag {
+    font-size: 0.65rem; font-weight: 500; letter-spacing: 0.35em; text-transform: uppercase;
+    color: var(--dourado); display: flex; align-items: center; gap: 12px;
+    margin-bottom: 24px; opacity: 0; animation: fadeUp 0.7s ease 0.1s forwards;
+  }
+  .hero-tag::before { content: ''; width: 30px; height: 1px; background: var(--dourado); }
+  .hero-date { font-size: 0.72rem; letter-spacing: 0.15em; color: var(--texto-muted); margin-bottom: 20px; opacity: 0; animation: fadeUp 0.7s ease 0.2s forwards; }
+  h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 5vw, 3.8rem); font-weight: 300; line-height: 1.12;
+    color: var(--creme); opacity: 0; animation: fadeUp 0.7s ease 0.3s forwards;
+  }
+  h1 em { font-style: italic; color: var(--dourado-claro); }
+  .hero-sub {
+    font-size: 0.97rem; color: var(--texto-muted); line-height: 1.75;
+    margin-top: 16px; max-width: 640px; opacity: 0; animation: fadeUp 0.7s ease 0.45s forwards;
+  }
+  .hero-fonte {
+    margin-top: 16px; font-size: 0.7rem; color: rgba(245,237,224,0.3);
+    opacity: 0; animation: fadeUp 0.7s ease 0.55s forwards;
+  }
+
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+
+  article {
+    position: relative; z-index: 1;
+    max-width: 800px; margin: 0 auto;
+    padding: 64px 8% 88px;
+  }
+
+  .lead {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.1rem, 2.5vw, 1.35rem); font-weight: 400; line-height: 1.8;
+    color: var(--creme); margin-bottom: 48px; padding-bottom: 48px;
+    border-bottom: 1px solid rgba(201,168,76,0.15);
+  }
+
+  p { font-size: 0.97rem; line-height: 1.9; color: var(--texto-claro); margin-bottom: 24px; }
+  strong { font-weight: 600; color: var(--creme); }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.55rem; font-weight: 600; color: var(--dourado-claro);
+    margin: 56px 0 18px; padding-top: 44px;
+    border-top: 1px solid rgba(201,168,76,0.12);
+    display: flex; align-items: center; gap: 14px;
+  }
+  .section-icon { font-size: 1.3rem; flex-shrink: 0; }
+
+  /* ── TRÊS NÚMEROS DESTAQUE ── */
+  .tres-numeros {
+    display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 3px;
+    margin: 36px 0; border-radius: 8px; overflow: hidden;
+  }
+  @media (max-width: 520px) { .tres-numeros { grid-template-columns: 1fr; } }
+
+  .num-bloco {
+    padding: 28px 20px; text-align: center;
+  }
+  .num-bloco.nominal { background: rgba(74,144,217,0.12); border: 1px solid rgba(74,144,217,0.2); }
+  .num-bloco.real    { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); }
+  .num-bloco.dolar   { background: rgba(138,170,80,0.1);  border: 1px solid rgba(138,170,80,0.2); }
+
+  .num-label {
+    font-size: 0.62rem; font-weight: 600; letter-spacing: 0.2em;
+    text-transform: uppercase; margin-bottom: 10px;
+  }
+  .num-bloco.nominal .num-label { color: var(--azul); }
+  .num-bloco.real    .num-label { color: var(--texto-muted); }
+  .num-bloco.dolar   .num-label { color: var(--oliva); }
+
+  .num-valor {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.2rem, 5vw, 3rem); font-weight: 700; line-height: 1; margin-bottom: 6px;
+  }
+  .num-bloco.nominal .num-valor { color: var(--azul); }
+  .num-bloco.real    .num-valor { color: rgba(245,237,224,0.7); }
+  .num-bloco.dolar   .num-valor { color: var(--oliva); }
+
+  .num-desc { font-size: 0.7rem; color: var(--texto-muted); line-height: 1.45; }
+
+  /* ── GRÁFICO ── */
+  .grafico-wrap {
+    background: rgba(10,20,16,0.7);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 8px; padding: 24px 20px 16px; margin: 32px 0;
+  }
+  .grafico-titulo {
+    font-size: 0.68rem; font-weight: 600; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--dourado); margin-bottom: 4px;
+  }
+  .grafico-sub { font-size: 0.72rem; color: var(--texto-muted); margin-bottom: 16px; }
+  .grafico-legenda {
+    display: flex; gap: 20px; flex-wrap: wrap; margin-bottom: 12px;
+  }
+  .leg-item { display: flex; align-items: center; gap: 7px; font-size: 0.7rem; color: var(--texto-muted); }
+  .leg-line { width: 20px; height: 3px; border-radius: 2px; }
+  canvas { width: 100% !important; display: block; }
+  .grafico-nota { font-size: 0.65rem; color: rgba(245,237,224,0.25); margin-top: 10px; line-height: 1.4; }
+
+  /* ── DECOMPOSIÇÃO ── */
+  .decomp-box {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 8px; padding: 28px 24px; margin: 32px 0;
+  }
+  .decomp-titulo {
+    font-size: 0.68rem; font-weight: 600; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--dourado); margin-bottom: 20px;
+  }
+  .decomp-equacao {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.1rem, 3vw, 1.5rem); font-weight: 400; line-height: 1.7;
+    color: var(--creme); text-align: center; margin-bottom: 20px;
+  }
+  .decomp-equacao span { color: var(--dourado); font-style: italic; }
+
+  .decomp-items { display: flex; flex-direction: column; gap: 10px; }
+  .decomp-item {
+    display: flex; align-items: center; gap: 14px;
+    padding: 12px 16px; border-radius: 5px;
+  }
+  .decomp-item.sim {
+    background: rgba(74,144,217,0.08); border: 1px solid rgba(74,144,217,0.18);
+  }
+  .decomp-item.nao {
+    background: rgba(201,69,69,0.07); border: 1px solid rgba(201,69,69,0.18);
+  }
+  .decomp-check { font-size: 1rem; flex-shrink: 0; }
+  .decomp-texto { font-size: 0.85rem; line-height: 1.5; }
+  .decomp-item.sim .decomp-texto { color: var(--texto-claro); }
+  .decomp-item.nao .decomp-texto { color: var(--texto-muted); }
+  .decomp-badge {
+    margin-left: auto; flex-shrink: 0;
+    font-size: 0.65rem; font-weight: 600; letter-spacing: 0.1em;
+    padding: 3px 9px; border-radius: 20px;
+  }
+  .decomp-item.sim .decomp-badge { background: rgba(74,144,217,0.15); color: var(--azul); }
+  .decomp-item.nao .decomp-badge { background: rgba(201,69,69,0.15); color: #e07070; }
+
+  /* ── CARTEIRA 100% CDI ── */
+  .posicao-box {
+    background: linear-gradient(135deg, rgba(201,69,69,0.1) 0%, rgba(26,46,37,0.5) 100%);
+    border: 1px solid rgba(201,69,69,0.25); border-left: 3px solid #e07070;
+    border-radius: 4px; padding: 28px 32px; margin: 36px 0;
+  }
+  .posicao-box p {
+    font-family: 'Cormorant Garamond', serif; font-size: 1.12rem;
+    color: var(--creme); line-height: 1.8; margin: 0;
+  }
+
+  /* ── FUNÇÃO DO CDI ── */
+  .funcao-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 28px 0;
+  }
+  @media (max-width: 540px) { .funcao-grid { grid-template-columns: 1fr; } }
+
+  .funcao-card {
+    border-radius: 5px; padding: 20px 18px;
+  }
+  .funcao-card.sim {
+    background: rgba(61,191,138,0.07); border: 1px solid rgba(61,191,138,0.2);
+  }
+  .funcao-card.nao {
+    background: rgba(201,69,69,0.07); border: 1px solid rgba(201,69,69,0.18);
+  }
+  .funcao-label {
+    font-size: 0.65rem; font-weight: 600; letter-spacing: 0.2em;
+    text-transform: uppercase; margin-bottom: 12px;
+  }
+  .funcao-card.sim .funcao-label { color: #5ec98a; }
+  .funcao-card.nao .funcao-label { color: #e07070; }
+  .funcao-list { list-style: none; }
+  .funcao-list li {
+    font-size: 0.84rem; color: var(--texto-claro); padding: 4px 0;
+    display: flex; align-items: flex-start; gap: 8px; line-height: 1.5;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+  .funcao-list li:last-child { border-bottom: none; }
+  .funcao-card.sim .funcao-list li::before { content: '✓'; color: #5ec98a; flex-shrink: 0; font-size: 0.75rem; margin-top: 2px; }
+  .funcao-card.nao .funcao-list li::before { content: '✗'; color: #e07070; flex-shrink: 0; font-size: 0.75rem; margin-top: 2px; }
+
+  /* ── INSIGHT ── */
+  .insight-box {
+    background: linear-gradient(135deg, rgba(201,168,76,0.1) 0%, rgba(26,46,37,0.4) 100%);
+    border: 1px solid rgba(201,168,76,0.25); border-left: 3px solid var(--dourado);
+    border-radius: 4px; padding: 28px 32px; margin: 36px 0;
+  }
+  .insight-box p {
+    font-family: 'Cormorant Garamond', serif; font-size: 1.12rem;
+    color: var(--creme); line-height: 1.8; margin: 0;
+  }
+
+  /* ── ARQUITETURA PATRIMONIAL ── */
+  .arquitetura { display: flex; flex-direction: column; gap: 10px; margin: 28px 0; }
+  .arq-item {
+    display: flex; align-items: flex-start; gap: 16px;
+    padding: 18px 20px;
+    background: rgba(201,168,76,0.05); border: 1px solid rgba(201,168,76,0.15);
+    border-radius: 5px; transition: border-color 0.25s, background 0.25s;
+  }
+  .arq-item:hover { border-color: rgba(201,168,76,0.3); background: rgba(201,168,76,0.09); }
+  .arq-icon { font-size: 1.2rem; flex-shrink: 0; margin-top: 1px; }
+  .arq-titulo { font-size: 0.8rem; font-weight: 600; color: var(--dourado); margin-bottom: 3px; }
+  .arq-desc { font-size: 0.82rem; color: var(--texto-claro); line-height: 1.55; }
+
+  /* ── CONCLUSÃO ── */
+  .conclusao {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem; font-weight: 400; line-height: 1.85; color: var(--creme);
+    margin-top: 52px; padding: 40px;
+    border: 1px solid rgba(201,168,76,0.2); border-radius: 6px;
+    background: rgba(255,255,255,0.02); position: relative;
+  }
+  .conclusao::before {
+    content: '"'; position: absolute; top: -10px; left: 32px;
+    font-size: 5rem; color: rgba(201,168,76,0.15);
+    font-family: 'Cormorant Garamond', serif; line-height: 1;
+  }
+
+  .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .fade-in.visible { opacity: 1; transform: none; }
+
+  footer {
+    position: relative; z-index: 1;
+    border-top: 1px solid rgba(201,168,76,0.12); padding: 40px 8%;
+    display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;
+  }
+  .footer-name { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 300; color: var(--texto-muted); }
+  .footer-contact { font-size: 0.75rem; color: rgba(245,237,224,0.25); line-height: 1.9; text-align: right; }
+  .footer-contact a { color: var(--dourado); text-decoration: none; }
+
+  @media (max-width: 640px) {
+    .back-link { padding: 20px 5%; }
+    .hero { padding: 10px 5% 48px; }
+    article { padding: 48px 5% 64px; }
+    footer { padding: 32px 5%; flex-direction: column; }
+    .footer-contact { text-align: left; }
+  }
+</style>
+</head>
+<body>
+
+<a class="back-link" href="index.html">Voltar</a>
+
+<header class="hero">
+  <div class="hero-tag">Memorando · Renda Fixa & Patrimônio</div>
+  <div class="hero-date">Maio de 2026</div>
+  <h1>CDI nominal, real<br>e em dólar: <em>a diferença entre<br>retorno aparente e preservação patrimonial</em></h1>
+  <p class="hero-sub">O mesmo ativo. Três leituras completamente diferentes. A base de comparação muda tudo — e o investidor brasileiro precisa entender isso.</p>
+  <div class="hero-fonte">Fonte: J.P. Morgan Asset Management · Bloomberg · IBGE · Dados até dez/2024</div>
+</header>
+
+<article>
+
+  <p class="lead">
+    O gráfico da J.P. Morgan merece uma leitura mais rigorosa do que normalmente recebe. À primeira vista, o CDI parece ter entregado um resultado muito expressivo desde 2015. Essa leitura, porém, considera apenas a evolução do capital em reais. Quando o mesmo retorno é visto em três bases diferentes, a interpretação muda completamente.
+  </p>
+
+  <!-- TRÊS NÚMEROS -->
+  <div class="tres-numeros fade-in">
+    <div class="num-bloco nominal">
+      <div class="num-label">CDI Nominal</div>
+      <div class="num-valor">+142%</div>
+      <div class="num-desc">Em reais correntes, desde jan/2015 até dez/2024</div>
+    </div>
+    <div class="num-bloco real">
+      <div class="num-label">CDI Real</div>
+      <div class="num-valor">+38%</div>
+      <div class="num-desc">Descontando a inflação (IPCA) no período</div>
+    </div>
+    <div class="num-bloco dolar">
+      <div class="num-label">CDI em US$</div>
+      <div class="num-valor">+4%</div>
+      <div class="num-desc">Convertido para dólar — 10 anos de ganho em moeda forte</div>
+    </div>
+  </div>
+
+  <!-- GRÁFICO INTERATIVO -->
+  <div class="grafico-wrap fade-in">
+    <div class="grafico-titulo">Retornos acumulados do CDI — base 100 = jan/2015</div>
+    <div class="grafico-sub">Nominal vs. Real vs. US$ · Dados até dez/2024</div>
+    <div class="grafico-legenda">
+      <div class="leg-item"><div class="leg-line" style="background:var(--azul)"></div>CDI Nominal</div>
+      <div class="leg-item"><div class="leg-line" style="background:rgba(245,237,224,0.6)"></div>CDI Real</div>
+      <div class="leg-item"><div class="leg-line" style="background:var(--oliva)"></div>CDI em US$</div>
+    </div>
+    <canvas id="cdiChart" height="220"></canvas>
+    <div class="grafico-nota">Fonte: J.P. Morgan Asset Management, Bloomberg, IBGE. Dados de 31 de dezembro de 2024.</div>
+  </div>
+
+  <p>
+    Essa diferença entre CDI nominal, CDI real e CDI em dólar muda completamente a interpretação do desempenho. O investidor que olha apenas para o retorno nominal pode ter a sensação de forte crescimento patrimonial. Porém, <strong>parte relevante desse retorno representa apenas compensação pela inflação doméstica e pela estrutura de juros do Brasil</strong> — não crescimento real de patrimônio.
+  </p>
+
+  <!-- DECOMPOSIÇÃO -->
+  <div class="section-title fade-in"><span class="section-icon">🔬</span> A decomposição do retorno</div>
+
+  <div class="decomp-box fade-in">
+    <div class="decomp-titulo">Retorno nominal = taxa real + inflação + efeito cambial</div>
+    <div class="decomp-equacao">
+      Retorno <span>nominal</span> = taxa <span>real</span> + <span>inflação</span> + efeito <span>cambial</span>
+    </div>
+    <div class="decomp-items">
+      <div class="decomp-item sim">
+        <span class="decomp-check">✓</span>
+        <div class="decomp-texto">O CDI entrega a <strong>taxa real</strong> dentro da lógica doméstica brasileira — com liquidez, previsibilidade e baixo risco de crédito</div>
+        <span class="decomp-badge">CDI entrega</span>
+      </div>
+      <div class="decomp-item nao">
+        <span class="decomp-check">✗</span>
+        <div class="decomp-texto">O CDI <strong>não tem compromisso</strong> com preservação de poder de compra global — ele não protege contra inflação acima do esperado</div>
+        <span class="decomp-badge">CDI não garante</span>
+      </div>
+      <div class="decomp-item nao">
+        <span class="decomp-check">✗</span>
+        <div class="decomp-texto">O CDI <strong>não protege</strong> contra a depreciação estrutural do real frente a moedas fortes ao longo do tempo</div>
+        <span class="decomp-badge">CDI não garante</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- POSIÇÃO ESTRUTURAL EM BRL -->
+  <div class="section-title fade-in"><span class="section-icon">⚠️</span> CDI 100% não é posição neutra</div>
+
+  <div class="posicao-box fade-in">
+    <p>Uma carteira 100% concentrada em CDI representa, na prática, uma <strong>posição estrutural em Brasil e em reais</strong>. Não é uma alocação neutra. É uma aposta implícita de que o prêmio de juros local será suficiente para compensar inflação, perda relativa da moeda e custo de oportunidade em relação a outros ativos globais. <strong>O gráfico mostra que, na última década, essa compensação foi de apenas +4% em dólar.</strong></p>
+  </div>
+
+  <p>
+    A linha em dólar é especialmente relevante porque mostra que o investidor pode ter sido bem remunerado nominalmente e, ao mesmo tempo, ter preservado muito pouco valor em moeda forte. Para famílias com <strong>despesas futuras dolarizadas</strong> — educação internacional, viagens, sucessão patrimonial ou diversificação global — essa análise é indispensável.
+  </p>
+
+  <!-- QUANDO CDI FAZ SENTIDO -->
+  <div class="section-title fade-in"><span class="section-icon">🎯</span> Quando o CDI faz sentido — e quando não faz</div>
+
+  <div class="funcao-grid fade-in">
+    <div class="funcao-card sim">
+      <div class="funcao-label">✓ CDI é excelente para</div>
+      <ul class="funcao-list">
+        <li>Reserva de emergência e liquidez imediata</li>
+        <li>Caixa estratégico de curto prazo</li>
+        <li>Objetivos com prazo definido de 1–2 anos</li>
+        <li>Estabilidade nominal em momentos de crise</li>
+        <li>Ciclos de juro real muito elevado</li>
+      </ul>
+    </div>
+    <div class="funcao-card nao">
+      <div class="funcao-label">✗ CDI não substitui</div>
+      <ul class="funcao-list">
+        <li>Proteção estrutural contra inflação de longo prazo</li>
+        <li>Preservação de valor em moeda forte</li>
+        <li>Crescimento patrimonial real em décadas</li>
+        <li>Diversificação geográfica e cambial</li>
+        <li>Exposição a ativos reais e crescimento global</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="insight-box fade-in">
+    <p>O problema aparece quando o investidor transforma uma solução de liquidez e estabilidade nominal em <strong>estratégia principal de crescimento patrimonial</strong>. A estabilidade em reais pode esconder uma fragilidade importante: a baixa capacidade de crescimento real quando a análise considera inflação, câmbio e poder de compra internacional.</p>
+  </div>
+
+  <!-- ARQUITETURA PATRIMONIAL -->
+  <div class="section-title fade-in"><span class="section-icon">🏛️</span> Uma arquitetura patrimonial mais completa</div>
+
+  <p>A conclusão prática para asset allocation é clara: o CDI deve ser visto como uma peça importante, mas não como a carteira inteira. Uma alocação patrimonial robusta precisa combinar diferentes funções:</p>
+
+  <div class="arquitetura fade-in">
+    <div class="arq-item">
+      <span class="arq-icon">💧</span>
+      <div>
+        <div class="arq-titulo">Liquidez em reais (CDI / pós-fixado)</div>
+        <div class="arq-desc">Para reserva de emergência, caixa estratégico e objetivos de curto prazo. Tamanho adequado ao perfil e ao horizonte, não como posição dominante.</div>
+      </div>
+    </div>
+    <div class="arq-item">
+      <span class="arq-icon">🔒</span>
+      <div>
+        <div class="arq-titulo">Proteção contra inflação (IPCA+)</div>
+        <div class="arq-desc">Títulos indexados ao IPCA garantem ganho real dentro da economia brasileira, protegendo contra surpresas inflacionárias no médio e longo prazo.</div>
+      </div>
+    </div>
+    <div class="arq-item">
+      <span class="arq-icon">🌍</span>
+      <div>
+        <div class="arq-titulo">Diversificação internacional (moeda forte)</div>
+        <div class="arq-desc">Exposição a ativos globais reduz a dependência estrutural do real. Para objetivos dolarizados ou preservação de riqueza em termos globais, é peça indispensável.</div>
+      </div>
+    </div>
+    <div class="arq-item">
+      <span class="arq-icon">📈</span>
+      <div>
+        <div class="arq-titulo">Ativos reais e crescimento de longo prazo</div>
+        <div class="arq-desc">Ações, fundos imobiliários e outros ativos reais participam dos ganhos de produtividade e inovação da economia — algo que o CDI estruturalmente não captura.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="conclusao fade-in">
+    Patrimônio não deve ser avaliado apenas pelo número que cresce no extrato. Deve ser avaliado pela sua capacidade real de manter e ampliar poder de compra ao longo do tempo. <strong>O CDI continua sendo uma ferramenta relevante e, em muitos casos, indispensável. Mas ele precisa estar dentro de uma arquitetura patrimonial mais ampla</strong> — não ser confundido com ela.
+  </div>
+
+</article>
+
+<footer>
+  <div class="footer-name">Fábio Vogelaar Carlucci</div>
+  <div class="footer-contact">
+    +55 (16) 98148-8260<br>
+    <a href="mailto:fabio.carlucci@ficus.capital">fabio.carlucci@ficus.capital</a>
+  </div>
+</footer>
+<div style="position:relative;z-index:1;padding:0 8% 28px;text-align:center;font-size:0.65rem;color:rgba(245,237,224,0.2);letter-spacing:0.08em;">Fontes: J.P. Morgan Asset Management · Bloomberg · IBGE · Dados até dez/2024</div>
+
+<script>
+// Fade in
+const faders = document.querySelectorAll('.fade-in');
+const obs = new IntersectionObserver(e => e.forEach(x => {
+  if(x.isIntersecting){ x.target.classList.add('visible'); obs.unobserve(x.target); }
+}), { threshold: 0.1 });
+faders.forEach(f => obs.observe(f));
+
+// Gráfico
+(function() {
+  const canvas = document.getElementById('cdiChart');
+  if(!canvas) return;
+
+  // Anos: 2015 a 2024 (trimestral — 40 pontos)
+  const n = 40;
+  const anos = [];
+  for(let i=0;i<n;i++){
+    const y = 2015 + Math.floor(i/4);
+    const q = ['Jan','Abr','Jul','Out'][i%4];
+    anos.push(i%4===0 ? String(y) : '');
+  }
+
+  // CDI nominal: sobe de 100 a ~242 de forma relativamente suave e crescente
+  const nominal = [100,102.6,105.3,108.2,111.8,115.5,119.3,123.2,126.4,129.0,131.3,133.5,135.6,137.5,139.4,141.6,143.9,146.4,149.2,152.4,154.8,157.0,159.0,161.0,163.5,167.0,171.5,177.0,183.5,190.5,196.5,202.0,207.0,212.5,218.0,223.5,229.5,234.5,238.5,242.0];
+
+  // CDI real: sobe mais lentamente, com alguma oscilação, chega ~138
+  const real = [100,100.4,101.0,101.5,101.8,102.0,102.6,103.1,103.5,103.8,104.1,104.5,104.9,105.4,106.0,106.7,107.3,108.0,108.8,109.6,110.0,110.3,110.5,110.8,111.2,112.0,113.0,114.2,115.5,117.0,118.5,120.0,121.5,123.0,124.5,126.5,128.5,131.0,134.5,138.0];
+
+  // CDI em dólar: muito volátil, termina ~104 (4% acumulado)
+  // Baixa bastante em 2018 e 2020, depois recupera parcialmente
+  const dolar = [100,97,95,93,96,102,106,108,104,100,98,97,106,108,109,107,104,103,99,97,98,102,108,110,106,100,94,90,88,87,88,92,97,101,105,107,108,106,105,104];
+
+  function draw() {
+    const W = canvas.offsetWidth || 700;
+    const H = 220;
+    canvas.width = W * window.devicePixelRatio;
+    canvas.height = H * window.devicePixelRatio;
+    canvas.style.height = H + 'px';
+    const ctx = canvas.getContext('2d');
+    ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
+
+    const PAD = { top: 14, right: 48, bottom: 32, left: 44 };
+    const pW = W - PAD.left - PAD.right;
+    const pH = H - PAD.top - PAD.bottom;
+    const minV = 70, maxV = 250;
+
+    function xP(i){ return PAD.left + (i/(n-1))*pW; }
+    function yP(v){ return PAD.top + pH - ((v-minV)/(maxV-minV))*pH; }
+
+    // Grid horizontal
+    [80,100,120,140,160,180,200,220,240].forEach(v => {
+      ctx.strokeStyle = 'rgba(255,255,255,0.05)'; ctx.lineWidth = 1;
+      ctx.beginPath(); ctx.moveTo(PAD.left, yP(v)); ctx.lineTo(PAD.left+pW, yP(v)); ctx.stroke();
+      ctx.fillStyle = 'rgba(245,237,224,0.2)'; ctx.font = '9px Jost,sans-serif'; ctx.textAlign = 'right';
+      ctx.fillText(v, PAD.left-5, yP(v)+3);
+    });
+
+    // Linha base 100
+    ctx.strokeStyle = 'rgba(255,255,255,0.12)'; ctx.lineWidth = 1; ctx.setLineDash([4,4]);
+    ctx.beginPath(); ctx.moveTo(PAD.left, yP(100)); ctx.lineTo(PAD.left+pW, yP(100)); ctx.stroke();
+    ctx.setLineDash([]);
+
+    // X labels
+    ctx.fillStyle = 'rgba(245,237,224,0.25)'; ctx.textAlign = 'center'; ctx.font = '9px Jost,sans-serif';
+    anos.forEach((a,i) => { if(a) ctx.fillText(a, xP(i), H-PAD.bottom+14); });
+
+    // Desenhar linhas
+    const series = [
+      { data: nominal, color: 'rgba(74,144,217,0.9)', width: 2.2, label: '142%', lPos: nominal[n-1] },
+      { data: real,    color: 'rgba(245,237,224,0.65)', width: 1.8, label: '38%',  lPos: real[n-1] },
+      { data: dolar,   color: 'rgba(138,170,80,0.85)', width: 1.8, label: '4%',   lPos: dolar[n-1] },
+    ];
+
+    series.forEach(s => {
+      ctx.beginPath(); ctx.strokeStyle = s.color; ctx.lineWidth = s.width; ctx.lineJoin = 'round';
+      s.data.forEach((v,i) => i===0 ? ctx.moveTo(xP(i),yP(v)) : ctx.lineTo(xP(i),yP(v)));
+      ctx.stroke();
+      // Label no final
+      ctx.fillStyle = s.color;
+      ctx.font = 'bold 10px Jost,sans-serif'; ctx.textAlign = 'left';
+      ctx.fillText(s.label, PAD.left+pW+5, yP(s.lPos)+4);
+    });
+  }
+
+  draw();
+  window.addEventListener('resize', draw);
+})();
+</script>
+</body>
+</html>
