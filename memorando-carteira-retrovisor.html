@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A próxima década pode punir carteiras montadas pelo retrovisor | Fábio Carlucci</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --verde-escuro: #1a2e25;
+    --dourado: #c9a84c;
+    --dourado-claro: #e2c47a;
+    --creme: #f5ede0;
+    --texto-claro: rgba(245,237,224,0.85);
+    --texto-muted: rgba(245,237,224,0.45);
+    --azul: #4a90d9;
+    --verde-gain: #3dbf8a;
+    --laranja: #e07a35;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background-color: var(--verde-escuro);
+    color: var(--creme);
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background-image:
+      radial-gradient(ellipse at 10% 10%, rgba(201,168,76,0.06) 0%, transparent 55%),
+      radial-gradient(ellipse at 90% 90%, rgba(47,82,64,0.35) 0%, transparent 55%),
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none; z-index: 0;
+  }
+
+  .back-link {
+    position: relative; z-index: 10;
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 28px 8%;
+    font-size: 0.7rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--texto-muted); text-decoration: none; transition: color 0.2s;
+  }
+  .back-link:hover { color: var(--dourado); }
+  .back-link::before { content: '←'; font-size: 0.9rem; }
+
+  .hero {
+    position: relative; z-index: 1;
+    padding: 20px 8% 64px;
+    border-bottom: 1px solid rgba(201,168,76,0.15);
+    max-width: 900px;
+  }
+  .hero-tag {
+    font-size: 0.65rem; font-weight: 500; letter-spacing: 0.35em; text-transform: uppercase;
+    color: var(--dourado); display: flex; align-items: center; gap: 12px;
+    margin-bottom: 24px; opacity: 0; animation: fadeUp 0.7s ease 0.1s forwards;
+  }
+  .hero-tag::before { content: ''; width: 30px; height: 1px; background: var(--dourado); }
+  .hero-date { font-size: 0.72rem; letter-spacing: 0.15em; color: var(--texto-muted); margin-bottom: 20px; opacity: 0; animation: fadeUp 0.7s ease 0.2s forwards; }
+  h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 5vw, 3.8rem); font-weight: 300; line-height: 1.12;
+    color: var(--creme); opacity: 0; animation: fadeUp 0.7s ease 0.3s forwards;
+  }
+  h1 em { font-style: italic; color: var(--dourado-claro); }
+  .hero-sub {
+    font-size: 0.97rem; color: var(--texto-muted); line-height: 1.75;
+    margin-top: 16px; max-width: 640px; opacity: 0; animation: fadeUp 0.7s ease 0.45s forwards;
+  }
+  .hero-fonte {
+    margin-top: 16px; font-size: 0.7rem; color: rgba(245,237,224,0.3);
+    opacity: 0; animation: fadeUp 0.7s ease 0.55s forwards;
+  }
+
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+
+  article {
+    position: relative; z-index: 1;
+    max-width: 800px; margin: 0 auto;
+    padding: 64px 8% 88px;
+  }
+
+  .lead {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.1rem, 2.5vw, 1.35rem); font-weight: 400; line-height: 1.8;
+    color: var(--creme); margin-bottom: 48px; padding-bottom: 48px;
+    border-bottom: 1px solid rgba(201,168,76,0.15);
+  }
+
+  p { font-size: 0.97rem; line-height: 1.9; color: var(--texto-claro); margin-bottom: 24px; }
+  strong { font-weight: 600; color: var(--creme); }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.55rem; font-weight: 600; color: var(--dourado-claro);
+    margin: 56px 0 18px; padding-top: 44px;
+    border-top: 1px solid rgba(201,168,76,0.12);
+    display: flex; align-items: center; gap: 14px;
+  }
+  .section-icon { font-size: 1.3rem; flex-shrink: 0; }
+
+  /* ── RETORNO ESPERADO: ANTES vs AGORA ── */
+  .retorno-flip {
+    display: grid; grid-template-columns: 1fr auto 1fr; gap: 0;
+    align-items: center; margin: 36px 0; border-radius: 8px; overflow: hidden;
+  }
+  @media (max-width: 520px) {
+    .retorno-flip { grid-template-columns: 1fr; }
+    .flip-seta { transform: rotate(90deg); padding: 8px 0; }
+  }
+
+  .flip-bloco {
+    padding: 28px 22px; text-align: center;
+  }
+  .flip-bloco.antes { background: rgba(74,144,217,0.1); border: 1px solid rgba(74,144,217,0.2); }
+  .flip-bloco.agora { background: rgba(201,168,76,0.08); border: 1px solid rgba(201,168,76,0.2); }
+
+  .flip-periodo {
+    font-size: 0.62rem; font-weight: 600; letter-spacing: 0.2em;
+    text-transform: uppercase; margin-bottom: 8px;
+  }
+  .flip-bloco.antes .flip-periodo { color: var(--azul); }
+  .flip-bloco.agora .flip-periodo { color: var(--dourado); }
+
+  .flip-valor {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.5rem, 6vw, 3.5rem); font-weight: 700; line-height: 1; margin-bottom: 6px;
+  }
+  .flip-bloco.antes .flip-valor { color: var(--azul); }
+  .flip-bloco.agora .flip-valor { color: var(--dourado); }
+
+  .flip-desc { font-size: 0.72rem; color: var(--texto-muted); line-height: 1.45; }
+
+  .flip-seta {
+    background: rgba(255,255,255,0.03);
+    border-top: 1px solid rgba(255,255,255,0.06);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    padding: 28px 16px; text-align: center;
+    font-size: 1.5rem; color: var(--texto-muted);
+  }
+
+  /* ── COMPARATIVO RETORNOS VANGUARD ── */
+  .vanguard-chart {
+    background: rgba(10,20,16,0.7);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 8px; padding: 24px 20px 16px; margin: 32px 0;
+  }
+  .chart-titulo {
+    font-size: 0.68rem; font-weight: 600; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--dourado); margin-bottom: 4px;
+  }
+  .chart-sub { font-size: 0.72rem; color: var(--texto-muted); margin-bottom: 20px; }
+
+  .vg-row { margin-bottom: 16px; }
+  .vg-label-row {
+    display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 5px;
+  }
+  .vg-nome { font-size: 0.82rem; color: var(--texto-claro); }
+  .vg-range {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem; font-weight: 700;
+  }
+  .vg-track {
+    height: 10px; background: rgba(255,255,255,0.05);
+    border-radius: 3px; overflow: hidden; position: relative;
+  }
+  .vg-fill {
+    height: 100%; border-radius: 3px;
+    transition: width 1.3s cubic-bezier(0.4,0,0.2,1);
+  }
+  .vg-fill.acoes-eua  { background: linear-gradient(90deg, rgba(74,144,217,0.5), var(--azul)); }
+  .vg-fill.bonds-eua  { background: linear-gradient(90deg, rgba(61,191,138,0.5), var(--verde-gain)); }
+  .vg-fill.acoes-glob { background: linear-gradient(90deg, rgba(201,168,76,0.5), var(--dourado)); }
+  .vg-fill.acoes-emg  { background: linear-gradient(90deg, rgba(224,122,53,0.5), var(--laranja)); }
+  .chart-nota { font-size: 0.65rem; color: rgba(245,237,224,0.25); margin-top: 10px; line-height: 1.4; }
+
+  /* ── 60/40 vs 40/60 ── */
+  .carteira-compare {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 32px 0;
+  }
+  @media (max-width: 500px) { .carteira-compare { grid-template-columns: 1fr; } }
+
+  .carteira-card {
+    border-radius: 8px; padding: 24px 20px;
+    position: relative; overflow: hidden;
+  }
+  .carteira-card.classica {
+    background: rgba(74,144,217,0.08);
+    border: 1px solid rgba(74,144,217,0.2);
+  }
+  .carteira-card.nova {
+    background: rgba(201,168,76,0.08);
+    border: 1px solid rgba(201,168,76,0.2);
+  }
+  .carteira-label {
+    font-size: 0.62rem; font-weight: 600; letter-spacing: 0.2em;
+    text-transform: uppercase; margin-bottom: 14px;
+  }
+  .carteira-card.classica .carteira-label { color: var(--azul); }
+  .carteira-card.nova .carteira-label { color: var(--dourado); }
+
+  .carteira-titulo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.2rem; font-weight: 700; line-height: 1; margin-bottom: 14px;
+  }
+  .carteira-card.classica .carteira-titulo { color: var(--azul); }
+  .carteira-card.nova .carteira-titulo { color: var(--dourado); }
+
+  /* Mini gráfico de pizza */
+  .pizza-wrap { margin: 12px 0; }
+  .pizza-bar {
+    height: 12px; border-radius: 6px; overflow: hidden;
+    display: flex; margin-bottom: 6px;
+  }
+  .pizza-acoes { background: rgba(74,144,217,0.7); transition: width 1s ease; }
+  .pizza-bonds { background: rgba(61,191,138,0.7); transition: width 1s ease; }
+  .pizza-legend {
+    display: flex; gap: 14px; flex-wrap: wrap;
+  }
+  .pleg { display: flex; align-items: center; gap: 5px; font-size: 0.7rem; color: var(--texto-muted); }
+  .pleg-dot { width: 8px; height: 8px; border-radius: 2px; flex-shrink: 0; }
+
+  .carteira-desc { font-size: 0.8rem; color: var(--texto-muted); line-height: 1.6; margin-top: 12px; }
+
+  /* ── ALERTA REVERSÃO ── */
+  .reversao-box {
+    background: linear-gradient(135deg, rgba(224,122,53,0.12) 0%, rgba(26,46,37,0.5) 100%);
+    border: 1px solid rgba(224,122,53,0.25); border-left: 3px solid var(--laranja);
+    border-radius: 4px; padding: 28px 32px; margin: 36px 0;
+  }
+  .reversao-box p {
+    font-family: 'Cormorant Garamond', serif; font-size: 1.12rem;
+    color: var(--creme); line-height: 1.8; margin: 0;
+  }
+
+  /* ── QUATRO AJUSTES ── */
+  .ajustes-list { display: flex; flex-direction: column; gap: 12px; margin: 28px 0; }
+  .ajuste-item {
+    display: flex; align-items: flex-start; gap: 16px;
+    padding: 20px 22px;
+    background: rgba(201,168,76,0.05); border: 1px solid rgba(201,168,76,0.15);
+    border-radius: 5px; transition: border-color 0.25s, background 0.25s;
+  }
+  .ajuste-item:hover { border-color: rgba(201,168,76,0.3); background: rgba(201,168,76,0.09); }
+  .ajuste-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem; font-weight: 700; color: rgba(201,168,76,0.2);
+    line-height: 1; flex-shrink: 0; width: 32px; text-align: center;
+  }
+  .ajuste-titulo { font-size: 0.82rem; font-weight: 600; color: var(--dourado); margin-bottom: 4px; }
+  .ajuste-desc { font-size: 0.84rem; color: var(--texto-claro); line-height: 1.6; }
+
+  /* ── INSIGHT ── */
+  .insight-box {
+    background: linear-gradient(135deg, rgba(201,168,76,0.1) 0%, rgba(26,46,37,0.4) 100%);
+    border: 1px solid rgba(201,168,76,0.25); border-left: 3px solid var(--dourado);
+    border-radius: 4px; padding: 28px 32px; margin: 36px 0;
+  }
+  .insight-box p {
+    font-family: 'Cormorant Garamond', serif; font-size: 1.12rem;
+    color: var(--creme); line-height: 1.8; margin: 0;
+  }
+
+  /* ── CONCLUSÃO ── */
+  .conclusao {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem; font-weight: 400; line-height: 1.85; color: var(--creme);
+    margin-top: 52px; padding: 40px;
+    border: 1px solid rgba(201,168,76,0.2); border-radius: 6px;
+    background: rgba(255,255,255,0.02); position: relative;
+  }
+  .conclusao::before {
+    content: '"'; position: absolute; top: -10px; left: 32px;
+    font-size: 5rem; color: rgba(201,168,76,0.15);
+    font-family: 'Cormorant Garamond', serif; line-height: 1;
+  }
+
+  .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .fade-in.visible { opacity: 1; transform: none; }
+
+  footer {
+    position: relative; z-index: 1;
+    border-top: 1px solid rgba(201,168,76,0.12); padding: 40px 8%;
+    display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;
+  }
+  .footer-name { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 300; color: var(--texto-muted); }
+  .footer-contact { font-size: 0.75rem; color: rgba(245,237,224,0.25); line-height: 1.9; text-align: right; }
+  .footer-contact a { color: var(--dourado); text-decoration: none; }
+
+  @media (max-width: 640px) {
+    .back-link { padding: 20px 5%; }
+    .hero { padding: 10px 5% 48px; }
+    article { padding: 48px 5% 64px; }
+    footer { padding: 32px 5%; flex-direction: column; }
+    .footer-contact { text-align: left; }
+  }
+</style>
+</head>
+<body>
+
+<a class="back-link" href="index.html">Voltar</a>
+
+<header class="hero">
+  <div class="hero-tag">Memorando · Asset Allocation Global</div>
+  <div class="hero-date">Maio de 2026</div>
+  <h1>A próxima década pode punir<br><em>carteiras montadas pelo retrovisor</em></h1>
+  <p class="hero-sub">A Vanguard recomenda inverter o 60/40 para 40/60. O motivo é simples: o retorno esperado de ações americanas caiu de 15% para 4,5% ao ano. Quem montou asset allocation olhando os últimos 10 anos pode descobrir o que é reversão à média.</p>
+  <div class="hero-fonte">Referência: Vanguard Economic & Market Outlook 2025 · Pedro Mota, CFA, CAIA</div>
+</header>
+
+<article>
+
+  <p class="lead">
+    A discussão levantada pela Vanguard sobre uma possível inversão da carteira clássica 60/40 para algo mais próximo de 40/60 toca em um ponto central para asset allocation: <strong>o retorno realizado nos últimos dez anos não deve ser tratado como retorno estrutural esperado para os próximos dez.</strong> O ponto de partida importa — e ele mudou.
+  </p>
+
+  <!-- RETORNO ESPERADO ANTES vs AGORA -->
+  <div class="section-title"><span class="section-icon">📉</span> O número que mudou tudo</div>
+
+  <p>O retorno anualizado esperado para ações americanas caiu de forma expressiva. Não por pessimismo ou teoria — mas porque preço, valuation e taxa de juros de partida são variáveis decisivas para estimar retorno futuro.</p>
+
+  <div class="retorno-flip fade-in">
+    <div class="flip-bloco antes">
+      <div class="flip-periodo">Última década</div>
+      <div class="flip-valor">~15%</div>
+      <div class="flip-desc">retorno anualizado observado em ações americanas</div>
+    </div>
+    <div class="flip-seta">→</div>
+    <div class="flip-bloco agora">
+      <div class="flip-periodo">Próxima década (projeção)</div>
+      <div class="flip-valor">4,5%</div>
+      <div class="flip-desc">retorno anualizado esperado pela Vanguard para ações dos EUA</div>
+    </div>
+  </div>
+
+  <p>Esse não é um ajuste marginal. É uma mudança de regime. E ela tem implicação direta para como carteiras globais devem ser construídas daqui para frente.</p>
+
+  <!-- RETORNOS ESPERADOS VANGUARD -->
+  <div class="section-title fade-in"><span class="section-icon">📊</span> O que a Vanguard projeta para cada classe</div>
+
+  <p>No seu Outlook 2025, a Vanguard publicou retornos anualizados esperados para os próximos dez anos. A mensagem é clara: <strong>bonds voltaram a ter papel relevante, e ações fora dos EUA estão mais atrativas do que as americanas.</strong></p>
+
+  <div class="vanguard-chart fade-in" id="vgChart">
+    <div class="chart-titulo">Retorno anualizado esperado — próximos 10 anos (Vanguard, 2025)</div>
+    <div class="chart-sub">Estimativas em USD · Base nominal</div>
+
+    <div class="vg-row">
+      <div class="vg-label-row">
+        <span class="vg-nome">Ações americanas (S&P 500)</span>
+        <span class="vg-range" style="color:var(--azul);">2,8% – 4,8% a.a.</span>
+      </div>
+      <div class="vg-track"><div class="vg-fill acoes-eua" data-w="32" style="width:0%"></div></div>
+    </div>
+
+    <div class="vg-row">
+      <div class="vg-label-row">
+        <span class="vg-nome">Bonds americanos agregados</span>
+        <span class="vg-range" style="color:var(--verde-gain);">4,3% – 5,3% a.a.</span>
+      </div>
+      <div class="vg-track"><div class="vg-fill bonds-eua" data-w="48" style="width:0%"></div></div>
+    </div>
+
+    <div class="vg-row">
+      <div class="vg-label-row">
+        <span class="vg-nome">Ações globais ex-EUA (desenvolvidos)</span>
+        <span class="vg-range" style="color:var(--dourado);">7,0% – 9,0% a.a.</span>
+      </div>
+      <div class="vg-track"><div class="vg-fill acoes-glob" data-w="80" style="width:0%"></div></div>
+    </div>
+
+    <div class="vg-row">
+      <div class="vg-label-row">
+        <span class="vg-nome">Ações emergentes</span>
+        <span class="vg-range" style="color:var(--laranja);">5,5% – 7,5% a.a.</span>
+      </div>
+      <div class="vg-track"><div class="vg-fill acoes-emg" data-w="66" style="width:0%"></div></div>
+    </div>
+
+    <div class="chart-nota">Fonte: Vanguard Economic & Market Outlook 2025. Projeções não são garantia de retorno futuro.</div>
+  </div>
+
+  <!-- 60/40 vs 40/60 -->
+  <div class="section-title fade-in"><span class="section-icon">⚖️</span> 60/40 ou 40/60 — o que mudou e por quê</div>
+
+  <p>A carteira 60/40 (60% ações / 40% renda fixa) foi o padrão dominante por décadas. Com juros baixos, bonds não entregavam retorno relevante — então fazia sentido pesar mais em ações. Com taxas mais altas, a equação mudou.</p>
+
+  <div class="carteira-compare fade-in" id="carteiras">
+    <div class="carteira-card classica">
+      <div class="carteira-label">Carteira clássica</div>
+      <div class="carteira-titulo">60 / 40</div>
+      <div class="pizza-wrap">
+        <div class="pizza-bar">
+          <div class="pizza-acoes" style="width:60%"></div>
+          <div class="pizza-bonds" style="width:40%"></div>
+        </div>
+        <div class="pizza-legend">
+          <div class="pleg"><div class="pleg-dot" style="background:rgba(74,144,217,0.7)"></div>60% Ações</div>
+          <div class="pleg"><div class="pleg-dot" style="background:rgba(61,191,138,0.7)"></div>40% Bonds</div>
+        </div>
+      </div>
+      <div class="carteira-desc">Fez sentido em um ciclo de juros baixos, onde renda fixa entregava pouco e ações americanas dominavam. Prêmio por correr risco era alto.</div>
+    </div>
+
+    <div class="carteira-card nova">
+      <div class="carteira-label">Sugestão Vanguard para próx. década</div>
+      <div class="carteira-titulo">40 / 60</div>
+      <div class="pizza-wrap">
+        <div class="pizza-bar">
+          <div class="pizza-acoes" style="width:40%"></div>
+          <div class="pizza-bonds" style="width:60%"></div>
+        </div>
+        <div class="pizza-legend">
+          <div class="pleg"><div class="pleg-dot" style="background:rgba(74,144,217,0.7)"></div>40% Ações</div>
+          <div class="pleg"><div class="pleg-dot" style="background:rgba(61,191,138,0.7)"></div>60% Bonds</div>
+        </div>
+      </div>
+      <div class="carteira-desc">Com taxas mais altas, bonds voltam a entregar carrego relevante. O retorno esperado de ações americanas caiu. A relação risco-retorno da renda fixa melhorou.</div>
+    </div>
+  </div>
+
+  <p style="font-size:0.82rem; color:var(--texto-muted); font-style:italic; margin-top:-8px;">⚠️ A Vanguard não recomenda adoção literal para todo investidor. A mensagem está na <strong style="color:var(--creme);">direção do ajuste</strong> — não em um número fixo.</p>
+
+  <!-- REVERSÃO À MÉDIA -->
+  <div class="section-title fade-in"><span class="section-icon">🔄</span> A armadilha do retorno passado</div>
+
+  <div class="reversao-box fade-in">
+    <p>Quando uma classe de ativos entrega retornos extraordinários por muitos anos, parte desse retorno pode ter vindo de crescimento real de lucros — mas parte relevante pode ter vindo de <strong>expansão de múltiplos, queda de juros, concentração setorial e aumento do apetite a risco</strong>. Quando o investidor compra esse ativo após esse movimento, seu retorno futuro depende de um conjunto de condições muito mais exigente.</p>
+  </div>
+
+  <p>
+    Esse raciocínio é especialmente importante para o investidor brasileiro. Muitas carteiras locais passaram a tratar <strong>exposição internacional como sinônimo de bolsa americana</strong>, e bolsa americana como sinônimo de S&P 500 e Nasdaq. Essa simplificação funcionou bem no retrovisor — mas pode produzir uma carteira menos robusta para os próximos ciclos.
+  </p>
+
+  <div class="insight-box fade-in">
+    <p><strong>Quanto mais esticado o ponto de partida, menor a margem de segurança.</strong> O investidor não precisa acertar qual será o melhor ativo da próxima década. O que ele precisa é evitar que sua carteira esteja excessivamente exposta a uma única narrativa — especialmente depois de ela ter funcionado muito bem por 10 anos.</p>
+  </div>
+
+  <!-- QUATRO AJUSTES -->
+  <div class="section-title fade-in"><span class="section-icon">🧭</span> Quatro ajustes de leitura para uma carteira global</div>
+
+  <div class="ajustes-list fade-in">
+    <div class="ajuste-item">
+      <div class="ajuste-num">1</div>
+      <div>
+        <div class="ajuste-titulo">Reduzir dependência da bolsa americana como único motor de crescimento</div>
+        <div class="ajuste-desc">Ações americanas continuam importantes, mas o retorno esperado caiu e o valuation de partida é exigente. Diversificação geográfica voltou a fazer sentido estratégico.</div>
+      </div>
+    </div>
+    <div class="ajuste-item">
+      <div class="ajuste-num">2</div>
+      <div>
+        <div class="ajuste-titulo">Reavaliar renda fixa internacional — bonds voltaram a entregar carrego</div>
+        <div class="ajuste-desc">Com juros de qualidade acima de 4%–5% ao ano, bonds americanos de boa qualidade passaram a cumprir papel duplo: retorno relevante e amortecedor de volatilidade.</div>
+      </div>
+    </div>
+    <div class="ajuste-item">
+      <div class="ajuste-num">3</div>
+      <div>
+        <div class="ajuste-titulo">Considerar ações fora dos EUA — desenvolvidos ex-EUA e valor</div>
+        <div class="ajuste-desc">A Vanguard projeta retorno esperado de 7%–9% ao ano para ações globais fora dos EUA — bem acima das ações americanas. Diversificação de estilo e geografia voltou a ter assimetria favorável.</div>
+      </div>
+    </div>
+    <div class="ajuste-item">
+      <div class="ajuste-num">4</div>
+      <div>
+        <div class="ajuste-titulo">Abandonar a ideia de que a melhor alocação é a que maximizou retorno no ciclo anterior</div>
+        <div class="ajuste-desc">Asset allocation precisa ser conduzido por premissas de retorno esperado, risco e objetivo patrimonial — não por ranking histórico. Carteira montada olhando o retrovisor tende a superponderar o que ficou mais caro.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="conclusao fade-in">
+    O ambiente mudou. Ações americanas continuam importantes, mas o retorno esperado caiu. Bonds voltaram a ter papel relevante. Carteiras globais precisam ser reconstruídas com <strong>menos dependência do retrovisor e mais atenção ao preço de entrada, à diversificação e à disciplina de rebalanceamento</strong>. Quem montou asset allocation apenas com base no que funcionou nos últimos dez anos pode descobrir, nos próximos dez, que a margem de segurança importa tanto quanto a escolha do ativo.
+  </div>
+
+</article>
+
+<footer>
+  <div class="footer-name">Fábio Vogelaar Carlucci</div>
+  <div class="footer-contact">
+    +55 (16) 98148-8260<br>
+    <a href="mailto:fabio.carlucci@ficus.capital">fabio.carlucci@ficus.capital</a>
+  </div>
+</footer>
+<div style="position:relative;z-index:1;padding:0 8% 28px;text-align:center;font-size:0.65rem;color:rgba(245,237,224,0.2);letter-spacing:0.08em;">Fontes: Vanguard Economic & Market Outlook 2025 · Bloomberg · Pedro Mota, CFA, CAIA</div>
+
+<script>
+const faders = document.querySelectorAll('.fade-in');
+const obs = new IntersectionObserver(e => e.forEach(x => {
+  if(x.isIntersecting){ x.target.classList.add('visible'); obs.unobserve(x.target); }
+}), { threshold: 0.1 });
+faders.forEach(f => obs.observe(f));
+
+// Barras do gráfico Vanguard
+const vgObs = new IntersectionObserver(e => e.forEach(x => {
+  if(x.isIntersecting){
+    x.target.querySelectorAll('.vg-fill').forEach(f => {
+      setTimeout(() => { f.style.width = f.getAttribute('data-w') + '%'; }, 150);
+    });
+    vgObs.unobserve(x.target);
+  }
+}), { threshold: 0.3 });
+const vg = document.getElementById('vgChart');
+if(vg) vgObs.observe(vg);
+</script>
+</body>
+</html>
