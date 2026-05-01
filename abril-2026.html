@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Relatório Mensal — Abril 2026 | Fábio Carlucci</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --verde-escuro: #1a2e25;
+    --dourado: #c9a84c;
+    --dourado-claro: #e2c47a;
+    --creme: #f5ede0;
+    --texto-claro: rgba(245,237,224,0.85);
+    --texto-muted: rgba(245,237,224,0.45);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background-color: var(--verde-escuro);
+    color: var(--creme);
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background-image:
+      radial-gradient(ellipse at 15% 15%, rgba(201,168,76,0.07) 0%, transparent 55%),
+      radial-gradient(ellipse at 85% 85%, rgba(47,82,64,0.4) 0%, transparent 55%),
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none; z-index: 0;
+  }
+
+  .back-link {
+    position: relative; z-index: 10;
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 28px 8%;
+    font-size: 0.7rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--texto-muted); text-decoration: none; transition: color 0.2s;
+  }
+  .back-link:hover { color: var(--dourado); }
+  .back-link::before { content: '←'; font-size: 0.9rem; }
+
+  /* HERO */
+  .hero {
+    position: relative; z-index: 1;
+    padding: 20px 8% 64px;
+    border-bottom: 1px solid rgba(201,168,76,0.15);
+  }
+  .hero-tag {
+    font-size: 0.65rem; font-weight: 500; letter-spacing: 0.35em; text-transform: uppercase;
+    color: var(--dourado); display: flex; align-items: center; gap: 12px;
+    margin-bottom: 20px; opacity: 0; animation: fadeUp 0.7s ease 0.1s forwards;
+  }
+  .hero-tag::before { content: ''; width: 30px; height: 1px; background: var(--dourado); }
+  .hero-eyebrow {
+    font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--texto-muted); margin-bottom: 16px;
+    opacity: 0; animation: fadeUp 0.7s ease 0.2s forwards;
+  }
+  h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3rem, 8vw, 6rem); font-weight: 300; line-height: 1.05;
+    color: var(--creme); opacity: 0; animation: fadeUp 0.7s ease 0.3s forwards;
+  }
+  h1 strong { font-weight: 700; color: var(--dourado-claro); display: block; }
+  .hero-month {
+    font-size: clamp(0.8rem, 2vw, 0.95rem); letter-spacing: 0.3em; text-transform: uppercase;
+    color: var(--texto-muted); margin-top: 16px; opacity: 0; animation: fadeUp 0.7s ease 0.5s forwards;
+  }
+  .hero-assinatura { margin-top: 36px; opacity: 0; animation: fadeUp 0.7s ease 0.65s forwards; }
+  .assinatura-svg { width: 140px; height: auto; opacity: 0.85; }
+
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* SEÇÕES */
+  .section { position: relative; z-index: 1; padding: 64px 8%; max-width: 900px; margin: 0 auto; }
+  .section-tag {
+    font-size: 0.65rem; font-weight: 500; letter-spacing: 0.35em; text-transform: uppercase;
+    color: var(--dourado); display: flex; align-items: center; gap: 12px; margin-bottom: 20px;
+  }
+  .section-tag::before { content: ''; width: 30px; height: 1px; background: var(--dourado); }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 600; line-height: 1.15;
+    color: var(--creme); margin-bottom: 36px;
+  }
+  .divider {
+    width: calc(100% - 16%); height: 1px; margin: 0 8%;
+    background: linear-gradient(90deg, rgba(201,168,76,0.3) 0%, transparent 100%);
+  }
+
+  /* PILLS RESUMO */
+  .pills-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  @media (max-width: 580px) { .pills-grid { grid-template-columns: 1fr; } }
+  .pill {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(201,168,76,0.2); border-left: 3px solid var(--dourado);
+    border-radius: 4px; padding: 20px 22px;
+    transition: background 0.3s, transform 0.3s;
+  }
+  .pill:hover { background: rgba(201,168,76,0.07); transform: translateY(-2px); }
+  .pill-icon { font-size: 1.1rem; margin-bottom: 7px; display: block; }
+  .pill-title { font-weight: 600; font-size: 0.75rem; letter-spacing: 0.08em; color: var(--dourado); margin-bottom: 7px; }
+  .pill-text { font-size: 0.88rem; color: var(--texto-claro); line-height: 1.65; }
+
+  /* BLOCOS DE CONTEÚDO */
+  .block { margin-bottom: 40px; }
+  .block-title {
+    font-family: 'Cormorant Garamond', serif; font-size: 1.35rem; font-weight: 600;
+    color: var(--dourado-claro); margin-bottom: 10px;
+    border-bottom: 1px solid rgba(201,168,76,0.15); padding-bottom: 8px;
+  }
+  .block-text { font-size: 0.95rem; color: var(--texto-claro); line-height: 1.85; }
+  .block-text strong { font-weight: 600; color: var(--creme); }
+  .implicacao {
+    margin-top: 12px; padding: 14px 18px;
+    background: rgba(201,168,76,0.07); border-left: 2px solid rgba(201,168,76,0.4);
+    border-radius: 2px; font-size: 0.86rem; color: var(--texto-claro); line-height: 1.7;
+  }
+  .implicacao strong { color: var(--dourado); font-weight: 600; }
+
+  /* SELIC CARD */
+  .selic-card {
+    background: linear-gradient(135deg, rgba(201,168,76,0.12) 0%, rgba(47,82,64,0.3) 100%);
+    border: 1px solid rgba(201,168,76,0.3); border-radius: 8px;
+    padding: 24px 28px; margin: 24px 0;
+    display: flex; align-items: center; gap: 28px; flex-wrap: wrap;
+  }
+  .selic-number { font-family: 'Cormorant Garamond', serif; font-size: 3.2rem; font-weight: 700; color: var(--dourado); line-height: 1; }
+  .selic-label { font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--texto-muted); margin-top: 4px; }
+  .selic-desc { font-size: 0.88rem; color: var(--texto-claro); line-height: 1.7; flex: 1; min-width: 200px; }
+  .selic-arrow { display: inline-block; font-size: 0.9rem; margin-right: 5px; }
+
+  /* SUPER QUARTA */
+  .super-quarta {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 24px 0;
+  }
+  @media (max-width: 520px) { .super-quarta { grid-template-columns: 1fr; } }
+  .sq-card {
+    border-radius: 6px; padding: 20px 18px; text-align: center;
+  }
+  .sq-card.copom { background: rgba(201,168,76,0.1); border: 1px solid rgba(201,168,76,0.25); }
+  .sq-card.fed   { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); }
+  .sq-label { font-size: 0.62rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 8px; }
+  .sq-card.copom .sq-label { color: var(--dourado); }
+  .sq-card.fed   .sq-label { color: var(--texto-muted); }
+  .sq-valor { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 700; line-height: 1; margin-bottom: 4px; }
+  .sq-card.copom .sq-valor { color: var(--dourado); }
+  .sq-card.fed   .sq-valor { color: rgba(245,237,224,0.6); }
+  .sq-desc { font-size: 0.72rem; color: var(--texto-muted); line-height: 1.5; }
+
+  /* IBOVESPA TRACKER */
+  .ibov-track {
+    background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 8px; padding: 24px; margin: 24px 0;
+  }
+  .ibov-track-title { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--dourado); margin-bottom: 16px; }
+  .ibov-steps { display: flex; flex-direction: column; gap: 0; }
+  .ibov-step {
+    display: flex; align-items: center; gap: 16px; padding: 12px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+  .ibov-step:last-child { border-bottom: none; }
+  .ibov-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+  .ibov-dot.up   { background: #5ec98a; }
+  .ibov-dot.down { background: #e07070; }
+  .ibov-step-label { font-size: 0.78rem; color: var(--texto-muted); flex: 1; }
+  .ibov-step-val {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem; font-weight: 700;
+  }
+  .ibov-step-val.up   { color: #5ec98a; }
+  .ibov-step-val.down { color: #e07070; }
+
+  /* ALERT BOX */
+  .alert-box {
+    border-radius: 6px; padding: 22px 24px; margin-bottom: 28px;
+  }
+  .alert-box.war {
+    background: rgba(180,60,60,0.1); border: 1px solid rgba(220,100,100,0.25); border-left: 3px solid #e07070;
+  }
+  .alert-box.info {
+    background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08);
+  }
+  .alert-title { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 8px; }
+  .alert-box.war  .alert-title { color: #e07070; }
+  .alert-box.info .alert-title { color: var(--dourado); }
+  .alert-text { font-size: 0.9rem; color: var(--texto-claro); line-height: 1.75; }
+
+  /* DESTAQUES DO MÊS */
+  .destaques-list { display: flex; flex-direction: column; gap: 12px; margin-top: 8px; }
+  .destaque-item {
+    display: flex; align-items: flex-start; gap: 16px;
+    padding: 18px 20px;
+    background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 5px; transition: border-color 0.25s, background 0.25s;
+  }
+  .destaque-item:hover { border-color: rgba(201,168,76,0.2); background: rgba(201,168,76,0.04); }
+  .destaque-icon { font-size: 1.3rem; flex-shrink: 0; margin-top: 2px; }
+  .destaque-titulo { font-size: 0.8rem; font-weight: 600; color: var(--dourado); margin-bottom: 4px; }
+  .destaque-desc { font-size: 0.84rem; color: var(--texto-claro); line-height: 1.6; }
+
+  /* RENTABILIDADES — barras */
+  .bar-chart { margin-top: 24px; }
+  .bar-row { display: flex; align-items: center; gap: 12px; margin-bottom: 13px; }
+  .bar-label { font-size: 0.82rem; color: var(--texto-claro); width: 160px; flex-shrink: 0; text-align: right; }
+  .bar-track { flex: 1; height: 9px; background: rgba(255,255,255,0.06); border-radius: 3px; overflow: hidden; }
+  .bar-fill { height: 100%; border-radius: 3px; transition: width 1.2s cubic-bezier(0.4,0,0.2,1); }
+  .bar-fill.pos { background: linear-gradient(90deg, #3a8c5e, #5ec98a); }
+  .bar-fill.neg { background: linear-gradient(90deg, #9e3a3a, #e07070); }
+  .bar-value { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 600; width: 72px; flex-shrink: 0; }
+  .pos-val { color: #5ec98a; }
+  .neg-val { color: #e07070; }
+
+  /* GLOSSÁRIO */
+  .glossario-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 8px; }
+  @media (max-width: 580px) { .glossario-grid { grid-template-columns: 1fr; } }
+  .glossario-item { padding: 14px 18px; border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .glossario-term { font-weight: 600; font-size: 0.78rem; color: var(--dourado); margin-bottom: 4px; }
+  .glossario-def { font-size: 0.8rem; color: var(--texto-muted); line-height: 1.6; }
+
+  /* NAV LATERAL */
+  .side-nav {
+    position: fixed; right: 24px; top: 50%; transform: translateY(-50%);
+    display: flex; flex-direction: column; gap: 12px; z-index: 100;
+  }
+  .side-dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(201,168,76,0.3); transition: background 0.3s, transform 0.3s; cursor: pointer; }
+  .side-dot.active { background: var(--dourado); transform: scale(1.5); }
+
+  /* FADE IN */
+  .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .fade-in.visible { opacity: 1; transform: none; }
+
+  footer { position: relative; z-index: 1; border-top: 1px solid rgba(201,168,76,0.12); padding: 40px 8%; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+  .footer-name { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 300; color: var(--texto-muted); }
+  .footer-contact { font-size: 0.75rem; color: rgba(245,237,224,0.25); line-height: 1.9; text-align: right; }
+  .footer-contact a { color: var(--dourado); text-decoration: none; }
+
+  @media (max-width: 768px) {
+    .side-nav { display: none; }
+    .hero { padding: 20px 5% 48px; }
+    .section { padding: 48px 5%; }
+    footer { padding: 32px 5%; flex-direction: column; }
+    .footer-contact { text-align: left; }
+    .selic-card { flex-direction: column; gap: 16px; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="side-nav">
+  <div class="side-dot active" data-section="hero"></div>
+  <div class="side-dot" data-section="resumo"></div>
+  <div class="side-dot" data-section="nacional"></div>
+  <div class="side-dot" data-section="global"></div>
+  <div class="side-dot" data-section="destaques"></div>
+  <div class="side-dot" data-section="rentabilidades"></div>
+  <div class="side-dot" data-section="glossario"></div>
+</nav>
+
+<a class="back-link" href="index.html">Voltar</a>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-tag">Relatório Mensal</div>
+  <div class="hero-eyebrow">Fábio Carlucci</div>
+  <h1>O que aconteceu<br><strong>em abril?</strong></h1>
+  <p class="hero-month">Abril de 2026</p>
+  <div class="hero-assinatura">
+    <svg class="assinatura-svg" viewBox="0 0 200 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M10 40 C20 20, 35 15, 50 30 C60 40, 55 50, 45 48 C35 46, 38 35, 50 28 C65 20, 80 22, 90 32 C100 42, 95 52, 85 50 C75 48, 77 38, 88 30 C100 22, 118 20, 130 35 C140 48, 135 55, 122 52" stroke="rgba(201,168,76,0.8)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      <path d="M128 30 C138 18, 155 15, 168 25 C178 32, 180 42, 172 48" stroke="rgba(201,168,76,0.8)" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+      <path d="M8 50 L195 50" stroke="rgba(201,168,76,0.2)" stroke-width="0.5"/>
+      <text x="8" y="58" font-family="Georgia, serif" font-size="7" fill="rgba(201,168,76,0.5)" letter-spacing="1">Fábio Carlucci</text>
+    </svg>
+  </div>
+</section>
+
+<!-- RESUMO EXECUTIVO -->
+<div class="divider"></div>
+<section class="section fade-in" id="resumo">
+  <div class="section-tag">01</div>
+  <h2 class="section-title">Resumo<br>Executivo</h2>
+  <div class="pills-grid">
+    <div class="pill fade-in">
+      <span class="pill-icon">🏦</span>
+      <div class="pill-title">Selic cai para 14,50% — 2° corte seguido</div>
+      <div class="pill-text">O Copom reduziu a Selic em mais 0,25 pp, dando continuidade ao ciclo de flexibilização. Tom do comunicado seguiu cauteloso, com olhos no Oriente Médio e na inflação de alimentos.</div>
+    </div>
+    <div class="pill fade-in">
+      <span class="pill-icon">📈</span>
+      <div class="pill-title">Ibovespa: recorde de 198k e correção no fim</div>
+      <div class="pill-text">O índice atingiu 198 mil pontos no dia 13, mas encerrou o mês aos 184.750 pontos após seis pregões consecutivos de queda, acumulando recuo de 1,45% em abril.</div>
+    </div>
+    <div class="pill fade-in">
+      <span class="pill-icon">🌡️</span>
+      <div class="pill-title">IPCA-15 acelera para 0,89%</div>
+      <div class="pill-text">A prévia da inflação de abril subiu mais do que o esperado, puxada por alimentos. O dado reduziu a chance de aceleração do ciclo de cortes da Selic no curto prazo.</div>
+    </div>
+    <div class="pill fade-in">
+      <span class="pill-icon">🇺🇸</span>
+      <div class="pill-title">Fed mantém juros — votação mais dividida desde 1992</div>
+      <div class="pill-text">O Fed manteve os juros entre 3,50% e 3,75% em uma das decisões mais divididas em décadas, refletindo o dilema entre inflação e riscos à atividade econômica.</div>
+    </div>
+    <div class="pill fade-in">
+      <span class="pill-icon">🛢️</span>
+      <div class="pill-title">Oriente Médio eleva risco de inflação global</div>
+      <div class="pill-text">O Banco Mundial projetou alta de 24% nos preços de energia em 2026 por causa das disrupções no conflito. Fertilizantes, alimentos e commodities no radar.</div>
+    </div>
+    <div class="pill fade-in">
+      <span class="pill-icon">💵</span>
+      <div class="pill-title">Dólar volta a R$ 5,00 no fechamento do mês</div>
+      <div class="pill-text">Com a aversão a risco aumentando no fim do mês, o real cedeu e o dólar voltou a se aproximar de R$ 5,00, reforçando a importância da diversificação cambial nas carteiras.</div>
+    </div>
+  </div>
+</section>
+
+<!-- VISÃO NACIONAL -->
+<div class="divider"></div>
+<section class="section fade-in" id="nacional">
+  <div class="section-tag">02</div>
+  <h2 class="section-title">Visão<br>Nacional</h2>
+
+  <div class="block fade-in">
+    <div class="block-title">Copom corta a Selic para 14,50% — segundo corte consecutivo</div>
+    <p class="block-text">O principal evento doméstico de abril foi a decisão do Copom de reduzir a Selic em <strong>0,25 ponto percentual</strong>, de 14,75% para 14,50% ao ano, marcando o segundo corte consecutivo do atual ciclo. A decisão veio em linha com a expectativa, mas o comunicado manteve tom prudente, com atenção às incertezas externas — especialmente o conflito no Oriente Médio e seus efeitos sobre commodities e inflação global.</p>
+    <div class="selic-card">
+      <div>
+        <div class="selic-number">14,50%</div>
+        <div class="selic-label">Nova Selic ao ano</div>
+      </div>
+      <div class="selic-desc">
+        <span class="selic-arrow" style="color:#5ec98a;">▼</span> Queda de <strong>0,25 pp</strong> — segundo corte consecutivo do ciclo iniciado em março.<br><br>
+        <strong style="color:var(--dourado)">O que isso significa?</strong> A renda fixa segue atrativa, mas o ciclo exige mais atenção à composição. Pós-fixados ainda entregam carrego elevado, enquanto IPCA+ e prefixados ganham importância seletiva.
+      </div>
+    </div>
+    <div class="implicacao"><strong>Implicação:</strong> O ritmo dos próximos cortes continuará dependente da inflação, do câmbio, do fiscal e do ambiente externo. Não espere cortes agressivos no curto prazo.</div>
+  </div>
+
+  <!-- Super Quarta -->
+  <div class="block fade-in">
+    <div class="block-title">Super Quarta: dois bancos centrais, dois momentos diferentes</div>
+    <p class="block-text">Em abril ocorreu a chamada "Super Quarta" — o dia em que Copom e Fed divulgam suas decisões na mesma data. O contraste foi claro:</p>
+    <div class="super-quarta">
+      <div class="sq-card copom">
+        <div class="sq-label">Copom · Brasil</div>
+        <div class="sq-valor">14,50%</div>
+        <div class="sq-desc">Segundo corte de 0,25 pp. Ciclo de flexibilização em andamento, mas com cautela elevada.</div>
+      </div>
+      <div class="sq-card fed">
+        <div class="sq-label">Fed · EUA</div>
+        <div class="sq-valor">3,50–3,75%</div>
+        <div class="sq-desc">Juros mantidos. Votação mais dividida desde 1992. Sem pressa para cortar.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="block fade-in">
+    <div class="block-title">Inflação: IPCA-15 de abril surpreende para cima</div>
+    <p class="block-text">A prévia da inflação de abril subiu <strong>0,89%</strong>, bem acima dos <strong>0,44%</strong> de março. O principal foco de pressão foi <strong>Alimentação e Bebidas</strong>, que avançou 1,46%, com destaque para cenoura, cebola, leite longa vida, tomate e carnes. O dado reforça que a inflação brasileira está melhor do que nos piores momentos do ciclo, mas ainda não permite flexibilização agressiva da política monetária.</p>
+    <div class="implicacao"><strong>Implicação:</strong> Abordagem equilibrada: aproveitar os juros ainda altos, mas sem apostar em queda rápida ou linear da Selic.</div>
+  </div>
+
+  <div class="block fade-in">
+    <div class="block-title">Bolsa brasileira: duas fases em um único mês</div>
+    <p class="block-text">Abril foi um mês de duas velocidades para o Ibovespa. Na primeira quinzena, o índice renovou máximas históricas impulsionado por commodities, fluxo estrangeiro e valorização de Vale e Petrobras. Na segunda quinzena, o cenário virou.</p>
+    <div class="ibov-track fade-in">
+      <div class="ibov-track-title">Trajetória do Ibovespa em Abril</div>
+      <div class="ibov-steps">
+        <div class="ibov-step">
+          <div class="ibov-dot up"></div>
+          <span class="ibov-step-label">Dia 13 — Máxima histórica</span>
+          <span class="ibov-step-val up">198.000 pts</span>
+        </div>
+        <div class="ibov-step">
+          <div class="ibov-dot down"></div>
+          <span class="ibov-step-label">Dia 29 — Fechamento (6° queda seguida)</span>
+          <span class="ibov-step-val down">184.750 pts</span>
+        </div>
+        <div class="ibov-step">
+          <div class="ibov-dot down"></div>
+          <span class="ibov-step-label">Resultado no mês</span>
+          <span class="ibov-step-val down">−1,45%</span>
+        </div>
+        <div class="ibov-step">
+          <div class="ibov-dot up"></div>
+          <span class="ibov-step-label">Acumulado no ano (até abril)</span>
+          <span class="ibov-step-val up">+~11%</span>
+        </div>
+      </div>
+    </div>
+    <div class="implicacao"><strong>Implicação:</strong> Bolsa com fundamentos interessantes no médio prazo, mas sensibilidade a choques externos permanece alta. Evitar extrapolar movimentos de curto prazo e manter seletividade.</div>
+  </div>
+</section>
+
+<!-- VISÃO GLOBAL -->
+<div class="divider"></div>
+<section class="section fade-in" id="global">
+  <div class="section-tag">03</div>
+  <h2 class="section-title">Visão<br>Global</h2>
+
+  <div class="block fade-in">
+    <div class="block-title">Fed: decisão dividida, sem pressa para cortar</div>
+    <p class="block-text">O Federal Reserve manteve sua taxa no intervalo de <strong>3,50% a 3,75%</strong> ao ano em abril. A votação foi a <strong>mais dividida desde 1992</strong>, refletindo divergência entre membros preocupados com inflação e aqueles que defendem maior flexibilidade diante dos riscos à atividade. O comunicado destacou que os acontecimentos no Oriente Médio aumentaram a incerteza e que o comitê segue atento aos dois lados do mandato.</p>
+    <div class="implicacao"><strong>Implicação:</strong> Fed não sinalizou pressa para cortar juros. Petróleo elevado e inflação resistente reduziram o espaço para afrouxamento rápido — o diferencial de juros com o Brasil segue relevante.</div>
+  </div>
+
+  <div class="alert-box war fade-in">
+    <div class="alert-title">⚠️ Oriente Médio: risco de choque de oferta global</div>
+    <p class="alert-text">O Banco Mundial projetou <strong>alta de 24% nos preços de energia em 2026</strong> devido às disrupções ligadas ao conflito. O risco adicional é alto caso ele persista ou se aprofunde. A instituição destacou que interrupções no Estreito de Ormuz podem gerar choque relevante de oferta, com efeitos sobre petróleo, fertilizantes, alimentos e inflação em economias emergentes — incluindo o Brasil.</p>
+  </div>
+
+  <div class="block fade-in">
+    <div class="block-title">Para o Brasil: dois lados da mesma moeda</div>
+    <p class="block-text">O conflito no Oriente Médio cria um dilema para a economia brasileira. Por um lado, <strong>preços mais altos de commodities podem beneficiar exportadoras de energia e recursos naturais</strong> — como Petrobras e Vale. Por outro, petróleo e fertilizantes mais caros pressionam inflação, custos agrícolas e expectativas, limitando o espaço para cortes mais rápidos da Selic.</p>
+    <div class="implicacao"><strong>Implicação:</strong> Juros americanos parados por mais tempo, energia mais cara e tensão geopolítica tornam a diversificação internacional importante — mas exigem cuidado com concentração em ativos muito sensíveis a juros longos.</div>
+  </div>
+</section>
+
+<!-- DESTAQUES DO MÊS -->
+<div class="divider"></div>
+<section class="section fade-in" id="destaques">
+  <div class="section-tag">04</div>
+  <h2 class="section-title">Destaques<br>do Mês</h2>
+  <div class="destaques-list fade-in">
+    <div class="destaque-item">
+      <span class="destaque-icon">🏦</span>
+      <div>
+        <div class="destaque-titulo">Super Quarta histórica</div>
+        <div class="destaque-desc">Copom cortou a Selic para 14,50% enquanto o Fed manteve juros em 3,50%–3,75%. Dois bancos centrais, dois momentos diferentes: Brasil em flexibilização cautelosa, EUA em pausa forçada pela energia e inflação.</div>
+      </div>
+    </div>
+    <div class="destaque-item">
+      <span class="destaque-icon">🌡️</span>
+      <div>
+        <div class="destaque-titulo">Inflação voltou a preocupar na margem</div>
+        <div class="destaque-desc">IPCA-15 de abril em 0,89% — puxado por alimentação — reduziu a chance de um ciclo de cortes agressivo no curto prazo. O caminho da desinflação continua, mas não será linear.</div>
+      </div>
+    </div>
+    <div class="destaque-item">
+      <span class="destaque-icon">📊</span>
+      <div>
+        <div class="destaque-titulo">Ibovespa: do recorde à correção em 30 dias</div>
+        <div class="destaque-desc">Primeiro renovou máximas acima de 198 mil pontos, depois devolveu parte dos ganhos e fechou o mês aos 184.750 pontos (−1,45%). Mês que resumiu bem a volatilidade do ambiente atual.</div>
+      </div>
+    </div>
+    <div class="destaque-item">
+      <span class="destaque-icon">🛢️</span>
+      <div>
+        <div class="destaque-titulo">Petróleo e Oriente Médio dominaram a pauta global</div>
+        <div class="destaque-desc">O conflito elevou a incerteza sobre inflação mundial, energia, fertilizantes e crescimento, influenciando diretamente as decisões de política monetária nos EUA e na percepção de risco nos emergentes.</div>
+      </div>
+    </div>
+    <div class="destaque-item">
+      <span class="destaque-icon">💵</span>
+      <div>
+        <div class="destaque-titulo">Câmbio voltou a ser peça central</div>
+        <div class="destaque-desc">A volta do dólar para perto de R$ 5,00 no fim do mês mostrou que o real continua dependente do fluxo global. Juros altos ajudam, mas não blindam a moeda contra choques externos.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RENTABILIDADES -->
+<div class="divider"></div>
+<section class="section fade-in" id="rentabilidades">
+  <div class="section-tag">05</div>
+  <h2 class="section-title">Rentabilidades<br>do Mês</h2>
+  <p style="font-size:0.88rem; color:var(--texto-muted); margin-bottom:28px;">Desempenho dos principais ativos em abril de 2026.</p>
+
+  <div class="bar-chart fade-in" id="barChart">
+    <div class="bar-row">
+      <span class="bar-label">Bitcoin</span>
+      <div class="bar-track"><div class="bar-fill pos" data-width="100" style="width:0%"></div></div>
+      <span class="bar-value pos-val">+11,08%</span>
+    </div>
+    <div class="bar-row">
+      <span class="bar-label">S&P 500 (EUA)</span>
+      <div class="bar-track"><div class="bar-fill pos" data-width="84" style="width:0%"></div></div>
+      <span class="bar-value pos-val">+9,31%</span>
+    </div>
+    <div class="bar-row">
+      <span class="bar-label">IFIX (fundos imob.)</span>
+      <div class="bar-track"><div class="bar-fill pos" data-width="13" style="width:0%"></div></div>
+      <span class="bar-value pos-val">+1,46%</span>
+    </div>
+    <div class="bar-row">
+      <span class="bar-label">CDI</span>
+      <div class="bar-track"><div class="bar-fill pos" data-width="9" style="width:0%"></div></div>
+      <span class="bar-value pos-val">+1,03%</span>
+    </div>
+    <div class="bar-row">
+      <span class="bar-label">Poupança</span>
+      <div class="bar-track"><div class="bar-fill pos" data-width="6" style="width:0%"></div></div>
+      <span class="bar-value pos-val">+0,67%</span>
+    </div>
+    <div class="bar-row">
+      <span class="bar-label">Ibovespa (Brasil)</span>
+      <div class="bar-track"><div class="bar-fill neg" data-width="22" style="width:0%"></div></div>
+      <span class="bar-value neg-val">−2,41%</span>
+    </div>
+    <div class="bar-row">
+      <span class="bar-label">Ouro</span>
+      <div class="bar-track"><div class="bar-fill neg" data-width="20" style="width:0%"></div></div>
+      <span class="bar-value neg-val">−2,24%</span>
+    </div>
+    <div class="bar-row">
+      <span class="bar-label">Dólar</span>
+      <div class="bar-track"><div class="bar-fill neg" data-width="32" style="width:0%"></div></div>
+      <span class="bar-value neg-val">−3,57%</span>
+    </div>
+  </div>
+</section>
+
+<!-- GLOSSÁRIO -->
+<div class="divider"></div>
+<section class="section fade-in" id="glossario">
+  <div class="section-tag">06</div>
+  <h2 class="section-title">Glossário</h2>
+  <div class="glossario-grid fade-in">
+    <div class="glossario-item">
+      <div class="glossario-term">Super Quarta</div>
+      <div class="glossario-def">Dia em que Copom e Fed divulgam decisões de política monetária na mesma data, concentrando impacto sobre juros, câmbio e bolsa.</div>
+    </div>
+    <div class="glossario-item">
+      <div class="glossario-term">Carrego</div>
+      <div class="glossario-def">Retorno obtido por permanecer investido em um ativo que paga juros elevados ao longo do tempo, independente de ganho de capital.</div>
+    </div>
+    <div class="glossario-item">
+      <div class="glossario-term">IPCA-15</div>
+      <div class="glossario-def">Prévia da inflação oficial brasileira, divulgada no meio do mês. Usada pelo mercado para antecipar tendências do IPCA cheio.</div>
+    </div>
+    <div class="glossario-item">
+      <div class="glossario-term">Treasuries</div>
+      <div class="glossario-def">Títulos públicos dos Estados Unidos, referência global para juros e risco. Quando sobem, pressionam ativos de risco globais.</div>
+    </div>
+    <div class="glossario-item">
+      <div class="glossario-term">Aversão a risco</div>
+      <div class="glossario-def">Movimento em que investidores reduzem exposição a ativos voláteis (bolsa, moedas emergentes) e buscam proteção em ativos mais seguros.</div>
+    </div>
+    <div class="glossario-item">
+      <div class="glossario-term">Blue chips</div>
+      <div class="glossario-def">Grandes empresas de capital aberto com histórico sólido, alta liquidez e relevância no índice. No Brasil: Vale, Petrobras, bancos.</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-name">Fábio Vogelaar Carlucci</div>
+  <div class="footer-contact">
+    +55 (16) 98148-8260<br>
+    <a href="mailto:fabio.carlucci@ficus.capital">fabio.carlucci@ficus.capital</a>
+  </div>
+</footer>
+<div style="position:relative;z-index:1;padding:0 8% 28px;text-align:center;font-size:0.65rem;color:rgba(245,237,224,0.2);letter-spacing:0.08em;">
+  Fontes: XP Research · B3 · Banco Central do Brasil · Reuters · IBGE · Banco Mundial
+</div>
+
+<script>
+// Fade in on scroll
+const faders = document.querySelectorAll('.fade-in');
+const obs = new IntersectionObserver(e => e.forEach(x => {
+  if(x.isIntersecting){ x.target.classList.add('visible'); obs.unobserve(x.target); }
+}), { threshold: 0.1 });
+faders.forEach(f => obs.observe(f));
+
+// Barras animadas
+const barObs = new IntersectionObserver(e => e.forEach(x => {
+  if(x.isIntersecting){
+    x.target.querySelectorAll('.bar-fill').forEach(f => {
+      setTimeout(() => { f.style.width = f.getAttribute('data-width') + '%'; }, 150);
+    });
+    barObs.unobserve(x.target);
+  }
+}), { threshold: 0.3 });
+const bc = document.getElementById('barChart');
+if(bc) barObs.observe(bc);
+
+// Nav lateral
+const dots = document.querySelectorAll('.side-dot');
+const sections = ['hero','resumo','nacional','global','destaques','rentabilidades','glossario'];
+function updateDots() {
+  const sy = window.scrollY + window.innerHeight / 2;
+  sections.forEach((id,i) => {
+    const el = document.getElementById(id); if(!el) return;
+    const t = el.getBoundingClientRect().top + window.scrollY;
+    if(sy >= t && sy < t + el.offsetHeight) {
+      dots.forEach(d => d.classList.remove('active'));
+      if(dots[i]) dots[i].classList.add('active');
+    }
+  });
+}
+window.addEventListener('scroll', updateDots, { passive: true });
+dots.forEach((d,i) => d.addEventListener('click', () => {
+  const el = document.getElementById(sections[i]);
+  if(el) el.scrollIntoView({ behavior: 'smooth' });
+}));
+</script>
+</body>
+</html>
