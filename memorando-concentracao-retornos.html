@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DBQSDSDRF3"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-DBQSDSDRF3');
+</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Concentração de Retornos e Diversificação | Fábio Carlucci</title>
@@ -198,9 +206,7 @@
   }
 
   /* ── TREEMAP VISUAL ── */
-  .treemap-section {
-    margin: 40px 0;
-  }
+  .treemap-section { margin: 40px 0; }
 
   .treemap-label {
     font-size: 0.68rem;
@@ -208,101 +214,148 @@
     letter-spacing: 0.2em;
     text-transform: uppercase;
     color: var(--dourado);
-    margin-bottom: 16px;
+    margin-bottom: 20px;
     display: flex;
     align-items: center;
     gap: 10px;
   }
   .treemap-label::before { content: ''; width: 20px; height: 1px; background: var(--dourado); opacity: 0.5; }
 
-  .treemap-wrap {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1.8fr;
-    grid-template-rows: auto auto auto;
-    gap: 4px;
-    border-radius: 6px;
+  /* Container principal do treemap */
+  .treemap-container {
+    width: 100%;
+    border-radius: 8px;
     overflow: hidden;
+    border: 1px solid rgba(201,168,76,0.15);
   }
 
+  /* Linha do topo: Apple (grande) + Nvidia */
+  .tm-row-top {
+    display: grid;
+    grid-template-columns: 2fr 1.4fr;
+    gap: 3px;
+    margin-bottom: 3px;
+  }
+
+  /* Linha do meio: Microsoft + Alphabet */
+  .tm-row-mid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3px;
+    margin-bottom: 3px;
+  }
+
+  /* Linha inferior: Amazon + The Rest */
+  .tm-row-bot {
+    display: grid;
+    grid-template-columns: 1fr 2.6fr;
+    gap: 3px;
+  }
+
+  /* Célula padrão das top 5 */
   .tm-cell {
-    background: rgba(94,201,138,0.18);
-    border: 1px solid rgba(94,201,138,0.25);
-    padding: 18px 16px;
+    background: linear-gradient(135deg, rgba(60,160,100,0.55) 0%, rgba(40,120,75,0.4) 100%);
+    border: 1px solid rgba(94,201,138,0.3);
+    padding: 20px 18px;
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
-    transition: background 0.25s;
+    justify-content: space-between;
+    min-height: 90px;
+    transition: background 0.25s, border-color 0.25s;
+    cursor: default;
   }
-  .tm-cell:hover { background: rgba(94,201,138,0.28); }
-
-  .tm-cell.large {
-    grid-row: span 2;
-    padding: 24px 20px;
+  .tm-cell:hover {
+    background: linear-gradient(135deg, rgba(60,160,100,0.7) 0%, rgba(40,120,75,0.55) 100%);
+    border-color: rgba(94,201,138,0.5);
   }
 
-  .tm-rest {
-    background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(255,255,255,0.08);
-    grid-column: 3;
-    grid-row: 1 / 4;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 24px;
-    text-align: center;
-    gap: 8px;
+  .tm-cell-top { min-height: 120px; }
+
+  .tm-rank {
+    font-size: 0.6rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(26,46,37,0.6);
+    margin-bottom: 6px;
   }
 
   .tm-company {
     font-family: 'Jost', sans-serif;
-    font-weight: 600;
-    font-size: 0.82rem;
-    color: var(--verde-escuro);
-    color: #1a2e25;
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: #0d1f16;
+    margin-bottom: 2px;
   }
 
   .tm-value {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 1.1rem;
+    font-size: 1.3rem;
     font-weight: 700;
-    color: #1a3020;
+    color: #0d1f16;
+    line-height: 1;
   }
 
   .tm-pct {
     font-size: 0.68rem;
-    color: rgba(26,46,37,0.7);
-    font-weight: 500;
+    font-weight: 600;
+    color: rgba(13,31,22,0.65);
+    margin-top: 4px;
+  }
+
+  /* The Rest */
+  .tm-rest {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.07);
+    padding: 20px 22px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+    min-height: 90px;
+  }
+
+  .tm-rest-header {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    flex-wrap: wrap;
   }
 
   .tm-rest-title {
     font-size: 0.72rem;
     font-weight: 500;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
     color: var(--texto-muted);
   }
 
-  .tm-rest-sub {
-    font-size: 0.78rem;
-    color: var(--texto-muted);
-    line-height: 1.5;
-    margin-top: 4px;
+  .tm-rest-pct {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: rgba(245,237,224,0.2);
   }
 
-  /* Grid de pequenas células simulando "the rest" */
-  .tm-rest-grid {
-    display: grid;
-    grid-template-columns: repeat(8, 1fr);
-    gap: 3px;
-    width: 100%;
-    margin-top: 12px;
+  .tm-rest-sub {
+    font-size: 0.76rem;
+    color: var(--texto-muted);
+    line-height: 1.5;
   }
-  .tm-rest-dot {
+
+  /* Mini grid de pontos */
+  .tm-dots {
+    display: grid;
+    grid-template-columns: repeat(16, 1fr);
+    gap: 2px;
+    margin-top: 4px;
+  }
+  .tm-dot {
     aspect-ratio: 1;
-    background: rgba(255,255,255,0.08);
+    background: rgba(255,255,255,0.06);
     border-radius: 1px;
   }
+  .tm-dot:nth-child(-n+3) { background: rgba(201,168,76,0.25); }
 
   /* ── INSIGHT BOX ── */
   .insight-box {
@@ -510,55 +563,83 @@
   <!-- TREEMAP -->
   <div class="treemap-section">
     <div class="treemap-label">Os maiores geradores de riqueza do século</div>
-    <div class="treemap-wrap">
+    <div class="treemap-container">
 
-      <div class="tm-cell large">
-        <div class="tm-company">🍎 Apple</div>
-        <div class="tm-value">$5,02T</div>
-        <div class="tm-pct">5,5% de toda a riqueza</div>
-      </div>
-
-      <div class="tm-cell">
-        <div class="tm-company">⚡ Nvidia</div>
-        <div class="tm-value">$4,58T</div>
-        <div class="tm-pct">5,0%</div>
-      </div>
-
-      <div class="tm-rest">
-        <div class="tm-rest-title">O Restante do Mercado</div>
-        <div class="tm-rest-sub">~29.970 outras empresas dividindo os demais 56% da riqueza gerada</div>
-        <div class="tm-rest-grid">
-          <!-- 64 pequenos quadradinhos simulando a massa de empresas -->
-          <div class="tm-rest-dot"></div><div class="tm-rest-dot"></div><div class="tm-rest-dot"></div><div class="tm-rest-dot"></div><div class="tm-rest-dot"></div><div class="tm-rest-dot"></div><div class="tm-rest-dot"></div><div class="tm-rest-dot"></div>
-          <div class="tm-rest-dot"></div><div class="tm-rest-dot"></div><div class="tm-rest-dot"></div><div class="tm-rest-dot"></div><div class="tm-rest-dot"></div><div class="tm-rest-dot"></div><div class="tm-rest-dot"></div><div class="tm-rest-dot"></div>
-          <div class="tm-rest-dot"></div><div class="tm-rest-dot"></div><div class="tm-rest-dot"></div><div class="tm-rest-dot"></div><div class="tm-rest-dot"></div><div class="tm-rest-dot"></div><div class="tm-rest-dot"></div><div class="tm-rest-dot"></div>
-          <div class="tm-rest-dot"></div><div class="tm-rest-dot"></div><div class="tm-rest-dot"></div><div class="tm-rest-dot"></div><div class="tm-rest-dot"></div><div class="tm-rest-dot"></div><div class="tm-rest-dot"></div><div class="tm-rest-dot"></div>
-          <div class="tm-rest-dot"></div><div class="tm-rest-dot"></div><div class="tm-rest-dot"></div><div class="tm-rest-dot"></div><div class="tm-rest-dot"></div><div class="tm-rest-dot"></div><div class="tm-rest-dot"></div><div class="tm-rest-dot"></div>
-          <div class="tm-rest-dot"></div><div class="tm-rest-dot"></div><div class="tm-rest-dot"></div><div class="tm-rest-dot"></div><div class="tm-rest-dot"></div><div class="tm-rest-dot"></div><div class="tm-rest-dot"></div><div class="tm-rest-dot"></div>
-          <div class="tm-rest-dot"></div><div class="tm-rest-dot"></div><div class="tm-rest-dot"></div><div class="tm-rest-dot"></div><div class="tm-rest-dot"></div><div class="tm-rest-dot"></div><div class="tm-rest-dot"></div><div class="tm-rest-dot"></div>
-          <div class="tm-rest-dot"></div><div class="tm-rest-dot"></div><div class="tm-rest-dot"></div><div class="tm-rest-dot"></div><div class="tm-rest-dot"></div><div class="tm-rest-dot"></div><div class="tm-rest-dot"></div><div class="tm-rest-dot"></div>
+      <!-- Linha 1: Apple + Nvidia -->
+      <div class="tm-row-top">
+        <div class="tm-cell tm-cell-top">
+          <div>
+            <div class="tm-rank">#1</div>
+            <div class="tm-company">Apple</div>
+          </div>
+          <div>
+            <div class="tm-value">$5,02T</div>
+            <div class="tm-pct">5,5% de toda a riqueza gerada</div>
+          </div>
+        </div>
+        <div class="tm-cell tm-cell-top">
+          <div>
+            <div class="tm-rank">#2</div>
+            <div class="tm-company">Nvidia</div>
+          </div>
+          <div>
+            <div class="tm-value">$4,58T</div>
+            <div class="tm-pct">5,0%</div>
+          </div>
         </div>
       </div>
 
-      <div class="tm-cell">
-        <div class="tm-company">🖥️ Microsoft</div>
-        <div class="tm-value">$4,03T</div>
-        <div class="tm-pct">4,4%</div>
+      <!-- Linha 2: Microsoft + Alphabet -->
+      <div class="tm-row-mid">
+        <div class="tm-cell" style="min-height:80px;">
+          <div>
+            <div class="tm-rank">#3</div>
+            <div class="tm-company">Microsoft</div>
+          </div>
+          <div>
+            <div class="tm-value">$4,03T</div>
+            <div class="tm-pct">4,4%</div>
+          </div>
+        </div>
+        <div class="tm-cell" style="min-height:80px;">
+          <div>
+            <div class="tm-rank">#4</div>
+            <div class="tm-company">Alphabet</div>
+          </div>
+          <div>
+            <div class="tm-value">$3,57T</div>
+            <div class="tm-pct">3,9%</div>
+          </div>
+        </div>
       </div>
 
-      <div class="tm-cell">
-        <div class="tm-company">🔍 Alphabet</div>
-        <div class="tm-value">$3,57T</div>
-        <div class="tm-pct">3,9%</div>
+      <!-- Linha 3: Amazon + The Rest -->
+      <div class="tm-row-bot">
+        <div class="tm-cell" style="min-height:100px;">
+          <div>
+            <div class="tm-rank">#5</div>
+            <div class="tm-company">Amazon</div>
+          </div>
+          <div>
+            <div class="tm-value">$2,27T</div>
+            <div class="tm-pct">2,5%</div>
+          </div>
+        </div>
+        <div class="tm-rest">
+          <div class="tm-rest-header">
+            <div class="tm-rest-title">O restante do mercado</div>
+            <div class="tm-rest-pct">~56%</div>
+          </div>
+          <div class="tm-rest-sub">~29.970 outras empresas dividiram pouco mais da metade de toda a riqueza gerada em 100 anos</div>
+          <div class="tm-dots">
+            <div class="tm-dot"></div><div class="tm-dot"></div><div class="tm-dot"></div><div class="tm-dot"></div><div class="tm-dot"></div><div class="tm-dot"></div><div class="tm-dot"></div><div class="tm-dot"></div><div class="tm-dot"></div><div class="tm-dot"></div><div class="tm-dot"></div><div class="tm-dot"></div><div class="tm-dot"></div><div class="tm-dot"></div><div class="tm-dot"></div><div class="tm-dot"></div>
+            <div class="tm-dot"></div><div class="tm-dot"></div><div class="tm-dot"></div><div class="tm-dot"></div><div class="tm-dot"></div><div class="tm-dot"></div><div class="tm-dot"></div><div class="tm-dot"></div><div class="tm-dot"></div><div class="tm-dot"></div><div class="tm-dot"></div><div class="tm-dot"></div><div class="tm-dot"></div><div class="tm-dot"></div><div class="tm-dot"></div><div class="tm-dot"></div>
+            <div class="tm-dot"></div><div class="tm-dot"></div><div class="tm-dot"></div><div class="tm-dot"></div><div class="tm-dot"></div><div class="tm-dot"></div><div class="tm-dot"></div><div class="tm-dot"></div><div class="tm-dot"></div><div class="tm-dot"></div><div class="tm-dot"></div><div class="tm-dot"></div><div class="tm-dot"></div><div class="tm-dot"></div><div class="tm-dot"></div><div class="tm-dot"></div>
+          </div>
+        </div>
       </div>
 
-      <div class="tm-cell" style="grid-column: span 2;">
-        <div class="tm-company">📦 Amazon</div>
-        <div class="tm-value">$2,27T</div>
-        <div class="tm-pct">2,5%</div>
-      </div>
-
-    </div>
+    </div><!-- /treemap-container -->
   </div>
 
   <!-- O QUE ISSO SIGNIFICA -->
