@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CDB pagando IPCA + 9% ao ano — mas nem sempre foi assim | Fábio Carlucci</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DBQSDSDRF3"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-DBQSDSDRF3');</script>
+<style>
+  :root {
+    --verde-escuro: #1a2e25;
+    --dourado: #c9a84c;
+    --dourado-claro: #e2c47a;
+    --creme: #f5ede0;
+    --texto-claro: rgba(245,237,224,0.85);
+    --texto-muted: rgba(245,237,224,0.45);
+    --azul: #4a90d9;
+    --verde-gain: #3dbf8a;
+    --laranja: #e07a35;
+    --vermelho: #c94545;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { background-color: var(--verde-escuro); color: var(--creme); font-family: "Jost", sans-serif; font-weight: 300; overflow-x: hidden; }
+  body::before {
+    content: ""; position: fixed; inset: 0;
+    background-image: radial-gradient(ellipse at 10% 10%, rgba(201,168,76,0.06) 0%, transparent 55%), radial-gradient(ellipse at 90% 90%, rgba(47,82,64,0.35) 0%, transparent 55%);
+    pointer-events: none; z-index: 0;
+  }
+  .back-link { position: relative; z-index: 10; display: inline-flex; align-items: center; gap: 8px; padding: 28px 8%; font-size: 0.7rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--texto-muted); text-decoration: none; transition: color 0.2s; }
+  .back-link:hover { color: var(--dourado); }
+  .back-link::before { content: "←"; font-size: 0.9rem; }
+  .hero { position: relative; z-index: 1; padding: 20px 8% 64px; border-bottom: 1px solid rgba(201,168,76,0.15); max-width: 900px; }
+  .hero-tag { font-size: 0.65rem; font-weight: 500; letter-spacing: 0.35em; text-transform: uppercase; color: var(--dourado); display: flex; align-items: center; gap: 12px; margin-bottom: 24px; opacity: 0; animation: fadeUp 0.7s ease 0.1s forwards; }
+  .hero-tag::before { content: ""; width: 30px; height: 1px; background: var(--dourado); }
+  .hero-date { font-size: 0.72rem; letter-spacing: 0.15em; color: var(--texto-muted); margin-bottom: 20px; opacity: 0; animation: fadeUp 0.7s ease 0.2s forwards; }
+  h1 { font-family: "Cormorant Garamond", serif; font-size: clamp(2rem, 5vw, 3.8rem); font-weight: 300; line-height: 1.12; color: var(--creme); opacity: 0; animation: fadeUp 0.7s ease 0.3s forwards; }
+  h1 em { font-style: italic; color: var(--dourado-claro); }
+  .hero-sub { font-size: 0.97rem; color: var(--texto-muted); line-height: 1.75; margin-top: 16px; max-width: 640px; opacity: 0; animation: fadeUp 0.7s ease 0.45s forwards; }
+  .hero-fonte { margin-top: 14px; font-size: 0.7rem; color: rgba(245,237,224,0.3); opacity: 0; animation: fadeUp 0.7s ease 0.55s forwards; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+  article { position: relative; z-index: 1; max-width: 800px; margin: 0 auto; padding: 64px 8% 88px; }
+  .lead { font-family: "Cormorant Garamond", serif; font-size: clamp(1.1rem, 2.5vw, 1.35rem); font-weight: 400; line-height: 1.8; color: var(--creme); margin-bottom: 48px; padding-bottom: 48px; border-bottom: 1px solid rgba(201,168,76,0.15); }
+  p { font-size: 0.97rem; line-height: 1.9; color: var(--texto-claro); margin-bottom: 24px; }
+  strong { font-weight: 600; color: var(--creme); }
+  .section-title { font-family: "Cormorant Garamond", serif; font-size: 1.55rem; font-weight: 600; color: var(--dourado-claro); margin: 56px 0 18px; padding-top: 44px; border-top: 1px solid rgba(201,168,76,0.12); display: flex; align-items: center; gap: 14px; }
+  .section-icon { font-size: 1.3rem; flex-shrink: 0; }
+
+  /* HOJE vs MEDIA */
+  .stat-hoje { display: grid; grid-template-columns: 1fr auto 1fr; gap: 0; border-radius: 8px; overflow: hidden; margin: 36px 0; }
+  @media (max-width: 520px) { .stat-hoje { grid-template-columns: 1fr; } }
+  .stat-bloco { padding: 28px 20px; text-align: center; }
+  .stat-bloco.hoje  { background: rgba(201,168,76,0.12); border: 1px solid rgba(201,168,76,0.25); }
+  .stat-bloco.media { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); }
+  .stat-divider { background: rgba(255,255,255,0.03); border-top: 1px solid rgba(255,255,255,0.05); border-bottom: 1px solid rgba(255,255,255,0.05); display: flex; align-items: center; justify-content: center; padding: 0 14px; font-size: 0.9rem; color: var(--texto-muted); }
+  .stat-label { font-size: 0.62rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 10px; }
+  .stat-bloco.hoje .stat-label  { color: var(--dourado); }
+  .stat-bloco.media .stat-label { color: var(--texto-muted); }
+  .stat-valor { font-family: "Cormorant Garamond", serif; font-size: clamp(2.5rem, 6vw, 3.5rem); font-weight: 700; line-height: 1; margin-bottom: 6px; }
+  .stat-bloco.hoje .stat-valor  { color: var(--dourado); }
+  .stat-bloco.media .stat-valor { color: rgba(245,237,224,0.5); }
+  .stat-desc { font-size: 0.72rem; color: var(--texto-muted); line-height: 1.45; }
+
+  /* GRAFICOS */
+  .grafico-wrap { background: rgba(10,20,16,0.7); border: 1px solid rgba(255,255,255,0.07); border-radius: 8px; padding: 24px 20px 16px; margin: 32px 0; }
+  .grafico-titulo { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--dourado); margin-bottom: 4px; }
+  .grafico-sub { font-size: 0.72rem; color: var(--texto-muted); margin-bottom: 16px; }
+  .grafico-legenda { display: flex; gap: 20px; flex-wrap: wrap; margin-bottom: 12px; }
+  .leg-item { display: flex; align-items: center; gap: 7px; font-size: 0.7rem; color: var(--texto-muted); }
+  .leg-line { width: 20px; height: 3px; border-radius: 2px; }
+  canvas { width: 100% !important; display: block; }
+  .grafico-nota { font-size: 0.65rem; color: rgba(245,237,224,0.25); margin-top: 10px; line-height: 1.4; }
+
+  /* CICLOS */
+  .ciclos-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin: 32px 0; }
+  @media (max-width: 560px) { .ciclos-grid { grid-template-columns: 1fr 1fr; } }
+  .ciclo-card { border-radius: 6px; padding: 18px 14px; text-align: center; transition: transform 0.25s; }
+  .ciclo-card:hover { transform: translateY(-3px); }
+  .ciclo-card.c1 { background: rgba(201,168,76,0.1);  border: 1px solid rgba(201,168,76,0.25); }
+  .ciclo-card.c2 { background: rgba(74,144,217,0.08); border: 1px solid rgba(74,144,217,0.2); }
+  .ciclo-card.c3 { background: rgba(61,191,138,0.07); border: 1px solid rgba(61,191,138,0.15); }
+  .ciclo-card.c4 { background: rgba(201,69,69,0.1);   border: 1px solid rgba(201,69,69,0.2); }
+  .ciclo-periodo { font-size: 0.62rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 8px; }
+  .ciclo-card.c1 .ciclo-periodo { color: var(--dourado); }
+  .ciclo-card.c2 .ciclo-periodo { color: var(--azul); }
+  .ciclo-card.c3 .ciclo-periodo { color: var(--verde-gain); }
+  .ciclo-card.c4 .ciclo-periodo { color: #e07070; }
+  .ciclo-valor { font-family: "Cormorant Garamond", serif; font-size: 1.8rem; font-weight: 700; line-height: 1; margin-bottom: 4px; }
+  .ciclo-card.c1 .ciclo-valor { color: var(--dourado); }
+  .ciclo-card.c2 .ciclo-valor { color: var(--azul); }
+  .ciclo-card.c3 .ciclo-valor { color: var(--verde-gain); }
+  .ciclo-card.c4 .ciclo-valor { color: #e07070; }
+  .ciclo-desc { font-size: 0.68rem; color: var(--texto-muted); line-height: 1.4; }
+
+  /* ALERTA */
+  .alerta-box { background: linear-gradient(135deg, rgba(201,168,76,0.1) 0%, rgba(26,46,37,0.4) 100%); border: 1px solid rgba(201,168,76,0.25); border-left: 3px solid var(--dourado); border-radius: 4px; padding: 28px 32px; margin: 36px 0; }
+  .alerta-box p { font-family: "Cormorant Garamond", serif; font-size: 1.12rem; color: var(--creme); line-height: 1.8; margin: 0; }
+
+  /* RESOLVE GRID */
+  .resolve-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 28px 0; }
+  @media (max-width: 500px) { .resolve-grid { grid-template-columns: 1fr; } }
+  .resolve-card { border-radius: 5px; padding: 22px 18px; }
+  .resolve-card.sim { background: rgba(61,191,138,0.07); border: 1px solid rgba(61,191,138,0.2); }
+  .resolve-card.nao { background: rgba(201,69,69,0.07); border: 1px solid rgba(201,69,69,0.18); }
+  .resolve-label { font-size: 0.65rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 12px; }
+  .resolve-card.sim .resolve-label { color: #5ec98a; }
+  .resolve-card.nao .resolve-label { color: #e07070; }
+  .resolve-list { list-style: none; }
+  .resolve-list li { font-size: 0.84rem; color: var(--texto-claro); padding: 5px 0; display: flex; align-items: flex-start; gap: 8px; line-height: 1.5; border-bottom: 1px solid rgba(255,255,255,0.04); }
+  .resolve-list li:last-child { border-bottom: none; }
+  .resolve-card.sim .resolve-list li::before { content: "✓"; color: #5ec98a; flex-shrink: 0; font-size: 0.75rem; margin-top: 2px; }
+  .resolve-card.nao .resolve-list li::before { content: "✗"; color: #e07070; flex-shrink: 0; font-size: 0.75rem; margin-top: 2px; }
+
+  /* CAMINHO */
+  .caminho-list { display: flex; flex-direction: column; gap: 10px; margin: 28px 0; }
+  .caminho-item { display: flex; align-items: flex-start; gap: 16px; padding: 18px 20px; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 5px; transition: border-color 0.25s, background 0.25s; }
+  .caminho-item:hover { border-color: rgba(201,168,76,0.2); background: rgba(201,168,76,0.04); }
+  .caminho-icon { font-size: 1.2rem; flex-shrink: 0; margin-top: 2px; }
+  .caminho-titulo { font-size: 0.8rem; font-weight: 600; color: var(--dourado); margin-bottom: 4px; }
+  .caminho-desc { font-size: 0.84rem; color: var(--texto-claro); line-height: 1.6; }
+
+  /* CONCLUSAO */
+  .conclusao { font-family: "Cormorant Garamond", serif; font-size: 1.2rem; font-weight: 400; line-height: 1.85; color: var(--creme); margin-top: 52px; padding: 40px; border: 1px solid rgba(201,168,76,0.2); border-radius: 6px; background: rgba(255,255,255,0.02); position: relative; }
+  .conclusao::before { content: '"'; position: absolute; top: -10px; left: 32px; font-size: 5rem; color: rgba(201,168,76,0.15); font-family: "Cormorant Garamond", serif; line-height: 1; }
+
+  .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .fade-in.visible { opacity: 1; transform: none; }
+  footer { position: relative; z-index: 1; border-top: 1px solid rgba(201,168,76,0.12); padding: 40px 8%; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+  .footer-name { font-family: "Cormorant Garamond", serif; font-size: 1.1rem; font-weight: 300; color: var(--texto-muted); }
+  .footer-contact { font-size: 0.75rem; color: rgba(245,237,224,0.25); line-height: 1.9; text-align: right; }
+  .footer-contact a { color: var(--dourado); text-decoration: none; }
+  @media (max-width: 640px) { .back-link,.hero { padding-left: 5%; padding-right: 5%; } article { padding: 48px 5% 64px; } footer { padding: 32px 5%; flex-direction: column; } .footer-contact { text-align: left; } }
+</style>
+</head>
+<body>
+
+<a class="back-link" href="index.html">Voltar</a>
+
+<header class="hero">
+  <div class="hero-tag">Memorando · Renda Fixa & Ciclos</div>
+  <div class="hero-date">Junho de 2026</div>
+  <h1>CDB pagando IPCA + 9% ao ano —<br><em>mas nem sempre foi assim</em></h1>
+  <p class="hero-sub">O Brasil vive hoje um dos maiores patamares de juros reais do mundo. Aproveitar faz sentido. Mas confundir o extraordinário com o permanente pode ser o erro mais caro da carteira.</p>
+  <div class="hero-fonte">Fonte: Banco Central do Brasil · IBRE/FGV · Boletim Focus · XP Investimentos · IBGE</div>
+</header>
+
+<article>
+
+  <p class="lead">
+    Hoje, encontrar títulos de renda fixa pagando IPCA + 8%, IPCA + 9% ou taxas próximas de 1% ao mês parece algo natural. Para muitos investidores, especialmente os mais novos, essa realidade já começa a parecer permanente. <strong>Mas não é.</strong>
+  </p>
+
+  <div class="section-title"><span class="section-icon">📍</span> Onde estamos — e onde costumamos estar</div>
+  <p>Quando observamos a Selic descontada da expectativa de inflação — o chamado juro real ex-ante — percebemos que estamos muito acima da média histórica. O patamar atual representa uma distorção relevante dentro da própria série histórica brasileira.</p>
+
+  <div class="stat-hoje fade-in">
+    <div class="stat-bloco hoje">
+      <div class="stat-label">Juro real hoje (2026)</div>
+      <div class="stat-valor">~8,5%</div>
+      <div class="stat-desc">ao ano · ex-ante<br>Um dos maiores do mundo atualmente</div>
+    </div>
+    <div class="stat-divider">vs</div>
+    <div class="stat-bloco media">
+      <div class="stat-label">Média histórica 2008–2017</div>
+      <div class="stat-valor">~5,2%</div>
+      <div class="stat-desc">ao ano · período de referência<br>O normal estrutural do Brasil</div>
+    </div>
+  </div>
+
+  <!-- GRAFICO 1: juro real ex-ante -->
+  <div class="grafico-wrap fade-in">
+    <div class="grafico-titulo">Juro real ex-ante — 2008 a 2026</div>
+    <div class="grafico-sub">Selic descontada da expectativa de inflação · Boletim Focus/BCB</div>
+    <div class="grafico-legenda">
+      <div class="leg-item"><div class="leg-line" style="background:var(--azul)"></div>Juro real ex-ante</div>
+      <div class="leg-item"><div class="leg-line" style="background:none;border-top:2px dashed rgba(224,122,53,0.7);width:20px;height:0"></div><span style="margin-left:4px">Média 2008–2017: ~5,2%</span></div>
+    </div>
+    <canvas id="chartJuroReal" height="220"></canvas>
+    <div class="grafico-nota">Fonte: IBRE/FGV · Banco Central do Brasil · Boletim Focus. O juro real ex-ante desconta a expectativa de inflação futura.</div>
+  </div>
+
+  <p>Entre 2008 e 2017, o juro real médio ficou próximo de <strong>5,2% ao ano</strong>. Durante a pandemia, chegou a ficar <strong>negativo</strong>. O patamar atual, próximo de IPCA + 8,5%, representa uma distorção relevante — não necessariamente insustentável no curto prazo, mas fora da faixa que historicamente caracteriza a política monetária brasileira.</p>
+
+  <div class="section-title fade-in"><span class="section-icon">🔄</span> O Brasil já viveu cenários muito diferentes</div>
+  <p>A série histórica mostra que o juro real brasileiro passou por ao menos quatro fases bem distintas nas últimas décadas:</p>
+
+  <div class="ciclos-grid fade-in">
+    <div class="ciclo-card c1">
+      <div class="ciclo-periodo">2000–2007</div>
+      <div class="ciclo-valor">~10–12%</div>
+      <div class="ciclo-desc">Juros reais muito elevados. Credibilidade do BC em construção.</div>
+    </div>
+    <div class="ciclo-card c2">
+      <div class="ciclo-periodo">2008–2017</div>
+      <div class="ciclo-valor">~5,2%</div>
+      <div class="ciclo-desc">Média histórica de referência. Ciclos de alta e baixa.</div>
+    </div>
+    <div class="ciclo-card c3">
+      <div class="ciclo-periodo">2018–2019</div>
+      <div class="ciclo-valor">~2–3%</div>
+      <div class="ciclo-desc">Juros baixos. Selic chegou a 2% ao ano em 2020.</div>
+    </div>
+    <div class="ciclo-card c4">
+      <div class="ciclo-periodo">2020–2021</div>
+      <div class="ciclo-valor">Negativo</div>
+      <div class="ciclo-desc">Pandemia. Inflação subiu mais rápido que a Selic.</div>
+    </div>
+  </div>
+
+  <!-- GRAFICO 2: série histórica -->
+  <div class="grafico-wrap fade-in">
+    <div class="grafico-titulo">Selic × IPCA × Juro Real — 2006 a 2026</div>
+    <div class="grafico-sub">Taxa ao ano · Série histórica</div>
+    <div class="grafico-legenda">
+      <div class="leg-item"><div class="leg-line" style="background:var(--verde-gain)"></div>Selic</div>
+      <div class="leg-item"><div class="leg-line" style="background:var(--azul)"></div>IPCA</div>
+      <div class="leg-item"><div class="leg-line" style="background:var(--dourado)"></div>Juro Real</div>
+    </div>
+    <canvas id="chartSerie" height="240"></canvas>
+    <div class="grafico-nota">Fonte: Banco Central do Brasil · IBGE. Juro Real = Selic efetiva − IPCA acumulado no ano.</div>
+  </div>
+
+  <div class="alerta-box fade-in">
+    <p>Isso não significa que aproveitar a renda fixa hoje seja errado. Pelo contrário — faz bastante sentido. Mas existe uma diferença importante entre <strong>aproveitar uma oportunidade e acreditar que ela será permanente</strong>. O CDI atual não é o CDI estrutural da economia brasileira.</p>
+  </div>
+
+  <div class="section-title fade-in"><span class="section-icon">⚖️</span> O que a renda fixa resolve — e o que ela não resolve</div>
+  <p>A renda fixa entrega previsibilidade justamente porque <strong>limita o potencial futuro</strong>. Quando os juros reais retornarem para níveis mais próximos da média histórica, novas aplicações tenderão a oferecer retornos significativamente menores.</p>
+
+  <div class="resolve-grid fade-in">
+    <div class="resolve-card sim">
+      <div class="resolve-label">✓ Renda fixa resolve bem</div>
+      <ul class="resolve-list">
+        <li>Previsibilidade e controle de retorno</li>
+        <li>Reserva de emergência e liquidez</li>
+        <li>Objetivos de curto e médio prazo</li>
+        <li>Preservação nominal no ciclo atual</li>
+        <li>Carrego elevado enquanto os juros estiverem altos</li>
+      </ul>
+    </div>
+    <div class="resolve-card nao">
+      <div class="resolve-label">✗ Renda fixa não substitui</div>
+      <ul class="resolve-list">
+        <li>Crescimento real de patrimônio no longo prazo</li>
+        <li>Proteção cambial e diversificação geográfica</li>
+        <li>Exposição ao crescimento de empresas globais</li>
+        <li>Proteção estrutural quando juros caem</li>
+        <li>Participação nos ciclos globais de capital</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section-title fade-in"><span class="section-icon">🌍</span> O que os juros altos ensinaram — e o que esconderam</div>
+  <p>Durante muitos anos, a renda fixa brasileira foi tão generosa que praticamente <strong>eliminou o incentivo intelectual para estudar o restante do mercado</strong>. Não havia necessidade de olhar para fora, entender ciclos globais ou acompanhar mercados internacionais. Bastava permanecer no CDI.</p>
+
+  <div class="caminho-list fade-in">
+    <div class="caminho-item">
+      <span class="caminho-icon">📊</span>
+      <div>
+        <div class="caminho-titulo">ETFs e exposição internacional</div>
+        <div class="caminho-desc">Um ETF como o IVVB11 não representa apenas "ações americanas". Representa exposição ao crescimento das maiores empresas do mundo, à inovação tecnológica e ao ciclo econômico global — e obriga o investidor a acompanhar inflação americana, Fed e geopolítica.</div>
+      </div>
+    </div>
+    <div class="caminho-item">
+      <span class="caminho-icon">🥇</span>
+      <div>
+        <div class="caminho-titulo">Ouro e proteção monetária</div>
+        <div class="caminho-desc">O ouro leva à discussão sobre confiança em governos, desdolarização e "flight to quality". Cada classe de ativo obriga o investidor a desenvolver um repertório novo — e a entender por que patrimônio não se protege apenas com juros nominais altos.</div>
+      </div>
+    </div>
+    <div class="caminho-item">
+      <span class="caminho-icon">💵</span>
+      <div>
+        <div class="caminho-titulo">Dólar e diferencial de juros</div>
+        <div class="caminho-desc">O dólar leva ao entendimento sobre diferencial de juros entre economias, crescimento relativo e percepção global de risco. A exposição cambial deixa de ser especulação e passa a ser proteção patrimonial estrutural para quem pensa em décadas.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="conclusao fade-in">
+    O Brasil já viveu juros reais de 2%, 3%, 4% ao ano. Já viveu juros negativos. O cenário muda — sempre muda. E é por isso que <strong>diversificação não é apenas uma estratégia de investimento: é uma forma de reconhecer que o futuro raramente permanece igual ao presente.</strong> Aproveitar os juros elevados de hoje faz sentido. Construir patrimônio pensando <em>apenas</em> no cenário atual pode ser o erro mais caro da carteira.
+  </div>
+
+</article>
+
+<footer>
+  <div class="footer-name">Fábio Vogelaar Carlucci</div>
+  <div class="footer-contact">+55 (16) 98148-8260<br><a href="mailto:fabio.carlucci@ficus.capital">fabio.carlucci@ficus.capital</a></div>
+</footer>
+<div style="position:relative;z-index:1;padding:0 8% 28px;text-align:center;font-size:0.65rem;color:rgba(245,237,224,0.2);letter-spacing:0.08em;">Fontes: Banco Central do Brasil · IBRE/FGV · Boletim Focus · IBGE · XP Investimentos</div>
+
+<script>
+const faders = document.querySelectorAll(".fade-in");
+const obs = new IntersectionObserver(e => e.forEach(x => { if(x.isIntersecting){ x.target.classList.add("visible"); obs.unobserve(x.target); } }), { threshold: 0.1 });
+faders.forEach(f => obs.observe(f));
+
+function setupCanvas(id, h) {
+  const el = document.getElementById(id); if(!el) return null;
+  const W = el.offsetWidth || 700;
+  el.width = W * devicePixelRatio; el.height = h * devicePixelRatio;
+  el.style.height = h + "px";
+  const ctx = el.getContext("2d"); ctx.scale(devicePixelRatio, devicePixelRatio);
+  return { ctx, W, H: h };
+}
+
+// GRAFICO 1 — Juro Real Ex-Ante
+(function() {
+  const c = setupCanvas("chartJuroReal", 220); if(!c) return;
+  const { ctx, W, H } = c;
+  const PAD = { top: 18, right: 80, bottom: 32, left: 44 };
+  const pW = W - PAD.left - PAD.right, pH = H - PAD.top - PAD.bottom;
+  const labels = ["2008","2009","2010","2011","2012","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022","2023","2024","2025","2026"];
+  const data   = [7.6, 5.0, 5.5, 6.5, 3.0, 2.8, 3.5, 7.6, 5.0, 4.5, 3.5, 2.5, -2.5, 2.0, 7.5, 7.8, 7.8, 8.2, 8.5];
+  const n = labels.length, minV = -4, maxV = 12;
+  function xP(i){ return PAD.left + (i/(n-1))*pW; }
+  function yP(v){ return PAD.top + pH - ((v-minV)/(maxV-minV))*pH; }
+
+  // Grid
+  [-2,0,2,4,6,8,10].forEach(v => {
+    ctx.strokeStyle = v===0 ? "rgba(255,255,255,0.1)" : "rgba(255,255,255,0.05)";
+    ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(PAD.left,yP(v)); ctx.lineTo(PAD.left+pW,yP(v)); ctx.stroke();
+    ctx.fillStyle = "rgba(245,237,224,0.22)"; ctx.font = "9px Jost,sans-serif"; ctx.textAlign = "right";
+    ctx.fillText(v+"%", PAD.left-5, yP(v)+3);
+  });
+  ctx.fillStyle = "rgba(245,237,224,0.22)"; ctx.textAlign = "center"; ctx.font = "9px Jost,sans-serif";
+  labels.forEach((l,i) => { if(i%3===0||i===n-1) ctx.fillText(l, xP(i), H-PAD.bottom+14); });
+
+  // Zona pandemia
+  ctx.fillStyle = "rgba(201,69,69,0.08)";
+  ctx.fillRect(xP(12)-8, PAD.top, xP(13)-xP(12)+16, pH);
+
+  // Média histórica
+  ctx.strokeStyle = "rgba(224,122,53,0.7)"; ctx.lineWidth = 1.5; ctx.setLineDash([6,4]);
+  ctx.beginPath(); ctx.moveTo(PAD.left, yP(5.2)); ctx.lineTo(PAD.left+pW, yP(5.2)); ctx.stroke();
+  ctx.setLineDash([]);
+  ctx.fillStyle = "rgba(224,122,53,0.75)"; ctx.font = "9px Jost,sans-serif"; ctx.textAlign = "left";
+  ctx.fillText("média: ~5,2%", PAD.left+pW+5, yP(5.2)+3);
+
+  // Linha principal
+  ctx.beginPath(); ctx.strokeStyle = "rgba(74,144,217,0.9)"; ctx.lineWidth = 2.2; ctx.lineJoin = "round";
+  data.forEach((v,i) => i===0 ? ctx.moveTo(xP(i),yP(v)) : ctx.lineTo(xP(i),yP(v))); ctx.stroke();
+
+  // Ponto hoje
+  const lx = xP(n-1), ly = yP(8.5);
+  ctx.beginPath(); ctx.arc(lx, ly, 5, 0, Math.PI*2); ctx.fillStyle = "#c9a84c"; ctx.fill();
+  ctx.fillStyle = "#c9a84c"; ctx.font = "bold 9px Jost,sans-serif"; ctx.textAlign = "left";
+  ctx.fillText("Hoje: ~8,5%", lx+8, ly+4);
+
+  // Ponto pandemia
+  ctx.beginPath(); ctx.arc(xP(12), yP(-2.5), 4, 0, Math.PI*2); ctx.fillStyle = "#e07070"; ctx.fill();
+  ctx.fillStyle = "rgba(224,112,112,0.7)"; ctx.font = "8px Jost,sans-serif"; ctx.textAlign = "center";
+  ctx.fillText("pandemia", xP(12), yP(-2.5)-8);
+})();
+
+// GRAFICO 2 — Série histórica
+(function() {
+  const c = setupCanvas("chartSerie", 240); if(!c) return;
+  const { ctx, W, H } = c;
+  const PAD = { top: 18, right: 20, bottom: 36, left: 44 };
+  const pW = W - PAD.left - PAD.right, pH = H - PAD.top - PAD.bottom;
+  const anos  = ["06","07","08","09","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26"];
+  const selic = [13.75,11.25,13.75,8.75,10.75,11.50,7.25,9.50,11.25,14.25,14.00,7.00,6.50,5.00,2.00,4.25,13.75,12.25,11.25,14.75,14.50];
+  const ipca  = [3.14,4.46,5.90,4.31,5.91,6.50,5.84,5.91,6.41,10.67,6.29,2.95,3.75,4.31,4.52,10.06,5.79,4.62,4.83,5.53,5.20];
+  const real  = [10.61,6.79,7.85,4.44,4.84,5.00,1.41,3.59,4.84,3.58,7.71,4.05,2.75,0.69,-2.52,-5.81,7.96,7.63,6.42,9.22,8.50];
+  const n = anos.length, minV = -8, maxV = 18;
+  function xP(i){ return PAD.left + (i/(n-1))*pW; }
+  function yP(v){ return PAD.top + pH - ((v-minV)/(maxV-minV))*pH; }
+
+  // Grid
+  [-5,0,5,10,15].forEach(v => {
+    ctx.strokeStyle = v===0 ? "rgba(255,255,255,0.1)" : "rgba(255,255,255,0.05)";
+    ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(PAD.left,yP(v)); ctx.lineTo(PAD.left+pW,yP(v)); ctx.stroke();
+    ctx.fillStyle = "rgba(245,237,224,0.22)"; ctx.font = "9px Jost,sans-serif"; ctx.textAlign = "right";
+    ctx.fillText(v+"%", PAD.left-5, yP(v)+3);
+  });
+  ctx.fillStyle = "rgba(245,237,224,0.22)"; ctx.textAlign = "center"; ctx.font = "9px Jost,sans-serif";
+  anos.forEach((a,i) => { if(i%2===0||i===n-1) ctx.fillText("'"+a, xP(i), H-PAD.bottom+14); });
+
+  // Zona negativa
+  ctx.fillStyle = "rgba(201,69,69,0.06)";
+  ctx.fillRect(PAD.left, yP(0), pW, pH-(yP(0)-PAD.top));
+
+  function drawL(data, color, w, dash=[]) {
+    ctx.beginPath(); ctx.strokeStyle = color; ctx.lineWidth = w; ctx.lineJoin = "round"; ctx.setLineDash(dash);
+    data.forEach((v,i) => i===0 ? ctx.moveTo(xP(i),yP(v)) : ctx.lineTo(xP(i),yP(v))); ctx.stroke(); ctx.setLineDash([]);
+  }
+  drawL(selic, "rgba(61,191,138,0.8)", 1.8);
+  drawL(ipca,  "rgba(74,144,217,0.7)", 1.5, [4,3]);
+  drawL(real,  "rgba(201,168,76,0.9)", 2.2);
+})();
+
+window.addEventListener("resize", () => location.reload());
+</script>
+</body>
+</html>
