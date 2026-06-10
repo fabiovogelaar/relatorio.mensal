@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A armadilha do IPCA+8% e o verdadeiro significado da diversificação | Fábio Carlucci</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DBQSDSDRF3"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-DBQSDSDRF3");</script>
+<style>
+  :root {
+    --verde-escuro: #1a2e25;
+    --dourado: #c9a84c;
+    --dourado-claro: #e2c47a;
+    --creme: #f5ede0;
+    --texto-claro: rgba(245,237,224,0.85);
+    --texto-muted: rgba(245,237,224,0.45);
+    --azul: #4a90d9;
+    --verde-gain: #3dbf8a;
+    --vermelho: #c94545;
+    --laranja: #e07a35;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { background-color: var(--verde-escuro); color: var(--creme); font-family: "Jost", sans-serif; font-weight: 300; overflow-x: hidden; }
+  body::before {
+    content: ""; position: fixed; inset: 0;
+    background-image: radial-gradient(ellipse at 10% 10%, rgba(201,168,76,0.06) 0%, transparent 55%), radial-gradient(ellipse at 90% 90%, rgba(47,82,64,0.35) 0%, transparent 55%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none; z-index: 0;
+  }
+  .back-link { position: relative; z-index: 10; display: inline-flex; align-items: center; gap: 8px; padding: 28px 8%; font-size: 0.7rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--texto-muted); text-decoration: none; transition: color 0.2s; }
+  .back-link:hover { color: var(--dourado); }
+  .back-link::before { content: "←"; font-size: 0.9rem; }
+  .hero { position: relative; z-index: 1; padding: 20px 8% 64px; border-bottom: 1px solid rgba(201,168,76,0.15); max-width: 900px; }
+  .hero-tag { font-size: 0.65rem; font-weight: 500; letter-spacing: 0.35em; text-transform: uppercase; color: var(--dourado); display: flex; align-items: center; gap: 12px; margin-bottom: 24px; opacity: 0; animation: fadeUp 0.7s ease 0.1s forwards; }
+  .hero-tag::before { content: ""; width: 30px; height: 1px; background: var(--dourado); }
+  .hero-date { font-size: 0.72rem; letter-spacing: 0.15em; color: var(--texto-muted); margin-bottom: 20px; opacity: 0; animation: fadeUp 0.7s ease 0.2s forwards; }
+  h1 { font-family: "Cormorant Garamond", serif; font-size: clamp(2rem, 5vw, 3.8rem); font-weight: 300; line-height: 1.12; color: var(--creme); opacity: 0; animation: fadeUp 0.7s ease 0.3s forwards; }
+  h1 em { font-style: italic; color: var(--dourado-claro); }
+  .hero-sub { font-size: 0.97rem; color: var(--texto-muted); line-height: 1.75; margin-top: 16px; max-width: 640px; opacity: 0; animation: fadeUp 0.7s ease 0.45s forwards; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+  article { position: relative; z-index: 1; max-width: 800px; margin: 0 auto; padding: 64px 8% 88px; }
+  .lead { font-family: "Cormorant Garamond", serif; font-size: clamp(1.1rem, 2.5vw, 1.35rem); font-weight: 400; line-height: 1.8; color: var(--creme); margin-bottom: 48px; padding-bottom: 48px; border-bottom: 1px solid rgba(201,168,76,0.15); }
+  p { font-size: 0.97rem; line-height: 1.9; color: var(--texto-claro); margin-bottom: 24px; }
+  strong { font-weight: 600; color: var(--creme); }
+  .section-title { font-family: "Cormorant Garamond", serif; font-size: 1.55rem; font-weight: 600; color: var(--dourado-claro); margin: 56px 0 18px; padding-top: 44px; border-top: 1px solid rgba(201,168,76,0.12); display: flex; align-items: center; gap: 14px; }
+  .section-icon { font-size: 1.3rem; flex-shrink: 0; }
+
+  /* TESOURO CARD */
+  .tesouro-card {
+    background: linear-gradient(135deg, rgba(201,168,76,0.12) 0%, rgba(47,82,64,0.4) 100%);
+    border: 1px solid rgba(201,168,76,0.3); border-radius: 8px;
+    padding: 28px 28px; margin: 32px 0;
+    display: flex; align-items: center; gap: 28px; flex-wrap: wrap;
+  }
+  .tesouro-badge { background: rgba(201,168,76,0.15); border: 1px solid rgba(201,168,76,0.3); border-radius: 4px; padding: 6px 12px; font-size: 0.62rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--dourado); margin-bottom: 8px; display: inline-block; }
+  .tesouro-nome { font-family: "Cormorant Garamond", serif; font-size: 1.5rem; font-weight: 700; color: var(--creme); line-height: 1; margin-bottom: 6px; }
+  .tesouro-taxa { font-family: "Cormorant Garamond", serif; font-size: 2.8rem; font-weight: 700; color: var(--dourado); line-height: 1; }
+  .tesouro-desc { font-size: 0.82rem; color: var(--texto-muted); flex: 1; min-width: 200px; line-height: 1.7; }
+
+  /* DOIS CENARIOS */
+  .dois-cenarios { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 32px 0; }
+  @media (max-width: 540px) { .dois-cenarios { grid-template-columns: 1fr; } }
+  .cenario-card { border-radius: 6px; padding: 24px 20px; }
+  .cenario-card.errado { background: rgba(201,69,69,0.08); border: 1px solid rgba(201,69,69,0.2); }
+  .cenario-card.certo  { background: rgba(61,191,138,0.07); border: 1px solid rgba(61,191,138,0.2); }
+  .cenario-title { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 14px; }
+  .cenario-card.errado .cenario-title { color: #e07070; }
+  .cenario-card.certo  .cenario-title { color: var(--verde-gain); }
+  .cenario-head { font-family: "Cormorant Garamond", serif; font-size: 1.2rem; font-weight: 600; color: var(--creme); margin-bottom: 14px; line-height: 1.4; }
+  .cenario-list { list-style: none; }
+  .cenario-list li { font-size: 0.84rem; color: var(--texto-claro); padding: 5px 0; display: flex; align-items: flex-start; gap: 8px; line-height: 1.5; border-bottom: 1px solid rgba(255,255,255,0.04); }
+  .cenario-list li:last-child { border-bottom: none; }
+  .tag-pos { color: #5ec98a; font-size: 0.8rem; flex-shrink: 0; }
+  .tag-neg { color: #e07070; font-size: 0.8rem; flex-shrink: 0; }
+
+  /* MATRIX DE CENÁRIOS */
+  .matrix-wrap { background: rgba(10,20,16,0.7); border: 1px solid rgba(255,255,255,0.07); border-radius: 8px; overflow: hidden; margin: 32px 0; }
+  .matrix-title { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--dourado); padding: 16px 20px 0; }
+  .matrix-sub { font-size: 0.72rem; color: var(--texto-muted); padding: 4px 20px 16px; }
+  .matrix-table { width: 100%; border-collapse: collapse; }
+  .matrix-table th { font-size: 0.65rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--texto-muted); padding: 10px 14px; text-align: center; border-bottom: 1px solid rgba(255,255,255,0.07); }
+  .matrix-table th:first-child { text-align: left; }
+  .matrix-table td { font-size: 0.82rem; color: var(--texto-claro); padding: 11px 14px; text-align: center; border-bottom: 1px solid rgba(255,255,255,0.04); }
+  .matrix-table td:first-child { text-align: left; font-weight: 500; color: var(--creme); }
+  .matrix-table tr:last-child td { border-bottom: none; }
+  .matrix-table tr:hover td { background: rgba(255,255,255,0.02); }
+  .m-pos  { color: #5ec98a; font-size: 1rem; }
+  .m-neg  { color: #e07070; font-size: 1rem; }
+  .m-warn { color: var(--dourado); font-size: 0.9rem; }
+  .matrix-legend { display: flex; gap: 18px; padding: 12px 20px; flex-wrap: wrap; border-top: 1px solid rgba(255,255,255,0.05); }
+  .mleg { font-size: 0.68rem; color: var(--texto-muted); display: flex; align-items: center; gap: 5px; }
+
+  /* QUATRO PILARES */
+  .pilares { display: flex; flex-direction: column; gap: 12px; margin: 28px 0; }
+  .pilar { display: flex; align-items: flex-start; gap: 18px; padding: 20px 22px; border-radius: 5px; transition: background 0.25s; }
+  .pilar.p1 { background: rgba(201,168,76,0.07);  border: 1px solid rgba(201,168,76,0.18); }
+  .pilar.p2 { background: rgba(74,144,217,0.07);  border: 1px solid rgba(74,144,217,0.18); }
+  .pilar.p3 { background: rgba(61,191,138,0.06);  border: 1px solid rgba(61,191,138,0.15); }
+  .pilar.p4 { background: rgba(224,122,53,0.07);  border: 1px solid rgba(224,122,53,0.18); }
+  .pilar:hover { filter: brightness(1.08); }
+  .pilar-num { font-family: "Cormorant Garamond", serif; font-size: 2rem; font-weight: 700; color: rgba(201,168,76,0.2); line-height: 1; flex-shrink: 0; width: 32px; text-align: center; }
+  .pilar.p2 .pilar-num { color: rgba(74,144,217,0.2); }
+  .pilar.p3 .pilar-num { color: rgba(61,191,138,0.2); }
+  .pilar.p4 .pilar-num { color: rgba(224,122,53,0.2); }
+  .pilar-titulo { font-size: 0.82rem; font-weight: 600; margin-bottom: 4px; }
+  .pilar.p1 .pilar-titulo { color: var(--dourado); }
+  .pilar.p2 .pilar-titulo { color: var(--azul); }
+  .pilar.p3 .pilar-titulo { color: var(--verde-gain); }
+  .pilar.p4 .pilar-titulo { color: var(--laranja); }
+  .pilar-funcao { font-size: 0.8rem; color: var(--texto-claro); line-height: 1.6; margin-bottom: 6px; }
+  .pilar-risco { font-size: 0.75rem; color: var(--texto-muted); font-style: italic; }
+
+  /* ANALOGIA DO BARCO */
+  .barco-box {
+    background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 8px; padding: 32px 28px; margin: 32px 0; text-align: center;
+  }
+  .barco-title { font-size: 0.65rem; font-weight: 600; letter-spacing: 0.3em; text-transform: uppercase; color: var(--dourado); margin-bottom: 16px; }
+  .barco-texto { font-family: "Cormorant Garamond", serif; font-size: 1.2rem; font-weight: 400; color: var(--creme); line-height: 1.7; margin-bottom: 20px; }
+  .barco-climas { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-top: 16px; }
+  .barco-clima { font-size: 0.8rem; color: var(--texto-muted); background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 20px; padding: 6px 14px; display: flex; align-items: center; gap: 6px; }
+  .barco-clima span { font-size: 1.1rem; }
+
+  /* CONCENTRACAO DISFARÇADA */
+  .concentracao-box {
+    background: rgba(201,69,69,0.08); border: 1px solid rgba(201,69,69,0.2);
+    border-left: 3px solid #e07070; border-radius: 4px; padding: 24px 28px; margin: 32px 0;
+  }
+  .concentracao-title { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: #e07070; margin-bottom: 12px; }
+  .concentracao-list { list-style: none; }
+  .concentracao-list li { font-size: 0.88rem; color: var(--texto-claro); padding: 5px 0; display: flex; align-items: flex-start; gap: 8px; line-height: 1.55; }
+  .concentracao-list li::before { content: "✗"; color: #e07070; flex-shrink: 0; }
+
+  /* INSIGHT */
+  .insight-box { background: linear-gradient(135deg, rgba(201,168,76,0.1) 0%, rgba(26,46,37,0.4) 100%); border: 1px solid rgba(201,168,76,0.25); border-left: 3px solid var(--dourado); border-radius: 4px; padding: 28px 32px; margin: 36px 0; }
+  .insight-box p { font-family: "Cormorant Garamond", serif; font-size: 1.12rem; color: var(--creme); line-height: 1.8; margin: 0; }
+
+  /* CONCLUSÃO */
+  .conclusao { font-family: "Cormorant Garamond", serif; font-size: 1.2rem; font-weight: 400; line-height: 1.85; color: var(--creme); margin-top: 52px; padding: 40px; border: 1px solid rgba(201,168,76,0.2); border-radius: 6px; background: rgba(255,255,255,0.02); position: relative; }
+  .conclusao::before { content: "\201C"; position: absolute; top: -10px; left: 32px; font-size: 5rem; color: rgba(201,168,76,0.15); font-family: "Cormorant Garamond", serif; line-height: 1; }
+
+  .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .fade-in.visible { opacity: 1; transform: none; }
+  footer { position: relative; z-index: 1; border-top: 1px solid rgba(201,168,76,0.12); padding: 40px 8%; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+  .footer-name { font-family: "Cormorant Garamond", serif; font-size: 1.1rem; font-weight: 300; color: var(--texto-muted); }
+  .footer-contact { font-size: 0.75rem; color: rgba(245,237,224,0.25); line-height: 1.9; text-align: right; }
+  .footer-contact a { color: var(--dourado); text-decoration: none; }
+  @media (max-width: 640px) { .back-link,.hero { padding-left: 5%; padding-right: 5%; } article { padding: 48px 5% 64px; } footer { padding: 32px 5%; flex-direction: column; } .footer-contact { text-align: left; } .tesouro-card { flex-direction: column; gap: 12px; } }
+</style>
+</head>
+<body>
+
+<a class="back-link" href="index.html">Voltar</a>
+
+<header class="hero">
+  <div class="hero-tag">Memorando · Alocação Estratégica</div>
+  <div class="hero-date">Junho de 2026</div>
+  <h1>A armadilha do IPCA+8%<br><em>e o verdadeiro significado<br>da diversificação</em></h1>
+  <p class="hero-sub">O erro de muita gente não é comprar Tesouro IPCA+8%. É comprar <em>só</em> Tesouro IPCA+8%. Uma carteira robusta não é uma coleção de ativos — é um sistema preparado para diferentes cenários.</p>
+</header>
+
+<article>
+
+  <p class="lead">
+    Com os títulos públicos brasileiros oferecendo taxas reais próximas de <strong>IPCA + 8% ao ano</strong>, muitos investidores enxergam uma oportunidade histórica. E de fato pode ser. O problema não está em comprar Tesouro IPCA+. O problema está em <strong>acreditar que apenas isso basta</strong>.
+  </p>
+
+  <!-- O QUE SIGNIFICA IPCA+8% -->
+  <div class="section-title"><span class="section-icon">📊</span> O que significa IPCA + 8%?</div>
+
+  <div class="tesouro-card fade-in">
+    <div>
+      <div class="tesouro-badge">Tesouro IPCA+ 2032</div>
+      <div class="tesouro-nome">Rentabilidade anual</div>
+      <div class="tesouro-taxa">IPCA + 8,32%</div>
+    </div>
+    <div class="tesouro-desc">
+      Uma das maiores taxas reais observadas nas últimas décadas. Se a inflação for 4% ao ano, a rentabilidade nominal aproximada chega a <strong>12,32% ao ano</strong>.<br><br>
+      Historicamente, taxas dessa magnitude aparecem quando o mercado exige um prêmio muito elevado para financiar o governo — normalmente em momentos de incerteza fiscal, inflação elevada e desconfiança dos investidores.<br><br>
+      <strong style="color:var(--dourado)">Mas é justamente aí que mora a oportunidade — e o risco.</strong>
+    </div>
+  </div>
+
+  <!-- DOIS CENÁRIOS -->
+  <div class="section-title fade-in"><span class="section-icon">🔀</span> Dois cenários possíveis — e suas consequências</div>
+
+  <p>Quando o mercado oferece juros reais extremamente altos, normalmente existem duas possibilidades. Sua carteira precisa sobreviver às duas.</p>
+
+  <div class="dois-cenarios fade-in">
+    <div class="cenario-card errado">
+      <div class="cenario-title">⚠️ Se o mercado estiver certo</div>
+      <div class="cenario-head">O risco fiscal era real. O Brasil piora.</div>
+      <ul class="cenario-list">
+        <li><span class="tag-neg">✗</span>Tesouro IPCA+ sofre marcação a mercado negativa</li>
+        <li><span class="tag-neg">✗</span>Bolsa brasileira sofre com menor crescimento</li>
+        <li><span class="tag-pos">✓</span>CDI continua pagando juros elevados</li>
+        <li><span class="tag-pos">✓</span>Dólar tende a se valorizar frente ao real</li>
+      </ul>
+    </div>
+    <div class="cenario-card certo">
+      <div class="cenario-title">✅ Se o mercado estiver errado</div>
+      <div class="cenario-head">O Brasil melhora. Juros caem.</div>
+      <ul class="cenario-list">
+        <li><span class="tag-pos">✓</span>Títulos IPCA+ sobem fortemente na marcação</li>
+        <li><span class="tag-pos">✓</span>Bolsa brasileira tende a se valorizar</li>
+        <li><span class="tag-pos">✓</span>Você ganha dos dois lados simultaneamente</li>
+        <li><span class="tag-pos">✓</span>Foi exatamente isso que ocorreu em ciclos anteriores</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="insight-box fade-in">
+    <p>IPCA+8% e Bolsa geralmente se beneficiam da <strong>mesma dinâmica: queda dos juros futuros</strong>. Se o fiscal melhora e a inflação desacelera, o título sobe forte na marcação e as ações expandem múltiplos ao mesmo tempo. Você ganha dos dois lados. Mas se o cenário contrário acontecer, <strong>os dois podem sofrer juntos</strong>. É aí que entram o CDI e o dólar.</p>
+  </div>
+
+  <!-- CONCENTRACAO DISFARÇADA -->
+  <div class="section-title fade-in"><span class="section-icon">⚠️</span> O problema: IPCA+ e bolsa podem cair juntos</div>
+
+  <p>Muitos investidores acreditam que possuem diversificação porque compraram ativos diferentes. Mas na prática, todos podem estar apostando no mesmo cenário econômico.</p>
+
+  <div class="concentracao-box fade-in">
+    <div class="concentracao-title">Concentração disfarçada — quando a curva de juros abre:</div>
+    <ul class="concentracao-list">
+      <li>Tesouro IPCA+ cai</li>
+      <li>Fundos imobiliários (FIIs) caem</li>
+      <li>Bolsa brasileira cai</li>
+    </ul>
+    <p style="font-size:0.84rem; color:var(--texto-muted); margin-top:14px; font-style:italic;">Ter dez ações brasileiras não é diversificação. Ter cinco FIIs não é diversificação. Ter vários títulos IPCA+ também não é diversificação. <strong style="color:var(--creme);">Diversificação ocorre quando os motores de retorno são diferentes.</strong></p>
+  </div>
+
+  <!-- MATRIX -->
+  <div class="section-title fade-in"><span class="section-icon">📋</span> Como cada ativo se comporta em cada cenário</div>
+
+  <div class="matrix-wrap fade-in">
+    <div class="matrix-title">Matriz de cenários × classes de ativos</div>
+    <div class="matrix-sub">O objetivo não é acertar o cenário. É sobreviver a todos eles.</div>
+    <table class="matrix-table">
+      <thead>
+        <tr>
+          <th>Cenário</th>
+          <th>IPCA+</th>
+          <th>Bolsa</th>
+          <th>CDI</th>
+          <th>Dólar</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Queda dos juros</td>
+          <td><span class="m-pos">✓</span></td>
+          <td><span class="m-pos">✓</span></td>
+          <td><span class="m-warn">⚠</span></td>
+          <td><span class="m-warn">⚠</span></td>
+        </tr>
+        <tr>
+          <td>Alta dos juros</td>
+          <td><span class="m-neg">✗</span></td>
+          <td><span class="m-neg">✗</span></td>
+          <td><span class="m-pos">✓</span></td>
+          <td><span class="m-pos">✓</span></td>
+        </tr>
+        <tr>
+          <td>Crise fiscal</td>
+          <td><span class="m-neg">✗</span></td>
+          <td><span class="m-neg">✗</span></td>
+          <td><span class="m-pos">✓</span></td>
+          <td><span class="m-pos">✓</span></td>
+        </tr>
+        <tr>
+          <td>Crescimento econômico</td>
+          <td><span class="m-pos">✓</span></td>
+          <td><span class="m-pos">✓</span></td>
+          <td><span class="m-warn">⚠</span></td>
+          <td><span class="m-warn">⚠</span></td>
+        </tr>
+        <tr>
+          <td>Estresse global</td>
+          <td><span class="m-warn">⚠</span></td>
+          <td><span class="m-neg">✗</span></td>
+          <td><span class="m-warn">⚠</span></td>
+          <td><span class="m-pos">✓</span></td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="matrix-legend">
+      <span class="mleg"><span class="m-pos" style="font-size:0.85rem">✓</span> Tende a se beneficiar</span>
+      <span class="mleg"><span class="m-neg" style="font-size:0.85rem">✗</span> Tende a sofrer</span>
+      <span class="mleg"><span class="m-warn" style="font-size:0.85rem">⚠</span> Neutro ou misto</span>
+    </div>
+  </div>
+
+  <!-- QUATRO PILARES -->
+  <div class="section-title fade-in"><span class="section-icon">🏛️</span> Os quatro pilares de uma carteira resiliente</div>
+
+  <div class="pilares fade-in">
+    <div class="pilar p1">
+      <div class="pilar-num">1</div>
+      <div>
+        <div class="pilar-titulo">IPCA+ de longo prazo</div>
+        <div class="pilar-funcao">Capturar o fechamento de juros, preservar poder de compra e gerar retorno real elevado. Em um ciclo de queda de juros, pode entregar ganhos expressivos de capital além do carrego.</div>
+        <div class="pilar-risco">Risco: forte volatilidade de curto prazo via marcação a mercado.</div>
+      </div>
+    </div>
+    <div class="pilar p2">
+      <div class="pilar-num">2</div>
+      <div>
+        <div class="pilar-titulo">Bolsa de valores</div>
+        <div class="pilar-funcao">Participar do crescimento econômico e capturar a expansão dos lucros corporativos. No cenário de queda de juros, costuma amplificar os ganhos — junto com o IPCA+.</div>
+        <div class="pilar-risco">Risco: oscilações elevadas e sensibilidade ao ciclo econômico.</div>
+      </div>
+    </div>
+    <div class="pilar p3">
+      <div class="pilar-num">3</div>
+      <div>
+        <div class="pilar-titulo">CDI e liquidez</div>
+        <div class="pilar-funcao">Reduzir a volatilidade da carteira, manter reserva de oportunidade e gerar renda mesmo em cenários adversos. O CDI reduz volatilidade e mantém liquidez quando os demais ativos sofrem.</div>
+        <div class="pilar-risco">Risco: menor potencial de valorização em ciclos de queda de juros.</div>
+      </div>
+    </div>
+    <div class="pilar p4">
+      <div class="pilar-num">4</div>
+      <div>
+        <div class="pilar-titulo">Dólar e investimentos internacionais</div>
+        <div class="pilar-funcao">Proteção patrimonial contra deterioração do real, diversificação geográfica e hedge contra cenários de crise fiscal. Protege contra a perda de valor do real e o estresse global.</div>
+        <div class="pilar-risco">Risco: pode performar abaixo dos ativos locais em períodos de forte recuperação brasileira.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BARCO -->
+  <div class="section-title fade-in"><span class="section-icon">⛵</span> A analogia do barco</div>
+
+  <div class="barco-box fade-in">
+    <div class="barco-title">Uma analogia simples</div>
+    <div class="barco-texto">
+      Muitos investidores constroem um barco equipado apenas para dias ensolarados.<br>
+      Quando a tempestade chega, descobrem que não possuem proteção.<br><br>
+      <strong>Uma carteira bem construída é um barco preparado para qualquer clima.</strong>
+    </div>
+    <div class="barco-climas">
+      <div class="barco-clima"><span>☀️</span> Sol</div>
+      <div class="barco-clima"><span>🌧️</span> Chuva</div>
+      <div class="barco-clima"><span>🌪️</span> Tempestades</div>
+      <div class="barco-clima"><span>🌊</span> Ondas inesperadas</div>
+    </div>
+    <p style="font-size:0.82rem; color:var(--texto-muted); margin-top:20px; font-style:italic;">Você não sabe qual clima encontrará. Mas pode estar preparado para todos eles.</p>
+  </div>
+
+  <div class="conclusao fade-in">
+    O investidor não deve evitar o Tesouro IPCA+. Taxas próximas de IPCA + 8% representam uma das oportunidades mais interessantes dos últimos anos. Mas a grande lição é outra: <strong>o erro não é comprar Tesouro IPCA+. O erro é comprar somente Tesouro IPCA+.</strong> Uma carteira robusta combina ativos que prosperam em diferentes cenários — porque ninguém sabe exatamente o que acontecerá nos próximos anos. Mas é possível construir um patrimônio preparado para qualquer caminho que a economia venha a seguir.
+  </div>
+
+</article>
+
+<footer>
+  <div class="footer-name">Fábio Vogelaar Carlucci</div>
+  <div class="footer-contact">+55 (16) 98148-8260<br><a href="mailto:fabio.carlucci@ficus.capital">fabio.carlucci@ficus.capital</a></div>
+</footer>
+<div style="position:relative;z-index:1;padding:0 8% 28px;text-align:center;font-size:0.65rem;color:rgba(245,237,224,0.2);letter-spacing:0.08em;">Planejamento Financeiro e Patrimonial · Wealth Management · Alocação Estratégica · Proteção Patrimonial</div>
+
+<script>
+const faders = document.querySelectorAll(".fade-in");
+const obs = new IntersectionObserver(e => e.forEach(x => { if(x.isIntersecting){ x.target.classList.add("visible"); obs.unobserve(x.target); } }), { threshold: 0.1 });
+faders.forEach(f => obs.observe(f));
+</script>
+</body>
+</html>
