@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pare de falar que o mercado americano está caro | Fábio Carlucci</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DBQSDSDRF3"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-DBQSDSDRF3");</script>
+<style>
+  :root {
+    --verde-escuro: #1a2e25;
+    --dourado: #c9a84c;
+    --dourado-claro: #e2c47a;
+    --creme: #f5ede0;
+    --texto-claro: rgba(245,237,224,0.85);
+    --texto-muted: rgba(245,237,224,0.45);
+    --azul: #4a90d9;
+    --verde-gain: #3dbf8a;
+    --vermelho: #c94545;
+    --cinza: #9a9a9a;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { background-color: var(--verde-escuro); color: var(--creme); font-family: "Jost", sans-serif; font-weight: 300; overflow-x: hidden; }
+  body::before {
+    content: ""; position: fixed; inset: 0;
+    background-image: radial-gradient(ellipse at 10% 10%, rgba(201,168,76,0.06) 0%, transparent 55%), radial-gradient(ellipse at 90% 90%, rgba(47,82,64,0.35) 0%, transparent 55%);
+    pointer-events: none; z-index: 0;
+  }
+  .back-link { position: relative; z-index: 10; display: inline-flex; align-items: center; gap: 8px; padding: 28px 8%; font-size: 0.7rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--texto-muted); text-decoration: none; transition: color 0.2s; }
+  .back-link:hover { color: var(--dourado); }
+  .back-link::before { content: "←"; font-size: 0.9rem; }
+  .hero { position: relative; z-index: 1; padding: 20px 8% 64px; border-bottom: 1px solid rgba(201,168,76,0.15); max-width: 900px; }
+  .hero-tag { font-size: 0.65rem; font-weight: 500; letter-spacing: 0.35em; text-transform: uppercase; color: var(--dourado); display: flex; align-items: center; gap: 12px; margin-bottom: 24px; opacity: 0; animation: fadeUp 0.7s ease 0.1s forwards; }
+  .hero-tag::before { content: ""; width: 30px; height: 1px; background: var(--dourado); }
+  .hero-date { font-size: 0.72rem; letter-spacing: 0.15em; color: var(--texto-muted); margin-bottom: 20px; opacity: 0; animation: fadeUp 0.7s ease 0.2s forwards; }
+  h1 { font-family: "Cormorant Garamond", serif; font-size: clamp(2rem, 5vw, 3.8rem); font-weight: 300; line-height: 1.12; color: var(--creme); opacity: 0; animation: fadeUp 0.7s ease 0.3s forwards; }
+  h1 em { font-style: italic; color: var(--dourado-claro); }
+  .hero-sub { font-size: 0.97rem; color: var(--texto-muted); line-height: 1.75; margin-top: 16px; max-width: 640px; opacity: 0; animation: fadeUp 0.7s ease 0.45s forwards; }
+  .hero-fonte { margin-top: 14px; font-size: 0.7rem; color: rgba(245,237,224,0.3); opacity: 0; animation: fadeUp 0.7s ease 0.55s forwards; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+  article { position: relative; z-index: 1; max-width: 800px; margin: 0 auto; padding: 64px 8% 88px; }
+  .lead { font-family: "Cormorant Garamond", serif; font-size: clamp(1.1rem, 2.5vw, 1.35rem); font-weight: 400; line-height: 1.8; color: var(--creme); margin-bottom: 48px; padding-bottom: 48px; border-bottom: 1px solid rgba(201,168,76,0.15); }
+  p { font-size: 0.97rem; line-height: 1.9; color: var(--texto-claro); margin-bottom: 24px; }
+  strong { font-weight: 600; color: var(--creme); }
+  .section-title { font-family: "Cormorant Garamond", serif; font-size: 1.55rem; font-weight: 600; color: var(--dourado-claro); margin: 56px 0 18px; padding-top: 44px; border-top: 1px solid rgba(201,168,76,0.12); display: flex; align-items: center; gap: 14px; }
+  .section-icon { font-size: 1.3rem; flex-shrink: 0; }
+
+  /* PERGUNTA CENTRAL */
+  .pergunta-central { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; padding: 32px 28px; margin: 32px 0; text-align: center; }
+  .pergunta-texto { font-family: "Cormorant Garamond", serif; font-size: clamp(1.3rem, 3vw, 1.7rem); font-weight: 300; line-height: 1.6; color: var(--creme); }
+  .pergunta-texto em { color: var(--dourado-claro); font-style: italic; }
+
+  /* PE TIMELINE */
+  .pe-flip { display: grid; grid-template-columns: 1fr auto 1fr; gap: 0; border-radius: 8px; overflow: hidden; margin: 32px 0; }
+  @media (max-width: 520px) { .pe-flip { grid-template-columns: 1fr; } }
+  .pe-bloco { padding: 28px 20px; text-align: center; }
+  .pe-bloco.antes { background: rgba(201,69,69,0.1); border: 1px solid rgba(201,69,69,0.22); }
+  .pe-bloco.agora { background: rgba(61,191,138,0.08); border: 1px solid rgba(61,191,138,0.2); }
+  .pe-divider { background: rgba(255,255,255,0.03); border-top: 1px solid rgba(255,255,255,0.05); border-bottom: 1px solid rgba(255,255,255,0.05); display: flex; align-items: center; justify-content: center; padding: 0 14px; font-size: 1.3rem; color: var(--texto-muted); }
+  .pe-label { font-size: 0.62rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 10px; }
+  .pe-bloco.antes .pe-label { color: #e07070; }
+  .pe-bloco.agora .pe-label { color: var(--verde-gain); }
+  .pe-valor { font-family: "Cormorant Garamond", serif; font-size: clamp(2.5rem, 6vw, 3.5rem); font-weight: 700; line-height: 1; margin-bottom: 6px; }
+  .pe-bloco.antes .pe-valor { color: #e07070; }
+  .pe-bloco.agora .pe-valor { color: var(--verde-gain); }
+  .pe-desc { font-size: 0.72rem; color: var(--texto-muted); line-height: 1.45; }
+
+  /* GRAFICOS */
+  .grafico-wrap { background: rgba(10,20,16,0.7); border: 1px solid rgba(255,255,255,0.07); border-radius: 8px; padding: 24px 20px 16px; margin: 32px 0; }
+  .grafico-titulo { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--dourado); margin-bottom: 4px; }
+  .grafico-sub { font-size: 0.72rem; color: var(--texto-muted); margin-bottom: 16px; }
+  .grafico-legenda { display: flex; gap: 18px; flex-wrap: wrap; margin-bottom: 12px; }
+  .leg-item { display: flex; align-items: center; gap: 7px; font-size: 0.7rem; color: var(--texto-muted); }
+  .leg-line { width: 18px; height: 3px; border-radius: 2px; }
+  canvas { width: 100% !important; display: block; }
+  .grafico-nota { font-size: 0.65rem; color: rgba(245,237,224,0.25); margin-top: 10px; line-height: 1.4; }
+
+  /* DECOMPOSICAO RETORNO */
+  .decomp-bars { display: flex; flex-direction: column; gap: 14px; margin: 28px 0; }
+  .decomp-row { display: flex; align-items: center; gap: 12px; }
+  .decomp-label { font-size: 0.82rem; color: var(--texto-claro); width: 140px; flex-shrink: 0; text-align: right; }
+  .decomp-track { flex: 1; height: 28px; background: rgba(255,255,255,0.04); border-radius: 4px; position: relative; overflow: visible; }
+  .decomp-bar { position: absolute; top: 0; height: 100%; border-radius: 4px; display: flex; align-items: center; transition: width 1.2s cubic-bezier(0.4,0,0.2,1); }
+  .decomp-bar.pos { background: linear-gradient(90deg, rgba(74,144,217,0.5), var(--azul)); left: 50%; }
+  .decomp-bar.neg { background: linear-gradient(90deg, #9e3a3a, #e07070); right: 50%; }
+  .decomp-bar.total-pos { background: linear-gradient(90deg, rgba(61,191,138,0.5), var(--verde-gain)); left: 50%; }
+  .decomp-bar.total-neg { background: linear-gradient(90deg, #9e3a3a, #e07070); right: 50%; }
+  .decomp-val { font-family: "Cormorant Garamond", serif; font-size: 0.95rem; font-weight: 700; width: 70px; flex-shrink: 0; }
+  .decomp-center { position: absolute; left: 50%; top: 0; bottom: 0; width: 1px; background: rgba(255,255,255,0.15); }
+
+  /* BIG SEVEN */
+  .empresas-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; margin: 28px 0; }
+  @media (max-width: 560px) { .empresas-grid { grid-template-columns: repeat(2, 1fr); } }
+  .empresa-tag { background: rgba(201,168,76,0.07); border: 1px solid rgba(201,168,76,0.18); border-radius: 6px; padding: 14px 10px; text-align: center; font-size: 0.78rem; color: var(--dourado-claro); font-weight: 500; transition: border-color 0.25s; }
+  .empresa-tag:hover { border-color: rgba(201,168,76,0.4); }
+
+  /* JUROS BOX */
+  .juros-box { background: rgba(74,144,217,0.07); border: 1px solid rgba(74,144,217,0.2); border-left: 3px solid var(--azul); border-radius: 4px; padding: 26px 28px; margin: 32px 0; }
+  .juros-title { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--azul); margin-bottom: 12px; }
+  .juros-text { font-size: 0.9rem; color: var(--texto-claro); line-height: 1.75; }
+
+  /* RISCOS */
+  .riscos-list { display: flex; flex-direction: column; gap: 10px; margin: 28px 0; }
+  .risco-item { display: flex; align-items: flex-start; gap: 14px; padding: 16px 18px; background: rgba(201,69,69,0.06); border: 1px solid rgba(201,69,69,0.15); border-radius: 5px; }
+  .risco-icon { font-size: 1rem; color: #e07070; flex-shrink: 0; margin-top: 2px; }
+  .risco-texto { font-size: 0.86rem; color: var(--texto-claro); line-height: 1.6; }
+
+  /* CONCEITO CHAVE */
+  .conceito-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 28px 0; }
+  @media (max-width: 500px) { .conceito-grid { grid-template-columns: 1fr; } }
+  .conceito-card { border-radius: 6px; padding: 22px 20px; text-align: center; }
+  .conceito-card.errado { background: rgba(201,69,69,0.07); border: 1px solid rgba(201,69,69,0.18); }
+  .conceito-card.certo { background: rgba(61,191,138,0.06); border: 1px solid rgba(61,191,138,0.15); }
+  .conceito-frase { font-family: "Cormorant Garamond", serif; font-size: 1.15rem; font-weight: 600; margin-bottom: 8px; }
+  .conceito-card.errado .conceito-frase { color: #e07070; }
+  .conceito-card.certo .conceito-frase { color: var(--verde-gain); }
+  .conceito-desc { font-size: 0.78rem; color: var(--texto-muted); line-height: 1.5; }
+
+  /* INSIGHT */
+  .insight-box { background: linear-gradient(135deg, rgba(201,168,76,0.1) 0%, rgba(26,46,37,0.4) 100%); border: 1px solid rgba(201,168,76,0.25); border-left: 3px solid var(--dourado); border-radius: 4px; padding: 28px 32px; margin: 36px 0; }
+  .insight-box p { font-family: "Cormorant Garamond", serif; font-size: 1.12rem; color: var(--creme); line-height: 1.8; margin: 0; }
+
+  /* CONCLUSAO */
+  .conclusao { font-family: "Cormorant Garamond", serif; font-size: 1.2rem; font-weight: 400; line-height: 1.85; color: var(--creme); margin-top: 52px; padding: 40px; border: 1px solid rgba(201,168,76,0.2); border-radius: 6px; background: rgba(255,255,255,0.02); position: relative; }
+  .conclusao::before { content: "\201C"; position: absolute; top: -10px; left: 32px; font-size: 5rem; color: rgba(201,168,76,0.15); font-family: "Cormorant Garamond", serif; line-height: 1; }
+
+  .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .fade-in.visible { opacity: 1; transform: none; }
+  footer { position: relative; z-index: 1; border-top: 1px solid rgba(201,168,76,0.12); padding: 40px 8%; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+  .footer-name { font-family: "Cormorant Garamond", serif; font-size: 1.1rem; font-weight: 300; color: var(--texto-muted); }
+  .footer-contact { font-size: 0.75rem; color: rgba(245,237,224,0.25); line-height: 1.9; text-align: right; }
+  .footer-contact a { color: var(--dourado); text-decoration: none; }
+  @media (max-width: 640px) { .back-link,.hero { padding-left: 5%; padding-right: 5%; } article { padding: 48px 5% 64px; } footer { padding: 32px 5%; flex-direction: column; } .footer-contact { text-align: left; } }
+</style>
+</head>
+<body>
+
+<a class="back-link" href="index.html">Voltar</a>
+
+<header class="hero">
+  <div class="hero-tag">Memorando · Mercados Globais</div>
+  <div class="hero-date">Junho de 2026</div>
+  <h1>Pare de falar que<br>o mercado americano <em>está caro</em></h1>
+  <p class="hero-sub">A bolsa subiu — e ficou mais barata. Parece contraintuitivo, mas é exatamente o que os números mostram quando o lucro cresce mais rápido que o preço.</p>
+  <div class="hero-fonte">Fonte: FactSet · Standard & Poor's · Bloomberg · LSEG Datastream/Yardeni Research</div>
+</header>
+
+<article>
+
+  <p class="lead">
+    Uma das narrativas mais repetidas no mercado atualmente é a de que <strong>"o mercado americano está caro"</strong>. Afinal, depois de anos de valorização expressiva, muitos investidores assumem que o S&P 500 teria atingido níveis excessivos de preço. Mas será que essa conclusão está correta?
+  </p>
+
+  <div class="pergunta-central fade-in">
+    <div class="pergunta-texto">Quando alguém diz que um mercado está caro, a pergunta correta deveria ser:<br><em>"Caro em relação a quê?"</em></div>
+  </div>
+
+  <div class="section-title fade-in"><span class="section-icon">📐</span> A métrica que muda a conversa: Preço/Lucro</div>
+
+  <p>A métrica mais utilizada para responder a essa pergunta é o múltiplo Preço/Lucro (P/L ou P/E Ratio). Ele mede quantas vezes o mercado está pagando pelos lucros das empresas. Se os preços sobem mais rápido que os lucros, o mercado fica mais caro. <strong>Mas se os lucros crescem mais rápido que os preços, pode ocorrer o contrário: o mercado sobe e, ainda assim, fica mais barato.</strong></p>
+
+  <!-- PE TIMELINE -->
+  <div class="pe-flip fade-in">
+    <div class="pe-bloco antes">
+      <div class="pe-label">Pico recente</div>
+      <div class="pe-valor">23,1x</div>
+      <div class="pe-desc">Forward P/E do S&P 500</div>
+    </div>
+    <div class="pe-divider">→</div>
+    <div class="pe-bloco agora">
+      <div class="pe-label">Mais recente</div>
+      <div class="pe-valor">19,0x</div>
+      <div class="pe-desc">Forward P/E do S&P 500</div>
+    </div>
+  </div>
+
+  <!-- GRAFICO 1: Forward PE -->
+  <div class="grafico-wrap fade-in">
+    <div class="grafico-titulo">S&P 500 Forward P/E — 2023 a 2026</div>
+    <div class="grafico-sub">Múltiplo preço/lucro projetado</div>
+    <div class="grafico-legenda">
+      <div class="leg-item"><div class="leg-line" style="background:var(--azul)"></div>Forward P/E</div>
+    </div>
+    <canvas id="chartPE" height="220"></canvas>
+    <div class="grafico-nota">Fonte: Bloomberg Finance L.P. SPX Index — S&P 500 Index BEst P/E Ratio.</div>
+  </div>
+
+  <p>Apesar da bolsa ter permanecido em patamares historicamente elevados, <strong>os lucros cresceram ainda mais rapidamente</strong>. O resultado foi uma redução do preço pago por unidade de lucro. Isso é o oposto da narrativa de bolha.</p>
+
+  <div class="section-title fade-in"><span class="section-icon">📈</span> Lucros vs. preço: o gráfico que conta a história real</div>
+
+  <p>Olhando com mais profundidade, percebe-se que o crescimento dos lucros das empresas (forward earnings) tem sido muito mais forte do que a alta das ações. E o múltiplo das ações caiu. Isso muda completamente o jogo.</p>
+
+  <!-- GRAFICO 2: Earnings vs Price vs PE -->
+  <div class="grafico-wrap fade-in">
+    <div class="grafico-titulo">S&P 500: Preço × Lucros Futuros × Forward P/E</div>
+    <div class="grafico-sub">Variação percentual acumulada no ano (jan–jun 2026)</div>
+    <div class="grafico-legenda">
+      <div class="leg-item"><div class="leg-line" style="background:#e07070"></div>S&P 500 (preço)</div>
+      <div class="leg-item"><div class="leg-line" style="background:var(--azul)"></div>Forward Earnings</div>
+      <div class="leg-item"><div class="leg-line" style="background:var(--verde-gain)"></div>Forward P/E</div>
+    </div>
+    <canvas id="chartEarnings" height="240"></canvas>
+    <div class="grafico-nota">Fonte: LSEG Datastream e © Yardeni Research, Standard & Poor's.</div>
+  </div>
+
+  <div class="insight-box fade-in">
+    <p>As empresas estão entregando mais resultado. E o preço, apesar de ter subido, <strong>não acompanhou na mesma magnitude</strong>. Resultado: os múltiplos, em muitos casos, até comprimiram.</p>
+  </div>
+
+  <div class="section-title fade-in"><span class="section-icon">🔍</span> De onde veio a rentabilidade do mercado?</div>
+
+  <p>Uma decomposição do retorno do S&P 500 (year-to-date 2026) mostra algo bastante revelador sobre a origem real da performance:</p>
+
+  <div class="decomp-bars fade-in">
+    <div class="decomp-row">
+      <span class="decomp-label">Dividendos</span>
+      <div class="decomp-track"><div class="decomp-center"></div><div class="decomp-bar pos" style="width:0%"></div></div>
+      <span class="decomp-val" style="color:var(--azul)" data-target="0.28">+0,28%</span>
+    </div>
+    <div class="decomp-row">
+      <span class="decomp-label">Crescimento dos lucros</span>
+      <div class="decomp-track"><div class="decomp-center"></div><div class="decomp-bar pos" style="width:0%"></div></div>
+      <span class="decomp-val" style="color:var(--azul)" data-target="5.18">+5,18%</span>
+    </div>
+    <div class="decomp-row">
+      <span class="decomp-label">Expansão de múltiplos</span>
+      <div class="decomp-track"><div class="decomp-center"></div><div class="decomp-bar neg" style="width:0%"></div></div>
+      <span class="decomp-val" style="color:#e07070" data-target="-10.56">−10,56%</span>
+    </div>
+    <div class="decomp-row" style="margin-top:6px; padding-top:10px; border-top:1px solid rgba(255,255,255,0.08);">
+      <span class="decomp-label" style="font-weight:600; color:var(--creme);">Resultado agregado</span>
+      <div class="decomp-track"><div class="decomp-center"></div><div class="decomp-bar total-neg" style="width:0%"></div></div>
+      <span class="decomp-val" style="color:#e07070" data-target="-5.10">−5,10%</span>
+    </div>
+  </div>
+
+  <p>A conclusão é clara: o desempenho recente <strong>não foi puxado por investidores pagando múltiplos cada vez maiores</strong>. Pelo contrário — os múltiplos atuaram como um freio. A sustentação do mercado veio da qualidade dos resultados corporativos.</p>
+
+  <div class="section-title fade-in"><span class="section-icon">🏢</span> O papel das gigantes americanas</div>
+
+  <p>O S&P 500 atual é muito diferente daquele de décadas atrás. Hoje, uma parcela significativa do índice é composta por empresas extraordinariamente lucrativas — com margens elevadas, balanços robustos, baixo endividamento relativo, modelos escaláveis e forte geração de caixa.</p>
+
+  <div class="empresas-grid fade-in">
+    <div class="empresa-tag">Microsoft</div>
+    <div class="empresa-tag">Apple</div>
+    <div class="empresa-tag">NVIDIA</div>
+    <div class="empresa-tag">Amazon</div>
+    <div class="empresa-tag">Meta Platforms</div>
+  </div>
+
+  <p>Essas empresas possuem características financeiras que dificilmente encontravam paralelo em ciclos anteriores — o que ajuda a explicar por que o mercado americano consegue sustentar níveis de valuation historicamente superiores aos de outras regiões.</p>
+
+  <div class="section-title fade-in"><span class="section-icon">💹</span> Mas os juros não estão altos?</div>
+
+  <p>Sim — e esse talvez seja o argumento mais interessante. As taxas dos títulos públicos de longo prazo dos Estados Unidos estão entre as mais elevadas das últimas décadas. Em teoria, isso deveria pressionar os múltiplos das ações. E foi exatamente o que aconteceu: <strong>os múltiplos comprimiram</strong>.</p>
+
+  <!-- GRAFICO 3: Juros 30 anos -->
+  <div class="grafico-wrap fade-in">
+    <div class="grafico-titulo">Juros de títulos de 30 anos — múltiplos países</div>
+    <div class="grafico-sub">UK Gilt · French OAT · US Treasury · Japan Bond — 2000 a 2026</div>
+    <div class="grafico-legenda">
+      <div class="leg-item"><div class="leg-line" style="background:var(--azul)"></div>UK 30Y</div>
+      <div class="leg-item"><div class="leg-line" style="background:rgba(255,255,255,0.6)"></div>França 30Y</div>
+      <div class="leg-item"><div class="leg-line" style="background:var(--cinza)"></div>EUA 30Y</div>
+      <div class="leg-item"><div class="leg-line" style="background:#e07a35"></div>Japão 30Y</div>
+    </div>
+    <canvas id="chartBonds" height="220"></canvas>
+    <div class="grafico-nota">Fonte: Bloomberg. Juros de longo prazo nas maiores economias estão nos níveis mais altos em décadas.</div>
+  </div>
+
+  <div class="juros-box fade-in">
+    <div class="juros-title">⚡ O que isso significa</div>
+    <div class="juros-text">O crescimento dos lucros foi tão forte que <strong>compensou o efeito da alta de juros</strong> sobre os múltiplos. Isso mostra que o valor de uma empresa depende menos do preço atual e muito mais da sua capacidade futura de gerar caixa e aumentar seus lucros.</div>
+  </div>
+
+  <div class="section-title fade-in"><span class="section-icon">⚠️</span> O outro lado da história</div>
+
+  <p>Isso não significa que o mercado americano esteja livre de riscos, que não possa haver correções, ou que todas as ações estejam baratas. Chamar o mercado inteiro de "barato" também seria um exagero.</p>
+
+  <div class="riscos-list fade-in">
+    <div class="risco-item"><span class="risco-icon">●</span><div class="risco-texto">Elevada concentração do índice em poucas empresas</div></div>
+    <div class="risco-item"><span class="risco-icon">●</span><div class="risco-texto">Valuations ainda acima da média histórica em alguns setores</div></div>
+    <div class="risco-item"><span class="risco-icon">●</span><div class="risco-texto">Endividamento fiscal dos Estados Unidos</div></div>
+    <div class="risco-item"><span class="risco-icon">●</span><div class="risco-texto">Juros elevados por um período prolongado</div></div>
+    <div class="risco-item"><span class="risco-icon">●</span><div class="risco-texto">Crescente competição internacional em inteligência artificial e tecnologia</div></div>
+  </div>
+
+  <div class="section-title fade-in"><span class="section-icon">🎯</span> A grande lição para o investidor</div>
+
+  <p>Existe uma diferença enorme entre <strong>"o preço subiu"</strong> e <strong>"o ativo ficou caro"</strong>. São conceitos completamente distintos. Tudo depende do que acontece com os fundamentos.</p>
+
+  <div class="conceito-grid fade-in">
+    <div class="conceito-card errado">
+      <div class="conceito-frase">Cair e ficar mais caro</div>
+      <div class="conceito-desc">Quando o preço cai, mas os lucros caem ainda mais — o múltiplo sobe mesmo com a ação em queda.</div>
+    </div>
+    <div class="conceito-card certo">
+      <div class="conceito-frase">Subir e ficar mais barato</div>
+      <div class="conceito-desc">Quando o preço sobe, mas os lucros sobem ainda mais rápido — o múltiplo cai mesmo com a ação subindo.</div>
+    </div>
+  </div>
+
+  <div class="conclusao fade-in">
+    Dizer simplesmente que o mercado americano está caro porque subiu muito é uma análise incompleta. Os lucros das empresas cresceram fortemente, os múltiplos em muitos casos se comprimiram, e boa parte da valorização veio de fundamentos reais — não de euforia especulativa. <strong>O mercado americano não necessariamente ficou mais caro.</strong> Em muitos segmentos, o que ocorreu foi exatamente o contrário: as empresas se tornaram mais lucrativas em uma velocidade maior do que a valorização de suas ações.
+  </div>
+
+</article>
+
+<footer>
+  <div class="footer-name">Fábio Vogelaar Carlucci</div>
+  <div class="footer-contact">+55 (16) 98148-8260<br><a href="mailto:fabio.carlucci@ficus.capital">fabio.carlucci@ficus.capital</a></div>
+</footer>
+<div style="position:relative;z-index:1;padding:0 8% 28px;text-align:center;font-size:0.65rem;color:rgba(245,237,224,0.2);letter-spacing:0.08em;">
+  Memorando elaborado para fins educacionais e informativos. Não constitui recomendação individual de investimento.<br>
+  Fontes: FactSet Research Systems · Standard & Poor's · Bloomberg Finance L.P. · LSEG Datastream / Yardeni Research
+</div>
+
+<script>
+const faders = document.querySelectorAll(".fade-in");
+const obs = new IntersectionObserver(e => e.forEach(x => { if(x.isIntersecting){ x.target.classList.add("visible"); obs.unobserve(x.target); } }), { threshold: 0.1 });
+faders.forEach(f => obs.observe(f));
+
+// Decomp bars animation
+const decompObs = new IntersectionObserver(e => e.forEach(x => {
+  if(x.isIntersecting){
+    document.querySelectorAll(".decomp-bar").forEach(bar => {
+      const val = parseFloat(bar.parentElement.nextElementSibling.getAttribute("data-target"));
+      const pct = Math.min(Math.abs(val) * 3.5, 48);
+      setTimeout(() => { bar.style.width = pct + "%"; }, 150);
+    });
+    decompObs.unobserve(x.target);
+  }
+}), { threshold: 0.3 });
+const decompSection = document.querySelector(".decomp-bars");
+if(decompSection) decompObs.observe(decompSection);
+
+function setupCanvas(id, h) {
+  const el = document.getElementById(id); if(!el) return null;
+  const W = el.offsetWidth || 700;
+  el.width = W * devicePixelRatio; el.height = h * devicePixelRatio;
+  el.style.height = h + "px";
+  const ctx = el.getContext("2d"); ctx.scale(devicePixelRatio, devicePixelRatio);
+  return { ctx, W, H: h };
+}
+
+// GRAFICO 1 — Forward PE (2023-2026)
+(function() {
+  const c = setupCanvas("chartPE", 220); if(!c) return;
+  const { ctx, W, H } = c;
+  const PAD = { top: 18, right: 50, bottom: 32, left: 36 };
+  const pW = W - PAD.left - PAD.right, pH = H - PAD.top - PAD.bottom;
+  const labels = ["Mar23","Jun23","Sep23","Dec23","Mar24","Jun24","Sep24","Dec24","Mar25","Jun25","Sep25","Dec25","Mar26"];
+  const data = [17.3,19.9,18.0,19.8,20.5,21.0,21.8,22.0,22.5,21.8,22.8,23.1,19.0];
+  const n = data.length, minV = 16, maxV = 24;
+  function xP(i){ return PAD.left + (i/(n-1))*pW; }
+  function yP(v){ return PAD.top + pH - ((v-minV)/(maxV-minV))*pH; }
+  [16,18,20,22,24].forEach(v => {
+    ctx.strokeStyle = "rgba(255,255,255,0.05)"; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(PAD.left,yP(v)); ctx.lineTo(PAD.left+pW,yP(v)); ctx.stroke();
+    ctx.fillStyle = "rgba(245,237,224,0.22)"; ctx.font = "9px Jost,sans-serif"; ctx.textAlign = "right";
+    ctx.fillText(v+"x", PAD.left-5, yP(v)+3);
+  });
+  ctx.fillStyle = "rgba(245,237,224,0.2)"; ctx.textAlign = "center"; ctx.font = "8px Jost,sans-serif";
+  labels.forEach((l,i) => { if(i%3===0||i===n-1) ctx.fillText(l, xP(i), H-PAD.bottom+14); });
+  ctx.beginPath(); ctx.strokeStyle = "rgba(74,144,217,0.9)"; ctx.lineWidth = 2.2; ctx.lineJoin = "round";
+  data.forEach((v,i) => i===0 ? ctx.moveTo(xP(i),yP(v)) : ctx.lineTo(xP(i),yP(v))); ctx.stroke();
+  // Pico
+  ctx.beginPath(); ctx.arc(xP(11), yP(23.1), 4, 0, Math.PI*2); ctx.fillStyle = "#e07070"; ctx.fill();
+  ctx.fillStyle = "#e07070"; ctx.font = "bold 10px Jost,sans-serif"; ctx.textAlign = "left";
+  ctx.fillText("23,1x", xP(11)-12, yP(23.1)-10);
+  // Final
+  ctx.beginPath(); ctx.arc(xP(12), yP(19.0), 5, 0, Math.PI*2); ctx.fillStyle = "#5ec98a"; ctx.fill();
+  ctx.fillStyle = "#5ec98a"; ctx.font = "bold 10px Jost,sans-serif"; ctx.textAlign = "left";
+  ctx.fillText("19,0x", xP(12)+8, yP(19.0)+4);
+})();
+
+// GRAFICO 2 — Price vs Earnings vs PE (jan-jun 2026)
+(function() {
+  const c = setupCanvas("chartEarnings", 240); if(!c) return;
+  const { ctx, W, H } = c;
+  const PAD = { top: 18, right: 20, bottom: 32, left: 36 };
+  const pW = W - PAD.left - PAD.right, pH = H - PAD.top - PAD.bottom;
+  const labels = ["jan","fev","mar","abr","mai","jun"];
+  const price    = [0, 1.2, -3.8, 4.2, 8.7, 6.2];
+  const earnings = [0, 3.0, 5.5, 9.5, 14.2, 17.5];
+  const pe       = [0, -1.8, -9.9, -5.0, -6.0, -9.7];
+  const n = 13;
+  function interp(arr){
+    const out = []; const step = (arr.length-1)/(n-1);
+    for(let i=0;i<n;i++){ const idx = i*step; const lo = Math.floor(idx); const hi = Math.min(lo+1, arr.length-1); const t = idx-lo; out.push(arr[lo] + (arr[hi]-arr[lo])*t); }
+    return out;
+  }
+  const priceI = interp(price), earnI = interp(earnings), peI = interp(pe);
+  const minV = -12, maxV = 18;
+  function xP(i){ return PAD.left + (i/(n-1))*pW; }
+  function yP(v){ return PAD.top + pH - ((v-minV)/(maxV-minV))*pH; }
+  [-10,-5,0,5,10,15].forEach(v => {
+    ctx.strokeStyle = v===0 ? "rgba(255,255,255,0.12)" : "rgba(255,255,255,0.05)"; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(PAD.left,yP(v)); ctx.lineTo(PAD.left+pW,yP(v)); ctx.stroke();
+    ctx.fillStyle = "rgba(245,237,224,0.22)"; ctx.font = "9px Jost,sans-serif"; ctx.textAlign = "right";
+    ctx.fillText(v+"%", PAD.left-5, yP(v)+3);
+  });
+  ctx.fillStyle = "rgba(245,237,224,0.2)"; ctx.textAlign = "center"; ctx.font = "9px Jost,sans-serif";
+  labels.forEach((l,i) => { const xi = i*2; ctx.fillText(l, xP(xi), H-PAD.bottom+14); });
+  function drawL(data, color, w) {
+    ctx.beginPath(); ctx.strokeStyle = color; ctx.lineWidth = w; ctx.lineJoin = "round";
+    data.forEach((v,i) => i===0 ? ctx.moveTo(xP(i),yP(v)) : ctx.lineTo(xP(i),yP(v))); ctx.stroke();
+  }
+  drawL(peI, "rgba(61,191,138,0.8)", 1.8);
+  drawL(priceI, "rgba(224,112,112,0.85)", 1.8);
+  drawL(earnI, "rgba(74,144,217,0.9)", 2.2);
+})();
+
+// GRAFICO 3 — Bonds 30y (2000-2026)
+(function() {
+  const c = setupCanvas("chartBonds", 220); if(!c) return;
+  const { ctx, W, H } = c;
+  const PAD = { top: 18, right: 16, bottom: 30, left: 30 };
+  const pW = W - PAD.left - PAD.right, pH = H - PAD.top - PAD.bottom;
+  const labels = ["2000","2005","2010","2015","2020","2025"];
+  const n = 27;
+  function gen(base, dip, end) {
+    const out = [];
+    for(let i=0;i<n;i++){
+      const t = i/(n-1);
+      let v;
+      if(t < 0.75) v = base - (base-dip)*(t/0.75);
+      else v = dip + (end-dip)*((t-0.75)/0.25);
+      out.push(v + Math.sin(i*1.3)*0.15);
+    }
+    return out;
+  }
+  const uk  = gen(7.8, 0.5, 5.6);
+  const fr  = gen(6.8, 0.6, 4.3);
+  const us  = gen(6.7, 1.0, 4.7);
+  const jp  = gen(2.4, 0.2, 3.8);
+  const minV = 0, maxV = 8;
+  function xP(i){ return PAD.left + (i/(n-1))*pW; }
+  function yP(v){ return PAD.top + pH - ((v-minV)/(maxV-minV))*pH; }
+  [0,2,4,6,8].forEach(v => {
+    ctx.strokeStyle = "rgba(255,255,255,0.05)"; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(PAD.left,yP(v)); ctx.lineTo(PAD.left+pW,yP(v)); ctx.stroke();
+    ctx.fillStyle = "rgba(245,237,224,0.22)"; ctx.font = "9px Jost,sans-serif"; ctx.textAlign = "right";
+    ctx.fillText(v+"%", PAD.left-5, yP(v)+3);
+  });
+  ctx.fillStyle = "rgba(245,237,224,0.2)"; ctx.textAlign = "center"; ctx.font = "9px Jost,sans-serif";
+  labels.forEach((l,i) => { const xi = i*5.2; ctx.fillText(l, xP(xi), H-PAD.bottom+14); });
+  function drawL(data, color) {
+    ctx.beginPath(); ctx.strokeStyle = color; ctx.lineWidth = 1.6; ctx.lineJoin = "round";
+    data.forEach((v,i) => i===0 ? ctx.moveTo(xP(i),yP(v)) : ctx.lineTo(xP(i),yP(v))); ctx.stroke();
+  }
+  drawL(uk, "rgba(74,144,217,0.85)");
+  drawL(fr, "rgba(255,255,255,0.55)");
+  drawL(us, "rgba(154,154,154,0.85)");
+  drawL(jp, "rgba(224,122,53,0.85)");
+})();
+</script>
+</body>
+</html>
