@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aposentadoria aos 30: o que os atletas ensinam sobre viver de renda | Fábio Carlucci</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DBQSDSDRF3"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-DBQSDSDRF3");</script>
+<style>
+  :root {
+    --verde-escuro: #1a2e25;
+    --dourado: #c9a84c;
+    --dourado-claro: #e2c47a;
+    --creme: #f5ede0;
+    --texto-claro: rgba(245,237,224,0.85);
+    --texto-muted: rgba(245,237,224,0.45);
+    --azul: #4a90d9;
+    --verde-gain: #3dbf8a;
+    --vermelho: #c94545;
+    --laranja: #e07a35;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { background-color: var(--verde-escuro); color: var(--creme); font-family: "Jost", sans-serif; font-weight: 300; overflow-x: hidden; }
+  body::before {
+    content: ""; position: fixed; inset: 0;
+    background-image: radial-gradient(ellipse at 10% 10%, rgba(201,168,76,0.06) 0%, transparent 55%), radial-gradient(ellipse at 90% 90%, rgba(47,82,64,0.35) 0%, transparent 55%);
+    pointer-events: none; z-index: 0;
+  }
+  .back-link { position: relative; z-index: 10; display: inline-flex; align-items: center; gap: 8px; padding: 28px 8%; font-size: 0.7rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--texto-muted); text-decoration: none; transition: color 0.2s; }
+  .back-link:hover { color: var(--dourado); }
+  .back-link::before { content: "←"; font-size: 0.9rem; }
+  .hero { position: relative; z-index: 1; padding: 20px 8% 64px; border-bottom: 1px solid rgba(201,168,76,0.15); max-width: 900px; }
+  .hero-tag { font-size: 0.65rem; font-weight: 500; letter-spacing: 0.35em; text-transform: uppercase; color: var(--dourado); display: flex; align-items: center; gap: 12px; margin-bottom: 24px; opacity: 0; animation: fadeUp 0.7s ease 0.1s forwards; }
+  .hero-tag::before { content: ""; width: 30px; height: 1px; background: var(--dourado); }
+  .hero-date { font-size: 0.72rem; letter-spacing: 0.15em; color: var(--texto-muted); margin-bottom: 20px; opacity: 0; animation: fadeUp 0.7s ease 0.2s forwards; }
+  h1 { font-family: "Cormorant Garamond", serif; font-size: clamp(2rem, 5vw, 3.8rem); font-weight: 300; line-height: 1.12; color: var(--creme); opacity: 0; animation: fadeUp 0.7s ease 0.3s forwards; }
+  h1 em { font-style: italic; color: var(--dourado-claro); }
+  .hero-sub { font-size: 0.97rem; color: var(--texto-muted); line-height: 1.75; margin-top: 16px; max-width: 640px; opacity: 0; animation: fadeUp 0.7s ease 0.45s forwards; }
+  .hero-fonte { margin-top: 14px; font-size: 0.7rem; color: rgba(245,237,224,0.3); opacity: 0; animation: fadeUp 0.7s ease 0.55s forwards; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+  article { position: relative; z-index: 1; max-width: 800px; margin: 0 auto; padding: 64px 8% 88px; }
+  .lead { font-family: "Cormorant Garamond", serif; font-size: clamp(1.1rem, 2.5vw, 1.35rem); font-weight: 400; line-height: 1.8; color: var(--creme); margin-bottom: 48px; padding-bottom: 48px; border-bottom: 1px solid rgba(201,168,76,0.15); }
+  p { font-size: 0.97rem; line-height: 1.9; color: var(--texto-claro); margin-bottom: 24px; }
+  strong { font-weight: 600; color: var(--creme); }
+  .section-title { font-family: "Cormorant Garamond", serif; font-size: 1.55rem; font-weight: 600; color: var(--dourado-claro); margin: 56px 0 18px; padding-top: 44px; border-top: 1px solid rgba(201,168,76,0.12); display: flex; align-items: center; gap: 14px; }
+  .section-icon { font-size: 1.3rem; flex-shrink: 0; }
+
+  /* CICLO DO ATLETA */
+  .ciclo-wrap { display: flex; align-items: center; gap: 0; margin: 32px 0; overflow: hidden; border-radius: 8px; }
+  @media (max-width: 560px) { .ciclo-wrap { flex-direction: column; } }
+  .ciclo-fase { flex: 1; padding: 22px 16px; text-align: center; }
+  .ciclo-fase.f1 { background: rgba(61,191,138,0.1); border: 1px solid rgba(61,191,138,0.2); }
+  .ciclo-fase.f2 { background: rgba(201,168,76,0.1); border: 1px solid rgba(201,168,76,0.2); }
+  .ciclo-fase.f3 { background: rgba(201,69,69,0.08); border: 1px solid rgba(201,69,69,0.18); }
+  .ciclo-seta { font-size: 1.2rem; color: var(--texto-muted); flex-shrink: 0; padding: 0 4px; }
+  @media (max-width: 560px) { .ciclo-seta { transform: rotate(90deg); padding: 4px 0; } }
+  .ciclo-idade { font-size: 0.62rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 6px; }
+  .ciclo-fase.f1 .ciclo-idade { color: var(--verde-gain); }
+  .ciclo-fase.f2 .ciclo-idade { color: var(--dourado); }
+  .ciclo-fase.f3 .ciclo-idade { color: #e07070; }
+  .ciclo-val { font-family: "Cormorant Garamond", serif; font-size: 1.5rem; font-weight: 700; line-height: 1; margin-bottom: 4px; }
+  .ciclo-fase.f1 .ciclo-val { color: var(--verde-gain); }
+  .ciclo-fase.f2 .ciclo-val { color: var(--dourado); }
+  .ciclo-fase.f3 .ciclo-val { color: #e07070; }
+  .ciclo-desc { font-size: 0.7rem; color: var(--texto-muted); line-height: 1.4; }
+
+  /* TAXA SEGURA */
+  .regra-box { background: linear-gradient(135deg, rgba(201,168,76,0.12) 0%, rgba(47,82,64,0.4) 100%); border: 1px solid rgba(201,168,76,0.3); border-radius: 8px; padding: 28px 28px; margin: 32px 0; display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
+  .regra-pct { font-family: "Cormorant Garamond", serif; font-size: 4.5rem; font-weight: 700; color: var(--dourado); line-height: 1; flex-shrink: 0; }
+  .regra-label { font-size: 0.62rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--dourado); margin-bottom: 8px; }
+  .regra-desc { font-size: 0.9rem; color: var(--texto-claro); line-height: 1.7; flex: 1; min-width: 200px; }
+
+  /* TABELA PATRIMÔNIO */
+  .tabela-wrap { background: rgba(10,20,16,0.7); border: 1px solid rgba(255,255,255,0.07); border-radius: 8px; overflow: hidden; margin: 32px 0; }
+  .tabela-header { padding: 16px 20px 4px; }
+  .tabela-titulo { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--dourado); }
+  .tabela-sub { font-size: 0.72rem; color: var(--texto-muted); margin-top: 3px; margin-bottom: 12px; }
+  .tabela-t { width: 100%; border-collapse: collapse; font-size: 0.82rem; }
+  .tabela-t th { font-size: 0.62rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--texto-muted); padding: 10px 14px; text-align: right; border-bottom: 1px solid rgba(255,255,255,0.08); background: rgba(255,255,255,0.02); }
+  .tabela-t th:first-child { text-align: left; }
+  .tabela-t td { padding: 11px 14px; text-align: right; color: var(--texto-claro); border-bottom: 1px solid rgba(255,255,255,0.04); }
+  .tabela-t td:first-child { text-align: left; font-weight: 500; color: var(--creme); }
+  .tabela-t tr:last-child td { border-bottom: none; }
+  .tabela-t tr:hover td { background: rgba(255,255,255,0.02); }
+  .tabela-t td.c4 { color: var(--dourado); }
+  .tabela-t td.c5 { color: var(--azul); }
+  .tabela-t td.c6 { color: var(--verde-gain); }
+
+  /* GRAFICO BARRAS PATRIMÔNIO */
+  .grafico-wrap { background: rgba(10,20,16,0.7); border: 1px solid rgba(255,255,255,0.07); border-radius: 8px; padding: 24px 20px 16px; margin: 32px 0; }
+  .grafico-titulo { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--dourado); margin-bottom: 4px; }
+  .grafico-sub { font-size: 0.72rem; color: var(--texto-muted); margin-bottom: 16px; }
+  canvas { width: 100% !important; display: block; }
+  .grafico-nota { font-size: 0.65rem; color: rgba(245,237,224,0.25); margin-top: 10px; line-height: 1.4; }
+
+  /* EXEMPLO NUMÉRICO */
+  .exemplo-box { background: rgba(74,144,217,0.07); border: 1px solid rgba(74,144,217,0.2); border-left: 3px solid var(--azul); border-radius: 4px; padding: 26px 28px; margin: 32px 0; }
+  .exemplo-title { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--azul); margin-bottom: 14px; }
+  .exemplo-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  @media (max-width: 500px) { .exemplo-grid { grid-template-columns: 1fr; } }
+  .exemplo-item { text-align: center; }
+  .exemplo-val { font-family: "Cormorant Garamond", serif; font-size: 1.6rem; font-weight: 700; color: var(--azul); line-height: 1; margin-bottom: 4px; }
+  .exemplo-label { font-size: 0.68rem; color: var(--texto-muted); line-height: 1.4; }
+
+  /* SETE PERGUNTAS */
+  .perguntas-list { display: flex; flex-direction: column; gap: 12px; margin: 28px 0; }
+  .pergunta-item { display: flex; align-items: flex-start; gap: 16px; padding: 20px 22px; background: rgba(201,168,76,0.05); border: 1px solid rgba(201,168,76,0.15); border-radius: 5px; transition: border-color 0.25s, background 0.25s; }
+  .pergunta-item:hover { border-color: rgba(201,168,76,0.3); background: rgba(201,168,76,0.09); }
+  .pergunta-num { font-family: "Cormorant Garamond", serif; font-size: 2rem; font-weight: 700; color: rgba(201,168,76,0.2); line-height: 1; flex-shrink: 0; width: 32px; text-align: center; }
+  .pergunta-titulo { font-size: 0.82rem; font-weight: 600; color: var(--dourado); margin-bottom: 4px; }
+  .pergunta-desc { font-size: 0.84rem; color: var(--texto-claro); line-height: 1.6; }
+
+  /* PERFIS */
+  .perfis-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 28px 0; }
+  @media (max-width: 560px) { .perfis-grid { grid-template-columns: 1fr 1fr; } }
+  .perfil-tag { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 14px 10px; text-align: center; font-size: 0.78rem; color: var(--texto-claro); transition: border-color 0.25s; }
+  .perfil-tag:hover { border-color: rgba(201,168,76,0.25); color: var(--creme); }
+
+  /* ALERT */
+  .alert-box { background: rgba(201,69,69,0.07); border: 1px solid rgba(201,69,69,0.2); border-left: 3px solid #e07070; border-radius: 4px; padding: 26px 28px; margin: 32px 0; }
+  .alert-title { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: #e07070; margin-bottom: 10px; }
+  .alert-text { font-size: 0.9rem; color: var(--texto-claro); line-height: 1.75; }
+
+  /* INSIGHT */
+  .insight-box { background: linear-gradient(135deg, rgba(201,168,76,0.1) 0%, rgba(26,46,37,0.4) 100%); border: 1px solid rgba(201,168,76,0.25); border-left: 3px solid var(--dourado); border-radius: 4px; padding: 28px 32px; margin: 36px 0; }
+  .insight-box p { font-family: "Cormorant Garamond", serif; font-size: 1.12rem; color: var(--creme); line-height: 1.8; margin: 0; }
+
+  /* CONCLUSÃO */
+  .conclusao { font-family: "Cormorant Garamond", serif; font-size: 1.2rem; font-weight: 400; line-height: 1.85; color: var(--creme); margin-top: 52px; padding: 40px; border: 1px solid rgba(201,168,76,0.2); border-radius: 6px; background: rgba(255,255,255,0.02); position: relative; }
+  .conclusao::before { content: "\201C"; position: absolute; top: -10px; left: 32px; font-size: 5rem; color: rgba(201,168,76,0.15); font-family: "Cormorant Garamond", serif; line-height: 1; }
+
+  .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .fade-in.visible { opacity: 1; transform: none; }
+  footer { position: relative; z-index: 1; border-top: 1px solid rgba(201,168,76,0.12); padding: 40px 8%; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+  .footer-name { font-family: "Cormorant Garamond", serif; font-size: 1.1rem; font-weight: 300; color: var(--texto-muted); }
+  .footer-contact { font-size: 0.75rem; color: rgba(245,237,224,0.25); line-height: 1.9; text-align: right; }
+  .footer-contact a { color: var(--dourado); text-decoration: none; }
+  @media (max-width: 640px) { .back-link,.hero { padding-left: 5%; padding-right: 5%; } article { padding: 48px 5% 64px; } footer { padding: 32px 5%; flex-direction: column; } .footer-contact { text-align: left; } .regra-box { flex-direction: column; gap: 12px; } }
+</style>
+</head>
+<body>
+
+<a class="back-link" href="index.html">Voltar</a>
+
+<header class="hero">
+  <div class="hero-tag">Memorando · Educação Financeira · Patrimônio</div>
+  <div class="hero-date">Junho de 2026</div>
+  <h1>Aposentadoria aos 30:<br><em>o que os atletas ensinam<br>sobre viver de renda</em></h1>
+  <p class="hero-sub">Aproveitando a Copa do Mundo — uma reflexão sobre o que acontece depois do último jogo. E o que isso ensina para qualquer pessoa que deseja antecipar a aposentadoria e viver de renda.</p>
+  <div class="hero-fonte">Referências: Bengen (1994) · Trinity Study (1998) · Pfau (2021) · Kitces Research · Early Retirement Now</div>
+</header>
+
+<article>
+
+  <p class="lead">
+    A Copa do Mundo desperta fascinação pelo talento e pela renda dos grandes atletas. Mas existe uma pergunta patrimonial pouco discutida: <strong>o que acontece depois do último jogo?</strong> O desafio não é ganhar muito — é transformar uma renda extraordinária e temporária em liberdade financeira permanente. E esse raciocínio vale para qualquer pessoa que deseja antecipar a aposentadoria e viver de renda.
+  </p>
+
+  <!-- CICLO DO ATLETA -->
+  <div class="section-title fade-in"><span class="section-icon">⚽</span> O ciclo financeiro invertido</div>
+  <p>A maioria das pessoas aumenta gradualmente a renda ao longo de 35–40 anos de carreira. O atleta profissional faz o caminho inverso: atinge o pico de renda entre os 20 e 30 anos, e vê essa renda cair drasticamente antes dos 35. Isso cria três riscos simultâneos.</p>
+
+  <div class="ciclo-wrap fade-in">
+    <div class="ciclo-fase f1">
+      <div class="ciclo-idade">20–30 anos</div>
+      <div class="ciclo-val">Pico de renda</div>
+      <div class="ciclo-desc">Renda chega cedo, antes da maturidade financeira. Padrão de vida sobe rapidamente.</div>
+    </div>
+    <div class="ciclo-seta">→</div>
+    <div class="ciclo-fase f2">
+      <div class="ciclo-idade">30–35 anos</div>
+      <div class="ciclo-val">Aposentadoria</div>
+      <div class="ciclo-desc">Carreira encerrada. Renda cai abruptamente. Patrimônio precisa estar formado.</div>
+    </div>
+    <div class="ciclo-seta">→</div>
+    <div class="ciclo-fase f3">
+      <div class="ciclo-idade">35–85 anos</div>
+      <div class="ciclo-val">50+ anos de vida</div>
+      <div class="ciclo-desc">Patrimônio precisa sustentar décadas de gastos sem nova renda do trabalho.</div>
+    </div>
+  </div>
+
+  <div class="alert-box fade-in">
+    <div class="alert-title">⚠️ O maior risco</div>
+    <div class="alert-text">Não é perder dinheiro. É <strong>confundir renda temporária com riqueza permanente</strong>. Uma aposentadoria aos 35 pode exigir que o patrimônio dure 50 ou 60 anos — o dobro do que os modelos tradicionais de planejamento consideram.</div>
+  </div>
+
+  <!-- TAXA SEGURA -->
+  <div class="section-title fade-in"><span class="section-icon">📐</span> A taxa segura de resgate: a ponte entre patrimônio e renda</div>
+  <p>Quando alguém deseja viver de renda, a pergunta central deixa de ser <em>"quanto eu tenho?"</em> e passa a ser <em>"quanto posso retirar por ano sem destruir o patrimônio?"</em>. É aqui que entra a taxa segura de resgate.</p>
+
+  <div class="regra-box fade-in">
+    <div>
+      <div class="regra-pct">4%</div>
+      <div class="regra-label">Regra dos 4% ao ano</div>
+    </div>
+    <div class="regra-desc">
+      Proposta por William Bengen em 1994 e confirmada pelo <em>Trinity Study</em> em 1998. Sugere que uma carteira diversificada (ações + renda fixa) pode sustentar retiradas iniciais de 4% ao ano, com ajuste pela inflação, por ao menos 30 anos, com taxa de sucesso histórica superior a 95%.<br><br>
+      <strong>Para aposentadorias mais longas</strong> — como as dos atletas, que podem durar 50+ anos — pesquisadores como Wade Pfau e Michael Kitces recomendam taxas mais conservadoras: <strong>3,0% a 3,5% ao ano</strong>.
+    </div>
+  </div>
+
+  <!-- TABELA -->
+  <div class="section-title fade-in"><span class="section-icon">📊</span> A matemática da independência financeira</div>
+  <p>A fórmula é direta: <strong>Patrimônio necessário = gasto anual ÷ taxa de retirada</strong>. Os números mostram que viver de renda exige muito mais patrimônio do que a maioria imagina.</p>
+
+  <div class="tabela-wrap fade-in">
+    <div class="tabela-header">
+      <div class="tabela-titulo">Patrimônio necessário por padrão de vida</div>
+      <div class="tabela-sub">Por taxa de retirada anual · valores brutos e aproximados</div>
+    </div>
+    <table class="tabela-t">
+      <thead>
+        <tr>
+          <th>Gasto mensal</th>
+          <th>Gasto anual</th>
+          <th class="c4">Retir. 4% a.a.</th>
+          <th class="c5">Retir. 5% a.a.</th>
+          <th class="c6">Retir. 6% a.a.</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>R$ 15 mil</td><td>R$ 180 mil</td><td class="c4">R$ 4,5 mi</td><td class="c5">R$ 3,6 mi</td><td class="c6">R$ 3,0 mi</td></tr>
+        <tr><td>R$ 30 mil</td><td>R$ 360 mil</td><td class="c4">R$ 9,0 mi</td><td class="c5">R$ 7,2 mi</td><td class="c6">R$ 6,0 mi</td></tr>
+        <tr><td>R$ 50 mil</td><td>R$ 600 mil</td><td class="c4">R$ 15,0 mi</td><td class="c5">R$ 12,0 mi</td><td class="c6">R$ 10,0 mi</td></tr>
+        <tr><td>R$ 100 mil</td><td>R$ 1,2 mi</td><td class="c4">R$ 30,0 mi</td><td class="c5">R$ 24,0 mi</td><td class="c6">R$ 20,0 mi</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- GRAFICO CANVAS -->
+  <div class="grafico-wrap fade-in">
+    <div class="grafico-titulo">Patrimônio necessário para viver de renda</div>
+    <div class="grafico-sub">Por gasto mensal desejado e taxa de retirada anual</div>
+    <canvas id="chartPatrimonio" height="240"></canvas>
+    <div class="grafico-nota">Cálculo simplificado: patrimônio = gasto anual ÷ taxa de retirada. Não considera impostos, inflação, custos de investimento nem variação de mercado.</div>
+  </div>
+
+  <!-- EXEMPLO NUMÉRICO -->
+  <div class="section-title fade-in"><span class="section-icon">🔢</span> O exemplo concreto: um atleta que ganhou R$ 10 milhões</div>
+  <p>Imagine um atleta que ganha R$ 1 milhão líquido por ano durante 10 anos e consegue poupar metade: R$ 500 mil por ano. Investido a uma taxa real de 5% ao ano, ele acumularia ao final da carreira:</p>
+
+  <div class="exemplo-box fade-in">
+    <div class="exemplo-title">💡 Simulação · 10 anos poupando R$ 500k/ano a 5% a.a. real</div>
+    <div class="exemplo-grid">
+      <div class="exemplo-item">
+        <div class="exemplo-val">R$ 6,3mi</div>
+        <div class="exemplo-label">Patrimônio acumulado ao final da carreira</div>
+      </div>
+      <div class="exemplo-item">
+        <div class="exemplo-val">R$ 252k</div>
+        <div class="exemplo-label">Renda anual disponível com retirada de 4%</div>
+      </div>
+      <div class="exemplo-item">
+        <div class="exemplo-val">R$ 21k/mês</div>
+        <div class="exemplo-label">Renda mensal — antes de impostos e custos</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="insight-box fade-in">
+    <p>Um atleta que ganhou <strong>R$ 10 milhões líquidos</strong> ao longo da carreira e <strong>poupou metade da renda</strong> talvez não consiga sustentar uma vida de R$ 50 mil por mês após a aposentadoria. Para quem tem uma carreira curta, pode ser necessário <strong>poupar 50%, 60% ou 70% da renda</strong> nos anos de maior ganho.</p>
+  </div>
+
+  <!-- SETE PERGUNTAS -->
+  <div class="section-title fade-in"><span class="section-icon">🧭</span> O plano patrimonial: sete perguntas que precisam de resposta</div>
+  <p>Um bom planejamento financeiro para atletas deveria começar desde o primeiro contrato relevante — muito antes da aposentadoria.</p>
+
+  <div class="perguntas-list fade-in">
+    <div class="pergunta-item">
+      <div class="pergunta-num">1</div>
+      <div>
+        <div class="pergunta-titulo">Qual é o número da liberdade?</div>
+        <div class="pergunta-desc">Antes de escolher produtos financeiros, é preciso saber quanto custa a independência. R$ 30k/mês exige ~R$ 9 milhões investidos. R$ 100k/mês pode exigir mais de R$ 30 milhões. Esse é o "placar" que realmente importa.</div>
+      </div>
+    </div>
+    <div class="pergunta-item">
+      <div class="pergunta-num">2</div>
+      <div>
+        <div class="pergunta-titulo">Quanto da renda precisa virar patrimônio?</div>
+        <div class="pergunta-desc">A renda de um atleta não deve ser tratada como salário comum — deve ser tratada como uma <strong>safra curta</strong>. A pergunta correta não é "quanto posso gastar?", mas "quanto preciso preservar para que minha família tenha renda pelo resto da vida?".</div>
+      </div>
+    </div>
+    <div class="pergunta-item">
+      <div class="pergunta-num">3</div>
+      <div>
+        <div class="pergunta-titulo">O patrimônio precisa ser carteira, não coleção de apostas</div>
+        <div class="pergunta-desc">Atletas são frequentemente abordados com oportunidades em imóveis, franquias, startups, criptomoedas e sociedades. A base do patrimônio deve ser simples, líquida, diversificada e compreensível. O dinheiro que sustentará décadas não pode depender de uma única tese ou de um único país.</div>
+      </div>
+    </div>
+    <div class="pergunta-item">
+      <div class="pergunta-num">4</div>
+      <div>
+        <div class="pergunta-titulo">A liquidez é parte da segurança</div>
+        <div class="pergunta-desc">Nem todo patrimônio paga boleto. Um atleta pode ter imóveis e participações em negócios, mas ainda enfrentar problemas de caixa. Viver de renda exige ativos líquidos para não vender no pior momento.</div>
+      </div>
+    </div>
+    <div class="pergunta-item">
+      <div class="pergunta-num">5</div>
+      <div>
+        <div class="pergunta-titulo">O padrão de vida precisa ser calibrado antes da aposentadoria</div>
+        <div class="pergunta-desc">A pior hora para ajustar o padrão de vida é depois que a renda acaba. O ideal é que o atleta teste, ainda durante a carreira, qual padrão é sustentável com base no patrimônio acumulado. A aposentadoria financeira deve ser ensaiada antes da esportiva.</div>
+      </div>
+    </div>
+    <div class="pergunta-item">
+      <div class="pergunta-num">6</div>
+      <div>
+        <div class="pergunta-titulo">Proteção patrimonial também é planejamento financeiro</div>
+        <div class="pergunta-desc">Proteger contra lesões, decisões impulsivas, sociedades mal estruturadas, pedidos recorrentes de ajuda e ausência de planejamento sucessório. Quanto maior a renda e a visibilidade, maior a necessidade de governança.</div>
+      </div>
+    </div>
+    <div class="pergunta-item">
+      <div class="pergunta-num">7</div>
+      <div>
+        <div class="pergunta-titulo">A segunda carreira é um ativo</div>
+        <div class="pergunta-desc">Aposentadoria do esporte não precisa ser aposentadoria da vida produtiva. Uma segunda carreira como empresário, comentarista, investidor ou empreendedor reduz a pressão sobre a carteira e funciona como um ativo financeiro real.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PERFIS -->
+  <div class="section-title fade-in"><span class="section-icon">🌐</span> Esse raciocínio não é só para atletas</div>
+  <p>O exemplo do atleta é extremo, mas a lógica vale para qualquer pessoa que deseja antecipar a aposentadoria ou viver de renda:</p>
+
+  <div class="perfis-grid fade-in">
+    <div class="perfil-tag">Empresários que venderam uma empresa</div>
+    <div class="perfil-tag">Executivos com bônus altos</div>
+    <div class="perfil-tag">Médicos e advogados de alta renda</div>
+    <div class="perfil-tag">Herdeiros</div>
+    <div class="perfil-tag">Influenciadores digitais</div>
+    <div class="perfil-tag">Produtores rurais</div>
+    <div class="perfil-tag">Investidores com grande valorização</div>
+    <div class="perfil-tag">Profissionais liberais</div>
+    <div class="perfil-tag">Famílias que desejam antecipar a aposentadoria</div>
+  </div>
+
+  <p>A pergunta central é sempre a mesma: <strong>o patrimônio acumulado é compatível com o padrão de vida desejado?</strong> Independência financeira não é ter muito dinheiro. É ter dinheiro suficiente para sustentar o padrão de vida com uma taxa de retirada prudente, por tempo suficiente, com margem de segurança.</p>
+
+  <div class="conclusao fade-in">
+    A carreira de um atleta profissional é uma aula sobre finanças pessoais em alta velocidade. Ela mostra que <strong>ganhar muito dinheiro não resolve automaticamente o problema da aposentadoria</strong>. O que resolve é disciplina, planejamento, diversificação, controle de gastos e respeito à matemática da renda passiva. Para quem ganha muito em poucos anos, a missão é clara: transformar renda temporária em patrimônio permanente. E a liberdade financeira não nasce do maior salário — nasce da diferença entre o que se ganha, o que se gasta, o que se preserva e o que se investe com inteligência.
+  </div>
+
+</article>
+
+<footer>
+  <div class="footer-name">Fábio Vogelaar Carlucci</div>
+  <div class="footer-contact">+55 (16) 98148-8260<br><a href="mailto:fabio.carlucci@ficus.capital">fabio.carlucci@ficus.capital</a></div>
+</footer>
+<div style="position:relative;z-index:1;padding:0 8% 28px;text-align:center;font-size:0.65rem;color:rgba(245,237,224,0.2);letter-spacing:0.08em;">
+  Conteúdo exclusivamente informativo e educacional. Não constitui recomendação individual de investimento.<br>
+  Referências: Bengen (1994) · Trinity Study — Cooley, Hubbard & Walz (1998) · Wade Pfau · Michael Kitces · Early Retirement Now
+</div>
+
+<script>
+const faders = document.querySelectorAll(".fade-in");
+const obs = new IntersectionObserver(e => e.forEach(x => { if(x.isIntersecting){ x.target.classList.add("visible"); obs.unobserve(x.target); } }), { threshold: 0.1 });
+faders.forEach(f => obs.observe(f));
+
+// Gráfico de barras agrupadas
+(function() {
+  const el = document.getElementById("chartPatrimonio"); if(!el) return;
+  const W = el.offsetWidth || 700, H = 240;
+  el.width = W * devicePixelRatio; el.height = H * devicePixelRatio;
+  el.style.height = H + "px";
+  const ctx = el.getContext("2d"); ctx.scale(devicePixelRatio, devicePixelRatio);
+
+  const PAD = { top: 18, right: 20, bottom: 44, left: 56 };
+  const pW = W - PAD.left - PAD.right, pH = H - PAD.top - PAD.bottom;
+
+  const grupos = ["R$ 15k/mês", "R$ 30k/mês", "R$ 50k/mês", "R$ 100k/mês"];
+  const d4 = [4.5, 9.0, 15.0, 30.0];
+  const d5 = [3.6, 7.2, 12.0, 24.0];
+  const d6 = [3.0, 6.0, 10.0, 20.0];
+  const maxV = 32, minV = 0;
+  const ng = grupos.length, barsPerG = 3, barW = pW / (ng * (barsPerG + 1));
+  const colors = ["rgba(201,168,76,0.8)", "rgba(74,144,217,0.75)", "rgba(61,191,138,0.7)"];
+  const labels4 = ["4% a.a.", "5% a.a.", "6% a.a."];
+
+  // Grid
+  [0, 5, 10, 15, 20, 25, 30].forEach(v => {
+    const y = PAD.top + pH - (v/maxV)*pH;
+    ctx.strokeStyle = "rgba(255,255,255,0.05)"; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(PAD.left, y); ctx.lineTo(PAD.left+pW, y); ctx.stroke();
+    ctx.fillStyle = "rgba(245,237,224,0.22)"; ctx.font = "9px Jost,sans-serif"; ctx.textAlign = "right";
+    ctx.fillText("R$"+v+"mi", PAD.left-5, y+3);
+  });
+
+  // Barras
+  const allData = [d4, d5, d6];
+  allData.forEach((series, si) => {
+    series.forEach((val, gi) => {
+      const x = PAD.left + gi * (pW/ng) + si * barW + barW * 0.3;
+      const barH = (val/maxV) * pH;
+      const y = PAD.top + pH - barH;
+      ctx.fillStyle = colors[si];
+      ctx.beginPath();
+      ctx.roundRect ? ctx.roundRect(x, y, barW*0.85, barH, [3,3,0,0]) : ctx.rect(x, y, barW*0.85, barH);
+      ctx.fill();
+    });
+  });
+
+  // Labels grupos
+  ctx.fillStyle = "rgba(245,237,224,0.4)"; ctx.textAlign = "center"; ctx.font = "9px Jost,sans-serif";
+  grupos.forEach((g, gi) => {
+    const cx = PAD.left + gi*(pW/ng) + (pW/ng)/2;
+    ctx.fillText(g, cx, H - PAD.bottom + 14);
+  });
+
+  // Legenda
+  labels4.forEach((l, i) => {
+    const lx = PAD.left + 10 + i*90;
+    ctx.fillStyle = colors[i]; ctx.fillRect(lx, H-PAD.bottom+26, 10, 8);
+    ctx.fillStyle = "rgba(245,237,224,0.35)"; ctx.textAlign = "left"; ctx.font = "9px Jost,sans-serif";
+    ctx.fillText(l, lx+14, H-PAD.bottom+34);
+  });
+})();
+</script>
+</body>
+</html>
