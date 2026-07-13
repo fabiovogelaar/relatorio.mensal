@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>O mercado de títulos japonês voltou ao centro das atenções | Fábio Carlucci</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DBQSDSDRF3"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-DBQSDSDRF3");</script>
+<style>
+  :root {
+    --verde-escuro: #1a2e25;
+    --dourado: #c9a84c;
+    --dourado-claro: #e2c47a;
+    --creme: #f5ede0;
+    --texto-claro: rgba(245,237,224,0.85);
+    --texto-muted: rgba(245,237,224,0.45);
+    --azul: #4a90d9;
+    --verde-gain: #3dbf8a;
+    --vermelho: #c94545;
+    --laranja: #e07a35;
+    --roxo: #9a7ad9;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { background-color: var(--verde-escuro); color: var(--creme); font-family: "Jost", sans-serif; font-weight: 300; overflow-x: hidden; }
+  body::before {
+    content: ""; position: fixed; inset: 0;
+    background-image: radial-gradient(ellipse at 10% 10%, rgba(201,168,76,0.06) 0%, transparent 55%), radial-gradient(ellipse at 90% 90%, rgba(47,82,64,0.35) 0%, transparent 55%);
+    pointer-events: none; z-index: 0;
+  }
+  .back-link { position: relative; z-index: 10; display: inline-flex; align-items: center; gap: 8px; padding: 28px 8%; font-size: 0.7rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--texto-muted); text-decoration: none; transition: color 0.2s; }
+  .back-link:hover { color: var(--dourado); }
+  .back-link::before { content: "←"; font-size: 0.9rem; }
+  .hero { position: relative; z-index: 1; padding: 20px 8% 64px; border-bottom: 1px solid rgba(201,168,76,0.15); max-width: 900px; }
+  .hero-tag { font-size: 0.65rem; font-weight: 500; letter-spacing: 0.35em; text-transform: uppercase; color: var(--dourado); display: flex; align-items: center; gap: 12px; margin-bottom: 24px; opacity: 0; animation: fadeUp 0.7s ease 0.1s forwards; }
+  .hero-tag::before { content: ""; width: 30px; height: 1px; background: var(--dourado); }
+  .hero-date { font-size: 0.72rem; letter-spacing: 0.15em; color: var(--texto-muted); margin-bottom: 20px; opacity: 0; animation: fadeUp 0.7s ease 0.2s forwards; }
+  h1 { font-family: "Cormorant Garamond", serif; font-size: clamp(2rem, 5vw, 3.8rem); font-weight: 300; line-height: 1.12; color: var(--creme); opacity: 0; animation: fadeUp 0.7s ease 0.3s forwards; }
+  h1 em { font-style: italic; color: var(--dourado-claro); }
+  .hero-sub { font-size: 0.97rem; color: var(--texto-muted); line-height: 1.75; margin-top: 16px; max-width: 640px; opacity: 0; animation: fadeUp 0.7s ease 0.45s forwards; }
+  .hero-fonte { margin-top: 14px; font-size: 0.7rem; color: rgba(245,237,224,0.3); opacity: 0; animation: fadeUp 0.7s ease 0.55s forwards; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+  article { position: relative; z-index: 1; max-width: 800px; margin: 0 auto; padding: 64px 8% 88px; }
+  .lead { font-family: "Cormorant Garamond", serif; font-size: clamp(1.1rem, 2.5vw, 1.35rem); font-weight: 400; line-height: 1.8; color: var(--creme); margin-bottom: 48px; padding-bottom: 48px; border-bottom: 1px solid rgba(201,168,76,0.15); }
+  p { font-size: 0.97rem; line-height: 1.9; color: var(--texto-claro); margin-bottom: 24px; }
+  strong { font-weight: 600; color: var(--creme); }
+  .section-title { font-family: "Cormorant Garamond", serif; font-size: 1.55rem; font-weight: 600; color: var(--dourado-claro); margin: 56px 0 18px; padding-top: 44px; border-top: 1px solid rgba(201,168,76,0.12); display: flex; align-items: center; gap: 14px; }
+  .section-icon { font-size: 1.3rem; flex-shrink: 0; }
+
+  /* STAT DESTAQUE */
+  .stat-destaque { background: linear-gradient(135deg, rgba(201,69,69,0.14) 0%, rgba(47,82,64,0.4) 100%); border: 1px solid rgba(201,69,69,0.28); border-radius: 8px; padding: 30px 28px; margin: 32px 0; display: flex; align-items: center; gap: 26px; flex-wrap: wrap; }
+  .stat-pct { font-family: "Cormorant Garamond", serif; font-size: 3.6rem; font-weight: 700; color: #e07070; line-height: 1; flex-shrink: 0; }
+  .stat-desc { font-size: 0.9rem; color: var(--texto-claro); line-height: 1.7; flex: 1; min-width: 220px; }
+
+  /* GRAFICO */
+  .grafico-wrap { background: rgba(10,20,16,0.7); border: 1px solid rgba(255,255,255,0.07); border-radius: 8px; padding: 24px 20px 16px; margin: 32px 0; }
+  .grafico-titulo { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--dourado); margin-bottom: 4px; }
+  .grafico-sub { font-size: 0.72rem; color: var(--texto-muted); margin-bottom: 16px; }
+  .grafico-legenda { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 12px; }
+  .leg-item { display: flex; align-items: center; gap: 7px; font-size: 0.7rem; color: var(--texto-muted); }
+  .leg-line { width: 18px; height: 3px; border-radius: 2px; }
+  canvas { width: 100% !important; display: block; }
+  .grafico-nota { font-size: 0.65rem; color: rgba(245,237,224,0.25); margin-top: 10px; line-height: 1.4; }
+
+  /* 4 DESAFIOS */
+  .desafios-list { display: flex; flex-direction: column; gap: 12px; margin: 28px 0; }
+  .desafio-item { display: flex; align-items: flex-start; gap: 18px; padding: 22px 22px; border-radius: 6px; transition: border-color 0.25s, background 0.25s; }
+  .desafio-item.d1 { background: rgba(201,69,69,0.07); border: 1px solid rgba(201,69,69,0.18); }
+  .desafio-item.d2 { background: rgba(224,122,53,0.07); border: 1px solid rgba(224,122,53,0.18); }
+  .desafio-item.d3 { background: rgba(74,144,217,0.07); border: 1px solid rgba(74,144,217,0.18); }
+  .desafio-item.d4 { background: rgba(154,122,217,0.07); border: 1px solid rgba(154,122,217,0.18); }
+  .desafio-num { font-family: "Cormorant Garamond", serif; font-size: 2.2rem; font-weight: 700; line-height: 1; flex-shrink: 0; width: 40px; text-align: center; }
+  .desafio-item.d1 .desafio-num { color: rgba(224,112,112,0.35); }
+  .desafio-item.d2 .desafio-num { color: rgba(224,122,53,0.35); }
+  .desafio-item.d3 .desafio-num { color: rgba(74,144,217,0.35); }
+  .desafio-item.d4 .desafio-num { color: rgba(154,122,217,0.35); }
+  .desafio-titulo { font-size: 0.88rem; font-weight: 600; margin-bottom: 6px; }
+  .desafio-item.d1 .desafio-titulo { color: #e07070; }
+  .desafio-item.d2 .desafio-titulo { color: var(--laranja); }
+  .desafio-item.d3 .desafio-titulo { color: var(--azul); }
+  .desafio-item.d4 .desafio-titulo { color: var(--roxo); }
+  .desafio-desc { font-size: 0.85rem; color: var(--texto-claro); line-height: 1.65; }
+  .desafio-stat { display: inline-block; margin-top: 8px; font-size: 0.68rem; font-weight: 600; padding: 3px 10px; border-radius: 20px; }
+  .desafio-item.d1 .desafio-stat { background: rgba(224,112,112,0.15); color: #e07070; }
+  .desafio-item.d2 .desafio-stat { background: rgba(224,122,53,0.15); color: var(--laranja); }
+
+  /* CICLO ENVELHECIMENTO */
+  .ciclo-wrap { display: flex; align-items: center; gap: 0; margin: 24px 0; overflow: hidden; border-radius: 8px; }
+  @media (max-width: 560px) { .ciclo-wrap { flex-direction: column; } }
+  .ciclo-fase { flex: 1; padding: 18px 14px; text-align: center; background: rgba(224,122,53,0.08); border: 1px solid rgba(224,122,53,0.2); }
+  .ciclo-seta { font-size: 1.1rem; color: var(--texto-muted); flex-shrink: 0; padding: 0 4px; }
+  @media (max-width: 560px) { .ciclo-seta { transform: rotate(90deg); padding: 4px 0; } }
+  .ciclo-desc { font-size: 0.74rem; color: var(--texto-claro); line-height: 1.4; }
+
+  /* NAO CRISE - fatores */
+  .fatores-grid { display: grid; grid-template-columns: 1fr; gap: 10px; margin: 24px 0; }
+  .fator-item { display: flex; align-items: flex-start; gap: 12px; padding: 14px 18px; background: rgba(61,191,138,0.06); border: 1px solid rgba(61,191,138,0.15); border-radius: 5px; }
+  .fator-icon { color: #5ec98a; font-size: 0.9rem; flex-shrink: 0; margin-top: 2px; }
+  .fator-texto { font-size: 0.86rem; color: var(--texto-claro); line-height: 1.6; }
+
+  /* CONTAGIO GLOBAL */
+  .contagio-wrap { background: rgba(10,20,16,0.7); border: 1px solid rgba(255,255,255,0.07); border-radius: 8px; padding: 26px 24px; margin: 32px 0; }
+  .contagio-titulo { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--dourado); margin-bottom: 18px; }
+  .contagio-flow { display: flex; flex-direction: column; gap: 8px; }
+  .contagio-step { display: flex; align-items: center; gap: 12px; padding: 10px 14px; background: rgba(255,255,255,0.03); border-radius: 5px; font-size: 0.82rem; color: var(--texto-claro); }
+  .contagio-arrow { text-align: center; color: var(--texto-muted); font-size: 0.9rem; }
+
+  /* PERGUNTAS */
+  .perguntas-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 28px 0; }
+  @media (max-width: 500px) { .perguntas-grid { grid-template-columns: 1fr; } }
+  .pergunta-card { background: rgba(201,168,76,0.06); border: 1px solid rgba(201,168,76,0.18); border-radius: 6px; padding: 18px 18px; }
+  .pergunta-icon { font-size: 1rem; margin-bottom: 8px; }
+  .pergunta-texto { font-size: 0.85rem; color: var(--texto-claro); line-height: 1.55; font-style: italic; }
+
+  /* INSIGHT */
+  .insight-box { background: linear-gradient(135deg, rgba(201,168,76,0.1) 0%, rgba(26,46,37,0.4) 100%); border: 1px solid rgba(201,168,76,0.25); border-left: 3px solid var(--dourado); border-radius: 4px; padding: 28px 32px; margin: 36px 0; }
+  .insight-box p { font-family: "Cormorant Garamond", serif; font-size: 1.12rem; color: var(--creme); line-height: 1.8; margin: 0; }
+
+  /* CONCLUSÃO */
+  .conclusao { font-family: "Cormorant Garamond", serif; font-size: 1.2rem; font-weight: 400; line-height: 1.85; color: var(--creme); margin-top: 52px; padding: 40px; border: 1px solid rgba(201,168,76,0.2); border-radius: 6px; background: rgba(255,255,255,0.02); position: relative; }
+  .conclusao::before { content: "\201C"; position: absolute; top: -10px; left: 32px; font-size: 5rem; color: rgba(201,168,76,0.15); font-family: "Cormorant Garamond", serif; line-height: 1; }
+
+  .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .fade-in.visible { opacity: 1; transform: none; }
+  footer { position: relative; z-index: 1; border-top: 1px solid rgba(201,168,76,0.12); padding: 40px 8%; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+  .footer-name { font-family: "Cormorant Garamond", serif; font-size: 1.1rem; font-weight: 300; color: var(--texto-muted); }
+  .footer-contact { font-size: 0.75rem; color: rgba(245,237,224,0.25); line-height: 1.9; text-align: right; }
+  .footer-contact a { color: var(--dourado); text-decoration: none; }
+  @media (max-width: 640px) { .back-link,.hero { padding-left: 5%; padding-right: 5%; } article { padding: 48px 5% 64px; } footer { padding: 32px 5%; flex-direction: column; } .footer-contact { text-align: left; } }
+</style>
+</head>
+<body>
+
+<a class="back-link" href="index.html">Voltar</a>
+
+<header class="hero">
+  <div class="hero-tag">Memorando · Macro Global</div>
+  <div class="hero-date">Julho de 2026</div>
+  <h1>O mercado de títulos japonês<br>voltou ao <em>centro das atenções</em></h1>
+  <p class="hero-sub">As taxas dos títulos públicos do Japão atingiram os maiores níveis em cerca de três décadas. Não é apenas um evento local — é um dos temas macroeconômicos mais relevantes de 2026.</p>
+  <div class="hero-fonte">Fonte: Financial Times · Reuters · Bank of Japan (BoJ)</div>
+</header>
+
+<article>
+
+  <p class="lead">
+    Nos últimos dias, o mercado de títulos públicos do Japão passou por um movimento que merece atenção dos investidores globais. As taxas dos títulos de <strong>10, 20, 30 e até 40 anos</strong> atingiram os maiores níveis em aproximadamente três décadas. Embora manchetes falem em "crise", a realidade é mais complexa — uma combinação rara de fatores estruturais que começam a desafiar um modelo econômico que funcionou durante décadas.
+  </p>
+
+  <!-- O QUE ESTA ACONTECENDO -->
+  <div class="section-title fade-in"><span class="section-icon">📉</span> O que está acontecendo?</div>
+
+  <p>Quando investidores exigem juros maiores para comprar títulos públicos, isso significa que o governo precisa pagar mais caro para se financiar. No caso japonês, esse movimento ocorre justamente em um país que possui a <strong>maior dívida pública entre as economias desenvolvidas</strong>.</p>
+
+  <div class="stat-destaque fade-in">
+    <div class="stat-pct">200%+</div>
+    <div class="stat-desc">
+      A dívida bruta japonesa supera <strong>200% do PIB</strong>, enquanto os juros pagos pelo governo vêm aumentando rapidamente conforme o Banco do Japão abandona gradualmente a política de juros próximos de zero.
+    </div>
+  </div>
+
+  <!-- GRAFICO -->
+  <div class="section-title fade-in"><span class="section-icon">📈</span> Juros dos títulos japoneses nas máximas em 30 anos</div>
+
+  <p>O gráfico abaixo ilustra a trajetória dos rendimentos dos títulos públicos japoneses de diferentes prazos desde 2017. A escalada acentuada a partir de 2023 mostra a velocidade da reprecificação do risco soberano japonês.</p>
+
+  <div class="grafico-wrap fade-in">
+    <div class="grafico-titulo">Japan Government Bonds — Yields por prazo</div>
+    <div class="grafico-sub">10, 20, 30 e 40 anos · 2017 a 2026</div>
+    <div class="grafico-legenda">
+      <div class="leg-item"><div class="leg-line" style="background:var(--roxo)"></div>10 anos</div>
+      <div class="leg-item"><div class="leg-line" style="background:#e07070"></div>20 anos</div>
+      <div class="leg-item"><div class="leg-line" style="background:rgba(245,237,224,0.7)"></div>30 anos</div>
+      <div class="leg-item"><div class="leg-line" style="background:var(--dourado)"></div>40 anos</div>
+    </div>
+    <canvas id="chartJGB" height="260"></canvas>
+    <div class="grafico-nota">Visualização ilustrativa reproduzindo o padrão e a trajetória reportados por dados de mercado (TradingView / Financial Times) — não representa os valores exatos de fechamento diário. Rentabilidade e preços passados não garantem resultados futuros.</div>
+  </div>
+
+  <!-- 4 DESAFIOS -->
+  <div class="section-title fade-in"><span class="section-icon">⚠️</span> Os quatro grandes desafios do Japão</div>
+
+  <div class="desafios-list fade-in">
+    <div class="desafio-item d1">
+      <div class="desafio-num">1</div>
+      <div>
+        <div class="desafio-titulo">Dívida pública extremamente elevada</div>
+        <div class="desafio-desc">Durante muitos anos esse endividamento parecia administrável porque os juros eram praticamente zero. Agora o cenário mudou: cada aumento na taxa de juros significa bilhões de ienes adicionais em despesas financeiras para o governo, reduzindo o espaço para novos investimentos.</div>
+        <span class="desafio-stat">Dívida/PIB &gt; 200%</span>
+      </div>
+    </div>
+    <div class="desafio-item d2">
+      <div class="desafio-num">2</div>
+      <div>
+        <div class="desafio-titulo">Envelhecimento da população</div>
+        <div class="desafio-desc">Talvez o maior desafio estrutural do país. O Japão possui uma das menores taxas de natalidade do mundo e uma população cada vez mais envelhecida — produzindo um ciclo difícil de quebrar.</div>
+        <span class="desafio-stat">671 mil nascimentos — mínima em 127 anos</span>
+      </div>
+    </div>
+    <div class="desafio-item d3">
+      <div class="desafio-num">3</div>
+      <div>
+        <div class="desafio-titulo">Fim de uma era de juros próximos de zero</div>
+        <div class="desafio-desc">Desde os anos 1990, o Banco do Japão manteve política monetária extremamente expansionista, incluindo juros negativos e compras massivas de títulos públicos. Com a inflação retornando após décadas de deflação, o BoJ iniciou um processo gradual de normalização — menos compras, juros maiores e mercado com mais liberdade para precificar.</div>
+      </div>
+    </div>
+    <div class="desafio-item d4">
+      <div class="desafio-num">4</div>
+      <div>
+        <div class="desafio-titulo">Pressão sobre o iene</div>
+        <div class="desafio-desc">O iene permaneceu relativamente fraco frente ao dólar por anos, encarecendo importações e pressionando a inflação doméstica. Isso cria pressão para juros mais altos — que, por sua vez, aumentam ainda mais o custo da dívida pública. Um equilíbrio bastante delicado.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CICLO DEMOGRAFICO -->
+  <p style="font-size:0.85rem; color:var(--texto-muted); font-style:italic;">O ciclo demográfico japonês, de forma resumida:</p>
+  <div class="ciclo-wrap fade-in">
+    <div class="ciclo-fase"><div class="ciclo-desc">Menos<br><strong style="color:var(--creme)">trabalhadores</strong></div></div>
+    <div class="ciclo-seta">→</div>
+    <div class="ciclo-fase"><div class="ciclo-desc">Menor<br><strong style="color:var(--creme)">crescimento</strong></div></div>
+    <div class="ciclo-seta">→</div>
+    <div class="ciclo-fase"><div class="ciclo-desc">Menor<br><strong style="color:var(--creme)">arrecadação</strong></div></div>
+    <div class="ciclo-seta">→</div>
+    <div class="ciclo-fase"><div class="ciclo-desc">Mais gastos<br><strong style="color:var(--creme)">previdência/saúde</strong></div></div>
+  </div>
+
+  <!-- CRISE OU NAO -->
+  <div class="section-title fade-in"><span class="section-icon">❓</span> Isso significa que o Japão está entrando em crise?</div>
+
+  <p>Não necessariamente. Apesar das preocupações, existem diferenças importantes entre o Japão e economias que enfrentaram crises de dívida soberana no passado.</p>
+
+  <div class="fatores-grid fade-in">
+    <div class="fator-item">
+      <span class="fator-icon">✓</span>
+      <div class="fator-texto">A maior parte da dívida é denominada em <strong>moeda local</strong> — reduzindo o risco cambial da própria dívida</div>
+    </div>
+    <div class="fator-item">
+      <span class="fator-icon">✓</span>
+      <div class="fator-texto">Grande parcela está nas mãos de <strong>investidores domésticos</strong> e do próprio Banco do Japão</div>
+    </div>
+    <div class="fator-item">
+      <span class="fator-icon">✓</span>
+      <div class="fator-texto">O país mantém <strong>elevada capacidade institucional</strong> e forte poupança interna</div>
+    </div>
+  </div>
+
+  <div class="insight-box fade-in">
+    <p>Esses fatores tornam uma crise imediata muito menos provável do que sugerem algumas manchetes mais alarmistas. Ainda assim, a rápida elevação dos rendimentos indica que <strong>o mercado passou a exigir um prêmio de risco maior</strong> para financiar o governo japonês.</p>
+  </div>
+
+  <!-- CONTAGIO GLOBAL -->
+  <div class="section-title fade-in"><span class="section-icon">🌐</span> Por que o mundo inteiro acompanha esse movimento?</div>
+
+  <p>O mercado japonês de renda fixa é um dos maiores do planeta. Quando os títulos japoneses passam a oferecer retornos significativamente maiores, investidores institucionais japoneses podem reduzir aplicações em mercados internacionais e direcionar recursos de volta ao país — um fenômeno conhecido como <strong>repatriação de capital</strong>.</p>
+
+  <div class="contagio-wrap fade-in">
+    <div class="contagio-titulo">Cadeia de transmissão global</div>
+    <div class="contagio-flow">
+      <div class="contagio-step">🇯🇵 Juros japoneses sobem e ficam mais atrativos</div>
+      <div class="contagio-arrow">↓</div>
+      <div class="contagio-step">💴 Capital japonês retorna do exterior para o Japão</div>
+      <div class="contagio-arrow">↓</div>
+      <div class="contagio-step">🌍 Aumento das taxas de juros globais</div>
+      <div class="contagio-arrow">↓</div>
+      <div class="contagio-step">📉 Pressão sobre títulos americanos e europeus</div>
+      <div class="contagio-arrow">↓</div>
+      <div class="contagio-step">⚡ Redução da liquidez internacional e maior volatilidade</div>
+    </div>
+  </div>
+
+  <!-- O QUE OBSERVAR -->
+  <div class="section-title fade-in"><span class="section-icon">🔎</span> O que observar daqui para frente</div>
+
+  <p>Os próximos meses serão decisivos para responder quatro perguntas centrais:</p>
+
+  <div class="perguntas-grid fade-in">
+    <div class="pergunta-card">
+      <div class="pergunta-icon">🏦</div>
+      <div class="pergunta-texto">"O Banco do Japão continuará elevando os juros?"</div>
+    </div>
+    <div class="pergunta-card">
+      <div class="pergunta-icon">📋</div>
+      <div class="pergunta-texto">"O governo apresentará um plano fiscal crível para o mercado?"</div>
+    </div>
+    <div class="pergunta-card">
+      <div class="pergunta-icon">🌡️</div>
+      <div class="pergunta-texto">"A inflação permanecerá controlada?"</div>
+    </div>
+    <div class="pergunta-card">
+      <div class="pergunta-icon">📊</div>
+      <div class="pergunta-texto">"O crescimento será suficiente para estabilizar a dívida/PIB?"</div>
+    </div>
+  </div>
+
+  <p>As respostas definirão se o atual movimento representa apenas uma <strong>normalização dos juros</strong> após décadas de distorções ou o início de um processo mais profundo de <strong>reprecificação do risco soberano japonês</strong>.</p>
+
+  <div class="conclusao fade-in">
+    O aumento das taxas dos títulos japoneses não é apenas um evento local. Ele representa uma mudança estrutural em uma economia que passou mais de trinta anos convivendo com juros extremamente baixos, inflação praticamente inexistente e forte intervenção do banco central. Ainda é cedo para afirmar que o Japão caminha para uma crise fiscal. No entanto, esse é um dos <strong>temas macroeconômicos mais relevantes de 2026</strong>, com potencial para influenciar juros, câmbio e fluxo de capitais em diversos mercados ao redor do mundo.
+  </div>
+
+</article>
+
+<footer>
+  <div class="footer-name">Fábio Vogelaar Carlucci</div>
+  <div class="footer-contact">+55 (16) 98148-8260<br><a href="mailto:fabio.carlucci@ficus.capital">fabio.carlucci@ficus.capital</a></div>
+</footer>
+<div style="position:relative;z-index:1;padding:0 8% 28px;text-align:center;font-size:0.65rem;color:rgba(245,237,224,0.2);letter-spacing:0.08em;">
+  Fontes: Financial Times · Reuters · Bank of Japan (BoJ)<br>
+  Conteúdo exclusivamente informativo e educacional. Não constitui recomendação de investimento.
+</div>
+
+<script>
+const faders = document.querySelectorAll(".fade-in");
+const obs = new IntersectionObserver(e => e.forEach(x => { if(x.isIntersecting){ x.target.classList.add("visible"); obs.unobserve(x.target); } }), { threshold: 0.1 });
+faders.forEach(f => obs.observe(f));
+
+// Grafico JGB yields
+(function() {
+  const el = document.getElementById("chartJGB"); if(!el) return;
+  const W = el.offsetWidth || 700, H = 260;
+  el.width = W * devicePixelRatio; el.height = H * devicePixelRatio;
+  el.style.height = H + "px";
+  const ctx = el.getContext("2d"); ctx.scale(devicePixelRatio, devicePixelRatio);
+
+  const PAD = { top: 16, right: 20, bottom: 30, left: 40 };
+  const pW = W - PAD.left - PAD.right, pH = H - PAD.top - PAD.bottom;
+  const labels = ["2017","2018","2019","2020","2021","2022","2023","2024","2025","2026"];
+  const n = 40; // pontos trimestrais aprox
+
+  function series(base, dip, end, vol) {
+    const out = [];
+    for(let i=0;i<n;i++){
+      const t = i/(n-1);
+      let v;
+      if (t < 0.15) v = base - (base-dip)*(t/0.15);
+      else if (t < 0.55) v = dip + Math.sin(t*14)*vol*0.3;
+      else v = dip + (end-dip)*Math.pow((t-0.55)/0.45, 1.3);
+      out.push(Math.max(0, v + Math.sin(i*2.1)*vol*0.15));
+    }
+    return out;
+  }
+
+  const y10 = series(0.05, -0.05, 1.55, 0.08);
+  const y20 = series(0.6, 0.3, 2.87, 0.1);
+  const y30 = series(0.9, 0.55, 3.35, 0.1);
+  const y40 = series(1.1, 0.7, 3.6, 0.1);
+
+  const minV = -0.5, maxV = 4.2;
+  function xP(i){ return PAD.left + (i/(n-1))*pW; }
+  function yP(v){ return PAD.top + pH - ((v-minV)/(maxV-minV))*pH; }
+
+  [0,1,2,3,4].forEach(v => {
+    const y = yP(v);
+    ctx.strokeStyle = v===0 ? "rgba(255,255,255,0.12)" : "rgba(255,255,255,0.05)"; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(PAD.left,y); ctx.lineTo(PAD.left+pW,y); ctx.stroke();
+    ctx.fillStyle = "rgba(245,237,224,0.22)"; ctx.font = "9px Jost,sans-serif"; ctx.textAlign = "right";
+    ctx.fillText(v+"%", PAD.left-5, y+3);
+  });
+
+  ctx.fillStyle = "rgba(245,237,224,0.2)"; ctx.textAlign = "center"; ctx.font = "9px Jost,sans-serif";
+  labels.forEach((l,i) => { const xi = i*(n-1)/(labels.length-1); ctx.fillText(l, xP(xi), H-PAD.bottom+14); });
+
+  function drawL(data, color, w) {
+    ctx.beginPath(); ctx.strokeStyle = color; ctx.lineWidth = w; ctx.lineJoin = "round";
+    data.forEach((v,i) => i===0 ? ctx.moveTo(xP(i),yP(v)) : ctx.lineTo(xP(i),yP(v))); ctx.stroke();
+  }
+  drawL(y10, "rgba(154,122,217,0.85)", 1.6);
+  drawL(y20, "rgba(224,112,112,0.85)", 1.6);
+  drawL(y30, "rgba(245,237,224,0.6)", 1.6);
+  drawL(y40, "rgba(201,168,76,0.9)", 2);
+})();
+</script>
+</body>
+</html>

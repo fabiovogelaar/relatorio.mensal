@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Inteligência Artificial tornou-se um dos principais motores da economia americana | Fábio Carlucci</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DBQSDSDRF3"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-DBQSDSDRF3");</script>
+<style>
+  :root {
+    --verde-escuro: #1a2e25;
+    --dourado: #c9a84c;
+    --dourado-claro: #e2c47a;
+    --creme: #f5ede0;
+    --texto-claro: rgba(245,237,224,0.85);
+    --texto-muted: rgba(245,237,224,0.45);
+    --azul: #4a90d9;
+    --verde-gain: #3dbf8a;
+    --vermelho: #c94545;
+    --laranja: #e07a35;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { background-color: var(--verde-escuro); color: var(--creme); font-family: "Jost", sans-serif; font-weight: 300; overflow-x: hidden; }
+  body::before {
+    content: ""; position: fixed; inset: 0;
+    background-image: radial-gradient(ellipse at 10% 10%, rgba(201,168,76,0.06) 0%, transparent 55%), radial-gradient(ellipse at 90% 90%, rgba(47,82,64,0.35) 0%, transparent 55%);
+    pointer-events: none; z-index: 0;
+  }
+  .back-link { position: relative; z-index: 10; display: inline-flex; align-items: center; gap: 8px; padding: 28px 8%; font-size: 0.7rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--texto-muted); text-decoration: none; transition: color 0.2s; }
+  .back-link:hover { color: var(--dourado); }
+  .back-link::before { content: "←"; font-size: 0.9rem; }
+  .hero { position: relative; z-index: 1; padding: 20px 8% 64px; border-bottom: 1px solid rgba(201,168,76,0.15); max-width: 900px; }
+  .hero-tag { font-size: 0.65rem; font-weight: 500; letter-spacing: 0.35em; text-transform: uppercase; color: var(--dourado); display: flex; align-items: center; gap: 12px; margin-bottom: 24px; opacity: 0; animation: fadeUp 0.7s ease 0.1s forwards; }
+  .hero-tag::before { content: ""; width: 30px; height: 1px; background: var(--dourado); }
+  .hero-date { font-size: 0.72rem; letter-spacing: 0.15em; color: var(--texto-muted); margin-bottom: 20px; opacity: 0; animation: fadeUp 0.7s ease 0.2s forwards; }
+  h1 { font-family: "Cormorant Garamond", serif; font-size: clamp(2rem, 5vw, 3.8rem); font-weight: 300; line-height: 1.12; color: var(--creme); opacity: 0; animation: fadeUp 0.7s ease 0.3s forwards; }
+  h1 em { font-style: italic; color: var(--dourado-claro); }
+  .hero-sub { font-size: 0.97rem; color: var(--texto-muted); line-height: 1.75; margin-top: 16px; max-width: 640px; opacity: 0; animation: fadeUp 0.7s ease 0.45s forwards; }
+  .hero-fonte { margin-top: 14px; font-size: 0.7rem; color: rgba(245,237,224,0.3); opacity: 0; animation: fadeUp 0.7s ease 0.55s forwards; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+  article { position: relative; z-index: 1; max-width: 800px; margin: 0 auto; padding: 64px 8% 88px; }
+  .lead { font-family: "Cormorant Garamond", serif; font-size: clamp(1.1rem, 2.5vw, 1.35rem); font-weight: 400; line-height: 1.8; color: var(--creme); margin-bottom: 48px; padding-bottom: 48px; border-bottom: 1px solid rgba(201,168,76,0.15); }
+  p { font-size: 0.97rem; line-height: 1.9; color: var(--texto-claro); margin-bottom: 24px; }
+  strong { font-weight: 600; color: var(--creme); }
+  .section-title { font-family: "Cormorant Garamond", serif; font-size: 1.55rem; font-weight: 600; color: var(--dourado-claro); margin: 56px 0 18px; padding-top: 44px; border-top: 1px solid rgba(201,168,76,0.12); display: flex; align-items: center; gap: 14px; }
+  .section-icon { font-size: 1.3rem; flex-shrink: 0; }
+
+  /* STAT DESTAQUE 25% */
+  .stat-hero { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 32px 0; }
+  @media (max-width: 500px) { .stat-hero { grid-template-columns: 1fr; } }
+  .stat-card { background: linear-gradient(135deg, rgba(201,168,76,0.14) 0%, rgba(47,82,64,0.4) 100%); border: 1px solid rgba(201,168,76,0.3); border-radius: 8px; padding: 26px 22px; text-align: center; }
+  .stat-card-val { font-family: "Cormorant Garamond", serif; font-size: 3rem; font-weight: 700; color: var(--dourado); line-height: 1; margin-bottom: 8px; }
+  .stat-card-desc { font-size: 0.78rem; color: var(--texto-muted); line-height: 1.5; }
+
+  /* 1 EM CADA 4 */
+  .analogy-box { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; padding: 30px 28px; margin: 32px 0; text-align: center; }
+  .analogy-dollars { display: flex; justify-content: center; gap: 8px; margin-bottom: 16px; flex-wrap: wrap; }
+  .dollar-icon { width: 42px; height: 42px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; font-weight: 700; }
+  .dollar-icon.normal { background: rgba(255,255,255,0.06); color: var(--texto-muted); }
+  .dollar-icon.ia { background: rgba(201,168,76,0.25); color: var(--dourado); border: 2px solid rgba(201,168,76,0.5); }
+  .analogy-texto { font-family: "Cormorant Garamond", serif; font-size: 1.15rem; color: var(--creme); line-height: 1.6; }
+  .analogy-texto em { color: var(--dourado-claro); font-style: italic; }
+
+  /* GRAFICO */
+  .grafico-wrap { background: rgba(10,20,16,0.7); border: 1px solid rgba(255,255,255,0.07); border-radius: 8px; padding: 24px 20px 16px; margin: 32px 0; }
+  .grafico-titulo { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--dourado); margin-bottom: 4px; }
+  .grafico-sub { font-size: 0.72rem; color: var(--texto-muted); margin-bottom: 16px; }
+  .grafico-legenda { display: flex; gap: 18px; flex-wrap: wrap; margin-bottom: 12px; }
+  .leg-item { display: flex; align-items: center; gap: 7px; font-size: 0.7rem; color: var(--texto-muted); }
+  .leg-dot { width: 10px; height: 10px; border-radius: 2px; }
+  .leg-line { width: 18px; height: 3px; border-radius: 2px; }
+  canvas { width: 100% !important; display: block; }
+  .grafico-nota { font-size: 0.65rem; color: rgba(245,237,224,0.25); margin-top: 10px; line-height: 1.4; }
+
+  /* O QUE ENTRA NA CONTA */
+  .categorias-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 28px 0; }
+  @media (max-width: 560px) { .categorias-grid { grid-template-columns: 1fr 1fr; } }
+  .categoria-tag { background: rgba(201,168,76,0.07); border: 1px solid rgba(201,168,76,0.18); border-radius: 6px; padding: 16px 12px; text-align: center; font-size: 0.78rem; color: var(--dourado-claro); font-weight: 500; transition: border-color 0.25s, transform 0.25s; }
+  .categoria-tag:hover { border-color: rgba(201,168,76,0.4); transform: translateY(-2px); }
+
+  /* CICLOS HISTORICOS COMPARACAO */
+  .ciclos-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin: 28px 0; }
+  @media (max-width: 560px) { .ciclos-grid { grid-template-columns: 1fr 1fr; } }
+  .ciclo-card { background: rgba(74,144,217,0.07); border: 1px solid rgba(74,144,217,0.18); border-radius: 6px; padding: 16px 12px; text-align: center; }
+  .ciclo-icon { font-size: 1.4rem; margin-bottom: 6px; }
+  .ciclo-nome { font-size: 0.76rem; color: var(--texto-claro); font-weight: 500; }
+
+  /* BOLHA - DOIS ARGUMENTOS */
+  .argumentos-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 28px 0; }
+  @media (max-width: 500px) { .argumentos-grid { grid-template-columns: 1fr; } }
+  .arg-card { border-radius: 6px; padding: 22px 20px; }
+  .arg-card.favor { background: rgba(61,191,138,0.07); border: 1px solid rgba(61,191,138,0.2); }
+  .arg-card.cautela { background: rgba(201,69,69,0.07); border: 1px solid rgba(201,69,69,0.18); }
+  .arg-label { font-size: 0.62rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 12px; }
+  .arg-card.favor .arg-label { color: #5ec98a; }
+  .arg-card.cautela .arg-label { color: #e07070; }
+  .arg-list { list-style: none; }
+  .arg-list li { font-size: 0.84rem; color: var(--texto-claro); padding: 4px 0; display: flex; align-items: flex-start; gap: 8px; line-height: 1.5; }
+  .arg-card.favor .arg-list li::before { content: "✓"; color: #5ec98a; flex-shrink: 0; font-size: 0.75rem; margin-top: 2px; }
+  .arg-card.cautela .arg-list li::before { content: "⚠"; color: #e07070; flex-shrink: 0; font-size: 0.75rem; margin-top: 2px; }
+
+  /* ALERTA HISTORICO */
+  .historico-box { background: rgba(224,122,53,0.08); border: 1px solid rgba(224,122,53,0.2); border-left: 3px solid var(--laranja); border-radius: 4px; padding: 26px 28px; margin: 32px 0; }
+  .historico-title { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--laranja); margin-bottom: 12px; }
+
+  /* O QUE ACOMPANHAR */
+  .acompanhar-list { display: flex; flex-direction: column; gap: 10px; margin: 28px 0; }
+  .acompanhar-item { display: flex; align-items: flex-start; gap: 16px; padding: 18px 20px; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 5px; transition: border-color 0.25s, background 0.25s; }
+  .acompanhar-item:hover { border-color: rgba(201,168,76,0.2); background: rgba(201,168,76,0.04); }
+  .acompanhar-icon { font-size: 1.2rem; flex-shrink: 0; margin-top: 2px; }
+  .acompanhar-titulo { font-size: 0.82rem; font-weight: 600; color: var(--dourado); margin-bottom: 4px; }
+  .acompanhar-desc { font-size: 0.84rem; color: var(--texto-claro); line-height: 1.6; }
+
+  /* DUAS PERGUNTAS */
+  .perguntas-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 28px 0; }
+  @media (max-width: 500px) { .perguntas-grid { grid-template-columns: 1fr; } }
+  .pergunta-card { background: rgba(201,168,76,0.06); border: 1px solid rgba(201,168,76,0.18); border-radius: 6px; padding: 20px 18px; }
+  .pergunta-num { font-family: "Cormorant Garamond", serif; font-size: 1.6rem; font-weight: 700; color: rgba(201,168,76,0.4); line-height: 1; margin-bottom: 10px; }
+  .pergunta-texto { font-size: 0.86rem; color: var(--texto-claro); line-height: 1.55; font-style: italic; }
+
+  /* INSIGHT */
+  .insight-box { background: linear-gradient(135deg, rgba(201,168,76,0.1) 0%, rgba(26,46,37,0.4) 100%); border: 1px solid rgba(201,168,76,0.25); border-left: 3px solid var(--dourado); border-radius: 4px; padding: 28px 32px; margin: 36px 0; }
+  .insight-box p { font-family: "Cormorant Garamond", serif; font-size: 1.12rem; color: var(--creme); line-height: 1.8; margin: 0; }
+
+  /* CONCLUSÃO */
+  .conclusao { font-family: "Cormorant Garamond", serif; font-size: 1.2rem; font-weight: 400; line-height: 1.85; color: var(--creme); margin-top: 52px; padding: 40px; border: 1px solid rgba(201,168,76,0.2); border-radius: 6px; background: rgba(255,255,255,0.02); position: relative; }
+  .conclusao::before { content: "\201C"; position: absolute; top: -10px; left: 32px; font-size: 5rem; color: rgba(201,168,76,0.15); font-family: "Cormorant Garamond", serif; line-height: 1; }
+
+  .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .fade-in.visible { opacity: 1; transform: none; }
+  footer { position: relative; z-index: 1; border-top: 1px solid rgba(201,168,76,0.12); padding: 40px 8%; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+  .footer-name { font-family: "Cormorant Garamond", serif; font-size: 1.1rem; font-weight: 300; color: var(--texto-muted); }
+  .footer-contact { font-size: 0.75rem; color: rgba(245,237,224,0.25); line-height: 1.9; text-align: right; }
+  .footer-contact a { color: var(--dourado); text-decoration: none; }
+  @media (max-width: 640px) { .back-link,.hero { padding-left: 5%; padding-right: 5%; } article { padding: 48px 5% 64px; } footer { padding: 32px 5%; flex-direction: column; } .footer-contact { text-align: left; } }
+</style>
+</head>
+<body>
+
+<a class="back-link" href="index.html">Voltar</a>
+
+<header class="hero">
+  <div class="hero-tag">Memorando · Macro Global · Tecnologia</div>
+  <div class="hero-date">Julho de 2026</div>
+  <h1>A Inteligência Artificial<br>tornou-se um dos <em>principais motores<br>da economia americana</em></h1>
+  <p class="hero-sub">Mais de um em cada quatro dólares adicionados ao PIB dos EUA hoje está ligado, direta ou indiretamente, a investimentos em Inteligência Artificial. O maior percentual já registrado.</p>
+  <div class="hero-fonte">Fonte: Bloomberg · Metodologia baseada nas contas nacionais do Federal Reserve</div>
+</header>
+
+<article>
+
+  <p class="lead">
+    Nos últimos dois anos, a Inteligência Artificial deixou de ser apenas uma tendência tecnológica para se tornar um dos principais vetores de crescimento econômico dos Estados Unidos. Segundo dados da Bloomberg, os investimentos relacionados à IA já representam <strong>mais de 25% de todo o crescimento nominal do PIB americano</strong> — o maior percentual já registrado.
+  </p>
+
+  <!-- STATS -->
+  <div class="stat-hero fade-in">
+    <div class="stat-card">
+      <div class="stat-card-val">&gt;25%</div>
+      <div class="stat-card-desc">do crescimento nominal do PIB americano vem de investimentos em IA</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-card-val">~8%</div>
+      <div class="stat-card-desc">do PIB nominal já é o estoque acumulado desses investimentos</div>
+    </div>
+  </div>
+
+  <div class="analogy-box fade-in">
+    <div class="analogy-dollars">
+      <div class="dollar-icon ia">$</div>
+      <div class="dollar-icon normal">$</div>
+      <div class="dollar-icon normal">$</div>
+      <div class="dollar-icon normal">$</div>
+    </div>
+    <div class="analogy-texto">Para cada <strong>US$ 4</strong> de crescimento econômico dos EUA hoje,<br>mais de <em>US$ 1 vem de investimentos em Inteligência Artificial</em>.</div>
+  </div>
+
+  <!-- O QUE ENTRA NA CONTA -->
+  <div class="section-title fade-in"><span class="section-icon">🧮</span> O que está sendo considerado como investimento em IA?</div>
+
+  <p>Esse número vai muito além da compra de chips da NVIDIA. A metodologia da Bloomberg engloba um ciclo muito mais amplo de investimentos em infraestrutura digital:</p>
+
+  <div class="categorias-grid fade-in">
+    <div class="categoria-tag">Software de IA</div>
+    <div class="categoria-tag">Equipamentos de TI</div>
+    <div class="categoria-tag">Pesquisa & Desenvolvimento</div>
+    <div class="categoria-tag">Construção de Data Centers</div>
+    <div class="categoria-tag">Infraestrutura Elétrica</div>
+    <div class="categoria-tag">Servidores, GPUs e Redes</div>
+  </div>
+
+  <!-- GRAFICO -->
+  <div class="section-title fade-in"><span class="section-icon">📊</span> O gráfico mais importante do ciclo atual</div>
+
+  <p>O gráfico da Bloomberg mostra dois painéis complementares: a contribuição anual da IA para o crescimento do PIB (barras) e o nível acumulado desse investimento como % do PIB (linha) — desde 1950.</p>
+
+  <div class="grafico-wrap fade-in">
+    <div class="grafico-titulo">GDP Is Highly Dependent on AI Spending</div>
+    <div class="grafico-sub">Contribuição da IA ao crescimento do PIB (YoY) e nível acumulado como % do PIB · 1950–2026</div>
+    <div class="grafico-legenda">
+      <div class="leg-item"><div class="leg-dot" style="background:rgba(74,144,217,0.7)"></div>Contribuição anual ao crescimento (p.p.)</div>
+      <div class="leg-item"><div class="leg-line" style="background:rgba(245,237,224,0.7)"></div>Investimento acumulado (% do PIB)</div>
+    </div>
+    <canvas id="chartAI" height="320"></canvas>
+    <div class="grafico-nota">Visualização ilustrativa reproduzindo o padrão e a magnitude reportados por Bloomberg (metodologia Fed: software + equipamentos de TI + P&D + data centers) — não representa os valores exatos ponto a ponto da série original.</div>
+  </div>
+
+  <!-- CICLOS HISTORICOS -->
+  <div class="section-title fade-in"><span class="section-icon">🏗️</span> Um dos maiores ciclos de investimento da história</div>
+
+  <p>O estoque total desses investimentos já alcança aproximadamente <strong>8% do PIB nominal americano</strong>. Historicamente, poucos setores conseguiram absorver uma parcela tão significativa da economia — trata-se de um volume comparável a:</p>
+
+  <div class="ciclos-grid fade-in">
+    <div class="ciclo-card">
+      <div class="ciclo-icon">🌐</div>
+      <div class="ciclo-nome">Expansão da Internet</div>
+    </div>
+    <div class="ciclo-card">
+      <div class="ciclo-icon">📡</div>
+      <div class="ciclo-nome">Boom das Telecomunicações</div>
+    </div>
+    <div class="ciclo-card">
+      <div class="ciclo-icon">💡</div>
+      <div class="ciclo-nome">Eletrificação</div>
+    </div>
+    <div class="ciclo-card">
+      <div class="ciclo-icon">🚂</div>
+      <div class="ciclo-nome">Malha Ferroviária Americana</div>
+    </div>
+  </div>
+
+  <!-- BOLHA? -->
+  <div class="section-title fade-in"><span class="section-icon">❓</span> Isso é uma bolha?</div>
+
+  <p>Essa talvez seja a principal pergunta do mercado hoje. A resposta não é simples — há dois pontos importantes a considerar.</p>
+
+  <div class="argumentos-grid fade-in">
+    <div class="arg-card favor">
+      <div class="arg-label">Argumento favorável</div>
+      <ul class="arg-list">
+        <li>Boa parte do investimento vai para ativos reais: data centers, infraestrutura elétrica, fibra óptica</li>
+        <li>Semicondutores e equipamentos de computação são capacidade produtiva concreta</li>
+        <li>São investimentos que aumentam a capacidade instalada da economia</li>
+      </ul>
+    </div>
+    <div class="arg-card cautela">
+      <div class="arg-label">Argumento de cautela</div>
+      <ul class="arg-list">
+        <li>O mercado presume ganhos relevantes de produtividade no futuro</li>
+        <li>Se esses ganhos demorarem ou forem inferiores ao esperado, pode haver excesso de capacidade instalada</li>
+        <li>Foi exatamente isso que ocorreu na bolha da internet no início dos anos 2000</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="historico-box fade-in">
+    <div class="historico-title">📖 A lição da bolha da internet</div>
+    <p style="font-size:0.9rem; color:var(--texto-claro); line-height:1.75; margin:0;">A infraestrutura construída durante a bolha da internet acabou sendo <strong>extremamente útil para a economia</strong> nas décadas seguintes. Mas muitos dos investimentos realizados não geraram o retorno esperado para os acionistas daquela época. O padrão pode se repetir: infraestrutura útil, retornos de capital incertos.</p>
+  </div>
+
+  <!-- POR QUE IMPORTA -->
+  <div class="section-title fade-in"><span class="section-icon">💼</span> Por que isso importa para os investidores</div>
+
+  <p>Esse dado ajuda a explicar diversos movimentos observados recentemente: o forte crescimento das gigantes de tecnologia, a demanda recorde por semicondutores, a explosão na construção de data centers, o aumento do consumo de energia elétrica e a valorização de empresas ligadas à infraestrutura digital.</p>
+
+  <div class="insight-box fade-in">
+    <p>A IA deixou de ser apenas um tema de tecnologia e passou a <strong>influenciar diretamente o ciclo econômico americano</strong>. Ela ocupa hoje um papel semelhante ao que já tiveram o setor imobiliário, a indústria automobilística e a tecnologia em diferentes momentos da história econômica dos EUA.</p>
+  </div>
+
+  <!-- PONTO POUCO DISCUTIDO -->
+  <div class="section-title fade-in"><span class="section-icon">⚠️</span> Um ponto pouco discutido</div>
+
+  <p>Se aproximadamente 25% do crescimento econômico atual depende desse ciclo de investimentos, uma eventual desaceleração dos gastos em IA poderá ter efeitos relevantes sobre <strong>crescimento do PIB, lucros corporativos, mercado de trabalho, consumo e receitas fiscais</strong> — não apenas sobre o setor de tecnologia.</p>
+
+  <!-- O QUE ACOMPANHAR -->
+  <div class="section-title fade-in"><span class="section-icon">🔎</span> O que acompanhar daqui para frente</div>
+
+  <div class="acompanhar-list fade-in">
+    <div class="acompanhar-item">
+      <span class="acompanhar-icon">💰</span>
+      <div>
+        <div class="acompanhar-titulo">CapEx das grandes empresas de tecnologia</div>
+        <div class="acompanhar-desc">Os planos de investimento anunciados pelas gigantes de tecnologia são o principal termômetro da continuidade do ciclo.</div>
+      </div>
+    </div>
+    <div class="acompanhar-item">
+      <span class="acompanhar-icon">🏢</span>
+      <div>
+        <div class="acompanhar-titulo">Expansão dos data centers</div>
+        <div class="acompanhar-desc">O ritmo de construção de novos data centers reflete diretamente a confiança do mercado na demanda futura por computação.</div>
+      </div>
+    </div>
+    <div class="acompanhar-item">
+      <span class="acompanhar-icon">⚡</span>
+      <div>
+        <div class="acompanhar-titulo">Demanda por energia elétrica</div>
+        <div class="acompanhar-desc">O consumo energético ligado a data centers é um indicador concreto — e de difícil manipulação — da escala real do investimento.</div>
+      </div>
+    </div>
+    <div class="acompanhar-item">
+      <span class="acompanhar-icon">🔌</span>
+      <div>
+        <div class="acompanhar-titulo">Demanda por semicondutores</div>
+        <div class="acompanhar-desc">Pedidos e prazos de entrega de chips continuam sendo um dos indicadores mais rápidos de mudança de ritmo no ciclo.</div>
+      </div>
+    </div>
+    <div class="acompanhar-item">
+      <span class="acompanhar-icon">📈</span>
+      <div>
+        <div class="acompanhar-titulo">Ganhos de produtividade</div>
+        <div class="acompanhar-desc">O indicador mais importante e mais difícil de medir: se a IA realmente está elevando a produtividade da economia como um todo.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DUAS PERGUNTAS -->
+  <div class="perguntas-grid fade-in">
+    <div class="pergunta-card">
+      <div class="pergunta-num">1</div>
+      <div class="pergunta-texto">"Os investimentos continuarão crescendo no ritmo atual?"</div>
+    </div>
+    <div class="pergunta-card">
+      <div class="pergunta-num">2</div>
+      <div class="pergunta-texto">"Os ganhos de produtividade serão suficientes para justificar esse enorme volume de capital investido?"</div>
+    </div>
+  </div>
+
+  <div class="conclusao fade-in">
+    Este é um dos gráficos mais importantes para compreender o atual ciclo econômico global. Ele mostra que a Inteligência Artificial deixou de ser apenas uma inovação tecnológica para se tornar um dos <strong>principais motores do crescimento dos Estados Unidos</strong>. Ao mesmo tempo, aumenta a dependência da economia em relação à continuidade desses investimentos. As respostas às duas perguntas centrais ajudarão a definir não apenas o desempenho do setor de tecnologia, mas também <strong>boa parte do crescimento da economia mundial na próxima década.</strong>
+  </div>
+
+</article>
+
+<footer>
+  <div class="footer-name">Fábio Vogelaar Carlucci</div>
+  <div class="footer-contact">+55 (16) 98148-8260<br><a href="mailto:fabio.carlucci@ficus.capital">fabio.carlucci@ficus.capital</a></div>
+</footer>
+<div style="position:relative;z-index:1;padding:0 8% 28px;text-align:center;font-size:0.65rem;color:rgba(245,237,224,0.2);letter-spacing:0.08em;">
+  Fonte: Bloomberg · Metodologia baseada nas contas nacionais do Federal Reserve<br>
+  Conteúdo exclusivamente informativo e educacional. Não constitui recomendação de investimento.
+</div>
+
+<script>
+const faders = document.querySelectorAll(".fade-in");
+const obs = new IntersectionObserver(e => e.forEach(x => { if(x.isIntersecting){ x.target.classList.add("visible"); obs.unobserve(x.target); } }), { threshold: 0.1 });
+faders.forEach(f => obs.observe(f));
+
+// Grafico AI spending — dois paineis (barras + linha)
+(function() {
+  const el = document.getElementById("chartAI"); if(!el) return;
+  const W = el.offsetWidth || 700, H = 320;
+  el.width = W * devicePixelRatio; el.height = H * devicePixelRatio;
+  el.style.height = H + "px";
+  const ctx = el.getContext("2d"); ctx.scale(devicePixelRatio, devicePixelRatio);
+
+  const PAD = { top: 14, right: 20, bottom: 26, left: 40 };
+  const gap = 24;
+  const panelH = (H - PAD.top - PAD.bottom - gap) / 2;
+  const pW = W - PAD.left - PAD.right;
+
+  const labels = ["1950","1960","1970","1980","1990","2000","2010","2020","2026"];
+  const n = 76; // anos aprox 1950-2026
+
+  // Gerar série de contribuição anual (painel superior, barras) com padrão: oscila, dip ~2001, dip ~2008, spike final
+  let seed = 7;
+  function rand(){ seed = (seed*9301+49297)%233280; return seed/233280; }
+  const contrib = [];
+  for (let i=0;i<n;i++){
+    const t = i/(n-1);
+    let base = 0.15 + Math.sin(t*22)*0.12 + (rand()-0.5)*0.12;
+    // dip pontocom ~2001 (t ~ 0.66)
+    if (t > 0.63 && t < 0.70) base -= 0.55 * (1 - Math.abs(t-0.665)/0.035);
+    // dip GFC ~2008-09 (t ~ 0.76)
+    if (t > 0.74 && t < 0.79) base -= 0.35 * (1 - Math.abs(t-0.765)/0.025);
+    // rampa final grande 2023-2026
+    if (t > 0.94) base += (t-0.94)/0.06 * 1.0;
+    contrib.push(base);
+  }
+
+  // Serie acumulada (painel inferior, linha) crescente suave até ~8
+  const stock = [];
+  let acc = 1.0;
+  for (let i=0;i<n;i++){
+    const t = i/(n-1);
+    let inc = 0.03 + t*0.06;
+    if (t > 0.92) inc += (t-0.92)*1.2;
+    acc += inc;
+    stock.push(acc);
+  }
+  // Normalizar para terminar em ~8
+  const scaleStock = 8 / stock[stock.length-1];
+  for (let i=0;i<stock.length;i++) stock[i] *= scaleStock;
+
+  function xP(i){ return PAD.left + (i/(n-1))*pW; }
+
+  // === PAINEL SUPERIOR: barras contribuição ===
+  const top1 = PAD.top;
+  const minC = -0.8, maxC = 1.3;
+  function yP1(v){ return top1 + panelH - ((v-minC)/(maxC-minC))*panelH; }
+  const zero1 = yP1(0);
+
+  [-0.5,0,0.5,1.0].forEach(v => {
+    const y = yP1(v);
+    ctx.strokeStyle = v===0 ? "rgba(255,255,255,0.12)" : "rgba(255,255,255,0.04)"; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(PAD.left,y); ctx.lineTo(PAD.left+pW,y); ctx.stroke();
+    ctx.fillStyle = "rgba(245,237,224,0.2)"; ctx.font = "8px Jost,sans-serif"; ctx.textAlign = "right";
+    ctx.fillText(v.toFixed(1), PAD.left-5, y+3);
+  });
+
+  const barW = pW/n * 0.8;
+  contrib.forEach((v,i) => {
+    const x = xP(i) - barW/2;
+    const y = v >= 0 ? yP1(v) : zero1;
+    const h = Math.abs(yP1(v) - zero1);
+    ctx.fillStyle = "rgba(74,144,217,0.65)";
+    ctx.fillRect(x, y, barW, h);
+  });
+
+  ctx.fillStyle = "rgba(245,237,224,0.35)"; ctx.font = "8px Jost,sans-serif"; ctx.textAlign = "left";
+  ctx.fillText("Contribuição ao crescimento do PIB (p.p.)", PAD.left, top1 - 3);
+
+  // Callout "> 25%"
+  ctx.fillStyle = "rgba(201,168,76,0.9)"; ctx.font = "bold 9px Jost,sans-serif"; ctx.textAlign = "right";
+  ctx.fillText("> 25% do crescimento do PIB", PAD.left+pW-4, top1+14);
+
+  // === PAINEL INFERIOR: linha acumulada ===
+  const top2 = PAD.top + panelH + gap;
+  const minS = 0, maxS = 9;
+  function yP2(v){ return top2 + panelH - ((v-minS)/(maxS-minS))*panelH; }
+
+  [0,2,4,6,8].forEach(v => {
+    const y = yP2(v);
+    ctx.strokeStyle = "rgba(255,255,255,0.05)"; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(PAD.left,y); ctx.lineTo(PAD.left+pW,y); ctx.stroke();
+    ctx.fillStyle = "rgba(245,237,224,0.2)"; ctx.font = "8px Jost,sans-serif"; ctx.textAlign = "right";
+    ctx.fillText(v+"%", PAD.left-5, y+3);
+  });
+
+  ctx.beginPath(); ctx.strokeStyle = "rgba(245,237,224,0.75)"; ctx.lineWidth = 2; ctx.lineJoin = "round";
+  stock.forEach((v,i) => i===0 ? ctx.moveTo(xP(i),yP2(v)) : ctx.lineTo(xP(i),yP2(v)));
+  ctx.stroke();
+
+  ctx.fillStyle = "rgba(245,237,224,0.35)"; ctx.font = "8px Jost,sans-serif"; ctx.textAlign = "left";
+  ctx.fillText("Investimento acumulado em IA (% do PIB)", PAD.left, top2-3);
+
+  ctx.fillStyle = "rgba(201,168,76,0.9)"; ctx.font = "bold 9px Jost,sans-serif"; ctx.textAlign = "right";
+  ctx.fillText("~8% do PIB", PAD.left+pW-4, yP2(8)-6);
+
+  // X labels (no painel inferior)
+  ctx.fillStyle = "rgba(245,237,224,0.22)"; ctx.textAlign = "center"; ctx.font = "8px Jost,sans-serif";
+  labels.forEach((l,i) => {
+    const xi = (i/(labels.length-1))*(n-1);
+    ctx.fillText(l, xP(xi), top2+panelH+14);
+  });
+})();
+</script>
+</body>
+</html>
