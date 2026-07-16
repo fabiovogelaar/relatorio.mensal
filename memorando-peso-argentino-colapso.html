@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>O colapso do peso argentino e a importância da responsabilidade fiscal e monetária | Fábio Carlucci</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DBQSDSDRF3"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-DBQSDSDRF3");</script>
+<style>
+  :root {
+    --verde-escuro: #1a2e25;
+    --dourado: #c9a84c;
+    --dourado-claro: #e2c47a;
+    --creme: #f5ede0;
+    --texto-claro: rgba(245,237,224,0.85);
+    --texto-muted: rgba(245,237,224,0.45);
+    --azul: #4a90d9;
+    --verde-gain: #3dbf8a;
+    --vermelho: #c94545;
+    --laranja: #e07a35;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { background-color: var(--verde-escuro); color: var(--creme); font-family: "Jost", sans-serif; font-weight: 300; overflow-x: hidden; }
+  body::before {
+    content: ""; position: fixed; inset: 0;
+    background-image: radial-gradient(ellipse at 10% 10%, rgba(201,168,76,0.06) 0%, transparent 55%), radial-gradient(ellipse at 90% 90%, rgba(47,82,64,0.35) 0%, transparent 55%);
+    pointer-events: none; z-index: 0;
+  }
+  .back-link { position: relative; z-index: 10; display: inline-flex; align-items: center; gap: 8px; padding: 28px 8%; font-size: 0.7rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--texto-muted); text-decoration: none; transition: color 0.2s; }
+  .back-link:hover { color: var(--dourado); }
+  .back-link::before { content: "←"; font-size: 0.9rem; }
+  .hero { position: relative; z-index: 1; padding: 20px 8% 64px; border-bottom: 1px solid rgba(201,168,76,0.15); max-width: 900px; }
+  .hero-tag { font-size: 0.65rem; font-weight: 500; letter-spacing: 0.35em; text-transform: uppercase; color: var(--dourado); display: flex; align-items: center; gap: 12px; margin-bottom: 24px; opacity: 0; animation: fadeUp 0.7s ease 0.1s forwards; }
+  .hero-tag::before { content: ""; width: 30px; height: 1px; background: var(--dourado); }
+  .hero-date { font-size: 0.72rem; letter-spacing: 0.15em; color: var(--texto-muted); margin-bottom: 20px; opacity: 0; animation: fadeUp 0.7s ease 0.2s forwards; }
+  h1 { font-family: "Cormorant Garamond", serif; font-size: clamp(2rem, 5vw, 3.6rem); font-weight: 300; line-height: 1.12; color: var(--creme); opacity: 0; animation: fadeUp 0.7s ease 0.3s forwards; }
+  h1 em { font-style: italic; color: var(--dourado-claro); }
+  .hero-sub { font-size: 0.97rem; color: var(--texto-muted); line-height: 1.75; margin-top: 16px; max-width: 640px; opacity: 0; animation: fadeUp 0.7s ease 0.45s forwards; }
+  .hero-fonte { margin-top: 14px; font-size: 0.7rem; color: rgba(245,237,224,0.3); opacity: 0; animation: fadeUp 0.7s ease 0.55s forwards; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+  article { position: relative; z-index: 1; max-width: 800px; margin: 0 auto; padding: 64px 8% 88px; }
+  .lead { font-family: "Cormorant Garamond", serif; font-size: clamp(1.1rem, 2.5vw, 1.35rem); font-weight: 400; line-height: 1.8; color: var(--creme); margin-bottom: 48px; padding-bottom: 48px; border-bottom: 1px solid rgba(201,168,76,0.15); }
+  p { font-size: 0.97rem; line-height: 1.9; color: var(--texto-claro); margin-bottom: 24px; }
+  strong { font-weight: 600; color: var(--creme); }
+  .section-title { font-family: "Cormorant Garamond", serif; font-size: 1.5rem; font-weight: 600; color: var(--dourado-claro); margin: 56px 0 18px; padding-top: 44px; border-top: 1px solid rgba(201,168,76,0.12); display: flex; align-items: center; gap: 14px; }
+  .section-icon { font-size: 1.3rem; flex-shrink: 0; }
+
+  /* STAT DESTAQUE 99.7% */
+  .stat-destaque { background: linear-gradient(135deg, rgba(201,69,69,0.15) 0%, rgba(47,82,64,0.4) 100%); border: 1px solid rgba(201,69,69,0.3); border-radius: 8px; padding: 30px 28px; margin: 32px 0; display: flex; align-items: center; gap: 26px; flex-wrap: wrap; }
+  .stat-pct { font-family: "Cormorant Garamond", serif; font-size: 3.4rem; font-weight: 700; color: #e07070; line-height: 1; flex-shrink: 0; }
+  .stat-desc { font-size: 0.9rem; color: var(--texto-claro); line-height: 1.7; flex: 1; min-width: 220px; }
+
+  /* GRAFICOS */
+  .grafico-wrap { background: rgba(10,20,16,0.7); border: 1px solid rgba(255,255,255,0.07); border-radius: 8px; padding: 24px 20px 16px; margin: 32px 0; }
+  .grafico-titulo { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--dourado); margin-bottom: 4px; }
+  .grafico-sub { font-size: 0.72rem; color: var(--texto-muted); margin-bottom: 16px; }
+  .grafico-legenda { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 12px; }
+  .leg-item { display: flex; align-items: center; gap: 7px; font-size: 0.7rem; color: var(--texto-muted); }
+  .leg-line { width: 18px; height: 3px; border-radius: 2px; }
+  canvas { width: 100% !important; display: block; }
+  .grafico-nota { font-size: 0.65rem; color: rgba(245,237,224,0.25); margin-top: 10px; line-height: 1.4; }
+
+  /* 7 ETAPAS DO PROCESSO */
+  .etapas-list { display: flex; flex-direction: column; gap: 8px; margin: 28px 0; }
+  .etapa-item { display: flex; align-items: center; gap: 14px; padding: 12px 16px; background: rgba(201,69,69,0.05); border: 1px solid rgba(201,69,69,0.13); border-radius: 5px; }
+  .etapa-num { font-family: "Cormorant Garamond", serif; font-size: 1.3rem; font-weight: 700; color: rgba(224,112,112,0.4); width: 26px; flex-shrink: 0; text-align: center; }
+  .etapa-texto { font-size: 0.85rem; color: var(--texto-claro); line-height: 1.5; }
+
+  /* TIMELINE HISTORICA */
+  .timeline-hist { display: flex; flex-direction: column; gap: 10px; margin: 28px 0; }
+  .th-item { display: flex; gap: 16px; padding: 16px 18px; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.07); border-radius: 5px; }
+  .th-ano { font-family: "Cormorant Garamond", serif; font-size: 1.1rem; font-weight: 700; color: var(--dourado); flex-shrink: 0; width: 90px; }
+  .th-texto { font-size: 0.85rem; color: var(--texto-claro); line-height: 1.6; }
+
+  /* DIVIDA EXTERNA */
+  .divida-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 28px 0; }
+  @media (max-width: 500px) { .divida-grid { grid-template-columns: 1fr; } }
+  .divida-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 18px 16px; text-align: center; }
+  .divida-val { font-family: "Cormorant Garamond", serif; font-size: 1.6rem; font-weight: 700; color: var(--dourado); line-height: 1; margin-bottom: 6px; }
+  .divida-label { font-size: 0.72rem; color: var(--texto-muted); line-height: 1.4; }
+  .divida-breakdown { display: flex; flex-direction: column; gap: 8px; margin: 20px 0; }
+  .db-row { display: flex; align-items: center; gap: 10px; }
+  .db-label { font-size: 0.8rem; color: var(--texto-claro); width: 190px; flex-shrink: 0; }
+  .db-track { flex: 1; height: 20px; background: rgba(255,255,255,0.05); border-radius: 3px; overflow: hidden; }
+  .db-fill { height: 100%; border-radius: 3px; transition: width 1.2s cubic-bezier(0.4,0,0.2,1); }
+  .db-val { font-family: "Cormorant Garamond", serif; font-size: 0.9rem; font-weight: 700; width: 90px; flex-shrink: 0; text-align: right; color: var(--dourado); }
+
+  /* ALERTA DESATUALIZADO */
+  .alerta-box { background: rgba(224,122,53,0.08); border: 1px solid rgba(224,122,53,0.2); border-left: 3px solid var(--laranja); border-radius: 4px; padding: 24px 26px; margin: 28px 0; }
+  .alerta-title { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--laranja); margin-bottom: 10px; }
+
+  /* SINAIS DE ESTABILIZAÇÃO */
+  .sinais-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin: 28px 0; }
+  @media (max-width: 500px) { .sinais-grid { grid-template-columns: 1fr; } }
+  .sinal-card { background: rgba(61,191,138,0.07); border: 1px solid rgba(61,191,138,0.18); border-radius: 6px; padding: 20px 18px; }
+  .sinal-label { font-size: 0.62rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--verde-gain); margin-bottom: 8px; }
+  .sinal-val { font-family: "Cormorant Garamond", serif; font-size: 1.7rem; font-weight: 700; color: var(--verde-gain); line-height: 1; margin-bottom: 6px; }
+  .sinal-desc { font-size: 0.76rem; color: var(--texto-muted); line-height: 1.45; }
+
+  /* FOTOGRAFIA VS TRAJETORIA */
+  .contraste-box { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 28px 0; }
+  @media (max-width: 500px) { .contraste-box { grid-template-columns: 1fr; } }
+  .contraste-card { border-radius: 6px; padding: 22px 20px; text-align: center; }
+  .contraste-card.neg { background: rgba(201,69,69,0.08); border: 1px solid rgba(201,69,69,0.2); }
+  .contraste-card.pos { background: rgba(61,191,138,0.07); border: 1px solid rgba(61,191,138,0.18); }
+  .contraste-label { font-size: 0.62rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 10px; }
+  .contraste-card.neg .contraste-label { color: #e07070; }
+  .contraste-card.pos .contraste-label { color: var(--verde-gain); }
+  .contraste-titulo { font-family: "Cormorant Garamond", serif; font-size: 1.1rem; font-weight: 600; color: var(--creme); line-height: 1.4; }
+
+  /* RISCOS */
+  .riscos-list { display: flex; flex-direction: column; gap: 10px; margin: 28px 0; }
+  .risco-item { display: flex; align-items: flex-start; gap: 14px; padding: 16px 18px; background: rgba(201,69,69,0.06); border: 1px solid rgba(201,69,69,0.15); border-radius: 5px; }
+  .risco-num { font-family: "Cormorant Garamond", serif; font-size: 1.3rem; font-weight: 700; color: rgba(224,112,112,0.4); flex-shrink: 0; width: 26px; text-align: center; }
+  .risco-titulo { font-size: 0.84rem; font-weight: 600; color: #e07070; margin-bottom: 3px; }
+  .risco-desc { font-size: 0.82rem; color: var(--texto-claro); line-height: 1.55; }
+
+  /* PROTECOES BRASIL */
+  .protecoes-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin: 28px 0; }
+  @media (max-width: 560px) { .protecoes-grid { grid-template-columns: 1fr; } }
+  .protecao-tag { background: rgba(74,144,217,0.07); border: 1px solid rgba(74,144,217,0.18); border-radius: 6px; padding: 13px 14px; font-size: 0.8rem; color: var(--texto-claro); display: flex; align-items: center; gap: 8px; }
+  .protecao-tag::before { content: "✓"; color: var(--azul); font-weight: 700; flex-shrink: 0; }
+
+  /* BRASIL DIVIDA STAT */
+  .brasil-stat { background: linear-gradient(135deg, rgba(201,168,76,0.1) 0%, rgba(47,82,64,0.4) 100%); border: 1px solid rgba(201,168,76,0.25); border-radius: 8px; padding: 26px 24px; margin: 28px 0; display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
+  .brasil-val { font-family: "Cormorant Garamond", serif; font-size: 2.6rem; font-weight: 700; color: var(--dourado); line-height: 1; }
+  .brasil-desc { font-size: 0.85rem; color: var(--texto-claro); line-height: 1.65; flex: 1; min-width: 220px; }
+
+  /* CADEIA DE RISCO */
+  .cadeia-list { display: flex; flex-direction: column; gap: 6px; margin: 24px 0; }
+  .cadeia-item { display: flex; align-items: center; gap: 10px; padding: 10px 14px; background: rgba(255,255,255,0.03); border-radius: 5px; font-size: 0.82rem; color: var(--texto-claro); }
+  .cadeia-arrow { text-align: center; color: var(--texto-muted); font-size: 0.85rem; }
+
+  /* LICOES INVESTIDOR */
+  .licoes-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin: 28px 0; }
+  @media (max-width: 560px) { .licoes-grid { grid-template-columns: 1fr; } }
+  .licao-tag { background: rgba(201,168,76,0.06); border: 1px solid rgba(201,168,76,0.16); border-radius: 6px; padding: 13px 14px; font-size: 0.8rem; color: var(--dourado-claro); }
+
+  /* INSIGHT */
+  .insight-box { background: linear-gradient(135deg, rgba(201,168,76,0.1) 0%, rgba(26,46,37,0.4) 100%); border: 1px solid rgba(201,168,76,0.25); border-left: 3px solid var(--dourado); border-radius: 4px; padding: 28px 32px; margin: 36px 0; }
+  .insight-box p { font-family: "Cormorant Garamond", serif; font-size: 1.1rem; color: var(--creme); line-height: 1.8; margin: 0; }
+
+  /* CONCLUSÃO */
+  .conclusao { font-family: "Cormorant Garamond", serif; font-size: 1.15rem; font-weight: 400; line-height: 1.85; color: var(--creme); margin-top: 52px; padding: 40px; border: 1px solid rgba(201,168,76,0.2); border-radius: 6px; background: rgba(255,255,255,0.02); position: relative; }
+  .conclusao::before { content: "\201C"; position: absolute; top: -10px; left: 32px; font-size: 5rem; color: rgba(201,168,76,0.15); font-family: "Cormorant Garamond", serif; line-height: 1; }
+
+  .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .fade-in.visible { opacity: 1; transform: none; }
+  footer { position: relative; z-index: 1; border-top: 1px solid rgba(201,168,76,0.12); padding: 40px 8%; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+  .footer-name { font-family: "Cormorant Garamond", serif; font-size: 1.1rem; font-weight: 300; color: var(--texto-muted); }
+  .footer-contact { font-size: 0.75rem; color: rgba(245,237,224,0.25); line-height: 1.9; text-align: right; }
+  .footer-contact a { color: var(--dourado); text-decoration: none; }
+  @media (max-width: 640px) { .back-link,.hero { padding-left: 5%; padding-right: 5%; } article { padding: 48px 5% 64px; } footer { padding: 32px 5%; flex-direction: column; } .footer-contact { text-align: left; } }
+</style>
+</head>
+<body>
+
+<a class="back-link" href="index.html">Voltar</a>
+
+<header class="hero">
+  <div class="hero-tag">Memorando · Macro Global · Câmbio</div>
+  <div class="hero-date">Julho de 2026 · Data-base: 14/07/2026</div>
+  <h1>O colapso do peso argentino<br>e a importância da <em>responsabilidade<br>fiscal e monetária</em></h1>
+  <p class="hero-sub">O peso perdeu cerca de 99,7% do seu valor frente ao dólar desde 2009. O número é real — mas as manchetes de "moeda sem valor" precisam de contexto. E há uma lição direta para o investidor brasileiro.</p>
+  <div class="hero-fonte">Fonte: BCRA · INDEC · Banco Mundial · FMI · Banco Central do Brasil</div>
+</header>
+
+<article>
+
+  <p class="lead">
+    Em julho de 2026, o peso argentino era negociado oficialmente ao redor de <strong>1.500 pesos por dólar</strong>, enquanto em 2009 um dólar custava aproximadamente <strong>3,8 pesos</strong>. Em termos nominais, isso significa uma perda de cerca de <strong>99,7% do valor frente ao dólar</strong>. O número impressiona — mas dizer que o peso "não vale mais nada" é uma simplificação de um processo que se arrasta há décadas.
+  </p>
+
+  <!-- STAT 99.7% -->
+  <div class="stat-destaque fade-in">
+    <div class="stat-pct">−99,7%</div>
+    <div class="stat-desc">Desvalorização nominal do peso argentino frente ao dólar entre 2009 e julho de 2026. Não é um evento isolado de 2026 — é o resultado acumulado de décadas de desequilíbrios fiscais e monetários.</div>
+  </div>
+
+  <!-- GRAFICO 1: ARS/USD -->
+  <div class="grafico-wrap fade-in">
+    <div class="grafico-titulo">Peso argentino frente ao dólar americano</div>
+    <div class="grafico-sub">ARS/USD · valor do peso em dólares · 2009 a 2026</div>
+    <canvas id="chartARSUSD" height="220"></canvas>
+    <div class="grafico-nota">Visualização ilustrativa reproduzindo o padrão e a magnitude da desvalorização — não representa os valores exatos ponto a ponto da série original. Fonte de referência: dados de mercado (Google Finance / TradingView).</div>
+  </div>
+
+  <!-- COMO UMA MOEDA PERDE 99% -->
+  <div class="section-title fade-in"><span class="section-icon">🔄</span> Como uma moeda perde 99% de seu valor?</div>
+
+  <p>Uma moeda não se desvaloriza dessa magnitude de uma única vez. O processo costuma acontecer gradualmente, em etapas encadeadas:</p>
+
+  <div class="etapas-list fade-in">
+    <div class="etapa-item"><div class="etapa-num">1</div><div class="etapa-texto">O governo gasta persistentemente mais do que arrecada</div></div>
+    <div class="etapa-item"><div class="etapa-num">2</div><div class="etapa-texto">A dívida pública aumenta e o acesso ao financiamento se torna mais difícil</div></div>
+    <div class="etapa-item"><div class="etapa-num">3</div><div class="etapa-texto">O banco central passa a financiar direta ou indiretamente o déficit</div></div>
+    <div class="etapa-item"><div class="etapa-num">4</div><div class="etapa-texto">Cresce a quantidade de moeda em circulação sem aumento equivalente da produção</div></div>
+    <div class="etapa-item"><div class="etapa-num">5</div><div class="etapa-texto">A inflação reduz o poder de compra da população</div></div>
+    <div class="etapa-item"><div class="etapa-num">6</div><div class="etapa-texto">Empresas e famílias procuram proteção em dólares ou outros ativos</div></div>
+    <div class="etapa-item"><div class="etapa-num">7</div><div class="etapa-texto">A demanda pela moeda local diminui, acelerando a desvalorização cambial</div></div>
+  </div>
+
+  <div class="insight-box fade-in">
+    <p>O problema central não é apenas a cotação do dólar. A desvalorização é consequência da <strong>perda de confiança na capacidade da moeda de preservar valor</strong>. Quando a população passa a usar outra moeda como referência para imóveis, contratos e poupança, o país entra em <strong>dolarização informal</strong>.</p>
+  </div>
+
+  <!-- RETROSPECTIVA -->
+  <div class="section-title fade-in"><span class="section-icon">📖</span> Uma retrospectiva das crises argentinas</div>
+
+  <p>A Argentina convive com inflação elevada, déficits fiscais recorrentes e crises de dívida há muitas décadas. A cotação atual não deve ser interpretada como um acidente recente — ela reflete o efeito acumulado de décadas de inflação.</p>
+
+  <div class="timeline-hist fade-in">
+    <div class="th-item">
+      <div class="th-ano">1980s</div>
+      <div class="th-texto">Hiperinflação no final da década, uma das experiências mais traumáticas da história econômica argentina.</div>
+    </div>
+    <div class="th-item">
+      <div class="th-ano">1991–2001</div>
+      <div class="th-texto">Regime de conversibilidade: peso mantido em paridade próxima de 1 para 1 com o dólar. Conteve a inflação inicialmente, mas se tornou insustentável com o aumento da dívida e perda de competitividade.</div>
+    </div>
+    <div class="th-item">
+      <div class="th-ano">2001</div>
+      <div class="th-texto">Default da dívida, ruptura da paridade cambial e forte desvalorização da moeda — um dos episódios mais marcantes da história recente do país.</div>
+    </div>
+    <div class="th-item">
+      <div class="th-ano">2002–2023</div>
+      <div class="th-texto">Ciclos de crescimento e melhora externa intercalados com novos déficits, inflação, controles de capitais e perda de reservas. Ausência de âncora fiscal e monetária duradoura.</div>
+    </div>
+  </div>
+
+  <!-- DIVIDA EXTERNA -->
+  <div class="section-title fade-in"><span class="section-icon">💰</span> O tamanho atual da dívida externa</div>
+
+  <div class="alerta-box fade-in">
+    <div class="alerta-title">⚠️ Um número desatualizado circulando nas redes</div>
+    <p style="font-size:0.88rem; color:var(--texto-claro); line-height:1.7; margin:0;">Circulou a informação de que a dívida externa argentina teria atingido um recorde de <strong>US$ 305 bilhões</strong>. Esse número parece proveniente de uma divulgação anterior e já está desatualizado. Segundo o INDEC, os dados mais recentes (31/03/2026) mostram valores diferentes.</p>
+  </div>
+
+  <div class="divida-grid fade-in">
+    <div class="divida-card">
+      <div class="divida-val">US$ 321,8bi</div>
+      <div class="divida-label">Dívida externa bruta total — valor nominal residual (31/mar/2026)</div>
+    </div>
+    <div class="divida-card">
+      <div class="divida-val">US$ 308,2bi</div>
+      <div class="divida-label">Dívida externa bruta total — títulos a valor de mercado</div>
+    </div>
+  </div>
+
+  <p>É importante observar que "dívida externa total" não representa apenas dívida do governo. Do total nominal de US$ 321,8 bilhões, a composição se divide assim:</p>
+
+  <div class="divida-breakdown fade-in" id="dividaChart">
+    <div class="db-row">
+      <span class="db-label">Governo geral</span>
+      <div class="db-track"><div class="db-fill" style="background:linear-gradient(90deg,rgba(201,168,76,0.5),var(--dourado));width:0%" data-w="54"></div></div>
+      <span class="db-val">US$ 174,6bi</span>
+    </div>
+    <div class="db-row">
+      <span class="db-label">Governo c/ FMI</span>
+      <div class="db-track"><div class="db-fill" style="background:linear-gradient(90deg,rgba(224,122,53,0.5),var(--laranja));width:0%" data-w="18"></div></div>
+      <span class="db-val">US$ 56,7bi</span>
+    </div>
+    <div class="db-row">
+      <span class="db-label">Banco Central</span>
+      <div class="db-track"><div class="db-fill" style="background:linear-gradient(90deg,rgba(74,144,217,0.5),var(--azul));width:0%" data-w="11"></div></div>
+      <span class="db-val">US$ 34,8bi</span>
+    </div>
+  </div>
+
+  <p style="font-size:0.85rem; color:var(--texto-muted);">O número absoluto, isoladamente, não determina se uma dívida é sustentável. É preciso avaliar tamanho em relação ao PIB e exportações, prazo médio, moeda de contratação, custo dos juros, capacidade de refinanciamento, reservas e credibilidade fiscal.</p>
+
+  <!-- SITUACAO 2026 -->
+  <div class="section-title fade-in"><span class="section-icon">📊</span> A situação em 2026 é diferente da fase mais aguda da crise</div>
+
+  <p>Embora o peso permaneça extremamente depreciado, a Argentina apresenta sinais de estabilização que não devem ser ignorados.</p>
+
+  <div class="sinais-grid fade-in">
+    <div class="sinal-card">
+      <div class="sinal-label">Inflação mensal (mai/2026)</div>
+      <div class="sinal-val">2,1%</div>
+      <div class="sinal-desc">Acumulou 14,7% nos 5 primeiros meses de 2026 — bem abaixo dos 20%+ mensais do final de 2023</div>
+    </div>
+    <div class="sinal-card">
+      <div class="sinal-label">Crescimento do PIB</div>
+      <div class="sinal-val">+2,3%</div>
+      <div class="sinal-desc">No 1° trimestre de 2026 vs. mesmo período do ano anterior. Banco Mundial projeta ~3,6% para 2026</div>
+    </div>
+    <div class="sinal-card">
+      <div class="sinal-label">Superávit primário (2025)</div>
+      <div class="sinal-val">1,4% PIB</div>
+      <div class="sinal-desc">Superávit financeiro (pós-juros) de 0,2% do PIB — segundo ano consecutivo positivo</div>
+    </div>
+    <div class="sinal-card">
+      <div class="sinal-label">Reservas internacionais</div>
+      <div class="sinal-val">US$ 48,3bi</div>
+      <div class="sinal-desc">Reservas brutas do BCRA no início de julho/2026 — recuperação relevante frente a anos anteriores</div>
+    </div>
+  </div>
+
+  <div class="contraste-box fade-in">
+    <div class="contraste-card neg">
+      <div class="contraste-label">Fotografia histórica</div>
+      <div class="contraste-titulo">Dano monetário acumulado nas últimas décadas continua muito negativo</div>
+    </div>
+    <div class="contraste-card pos">
+      <div class="contraste-label">Trajetória recente</div>
+      <div class="contraste-titulo">Alguns indicadores mostram melhora parcial desde 2024</div>
+    </div>
+  </div>
+
+  <p>O FMI reconheceu avanços no processo de estabilização, na redução da inflação e na reconstrução das reservas — mas ressaltou que o país ainda precisa consolidar a disciplina fiscal e ampliar sua capacidade de enfrentar choques externos.</p>
+
+  <!-- PESO FRAGIL -->
+  <div class="section-title fade-in"><span class="section-icon">⚠️</span> O peso ainda é uma moeda frágil</div>
+
+  <div class="riscos-list fade-in">
+    <div class="risco-item"><div class="risco-num">1</div><div><div class="risco-titulo">Baixa confiança na moeda</div><div class="risco-desc">Forte preferência da população pelo dólar como reserva de valor — recuperar a confiança pode exigir muitos anos.</div></div></div>
+    <div class="risco-item"><div class="risco-num">2</div><div><div class="risco-titulo">Reservas internacionais limitadas</div><div class="risco-desc">Reservas brutas aumentaram, mas parte possui contrapartidas e obrigações. Reservas líquidas continuam essenciais.</div></div></div>
+    <div class="risco-item"><div class="risco-num">3</div><div><div class="risco-titulo">Dívida elevada em moeda estrangeira</div><div class="risco-desc">Uma nova desvalorização aumenta, em moeda local, o peso das obrigações denominadas em dólares.</div></div></div>
+    <div class="risco-item"><div class="risco-num">4</div><div><div class="risco-titulo">Histórico de defaults e reestruturações</div><div class="risco-desc">Eleva o prêmio de risco exigido pelos investidores e dificulta o acesso contínuo ao mercado internacional.</div></div></div>
+    <div class="risco-item"><div class="risco-num">5</div><div><div class="risco-titulo">Inflação ainda alta</div><div class="risco-desc">~2% ao mês parece moderado, mas mantido por um ano representa inflação anual superior a 25%.</div></div></div>
+    <div class="risco-item"><div class="risco-num">6</div><div><div class="risco-titulo">Necessidade de consistência ao longo do tempo</div><div class="risco-desc">Um programa de estabilização precisa sobreviver a ciclos e choques externos sem retornar ao financiamento inflacionário.</div></div></div>
+  </div>
+
+  <!-- PARALELO COM O BRASIL -->
+  <div class="section-title fade-in"><span class="section-icon">🇧🇷</span> O paralelo com o Brasil</div>
+
+  <p>Brasil e Argentina possuem economias, instituições e estruturas produtivas diferentes. Não é correto afirmar que o Brasil esteja inevitavelmente caminhando para uma situação semelhante. O Brasil possui proteções que a Argentina perdeu ou enfraqueceu ao longo de sua história:</p>
+
+  <div class="protecoes-grid fade-in">
+    <div class="protecao-tag">Regime de câmbio flutuante</div>
+    <div class="protecao-tag">Metas de inflação</div>
+    <div class="protecao-tag">Sistema financeiro mais profundo</div>
+    <div class="protecao-tag">Mercado doméstico para financiar a dívida</div>
+    <div class="protecao-tag">Reservas internacionais elevadas</div>
+    <div class="protecao-tag">Dívida predominantemente em reais</div>
+    <div class="protecao-tag">Banco Central com autonomia formal</div>
+    <div class="protecao-tag">Histórico de estabilização desde o Plano Real</div>
+  </div>
+
+  <p>Entretanto, <strong>nenhuma proteção institucional é permanente</strong> se a política fiscal se tornar insustentável.</p>
+
+  <div class="brasil-stat fade-in">
+    <div class="brasil-val">~79–83%</div>
+    <div class="brasil-desc">Dívida bruta brasileira em relação ao PIB — <strong>~79% em 2025</strong>, com projeções para 2026 entre 83% ou mais, dependendo da metodologia (Relatório de Política Monetária, Banco Central do Brasil).</div>
+  </div>
+
+  <p>O Brasil não enfrenta hiperinflação nem escassez de dólares. O alerta é de outra natureza — déficits persistentes e dívida crescente podem produzir, gradualmente:</p>
+
+  <div class="cadeia-list fade-in">
+    <div class="cadeia-item">📈 Taxas de juros estruturalmente mais altas</div>
+    <div class="cadeia-arrow">↓</div>
+    <div class="cadeia-item">📉 Menor crescimento econômico</div>
+    <div class="cadeia-arrow">↓</div>
+    <div class="cadeia-item">💱 Desvalorização cambial e inflação mais resistente</div>
+    <div class="cadeia-arrow">↓</div>
+    <div class="cadeia-item">💸 Maior custo de financiamento para famílias e empresas</div>
+    <div class="cadeia-arrow">↓</div>
+    <div class="cadeia-item">🏛️ Menor espaço para investimentos públicos e aumento de tributação</div>
+  </div>
+
+  <div class="insight-box fade-in">
+    <p>A deterioração monetária raramente começa com um colapso imediato. Ela geralmente começa quando <strong>a exceção fiscal se torna permanente</strong> e quando o país passa a depender de inflação, tributação ou aumento contínuo da dívida para financiar suas despesas.</p>
+  </div>
+
+  <!-- LICAO PARA O INVESTIDOR -->
+  <div class="section-title fade-in"><span class="section-icon">🎯</span> A principal lição para o investidor brasileiro</div>
+
+  <p>O caso argentino demonstra que a moeda é, em última análise, um reflexo da qualidade das instituições e da confiança na condução econômica. Uma moeda forte exige:</p>
+
+  <div class="licoes-grid fade-in">
+    <div class="licao-tag">Equilíbrio fiscal ao longo do ciclo</div>
+    <div class="licao-tag">Controle da expansão monetária</div>
+    <div class="licao-tag">Credibilidade do banco central</div>
+    <div class="licao-tag">Respeito aos contratos</div>
+    <div class="licao-tag">Reservas adequadas</div>
+    <div class="licao-tag">Previsibilidade regulatória</div>
+    <div class="licao-tag">Crescimento da produtividade</div>
+    <div class="licao-tag">Confiança de que a dívida será honrada sem inflação</div>
+  </div>
+
+  <p>Para o investidor, a conclusão não é abandonar completamente a moeda brasileira ou transformar toda a carteira em dólares. A conclusão correta é <strong>evitar concentração excessiva em um único país, moeda ou regime econômico</strong>. A diversificação internacional não é uma aposta contra o Brasil — é uma proteção contra riscos locais que o próprio investidor não controla.</p>
+
+  <div class="conclusao fade-in">
+    A desvalorização de aproximadamente 99,7% do peso argentino desde 2009 é verdadeira em termos nominais e representa um dos exemplos mais claros da destruição de valor provocada por décadas de inflação e instabilidade. Mas a afirmação de que a moeda se tornou "oficialmente sem valor" é sensacionalista — a Argentina apresenta, desde 2024, avanços importantes no ajuste fiscal e na redução da inflação, ainda recentes e que precisam ser sustentados por muitos anos. A principal mensagem para o Brasil não é que os dois países estejam na mesma situação. É que <strong>nenhum país está permanentemente protegido</strong> contra as consequências de déficits recorrentes, aumento descontrolado da dívida e enfraquecimento da moeda. A estabilidade monetária não é um patrimônio garantido — é o resultado de disciplina fiscal, credibilidade institucional e responsabilidade acumuladas ao longo do tempo.
+  </div>
+
+</article>
+
+<footer>
+  <div class="footer-name">Fábio Vogelaar Carlucci</div>
+  <div class="footer-contact">+55 (16) 98148-8260<br><a href="mailto:fabio.carlucci@ficus.capital">fabio.carlucci@ficus.capital</a></div>
+</footer>
+<div style="position:relative;z-index:1;padding:0 8% 28px;text-align:center;font-size:0.65rem;color:rgba(245,237,224,0.2);letter-spacing:0.08em;">
+  Fontes: BCRA · INDEC · Banco Mundial · FMI · Banco Central do Brasil (Relatório de Política Monetária)<br>
+  Conteúdo exclusivamente informativo e educacional. Não constitui recomendação de investimento.
+</div>
+
+<script>
+const faders = document.querySelectorAll(".fade-in");
+const obs = new IntersectionObserver(e => e.forEach(x => { if(x.isIntersecting){ x.target.classList.add("visible"); obs.unobserve(x.target); } }), { threshold: 0.1 });
+faders.forEach(f => obs.observe(f));
+
+// Barras dívida
+const dividaObs = new IntersectionObserver(e => e.forEach(x => {
+  if(x.isIntersecting){
+    x.target.querySelectorAll(".db-fill").forEach(f => {
+      setTimeout(() => { f.style.width = f.getAttribute("data-w") + "%"; }, 150);
+    });
+    dividaObs.unobserve(x.target);
+  }
+}), { threshold: 0.3 });
+const dc = document.getElementById("dividaChart");
+if(dc) dividaObs.observe(dc);
+
+// Grafico ARS/USD
+(function() {
+  const el = document.getElementById("chartARSUSD"); if(!el) return;
+  const W = el.offsetWidth || 700, H = 220;
+  el.width = W * devicePixelRatio; el.height = H * devicePixelRatio;
+  el.style.height = H + "px";
+  const ctx = el.getContext("2d"); ctx.scale(devicePixelRatio, devicePixelRatio);
+
+  const PAD = { top: 16, right: 20, bottom: 30, left: 46 };
+  const pW = W - PAD.left - PAD.right, pH = H - PAD.top - PAD.bottom;
+  const labels = ["2009","2012","2015","2018","2021","2024","2026"];
+  const n = 60;
+
+  // Valor do peso em dolar (decadência exponencial suave com quedas mais fortes em certos periodos)
+  const data = [];
+  for (let i=0;i<n;i++){
+    const t = i/(n-1);
+    // decaimento exponencial: começa em ~0.26 (2009) e cai para ~0.00067 (2026)
+    let v = 0.26 * Math.exp(-4.6 * t);
+    // pequenos degraus de desvalorização abrupta (2014, 2018-19, 2023)
+    if (t > 0.30 && t < 0.33) v *= 0.75;
+    if (t > 0.55 && t < 0.60) v *= 0.6;
+    if (t > 0.85 && t < 0.90) v *= 0.4;
+    data.push(v);
+  }
+
+  const minV = 0, maxV = 0.28;
+  function xP(i){ return PAD.left + (i/(n-1))*pW; }
+  function yP(v){ return PAD.top + pH - ((v-minV)/(maxV-minV))*pH; }
+
+  [0, 0.1, 0.2].forEach(v => {
+    const y = yP(v);
+    ctx.strokeStyle = "rgba(255,255,255,0.06)"; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(PAD.left,y); ctx.lineTo(PAD.left+pW,y); ctx.stroke();
+    ctx.fillStyle = "rgba(245,237,224,0.22)"; ctx.font = "9px Jost,sans-serif"; ctx.textAlign = "right";
+    ctx.fillText("US$"+v.toFixed(2), PAD.left-5, y+3);
+  });
+
+  ctx.fillStyle = "rgba(245,237,224,0.2)"; ctx.textAlign = "center"; ctx.font = "9px Jost,sans-serif";
+  labels.forEach((l,i) => { const xi = i*(n-1)/(labels.length-1); ctx.fillText(l, xP(xi), H-PAD.bottom+14); });
+
+  // Area preenchida
+  ctx.beginPath();
+  ctx.moveTo(xP(0), yP(0));
+  data.forEach((v,i) => ctx.lineTo(xP(i), yP(v)));
+  ctx.lineTo(xP(n-1), yP(0));
+  ctx.closePath();
+  ctx.fillStyle = "rgba(201,69,69,0.12)";
+  ctx.fill();
+
+  // Linha
+  ctx.beginPath(); ctx.strokeStyle = "rgba(224,112,112,0.85)"; ctx.lineWidth = 2; ctx.lineJoin = "round";
+  data.forEach((v,i) => i===0 ? ctx.moveTo(xP(i),yP(v)) : ctx.lineTo(xP(i),yP(v)));
+  ctx.stroke();
+
+  // Ponto final
+  ctx.beginPath(); ctx.arc(xP(n-1), yP(data[n-1]), 4, 0, Math.PI*2);
+  ctx.fillStyle = "#e07070"; ctx.fill();
+  ctx.fillStyle = "#e07070"; ctx.font = "bold 9px Jost,sans-serif"; ctx.textAlign = "right";
+  ctx.fillText("~US$ 0,0007 (2026)", xP(n-1)-8, yP(data[n-1])-8);
+
+  // Ponto inicial
+  ctx.beginPath(); ctx.arc(xP(0), yP(data[0]), 3, 0, Math.PI*2);
+  ctx.fillStyle = "rgba(224,112,112,0.6)"; ctx.fill();
+  ctx.fillStyle = "rgba(245,237,224,0.5)"; ctx.font = "9px Jost,sans-serif"; ctx.textAlign = "left";
+  ctx.fillText("~US$ 0,26 (2009)", xP(0)+8, yP(data[0])+4);
+})();
+</script>
+</body>
+</html>
