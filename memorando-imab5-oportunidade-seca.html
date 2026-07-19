@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IMA-B 5: a seca atual pode ser a oportunidade que ninguém está vendo | Fábio Carlucci</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DBQSDSDRF3"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-DBQSDSDRF3");</script>
+<style>
+  :root {
+    --verde-escuro: #1a2e25;
+    --dourado: #c9a84c;
+    --dourado-claro: #e2c47a;
+    --creme: #f5ede0;
+    --texto-claro: rgba(245,237,224,0.85);
+    --texto-muted: rgba(245,237,224,0.45);
+    --azul: #4a90d9;
+    --verde-gain: #3dbf8a;
+    --vermelho: #c94545;
+    --laranja: #e07a35;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { background-color: var(--verde-escuro); color: var(--creme); font-family: "Jost", sans-serif; font-weight: 300; overflow-x: hidden; }
+  body::before {
+    content: ""; position: fixed; inset: 0;
+    background-image: radial-gradient(ellipse at 10% 10%, rgba(201,168,76,0.06) 0%, transparent 55%), radial-gradient(ellipse at 90% 90%, rgba(47,82,64,0.35) 0%, transparent 55%);
+    pointer-events: none; z-index: 0;
+  }
+  .back-link { position: relative; z-index: 10; display: inline-flex; align-items: center; gap: 8px; padding: 28px 8%; font-size: 0.7rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--texto-muted); text-decoration: none; transition: color 0.2s; }
+  .back-link:hover { color: var(--dourado); }
+  .back-link::before { content: "←"; font-size: 0.9rem; }
+  .hero { position: relative; z-index: 1; padding: 20px 8% 64px; border-bottom: 1px solid rgba(201,168,76,0.15); max-width: 900px; }
+  .hero-tag { font-size: 0.65rem; font-weight: 500; letter-spacing: 0.35em; text-transform: uppercase; color: var(--dourado); display: flex; align-items: center; gap: 12px; margin-bottom: 24px; opacity: 0; animation: fadeUp 0.7s ease 0.1s forwards; }
+  .hero-tag::before { content: ""; width: 30px; height: 1px; background: var(--dourado); }
+  .hero-date { font-size: 0.72rem; letter-spacing: 0.15em; color: var(--texto-muted); margin-bottom: 20px; opacity: 0; animation: fadeUp 0.7s ease 0.2s forwards; }
+  h1 { font-family: "Cormorant Garamond", serif; font-size: clamp(2rem, 5vw, 3.7rem); font-weight: 300; line-height: 1.12; color: var(--creme); opacity: 0; animation: fadeUp 0.7s ease 0.3s forwards; }
+  h1 em { font-style: italic; color: var(--dourado-claro); }
+  .hero-sub { font-size: 0.97rem; color: var(--texto-muted); line-height: 1.75; margin-top: 16px; max-width: 640px; opacity: 0; animation: fadeUp 0.7s ease 0.45s forwards; }
+  .hero-fonte { margin-top: 14px; font-size: 0.7rem; color: rgba(245,237,224,0.3); opacity: 0; animation: fadeUp 0.7s ease 0.55s forwards; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+  article { position: relative; z-index: 1; max-width: 800px; margin: 0 auto; padding: 64px 8% 88px; }
+  .lead { font-family: "Cormorant Garamond", serif; font-size: clamp(1.1rem, 2.5vw, 1.35rem); font-weight: 400; line-height: 1.8; color: var(--creme); margin-bottom: 48px; padding-bottom: 48px; border-bottom: 1px solid rgba(201,168,76,0.15); }
+  p { font-size: 0.97rem; line-height: 1.9; color: var(--texto-claro); margin-bottom: 24px; }
+  strong { font-weight: 600; color: var(--creme); }
+  .section-title { font-family: "Cormorant Garamond", serif; font-size: 1.5rem; font-weight: 600; color: var(--dourado-claro); margin: 56px 0 18px; padding-top: 44px; border-top: 1px solid rgba(201,168,76,0.12); display: flex; align-items: center; gap: 14px; }
+  .section-icon { font-size: 1.3rem; flex-shrink: 0; }
+
+  /* STAT HERO */
+  .stat-hero { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 32px 0; }
+  @media (max-width: 500px) { .stat-hero { grid-template-columns: 1fr; } }
+  .stat-card { border-radius: 8px; padding: 26px 22px; text-align: center; }
+  .stat-card.verde { background: linear-gradient(135deg, rgba(61,191,138,0.14) 0%, rgba(47,82,64,0.4) 100%); border: 1px solid rgba(61,191,138,0.3); }
+  .stat-card.cinza { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); }
+  .stat-card-val { font-family: "Cormorant Garamond", serif; font-size: 2.6rem; font-weight: 700; line-height: 1; margin-bottom: 8px; }
+  .stat-card.verde .stat-card-val { color: var(--verde-gain); }
+  .stat-card.cinza .stat-card-val { color: rgba(245,237,224,0.6); }
+  .stat-card-desc { font-size: 0.78rem; color: var(--texto-muted); line-height: 1.5; }
+
+  /* GRAFICO */
+  .grafico-wrap { background: rgba(10,20,16,0.7); border: 1px solid rgba(255,255,255,0.07); border-radius: 8px; padding: 24px 20px 16px; margin: 32px 0; }
+  .grafico-titulo { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--dourado); margin-bottom: 4px; }
+  .grafico-sub { font-size: 0.72rem; color: var(--texto-muted); margin-bottom: 16px; }
+  .grafico-legenda { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 12px; }
+  .leg-item { display: flex; align-items: center; gap: 7px; font-size: 0.7rem; color: var(--texto-muted); }
+  .leg-line { width: 18px; height: 3px; border-radius: 2px; }
+  canvas { width: 100% !important; display: block; }
+  .grafico-nota { font-size: 0.65rem; color: rgba(245,237,224,0.25); margin-top: 10px; line-height: 1.4; }
+
+  /* MOMENTO ATUAL - ALERTA */
+  .alerta-box { background: rgba(201,69,69,0.08); border: 1px solid rgba(201,69,69,0.2); border-left: 3px solid #e07070; border-radius: 4px; padding: 26px 28px; margin: 32px 0; }
+  .alerta-title { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: #e07070; margin-bottom: 12px; }
+
+  /* 49 MESES DESTAQUE */
+  .destaque-numero { background: linear-gradient(135deg, rgba(201,69,69,0.14) 0%, rgba(47,82,64,0.4) 100%); border: 1px solid rgba(201,69,69,0.3); border-radius: 8px; padding: 28px 26px; margin: 28px 0; display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
+  .destaque-num-val { font-family: "Cormorant Garamond", serif; font-size: 3.4rem; font-weight: 700; color: #e07070; line-height: 1; flex-shrink: 0; }
+  .destaque-num-desc { font-size: 0.88rem; color: var(--texto-claro); line-height: 1.7; flex: 1; min-width: 220px; }
+
+  /* MECANISMO */
+  .mecanismo-wrap { background: rgba(10,20,16,0.7); border: 1px solid rgba(255,255,255,0.07); border-radius: 8px; padding: 26px 24px; margin: 32px 0; }
+  .mecanismo-titulo { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--dourado); margin-bottom: 18px; }
+  .mecanismo-flow { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  @media (max-width: 560px) { .mecanismo-flow { flex-direction: column; align-items: stretch; } }
+  .mec-step { flex: 1; min-width: 130px; text-align: center; padding: 14px 10px; border-radius: 5px; font-size: 0.78rem; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); color: var(--texto-claro); }
+  .mec-arrow { color: var(--texto-muted); font-size: 1rem; flex-shrink: 0; }
+  @media (max-width: 560px) { .mec-arrow { transform: rotate(90deg); text-align: center; } }
+
+  /* NTN-B PERCENTIL */
+  .percentil-box { background: linear-gradient(135deg, rgba(201,168,76,0.12) 0%, rgba(47,82,64,0.4) 100%); border: 1px solid rgba(201,168,76,0.3); border-radius: 8px; padding: 26px 24px; margin: 28px 0; display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
+  .percentil-val { font-family: "Cormorant Garamond", serif; font-size: 2.8rem; font-weight: 700; color: var(--dourado); line-height: 1; flex-shrink: 0; }
+  .percentil-desc { font-size: 0.86rem; color: var(--texto-claro); line-height: 1.65; flex: 1; min-width: 220px; }
+
+  /* SECA 2013-2016 */
+  .seca-box { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; padding: 24px 22px; margin: 28px 0; }
+  .seca-title { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--dourado); margin-bottom: 14px; }
+  .seca-range { display: flex; align-items: center; gap: 12px; }
+  .seca-tag { background: rgba(61,191,138,0.1); border: 1px solid rgba(61,191,138,0.25); border-radius: 20px; padding: 8px 18px; font-family: "Cormorant Garamond", serif; font-weight: 700; color: var(--verde-gain); font-size: 1.1rem; }
+  .seca-arrow-txt { color: var(--texto-muted); font-size: 0.85rem; }
+
+  /* METODOLOGIA */
+  .metodo-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin: 28px 0; }
+  @media (max-width: 560px) { .metodo-grid { grid-template-columns: 1fr 1fr; } }
+  .metodo-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 16px 12px; text-align: center; }
+  .metodo-val { font-family: "Cormorant Garamond", serif; font-size: 1.4rem; font-weight: 700; color: var(--dourado); line-height: 1; margin-bottom: 6px; }
+  .metodo-label { font-size: 0.66rem; color: var(--texto-muted); line-height: 1.35; }
+
+  /* RESULTADOS PRINCIPAIS */
+  .resultados-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 28px 0; }
+  @media (max-width: 500px) { .resultados-grid { grid-template-columns: 1fr; } }
+  .resultado-card { background: rgba(61,191,138,0.06); border: 1px solid rgba(61,191,138,0.16); border-radius: 6px; padding: 18px 16px; }
+  .resultado-label { font-size: 0.62rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--verde-gain); margin-bottom: 8px; }
+  .resultado-val { font-family: "Cormorant Garamond", serif; font-size: 1.5rem; font-weight: 700; color: var(--creme); line-height: 1; margin-bottom: 6px; }
+  .resultado-desc { font-size: 0.74rem; color: var(--texto-muted); line-height: 1.4; }
+
+  /* POR QUE FUNCIONA */
+  .porque-list { display: flex; flex-direction: column; gap: 10px; margin: 28px 0; }
+  .porque-item { display: flex; align-items: flex-start; gap: 16px; padding: 18px 20px; background: rgba(201,168,76,0.05); border: 1px solid rgba(201,168,76,0.15); border-radius: 5px; }
+  .porque-icon { font-size: 1.2rem; flex-shrink: 0; margin-top: 2px; }
+  .porque-titulo { font-size: 0.82rem; font-weight: 600; color: var(--dourado); margin-bottom: 4px; }
+  .porque-desc { font-size: 0.84rem; color: var(--texto-claro); line-height: 1.6; }
+
+  /* CORRELACAO */
+  .correlacao-box { background: rgba(74,144,217,0.07); border: 1px solid rgba(74,144,217,0.2); border-left: 3px solid var(--azul); border-radius: 4px; padding: 24px 26px; margin: 28px 0; display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+  .correlacao-val { font-family: "Cormorant Garamond", serif; font-size: 2.4rem; font-weight: 700; color: var(--azul); line-height: 1; flex-shrink: 0; }
+  .correlacao-desc { font-size: 0.86rem; color: var(--texto-claro); line-height: 1.65; flex: 1; min-width: 200px; }
+
+  /* COMO ACESSAR */
+  .acesso-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 24px 0; }
+  @media (max-width: 560px) { .acesso-grid { grid-template-columns: 1fr; } }
+  .acesso-tag { background: rgba(201,168,76,0.07); border: 1px solid rgba(201,168,76,0.18); border-radius: 6px; padding: 14px 12px; text-align: center; font-size: 0.8rem; color: var(--dourado-claro); font-weight: 500; }
+
+  /* INSIGHT */
+  .insight-box { background: linear-gradient(135deg, rgba(201,168,76,0.1) 0%, rgba(26,46,37,0.4) 100%); border: 1px solid rgba(201,168,76,0.25); border-left: 3px solid var(--dourado); border-radius: 4px; padding: 28px 32px; margin: 36px 0; }
+  .insight-box p { font-family: "Cormorant Garamond", serif; font-size: 1.1rem; color: var(--creme); line-height: 1.8; margin: 0; }
+
+  /* CONCLUSÃO */
+  .conclusao { font-family: "Cormorant Garamond", serif; font-size: 1.15rem; font-weight: 400; line-height: 1.85; color: var(--creme); margin-top: 52px; padding: 40px; border: 1px solid rgba(201,168,76,0.2); border-radius: 6px; background: rgba(255,255,255,0.02); position: relative; }
+  .conclusao::before { content: "\201C"; position: absolute; top: -10px; left: 32px; font-size: 5rem; color: rgba(201,168,76,0.15); font-family: "Cormorant Garamond", serif; line-height: 1; }
+
+  .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .fade-in.visible { opacity: 1; transform: none; }
+  footer { position: relative; z-index: 1; border-top: 1px solid rgba(201,168,76,0.12); padding: 40px 8%; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+  .footer-name { font-family: "Cormorant Garamond", serif; font-size: 1.1rem; font-weight: 300; color: var(--texto-muted); }
+  .footer-contact { font-size: 0.75rem; color: rgba(245,237,224,0.25); line-height: 1.9; text-align: right; }
+  .footer-contact a { color: var(--dourado); text-decoration: none; }
+  @media (max-width: 640px) { .back-link,.hero { padding-left: 5%; padding-right: 5%; } article { padding: 48px 5% 64px; } footer { padding: 32px 5%; flex-direction: column; } .footer-contact { text-align: left; } }
+</style>
+</head>
+<body>
+
+<a class="back-link" href="index.html">Voltar</a>
+
+<header class="hero">
+  <div class="hero-tag">Memorando · Renda Fixa & Estatística</div>
+  <div class="hero-date">Julho de 2026</div>
+  <h1>IMA-B 5: a seca atual pode ser<br><em>a oportunidade que ninguém<br>está vendo</em></h1>
+  <p class="hero-sub">Um estudo com 20 anos de dados diários e 660 backtests aponta o índice de NTN-Bs curtas como a melhor combinação risco × retorno para bater o CDI — mesmo estando, agora, no pior momento de sua história.</p>
+  <div class="hero-fonte">Fonte: Mais Retorno · Tesouro Transparente · ANBIMA · 20 anos de dados diários (jul/2006–jul/2026)</div>
+</header>
+
+<article>
+
+  <p class="lead">
+    Um estudo recente testou <strong>5 combinações de índices</strong> de renda fixa ao longo de 20 anos de dados diários, somando <strong>660 backtests</strong>, com um único objetivo: encontrar a melhor combinação de IPCA+ e prefixado para bater o CDI. A vencedora clara em relação risco × retorno foi <strong>100% IMA-B 5</strong> — o índice das NTN-Bs de curta duração.
+  </p>
+
+  <!-- STAT HERO -->
+  <div class="stat-hero fade-in">
+    <div class="stat-card verde">
+      <div class="stat-card-val">R$ 953</div>
+      <div class="stat-card-desc">R$ 100 investidos em jul/2006 no IMA-B 5 viraram isso até jul/2026</div>
+    </div>
+    <div class="stat-card cinza">
+      <div class="stat-card-val">R$ 692</div>
+      <div class="stat-card-desc">Os mesmos R$ 100 no CDI, no mesmo período de 20 anos</div>
+    </div>
+  </div>
+
+  <!-- GRAFICO -->
+  <div class="section-title fade-in"><span class="section-icon">📈</span> Zero janelas negativas em 20 anos</div>
+
+  <p>O gráfico abaixo mostra a evolução de R$ 100 investidos em jul/2006, comparando o IMA-B 5 com o CDI ao longo de duas décadas — incluindo as três "secas" mais marcantes do período: a crise de 2008-09, o ciclo de juros altos de 2013-2016, e o momento atual.</p>
+
+  <div class="grafico-wrap fade-in">
+    <div class="grafico-titulo">IMA-B 5: zero janelas de 12 meses negativas</div>
+    <div class="grafico-sub">Cesta das NTN-Bs até 5 anos · jul/2006 → jul/2026 · 4.739 janelas de 12 meses, contadas dia a dia</div>
+    <div class="grafico-legenda">
+      <div class="leg-item"><div class="leg-line" style="background:var(--verde-gain)"></div>IMA-B 5</div>
+      <div class="leg-item"><div class="leg-line" style="background:rgba(245,237,224,0.6)"></div>CDI</div>
+    </div>
+    <canvas id="chartIMAB5" height="280"></canvas>
+    <div class="grafico-nota">Visualização ilustrativa reproduzindo o padrão e a magnitude reportados pelo estudo (Mais Retorno, base Tesouro Transparente + ANBIMA) — não representa os valores exatos ponto a ponto da série original. 660 backtests · 4.739 janelas diárias · não é recomendação.</div>
+  </div>
+
+  <div class="stat-hero fade-in">
+    <div class="stat-card cinza">
+      <div class="stat-card-val">0 de 4.739</div>
+      <div class="stat-card-desc">janelas de 12 meses negativas — a pior janela ainda devolveu <strong style="color:var(--verde-gain)">+1,6%</strong></div>
+    </div>
+    <div class="stat-card cinza">
+      <div class="stat-card-val">−5,4%</div>
+      <div class="stat-card-desc">pior queda registrada (durante a Covid) — recuperada em apenas <strong style="color:var(--creme)">46 pregões</strong></div>
+    </div>
+  </div>
+
+  <p style="font-size:0.85rem; color:var(--texto-muted);">Em janelas de 5 anos, <strong style="color:var(--creme)">89% bateram o CDI</strong> — e a pior entrada de 5 anos ainda rendeu <strong style="color:var(--creme)">8,0% ao ano</strong>.</p>
+
+  <!-- MOMENTO ATUAL -->
+  <div class="section-title fade-in"><span class="section-icon">⚠️</span> O pior momento da história do índice</div>
+
+  <p>Apesar dos números impressionantes acumulados em 20 anos, o presente conta uma história diferente — e é justamente aí que pode estar a oportunidade.</p>
+
+  <div class="destaque-numero fade-in">
+    <div class="destaque-num-val">49</div>
+    <div class="destaque-num-desc">meses consecutivos perdendo do CDI — o pior momento da história do índice. Apenas <strong>67% das janelas de 12 meses</strong> bateram o CDI ao longo de toda a série. Com a Selic alta, a marcação a mercado joga contra o IMA-B 5 no curto prazo.</div>
+  </div>
+
+  <div class="alerta-box fade-in">
+    <p style="margin:0; font-size:0.9rem; color:var(--texto-claro); line-height:1.75;">O IMA-B 5 cobra <strong>paciência</strong> quando a Selic está alta. Mas os dados históricos mostram que o prêmio costuma compensar o desconforto — desde que o investidor tenha horizonte compatível para atravessar a seca.</p>
+  </div>
+
+  <!-- MECANISMO -->
+  <div class="section-title fade-in"><span class="section-icon">⚙️</span> O mecanismo por trás do índice</div>
+
+  <p>São títulos IPCA+ de <strong>curta duração (~2 anos de prazo médio)</strong>. Isso explica por que o IMA-B 5 se comporta de forma tão diferente de um título IPCA+ longo:</p>
+
+  <div class="mecanismo-wrap fade-in">
+    <div class="mecanismo-titulo">Como a curta duração transforma alta de juros em carrego futuro</div>
+    <div class="mecanismo-flow">
+      <div class="mec-step">Juro sobe</div>
+      <div class="mec-arrow">→</div>
+      <div class="mec-step">Marcação a mercado dói pouco (duration curta)</div>
+      <div class="mec-arrow">→</div>
+      <div class="mec-step">Títulos vencem em ~2 anos</div>
+      <div class="mec-arrow">→</div>
+      <div class="mec-step">Índice recompra pagando taxa real maior</div>
+    </div>
+  </div>
+
+  <p style="font-size:0.85rem; color:var(--texto-muted); font-style:italic;">É um mecanismo que transforma alta de juros em carrego futuro — ao contrário de títulos longos, que sofrem mais na marcação e demoram mais para se beneficiar das taxas mais altas.</p>
+
+  <!-- NTN-B PERCENTIL ATUAL -->
+  <div class="section-title fade-in"><span class="section-icon">🎯</span> A taxa real de hoje é rara</div>
+
+  <div class="percentil-box fade-in">
+    <div class="percentil-val">IPCA + 8,5%</div>
+    <div class="percentil-desc">É o que as NTN-Bs curtas pagam hoje — <strong>percentil 92 dos últimos 20 anos</strong>. Ou seja, em apenas 8% do tempo nas últimas duas décadas a taxa real esteve tão alta quanto agora.</div>
+  </div>
+
+  <div class="correlacao-box fade-in">
+    <div class="correlacao-val">0,75</div>
+    <div class="correlacao-desc">É a correlação histórica entre a <strong>taxa real no momento da compra</strong> e o <strong>retorno dos 3 anos seguintes</strong>. Quanto maior a taxa real na entrada, maior tende a ser o retorno futuro.</div>
+  </div>
+
+  <!-- SECA ANTERIOR -->
+  <div class="section-title fade-in"><span class="section-icon">🔁</span> O precedente de 2013–2016</div>
+
+  <p>A última "seca" parecida com a atual ocorreu entre 2013 e 2016 — também marcada por Selic elevada e desconforto na marcação a mercado.</p>
+
+  <div class="seca-box fade-in">
+    <div class="seca-title">O que aconteceu nos 4 anos seguintes à seca de 2013–2016</div>
+    <div class="seca-range">
+      <div class="seca-tag">CDI + 1,5%</div>
+      <div class="seca-arrow-txt">até</div>
+      <div class="seca-tag">CDI + 7,2%</div>
+    </div>
+    <p style="font-size:0.82rem; color:var(--texto-muted); margin-top:14px; margin-bottom:0;">Faixa de retorno anualizado entregue pelo IMA-B 5 nos 4 anos posteriores ao período mais difícil daquele ciclo.</p>
+  </div>
+
+  <!-- METODOLOGIA -->
+  <div class="section-title fade-in"><span class="section-icon">🔬</span> Metodologia do estudo</div>
+
+  <div class="metodo-grid fade-in">
+    <div class="metodo-card">
+      <div class="metodo-val">20 anos</div>
+      <div class="metodo-label">de dados diários analisados</div>
+    </div>
+    <div class="metodo-card">
+      <div class="metodo-val">5 combos</div>
+      <div class="metodo-label">de índices testados</div>
+    </div>
+    <div class="metodo-card">
+      <div class="metodo-val">660</div>
+      <div class="metodo-label">backtests no total</div>
+    </div>
+    <div class="metodo-card">
+      <div class="metodo-val">4.739</div>
+      <div class="metodo-label">janelas diárias de 12 meses</div>
+    </div>
+  </div>
+
+  <!-- RESULTADOS PRINCIPAIS -->
+  <div class="resultados-grid fade-in">
+    <div class="resultado-card">
+      <div class="resultado-label">Janelas de 12 meses</div>
+      <div class="resultado-val">0 negativas</div>
+      <div class="resultado-desc">em 4.739 janelas — a pior devolveu +1,6%</div>
+    </div>
+    <div class="resultado-card">
+      <div class="resultado-label">Pior queda registrada</div>
+      <div class="resultado-val">−5,4%</div>
+      <div class="resultado-desc">durante a Covid — recuperada em 46 pregões</div>
+    </div>
+    <div class="resultado-card">
+      <div class="resultado-label">Janelas de 5 anos vs. CDI</div>
+      <div class="resultado-val">89%</div>
+      <div class="resultado-desc">das janelas de 5 anos bateram o CDI</div>
+    </div>
+    <div class="resultado-card">
+      <div class="resultado-label">Pior entrada de 5 anos</div>
+      <div class="resultado-val">8,0% a.a.</div>
+      <div class="resultado-desc">mesmo no pior momento de entrada possível</div>
+    </div>
+  </div>
+
+  <!-- COMO ACESSAR -->
+  <div class="section-title fade-in"><span class="section-icon">🔑</span> Como acessar o IMA-B 5</div>
+
+  <div class="acesso-grid fade-in">
+    <div class="acesso-tag">Fundos de investimento</div>
+    <div class="acesso-tag">ETFs</div>
+    <div class="acesso-tag">Tesouro Direto (diretamente)</div>
+  </div>
+
+  <div class="insight-box fade-in">
+    <p>O IMA-B 5 merece espaço em boa parte das carteiras que buscam <strong>exposição a IPCA+ com risco relativamente controlado</strong>. A curta duração faz o índice sofrer pouco quando os juros sobem — e se beneficiar rapidamente quando os títulos vencem e são recomprados a taxas reais mais altas.</p>
+  </div>
+
+  <div class="conclusao fade-in">
+    Estar 49 meses perdendo do CDI não é, historicamente, sinal de que algo está quebrado — é justamente o tipo de desconforto que precedeu os melhores retornos futuros do índice. Com a taxa real hoje no percentil 92 dos últimos 20 anos, e uma correlação histórica de 0,75 entre taxa de entrada e retorno futuro, <strong>a seca atual pode ser exatamente o tipo de oportunidade que a maioria dos investidores está deixando passar</strong> por olhar apenas para o desempenho recente, e não para o que a taxa real contratada hoje historicamente antecipou.
+  </div>
+
+</article>
+
+<footer>
+  <div class="footer-name">Fábio Vogelaar Carlucci</div>
+  <div class="footer-contact">+55 (16) 98148-8260<br><a href="mailto:fabio.carlucci@ficus.capital">fabio.carlucci@ficus.capital</a></div>
+</footer>
+<div style="position:relative;z-index:1;padding:0 8% 28px;text-align:center;font-size:0.65rem;color:rgba(245,237,224,0.2);letter-spacing:0.08em;">
+  Fontes: Mais Retorno · Tesouro Transparente · ANBIMA · 660 backtests · 4.739 janelas diárias<br>
+  Conteúdo exclusivamente informativo e educacional. Rentabilidade passada não garante resultados futuros. Não constitui recomendação de investimento.
+</div>
+
+<script>
+const faders = document.querySelectorAll(".fade-in");
+const obs = new IntersectionObserver(e => e.forEach(x => { if(x.isIntersecting){ x.target.classList.add("visible"); obs.unobserve(x.target); } }), { threshold: 0.1 });
+faders.forEach(f => obs.observe(f));
+
+// Grafico IMA-B5 vs CDI
+(function() {
+  const el = document.getElementById("chartIMAB5"); if(!el) return;
+  const W = el.offsetWidth || 700, H = 280;
+  el.width = W * devicePixelRatio; el.height = H * devicePixelRatio;
+  el.style.height = H + "px";
+  const ctx = el.getContext("2d"); ctx.scale(devicePixelRatio, devicePixelRatio);
+
+  const PAD = { top: 16, right: 50, bottom: 26, left: 40 };
+  const pW = W - PAD.left - PAD.right, pH = H - PAD.top - PAD.bottom;
+  const labels = ["2007","2009","2011","2013","2015","2017","2019","2021","2023","2025"];
+  const n = 78; // pontos trimestrais aprox 2006-2026
+
+  // Gerar series suaves: IMA-B5 acaba em 953, CDI acaba em 692, ambos partindo de 100
+  function buildSeries(end, wobble) {
+    const out = [];
+    for (let i=0;i<n;i++){
+      const t = i/(n-1);
+      // Crescimento composto suave com leve concavidade
+      let v = 100 * Math.pow(end/100, t);
+      // Pequena ondulação
+      v += Math.sin(i*0.7)*wobble*(1-t*0.5);
+      out.push(v);
+    }
+    return out;
+  }
+  const imab5 = buildSeries(953, 4);
+  const cdi = buildSeries(692, 1.5);
+
+  const minV = 80, maxV = 1000;
+  function xP(i){ return PAD.left + (i/(n-1))*pW; }
+  function yP(v){ return PAD.top + pH - ((Math.log(v)-Math.log(minV))/(Math.log(maxV)-Math.log(minV)))*pH; }
+
+  // Zonas de seca (sombreadas)
+  function zoneT(t0,t1){
+    ctx.fillStyle = "rgba(201,69,69,0.07)";
+    ctx.fillRect(xP(t0*(n-1)), PAD.top, xP(t1*(n-1))-xP(t0*(n-1)), pH);
+  }
+  zoneT(0.08, 0.16); // 2008-09
+  zoneT(0.33, 0.50); // 2013-16
+  zoneT(0.82, 1.0);  // seca atual
+
+  // Grid
+  [100,200,400,700,1000].forEach(v => {
+    const y = yP(v);
+    ctx.strokeStyle = "rgba(255,255,255,0.05)"; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(PAD.left,y); ctx.lineTo(PAD.left+pW,y); ctx.stroke();
+    ctx.fillStyle = "rgba(245,237,224,0.22)"; ctx.font = "9px Jost,sans-serif"; ctx.textAlign = "right";
+    ctx.fillText(v, PAD.left-5, y+3);
+  });
+
+  ctx.fillStyle = "rgba(245,237,224,0.2)"; ctx.textAlign = "center"; ctx.font = "8px Jost,sans-serif";
+  labels.forEach((l,i) => { const xi = i*(n-1)/(labels.length-1); ctx.fillText(l, xP(xi), H-PAD.bottom+14); });
+
+  function drawL(data, color, w) {
+    ctx.beginPath(); ctx.strokeStyle = color; ctx.lineWidth = w; ctx.lineJoin = "round";
+    data.forEach((v,i) => i===0 ? ctx.moveTo(xP(i),yP(v)) : ctx.lineTo(xP(i),yP(v)));
+    ctx.stroke();
+  }
+  drawL(cdi, "rgba(245,237,224,0.55)", 1.8);
+  drawL(imab5, "rgba(61,191,138,0.9)", 2.2);
+
+  // Labels finais
+  ctx.fillStyle = "rgba(61,191,138,0.95)"; ctx.font = "bold 10px Jost,sans-serif"; ctx.textAlign = "left";
+  ctx.fillText("R$ 953", xP(n-1)+5, yP(imab5[n-1])+3);
+  ctx.fillStyle = "rgba(245,237,224,0.7)"; ctx.font = "bold 10px Jost,sans-serif";
+  ctx.fillText("R$ 692", xP(n-1)+5, yP(cdi[n-1])+3);
+
+  // Texto zona seca atual
+  ctx.fillStyle = "rgba(224,112,112,0.6)"; ctx.font = "8px Jost,sans-serif"; ctx.textAlign = "center";
+  ctx.fillText("a pior seca da história", xP(0.91*(n-1)), PAD.top+12);
+})();
+</script>
+</body>
+</html>
