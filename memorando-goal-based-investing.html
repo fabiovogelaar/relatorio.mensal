@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Da rentabilidade ao objetivo: Goal-Based Investing | Fábio Carlucci</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DBQSDSDRF3"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-DBQSDSDRF3");</script>
+<style>
+  :root {
+    --verde-escuro: #1a2e25;
+    --dourado: #c9a84c;
+    --dourado-claro: #e2c47a;
+    --creme: #f5ede0;
+    --texto-claro: rgba(245,237,224,0.85);
+    --texto-muted: rgba(245,237,224,0.45);
+    --azul: #4a90d9;
+    --verde-gain: #3dbf8a;
+    --vermelho: #c94545;
+    --laranja: #e07a35;
+    --roxo: #9a7ad9;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { background-color: var(--verde-escuro); color: var(--creme); font-family: "Jost", sans-serif; font-weight: 300; overflow-x: hidden; }
+  body::before {
+    content: ""; position: fixed; inset: 0;
+    background-image: radial-gradient(ellipse at 10% 10%, rgba(201,168,76,0.06) 0%, transparent 55%), radial-gradient(ellipse at 90% 90%, rgba(47,82,64,0.35) 0%, transparent 55%);
+    pointer-events: none; z-index: 0;
+  }
+  .back-link { position: relative; z-index: 10; display: inline-flex; align-items: center; gap: 8px; padding: 28px 8%; font-size: 0.7rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--texto-muted); text-decoration: none; transition: color 0.2s; }
+  .back-link:hover { color: var(--dourado); }
+  .back-link::before { content: "←"; font-size: 0.9rem; }
+  .hero { position: relative; z-index: 1; padding: 20px 8% 64px; border-bottom: 1px solid rgba(201,168,76,0.15); max-width: 900px; }
+  .hero-tag { font-size: 0.65rem; font-weight: 500; letter-spacing: 0.35em; text-transform: uppercase; color: var(--dourado); display: flex; align-items: center; gap: 12px; margin-bottom: 24px; opacity: 0; animation: fadeUp 0.7s ease 0.1s forwards; }
+  .hero-tag::before { content: ""; width: 30px; height: 1px; background: var(--dourado); }
+  .hero-date { font-size: 0.72rem; letter-spacing: 0.15em; color: var(--texto-muted); margin-bottom: 20px; opacity: 0; animation: fadeUp 0.7s ease 0.2s forwards; }
+  h1 { font-family: "Cormorant Garamond", serif; font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 300; line-height: 1.15; color: var(--creme); opacity: 0; animation: fadeUp 0.7s ease 0.3s forwards; }
+  h1 em { font-style: italic; color: var(--dourado-claro); }
+  .hero-sub { font-size: 0.97rem; color: var(--texto-muted); line-height: 1.75; margin-top: 16px; max-width: 640px; opacity: 0; animation: fadeUp 0.7s ease 0.45s forwards; }
+  .hero-fonte { margin-top: 14px; font-size: 0.7rem; color: rgba(245,237,224,0.3); opacity: 0; animation: fadeUp 0.7s ease 0.55s forwards; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+  article { position: relative; z-index: 1; max-width: 800px; margin: 0 auto; padding: 64px 8% 88px; }
+  .lead { font-family: "Cormorant Garamond", serif; font-size: clamp(1.1rem, 2.5vw, 1.35rem); font-weight: 400; line-height: 1.8; color: var(--creme); margin-bottom: 48px; padding-bottom: 48px; border-bottom: 1px solid rgba(201,168,76,0.15); }
+  p { font-size: 0.97rem; line-height: 1.9; color: var(--texto-claro); margin-bottom: 24px; }
+  strong { font-weight: 600; color: var(--creme); }
+  .section-title { font-family: "Cormorant Garamond", serif; font-size: 1.5rem; font-weight: 600; color: var(--dourado-claro); margin: 56px 0 18px; padding-top: 44px; border-top: 1px solid rgba(201,168,76,0.12); display: flex; align-items: center; gap: 14px; }
+  .section-icon { font-size: 1.3rem; flex-shrink: 0; }
+
+  /* PERGUNTA CENTRAL */
+  .pergunta-central { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; padding: 30px 28px; margin: 32px 0; text-align: center; }
+  .pergunta-texto { font-family: "Cormorant Garamond", serif; font-size: clamp(1.15rem, 3vw, 1.5rem); font-weight: 300; font-style: italic; line-height: 1.6; color: var(--dourado-claro); }
+
+  /* COMPARATIVO TRADICIONAL vs GBI */
+  .comp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 28px 0; }
+  @media (max-width: 520px) { .comp-grid { grid-template-columns: 1fr; } }
+  .comp-card { border-radius: 8px; padding: 22px 20px; }
+  .comp-card.trad { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); }
+  .comp-card.gbi { background: rgba(201,168,76,0.08); border: 1px solid rgba(201,168,76,0.22); }
+  .comp-label { font-size: 0.62rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 12px; }
+  .comp-card.trad .comp-label { color: var(--texto-muted); }
+  .comp-card.gbi .comp-label { color: var(--dourado); }
+  .comp-list { list-style: none; }
+  .comp-list li { font-size: 0.83rem; color: var(--texto-claro); padding: 4px 0; display: flex; align-items: flex-start; gap: 8px; line-height: 1.5; }
+  .comp-card.trad .comp-list li::before { content: "•"; color: var(--texto-muted); flex-shrink: 0; }
+  .comp-card.gbi .comp-list li::before { content: "🎯"; flex-shrink: 0; font-size: 0.7rem; }
+
+  /* DASHBOARD RECRIADO */
+  .dash-wrap { background: #f5f4f0; border-radius: 8px; padding: 22px 20px; margin: 32px 0; color: #1a1a1a; }
+  .dash-header { font-size: 0.62rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: #555; margin-bottom: 14px; }
+  .dash-kpis { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 18px; }
+  @media (max-width: 560px) { .dash-kpis { grid-template-columns: 1fr 1fr; } }
+  .dash-kpi { background: #fff; border-radius: 6px; padding: 12px 10px; }
+  .dash-kpi-label { font-size: 0.58rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #999; margin-bottom: 4px; }
+  .dash-kpi-val { font-size: 1.1rem; font-weight: 700; color: #1a1a1a; }
+  .dash-kpi-val.green { color: #2a9d5f; }
+  .dash-obj { background: #fff; border-radius: 6px; padding: 14px 16px; margin-bottom: 8px; }
+  .dash-obj-top { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 6px; margin-bottom: 6px; }
+  .dash-obj-nome { font-size: 0.85rem; font-weight: 700; color: #1a1a1a; }
+  .dash-obj-meta { font-size: 0.65rem; color: #999; }
+  .dash-obj-impacto { font-size: 0.72rem; font-weight: 700; }
+  .dash-obj-impacto.pos { color: #2a9d5f; }
+  .dash-obj-impacto.neg { color: #d9534f; }
+  .dash-progress-row { display: flex; align-items: center; gap: 10px; }
+  .dash-track { flex: 1; height: 5px; background: #eee; border-radius: 3px; overflow: hidden; }
+  .dash-fill { height: 100%; border-radius: 3px; }
+  .dash-pct { font-size: 0.65rem; color: #666; font-weight: 600; width: 42px; text-align: right; }
+  .dash-footer { font-size: 0.6rem; color: #999; margin-top: 10px; border-top: 1px solid #eee; padding-top: 10px; }
+
+  /* TEMPO E UNIDADE DE MEDIDA */
+  .traducao-box { background: linear-gradient(135deg, rgba(201,168,76,0.12) 0%, rgba(47,82,64,0.4) 100%); border: 1px solid rgba(201,168,76,0.3); border-radius: 8px; padding: 28px 26px; margin: 32px 0; text-align: center; }
+  .traducao-de { font-size: 0.62rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--texto-muted); margin-bottom: 8px; }
+  .traducao-val-antes { font-family: "Cormorant Garamond", serif; font-size: 2rem; font-weight: 700; color: rgba(245,237,224,0.4); text-decoration: line-through; margin-bottom: 12px; }
+  .traducao-para { font-size: 0.62rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--dourado); margin: 8px 0; }
+  .traducao-val-depois { font-family: "Cormorant Garamond", serif; font-size: 2.2rem; font-weight: 700; color: var(--dourado); }
+
+  /* CONTEXTO IMPORTA */
+  .contexto-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 28px 0; }
+  @media (max-width: 500px) { .contexto-grid { grid-template-columns: 1fr; } }
+  .contexto-card { border-radius: 6px; padding: 20px 18px; text-align: center; }
+  .contexto-card.longo { background: rgba(61,191,138,0.07); border: 1px solid rgba(61,191,138,0.18); }
+  .contexto-card.curto { background: rgba(224,122,53,0.08); border: 1px solid rgba(224,122,53,0.2); }
+  .contexto-label { font-size: 0.62rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 10px; }
+  .contexto-card.longo .contexto-label { color: var(--verde-gain); }
+  .contexto-card.curto .contexto-label { color: var(--laranja); }
+  .contexto-titulo { font-family: "Cormorant Garamond", serif; font-size: 1.1rem; font-weight: 600; color: var(--creme); margin-bottom: 8px; line-height: 1.4; }
+  .contexto-desc { font-size: 0.78rem; color: var(--texto-muted); line-height: 1.5; }
+
+  /* COMPORTAMENTOS EVITADOS */
+  .comportamentos-list { display: flex; flex-direction: column; gap: 8px; margin: 24px 0; }
+  .comp-item { display: flex; align-items: center; gap: 12px; padding: 12px 16px; background: rgba(201,69,69,0.05); border: 1px solid rgba(201,69,69,0.13); border-radius: 5px; font-size: 0.85rem; color: var(--texto-claro); }
+  .comp-item::before { content: "✗"; color: #e07070; font-weight: 700; flex-shrink: 0; }
+
+  /* APORTE COM DESTINO */
+  .aporte-box { background: rgba(74,144,217,0.07); border: 1px solid rgba(74,144,217,0.2); border-left: 3px solid var(--azul); border-radius: 4px; padding: 24px 26px; margin: 28px 0; display: flex; align-items: center; gap: 22px; flex-wrap: wrap; }
+  .aporte-val { font-family: "Cormorant Garamond", serif; font-size: 2rem; font-weight: 700; color: var(--azul); line-height: 1; flex-shrink: 0; }
+  .aporte-desc { font-size: 0.86rem; color: var(--texto-claro); line-height: 1.6; flex: 1; min-width: 200px; }
+
+  /* NAO SUBSTITUI */
+  .naosubstitui-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin: 24px 0; }
+  @media (max-width: 560px) { .naosubstitui-grid { grid-template-columns: 1fr 1fr; } }
+  .ns-tag { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 12px 10px; text-align: center; font-size: 0.75rem; color: var(--texto-muted); }
+
+  /* APLICACOES PRATICAS */
+  .aplicacoes-list { display: flex; flex-direction: column; gap: 8px; margin: 24px 0; }
+  .aplicacao-item { display: flex; align-items: center; gap: 12px; padding: 12px 16px; background: rgba(201,168,76,0.05); border: 1px solid rgba(201,168,76,0.14); border-radius: 5px; font-size: 0.85rem; color: var(--texto-claro); }
+  .aplicacao-item::before { content: "✓"; color: var(--dourado); font-weight: 700; flex-shrink: 0; }
+
+  /* INSIGHT */
+  .insight-box { background: linear-gradient(135deg, rgba(201,168,76,0.1) 0%, rgba(26,46,37,0.4) 100%); border: 1px solid rgba(201,168,76,0.25); border-left: 3px solid var(--dourado); border-radius: 4px; padding: 28px 32px; margin: 36px 0; }
+  .insight-box p { font-family: "Cormorant Garamond", serif; font-size: 1.1rem; color: var(--creme); line-height: 1.8; margin: 0; }
+
+  /* CONCLUSÃO */
+  .conclusao { font-family: "Cormorant Garamond", serif; font-size: 1.15rem; font-weight: 400; line-height: 1.85; color: var(--creme); margin-top: 52px; padding: 40px; border: 1px solid rgba(201,168,76,0.2); border-radius: 6px; background: rgba(255,255,255,0.02); position: relative; }
+  .conclusao::before { content: "\201C"; position: absolute; top: -10px; left: 32px; font-size: 5rem; color: rgba(201,168,76,0.15); font-family: "Cormorant Garamond", serif; line-height: 1; }
+
+  .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .fade-in.visible { opacity: 1; transform: none; }
+  footer { position: relative; z-index: 1; border-top: 1px solid rgba(201,168,76,0.12); padding: 40px 8%; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+  .footer-name { font-family: "Cormorant Garamond", serif; font-size: 1.1rem; font-weight: 300; color: var(--texto-muted); }
+  .footer-contact { font-size: 0.75rem; color: rgba(245,237,224,0.25); line-height: 1.9; text-align: right; }
+  .footer-contact a { color: var(--dourado); text-decoration: none; }
+  @media (max-width: 640px) { .back-link,.hero { padding-left: 5%; padding-right: 5%; } article { padding: 48px 5% 64px; } footer { padding: 32px 5%; flex-direction: column; } .footer-contact { text-align: left; } }
+</style>
+</head>
+<body>
+
+<a class="back-link" href="index.html">Voltar</a>
+
+<header class="hero">
+  <div class="hero-tag">Memorando Técnico · Planejamento Patrimonial</div>
+  <div class="hero-date">Agosto de 2026</div>
+  <h1>Da rentabilidade ao objetivo:<br>por que medir a carteira <em>pelo tempo<br>até a meta</em> — não pelo retorno</h1>
+  <p class="hero-sub">Ninguém sente 1,2%. Todo mundo sente 38 dias. Como o Goal-Based Investing traduz números de mercado em progresso concreto rumo aos objetivos de vida.</p>
+  <div class="hero-fonte">Fonte: Morningstar · CFA Institute Research and Policy Center · Northern Trust</div>
+</header>
+
+<article>
+
+  <p class="lead">
+    Durante décadas, a indústria financeira ensinou investidores a acompanhar seus investimentos por rentabilidade mensal, CDI, Ibovespa, alfa e volatilidade. Todos esses indicadores são tecnicamente importantes — mas nenhum responde à pergunta que realmente importa: <strong>"Estou mais próximo ou mais distante de realizar aquilo para o qual estou investindo?"</strong>
+  </p>
+
+  <div class="pergunta-central fade-in">
+    <div class="pergunta-texto">"Seu relatório diz que a carteira rendeu 1,2% no mês.<br>E o que isso significa na prática?"</div>
+  </div>
+
+  <!-- O PROBLEMA -->
+  <div class="section-title fade-in"><span class="section-icon">❓</span> O problema do modelo tradicional</div>
+
+  <p>Um relatório que mostra apenas "+1,20% no mês" não responde nada que realmente importe. O cliente continua sem saber se poderá se aposentar quando deseja, se conseguirá pagar a faculdade dos filhos, ou se precisa aumentar os aportes. A informação financeira existe — mas não gera significado.</p>
+
+  <div class="comp-grid fade-in">
+    <div class="comp-card trad">
+      <div class="comp-label">Modelo tradicional</div>
+      <ul class="comp-list">
+        <li>Organizado por classe de ativo</li>
+        <li>Renda fixa, ações, fundos, internacional</li>
+        <li>Arquitetura desenhada para a prateleira de produto</li>
+        <li>Tradução fica a cargo do assessor ou do investidor</li>
+      </ul>
+    </div>
+    <div class="comp-card gbi">
+      <div class="comp-label">Goal-Based Investing</div>
+      <ul class="comp-list">
+        <li>Organizado por objetivo de vida</li>
+        <li>Aposentadoria, faculdade, imóvel</li>
+        <li>Cada objetivo tem meta, prazo e progresso próprios</li>
+        <li>Tradução já vem embutida no relatório</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- DASHBOARD RECRIADO -->
+  <div class="section-title fade-in"><span class="section-icon">📋</span> A mesma carteira, organizada por objetivos</div>
+
+  <p>Veja como a mesma rentabilidade mensal ganha significado quando a carteira é apresentada por objetivo, e não por classe de ativo:</p>
+
+  <div class="dash-wrap fade-in">
+    <div class="dash-header">Posição Consolidada por Objetivo</div>
+    <div class="dash-kpis">
+      <div class="dash-kpi"><div class="dash-kpi-label">Patrimônio Bruto</div><div class="dash-kpi-val">R$ 1.847.300</div></div>
+      <div class="dash-kpi"><div class="dash-kpi-label">Rentab. Mês</div><div class="dash-kpi-val">1,20%</div></div>
+      <div class="dash-kpi"><div class="dash-kpi-label">Ganho Mês</div><div class="dash-kpi-val green">R$ 21.960</div></div>
+      <div class="dash-kpi"><div class="dash-kpi-label">Objetivos no Prazo</div><div class="dash-kpi-val">2 de 3</div></div>
+    </div>
+
+    <div class="dash-obj">
+      <div class="dash-obj-top">
+        <div><div class="dash-obj-nome">Aposentadoria</div><div class="dash-obj-meta">Meta R$ 4.000.000 · set/2045</div></div>
+        <div class="dash-obj-impacto pos">antecipou 38 dias</div>
+      </div>
+      <div class="dash-progress-row">
+        <div class="dash-track"><div class="dash-fill" style="width:26.2%; background:#7a6fd9;"></div></div>
+        <div class="dash-pct">26,2%</div>
+      </div>
+    </div>
+
+    <div class="dash-obj">
+      <div class="dash-obj-top">
+        <div><div class="dash-obj-nome">Faculdade dos filhos</div><div class="dash-obj-meta">Meta R$ 900.000 · fev/2034</div></div>
+        <div class="dash-obj-impacto pos">antecipou 9 dias</div>
+      </div>
+      <div class="dash-progress-row">
+        <div class="dash-track"><div class="dash-fill" style="width:34.7%; background:#7a6fd9;"></div></div>
+        <div class="dash-pct">34,7%</div>
+      </div>
+    </div>
+
+    <div class="dash-obj">
+      <div class="dash-obj-top">
+        <div><div class="dash-obj-nome">Casa na praia</div><div class="dash-obj-meta">Meta R$ 1.500.000 · jan/2031</div></div>
+        <div class="dash-obj-impacto neg">atrasou 27 dias</div>
+      </div>
+      <div class="dash-progress-row">
+        <div class="dash-track"><div class="dash-fill" style="width:32.5%; background:#d9534f;"></div></div>
+        <div class="dash-pct">32,5%</div>
+      </div>
+    </div>
+
+    <div class="dash-footer">Modelo ilustrativo com valores fictícios · fins educacionais · não constitui recomendação de investimento</div>
+  </div>
+
+  <!-- TEMPO COMO LINGUAGEM -->
+  <div class="section-title fade-in"><span class="section-icon">⏱️</span> Tempo é uma linguagem universal</div>
+
+  <p>Poucas pessoas conseguem sentir intuitivamente o que significa "0,84%", "CDI +1%" ou "tracking error". Mas praticamente qualquer pessoa entende imediatamente: <em>"você está um mês adiantado"</em>. A unidade de medida muda — sai o percentual, entra o tempo.</p>
+
+  <div class="traducao-box fade-in">
+    <div class="traducao-de">O relatório dizia</div>
+    <div class="traducao-val-antes">+1,2% no mês</div>
+    <div class="traducao-para">Agora ele diz</div>
+    <div class="traducao-val-depois">Você antecipou sua aposentadoria em 38 dias</div>
+  </div>
+
+  <!-- MUDANCA COMPORTAMENTAL -->
+  <div class="section-title fade-in"><span class="section-icon">🧠</span> A principal mudança é comportamental</div>
+
+  <p>A maior contribuição dessa abordagem não está na matemática — está na psicologia. Quando o mercado cai, o investidor pensa "perdi dinheiro". Mas a pergunta correta seria: <strong>"Essa queda realmente compromete meu objetivo?"</strong> Na maioria das vezes, não.</p>
+
+  <div class="contexto-grid fade-in">
+    <div class="contexto-card longo">
+      <div class="contexto-label">Objetivo de longo prazo</div>
+      <div class="contexto-titulo">Queda em carteira para 2045</div>
+      <div class="contexto-desc">Uma queda temporária pode não alterar praticamente em nada a probabilidade de atingir o objetivo. É ruído.</div>
+    </div>
+    <div class="contexto-card curto">
+      <div class="contexto-label">Objetivo de curto prazo</div>
+      <div class="contexto-titulo">Queda em carteira para 2031</div>
+      <div class="contexto-desc">A mesma queda percentual pode exigir mudanças importantes de rota. É decisão.</div>
+    </div>
+  </div>
+
+  <div class="insight-box fade-in">
+    <p>O contexto passa a importar mais do que o retorno isolado. <strong>Carteira eficiente não é a do menor risco para o maior retorno — é a que entrega o objetivo na data planejada.</strong></p>
+  </div>
+
+  <!-- COMPORTAMENTOS EVITADOS -->
+  <div class="section-title fade-in"><span class="section-icon">🛡️</span> Melhores decisões, menos ruído</div>
+
+  <p>Quando o foco muda para objetivos, o benchmark deixa de ser o CDI ou o Ibovespa — passa a ser a <strong>probabilidade de alcançar a meta no prazo desejado</strong>. Isso reduz comportamentos prejudiciais:</p>
+
+  <div class="comportamentos-list fade-in">
+    <div class="comp-item">Troca constante de fundos</div>
+    <div class="comp-item">Busca pelo investimento "da moda"</div>
+    <div class="comp-item">Venda em momentos de queda</div>
+    <div class="comp-item">Excesso de comparação com outros investidores</div>
+  </div>
+
+  <!-- APORTES COM DESTINO -->
+  <div class="section-title fade-in"><span class="section-icon">💰</span> Cada aporte ganha um destino</div>
+
+  <p>Outro ponto poderoso da metodologia: novos aportes deixam de entrar em uma "caixinha genérica". Cada real aportado passa a ter um propósito visível e imediato.</p>
+
+  <div class="aporte-box fade-in">
+    <div class="aporte-val">+31 dias</div>
+    <div class="aporte-desc">Um aporte de <strong>R$ 15.000</strong> destinado à Aposentadoria antecipa a meta em mais 31 dias. O investidor percebe imediatamente o impacto positivo de economizar — um efeito psicológico extremamente poderoso.</div>
+  </div>
+
+  <!-- NAO SUBSTITUI -->
+  <div class="section-title fade-in"><span class="section-icon">⚖️</span> Isso substitui a análise tradicional?</div>
+
+  <p>Não. Rentabilidade, risco, volatilidade, correlação e diversificação continuam fundamentais para a gestão da carteira. O que muda é a <strong>forma de comunicar</strong> essas informações ao investidor.</p>
+
+  <div class="naosubstitui-grid fade-in">
+    <div class="ns-tag">Rentabilidade</div>
+    <div class="ns-tag">Risco</div>
+    <div class="ns-tag">Volatilidade</div>
+    <div class="ns-tag">Correlação</div>
+    <div class="ns-tag">Diversificação</div>
+    <div class="ns-tag">Benchmarks</div>
+  </div>
+
+  <!-- APLICACOES PRATICAS -->
+  <div class="section-title fade-in"><span class="section-icon">🔧</span> Aplicações práticas para assessoria patrimonial</div>
+
+  <div class="aplicacoes-list fade-in">
+    <div class="aplicacao-item">Patrimônio organizado por objetivos</div>
+    <div class="aplicacao-item">Percentual de progresso de cada meta</div>
+    <div class="aplicacao-item">Prazo previsto para conclusão</div>
+    <div class="aplicacao-item">Impacto de cada aporte em dias ou meses</div>
+    <div class="aplicacao-item">Alertas quando um objetivo sair da trajetória esperada</div>
+    <div class="aplicacao-item">Recomendações específicas para recolocar a meta no prazo</div>
+  </div>
+
+  <div class="conclusao fade-in">
+    Uma carteira eficiente não é, necessariamente, aquela que apresentou o maior retorno no mês — nem a que venceu o CDI ou superou um índice de referência. Uma carteira eficiente é aquela que <strong>aumenta, de forma consistente, a probabilidade de o investidor realizar seus projetos de vida</strong> no momento em que eles acontecerão. No fim das contas, ninguém investe para ganhar 1,2% ao mês. As pessoas investem para se aposentar com tranquilidade, garantir a educação dos filhos, comprar um imóvel, preservar patrimônio ou construir independência financeira. Quando o relatório traduz os números do mercado em progresso concreto rumo a esses objetivos, ele deixa de ser um demonstrativo de desempenho e passa a ser uma <strong>ferramenta de planejamento e tomada de decisão</strong>.
+  </div>
+
+</article>
+
+<footer>
+  <div class="footer-name">Fábio Vogelaar Carlucci</div>
+  <div class="footer-contact">+55 (16) 98148-8260<br><a href="mailto:fabio.carlucci@ficus.capital">fabio.carlucci@ficus.capital</a></div>
+</footer>
+<div style="position:relative;z-index:1;padding:0 8% 28px;text-align:center;font-size:0.65rem;color:rgba(245,237,224,0.2);letter-spacing:0.08em;">
+  Fontes: Morningstar · CFA Institute Research and Policy Center · Northern Trust<br>
+  Conteúdo exclusivamente informativo e educacional. Não constitui recomendação de investimento.
+</div>
+
+<script>
+const faders = document.querySelectorAll(".fade-in");
+const obs = new IntersectionObserver(e => e.forEach(x => { if(x.isIntersecting){ x.target.classList.add("visible"); obs.unobserve(x.target); } }), { threshold: 0.1 });
+faders.forEach(f => obs.observe(f));
+</script>
+</body>
+</html>
