@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Três pontos, uma curva: os novos ETFs de duration constante | Fábio Carlucci</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DBQSDSDRF3"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-DBQSDSDRF3");</script>
+<style>
+  :root {
+    --verde-escuro: #1a2e25;
+    --dourado: #c9a84c;
+    --dourado-claro: #e2c47a;
+    --creme: #f5ede0;
+    --texto-claro: rgba(245,237,224,0.85);
+    --texto-muted: rgba(245,237,224,0.45);
+    --azul: #4a90d9;
+    --verde-gain: #3dbf8a;
+    --vermelho: #c94545;
+    --laranja: #e07a35;
+    --roxo: #9a7ad9;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { background-color: var(--verde-escuro); color: var(--creme); font-family: "Jost", sans-serif; font-weight: 300; overflow-x: hidden; }
+  body::before {
+    content: ""; position: fixed; inset: 0;
+    background-image: radial-gradient(ellipse at 10% 10%, rgba(201,168,76,0.06) 0%, transparent 55%), radial-gradient(ellipse at 90% 90%, rgba(47,82,64,0.35) 0%, transparent 55%);
+    pointer-events: none; z-index: 0;
+  }
+  .back-link { position: relative; z-index: 10; display: inline-flex; align-items: center; gap: 8px; padding: 28px 8%; font-size: 0.7rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--texto-muted); text-decoration: none; transition: color 0.2s; }
+  .back-link:hover { color: var(--dourado); }
+  .back-link::before { content: "←"; font-size: 0.9rem; }
+  .hero { position: relative; z-index: 1; padding: 20px 8% 64px; border-bottom: 1px solid rgba(201,168,76,0.15); max-width: 900px; }
+  .hero-tag { font-size: 0.65rem; font-weight: 500; letter-spacing: 0.35em; text-transform: uppercase; color: var(--dourado); display: flex; align-items: center; gap: 12px; margin-bottom: 24px; opacity: 0; animation: fadeUp 0.7s ease 0.1s forwards; }
+  .hero-tag::before { content: ""; width: 30px; height: 1px; background: var(--dourado); }
+  .hero-date { font-size: 0.72rem; letter-spacing: 0.15em; color: var(--texto-muted); margin-bottom: 20px; opacity: 0; animation: fadeUp 0.7s ease 0.2s forwards; }
+  h1 { font-family: "Cormorant Garamond", serif; font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 300; line-height: 1.15; color: var(--creme); opacity: 0; animation: fadeUp 0.7s ease 0.3s forwards; }
+  h1 em { font-style: italic; color: var(--dourado-claro); }
+  .hero-sub { font-size: 0.97rem; color: var(--texto-muted); line-height: 1.75; margin-top: 16px; max-width: 660px; opacity: 0; animation: fadeUp 0.7s ease 0.45s forwards; }
+  .hero-fonte { margin-top: 14px; font-size: 0.7rem; color: rgba(245,237,224,0.3); opacity: 0; animation: fadeUp 0.7s ease 0.55s forwards; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+  article { position: relative; z-index: 1; max-width: 820px; margin: 0 auto; padding: 64px 8% 88px; }
+  .lead { font-family: "Cormorant Garamond", serif; font-size: clamp(1.1rem, 2.5vw, 1.35rem); font-weight: 400; line-height: 1.8; color: var(--creme); margin-bottom: 48px; padding-bottom: 48px; border-bottom: 1px solid rgba(201,168,76,0.15); }
+  p { font-size: 0.97rem; line-height: 1.9; color: var(--texto-claro); margin-bottom: 24px; }
+  strong { font-weight: 600; color: var(--creme); }
+  .section-title { font-family: "Cormorant Garamond", serif; font-size: 1.5rem; font-weight: 600; color: var(--dourado-claro); margin: 56px 0 18px; padding-top: 44px; border-top: 1px solid rgba(201,168,76,0.12); display: flex; align-items: center; gap: 14px; }
+  .section-icon { font-size: 1.3rem; flex-shrink: 0; }
+
+  /* PERGUNTA CENTRAL */
+  .pergunta-central { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; padding: 30px 28px; margin: 32px 0; text-align: center; }
+  .pergunta-texto { font-family: "Cormorant Garamond", serif; font-size: clamp(1.1rem, 3vw, 1.4rem); font-weight: 300; font-style: italic; line-height: 1.6; color: var(--dourado-claro); }
+
+  /* COMPARATIVO 3 COLUNAS */
+  .comp-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 28px 0; }
+  @media (max-width: 720px) { .comp-grid-3 { grid-template-columns: 1fr; } }
+  .comp-card { border-radius: 8px; padding: 22px 20px; }
+  .comp-card.trad { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); }
+  .comp-card.amplo { background: rgba(74,144,217,0.06); border: 1px solid rgba(74,144,217,0.18); }
+  .comp-card.alvo { background: rgba(201,168,76,0.08); border: 1px solid rgba(201,168,76,0.25); }
+  .comp-label { font-size: 0.6rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; margin-bottom: 12px; }
+  .comp-card.trad .comp-label { color: var(--texto-muted); }
+  .comp-card.amplo .comp-label { color: var(--azul); }
+  .comp-card.alvo .comp-label { color: var(--dourado); }
+  .comp-list { list-style: none; }
+  .comp-list li { font-size: 0.8rem; color: var(--texto-claro); padding: 4px 0; display: flex; align-items: flex-start; gap: 8px; line-height: 1.5; }
+  .comp-card.trad .comp-list li::before { content: "•"; color: var(--texto-muted); flex-shrink: 0; }
+  .comp-card.amplo .comp-list li::before { content: "•"; color: var(--azul); flex-shrink: 0; }
+  .comp-card.alvo .comp-list li::before { content: "🎯"; flex-shrink: 0; font-size: 0.68rem; }
+
+  /* GRID DOS 3 ETFs */
+  .etf-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 28px 0; }
+  @media (max-width: 720px) { .etf-grid { grid-template-columns: 1fr; } }
+  .etf-card { border-radius: 8px; padding: 24px 20px; text-align: center; }
+  .etf-card.curto { background: rgba(61,191,138,0.07); border: 1px solid rgba(61,191,138,0.22); }
+  .etf-card.medio { background: rgba(201,168,76,0.08); border: 1px solid rgba(201,168,76,0.25); }
+  .etf-card.longo { background: rgba(154,122,217,0.08); border: 1px solid rgba(154,122,217,0.25); }
+  .etf-codigo { font-family: "Cormorant Garamond", serif; font-size: 1.6rem; font-weight: 700; margin-bottom: 2px; }
+  .etf-card.curto .etf-codigo { color: var(--verde-gain); }
+  .etf-card.medio .etf-codigo { color: var(--dourado); }
+  .etf-card.longo .etf-codigo { color: var(--roxo); }
+  .etf-duration { font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--texto-muted); margin-bottom: 14px; }
+  .etf-funcao { font-size: 0.82rem; color: var(--texto-claro); line-height: 1.55; margin-bottom: 14px; min-height: 66px; }
+  .etf-stats { display: flex; justify-content: center; gap: 16px; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 12px; }
+  .etf-stat-val { font-size: 0.95rem; font-weight: 600; color: var(--creme); }
+  .etf-stat-label { font-size: 0.58rem; color: var(--texto-muted); text-transform: uppercase; letter-spacing: 0.08em; margin-top: 2px; }
+
+  /* GRÁFICOS */
+  .chart-wrap { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; padding: 26px 22px 18px; margin: 32px 0; }
+  .chart-title { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--texto-muted); margin-bottom: 4px; }
+  .chart-subtitle { font-size: 0.72rem; color: rgba(245,237,224,0.35); margin-bottom: 16px; }
+  .chart-legend { display: flex; gap: 18px; flex-wrap: wrap; margin-bottom: 14px; }
+  .legend-item { display: flex; align-items: center; gap: 7px; font-size: 0.72rem; color: var(--texto-claro); }
+  .legend-dot { width: 14px; height: 3px; border-radius: 2px; display: inline-block; flex-shrink: 0; }
+  .chart-note { font-size: 0.66rem; color: rgba(245,237,224,0.3); margin-top: 12px; line-height: 1.6; }
+  .chart-svg { width: 100%; height: auto; display: block; }
+
+  /* STAT ROW */
+  .stat-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin: 24px 0; }
+  @media (max-width: 680px) { .stat-row { grid-template-columns: 1fr 1fr; } }
+  .stat-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; padding: 18px 14px; text-align: center; }
+  .stat-val { font-family: "Cormorant Garamond", serif; font-size: 1.5rem; font-weight: 700; color: var(--dourado); line-height: 1; }
+  .stat-val.verde { color: var(--verde-gain); }
+  .stat-val.roxo { color: var(--roxo); }
+  .stat-label { font-size: 0.64rem; color: var(--texto-muted); margin-top: 8px; line-height: 1.4; }
+
+  /* FLUXO / MECANISMO */
+  .flow-grid { display: flex; flex-wrap: wrap; align-items: stretch; gap: 8px; margin: 28px 0; justify-content: center; }
+  .flow-step { background: rgba(255,255,255,0.03); border: 1px solid rgba(201,168,76,0.22); border-radius: 8px; padding: 16px 16px; text-align: center; font-size: 0.78rem; color: var(--texto-claro); line-height: 1.45; flex: 1 1 140px; max-width: 170px; display: flex; flex-direction: column; justify-content: center; }
+  .flow-step-num { font-family: "Cormorant Garamond", serif; font-size: 1.2rem; font-weight: 700; color: var(--dourado); margin-bottom: 6px; }
+  .flow-arrow { font-size: 1.2rem; color: var(--dourado); opacity: 0.55; align-self: center; }
+  @media (max-width: 640px) { .flow-grid { flex-direction: column; align-items: center; } .flow-step { max-width: 280px; width: 100%; } .flow-arrow { transform: rotate(90deg); } }
+
+  /* COMBINAÇÕES / SISTEMA */
+  .combo-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; margin: 28px 0; }
+  @media (max-width: 720px) { .combo-grid { grid-template-columns: repeat(3, 1fr); } }
+  @media (max-width: 460px) { .combo-grid { grid-template-columns: 1fr 1fr; } }
+  .combo-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; padding: 14px 10px; text-align: center; }
+  .combo-duration { font-family: "Cormorant Garamond", serif; font-size: 1.25rem; font-weight: 700; color: var(--creme); margin-bottom: 10px; }
+  .combo-bar { display: flex; flex-direction: column-reverse; height: 90px; border-radius: 4px; overflow: hidden; margin-bottom: 8px; }
+  .combo-seg { display: flex; align-items: center; justify-content: center; font-size: 0.6rem; font-weight: 700; color: rgba(26,26,26,0.85); }
+  .combo-legend { font-size: 0.6rem; color: var(--texto-muted); line-height: 1.4; }
+
+  /* BARRAS TRIBUTÁRIAS */
+  .tax-bars { display: flex; flex-direction: column; gap: 16px; margin: 28px 0; }
+  .tax-row { display: flex; align-items: center; gap: 14px; }
+  .tax-label { width: 118px; font-size: 0.76rem; color: var(--texto-claro); flex-shrink: 0; line-height: 1.3; }
+  .tax-track { flex: 1; height: 30px; background: rgba(255,255,255,0.04); border-radius: 5px; overflow: hidden; }
+  .tax-fill { height: 100%; border-radius: 5px; display: flex; align-items: center; padding-left: 12px; font-size: 0.75rem; font-weight: 700; color: #1a1a1a; }
+
+  /* RISCOS */
+  .risco-item { display: flex; align-items: flex-start; gap: 12px; padding: 14px 16px; background: rgba(224,122,53,0.06); border: 1px solid rgba(224,122,53,0.18); border-radius: 5px; font-size: 0.85rem; color: var(--texto-claro); margin-bottom: 8px; line-height: 1.55; }
+  .risco-item::before { content: "⚠"; color: var(--laranja); flex-shrink: 0; }
+  .risco-item strong { color: var(--dourado-claro); }
+
+  /* INSIGHT */
+  .insight-box { background: linear-gradient(135deg, rgba(201,168,76,0.1) 0%, rgba(26,46,37,0.4) 100%); border: 1px solid rgba(201,168,76,0.25); border-left: 3px solid var(--dourado); border-radius: 4px; padding: 28px 32px; margin: 36px 0; }
+  .insight-box p { font-family: "Cormorant Garamond", serif; font-size: 1.1rem; color: var(--creme); line-height: 1.8; margin: 0; }
+
+  /* CONCLUSÃO */
+  .conclusao { font-family: "Cormorant Garamond", serif; font-size: 1.15rem; font-weight: 400; line-height: 1.85; color: var(--creme); margin-top: 52px; padding: 40px; border: 1px solid rgba(201,168,76,0.2); border-radius: 6px; background: rgba(255,255,255,0.02); position: relative; }
+  .conclusao::before { content: "\201C"; position: absolute; top: -10px; left: 32px; font-size: 5rem; color: rgba(201,168,76,0.15); font-family: "Cormorant Garamond", serif; line-height: 1; }
+
+  .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .fade-in.visible { opacity: 1; transform: none; }
+  footer { position: relative; z-index: 1; border-top: 1px solid rgba(201,168,76,0.12); padding: 40px 8%; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+  .footer-name { font-family: "Cormorant Garamond", serif; font-size: 1.1rem; font-weight: 300; color: var(--texto-muted); }
+  .footer-contact { font-size: 0.75rem; color: rgba(245,237,224,0.25); line-height: 1.9; text-align: right; }
+  .footer-contact a { color: var(--dourado); text-decoration: none; }
+  @media (max-width: 640px) { .back-link,.hero { padding-left: 5%; padding-right: 5%; } article { padding: 48px 5% 64px; } footer { padding: 32px 5%; flex-direction: column; } .footer-contact { text-align: left; } }
+</style>
+</head>
+<body>
+
+<a class="back-link" href="index.html">Voltar</a>
+
+<header class="hero">
+  <div class="hero-tag">Memorando Técnico · Renda Fixa &amp; Inovação</div>
+  <div class="hero-date">Agosto de 2026</div>
+  <h1>Três pontos, uma curva: os novos ETFs de <em>duration constante</em> sobre o Tesouro IPCA+</h1>
+  <p class="hero-sub">NB0211, NB0511 e NB1011 transformam a duration — uma das principais medidas de risco da renda fixa — em uma variável que o investidor escolhe, e não uma consequência do calendário. Entenda por que essa arquitetura é uma inovação real para quem usa juro real na construção de patrimônio.</p>
+  <div class="hero-fonte">Fonte: White paper "Três Pontos, Uma Curva" (Nu Asset, jul/2026) · B3 · ICI · Tesouro Direto</div>
+</header>
+
+<article>
+
+  <p class="lead">
+    Comprar um título indexado ao IPCA parece, à primeira vista, uma decisão simples: proteger o poder de compra e embolsar uma taxa real. Mas dois títulos igualmente indexados ao IPCA podem se comportar de formas completamente diferentes — porque a inflação não é o único risco em jogo. O risco que separa um bom resultado de uma surpresa desagradável é o <strong>tempo</strong>: quanto tempo essa taxa real está sendo carregada. É exatamente esse problema que os novos ETFs <strong>NB0211, NB0511 e NB1011</strong>, lançados pela Nu Asset em julho de 2026, foram desenhados para resolver.
+  </p>
+
+  <div class="pergunta-central fade-in">
+    <div class="pergunta-texto">"Meu título é indexado ao IPCA — então por que ele caiu de preço?"</div>
+  </div>
+
+  <p>A resposta está na <strong>duration</strong>: a sensibilidade do preço de um título às mudanças na taxa de juros real. Quanto maior a duration, maior a oscilação do preço quando os juros sobem ou caem — mesmo que o indexador (IPCA) continue corrigindo o valor nominal normalmente. Um título de 2 anos e um de 10 anos podem carregar exatamente a mesma proteção contra a inflação e, ainda assim, entregar experiências de investimento radicalmente diferentes.</p>
+
+  <!-- O PROBLEMA -->
+  <div class="section-title fade-in"><span class="section-icon">📏</span> Três formas de acessar o mesmo mercado</div>
+
+  <p>Diante de um mercado de NTN-Bs profundo e líquido (mais de <strong>R$ 2 trilhões</strong> em estoque), o investidor sempre teve, na prática, três caminhos — mesmo quando a escolha não é explícita:</p>
+
+  <div class="comp-grid-3 fade-in">
+    <div class="comp-card trad">
+      <div class="comp-label">Título individual</div>
+      <ul class="comp-list">
+        <li>Vencimento definido, taxa contratada</li>
+        <li>Simples e previsível se levado até o fim</li>
+        <li>A duration diminui todos os dias</li>
+        <li>Exposição encurta sem que o investidor decida isso</li>
+      </ul>
+    </div>
+    <div class="comp-card amplo">
+      <div class="comp-label">Índice amplo (ex: IMA-B)</div>
+      <ul class="comp-list">
+        <li>Diversificação entre vários vencimentos</li>
+        <li>Benchmark reconhecido pelo mercado</li>
+        <li>Duration varia com as emissões do Tesouro</li>
+        <li>Exposição muda sem aviso, ao sabor da dívida pública</li>
+      </ul>
+    </div>
+    <div class="comp-card alvo">
+      <div class="comp-label">Duration-alvo constante</div>
+      <ul class="comp-list">
+        <li>O investidor escolhe o risco de juros a manter</li>
+        <li>Carteira rebalanceada para preservar a exposição</li>
+        <li>Duration é variável controlada — não consequência</li>
+        <li>É a arquitetura por trás do NB0211, NB0511 e NB1011</li>
+      </ul>
+    </div>
+  </div>
+
+  <p>A ideia de manter a duration constante não é nova — vem de Macaulay (1938), passa pela imunização de Redington (1952) e chega à teoria de Leibowitz sobre <em>duration targeting</em> (1990-2014). O que é novo é sua chegada ao mercado brasileiro como um sistema de índices e ETFs acessível, líquido e de baixo custo.</p>
+
+  <!-- OS TRÊS ETFS -->
+  <div class="section-title fade-in"><span class="section-icon">🎯</span> 2, 5 e 10 anos: três pontos para acessar a curva real</div>
+
+  <p>Em parceria com a B3, a Nu Asset lançou três índices — e três ETFs que os replicam — cada um ancorado em um ponto diferente da curva de juro real. A régua de cada um: prazo médio para o de 2 anos, duration de Macaulay para os de 5 e 10 anos.</p>
+
+  <div class="etf-grid fade-in">
+    <div class="etf-card curto">
+      <div class="etf-codigo">NB0211</div>
+      <div class="etf-duration">Prazo médio · 830 dias</div>
+      <div class="etf-funcao">A reserva real. O juro se realiza como carrego, com o mínimo de ruído de marcação a mercado — o piso de risco de uma alocação em IPCA+.</div>
+      <div class="etf-stats">
+        <div><div class="etf-stat-val">2,7%</div><div class="etf-stat-label">Volatilidade a.a.</div></div>
+        <div><div class="etf-stat-val">−5,1%</div><div class="etf-stat-label">Queda máxima</div></div>
+      </div>
+    </div>
+    <div class="etf-card medio">
+      <div class="etf-codigo">NB0511</div>
+      <div class="etf-duration">Duration de Macaulay · 5 anos</div>
+      <div class="etf-funcao">O corpo da curva. Combina o carrego da taxa real com o ganho de roll-down — candidato natural a núcleo de uma alocação em juro real.</div>
+      <div class="etf-stats">
+        <div><div class="etf-stat-val">~6%</div><div class="etf-stat-label">Volatilidade a.a.</div></div>
+        <div><div class="etf-stat-val">~−12%</div><div class="etf-stat-label">Queda máxima*</div></div>
+      </div>
+    </div>
+    <div class="etf-card longo">
+      <div class="etf-codigo">NB1011</div>
+      <div class="etf-duration">Duration de Macaulay · 10 anos</div>
+      <div class="etf-funcao">O horizonte estrutural. Estende a duration para capturar o prêmio de prazo — o instrumento para casar passivos longos e visões de duration.</div>
+      <div class="etf-stats">
+        <div><div class="etf-stat-val">9,5%</div><div class="etf-stat-label">Volatilidade a.a.</div></div>
+        <div><div class="etf-stat-val">−19,5%</div><div class="etf-stat-label">Queda máxima</div></div>
+      </div>
+    </div>
+  </div>
+  <p style="font-size:0.72rem; color:rgba(245,237,224,0.35); margin-top:-14px;">*Estimativa intermediária entre os pontos de 2 e 10 anos reportados no estudo. Taxa de administração: 0,19% a.a. para os três ETFs, sem taxa de performance.</p>
+
+  <!-- GRÁFICO DE RETORNO ACUMULADO -->
+  <div class="section-title fade-in"><span class="section-icon">📈</span> O mesmo destino, caminhos muito diferentes</div>
+
+  <p>Um backtest da metodologia aplicado às NTN-Bs efetivamente negociadas desde janeiro de 2010 — 16 anos e meio que incluem o taper tantrum de 2013, a crise fiscal de 2015-16, o ciclo de queda de juros de 2017-19, a pandemia e o aperto monetário mais rápido da história recente em 2021-22 — revela algo que surpreende até profissionais: <strong>os três pontos da curva convergiram, no longo prazo, praticamente para o mesmo retorno.</strong></p>
+
+  <div class="chart-wrap fade-in">
+    <div class="chart-title">Retorno acumulado desde 2010</div>
+    <div class="chart-subtitle">R$ 100 investidos em jan/2010 · índices B3 Tesouro IPCA Prazo × CDI · números-índice, base 100</div>
+    <div class="chart-legend">
+      <span class="legend-item"><span class="legend-dot" style="background:#3dbf8a;"></span>NB0211 (2 anos)</span>
+      <span class="legend-item"><span class="legend-dot" style="background:#c9a84c;"></span>NB0511 (5 anos)</span>
+      <span class="legend-item"><span class="legend-dot" style="background:#9a7ad9;"></span>NB1011 (10 anos)</span>
+      <span class="legend-item"><span class="legend-dot" style="background:rgba(245,237,224,0.35);border-top:1px dashed rgba(245,237,224,0.5);height:0;"></span>CDI</span>
+    </div>
+    <svg class="chart-svg" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg">
+      <line x1="50" y1="260" x2="730" y2="260" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+      <line x1="50" y1="20" x2="50" y2="260" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+      <g stroke="rgba(255,255,255,0.06)" stroke-width="1">
+        <line x1="50" y1="225.7" x2="730" y2="225.7"/>
+        <line x1="50" y1="191.4" x2="730" y2="191.4"/>
+        <line x1="50" y1="157.1" x2="730" y2="157.1"/>
+        <line x1="50" y1="122.9" x2="730" y2="122.9"/>
+        <line x1="50" y1="88.6" x2="730" y2="88.6"/>
+        <line x1="50" y1="54.3" x2="730" y2="54.3"/>
+      </g>
+      <g font-family="Jost, sans-serif" font-size="9" fill="rgba(245,237,224,0.35)">
+        <text x="16" y="264">0</text>
+        <text x="4" y="229.7">100</text>
+        <text x="4" y="195.4">200</text>
+        <text x="4" y="161.1">300</text>
+        <text x="4" y="126.9">400</text>
+        <text x="4" y="92.6">500</text>
+        <text x="4" y="58.3">600</text>
+        <text x="34" y="278">2010</text>
+        <text x="119" y="278">2012</text>
+        <text x="204" y="278">2014</text>
+        <text x="289" y="278">2016</text>
+        <text x="374" y="278">2018</text>
+        <text x="459" y="278">2020</text>
+        <text x="544" y="278">2022</text>
+        <text x="629" y="278">2024</text>
+        <text x="714" y="278">2026</text>
+      </g>
+      <path d="M 50.0,225.7 L 92.5,219.9 L 135.0,215.4 L 177.5,210.5 L 220.0,205.1 L 262.5,200.6 L 305.0,194.9 L 347.5,189.4 L 390.0,182.9 L 432.5,176.4 L 475.0,170.9 L 517.5,163.9 L 560.0,157.1 L 602.5,146.4 L 645.0,136.6 L 687.5,117.6 L 730.0,99.2" fill="none" stroke="rgba(245,237,224,0.4)" stroke-width="1.6" stroke-dasharray="4 3"/>
+      <path d="M 50.0,225.7 L 92.5,221.4 L 135.0,208.6 L 177.5,208.9 L 220.0,212.0 L 262.5,198.8 L 305.0,194.9 L 347.5,186.9 L 390.0,164.0 L 432.5,142.2 L 475.0,129.7 L 517.5,135.3 L 560.0,146.9 L 602.5,132.1 L 645.0,112.6 L 687.5,91.2 L 730.0,59.4" fill="none" stroke="#9a7ad9" stroke-width="2"/>
+      <path d="M 50.0,225.7 L 92.5,218.4 L 135.0,210.3 L 177.5,206.0 L 220.0,196.6 L 262.5,194.7 L 305.0,189.7 L 347.5,178.5 L 390.0,167.4 L 432.5,157.2 L 475.0,141.7 L 517.5,134.8 L 560.0,124.6 L 602.5,110.9 L 645.0,98.9 L 687.5,78.7 L 730.0,59.1" fill="none" stroke="#c9a84c" stroke-width="2.2"/>
+      <path d="M 50.0,225.7 L 92.5,218.5 L 135.0,212.0 L 177.5,207.3 L 220.0,200.0 L 262.5,195.5 L 305.0,189.7 L 347.5,181.0 L 390.0,170.9 L 432.5,158.2 L 475.0,146.9 L 517.5,136.1 L 560.0,126.3 L 602.5,113.2 L 645.0,102.3 L 687.5,84.0 L 730.0,63.5" fill="none" stroke="#3dbf8a" stroke-width="2"/>
+    </svg>
+    <div class="chart-note">Visualização ilustrativa reproduzindo o padrão e a magnitude reportados no white paper da Nu Asset (backtest da metodologia até ago/2018; índice oficial B3 a partir daí) — não representa os valores exatos ponto a ponto da série original. Não é recomendação de investimento.</div>
+  </div>
+
+  <div class="stat-row fade-in">
+    <div class="stat-card"><div class="stat-val verde">R$ 573</div><div class="stat-label">NB0211 · jan/2010 a jun/2026</div></div>
+    <div class="stat-card"><div class="stat-val">R$ 586</div><div class="stat-label">NB0511 · jan/2010 a jun/2026</div></div>
+    <div class="stat-card"><div class="stat-val roxo">R$ 585</div><div class="stat-label">NB1011 · jan/2010 a jun/2026</div></div>
+    <div class="stat-card"><div class="stat-val" style="color:var(--texto-muted);">R$ 469</div><div class="stat-label">CDI acumulado no período</div></div>
+  </div>
+
+  <p>Em taxa, os três índices renderam entre <strong>11,2% e 11,3% ao ano</strong> — um excesso de 1,3 a 1,5 ponto percentual sobre o CDI (9,8% a.a.). Descontada a inflação do período, sobra um juro real realizado da ordem de <strong>5,2% ao ano</strong>. Mas a surpresa não está no nível — está na igualdade. O que separou os três pontos da curva não foi quanto renderam, e sim <strong>a trajetória que o investidor precisou atravessar para chegar lá</strong>: o índice de 2 anos passou, no pior momento, sete meses abaixo da última máxima; o de 10 anos, vinte e um meses.</p>
+
+  <div class="insight-box fade-in">
+    <p>Escolher entre 2, 5 e 10 anos não é apostar em qual ponto da curva vai render mais. É decidir qual caminho o investidor consegue e aceita percorrer para chegar a um retorno parecido.</p>
+  </div>
+
+  <!-- MECANISMO -->
+  <div class="section-title fade-in"><span class="section-icon">⚙️</span> O motor por trás do índice</div>
+
+  <p>Cada índice resolve um desafio duplo: manter a exposição colada a um ponto fixo da curva e, ao mesmo tempo, usar apenas títulos líquidos o bastante para serem negociados sem atrito. O mecanismo funciona em quatro passos, repetidos a cada rebalanceamento trimestral:</p>
+
+  <div class="flow-grid fade-in">
+    <div class="flow-step"><div class="flow-step-num">01</div>Seleção de 5 NTN-Bs em torno do ponto-alvo, emitidas há pelo menos 6 meses</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step"><div class="flow-step-num">02</div>NTN-B alvo recebe 50% fixo; o restante segue o volume negociado no secundário</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step"><div class="flow-step-num">03</div>Verificação: se o prazo sair da banda de tolerância, os pesos são ajustados</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step"><div class="flow-step-num">04</div>Troca de título alvo em fatias graduais de 12,5% — nunca de uma vez</div>
+  </div>
+
+  <p>Os três índices são de <strong>retorno total</strong>: os cupons semestrais das NTN-Bs são reincorporados automaticamente à carteira, sem depender do investidor reinvestir cada pagamento — a mesma mecânica que sustenta a imunização de Redington, funcionando dentro do próprio veículo.</p>
+
+  <!-- SISTEMA / COMBINAÇÕES -->
+  <div class="section-title fade-in"><span class="section-icon">🧩</span> Um sistema, não três produtos</div>
+
+  <p>Como a duration de uma carteira é a média ponderada das durations dos seus componentes, os três ETFs não são o limite do que o investidor pode acessar — são as peças com que se monta qualquer exposição intermediária entre 2 e 10 anos, combinando dois vértices vizinhos nas proporções certas:</p>
+
+  <div class="combo-grid fade-in">
+    <div class="combo-card">
+      <div class="combo-duration">3 anos</div>
+      <div class="combo-bar">
+        <div class="combo-seg" style="height:33%; background:#c9a84c;">33%</div>
+        <div class="combo-seg" style="height:67%; background:#3dbf8a;">67%</div>
+      </div>
+      <div class="combo-legend">67% NB0211<br>33% NB0511</div>
+    </div>
+    <div class="combo-card">
+      <div class="combo-duration">4 anos</div>
+      <div class="combo-bar">
+        <div class="combo-seg" style="height:67%; background:#c9a84c;">67%</div>
+        <div class="combo-seg" style="height:33%; background:#3dbf8a;">33%</div>
+      </div>
+      <div class="combo-legend">33% NB0211<br>67% NB0511</div>
+    </div>
+    <div class="combo-card">
+      <div class="combo-duration">6 anos</div>
+      <div class="combo-bar">
+        <div class="combo-seg" style="height:20%; background:#9a7ad9;">20%</div>
+        <div class="combo-seg" style="height:80%; background:#c9a84c;">80%</div>
+      </div>
+      <div class="combo-legend">80% NB0511<br>20% NB1011</div>
+    </div>
+    <div class="combo-card">
+      <div class="combo-duration">7 anos</div>
+      <div class="combo-bar">
+        <div class="combo-seg" style="height:40%; background:#9a7ad9;">40%</div>
+        <div class="combo-seg" style="height:60%; background:#c9a84c;">60%</div>
+      </div>
+      <div class="combo-legend">60% NB0511<br>40% NB1011</div>
+    </div>
+    <div class="combo-card">
+      <div class="combo-duration">9 anos</div>
+      <div class="combo-bar">
+        <div class="combo-seg" style="height:80%; background:#9a7ad9;">80%</div>
+        <div class="combo-seg" style="height:20%; background:#c9a84c;">20%</div>
+      </div>
+      <div class="combo-legend">20% NB0511<br>80% NB1011</div>
+    </div>
+  </div>
+
+  <p>Um fundo de previdência pode calibrar a carteira à duração dos seus passivos; um alocador pode encurtar ou alongar a exposição rebalanceando pesos, sem trocar de produto nem abrir mão de liquidez. Não são três fundos concorrentes na prateleira — é uma curva inteira de juro real acessível a partir de três instrumentos.</p>
+
+  <!-- TRIBUTAÇÃO -->
+  <div class="section-title fade-in"><span class="section-icon">💰</span> A vantagem silenciosa: o fator tributário</div>
+
+  <p>Nos ETFs de renda fixa não há come-cotas: o imposto de renda incide apenas no resgate, à alíquota mínima de <strong>15%</strong>, pois o prazo médio de repactuação das três carteiras supera 720 dias. O white paper simula R$ 1 milhão aplicado entre janeiro de 2010 e junho de 2026 comparando três formas de acessar a mesma carteira:</p>
+
+  <div class="tax-bars fade-in">
+    <div class="tax-row">
+      <div class="tax-label">ETF (NB0211)</div>
+      <div class="tax-track"><div class="tax-fill" style="width:100%; background:var(--dourado);">R$ 4,79 milhões</div></div>
+    </div>
+    <div class="tax-row">
+      <div class="tax-label">Tesouro Direto</div>
+      <div class="tax-track"><div class="tax-fill" style="width:93.3%; background:#9a7ad9;">R$ 4,47 milhões</div></div>
+    </div>
+    <div class="tax-row">
+      <div class="tax-label">Fundo tradicional</div>
+      <div class="tax-track"><div class="tax-fill" style="width:85.6%; background:rgba(245,237,224,0.35);">R$ 4,10 milhões</div></div>
+    </div>
+  </div>
+
+  <p>A diferença é estrutural: o ETF reinveste os cupons sem incidência de IR e só recolhe os 15% na venda, diferindo o imposto ao longo de toda a jornada. O Tesouro Direto (com cupom) paga IR a cada pagamento semestral, e o fundo tradicional sofre come-cotas semestral — que drena o saldo justamente onde ele mais trabalharia. É por isso que o fundo, mesmo pagando menos imposto em reais, termina mais pobre: o imposto pago cedo custa caro em juros compostos que deixam de existir.</p>
+
+  <!-- RISCOS -->
+  <div class="section-title fade-in"><span class="section-icon">⚠️</span> Riscos que não podem ser ignorados</div>
+
+  <p>Ser indexado ao IPCA não elimina o risco de mercado, e a inovação da duration constante traz limites próprios que precisam estar claros antes de qualquer alocação:</p>
+
+  <div class="fade-in">
+    <div class="risco-item"><strong>Marcação a mercado:</strong> se os juros reais subirem, o valor das NTN-Bs cai — refletido diariamente na cota, especialmente no NB1011.</div>
+    <div class="risco-item"><strong>Sem vencimento:</strong> o ETF é uma exposição contínua à curva, não um título que converge para um valor de resgate em uma data. Não existe "esperar o vencimento" de toda a carteira.</div>
+    <div class="risco-item"><strong>Liquidez ainda em formação:</strong> produtos lançados recentemente, sem histórico consolidado de volume — ordens limitadas podem ser mais prudentes que ordens a mercado.</div>
+    <div class="risco-item"><strong>Tracking error:</strong> taxa de administração, custos operacionais e caixa residual podem fazer o ETF render ligeiramente abaixo do índice.</div>
+    <div class="risco-item"><strong>Concentração soberana:</strong> a carteira é 100% Tesouro Nacional — diversifica vencimentos, não diversifica emissor, país ou moeda.</div>
+    <div class="risco-item"><strong>Roll-down não garantido:</strong> o ganho do NB0511 com a curva ascendente desaparece (ou vira negativo) se a curva se inverter.</div>
+  </div>
+
+  <p style="margin-top:8px;">Vale ainda o lembrete de que os fundos começaram a ser negociados em julho de 2026: parte da série histórica apresentada acima é backtest da metodologia, e não rentabilidade efetivamente obtida pelos ETFs.</p>
+
+  <div class="insight-box fade-in">
+    <p>O tempo não elimina o risco do juro real; ele o converte, com frequência documentada, em prêmio.</p>
+  </div>
+
+  <div class="conclusao fade-in">
+    Os ETFs NB0211, NB0511 e NB1011 não são apenas mais uma forma de acessar o Tesouro IPCA+. O verdadeiro diferencial é permitir que o investidor <strong>escolha e mantenha</strong>, de forma explícita e rebalanceada, o nível de exposição aos juros reais brasileiros que faz sentido para o seu horizonte — algo que nem o título individual (cuja duration envelhece) nem o índice amplo (cuja duration flutua) conseguem entregar sozinhos. A decisão entre 2, 5 e 10 anos não deve ser tratada como uma tentativa de adivinhar qual ponto da curva vai render mais: no longo prazo, historicamente, os três convergiram. Trata-se de escolher <strong>quanto risco de juros o investidor pode suportar e por quanto tempo poderá permanecer investido</strong> — e, a partir daí, construir a carteira com precisão, baixo custo e liquidez de bolsa.
+  </div>
+
+</article>
+
+<footer>
+  <div class="footer-name">Fábio Vogelaar Carlucci</div>
+  <div class="footer-contact">+55 (16) 98148-8260<br><a href="mailto:fabio.carlucci@ficus.capital">fabio.carlucci@ficus.capital</a></div>
+</footer>
+<div style="position:relative;z-index:1;padding:0 8% 28px;text-align:center;font-size:0.65rem;color:rgba(245,237,224,0.2);letter-spacing:0.08em;">
+  Fontes: White paper "Três Pontos, Uma Curva" (Nu Asset, jul/2026) · B3 · ICI · Tesouro Direto<br>
+  Conteúdo exclusivamente informativo e educacional. Rentabilidade passada não garante resultados futuros. Não constitui recomendação de investimento.
+</div>
+
+<script>
+const faders = document.querySelectorAll(".fade-in");
+const obs = new IntersectionObserver(e => e.forEach(x => { if(x.isIntersecting){ x.target.classList.add("visible"); obs.unobserve(x.target); } }), { threshold: 0.1 });
+faders.forEach(f => obs.observe(f));
+</script>
+</body>
+</html>
