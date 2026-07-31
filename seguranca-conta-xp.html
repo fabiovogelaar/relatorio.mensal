@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Como configurar sua conta XP para o máximo nível de segurança | Fábio Carlucci</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DBQSDSDRF3"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-DBQSDSDRF3");</script>
+<style>
+  :root {
+    --verde-escuro: #1a2e25;
+    --dourado: #c9a84c;
+    --dourado-claro: #e2c47a;
+    --creme: #f5ede0;
+    --texto-claro: rgba(245,237,224,0.85);
+    --texto-muted: rgba(245,237,224,0.45);
+    --azul: #4a90d9;
+    --verde-gain: #3dbf8a;
+    --vermelho: #c94545;
+    --laranja: #e07a35;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { background-color: var(--verde-escuro); color: var(--creme); font-family: "Jost", sans-serif; font-weight: 300; overflow-x: hidden; }
+  body::before {
+    content: ""; position: fixed; inset: 0;
+    background-image: radial-gradient(ellipse at 10% 10%, rgba(201,168,76,0.06) 0%, transparent 55%), radial-gradient(ellipse at 90% 90%, rgba(47,82,64,0.35) 0%, transparent 55%);
+    pointer-events: none; z-index: 0;
+  }
+  .back-link { position: relative; z-index: 10; display: inline-flex; align-items: center; gap: 8px; padding: 28px 8%; font-size: 0.7rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--texto-muted); text-decoration: none; transition: color 0.2s; }
+  .back-link:hover { color: var(--dourado); }
+  .back-link::before { content: "←"; font-size: 0.9rem; }
+  .hero { position: relative; z-index: 1; padding: 20px 8% 64px; border-bottom: 1px solid rgba(201,168,76,0.15); max-width: 900px; }
+  .hero-tag { font-size: 0.65rem; font-weight: 500; letter-spacing: 0.35em; text-transform: uppercase; color: var(--dourado); display: flex; align-items: center; gap: 12px; margin-bottom: 24px; opacity: 0; animation: fadeUp 0.7s ease 0.1s forwards; }
+  .hero-tag::before { content: ""; width: 30px; height: 1px; background: var(--dourado); }
+  h1 { font-family: "Cormorant Garamond", serif; font-size: clamp(2rem, 5vw, 3.6rem); font-weight: 300; line-height: 1.15; color: var(--creme); opacity: 0; animation: fadeUp 0.7s ease 0.2s forwards; }
+  h1 em { font-style: italic; color: var(--dourado-claro); }
+  .hero-sub { font-size: 0.97rem; color: var(--texto-muted); line-height: 1.75; margin-top: 16px; max-width: 640px; opacity: 0; animation: fadeUp 0.7s ease 0.35s forwards; }
+  .hero-fonte { margin-top: 14px; font-size: 0.7rem; color: rgba(245,237,224,0.3); opacity: 0; animation: fadeUp 0.7s ease 0.45s forwards; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+  article { position: relative; z-index: 1; max-width: 800px; margin: 0 auto; padding: 64px 8% 88px; }
+  .lead { font-family: "Cormorant Garamond", serif; font-size: clamp(1.1rem, 2.5vw, 1.35rem); font-weight: 400; line-height: 1.8; color: var(--creme); margin-bottom: 48px; padding-bottom: 48px; border-bottom: 1px solid rgba(201,168,76,0.15); }
+  p { font-size: 0.97rem; line-height: 1.9; color: var(--texto-claro); margin-bottom: 24px; }
+  strong { font-weight: 600; color: var(--creme); }
+  .section-title { font-family: "Cormorant Garamond", serif; font-size: 1.5rem; font-weight: 600; color: var(--dourado-claro); margin: 56px 0 18px; padding-top: 44px; border-top: 1px solid rgba(201,168,76,0.12); display: flex; align-items: center; gap: 14px; }
+  .section-icon { font-size: 1.3rem; flex-shrink: 0; }
+
+  /* ITEM DE SEGURANCA */
+  .item-card { border-radius: 8px; padding: 26px 26px; margin: 24px 0; }
+  .item-card.n1 { background: rgba(74,144,217,0.07); border: 1px solid rgba(74,144,217,0.2); }
+  .item-card.n2 { background: rgba(61,191,138,0.06); border: 1px solid rgba(61,191,138,0.16); }
+  .item-card.n3 { background: rgba(201,168,76,0.08); border: 1px solid rgba(201,168,76,0.22); }
+  .item-card.n4 { background: rgba(224,122,53,0.07); border: 1px solid rgba(224,122,53,0.18); }
+  .item-card.n5 { background: rgba(154,122,217,0.07); border: 1px solid rgba(154,122,217,0.18); }
+  .item-card.n6 { background: rgba(201,69,69,0.06); border: 1px solid rgba(201,69,69,0.15); }
+  .item-card.n7 { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); }
+  .item-header { display: flex; align-items: center; gap: 14px; margin-bottom: 12px; }
+  .item-num { font-family: "Cormorant Garamond", serif; font-size: 1.8rem; font-weight: 700; line-height: 1; flex-shrink: 0; width: 34px; }
+  .item-card.n1 .item-num { color: var(--azul); }
+  .item-card.n2 .item-num { color: var(--verde-gain); }
+  .item-card.n3 .item-num { color: var(--dourado); }
+  .item-card.n4 .item-num { color: var(--laranja); }
+  .item-card.n5 .item-num { color: #9a7ad9; }
+  .item-card.n6 .item-num { color: #e07070; }
+  .item-card.n7 .item-num { color: var(--texto-muted); }
+  .item-titulo { font-family: "Cormorant Garamond", serif; font-size: 1.25rem; font-weight: 600; color: var(--creme); }
+  .item-desc { font-size: 0.9rem; color: var(--texto-claro); line-height: 1.75; }
+  .item-tip { margin-top: 12px; padding: 12px 16px; background: rgba(0,0,0,0.15); border-left: 2px solid rgba(201,168,76,0.4); border-radius: 2px; font-size: 0.82rem; color: var(--texto-claro); line-height: 1.6; }
+  .item-tip strong { color: var(--dourado); }
+
+  /* ESPACO SEGURO DESTAQUE */
+  .espaco-destaque { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 20px 0 0; }
+  @media (max-width: 500px) { .espaco-destaque { grid-template-columns: 1fr; } }
+  .espaco-tag { background: rgba(0,0,0,0.15); border-radius: 6px; padding: 14px 14px; text-align: center; }
+  .espaco-val { font-family: "Cormorant Garamond", serif; font-size: 1.4rem; font-weight: 700; color: var(--dourado); line-height: 1; margin-bottom: 4px; }
+  .espaco-label { font-size: 0.7rem; color: var(--texto-muted); line-height: 1.4; }
+
+  /* CHECKLIST */
+  .checklist-wrap { background: rgba(10,20,16,0.7); border: 1px solid rgba(255,255,255,0.07); border-radius: 8px; padding: 28px 26px; margin: 32px 0; }
+  .checklist-titulo { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--dourado); margin-bottom: 20px; }
+  .checklist-item { display: flex; align-items: center; gap: 14px; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+  .checklist-item:last-child { border-bottom: none; }
+  .checklist-box { width: 20px; height: 20px; border: 2px solid rgba(201,168,76,0.4); border-radius: 4px; flex-shrink: 0; }
+  .checklist-texto { font-size: 0.88rem; color: var(--texto-claro); }
+
+  /* INSIGHT */
+  .insight-box { background: linear-gradient(135deg, rgba(201,168,76,0.1) 0%, rgba(26,46,37,0.4) 100%); border: 1px solid rgba(201,168,76,0.25); border-left: 3px solid var(--dourado); border-radius: 4px; padding: 28px 32px; margin: 36px 0; }
+  .insight-box p { font-family: "Cormorant Garamond", serif; font-size: 1.1rem; color: var(--creme); line-height: 1.8; margin: 0; }
+
+  /* CONCLUSÃO */
+  .conclusao { font-family: "Cormorant Garamond", serif; font-size: 1.15rem; font-weight: 400; line-height: 1.85; color: var(--creme); margin-top: 52px; padding: 40px; border: 1px solid rgba(201,168,76,0.2); border-radius: 6px; background: rgba(255,255,255,0.02); position: relative; }
+  .conclusao::before { content: "\201C"; position: absolute; top: -10px; left: 32px; font-size: 5rem; color: rgba(201,168,76,0.15); font-family: "Cormorant Garamond", serif; line-height: 1; }
+
+  .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .fade-in.visible { opacity: 1; transform: none; }
+  footer { position: relative; z-index: 1; border-top: 1px solid rgba(201,168,76,0.12); padding: 40px 8%; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+  .footer-name { font-family: "Cormorant Garamond", serif; font-size: 1.1rem; font-weight: 300; color: var(--texto-muted); }
+  .footer-contact { font-size: 0.75rem; color: rgba(245,237,224,0.25); line-height: 1.9; text-align: right; }
+  .footer-contact a { color: var(--dourado); text-decoration: none; }
+  @media (max-width: 640px) { .back-link,.hero { padding-left: 5%; padding-right: 5%; } article { padding: 48px 5% 64px; } footer { padding: 32px 5%; flex-direction: column; } .footer-contact { text-align: left; } }
+</style>
+</head>
+<body>
+
+<a class="back-link" href="index.html">Voltar</a>
+
+<header class="hero">
+  <div class="hero-tag">Segurança & Proteção Patrimonial</div>
+  <h1>Como configurar sua conta XP<br>para o <em>máximo nível de segurança</em></h1>
+  <p class="hero-sub">Um patrimônio bem protegido começa por uma conta bem configurada. Construir patrimônio exige tempo, disciplina e boas decisões — mas sua proteção também depende de como a conta usada para administrá-lo está configurada.</p>
+  <div class="hero-fonte">Fonte: Central de Segurança XP · Atendimento XP</div>
+</header>
+
+<article>
+
+  <p class="lead">
+    Nos últimos anos, as instituições financeiras investiram fortemente em recursos capazes de reduzir significativamente os riscos de furtos, roubos, engenharia social e acessos não autorizados. Muitos desses recursos, porém, permanecem <strong>pouco conhecidos ou subutilizados</strong> pelos próprios investidores. Veja as principais funcionalidades disponíveis na plataforma XP e como elas podem proteger seu patrimônio.
+  </p>
+
+  <div class="item-card n1 fade-in">
+    <div class="item-header"><div class="item-num">1</div><div class="item-titulo">Biometria: a primeira camada de proteção</div></div>
+    <div class="item-desc">A autenticação biométrica deve ser utilizada sempre que o dispositivo for compatível. Além de trazer praticidade, ela vincula a autenticação a características físicas do usuário, dificultando o uso indevido da conta por terceiros — mesmo que tenham a senha do aparelho. Não elimina todos os riscos, mas representa uma barreira importante contra acessos não autorizados.</div>
+    <div class="item-tip"><strong>Como ativar:</strong> a biometria facial e digital substitui a senha na autenticação do app. Verifique nas configurações do seu dispositivo se a funcionalidade está habilitada.</div>
+  </div>
+
+  <div class="item-card n2 fade-in">
+    <div class="item-header"><div class="item-num">2</div><div class="item-titulo">Gerenciamento de dispositivos autorizados</div></div>
+    <div class="item-desc">A XP identifica os dispositivos usados para acessar a conta e adota validações adicionais quando um novo aparelho é cadastrado. Revise periodicamente os dispositivos autorizados, especialmente após trocar de celular ou computador. Se identificar um equipamento que não reconhece, remova-o imediatamente e altere sua senha de acesso.</div>
+  </div>
+
+  <div class="item-card n3 fade-in">
+    <div class="item-header"><div class="item-num">3</div><div class="item-titulo">Espaço Seguro: proteção baseada em localização</div></div>
+    <div class="item-desc">Um dos recursos mais interessantes da XP. Permite cadastrar <strong>até 10 endereços de confiança</strong> — como residência ou escritório — usando a geolocalização do aparelho. Fora desses locais, o aplicativo pode restringir o acesso às áreas de investimentos e reduzir limites de PIX e TED, diminuindo a exposição em casos de perda, furto ou roubo do celular.</div>
+    <div class="espaco-destaque">
+      <div class="espaco-tag">
+        <div class="espaco-val">10 endereços</div>
+        <div class="espaco-label">de confiança podem ser cadastrados por conta</div>
+      </div>
+      <div class="espaco-tag">
+        <div class="espaco-val">Modo Viagem</div>
+        <div class="espaco-label">autoriza temporariamente um local de destino (hotel, casa de temporada) com datas de início e fim</div>
+      </div>
+    </div>
+    <div class="item-tip"><strong>Como ativar:</strong> no app XP, toque no seu nome (canto superior esquerdo) → "Central de Segurança" → "Espaço Seguro" e siga a jornada de configuração. É necessário manter a localização do aparelho ativada.</div>
+  </div>
+
+  <div class="item-card n4 fade-in">
+    <div class="item-header"><div class="item-num">4</div><div class="item-titulo">Oculte sua carteira fora dos locais de confiança</div></div>
+    <div class="item-desc">Mesmo com o aplicativo acessível, é possível reduzir a exposição das informações patrimoniais. Ocultar a visualização da carteira impede que terceiros vejam imediatamente os valores investidos caso o aparelho seja visualizado em ambientes públicos ou durante uma abordagem. Um detalhe simples que preserva privacidade e reduz riscos em situações de vulnerabilidade.</div>
+  </div>
+
+  <div class="item-card n5 fade-in">
+    <div class="item-header"><div class="item-num">5</div><div class="item-titulo">Restrinja movimentações pelo aplicativo, quando fizer sentido</div></div>
+    <div class="item-desc">Nem todo investidor realiza aplicações e resgates com frequência. Para quem usa o app principalmente para consultar saldo e acompanhar a carteira, pode fazer sentido restringir certas movimentações ao ambiente web da XP — criando uma barreira adicional contra operações feitas diretamente pelo celular em caso de perda ou roubo. Essa escolha deve considerar seu perfil de uso e a necessidade de agilidade nas operações.</div>
+  </div>
+
+  <div class="item-card n6 fade-in">
+    <div class="item-header"><div class="item-num">6</div><div class="item-titulo">Mantenha as notificações de segurança ativadas</div></div>
+    <div class="item-desc">As notificações são uma importante ferramenta de monitoramento. Alertas de acessos, novos dispositivos e movimentações permitem identificar rapidamente atividades incomuns e agir antes que uma situação evolua para algo grave. Sempre que possível, mantenha essas notificações habilitadas.</div>
+  </div>
+
+  <div class="item-card n7 fade-in">
+    <div class="item-header"><div class="item-num">7</div><div class="item-titulo">Revise periodicamente suas configurações</div></div>
+    <div class="item-desc">Assim como uma carteira de investimentos, as configurações de segurança também merecem revisão. Uma checagem semestral costuma ser suficiente para verificar dispositivos autorizados, dados cadastrais, telefone e e-mail de recuperação, permissões do aplicativo e os recursos de segurança disponíveis. Leva poucos minutos e pode evitar transtornos relevantes no futuro.</div>
+  </div>
+
+  <!-- CHECKLIST -->
+  <div class="section-title fade-in"><span class="section-icon">✅</span> Checklist de segurança da conta XP</div>
+
+  <p>Antes de encerrar, verifique se sua conta atende às principais recomendações:</p>
+
+  <div class="checklist-wrap fade-in">
+    <div class="checklist-titulo">Checklist</div>
+    <div class="checklist-item"><div class="checklist-box"></div><div class="checklist-texto">Biometria habilitada</div></div>
+    <div class="checklist-item"><div class="checklist-box"></div><div class="checklist-texto">Dispositivos autorizados revisados</div></div>
+    <div class="checklist-item"><div class="checklist-box"></div><div class="checklist-texto">Espaço Seguro configurado</div></div>
+    <div class="checklist-item"><div class="checklist-box"></div><div class="checklist-texto">Visualização dos investimentos protegida fora dos locais de confiança</div></div>
+    <div class="checklist-item"><div class="checklist-box"></div><div class="checklist-texto">Restrições de movimentação avaliadas de acordo com seu perfil de utilização</div></div>
+    <div class="checklist-item"><div class="checklist-box"></div><div class="checklist-texto">Notificações de segurança ativadas</div></div>
+    <div class="checklist-item"><div class="checklist-box"></div><div class="checklist-texto">Dados cadastrais atualizados</div></div>
+    <div class="checklist-item"><div class="checklist-box"></div><div class="checklist-texto">Revisão periódica das configurações de segurança</div></div>
+  </div>
+
+  <div class="insight-box fade-in">
+    <p>A segurança patrimonial não depende de uma única ferramenta, mas da <strong>combinação de diferentes camadas de proteção</strong>. Biometria, gerenciamento de dispositivos, Espaço Seguro e restrições de acesso foram desenvolvidos para reduzir riscos sem comprometer a praticidade do dia a dia.</p>
+  </div>
+
+  <div class="conclusao fade-in">
+    Recomendamos que todos os clientes revisem periodicamente as configurações de segurança disponíveis na plataforma e mantenham o aplicativo sempre atualizado. <strong>Pequenos ajustes realizados hoje podem representar uma proteção importante</strong> para um patrimônio construído ao longo de muitos anos.
+  </div>
+
+</article>
+
+<footer>
+  <div class="footer-name">Fábio Vogelaar Carlucci</div>
+  <div class="footer-contact">+55 (16) 98148-8260<br><a href="mailto:fabio.carlucci@ficus.capital">fabio.carlucci@ficus.capital</a></div>
+</footer>
+<div style="position:relative;z-index:1;padding:0 8% 28px;text-align:center;font-size:0.65rem;color:rgba(245,237,224,0.2);letter-spacing:0.08em;">
+  Fontes: Central de Segurança XP · Atendimento XP<br>
+  Conteúdo exclusivamente informativo e educacional.
+</div>
+
+<script>
+const faders = document.querySelectorAll(".fade-in");
+const obs = new IntersectionObserver(e => e.forEach(x => { if(x.isIntersecting){ x.target.classList.add("visible"); obs.unobserve(x.target); } }), { threshold: 0.1 });
+faders.forEach(f => obs.observe(f));
+</script>
+</body>
+</html>
