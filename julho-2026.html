@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Relatório Mensal — Julho 2026 | Fábio Carlucci</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DBQSDSDRF3"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-DBQSDSDRF3");</script>
+<style>
+  :root {
+    --verde-escuro: #1a2e25;
+    --dourado: #c9a84c;
+    --dourado-claro: #e2c47a;
+    --creme: #f5ede0;
+    --texto-claro: rgba(245,237,224,0.85);
+    --texto-muted: rgba(245,237,224,0.45);
+    --azul: #4a90d9;
+    --verde-gain: #3dbf8a;
+    --vermelho: #c94545;
+    --laranja: #e07a35;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { background-color: var(--verde-escuro); color: var(--creme); font-family: "Jost", sans-serif; font-weight: 300; overflow-x: hidden; }
+  body::before {
+    content: ""; position: fixed; inset: 0;
+    background-image: radial-gradient(ellipse at 15% 15%, rgba(201,168,76,0.07) 0%, transparent 55%), radial-gradient(ellipse at 85% 85%, rgba(47,82,64,0.4) 0%, transparent 55%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none; z-index: 0;
+  }
+  .back-link { position: relative; z-index: 10; display: inline-flex; align-items: center; gap: 8px; padding: 28px 8%; font-size: 0.7rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--texto-muted); text-decoration: none; transition: color 0.2s; }
+  .back-link:hover { color: var(--dourado); }
+  .back-link::before { content: "←"; font-size: 0.9rem; }
+  .hero { position: relative; z-index: 1; padding: 20px 8% 64px; border-bottom: 1px solid rgba(201,168,76,0.15); }
+  .hero-tag { font-size: 0.65rem; font-weight: 500; letter-spacing: 0.35em; text-transform: uppercase; color: var(--dourado); display: flex; align-items: center; gap: 12px; margin-bottom: 20px; opacity: 0; animation: fadeUp 0.7s ease 0.1s forwards; }
+  .hero-tag::before { content: ""; width: 30px; height: 1px; background: var(--dourado); }
+  .hero-eyebrow { font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--texto-muted); margin-bottom: 16px; opacity: 0; animation: fadeUp 0.7s ease 0.2s forwards; }
+  h1 { font-family: "Cormorant Garamond", serif; font-size: clamp(3rem, 8vw, 6rem); font-weight: 300; line-height: 1.05; color: var(--creme); opacity: 0; animation: fadeUp 0.7s ease 0.3s forwards; }
+  h1 strong { font-weight: 700; color: var(--dourado-claro); display: block; }
+  .hero-month { font-size: clamp(0.8rem, 2vw, 0.95rem); letter-spacing: 0.3em; text-transform: uppercase; color: var(--texto-muted); margin-top: 16px; opacity: 0; animation: fadeUp 0.7s ease 0.5s forwards; }
+  .hero-assinatura { margin-top: 36px; opacity: 0; animation: fadeUp 0.7s ease 0.65s forwards; }
+  .assinatura-svg { width: 140px; height: auto; opacity: 0.85; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+  .section { position: relative; z-index: 1; padding: 64px 8%; max-width: 900px; margin: 0 auto; }
+  .section-tag { font-size: 0.65rem; font-weight: 500; letter-spacing: 0.35em; text-transform: uppercase; color: var(--dourado); display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
+  .section-tag::before { content: ""; width: 30px; height: 1px; background: var(--dourado); }
+  .section-title { font-family: "Cormorant Garamond", serif; font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 600; line-height: 1.15; color: var(--creme); margin-bottom: 36px; }
+  .divider { width: calc(100% - 16%); height: 1px; margin: 0 8%; background: linear-gradient(90deg, rgba(201,168,76,0.3) 0%, transparent 100%); }
+  .pills-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  @media (max-width: 580px) { .pills-grid { grid-template-columns: 1fr; } }
+  .pill { background: rgba(255,255,255,0.03); border: 1px solid rgba(201,168,76,0.2); border-left: 3px solid var(--dourado); border-radius: 4px; padding: 20px 22px; transition: background 0.3s, transform 0.3s; }
+  .pill:hover { background: rgba(201,168,76,0.07); transform: translateY(-2px); }
+  .pill-icon { font-size: 1.1rem; margin-bottom: 7px; display: block; }
+  .pill-title { font-weight: 600; font-size: 0.75rem; letter-spacing: 0.08em; color: var(--dourado); margin-bottom: 7px; }
+  .pill-text { font-size: 0.88rem; color: var(--texto-claro); line-height: 1.65; }
+  .block { margin-bottom: 40px; }
+  .block-title { font-family: "Cormorant Garamond", serif; font-size: 1.35rem; font-weight: 600; color: var(--dourado-claro); margin-bottom: 10px; border-bottom: 1px solid rgba(201,168,76,0.15); padding-bottom: 8px; }
+  .block-text { font-size: 0.95rem; color: var(--texto-claro); line-height: 1.85; }
+  .block-text strong { font-weight: 600; color: var(--creme); }
+  .implicacao { margin-top: 12px; padding: 14px 18px; background: rgba(201,168,76,0.07); border-left: 2px solid rgba(201,168,76,0.4); border-radius: 2px; font-size: 0.86rem; color: var(--texto-claro); line-height: 1.7; }
+  .implicacao strong { color: var(--dourado); font-weight: 600; }
+
+  /* IPCA / IPCA-15 comparativo */
+  .inflacao-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 20px 0; }
+  @media (max-width: 480px) { .inflacao-grid { grid-template-columns: 1fr; } }
+  .inflacao-card { border-radius: 6px; padding: 18px 16px; text-align: center; background: rgba(61,191,138,0.07); border: 1px solid rgba(61,191,138,0.2); }
+  .inflacao-label { font-size: 0.62rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--verde-gain); margin-bottom: 8px; }
+  .inflacao-val { font-family: "Cormorant Garamond", serif; font-size: 1.8rem; font-weight: 700; color: var(--verde-gain); line-height: 1; margin-bottom: 4px; }
+  .inflacao-desc { font-size: 0.75rem; color: var(--texto-muted); line-height: 1.4; }
+
+  /* Desemprego destaque */
+  .desemprego-card { background: linear-gradient(135deg, rgba(201,168,76,0.12) 0%, rgba(47,82,64,0.3) 100%); border: 1px solid rgba(201,168,76,0.3); border-radius: 8px; padding: 24px 28px; margin: 24px 0; display: flex; align-items: center; gap: 28px; flex-wrap: wrap; }
+  .desemprego-number { font-family: "Cormorant Garamond", serif; font-size: 3rem; font-weight: 700; color: var(--dourado); line-height: 1; }
+  .desemprego-label { font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--texto-muted); margin-top: 4px; }
+  .desemprego-desc { font-size: 0.88rem; color: var(--texto-claro); line-height: 1.7; flex: 1; min-width: 200px; }
+
+  /* Fed dissent */
+  .fed-box { background: rgba(74,144,217,0.07); border: 1px solid rgba(74,144,217,0.2); border-left: 3px solid var(--azul); border-radius: 4px; padding: 24px 26px; margin: 24px 0; }
+  .fed-title { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--azul); margin-bottom: 12px; }
+  .fed-votos { display: flex; align-items: center; gap: 16px; margin-top: 12px; flex-wrap: wrap; }
+  .fed-voto-bloco { text-align: center; }
+  .fed-voto-num { font-family: "Cormorant Garamond", serif; font-size: 2rem; font-weight: 700; line-height: 1; }
+  .fed-voto-bloco.manter .fed-voto-num { color: var(--verde-gain); }
+  .fed-voto-bloco.subir .fed-voto-num { color: #e07070; }
+  .fed-voto-label { font-size: 0.68rem; color: var(--texto-muted); margin-top: 4px; }
+
+  /* BC grid */
+  .bc-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin: 24px 0; }
+  @media (max-width: 560px) { .bc-grid { grid-template-columns: 1fr 1fr; } }
+  .bc-card { border-radius: 6px; padding: 16px 12px; text-align: center; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07); }
+  .bc-pais { font-size: 0.62rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--texto-muted); margin-bottom: 6px; }
+  .bc-acao { font-size: 0.78rem; font-weight: 600; margin-bottom: 4px; color: var(--dourado); }
+  .bc-taxa { font-size: 0.68rem; color: var(--texto-muted); }
+
+  /* Tarifas */
+  .tarifas-box { background: rgba(224,122,53,0.08); border: 1px solid rgba(224,122,53,0.2); border-left: 3px solid var(--laranja); border-radius: 4px; padding: 26px 28px; margin: 24px 0; }
+  .tarifas-title { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--laranja); margin-bottom: 14px; }
+  .tarifas-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 14px; }
+  @media (max-width: 500px) { .tarifas-grid { grid-template-columns: 1fr; } }
+  .tarifa-item { background: rgba(0,0,0,0.15); border-radius: 6px; padding: 14px 12px; text-align: center; }
+  .tarifa-val { font-family: "Cormorant Garamond", serif; font-size: 1.4rem; font-weight: 700; color: var(--laranja); line-height: 1; margin-bottom: 4px; }
+  .tarifa-label { font-size: 0.68rem; color: var(--texto-muted); line-height: 1.35; }
+  .tarifas-produtos { display: flex; gap: 14px; margin-top: 16px; flex-wrap: wrap; }
+  .tp-col { flex: 1; min-width: 160px; }
+  .tp-titulo { font-size: 0.65rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 6px; }
+  .tp-col.afetados .tp-titulo { color: #e07070; }
+  .tp-col.isentos .tp-titulo { color: var(--verde-gain); }
+  .tp-lista { font-size: 0.78rem; color: var(--texto-claro); line-height: 1.6; }
+
+  .alert-box { border-radius: 6px; padding: 22px 24px; margin-bottom: 28px; }
+  .alert-box.info { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); }
+  .alert-box.ai { background: rgba(74,144,217,0.07); border: 1px solid rgba(74,144,217,0.2); border-left: 3px solid var(--azul); }
+  .alert-title { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 8px; }
+  .alert-box.info .alert-title { color: var(--dourado); }
+  .alert-box.ai .alert-title { color: var(--azul); }
+  .alert-text { font-size: 0.9rem; color: var(--texto-claro); line-height: 1.75; }
+
+  .destaques-list { display: flex; flex-direction: column; gap: 12px; margin-top: 8px; }
+  .destaque-item { display: flex; align-items: flex-start; gap: 16px; padding: 18px 20px; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 5px; transition: border-color 0.25s, background 0.25s; }
+  .destaque-item:hover { border-color: rgba(201,168,76,0.2); background: rgba(201,168,76,0.04); }
+  .destaque-icon { font-size: 1.3rem; flex-shrink: 0; margin-top: 2px; }
+  .destaque-titulo { font-size: 0.8rem; font-weight: 600; color: var(--dourado); margin-bottom: 4px; }
+  .destaque-desc { font-size: 0.84rem; color: var(--texto-claro); line-height: 1.6; }
+
+  .glossario-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 8px; }
+  @media (max-width: 580px) { .glossario-grid { grid-template-columns: 1fr; } }
+  .glossario-item { padding: 14px 18px; border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .glossario-term { font-weight: 600; font-size: 0.78rem; color: var(--dourado); margin-bottom: 4px; }
+  .glossario-def { font-size: 0.8rem; color: var(--texto-muted); line-height: 1.6; }
+
+  .side-nav { position: fixed; right: 24px; top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; gap: 12px; z-index: 100; }
+  .side-dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(201,168,76,0.3); transition: background 0.3s, transform 0.3s; cursor: pointer; }
+  .side-dot.active { background: var(--dourado); transform: scale(1.5); }
+  .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .fade-in.visible { opacity: 1; transform: none; }
+  footer { position: relative; z-index: 1; border-top: 1px solid rgba(201,168,76,0.12); padding: 40px 8%; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+  .footer-name { font-family: "Cormorant Garamond", serif; font-size: 1.1rem; font-weight: 300; color: var(--texto-muted); }
+  .footer-contact { font-size: 0.75rem; color: rgba(245,237,224,0.25); line-height: 1.9; text-align: right; }
+  .footer-contact a { color: var(--dourado); text-decoration: none; }
+  @media (max-width: 768px) { .side-nav { display: none; } .hero,.section { padding-left: 5%; padding-right: 5%; } footer { padding: 32px 5%; flex-direction: column; } .footer-contact { text-align: left; } .desemprego-card { flex-direction: column; gap: 16px; } }
+</style>
+</head>
+<body>
+
+<nav class="side-nav">
+  <div class="side-dot active" data-section="hero"></div>
+  <div class="side-dot" data-section="resumo"></div>
+  <div class="side-dot" data-section="nacional"></div>
+  <div class="side-dot" data-section="global"></div>
+  <div class="side-dot" data-section="destaques"></div>
+  <div class="side-dot" data-section="glossario"></div>
+</nav>
+
+<a class="back-link" href="index.html">Voltar</a>
+
+<section class="hero" id="hero">
+  <div class="hero-tag">Relatório Mensal · Ficus Capital</div>
+  <div class="hero-eyebrow">Fábio Carlucci</div>
+  <h1>O que aconteceu<br><strong>em julho?</strong></h1>
+  <p class="hero-month">Julho de 2026</p>
+  <div class="hero-assinatura">
+    <svg class="assinatura-svg" viewBox="0 0 200 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M10 40 C20 20, 35 15, 50 30 C60 40, 55 50, 45 48 C35 46, 38 35, 50 28 C65 20, 80 22, 90 32 C100 42, 95 52, 85 50 C75 48, 77 38, 88 30 C100 22, 118 20, 130 35 C140 48, 135 55, 122 52" stroke="rgba(201,168,76,0.8)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      <path d="M128 30 C138 18, 155 15, 168 25 C178 32, 180 42, 172 48" stroke="rgba(201,168,76,0.8)" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+      <path d="M8 50 L195 50" stroke="rgba(201,168,76,0.2)" stroke-width="0.5"/>
+      <text x="8" y="58" font-family="Georgia, serif" font-size="7" fill="rgba(201,168,76,0.5)" letter-spacing="1">Fabio Carlucci</text>
+    </svg>
+  </div>
+</section>
+
+<!-- RESUMO -->
+<div class="divider"></div>
+<section class="section fade-in" id="resumo">
+  <div class="section-tag">01</div>
+  <h2 class="section-title">Resumo<br>Executivo</h2>
+  <div class="pills-grid">
+    <div class="pill fade-in">
+      <span class="pill-icon">🌡️</span>
+      <div class="pill-title">Inflação surpreendeu positivamente</div>
+      <div class="pill-text">O IPCA de junho desacelerou para 0,16% e o IPCA-15 de julho veio em apenas 0,06% — bem abaixo do esperado pelo mercado. A inflação em 12 meses do IPCA-15 recuou de 4,80% para 4,52%.</div>
+    </div>
+    <div class="pill fade-in">
+      <span class="pill-icon">👷</span>
+      <div class="pill-title">Desemprego em mínima histórica: 5,4%</div>
+      <div class="pill-text">O menor patamar para o trimestre encerrado em junho desde o início da série histórica em 2012. Sustenta renda e consumo, mas mantém a inflação de serviços no radar do Banco Central.</div>
+    </div>
+    <div class="pill fade-in">
+      <span class="pill-icon">🏦</span>
+      <div class="pill-title">Sem reunião do Copom em julho</div>
+      <div class="pill-text">O mês funcionou como ponte entre o corte de junho e a reunião marcada para 4 e 5 de agosto. Os dados de inflação e emprego de julho serão insumo direto para a decisão do Copom.</div>
+    </div>
+    <div class="pill fade-in">
+      <span class="pill-icon">🇺🇸</span>
+      <div class="pill-title">Fed manteve juros com dissidência recorde</div>
+      <div class="pill-text">Decisão de 9 a 3 — a votação mais dividida desde 2016. Três dirigentes defenderam alta imediata de 0,25 p.p., sinalizando que o debate inflacionário americano não terminou.</div>
+    </div>
+    <div class="pill fade-in">
+      <span class="pill-icon">📦</span>
+      <div class="pill-title">Novas tarifas dos EUA sobre o Brasil</div>
+      <div class="pill-text">Duas medidas da Seção 301 somam sobretaxas de até 37,5% sobre parte das exportações brasileiras, afetando 23,1% do total exportado aos EUA — cerca de US$ 6,6 bilhões.</div>
+    </div>
+    <div class="pill fade-in">
+      <span class="pill-icon">🛢️</span>
+      <div class="pill-title">Petróleo e IA dividiram a agenda global</div>
+      <div class="pill-text">Tensões no Oriente Médio mantiveram o petróleo pressionado, enquanto a inteligência artificial seguiu sustentando as bolsas americanas — com debate crescente sobre concentração e valuation.</div>
+    </div>
+  </div>
+</section>
+
+<!-- NACIONAL -->
+<div class="divider"></div>
+<section class="section fade-in" id="nacional">
+  <div class="section-tag">02</div>
+  <h2 class="section-title">Visão<br>Nacional</h2>
+
+  <div class="block fade-in">
+    <div class="block-title">Um mês sem Copom, mas não sem sinalização</div>
+    <p class="block-text">Julho não teve reunião do Comitê de Política Monetária. Isso tornou os dados econômicos ainda mais relevantes, já que o mês funcionou como uma ponte entre o corte de juros de junho e a próxima reunião, marcada para <strong>4 e 5 de agosto</strong>. A leitura geral foi de melhora na inflação corrente, mas ainda com restrições importantes para uma queda acelerada da Selic.</p>
+    <div class="implicacao"><strong>Implicação:</strong> o mercado passou a enxergar mais espaço para queda dos juros curtos em agosto, sem eliminar completamente a cautela nos vencimentos mais longos da curva.</div>
+  </div>
+
+  <div class="block fade-in">
+    <div class="block-title">Inflação surpreendeu para baixo em dois indicadores seguidos</div>
+    <p class="block-text">O IPCA de junho subiu <strong>0,16%</strong>, desacelerando de forma relevante frente ao mês anterior e levando a inflação acumulada em 12 meses para <strong>4,64%</strong> — a leitura mensal mais baixa desde outubro. Na sequência, o IPCA-15 de julho reforçou essa leitura benigna, com alta de apenas <strong>0,06%</strong>, bem abaixo das expectativas do mercado. A taxa em 12 meses do IPCA-15 recuou de 4,80% para <strong>4,52%</strong>.</p>
+    <div class="inflacao-grid">
+      <div class="inflacao-card">
+        <div class="inflacao-label">IPCA · Junho</div>
+        <div class="inflacao-val">+0,16%</div>
+        <div class="inflacao-desc">12 meses: 4,64% · menor leitura mensal desde outubro</div>
+      </div>
+      <div class="inflacao-card">
+        <div class="inflacao-label">IPCA-15 · Julho</div>
+        <div class="inflacao-val">+0,06%</div>
+        <div class="inflacao-desc">12 meses: 4,52% (ante 4,80% em junho) · abaixo do esperado</div>
+      </div>
+    </div>
+    <p class="block-text">A composição importa tanto quanto o número cheio: no IPCA-15, o grupo <strong>Alimentação e bebidas</strong> teve deflação de 0,66%, enquanto <strong>Habitação</strong> pressionou com alta de 0,97% — puxada pela energia elétrica residencial (+3,03%). A inflação de serviços ainda precisa ser monitorada, pois tende a ser mais resistente em um mercado de trabalho apertado.</p>
+    <div class="implicacao"><strong>Implicação:</strong> esse conjunto reduz a percepção de urgência inflacionária e fortalece a tese de continuidade do ciclo de cortes — mas não resolve completamente a discussão sobre convergência da inflação à meta.</div>
+  </div>
+
+  <div class="block fade-in">
+    <div class="block-title">Mercado de trabalho: o contraponto mais importante</div>
+    <p class="block-text">A taxa de desemprego caiu para <strong>5,4%</strong> no trimestre encerrado em junho — o menor nível para o período desde o início da série histórica da PNAD Contínua, em 2012. Foi o segundo recuo consecutivo, vindo de 5,6% no trimestre anterior.</p>
+    <div class="desemprego-card">
+      <div>
+        <div class="desemprego-number">5,4%</div>
+        <div class="desemprego-label">Taxa de desemprego</div>
+      </div>
+      <div class="desemprego-desc">
+        <span style="color:#5ec98a;">▼</span> Menor nível da série histórica para o período (iniciada em 2012).<br><br>
+        <strong style="color:var(--dourado)">O dilema:</strong> famílias empregadas consomem mais e a inadimplência tende a ser menor — mas um mercado de trabalho muito forte pode manter a inflação de serviços mais resistente, limitando a velocidade de queda da Selic.
+      </div>
+    </div>
+    <div class="implicacao"><strong>Implicação:</strong> favorece empresas ligadas ao mercado doméstico com balanço saudável, mas reduz a probabilidade de cortes de juros muito acelerados nos próximos meses.</div>
+  </div>
+
+  <div class="block fade-in">
+    <div class="block-title">Atividade mista e fiscal como prêmio de risco estrutural</div>
+    <p class="block-text">A atividade trouxe sinais mistos: a indústria perdeu fôlego na margem, os serviços recuaram no dado mais recente disponível e o varejo avançou de forma modesta. O Brasil segue convivendo com uma combinação peculiar — inflação em desaceleração, emprego muito forte e atividade heterogênea. O fiscal permaneceu como o principal ponto de atenção estrutural: mesmo com alguma melhora pontual em projeções de resultado primário, a trajetória da dívida segue exigindo prêmio de risco na curva longa.</p>
+    <div class="implicacao"><strong>Implicação:</strong> a política monetária atua sobre a taxa básica, mas a curva longa depende também da confiança na solvência fiscal — por isso os juros longos podem não acompanhar integralmente a queda da Selic.</div>
+  </div>
+
+  <div class="block fade-in">
+    <div class="block-title">Novas tarifas dos EUA: risco setorial concreto</div>
+    <p class="block-text">A novidade mais relevante do mês no campo político-econômico foi o aumento das tensões comerciais com os Estados Unidos. Em <strong>15 e 23 de julho</strong>, o governo americano publicou duas medidas baseadas na Seção 301 de sua legislação comercial: uma sobretaxa específica de <strong>25%</strong> sobre determinados produtos brasileiros, e outra de <strong>12,5%</strong> ligada a uma investigação sobre trabalho forçado nas cadeias globais de suprimentos — aplicada a 41 países. As medidas entraram em vigor em <strong>22 de julho de 2026</strong>.</p>
+    <div class="tarifas-box">
+      <div class="tarifas-title">📦 Alcance das novas tarifas sobre o Brasil</div>
+      <div class="tarifas-grid">
+        <div class="tarifa-item">
+          <div class="tarifa-val">37,5%</div>
+          <div class="tarifa-label">Tarifa combinada máxima (25% + 12,5%) quando ambas incidem sobre o mesmo produto</div>
+        </div>
+        <div class="tarifa-item">
+          <div class="tarifa-val">23,1%</div>
+          <div class="tarifa-label">Das exportações brasileiras afetadas pelas novas medidas (~US$ 6,6 bi)</div>
+        </div>
+        <div class="tarifa-item">
+          <div class="tarifa-val">52,7%</div>
+          <div class="tarifa-label">Das exportações permanecem sem tarifas adicionais setoriais ou específicas</div>
+        </div>
+      </div>
+      <div class="tarifas-produtos">
+        <div class="tp-col afetados">
+          <div class="tp-titulo">Produtos afetados</div>
+          <div class="tp-lista">Máquinas, equipamentos, madeira, calçados e móveis, entre outros</div>
+        </div>
+        <div class="tp-col isentos">
+          <div class="tp-titulo">Isentos das novas sobretaxas</div>
+          <div class="tp-lista">Café, carnes e aeronaves</div>
+        </div>
+      </div>
+    </div>
+    <div class="implicacao"><strong>Implicação:</strong> o impacto macroeconômico direto pode ser administrável, mas afeta margens, volumes e competitividade de empresas exportadoras específicas — reforçando a necessidade de análise setorial dentro da carteira de ações.</div>
+  </div>
+
+  <div class="block fade-in">
+    <div class="block-title">Renda fixa: carrego segue atrativo, seletividade em duration</div>
+    <p class="block-text">Julho reforçou a atratividade do carrego doméstico. O CDI continua elevado e oferece relação risco-retorno difícil de ignorar, especialmente para reserva de liquidez. A melhora da inflação aumenta o interesse por prefixados e títulos mais longos, mas a decisão deve ser gradual — a curva longa ainda carrega riscos fiscais, externos e de inflação de serviços. Os títulos indexados ao IPCA seguem tendo papel importante para objetivos longos, como aposentadoria e sucessão patrimonial.</p>
+    <div class="implicacao"><strong>Implicação:</strong> evitar concentrar demais em duration apenas porque a inflação corrente veio melhor — a alocação mais eficiente combina pós-fixados, IPCA+ e prefixados de forma escalonada.</div>
+  </div>
+
+  <div class="block fade-in">
+    <div class="block-title">Bolsa brasileira: suporte, mas seletividade</div>
+    <p class="block-text">A bolsa brasileira encontrou algum suporte na combinação entre inflação mais baixa, expectativa de queda da Selic e valuations ainda descontados. A recuperação permaneceu seletiva: empresas com geração de caixa robusta, baixa alavancagem e exposição a setores defensivos seguiram mais bem posicionadas, enquanto companhias mais dependentes de juros longos continuaram sensíveis ao fiscal.</p>
+    <div class="implicacao"><strong>Implicação:</strong> bancos, utilities, energia, seguradoras e exportadoras de qualidade seguem centrais em carteiras equilibradas; varejo, construção e empresas alavancadas dependem mais da confirmação de queda da curva longa.</div>
+  </div>
+</section>
+
+<!-- GLOBAL -->
+<div class="divider"></div>
+<section class="section fade-in" id="global">
+  <div class="section-tag">03</div>
+  <h2 class="section-title">Visão<br>Global</h2>
+
+  <div class="block fade-in">
+    <div class="block-title">Fed mantém juros — mas a divisão interna é a notícia</div>
+    <p class="block-text">O Federal Reserve manteve a taxa entre <strong>3,50% e 3,75%</strong> pela quinta reunião consecutiva sem mudanças. A decisão em si já era esperada — o que importou foi a votação de <strong>9 a 3</strong>, a mais dividida desde 2016. Três dirigentes (Beth Hammack, Neel Kashkari e Lorie Logan) defenderam alta imediata de 0,25 p.p., para a faixa de 3,75%–4,00%.</p>
+    <div class="fed-box">
+      <div class="fed-title">🇺🇸 FOMC · Votação de julho</div>
+      <div class="fed-votos">
+        <div class="fed-voto-bloco manter">
+          <div class="fed-voto-num">9</div>
+          <div class="fed-voto-label">votos por manter</div>
+        </div>
+        <div class="fed-voto-bloco subir">
+          <div class="fed-voto-num">3</div>
+          <div class="fed-voto-label">votos por subir 0,25 p.p.</div>
+        </div>
+      </div>
+    </div>
+    <div class="implicacao"><strong>Implicação:</strong> o comunicado reforçou que a inflação segue acima da meta de 2%, em parte pressionada por choques de energia ligados ao conflito no Oriente Médio. O diferencial de juros entre Brasil e EUA segue elevado, mas qualquer sinalização de alta americana pode mudar rapidamente essa equação.</div>
+  </div>
+
+  <div class="block fade-in">
+    <div class="block-title">Bancos centrais globais: pausa generalizada, sem sinal de corte</div>
+    <p class="block-text">O padrão se repetiu nas principais economias: pausa nas taxas, mas sem descartar novas altas caso o choque de energia persista.</p>
+    <div class="bc-grid">
+      <div class="bc-card">
+        <div class="bc-pais">🇺🇸 Fed</div>
+        <div class="bc-acao">Manteve</div>
+        <div class="bc-taxa">3,50–3,75% · votação 9-3</div>
+      </div>
+      <div class="bc-card">
+        <div class="bc-pais">🇪🇺 BCE</div>
+        <div class="bc-acao">Manteve</div>
+        <div class="bc-taxa">Depósito em 2,25% · após alta em junho</div>
+      </div>
+      <div class="bc-card">
+        <div class="bc-pais">🇬🇧 BoE</div>
+        <div class="bc-acao">Manteve</div>
+        <div class="bc-taxa">Postura cautelosa</div>
+      </div>
+      <div class="bc-card">
+        <div class="bc-pais">🇯🇵 BoJ</div>
+        <div class="bc-acao">Manteve</div>
+        <div class="bc-taxa">Disposto a subir se necessário</div>
+      </div>
+    </div>
+    <div class="implicacao"><strong>Implicação:</strong> a ideia de cortes rápidos e sincronizados perdeu força. O preço do capital global continua alto, e a seletividade continua sendo premiada.</div>
+  </div>
+
+  <div class="alert-box info fade-in">
+    <div class="alert-title">🛢️ Petróleo segue como termômetro de risco geopolítico</div>
+    <p class="alert-text">As tensões no Oriente Médio mantiveram o petróleo pressionado ao longo de julho. Para os bancos centrais, petróleo mais caro afeta diretamente combustíveis, transporte, energia, custos industriais e expectativas de inflação. Para os mercados, funciona como termômetro de risco: sua alta pode beneficiar empresas do setor, mas tende a pressionar juros, margens e consumo em outras partes da economia.</p>
+  </div>
+
+  <div class="block fade-in">
+    <div class="block-title">China segue como fonte de fragilidade</div>
+    <p class="block-text">A atividade industrial chinesa voltou a mostrar fragilidade, o setor imobiliário continuou pressionado e a demanda doméstica permaneceu abaixo do necessário para uma retomada ampla. Esse ambiente limita o impulso sobre commodities tradicionais, especialmente minério de ferro e metais ligados à construção civil, enquanto a China segue migrando investimentos para manufatura avançada, tecnologia e energia limpa.</p>
+    <div class="implicacao"><strong>Implicação:</strong> menos suporte generalizado para commodities tradicionais e mais diferenciação entre produtos — cobre e metais ligados à transição energética seguem com dinâmica própria.</div>
+  </div>
+
+  <div class="alert-box ai fade-in">
+    <div class="alert-title">🤖 Inteligência artificial: tese estrutural, mas concentração no radar</div>
+    <p class="alert-text">A IA permaneceu como principal tema estrutural das bolsas americanas, sustentada por resultados corporativos em semicondutores, computação em nuvem e data centers. Porém, julho reforçou o debate sobre concentração: quando poucos papéis explicam parcela relevante da performance dos índices, o investidor precisa separar tendência estrutural de risco de valuation. O mercado começou a exigir sinais mais claros de que os investimentos em infraestrutura digital se traduzirão em lucros e fluxo de caixa — uma evolução saudável da narrativa.</p>
+  </div>
+</section>
+
+<!-- DESTAQUES -->
+<div class="divider"></div>
+<section class="section fade-in" id="destaques">
+  <div class="section-tag">04</div>
+  <h2 class="section-title">O que vimos<br>em julho</h2>
+  <div class="destaques-list fade-in">
+    <div class="destaque-item">
+      <span class="destaque-icon">🌡️</span>
+      <div>
+        <div class="destaque-titulo">Inflação trouxe alívio relevante em dois indicadores seguidos</div>
+        <div class="destaque-desc">IPCA de junho (0,16%) e IPCA-15 de julho (0,06%) reforçaram a percepção de que o pior momento da inflação corrente pode ter ficado para trás — aumentando a confiança na continuidade do ciclo de queda da Selic em agosto.</div>
+      </div>
+    </div>
+    <div class="destaque-item">
+      <span class="destaque-icon">👷</span>
+      <div>
+        <div class="destaque-titulo">Desemprego em mínima histórica: 5,4%</div>
+        <div class="destaque-desc">Menor nível da série iniciada em 2012 para o trimestre. Favorável para consumo e renda, mas mantém pressão potencial sobre a inflação de serviços.</div>
+      </div>
+    </div>
+    <div class="destaque-item">
+      <span class="destaque-icon">📦</span>
+      <div>
+        <div class="destaque-titulo">Tarifas americanas viraram risco setorial concreto</div>
+        <div class="destaque-desc">Sobretaxas de até 37,5% atingem 23,1% das exportações brasileiras aos EUA (~US$ 6,6 bi). Máquinas, madeira, calçados e móveis entre os mais afetados; café, carnes e aeronaves ficaram isentos.</div>
+      </div>
+    </div>
+    <div class="destaque-item">
+      <span class="destaque-icon">🇺🇸</span>
+      <div>
+        <div class="destaque-titulo">Fed manteve juros com a votação mais dividida desde 2016</div>
+        <div class="destaque-desc">9 a 3 pela manutenção. Três dirigentes defenderam alta imediata — mensagem de que a política monetária americana segue dependente dos dados, sem espaço para cortes rápidos.</div>
+      </div>
+    </div>
+    <div class="destaque-item">
+      <span class="destaque-icon">🛢️</span>
+      <div>
+        <div class="destaque-titulo">Petróleo e Oriente Médio seguiram no centro do risco global</div>
+        <div class="destaque-desc">A commodity permaneceu pressionada pelas tensões geopolíticas, mantendo-se como canal rápido de transmissão entre política internacional, inflação e juros.</div>
+      </div>
+    </div>
+    <div class="destaque-item">
+      <span class="destaque-icon">🌐</span>
+      <div>
+        <div class="destaque-titulo">Diversificação internacional segue como proteção, não aposta</div>
+        <div class="destaque-desc">Renda fixa global de qualidade, ações internacionais e dólar continuam relevantes como proteção contra riscos domésticos e globais — com disciplina para evitar concentração em tecnologia.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GLOSSARIO -->
+<div class="divider"></div>
+<section class="section fade-in" id="glossario">
+  <div class="section-tag">05</div>
+  <h2 class="section-title">Glossário</h2>
+  <div class="glossario-grid fade-in">
+    <div class="glossario-item">
+      <div class="glossario-term">IPCA-15</div>
+      <div class="glossario-def">Prévia da inflação oficial brasileira. Usa metodologia semelhante à do IPCA, mas com período de coleta diferente — divulgada antes do IPCA cheio.</div>
+    </div>
+    <div class="glossario-item">
+      <div class="glossario-term">FOMC</div>
+      <div class="glossario-def">Comitê de política monetária do Federal Reserve, responsável por definir a taxa básica de juros dos Estados Unidos.</div>
+    </div>
+    <div class="glossario-item">
+      <div class="glossario-term">Seção 301</div>
+      <div class="glossario-def">Dispositivo da legislação comercial dos EUA que permite a aplicação de tarifas retaliatórias após investigações sobre práticas comerciais consideradas desleais.</div>
+    </div>
+    <div class="glossario-item">
+      <div class="glossario-term">Curva de juros</div>
+      <div class="glossario-def">Conjunto das taxas negociadas para diferentes prazos. Mostra a expectativa de juros e o prêmio de risco ao longo do tempo.</div>
+    </div>
+    <div class="glossario-item">
+      <div class="glossario-term">Prêmio de risco</div>
+      <div class="glossario-def">Retorno adicional exigido pelo investidor para carregar incertezas, como fiscal, inflação, câmbio ou risco político.</div>
+    </div>
+    <div class="glossario-item">
+      <div class="glossario-term">PNAD Contínua</div>
+      <div class="glossario-def">Pesquisa Nacional por Amostra de Domicílios Contínua, principal levantamento do IBGE sobre o mercado de trabalho brasileiro.</div>
+    </div>
+    <div class="glossario-item">
+      <div class="glossario-term">IPCA+</div>
+      <div class="glossario-def">Investimento que paga inflação mais uma taxa real, protegendo o poder de compra no longo prazo.</div>
+    </div>
+    <div class="glossario-item">
+      <div class="glossario-term">Valuation</div>
+      <div class="glossario-def">Avaliação do preço de um ativo em relação aos seus fundamentos — lucro, crescimento, fluxo de caixa e risco.</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-name">Fábio Vogelaar Carlucci</div>
+  <div class="footer-contact">+55 (16) 98148-8260<br><a href="mailto:fabio.carlucci@ficus.capital">fabio.carlucci@ficus.capital</a></div>
+</footer>
+<div style="position:relative;z-index:1;padding:0 8% 28px;text-align:center;font-size:0.65rem;color:rgba(245,237,224,0.2);letter-spacing:0.08em;">
+  Fontes: Banco Central do Brasil · IBGE (PNAD Contínua, IPCA, IPCA-15) · Federal Reserve · Banco Central Europeu · MDIC/Agência Gov · Reuters · Valor Econômico · Financial Times · XP Research<br>
+  Este relatório possui caráter informativo e educacional. Não constitui recomendação individual de investimento.
+</div>
+
+<script>
+const faders = document.querySelectorAll(".fade-in");
+const obs = new IntersectionObserver(e => e.forEach(x => { if(x.isIntersecting){ x.target.classList.add("visible"); obs.unobserve(x.target); } }), { threshold: 0.1 });
+faders.forEach(f => obs.observe(f));
+const dots = document.querySelectorAll(".side-dot");
+const sections = ["hero","resumo","nacional","global","destaques","glossario"];
+function updateDots() {
+  const sy = window.scrollY + window.innerHeight / 2;
+  sections.forEach((id,i) => {
+    const el = document.getElementById(id); if(!el) return;
+    const t = el.getBoundingClientRect().top + window.scrollY;
+    if(sy >= t && sy < t + el.offsetHeight) { dots.forEach(d => d.classList.remove("active")); if(dots[i]) dots[i].classList.add("active"); }
+  });
+}
+window.addEventListener("scroll", updateDots, { passive: true });
+dots.forEach((d,i) => d.addEventListener("click", () => { const el = document.getElementById(sections[i]); if(el) el.scrollIntoView({ behavior:"smooth" }); }));
+</script>
+</body>
+</html>
