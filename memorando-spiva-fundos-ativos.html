@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gestão ativa em 30 anos: 59% dos fundos não sobreviveram | Fábio Carlucci</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DBQSDSDRF3"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-DBQSDSDRF3");</script>
+<style>
+  :root {
+    --verde-escuro: #1a2e25;
+    --dourado: #c9a84c;
+    --dourado-claro: #e2c47a;
+    --creme: #f5ede0;
+    --texto-claro: rgba(245,237,224,0.85);
+    --texto-muted: rgba(245,237,224,0.45);
+    --azul: #4a90d9;
+    --verde-gain: #3dbf8a;
+    --vermelho: #c94545;
+    --laranja: #e07a35;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { background-color: var(--verde-escuro); color: var(--creme); font-family: "Jost", sans-serif; font-weight: 300; overflow-x: hidden; }
+  body::before {
+    content: ""; position: fixed; inset: 0;
+    background-image: radial-gradient(ellipse at 10% 10%, rgba(201,168,76,0.06) 0%, transparent 55%), radial-gradient(ellipse at 90% 90%, rgba(47,82,64,0.35) 0%, transparent 55%);
+    pointer-events: none; z-index: 0;
+  }
+  .back-link { position: relative; z-index: 10; display: inline-flex; align-items: center; gap: 8px; padding: 28px 8%; font-size: 0.7rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--texto-muted); text-decoration: none; transition: color 0.2s; }
+  .back-link:hover { color: var(--dourado); }
+  .back-link::before { content: "←"; font-size: 0.9rem; }
+  .hero { position: relative; z-index: 1; padding: 20px 8% 64px; border-bottom: 1px solid rgba(201,168,76,0.15); max-width: 900px; }
+  .hero-tag { font-size: 0.65rem; font-weight: 500; letter-spacing: 0.35em; text-transform: uppercase; color: var(--dourado); display: flex; align-items: center; gap: 12px; margin-bottom: 24px; opacity: 0; animation: fadeUp 0.7s ease 0.1s forwards; }
+  .hero-tag::before { content: ""; width: 30px; height: 1px; background: var(--dourado); }
+  .hero-date { font-size: 0.72rem; letter-spacing: 0.15em; color: var(--texto-muted); margin-bottom: 20px; opacity: 0; animation: fadeUp 0.7s ease 0.2s forwards; }
+  h1 { font-family: "Cormorant Garamond", serif; font-size: clamp(2rem, 5vw, 3.7rem); font-weight: 300; line-height: 1.12; color: var(--creme); opacity: 0; animation: fadeUp 0.7s ease 0.3s forwards; }
+  h1 em { font-style: italic; color: var(--dourado-claro); }
+  .hero-sub { font-size: 0.97rem; color: var(--texto-muted); line-height: 1.75; margin-top: 16px; max-width: 640px; opacity: 0; animation: fadeUp 0.7s ease 0.45s forwards; }
+  .hero-fonte { margin-top: 14px; font-size: 0.7rem; color: rgba(245,237,224,0.3); opacity: 0; animation: fadeUp 0.7s ease 0.55s forwards; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+  article { position: relative; z-index: 1; max-width: 800px; margin: 0 auto; padding: 64px 8% 88px; }
+  .lead { font-family: "Cormorant Garamond", serif; font-size: clamp(1.1rem, 2.5vw, 1.35rem); font-weight: 400; line-height: 1.8; color: var(--creme); margin-bottom: 48px; padding-bottom: 48px; border-bottom: 1px solid rgba(201,168,76,0.15); }
+  p { font-size: 0.97rem; line-height: 1.9; color: var(--texto-claro); margin-bottom: 24px; }
+  strong { font-weight: 600; color: var(--creme); }
+  .section-title { font-family: "Cormorant Garamond", serif; font-size: 1.5rem; font-weight: 600; color: var(--dourado-claro); margin: 56px 0 18px; padding-top: 44px; border-top: 1px solid rgba(201,168,76,0.12); display: flex; align-items: center; gap: 14px; }
+  .section-icon { font-size: 1.3rem; flex-shrink: 0; }
+
+  /* STAT HERO */
+  .stat-hero { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 32px 0; }
+  @media (max-width: 500px) { .stat-hero { grid-template-columns: 1fr; } }
+  .stat-card { border-radius: 8px; padding: 26px 22px; text-align: center; }
+  .stat-card.neg { background: linear-gradient(135deg, rgba(201,69,69,0.14) 0%, rgba(47,82,64,0.4) 100%); border: 1px solid rgba(201,69,69,0.3); }
+  .stat-card.dourado { background: linear-gradient(135deg, rgba(201,168,76,0.14) 0%, rgba(47,82,64,0.4) 100%); border: 1px solid rgba(201,168,76,0.3); }
+  .stat-card-val { font-family: "Cormorant Garamond", serif; font-size: 3rem; font-weight: 700; line-height: 1; margin-bottom: 8px; }
+  .stat-card.neg .stat-card-val { color: #e07070; }
+  .stat-card.dourado .stat-card-val { color: var(--dourado); }
+  .stat-card-desc { font-size: 0.8rem; color: var(--texto-muted); line-height: 1.5; }
+
+  .grafico-wrap { background: rgba(10,20,16,0.7); border: 1px solid rgba(255,255,255,0.07); border-radius: 8px; padding: 24px 20px 16px; margin: 32px 0; }
+  .grafico-titulo { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--dourado); margin-bottom: 4px; }
+  .grafico-sub { font-size: 0.72rem; color: var(--texto-muted); margin-bottom: 16px; }
+  .grafico-nota { font-size: 0.65rem; color: rgba(245,237,224,0.25); margin-top: 10px; line-height: 1.4; }
+  .grafico-legenda { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 16px; }
+  .leg-item { display: flex; align-items: center; gap: 6px; font-size: 0.66rem; color: var(--texto-muted); }
+  .leg-dot { width: 9px; height: 9px; border-radius: 2px; flex-shrink: 0; }
+
+  /* DONUT - destino dos fundos */
+  .donut-flex { display: flex; align-items: center; gap: 30px; flex-wrap: wrap; justify-content: center; }
+  .donut-chart { width: 168px; height: 168px; border-radius: 50%; flex-shrink: 0; background: conic-gradient(#7d8580 0% 59%, #7ecbb0 59% 90%, #2f8f6f 90% 100%); position: relative; }
+  .donut-center { position: absolute; inset: 22px; border-radius: 50%; background: #0e1c15; display: flex; align-items: center; justify-content: center; flex-direction: column; text-align: center; }
+  .donut-center-val { font-family: "Cormorant Garamond", serif; font-size: 1.5rem; font-weight: 700; color: var(--dourado-claro); line-height: 1; }
+  .donut-center-label { font-size: 0.55rem; color: var(--texto-muted); margin-top: 4px; letter-spacing: 0.05em; }
+  .donut-legend { display: flex; flex-direction: column; gap: 12px; }
+  .donut-leg-item { display: flex; align-items: center; gap: 10px; }
+  .donut-leg-dot { width: 12px; height: 12px; border-radius: 3px; flex-shrink: 0; }
+  .donut-leg-text { font-size: 0.8rem; color: var(--texto-claro); }
+  .donut-leg-pct { font-family: "Cormorant Garamond", serif; font-weight: 700; font-size: 1.05rem; margin-right: 4px; }
+
+  /* HISTOGRAMA */
+  .hist-chart { position: relative; display: flex; align-items: flex-end; gap: 4px; height: 150px; margin-top: 14px; padding-top: 10px; }
+  .hist-bar { flex: 1; background: linear-gradient(180deg, var(--dourado-claro) 0%, var(--dourado) 100%); border-radius: 2px 2px 0 0; opacity: 0.85; position: relative; }
+  .hist-labels { display: flex; gap: 4px; margin-top: 6px; }
+  .hist-labels span { flex: 1; font-size: 0.5rem; color: var(--texto-muted); text-align: center; white-space: nowrap; transform: rotate(0deg); }
+  .hist-marker { position: absolute; top: 0; bottom: 0; width: 0; border-left: 1px dashed var(--dourado-claro); }
+  .hist-marker-label { position: absolute; top: -18px; left: 6px; font-size: 0.62rem; color: var(--dourado-claro); white-space: nowrap; font-weight: 600; }
+
+  /* DESAFIOS */
+  .fatores-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin: 24px 0; }
+  @media (max-width: 500px) { .fatores-grid { grid-template-columns: 1fr; } }
+  .fator-tag { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 13px 14px; font-size: 0.8rem; color: var(--texto-claro); display: flex; align-items: center; gap: 8px; }
+  .fator-tag::before { content: "▸"; color: var(--dourado); flex-shrink: 0; }
+
+  .insight-box { background: linear-gradient(135deg, rgba(201,168,76,0.1) 0%, rgba(26,46,37,0.4) 100%); border: 1px solid rgba(201,168,76,0.25); border-left: 3px solid var(--dourado); border-radius: 4px; padding: 28px 32px; margin: 36px 0; }
+  .insight-box p { font-family: "Cormorant Garamond", serif; font-size: 1.1rem; color: var(--creme); line-height: 1.8; margin: 0; }
+
+  .estrategia-list { display: flex; flex-direction: column; gap: 10px; margin: 28px 0; }
+  .estrategia-item { display: flex; align-items: flex-start; gap: 16px; padding: 18px 20px; background: rgba(201,168,76,0.05); border: 1px solid rgba(201,168,76,0.15); border-radius: 5px; }
+  .estrategia-num { font-family: "Cormorant Garamond", serif; font-size: 1.8rem; font-weight: 700; color: rgba(201,168,76,0.3); flex-shrink: 0; width: 32px; text-align: center; }
+  .estrategia-titulo { font-size: 0.82rem; font-weight: 600; color: var(--dourado); margin-bottom: 3px; }
+  .estrategia-desc { font-size: 0.83rem; color: var(--texto-claro); line-height: 1.55; }
+
+  .conclusao { font-family: "Cormorant Garamond", serif; font-size: 1.15rem; font-weight: 400; line-height: 1.85; color: var(--creme); margin-top: 52px; padding: 40px; border: 1px solid rgba(201,168,76,0.2); border-radius: 6px; background: rgba(255,255,255,0.02); position: relative; }
+  .conclusao::before { content: "\201C"; position: absolute; top: -10px; left: 32px; font-size: 5rem; color: rgba(201,168,76,0.15); font-family: "Cormorant Garamond", serif; line-height: 1; }
+
+  .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .fade-in.visible { opacity: 1; transform: none; }
+  footer { position: relative; z-index: 1; border-top: 1px solid rgba(201,168,76,0.12); padding: 40px 8%; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+  .footer-name { font-family: "Cormorant Garamond", serif; font-size: 1.1rem; font-weight: 300; color: var(--texto-muted); }
+  .footer-contact { font-size: 0.75rem; color: rgba(245,237,224,0.25); line-height: 1.9; text-align: right; }
+  .footer-contact a { color: var(--dourado); text-decoration: none; }
+  @media (max-width: 640px) { .back-link,.hero { padding-left: 5%; padding-right: 5%; } article { padding: 48px 5% 64px; } footer { padding: 32px 5%; flex-direction: column; } .footer-contact { text-align: left; } .hist-labels span { font-size: 0.42rem; } }
+</style>
+</head>
+<body>
+
+<a class="back-link" href="index.html">Voltar</a>
+
+<header class="hero">
+  <div class="hero-tag">Memorando · Fundos & Gestão Ativa</div>
+  <div class="hero-date">Agosto de 2026</div>
+  <h1>Gestão ativa em 30 anos:<br><em>59% dos fundos não sobreviveram</em></h1>
+  <p class="hero-sub">Um levantamento de três décadas com fundos de ações americanos mostra que o maior risco da gestão ativa não é apenas underperformance — é o fundo simplesmente deixar de existir pelo caminho.</p>
+  <div class="hero-fonte">Fonte: S&P Dow Jones Indices — SPIVA® U.S. Scorecard e Indexology "Measuring the Managers"</div>
+</header>
+
+<article>
+
+  <p class="lead">
+    Uma das discussões mais antigas do mercado financeiro é se faz sentido tentar escolher os melhores gestores ou simplesmente investir em um índice amplo de mercado. Um estudo da <strong>S&P Dow Jones Indices (SPIVA®)</strong>, que acompanhou <strong>30 anos de fundos de ações americanos (1992–2022)</strong>, traz uma perspectiva reveladora: o levantamento não olha só para a rentabilidade, mas também para quantos fundos <strong>deixaram de existir</strong> ao longo do caminho.
+  </p>
+
+  <div class="stat-hero fade-in">
+    <div class="stat-card neg">
+      <div class="stat-card-val">59%</div>
+      <div class="stat-card-desc">dos fundos ativos foram <strong style="color:#e07070">encerrados ou incorporados</strong> a outros fundos ao longo dos 30 anos</div>
+    </div>
+    <div class="stat-card dourado">
+      <div class="stat-card-val">10%</div>
+      <div class="stat-card-desc">do universo original <strong style="color:var(--dourado)">sobreviveu e superou</strong> o S&P 500 durante todo o período</div>
+    </div>
+  </div>
+
+  <!-- SEÇÃO 1: DESTINO DOS FUNDOS -->
+  <div class="section-title fade-in"><span class="section-icon">⚰️</span> O desafio começa antes mesmo da rentabilidade</div>
+
+  <p>Ao escolher um fundo ativo hoje, o investidor enfrenta dois desafios simultâneos: o fundo precisa continuar existindo por muitos anos e, além de sobreviver, precisa entregar retorno superior ao mercado após custos e taxas. Olhando para o universo completo de fundos de ações americanas analisados desde 1992, o resultado é este:</p>
+
+  <div class="grafico-wrap fade-in">
+    <div class="grafico-titulo">Destino dos fundos ativos de ações americanas</div>
+    <div class="grafico-sub">1992–2022 · universo completo, incluindo fundos encerrados</div>
+    <div class="donut-flex">
+      <div class="donut-chart"><div class="donut-center"><div class="donut-center-val">30</div><div class="donut-center-label">anos analisados</div></div></div>
+      <div class="donut-legend">
+        <div class="donut-leg-item"><div class="donut-leg-dot" style="background:#7d8580;"></div><span class="donut-leg-text"><span class="donut-leg-pct" style="color:#a8ada9;">59%</span>não sobreviveram</span></div>
+        <div class="donut-leg-item"><div class="donut-leg-dot" style="background:#7ecbb0;"></div><span class="donut-leg-text"><span class="donut-leg-pct" style="color:#7ecbb0;">31%</span>sobreviveram, abaixo do índice</span></div>
+        <div class="donut-leg-item"><div class="donut-leg-dot" style="background:#2f8f6f;"></div><span class="donut-leg-text"><span class="donut-leg-pct" style="color:#3dbf8a;">10%</span>sobreviveram e superaram o índice</span></div>
+      </div>
+    </div>
+    <div class="grafico-nota">Fonte: S&P Dow Jones Indices, SPIVA® U.S. Scorecard.</div>
+  </div>
+
+  <div class="fatores-grid fade-in">
+    <div class="fator-tag">Desafio 1: o fundo precisa sobreviver por décadas</div>
+    <div class="fator-tag">Desafio 2: precisa bater o índice após custos e taxas</div>
+  </div>
+
+  <!-- SEÇÃO 2: DISTRIBUIÇÃO -->
+  <div class="section-title fade-in"><span class="section-icon">📊</span> A distribuição de retornos entre os que sobreviveram</div>
+
+  <p>Mesmo entre os fundos que permaneceram ativos ao longo de todo o período, a maioria concentrou seu retorno anualizado próximo — ou abaixo — do S&P 500, que entregou <strong>9,46% ao ano</strong> no período. Poucos fundos ficaram consistentemente acima dessa linha:</p>
+
+  <div class="grafico-wrap fade-in">
+    <div class="grafico-titulo">Distribuição do retorno anualizado dos fundos sobreviventes</div>
+    <div class="grafico-sub">Dez/1992 – Set/2022 · contagem de fundos por faixa de retorno</div>
+    <div class="hist-chart">
+      <div class="hist-marker" style="left:49%;"><span class="hist-marker-label">S&P 500 · 9,46%</span></div>
+      <div class="hist-bar" style="height:3%;"></div>
+      <div class="hist-bar" style="height:9%;"></div>
+      <div class="hist-bar" style="height:7%;"></div>
+      <div class="hist-bar" style="height:27%;"></div>
+      <div class="hist-bar" style="height:45%;"></div>
+      <div class="hist-bar" style="height:78%;"></div>
+      <div class="hist-bar" style="height:98%;"></div>
+      <div class="hist-bar" style="height:100%;"></div>
+      <div class="hist-bar" style="height:70%;"></div>
+      <div class="hist-bar" style="height:35%;"></div>
+      <div class="hist-bar" style="height:20%;"></div>
+      <div class="hist-bar" style="height:16%;"></div>
+      <div class="hist-bar" style="height:10%;"></div>
+      <div class="hist-bar" style="height:8%;"></div>
+      <div class="hist-bar" style="height:4%;"></div>
+    </div>
+    <div class="hist-labels">
+      <span>5%</span><span>6%</span><span>7%</span><span>7,5%</span><span>8%</span><span>8,5%</span><span>9%</span><span>9,5%</span><span>10%</span><span>10,5%</span><span>11%</span><span>11,5%</span><span>12%</span><span>12,5%</span><span>13%+</span>
+    </div>
+    <div class="grafico-nota">Retorno anualizado dos fundos sobreviventes, comparado ao S&P 500 Total Return em USD. Fonte: S&P Dow Jones Indices, CRSP, Lipper.</div>
+  </div>
+
+  <!-- SEÇÃO 3: VIÉS DE SOBREVIVÊNCIA -->
+  <div class="section-title fade-in"><span class="section-icon">🔍</span> O efeito da sobrevivência</div>
+
+  <p>Existe um fenômeno conhecido como <strong>viés de sobrevivência</strong>. Quando observamos apenas os fundos que permanecem ativos, naturalmente enxergamos um grupo formado pelos "vencedores" — mas diversos fundos com desempenho ruim foram encerrados ou incorporados durante o período e deixam de aparecer nas estatísticas mais superficiais.</p>
+
+  <div class="insight-box fade-in">
+    <p>Ao incluir os fundos que não sobreviveram na análise, a probabilidade histórica de selecionar hoje um gestor que realmente agregue valor no longo prazo torna-se <strong>significativamente menor</strong> do que sugerem os rankings que olham apenas para quem ainda está de pé.</p>
+  </div>
+
+  <!-- SEÇÃO 4: NÃO SIGNIFICA QUE NÃO FUNCIONA -->
+  <div class="section-title fade-in"><span class="section-icon">⚖️</span> Isso significa que gestão ativa não funciona?</div>
+
+  <p>Não necessariamente. Existem gestores extremamente competentes, com processos sólidos, equipes experientes e histórico consistente de geração de valor. O próprio fato de cerca de <strong>10% dos fundos terem conseguido superar o índice durante três décadas</strong> demonstra que isso é possível. A questão é que <strong>identificar antecipadamente quem fará parte desse grupo seleto é muito difícil</strong> — um desafio semelhante ao observado no estudo de Hendrik Bessembinder sobre as ações americanas: poucos ativos extraordinários acabam explicando grande parte dos resultados do mercado ao longo do tempo.</p>
+
+  <!-- SEÇÃO 5: O QUE FAZER -->
+  <div class="section-title fade-in"><span class="section-icon">🧭</span> O que isso significa para o investidor</div>
+
+  <p>Talvez a principal conclusão seja que <strong>a forma como se constrói a carteira importa mais do que escolher um lado</strong> na discussão entre gestão ativa e passiva. Para muitos investidores, uma combinação faz bastante sentido:</p>
+
+  <div class="estrategia-list fade-in">
+    <div class="estrategia-item">
+      <div class="estrategia-num">1</div>
+      <div>
+        <div class="estrategia-titulo">Núcleo em ETFs ou fundos indexados</div>
+        <div class="estrategia-desc">Garante ampla diversificação e baixo custo, capturando o crescimento do mercado ao longo das décadas sem depender de acertar qual gestor vai sobreviver.</div>
+      </div>
+    </div>
+    <div class="estrategia-item">
+      <div class="estrategia-num">2</div>
+      <div>
+        <div class="estrategia-titulo">Complemento com gestores ativos selecionados</div>
+        <div class="estrategia-desc">Em segmentos com maior potencial de geração de valor, uma parcela satélite bem escolhida preserva a chance de ganhos adicionais sem concentrar todo o risco de sobrevivência.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="conclusao fade-in">
+    O estudo não conclui que a gestão ativa é ruim. Ele apenas lembra que <strong>encontrar gestores vencedores de forma consistente é uma tarefa muito mais difícil do que normalmente imaginamos</strong> — e que a estrutura da carteira, mais do que a escolha de um lado, é o que realmente protege o investidor dessa incerteza.
+  </div>
+
+</article>
+
+<footer>
+  <div class="footer-name">Fábio Vogelaar Carlucci</div>
+  <div class="footer-contact">+55 (16) 98148-8260<br><a href="mailto:fabio.carlucci@ficus.capital">fabio.carlucci@ficus.capital</a></div>
+</footer>
+<div style="position:relative;z-index:1;padding:0 8% 28px;text-align:center;font-size:0.65rem;color:rgba(245,237,224,0.2);letter-spacing:0.08em;">
+  Fonte: S&P Dow Jones Indices — SPIVA® U.S. Scorecard e Indexology "Measuring the Managers"<br>
+  Conteúdo exclusivamente informativo e educacional. Não constitui recomendação de investimento.
+</div>
+
+<script>
+const faders = document.querySelectorAll(".fade-in");
+const obs = new IntersectionObserver(e => e.forEach(x => { if(x.isIntersecting){ x.target.classList.add("visible"); obs.unobserve(x.target); } }), { threshold: 0.1 });
+faders.forEach(f => obs.observe(f));
+</script>
+</body>
+</html>
