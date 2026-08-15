@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>O paradoxo da diversificação: vencer no longo prazo, frustrado o tempo todo | Fábio Carlucci</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DBQSDSDRF3"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-DBQSDSDRF3");</script>
+<style>
+  :root {
+    --verde-escuro: #1a2e25;
+    --dourado: #c9a84c;
+    --dourado-claro: #e2c47a;
+    --creme: #f5ede0;
+    --texto-claro: rgba(245,237,224,0.85);
+    --texto-muted: rgba(245,237,224,0.45);
+    --azul: #4a90d9;
+    --verde-gain: #3dbf8a;
+    --vermelho: #c94545;
+    --laranja: #e07a35;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { background-color: var(--verde-escuro); color: var(--creme); font-family: "Jost", sans-serif; font-weight: 300; overflow-x: hidden; }
+  body::before {
+    content: ""; position: fixed; inset: 0;
+    background-image: radial-gradient(ellipse at 10% 10%, rgba(201,168,76,0.06) 0%, transparent 55%), radial-gradient(ellipse at 90% 90%, rgba(47,82,64,0.35) 0%, transparent 55%);
+    pointer-events: none; z-index: 0;
+  }
+  .back-link { position: relative; z-index: 10; display: inline-flex; align-items: center; gap: 8px; padding: 28px 8%; font-size: 0.7rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--texto-muted); text-decoration: none; transition: color 0.2s; }
+  .back-link:hover { color: var(--dourado); }
+  .back-link::before { content: "←"; font-size: 0.9rem; }
+  .hero { position: relative; z-index: 1; padding: 20px 8% 64px; border-bottom: 1px solid rgba(201,168,76,0.15); max-width: 900px; }
+  .hero-tag { font-size: 0.65rem; font-weight: 500; letter-spacing: 0.35em; text-transform: uppercase; color: var(--dourado); display: flex; align-items: center; gap: 12px; margin-bottom: 24px; opacity: 0; animation: fadeUp 0.7s ease 0.1s forwards; }
+  .hero-tag::before { content: ""; width: 30px; height: 1px; background: var(--dourado); }
+  .hero-date { font-size: 0.72rem; letter-spacing: 0.15em; color: var(--texto-muted); margin-bottom: 20px; opacity: 0; animation: fadeUp 0.7s ease 0.2s forwards; }
+  h1 { font-family: "Cormorant Garamond", serif; font-size: clamp(2rem, 5vw, 3.7rem); font-weight: 300; line-height: 1.12; color: var(--creme); opacity: 0; animation: fadeUp 0.7s ease 0.3s forwards; }
+  h1 em { font-style: italic; color: var(--dourado-claro); }
+  .hero-sub { font-size: 0.97rem; color: var(--texto-muted); line-height: 1.75; margin-top: 16px; max-width: 640px; opacity: 0; animation: fadeUp 0.7s ease 0.45s forwards; }
+  .hero-fonte { margin-top: 14px; font-size: 0.7rem; color: rgba(245,237,224,0.3); opacity: 0; animation: fadeUp 0.7s ease 0.55s forwards; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+  article { position: relative; z-index: 1; max-width: 800px; margin: 0 auto; padding: 64px 8% 88px; }
+  .lead { font-family: "Cormorant Garamond", serif; font-size: clamp(1.1rem, 2.5vw, 1.35rem); font-weight: 400; line-height: 1.8; color: var(--creme); margin-bottom: 48px; padding-bottom: 48px; border-bottom: 1px solid rgba(201,168,76,0.15); }
+  p { font-size: 0.97rem; line-height: 1.9; color: var(--texto-claro); margin-bottom: 24px; }
+  strong { font-weight: 600; color: var(--creme); }
+  .section-title { font-family: "Cormorant Garamond", serif; font-size: 1.5rem; font-weight: 600; color: var(--dourado-claro); margin: 56px 0 18px; padding-top: 44px; border-top: 1px solid rgba(201,168,76,0.12); display: flex; align-items: center; gap: 14px; }
+  .section-icon { font-size: 1.3rem; flex-shrink: 0; }
+
+  .stat-hero { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; margin: 32px 0; }
+  @media (max-width: 560px) { .stat-hero { grid-template-columns: 1fr; } }
+  .stat-card { border-radius: 8px; padding: 24px 18px; text-align: center; }
+  .stat-card.neutro { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); }
+  .stat-card.dourado { background: linear-gradient(135deg, rgba(201,168,76,0.14) 0%, rgba(47,82,64,0.4) 100%); border: 1px solid rgba(201,168,76,0.3); }
+  .stat-card-val { font-family: "Cormorant Garamond", serif; font-size: 2.4rem; font-weight: 700; line-height: 1; margin-bottom: 8px; }
+  .stat-card.neutro .stat-card-val { color: var(--texto-claro); }
+  .stat-card.dourado .stat-card-val { color: var(--dourado); }
+  .stat-card-desc { font-size: 0.75rem; color: var(--texto-muted); line-height: 1.5; }
+
+  .grafico-wrap { background: rgba(10,20,16,0.7); border: 1px solid rgba(255,255,255,0.07); border-radius: 8px; padding: 24px 20px 16px; margin: 32px 0; }
+  .grafico-titulo { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--dourado); margin-bottom: 4px; }
+  .grafico-sub { font-size: 0.72rem; color: var(--texto-muted); margin-bottom: 16px; }
+  .grafico-nota { font-size: 0.65rem; color: rgba(245,237,224,0.25); margin-top: 10px; line-height: 1.4; }
+
+  /* DONUT ALOCAÇÃO */
+  .donut-flex { display: flex; align-items: center; gap: 30px; flex-wrap: wrap; justify-content: center; }
+  .donut-chart { width: 168px; height: 168px; border-radius: 50%; flex-shrink: 0; background: conic-gradient(#c9a84c 0% 33.3%, #4a90d9 33.3% 66.6%, #6fae8f 66.6% 100%); position: relative; }
+  .donut-center { position: absolute; inset: 22px; border-radius: 50%; background: #0e1c15; display: flex; align-items: center; justify-content: center; flex-direction: column; text-align: center; }
+  .donut-center-val { font-family: "Cormorant Garamond", serif; font-size: 1.3rem; font-weight: 700; color: var(--dourado-claro); line-height: 1.15; }
+  .donut-center-label { font-size: 0.52rem; color: var(--texto-muted); margin-top: 4px; letter-spacing: 0.05em; }
+  .donut-legend { display: flex; flex-direction: column; gap: 12px; }
+  .donut-leg-item { display: flex; align-items: center; gap: 10px; }
+  .donut-leg-dot { width: 12px; height: 12px; border-radius: 3px; flex-shrink: 0; }
+  .donut-leg-text { font-size: 0.8rem; color: var(--texto-claro); }
+  .donut-leg-pct { font-family: "Cormorant Garamond", serif; font-weight: 700; font-size: 1.05rem; margin-right: 4px; color: var(--dourado-claro); }
+
+  /* CRESCIMENTO */
+  .crescimento-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 28px 0; }
+  @media (max-width: 560px) { .crescimento-grid { grid-template-columns: 1fr; } }
+  .cresc-card { border-radius: 8px; padding: 22px 14px; text-align: center; }
+  .cresc-card.mercado { background: linear-gradient(135deg, rgba(201,168,76,0.14) 0%, rgba(47,82,64,0.4) 100%); border: 1px solid rgba(201,168,76,0.3); }
+  .cresc-card.neutro { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); }
+  .cresc-val { font-family: "Cormorant Garamond", serif; font-weight: 700; line-height: 1; margin-bottom: 8px; }
+  .cresc-card.mercado .cresc-val { font-size: 2.1rem; color: var(--dourado); }
+  .cresc-card.neutro .cresc-val { font-size: 1.5rem; color: var(--texto-claro); }
+  .cresc-label { font-size: 0.68rem; color: var(--texto-muted); line-height: 1.4; }
+
+  /* TABELA DE PERÍODOS */
+  .table-wrap { overflow-x: auto; margin: 28px 0; border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; background: rgba(10,20,16,0.5); }
+  .period-table { width: 100%; border-collapse: collapse; min-width: 620px; font-size: 0.78rem; }
+  .period-table th { text-align: left; color: var(--dourado); font-weight: 600; padding: 12px 14px; border-bottom: 1px solid rgba(201,168,76,0.25); font-size: 0.62rem; letter-spacing: 0.08em; text-transform: uppercase; white-space: nowrap; }
+  .period-table td { padding: 12px 14px; border-bottom: 1px solid rgba(255,255,255,0.06); color: var(--texto-claro); vertical-align: top; }
+  .period-table tr:last-child td { border-bottom: none; }
+  .val-neg { color: #e07070; font-weight: 600; }
+  .val-pos { color: #7ecbb0; font-weight: 600; }
+  .val-neutro { color: var(--creme); font-weight: 600; }
+  .reaction { font-family: "Cormorant Garamond", serif; font-style: italic; color: var(--texto-muted); font-size: 0.85rem; min-width: 220px; }
+
+  /* PERSISTÊNCIA */
+  .persist-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 28px 0; }
+  @media (max-width: 500px) { .persist-grid { grid-template-columns: 1fr; } }
+  .persist-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; padding: 24px 20px; text-align: center; }
+  .persist-val { font-family: "Cormorant Garamond", serif; font-size: 2.1rem; font-weight: 700; color: var(--dourado-claro); }
+  .persist-desc { font-size: 0.76rem; color: var(--texto-muted); margin-top: 8px; line-height: 1.5; }
+
+  .insight-box { background: linear-gradient(135deg, rgba(201,168,76,0.1) 0%, rgba(26,46,37,0.4) 100%); border: 1px solid rgba(201,168,76,0.25); border-left: 3px solid var(--dourado); border-radius: 4px; padding: 28px 32px; margin: 36px 0; }
+  .insight-box p { font-family: "Cormorant Garamond", serif; font-size: 1.1rem; color: var(--creme); line-height: 1.8; margin: 0; }
+
+  .estrategia-list { display: flex; flex-direction: column; gap: 10px; margin: 28px 0; }
+  .estrategia-item { display: flex; align-items: flex-start; gap: 16px; padding: 18px 20px; background: rgba(201,168,76,0.05); border: 1px solid rgba(201,168,76,0.15); border-radius: 5px; }
+  .estrategia-num { font-family: "Cormorant Garamond", serif; font-size: 1.8rem; font-weight: 700; color: rgba(201,168,76,0.3); flex-shrink: 0; width: 32px; text-align: center; }
+  .estrategia-titulo { font-size: 0.82rem; font-weight: 600; color: var(--dourado); margin-bottom: 3px; }
+  .estrategia-desc { font-size: 0.83rem; color: var(--texto-claro); line-height: 1.55; }
+
+  .conclusao { font-family: "Cormorant Garamond", serif; font-size: 1.15rem; font-weight: 400; line-height: 1.85; color: var(--creme); margin-top: 52px; padding: 40px; border: 1px solid rgba(201,168,76,0.2); border-radius: 6px; background: rgba(255,255,255,0.02); position: relative; }
+  .conclusao::before { content: "\201C"; position: absolute; top: -10px; left: 32px; font-size: 5rem; color: rgba(201,168,76,0.15); font-family: "Cormorant Garamond", serif; line-height: 1; }
+
+  .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .fade-in.visible { opacity: 1; transform: none; }
+  footer { position: relative; z-index: 1; border-top: 1px solid rgba(201,168,76,0.12); padding: 40px 8%; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+  .footer-name { font-family: "Cormorant Garamond", serif; font-size: 1.1rem; font-weight: 300; color: var(--texto-muted); }
+  .footer-contact { font-size: 0.75rem; color: rgba(245,237,224,0.25); line-height: 1.9; text-align: right; }
+  .footer-contact a { color: var(--dourado); text-decoration: none; }
+  @media (max-width: 640px) { .back-link,.hero { padding-left: 5%; padding-right: 5%; } article { padding: 48px 5% 64px; } footer { padding: 32px 5%; flex-direction: column; } .footer-contact { text-align: left; } }
+</style>
+</head>
+<body>
+
+<a class="back-link" href="index.html">Voltar</a>
+
+<header class="hero">
+  <div class="hero-tag">Memorando · Carteira & Comportamento</div>
+  <div class="hero-date">Agosto de 2026</div>
+  <h1>O paradoxo da diversificação:<br>vencer no longo prazo, <em>frustrado o tempo todo</em></h1>
+  <p class="hero-sub">Existe uma característica curiosa das carteiras verdadeiramente diversificadas: quase sempre haverá alguma coisa rendendo mais do que elas. Um experimento de mais de duas décadas mostra por que isso não é um defeito — é o próprio mecanismo que faz a diversificação funcionar.</p>
+  <div class="hero-fonte">Fonte: Horizon Advisors — estudo de alocação 2003–2025 (Bloomberg e etfsradar)</div>
+</header>
+
+<article>
+
+  <p class="lead">
+    Quando a Bolsa brasileira dispara, o investidor olha para a parcela conservadora da carteira e se pergunta por que não assumiu mais risco. Quando a Bolsa cai e o CDI entrega retornos elevados, surge a sensação de que teria sido melhor permanecer inteiramente na renda fixa. Esse desconforto acompanha praticamente todo investidor diversificado — e existe uma razão matemática para isso: <strong>uma carteira composta por diferentes classes de ativos dificilmente será a melhor alternativa em uma janela específica</strong>, porque, por definição, parte do patrimônio estará sempre investida nos ativos que naquele momento estão rendendo menos.
+  </p>
+
+  <div class="stat-hero fade-in">
+    <div class="stat-card neutro">
+      <div class="stat-card-val">708%</div>
+      <div class="stat-card-desc">Ibovespa<br>2003–2025</div>
+    </div>
+    <div class="stat-card neutro">
+      <div class="stat-card-val">844%</div>
+      <div class="stat-card-desc">CDI<br>2003–2025</div>
+    </div>
+    <div class="stat-card dourado">
+      <div class="stat-card-val">1.320%</div>
+      <div class="stat-card-desc"><strong style="color:var(--dourado)">Carteira diversificada</strong><br>2003–2025</div>
+    </div>
+  </div>
+
+  <!-- SEÇÃO 1: EXPERIMENTO -->
+  <div class="section-title fade-in"><span class="section-icon">🧪</span> Um experimento simples</div>
+
+  <p>Um estudo divulgado pela <strong>Horizon Advisors</strong> analisou uma carteira extremamente simples ao longo de pouco mais de duas décadas — três motores bastante diferentes de retorno: Brasil, juros reais e economia global/dólar. A metodologia considera pesos fixos e desconsidera custos e impostos, devendo ser entendida como um exercício histórico de alocação, e não como simulação de uma carteira real líquida.</p>
+
+  <div class="grafico-wrap fade-in">
+    <div class="grafico-titulo">Composição da carteira ilustrativa</div>
+    <div class="grafico-sub">Pesos fixos, sem custos e sem impostos</div>
+    <div class="donut-flex">
+      <div class="donut-chart"><div class="donut-center"><div class="donut-center-val">2003–<br>2025</div><div class="donut-center-label">22 anos</div></div></div>
+      <div class="donut-legend">
+        <div class="donut-leg-item"><div class="donut-leg-dot" style="background:#c9a84c;"></div><span class="donut-leg-text"><span class="donut-leg-pct">33,3%</span>Ibovespa — ações brasileiras</span></div>
+        <div class="donut-leg-item"><div class="donut-leg-dot" style="background:#4a90d9;"></div><span class="donut-leg-text"><span class="donut-leg-pct">33,3%</span>IMA-B 5+ — títulos públicos indexados à inflação, duration longa</span></div>
+        <div class="donut-leg-item"><div class="donut-leg-dot" style="background:#6fae8f;"></div><span class="donut-leg-text"><span class="donut-leg-pct">33,3%</span>S&P 500 em reais — ações americanas + efeito cambial</span></div>
+      </div>
+    </div>
+    <div class="grafico-nota">Fonte: Bloomberg (2003–2023) e etfsradar (2024–2025). Elaboração: Horizon Advisors.</div>
+  </div>
+
+  <!-- SEÇÃO 2: RESULTADO -->
+  <div class="section-title fade-in"><span class="section-icon">📈</span> O resultado de longo prazo</div>
+
+  <p>Um investimento hipotético de <strong>R$ 100 mil</strong> em 2003 teria se transformado, até 2025, em valores bem diferentes conforme a estratégia escolhida:</p>
+
+  <div class="crescimento-grid fade-in">
+    <div class="cresc-card neutro">
+      <div class="cresc-val">R$ 808 mil</div>
+      <div class="cresc-label">Ibovespa<br>(+708%)</div>
+    </div>
+    <div class="cresc-card neutro">
+      <div class="cresc-val">R$ 944 mil</div>
+      <div class="cresc-label">CDI<br>(+844%)</div>
+    </div>
+    <div class="cresc-card mercado">
+      <div class="cresc-val">R$ 1,42 mi</div>
+      <div class="cresc-label">Carteira diversificada<br>(+1.320%)</div>
+    </div>
+  </div>
+
+  <p>A diferença é relevante. Mas talvez essa nem seja a parte mais interessante do estudo.</p>
+
+  <!-- SEÇÃO 3: O CAMINHO -->
+  <div class="section-title fade-in"><span class="section-icon">🎢</span> Durante o caminho, a carteira parecia errada repetidamente</div>
+
+  <p>Quando dividimos esses vinte e poucos anos em períodos menores, aparece o verdadeiro ensinamento. Em praticamente toda janela, algo estava rendendo mais do que a carteira diversificada — e isso alimentava a mesma pergunta, repetida de formas diferentes:</p>
+
+  <div class="table-wrap fade-in">
+    <table class="period-table">
+      <tr><th>Período</th><th>CDI</th><th>Ibovespa</th><th>Carteira diversificada</th><th>A reação do investidor comum</th></tr>
+      <tr><td>2003–2007</td><td class="val-pos">83%</td><td class="val-pos">291%</td><td class="val-neutro">116%</td><td class="reaction">"A bolsa disparou e eu fiquei para trás. Faltou risco."</td></tr>
+      <tr><td>2007–2008</td><td class="val-pos">12%</td><td class="val-neg">−54%</td><td class="val-neg">−33%</td><td class="reaction">"Perdi dinheiro. Vou recolher tudo para a renda fixa."</td></tr>
+      <tr><td>2008–2009</td><td class="val-pos">11%</td><td class="val-pos">115%</td><td class="val-neutro">46%</td><td class="reaction">"Precisava de uma carteira bem mais agressiva."</td></tr>
+      <tr><td>2009–2016</td><td class="val-pos">84%</td><td class="val-neg">−40%</td><td class="val-neutro">78%</td><td class="reaction">"No Brasil, no fim das contas, o CDI resolve."</td></tr>
+      <tr><td>2016–2017</td><td class="val-pos">14%</td><td class="val-pos">75%</td><td class="val-neutro">33%</td><td class="reaction">"Agora sim, é hora de ir para a bolsa."</td></tr>
+      <tr><td>2017–2020</td><td class="val-pos">24%</td><td class="val-neg">−3%</td><td class="val-neutro">32%</td><td class="reaction">"Tanto esforço para diversificar e ganhar pouco acima do CDI?"</td></tr>
+      <tr><td>2020–2021</td><td class="val-pos">2%</td><td class="val-pos">76%</td><td class="val-neutro">60%</td><td class="reaction">"Se eu tivesse colocado tudo no Ibovespa..."</td></tr>
+      <tr><td>2021–2023</td><td class="val-pos">22%</td><td class="val-neg">−2%</td><td class="val-neutro">4%</td><td class="reaction">"Essa carteira não bateu nem o CDI."</td></tr>
+      <tr><td>2024–2025</td><td class="val-pos">27%</td><td class="val-pos">20%</td><td class="val-neutro">29%</td><td class="reaction">"O S&P disparou mais de 60%. Por que reparti em outras coisas?"</td></tr>
+      <tr><td><strong>Total (2003–2025)</strong></td><td class="val-pos"><strong>844%</strong></td><td class="val-pos"><strong>708%</strong></td><td class="val-neutro"><strong>1.320%</strong></td><td class="reaction">—</td></tr>
+    </table>
+  </div>
+  <div class="grafico-nota" style="margin: -14px 0 24px;">Fonte: Bloomberg (2003–2023) e etfsradar (2024–2025). Elaboração: Horizon Advisors.</div>
+
+  <p>O ativo vencedor muda a cada período. <strong>A sensação de arrependimento permanece.</strong> Esse é o paradoxo: diversificar significa aceitar conscientemente que uma parte da carteira estará decepcionando você praticamente o tempo todo — e isso não representa uma falha, é consequência direta da própria diversificação. Se todas as posições sobem juntas, pelas mesmas razões e na mesma intensidade, provavelmente existe menos diversificação do que parece.</p>
+
+  <!-- SEÇÃO 4: RETROVISOR -->
+  <div class="section-title fade-in"><span class="section-icon">🔄</span> O perigo de investir pelo retrovisor</div>
+
+  <p>Quando uma classe de ativos apresenta retornos extraordinários, ela naturalmente passa a parecer mais atraente — e o investidor aumenta sua exposição justamente <strong>depois</strong> da valorização. Quando ocorre uma queda importante, acontece o inverso: o desconforto aumenta e ele reduz sua posição justamente <strong>depois</strong> da desvalorização. Repetida durante muitos anos, essa sequência — ativo sobe → confiança aumenta → investidor compra; ativo cai → confiança desaparece → investidor vende — pode produzir uma diferença considerável entre o retorno dos investimentos e o retorno efetivamente capturado pelo investidor.</p>
+
+  <!-- SEÇÃO 5: PERSISTÊNCIA -->
+  <div class="section-title fade-in"><span class="section-icon">🏅</span> O vencedor de ontem é difícil de identificar como o vencedor de amanhã</div>
+
+  <p>Os estudos de persistência da S&P Dow Jones Indices mostram como é difícil permanecer continuamente entre os melhores. No levantamento mais recente para a América Latina:</p>
+
+  <div class="persist-grid fade-in">
+    <div class="persist-card">
+      <div class="persist-val">1 de 81</div>
+      <div class="persist-desc">fundos de ações brasileiras no 1º quartil em 2021 permaneceu lá em cada um dos 4 anos seguintes</div>
+    </div>
+    <div class="persist-card">
+      <div class="persist-val">1 de 135</div>
+      <div class="persist-desc">gestores de títulos públicos brasileiros no 1º quartil conseguiu permanecer lá pelos 4 anos seguintes</div>
+    </div>
+  </div>
+
+  <p>Isso não significa que gestão, análise ou seleção de ativos sejam irrelevantes. Significa algo mais simples: <strong>extrapolar o vencedor recente para o futuro é uma estratégia muito menos confiável do que parece.</strong></p>
+
+  <div class="insight-box fade-in">
+    <p>Toda concentração carrega implicitamente uma previsão — sobre juros, sobre empresas locais, sobre a continuidade do mercado americano, sobre a trajetória da inflação. Diversificar exige uma premissa diferente: <strong>não precisamos acertar perfeitamente qual cenário acontecerá.</strong> Podemos construir uma carteira capaz de atravessar diferentes cenários razoavelmente bem.</p>
+  </div>
+
+  <!-- SEÇÃO 6: O QUE FAZER -->
+  <div class="section-title fade-in"><span class="section-icon">🧭</span> O que levar deste estudo</div>
+
+  <p>Diversificação não elimina perdas, não garante retorno superior e não impede períodos de desempenho abaixo do CDI. Seu benefício está em algo estruturalmente diferente: diminuir a dependência de uma única classe, de um único país, de um único cenário econômico e, principalmente, da nossa capacidade de prever o futuro.</p>
+
+  <div class="estrategia-list fade-in">
+    <div class="estrategia-item">
+      <div class="estrategia-num">1</div>
+      <div>
+        <div class="estrategia-titulo">O benchmark errado pode destruir uma boa estratégia</div>
+        <div class="estrategia-desc">Uma carteira diversificada não deve ser julgada mês a mês contra o ativo que mais subiu — se fizermos isso, ela estará quase sempre "perdendo". O CDI é uma ótima referência para certas estratégias, mas uma carteira patrimonial tem objetivos adicionais: poder de compra, crescimento, proteção cambial e renda.</div>
+      </div>
+    </div>
+    <div class="estrategia-item">
+      <div class="estrategia-num">2</div>
+      <div>
+        <div class="estrategia-titulo">Rebalanceamento como disciplina</div>
+        <div class="estrategia-desc">Quando uma classe sobe muito, sua participação aumenta; rebalancear direciona parte do ganho às classes relativamente mais baratas. Isso transforma a alocação em processo, em vez de decisão emocional.</div>
+      </div>
+    </div>
+    <div class="estrategia-item">
+      <div class="estrategia-num">3</div>
+      <div>
+        <div class="estrategia-titulo">A carteira ideal não precisa ganhar todo ano</div>
+        <div class="estrategia-desc">Ela precisa permitir que o patrimônio atravesse diferentes ciclos econômicos sem depender de uma única previsão — e permitir que o investidor permaneça investido durante esses ciclos.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="conclusao fade-in">
+    R$ 100 mil teriam se tornado aproximadamente <strong>R$ 808 mil no Ibovespa, R$ 944 mil no CDI e R$ 1,42 milhão na carteira diversificada</strong>. O resultado histórico chama atenção — mas a principal mensagem está no caminho percorrido para chegar até ele: <strong>investir bem durante vinte anos exige aceitar que, durante vários desses anos, alguma outra estratégia parecerá melhor.</strong> A diversificação funciona justamente porque não sabemos antecipadamente qual será essa estratégia.
+  </div>
+
+</article>
+
+<footer>
+  <div class="footer-name">Fábio Vogelaar Carlucci</div>
+  <div class="footer-contact">+55 (16) 98148-8260<br><a href="mailto:fabio.carlucci@ficus.capital">fabio.carlucci@ficus.capital</a></div>
+</footer>
+<div style="position:relative;z-index:1;padding:0 8% 28px;text-align:center;font-size:0.65rem;color:rgba(245,237,224,0.2);letter-spacing:0.08em;">
+  Fonte: Horizon Advisors — estudo de alocação 2003–2025 (Bloomberg e etfsradar); S&P Dow Jones Indices — Persistence Scorecard América Latina<br>
+  Conteúdo exclusivamente informativo e educacional. Não constitui recomendação de investimento.
+</div>
+
+<script>
+const faders = document.querySelectorAll(".fade-in");
+const obs = new IntersectionObserver(e => e.forEach(x => { if(x.isIntersecting){ x.target.classList.add("visible"); obs.unobserve(x.target); } }), { threshold: 0.1 });
+faders.forEach(f => obs.observe(f));
+</script>
+</body>
+</html>
