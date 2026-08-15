@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>O dinheiro mudou de tamanho: M2, inflação e poder de compra | Fábio Carlucci</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DBQSDSDRF3"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-DBQSDSDRF3");</script>
+<style>
+  :root {
+    --verde-escuro: #1a2e25;
+    --dourado: #c9a84c;
+    --dourado-claro: #e2c47a;
+    --creme: #f5ede0;
+    --texto-claro: rgba(245,237,224,0.85);
+    --texto-muted: rgba(245,237,224,0.45);
+    --azul: #4a90d9;
+    --verde-gain: #3dbf8a;
+    --vermelho: #c94545;
+    --laranja: #e07a35;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { background-color: var(--verde-escuro); color: var(--creme); font-family: "Jost", sans-serif; font-weight: 300; overflow-x: hidden; }
+  body::before {
+    content: ""; position: fixed; inset: 0;
+    background-image: radial-gradient(ellipse at 10% 10%, rgba(201,168,76,0.06) 0%, transparent 55%), radial-gradient(ellipse at 90% 90%, rgba(47,82,64,0.35) 0%, transparent 55%);
+    pointer-events: none; z-index: 0;
+  }
+  .back-link { position: relative; z-index: 10; display: inline-flex; align-items: center; gap: 8px; padding: 28px 8%; font-size: 0.7rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--texto-muted); text-decoration: none; transition: color 0.2s; }
+  .back-link:hover { color: var(--dourado); }
+  .back-link::before { content: "←"; font-size: 0.9rem; }
+  .hero { position: relative; z-index: 1; padding: 20px 8% 64px; border-bottom: 1px solid rgba(201,168,76,0.15); max-width: 900px; }
+  .hero-tag { font-size: 0.65rem; font-weight: 500; letter-spacing: 0.35em; text-transform: uppercase; color: var(--dourado); display: flex; align-items: center; gap: 12px; margin-bottom: 24px; opacity: 0; animation: fadeUp 0.7s ease 0.1s forwards; }
+  .hero-tag::before { content: ""; width: 30px; height: 1px; background: var(--dourado); }
+  .hero-date { font-size: 0.72rem; letter-spacing: 0.15em; color: var(--texto-muted); margin-bottom: 20px; opacity: 0; animation: fadeUp 0.7s ease 0.2s forwards; }
+  h1 { font-family: "Cormorant Garamond", serif; font-size: clamp(2rem, 5vw, 3.7rem); font-weight: 300; line-height: 1.12; color: var(--creme); opacity: 0; animation: fadeUp 0.7s ease 0.3s forwards; }
+  h1 em { font-style: italic; color: var(--dourado-claro); }
+  .hero-sub { font-size: 0.97rem; color: var(--texto-muted); line-height: 1.75; margin-top: 16px; max-width: 640px; opacity: 0; animation: fadeUp 0.7s ease 0.45s forwards; }
+  .hero-fonte { margin-top: 14px; font-size: 0.7rem; color: rgba(245,237,224,0.3); opacity: 0; animation: fadeUp 0.7s ease 0.55s forwards; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+  article { position: relative; z-index: 1; max-width: 800px; margin: 0 auto; padding: 64px 8% 88px; }
+  .lead { font-family: "Cormorant Garamond", serif; font-size: clamp(1.1rem, 2.5vw, 1.35rem); font-weight: 400; line-height: 1.8; color: var(--creme); margin-bottom: 48px; padding-bottom: 48px; border-bottom: 1px solid rgba(201,168,76,0.15); }
+  p { font-size: 0.97rem; line-height: 1.9; color: var(--texto-claro); margin-bottom: 24px; }
+  strong { font-weight: 600; color: var(--creme); }
+  .section-title { font-family: "Cormorant Garamond", serif; font-size: 1.5rem; font-weight: 600; color: var(--dourado-claro); margin: 56px 0 18px; padding-top: 44px; border-top: 1px solid rgba(201,168,76,0.12); display: flex; align-items: center; gap: 14px; }
+  .section-icon { font-size: 1.3rem; flex-shrink: 0; }
+
+  .stat-hero { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 32px 0; }
+  @media (max-width: 500px) { .stat-hero { grid-template-columns: 1fr; } }
+  .stat-card { border-radius: 8px; padding: 26px 22px; text-align: center; }
+  .stat-card.dourado { background: linear-gradient(135deg, rgba(201,168,76,0.14) 0%, rgba(47,82,64,0.4) 100%); border: 1px solid rgba(201,168,76,0.3); }
+  .stat-card.neutro { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); }
+  .stat-card-val { font-family: "Cormorant Garamond", serif; font-size: 2.7rem; font-weight: 700; line-height: 1; margin-bottom: 8px; }
+  .stat-card.dourado .stat-card-val { color: var(--dourado); }
+  .stat-card.neutro .stat-card-val { color: var(--texto-claro); }
+  .stat-card-desc { font-size: 0.8rem; color: var(--texto-muted); line-height: 1.5; }
+
+  .grafico-wrap { background: rgba(10,20,16,0.7); border: 1px solid rgba(255,255,255,0.07); border-radius: 8px; padding: 24px 20px 16px; margin: 32px 0; }
+  .grafico-titulo { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--dourado); margin-bottom: 4px; }
+  .grafico-sub { font-size: 0.72rem; color: var(--texto-muted); margin-bottom: 16px; }
+  .grafico-nota { font-size: 0.65rem; color: rgba(245,237,224,0.25); margin-top: 10px; line-height: 1.4; }
+
+  /* GRÁFICO M2 */
+  .m2-chart { position: relative; display: flex; align-items: flex-end; gap: 22px; height: 190px; padding: 30px 6px 0; }
+  .m2-bar-col { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; height: 100%; position: relative; }
+  .m2-bar { width: 100%; max-width: 68px; background: linear-gradient(180deg, var(--dourado-claro) 0%, var(--dourado) 100%); border-radius: 4px 4px 0 0; position: relative; }
+  .m2-bar-val { position: absolute; top: -22px; left: 50%; transform: translateX(-50%); font-family: "Cormorant Garamond", serif; font-weight: 700; font-size: 0.92rem; color: var(--creme); white-space: nowrap; }
+  .m2-bar-label { margin-top: 8px; font-size: 0.66rem; color: var(--texto-muted); text-align: center; }
+  .m2-growth-tag { position: absolute; top: -6px; left: 0; right: 0; text-align: center; font-size: 0.7rem; color: var(--dourado-claro); font-weight: 600; letter-spacing: 0.03em; }
+  .m2-growth-line { position: absolute; top: 14px; left: 8%; right: 8%; border-top: 1px dashed rgba(226,196,122,0.4); }
+
+  /* IPCA CHART */
+  .hist-chart { position: relative; display: flex; align-items: flex-end; gap: 8px; height: 140px; margin-top: 14px; padding-top: 24px; }
+  .hist-bar-col { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; height: 100%; position: relative; }
+  .hist-bar { width: 100%; background: linear-gradient(180deg, #6fae8f 0%, #2f8f6f 100%); border-radius: 3px 3px 0 0; position: relative; opacity: 0.9; }
+  .hist-bar.destaque { background: linear-gradient(180deg, var(--dourado-claro) 0%, var(--dourado) 100%); }
+  .hist-bar-val { position: absolute; top: -20px; left: 50%; transform: translateX(-50%); font-size: 0.68rem; font-weight: 600; color: var(--texto-claro); white-space: nowrap; }
+  .hist-bar-label { margin-top: 6px; font-size: 0.62rem; color: var(--texto-muted); text-align: center; }
+
+  /* COMPARAÇÃO NOMINAL x REAL */
+  .compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 28px 0; }
+  @media (max-width: 500px) { .compare-grid { grid-template-columns: 1fr; } }
+  .compare-card { border-radius: 8px; padding: 22px 18px; text-align: center; }
+  .compare-card.nominal { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); }
+  .compare-card.real { background: linear-gradient(135deg, rgba(201,69,69,0.1) 0%, rgba(47,82,64,0.4) 100%); border: 1px solid rgba(201,69,69,0.25); }
+  .compare-label { font-size: 0.62rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--texto-muted); margin-bottom: 10px; }
+  .compare-val { font-family: "Cormorant Garamond", serif; font-size: 1.8rem; font-weight: 700; color: var(--creme); }
+  .compare-desc { font-size: 0.75rem; color: var(--texto-muted); margin-top: 6px; line-height: 1.5; }
+
+  /* M2 x INFLAÇÃO */
+  .versus-row { display: flex; align-items: center; gap: 16px; margin: 28px 0; }
+  @media (max-width: 500px) { .versus-row { flex-direction: column; } }
+  .versus-card { flex: 1; text-align: center; border-radius: 8px; padding: 24px 16px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); }
+  .versus-val { font-family: "Cormorant Garamond", serif; font-size: 2.4rem; font-weight: 700; color: var(--dourado); }
+  .versus-label { font-size: 0.72rem; color: var(--texto-muted); margin-top: 6px; }
+  .versus-vs { font-family: "Cormorant Garamond", serif; font-style: italic; font-size: 1rem; color: var(--texto-muted); flex-shrink: 0; }
+
+  .fatores-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin: 24px 0; }
+  @media (max-width: 500px) { .fatores-grid { grid-template-columns: 1fr; } }
+  .fator-tag { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 13px 14px; font-size: 0.8rem; color: var(--texto-claro); display: flex; align-items: center; gap: 8px; }
+  .fator-tag::before { content: "▸"; color: var(--dourado); flex-shrink: 0; }
+
+  .insight-box { background: linear-gradient(135deg, rgba(201,168,76,0.1) 0%, rgba(26,46,37,0.4) 100%); border: 1px solid rgba(201,168,76,0.25); border-left: 3px solid var(--dourado); border-radius: 4px; padding: 28px 32px; margin: 36px 0; }
+  .insight-box p { font-family: "Cormorant Garamond", serif; font-size: 1.1rem; color: var(--creme); line-height: 1.8; margin: 0; }
+
+  .estrategia-list { display: flex; flex-direction: column; gap: 10px; margin: 28px 0; }
+  .estrategia-item { display: flex; align-items: flex-start; gap: 16px; padding: 18px 20px; background: rgba(201,168,76,0.05); border: 1px solid rgba(201,168,76,0.15); border-radius: 5px; }
+  .estrategia-num { font-family: "Cormorant Garamond", serif; font-size: 1.8rem; font-weight: 700; color: rgba(201,168,76,0.3); flex-shrink: 0; width: 32px; text-align: center; }
+  .estrategia-titulo { font-size: 0.82rem; font-weight: 600; color: var(--dourado); margin-bottom: 3px; }
+  .estrategia-desc { font-size: 0.83rem; color: var(--texto-claro); line-height: 1.55; }
+
+  .conclusao { font-family: "Cormorant Garamond", serif; font-size: 1.15rem; font-weight: 400; line-height: 1.85; color: var(--creme); margin-top: 52px; padding: 40px; border: 1px solid rgba(201,168,76,0.2); border-radius: 6px; background: rgba(255,255,255,0.02); position: relative; }
+  .conclusao::before { content: "\201C"; position: absolute; top: -10px; left: 32px; font-size: 5rem; color: rgba(201,168,76,0.15); font-family: "Cormorant Garamond", serif; line-height: 1; }
+
+  .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .fade-in.visible { opacity: 1; transform: none; }
+  footer { position: relative; z-index: 1; border-top: 1px solid rgba(201,168,76,0.12); padding: 40px 8%; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+  .footer-name { font-family: "Cormorant Garamond", serif; font-size: 1.1rem; font-weight: 300; color: var(--texto-muted); }
+  .footer-contact { font-size: 0.75rem; color: rgba(245,237,224,0.25); line-height: 1.9; text-align: right; }
+  .footer-contact a { color: var(--dourado); text-decoration: none; }
+  @media (max-width: 640px) { .back-link,.hero { padding-left: 5%; padding-right: 5%; } article { padding: 48px 5% 64px; } footer { padding: 32px 5%; flex-direction: column; } .footer-contact { text-align: left; } .m2-bar-val,.hist-bar-val { font-size: 0.6rem; } }
+</style>
+</head>
+<body>
+
+<a class="back-link" href="index.html">Voltar</a>
+
+<header class="hero">
+  <div class="hero-tag">Memorando · Macro Brasil & Patrimônio</div>
+  <div class="hero-date">Agosto de 2026</div>
+  <h1>O dinheiro mudou de tamanho</h1>
+  <p class="hero-sub">O que a expansão da oferta monetária desde a pandemia nos ensina sobre inflação, patrimônio e investimentos. A quantidade de reais em circulação cresceu muito mais rápido do que os preços — e essa diferença muda a forma como deveríamos medir enriquecimento.</p>
+  <div class="hero-fonte">Fontes: Banco Central do Brasil — Estatísticas Monetárias e de Crédito; IBGE — IPCA</div>
+</header>
+
+<article>
+
+  <p class="lead">
+    Normalmente pensamos que imóveis, carros, alimentos e serviços ficaram mais caros. Mas existe outro lado dessa equação: <strong>a quantidade de dinheiro e de ativos monetários existentes na economia brasileira cresceu de maneira extraordinária.</strong> Em março de 2020, no início da pandemia, o agregado monetário M2 brasileiro estava próximo de <strong>R$ 3,21 trilhões</strong>. Em junho de 2026, esse número chegou a aproximadamente <strong>R$ 7,65 trilhões</strong>.
+  </p>
+
+  <div class="stat-hero fade-in">
+    <div class="stat-card dourado">
+      <div class="stat-card-val">+138%</div>
+      <div class="stat-card-desc">de expansão do M2 brasileiro em pouco mais de <strong style="color:var(--dourado)">6 anos</strong> — um estoque adicional de cerca de R$ 4,4 trilhões</div>
+    </div>
+    <div class="stat-card neutro">
+      <div class="stat-card-val">58%</div>
+      <div class="stat-card-desc">do M2 existente hoje corresponde à <strong>expansão ocorrida desde março de 2020</strong></div>
+    </div>
+  </div>
+
+  <!-- SEÇÃO 1: GRÁFICO M2 -->
+  <div class="section-title fade-in"><span class="section-icon">💰</span> A trajetória do M2 desde a pandemia</div>
+
+  <p>O Banco Central registrou crescimento contínuo do agregado monetário mesmo depois do choque inicial da pandemia. No final de 2025, o M2 já somava R$ 7,3 trilhões — alta de 10,2% só naquele ano. Em abril de 2026, o estoque estava em aproximadamente R$ 7,5 trilhões, chegando a R$ 7,65 trilhões em junho:</p>
+
+  <div class="grafico-wrap fade-in">
+    <div class="grafico-titulo">Oferta monetária M2 no Brasil</div>
+    <div class="grafico-sub">R$ trilhões · Banco Central do Brasil</div>
+    <div class="m2-chart">
+      <div class="m2-growth-tag">+138%</div>
+      <div class="m2-growth-line"></div>
+      <div class="m2-bar-col"><div class="m2-bar-val">R$ 3,21 tri</div><div class="m2-bar" style="height:41%;"></div><div class="m2-bar-label">Mar/2020</div></div>
+      <div class="m2-bar-col"><div class="m2-bar-val">R$ 7,3 tri</div><div class="m2-bar" style="height:95%;"></div><div class="m2-bar-label">Dez/2025</div></div>
+      <div class="m2-bar-col"><div class="m2-bar-val">R$ 7,5 tri</div><div class="m2-bar" style="height:98%;"></div><div class="m2-bar-label">Abr/2026</div></div>
+      <div class="m2-bar-col"><div class="m2-bar-val">R$ 7,65 tri</div><div class="m2-bar" style="height:100%;"></div><div class="m2-bar-label">Jun/2026</div></div>
+    </div>
+    <div class="grafico-nota">Fonte: Banco Central do Brasil — Estatísticas Monetárias e de Crédito / Panorama das Sociedades de Depósito.</div>
+  </div>
+
+  <!-- SEÇÃO 2: O QUE É M2 -->
+  <div class="section-title fade-in"><span class="section-icon">📖</span> Mas o que é M2?</div>
+
+  <p>Quando falamos em oferta monetária, não estamos falando apenas das notas de reais existentes. O Banco Central divide a moeda em diferentes agregados:</p>
+
+  <div class="fatores-grid fade-in">
+    <div class="fator-tag">M1 — papel-moeda em poder do público + depósitos à vista</div>
+    <div class="fator-tag">M2 — M1 + depósitos de poupança + títulos privados emitidos por instituições financeiras</div>
+  </div>
+
+  <p>O M2 funciona, portanto, como uma medida mais ampla da quantidade de recursos monetários e instrumentos altamente líquidos existentes na economia.</p>
+
+  <!-- SEÇÃO 3: INFLAÇÃO -->
+  <div class="section-title fade-in"><span class="section-icon">📉</span> Quanto o real perdeu de poder de compra?</div>
+
+  <p>No longo prazo, existe uma relação importante entre quantidade de moeda, crescimento da economia e nível geral de preços — embora essa relação não seja automática nem proporcional. A inflação brasileira também foi influenciada por câmbio, commodities, energia, gargalos produtivos e política fiscal. Ainda assim, o IPCA mostra a erosão acumulada:</p>
+
+  <div class="grafico-wrap fade-in">
+    <div class="grafico-titulo">IPCA — variação anual acumulada</div>
+    <div class="grafico-sub">2020–2025 e parcial de 2026 (12 meses até junho)</div>
+    <div class="hist-chart">
+      <div class="hist-bar-col"><div class="hist-bar-val">4,52%</div><div class="hist-bar" style="height:45%;"></div><div class="hist-bar-label">2020</div></div>
+      <div class="hist-bar-col"><div class="hist-bar-val">10,06%</div><div class="hist-bar destaque" style="height:100%;"></div><div class="hist-bar-label">2021</div></div>
+      <div class="hist-bar-col"><div class="hist-bar-val">5,79%</div><div class="hist-bar" style="height:58%;"></div><div class="hist-bar-label">2022</div></div>
+      <div class="hist-bar-col"><div class="hist-bar-val">4,62%</div><div class="hist-bar" style="height:46%;"></div><div class="hist-bar-label">2023</div></div>
+      <div class="hist-bar-col"><div class="hist-bar-val">4,83%</div><div class="hist-bar" style="height:48%;"></div><div class="hist-bar-label">2024</div></div>
+      <div class="hist-bar-col"><div class="hist-bar-val">4,26%</div><div class="hist-bar" style="height:42%;"></div><div class="hist-bar-label">2025</div></div>
+      <div class="hist-bar-col"><div class="hist-bar-val">4,64%</div><div class="hist-bar" style="height:46%;"></div><div class="hist-bar-label">2026 (12m)</div></div>
+    </div>
+    <div class="grafico-nota">Fonte: IBGE — Sistema Nacional de Índices de Preços ao Consumidor. Junho/2026: 3,36% no ano, 4,64% em 12 meses.</div>
+  </div>
+
+  <p>Compostas ao longo do tempo, entre o início de 2020 e 2026 o nível geral de preços subiu aproximadamente <strong>40% a 45%</strong>. Na prática, algo que custava R$ 100 em 2020 passou a exigir algo próximo de <strong>R$ 140–145</strong> em 2026 para comprar uma cesta equivalente. Guardar o mesmo número de reais nesse período significou perder uma parcela relevante da capacidade de consumo.</p>
+
+  <!-- SEÇÃO 4: NOMINAL x REAL -->
+  <div class="section-title fade-in"><span class="section-icon">⚖️</span> Patrimônio nominal e patrimônio real são coisas diferentes</div>
+
+  <p>Imagine um patrimônio que passou de R$ 1 milhão para R$ 1,3 milhão — visualmente, um enriquecimento de 30%. Mas se os preços da economia aumentaram mais de 40% no mesmo período, esse investidor possui mais reais e, ao mesmo tempo, <strong>menor poder de compra real</strong>:</p>
+
+  <div class="compare-grid fade-in">
+    <div class="compare-card nominal">
+      <div class="compare-label">Leitura nominal</div>
+      <div class="compare-val">+30%</div>
+      <div class="compare-desc">R$ 1 milhão → R$ 1,3 milhão<br>parece enriquecimento</div>
+    </div>
+    <div class="compare-card real">
+      <div class="compare-label">Leitura real</div>
+      <div class="compare-val" style="color:#e07070;">Poder de compra menor</div>
+      <div class="compare-desc">preços subiram &gt;40% no período<br>o patrimônio comprou menos do que antes</div>
+    </div>
+  </div>
+
+  <p>A pergunta relevante passa a ser: quanto de patrimônio real esse dinheiro consegue comprar — em imóveis, participações em empresas, energia, alimentos, serviços, moedas fortes, ativos internacionais?</p>
+
+  <!-- SEÇÃO 5: M2 x INFLAÇÃO -->
+  <div class="section-title fade-in"><span class="section-icon">🔍</span> Uma comparação que merece atenção</div>
+
+  <div class="versus-row fade-in">
+    <div class="versus-card">
+      <div class="versus-val">+138%</div>
+      <div class="versus-label">M2 brasileiro<br>desde março de 2020</div>
+    </div>
+    <div class="versus-vs">vs.</div>
+    <div class="versus-card">
+      <div class="versus-val" style="color:var(--texto-claro);">+40% a +45%</div>
+      <div class="versus-label">Inflação acumulada<br>no mesmo período</div>
+    </div>
+  </div>
+
+  <p>Os números medem fenômenos diferentes e não devem ser interpretados como uma relação direta de causa e efeito. Mas juntos mostram algo relevante: a quantidade nominal de dinheiro e instrumentos monetários cresceu muito mais rapidamente do que o poder de compra de cada unidade monetária. Essa diferença ajuda a explicar por que preservar patrimônio exige cada vez mais pensar em <strong>retorno real</strong>, e não apenas em rentabilidade nominal.</p>
+
+  <div class="insight-box fade-in">
+    <p>O dinheiro é a nossa unidade de medida — mas a própria régua muda. Comparar R$ 1 milhão hoje com R$ 1 milhão de dez ou vinte anos atrás é como <strong>comparar distâncias usando uma régua cujo tamanho foi alterado.</strong></p>
+  </div>
+
+  <!-- SEÇÃO 6: O QUE FAZER -->
+  <div class="section-title fade-in"><span class="section-icon">🧭</span> O grande desafio do investidor</div>
+
+  <p>Dinheiro é uma excelente ferramenta para liquidez. Para horizontes longos, entretanto, preservar patrimônio exige que o capital produza retorno suficiente para superar a erosão do poder de compra. Uma carteira patrimonial pode combinar diferentes mecanismos de proteção — nenhum deles isoladamente resolve o problema; a proteção vem da construção adequada da carteira:</p>
+
+  <div class="estrategia-list fade-in">
+    <div class="estrategia-item">
+      <div class="estrategia-num">1</div>
+      <div>
+        <div class="estrategia-titulo">Títulos indexados à inflação</div>
+        <div class="estrategia-desc">Permitem contratar retorno acima do IPCA, protegendo diretamente o poder de compra contratado.</div>
+      </div>
+    </div>
+    <div class="estrategia-item">
+      <div class="estrategia-num">2</div>
+      <div>
+        <div class="estrategia-titulo">Ativos reais e empresas</div>
+        <div class="estrategia-desc">Participam da geração de riqueza da economia e têm, em diferentes graus, capacidade de repassar inflação aos preços.</div>
+      </div>
+    </div>
+    <div class="estrategia-item">
+      <div class="estrategia-num">3</div>
+      <div>
+        <div class="estrategia-titulo">Investimentos internacionais e exposição cambial</div>
+        <div class="estrategia-desc">Diversificam o patrimônio para outras economias, moedas e mercados, reduzindo a dependência exclusiva do real e do risco brasileiro.</div>
+      </div>
+    </div>
+    <div class="estrategia-item">
+      <div class="estrategia-num">4</div>
+      <div>
+        <div class="estrategia-titulo">Ativos de oferta limitada</div>
+        <div class="estrategia-desc">Podem exercer papel complementar de diversificação em determinadas estratégias patrimoniais.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="conclusao fade-in">
+    Durante muito tempo, investidores se acostumaram a perguntar <strong>"quanto meu dinheiro rendeu?"</strong> Para planejamento patrimonial de longo prazo, existe uma pergunta ainda mais importante: <strong>"quanto aumentou o meu poder de compra?"</strong> O número que aparece no extrato pode ser o mesmo em dois cenários de inflação muito diferentes — a evolução patrimonial real, não.
+  </div>
+
+</article>
+
+<footer>
+  <div class="footer-name">Fábio Vogelaar Carlucci</div>
+  <div class="footer-contact">+55 (16) 98148-8260<br><a href="mailto:fabio.carlucci@ficus.capital">fabio.carlucci@ficus.capital</a></div>
+</footer>
+<div style="position:relative;z-index:1;padding:0 8% 28px;text-align:center;font-size:0.65rem;color:rgba(245,237,224,0.2);letter-spacing:0.08em;">
+  Fontes: Banco Central do Brasil — Estatísticas Monetárias e de Crédito, Panorama das Sociedades de Depósito; IBGE — Sistema Nacional de Índices de Preços ao Consumidor (IPCA)<br>
+  Conteúdo exclusivamente informativo e educacional. Não constitui recomendação de investimento.
+</div>
+
+<script>
+const faders = document.querySelectorAll(".fade-in");
+const obs = new IntersectionObserver(e => e.forEach(x => { if(x.isIntersecting){ x.target.classList.add("visible"); obs.unobserve(x.target); } }), { threshold: 0.1 });
+faders.forEach(f => obs.observe(f));
+</script>
+</body>
+</html>
