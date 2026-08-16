@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>O que dez anos de NTN-B podem nos ensinar sobre os próximos dez | Fábio Carlucci</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DBQSDSDRF3"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-DBQSDSDRF3");</script>
+<style>
+  :root {
+    --verde-escuro: #1a2e25;
+    --dourado: #c9a84c;
+    --dourado-claro: #e2c47a;
+    --creme: #f5ede0;
+    --texto-claro: rgba(245,237,224,0.85);
+    --texto-muted: rgba(245,237,224,0.45);
+    --azul: #4a90d9;
+    --verde-gain: #3dbf8a;
+    --vermelho: #c94545;
+    --laranja: #e07a35;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { background-color: var(--verde-escuro); color: var(--creme); font-family: "Jost", sans-serif; font-weight: 300; overflow-x: hidden; }
+  body::before {
+    content: ""; position: fixed; inset: 0;
+    background-image: radial-gradient(ellipse at 10% 10%, rgba(201,168,76,0.06) 0%, transparent 55%), radial-gradient(ellipse at 90% 90%, rgba(47,82,64,0.35) 0%, transparent 55%);
+    pointer-events: none; z-index: 0;
+  }
+  .back-link { position: relative; z-index: 10; display: inline-flex; align-items: center; gap: 8px; padding: 28px 8%; font-size: 0.7rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--texto-muted); text-decoration: none; transition: color 0.2s; }
+  .back-link:hover { color: var(--dourado); }
+  .back-link::before { content: "←"; font-size: 0.9rem; }
+  .hero { position: relative; z-index: 1; padding: 20px 8% 64px; border-bottom: 1px solid rgba(201,168,76,0.15); max-width: 900px; }
+  .hero-tag { font-size: 0.65rem; font-weight: 500; letter-spacing: 0.35em; text-transform: uppercase; color: var(--dourado); display: flex; align-items: center; gap: 12px; margin-bottom: 24px; opacity: 0; animation: fadeUp 0.7s ease 0.1s forwards; }
+  .hero-tag::before { content: ""; width: 30px; height: 1px; background: var(--dourado); }
+  .hero-date { font-size: 0.72rem; letter-spacing: 0.15em; color: var(--texto-muted); margin-bottom: 20px; opacity: 0; animation: fadeUp 0.7s ease 0.2s forwards; }
+  h1 { font-family: "Cormorant Garamond", serif; font-size: clamp(2rem, 5vw, 3.4rem); font-weight: 300; line-height: 1.12; color: var(--creme); opacity: 0; animation: fadeUp 0.7s ease 0.3s forwards; }
+  h1 em { font-style: italic; color: var(--dourado-claro); }
+  .hero-sub { font-size: 0.97rem; color: var(--texto-muted); line-height: 1.75; margin-top: 16px; max-width: 640px; opacity: 0; animation: fadeUp 0.7s ease 0.45s forwards; }
+  .hero-fonte { margin-top: 14px; font-size: 0.7rem; color: rgba(245,237,224,0.3); opacity: 0; animation: fadeUp 0.7s ease 0.55s forwards; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+  article { position: relative; z-index: 1; max-width: 800px; margin: 0 auto; padding: 64px 8% 88px; }
+  .lead { font-family: "Cormorant Garamond", serif; font-size: clamp(1.1rem, 2.5vw, 1.35rem); font-weight: 400; line-height: 1.8; color: var(--creme); margin-bottom: 48px; padding-bottom: 48px; border-bottom: 1px solid rgba(201,168,76,0.15); }
+  p { font-size: 0.97rem; line-height: 1.9; color: var(--texto-claro); margin-bottom: 24px; }
+  strong { font-weight: 600; color: var(--creme); }
+  .section-title { font-family: "Cormorant Garamond", serif; font-size: 1.5rem; font-weight: 600; color: var(--dourado-claro); margin: 56px 0 18px; padding-top: 44px; border-top: 1px solid rgba(201,168,76,0.12); display: flex; align-items: center; gap: 14px; }
+  .section-icon { font-size: 1.3rem; flex-shrink: 0; }
+
+  .stat-hero { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; margin: 32px 0; }
+  @media (max-width: 560px) { .stat-hero { grid-template-columns: 1fr; } }
+  .stat-card { border-radius: 8px; padding: 24px 18px; text-align: center; }
+  .stat-card.dourado { background: linear-gradient(135deg, rgba(201,168,76,0.14) 0%, rgba(47,82,64,0.4) 100%); border: 1px solid rgba(201,168,76,0.3); }
+  .stat-card.azul { background: linear-gradient(135deg, rgba(74,144,217,0.12) 0%, rgba(47,82,64,0.4) 100%); border: 1px solid rgba(74,144,217,0.28); }
+  .stat-card.neutro { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); }
+  .stat-card-val { font-family: "Cormorant Garamond", serif; font-size: 2.1rem; font-weight: 700; line-height: 1; margin-bottom: 8px; }
+  .stat-card.dourado .stat-card-val { color: var(--dourado); }
+  .stat-card.azul .stat-card-val { color: #7db3ea; }
+  .stat-card.neutro .stat-card-val { color: var(--texto-claro); }
+  .stat-card-desc { font-size: 0.75rem; color: var(--texto-muted); line-height: 1.5; }
+
+  .grafico-wrap { background: rgba(10,20,16,0.7); border: 1px solid rgba(255,255,255,0.07); border-radius: 8px; padding: 24px 20px 16px; margin: 32px 0; }
+  .grafico-titulo { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--dourado); margin-bottom: 4px; }
+  .grafico-sub { font-size: 0.72rem; color: var(--texto-muted); margin-bottom: 16px; }
+  .grafico-nota { font-size: 0.65rem; color: rgba(245,237,224,0.25); margin-top: 10px; line-height: 1.4; }
+  .grafico-legenda { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 14px; }
+  .leg-item { display: flex; align-items: center; gap: 6px; font-size: 0.7rem; color: var(--texto-claro); }
+  .leg-line { width: 16px; height: 2px; border-radius: 1px; flex-shrink: 0; }
+  .leg-val { font-family: "Cormorant Garamond", serif; font-weight: 700; margin-left: 4px; }
+
+  .fx-line-svg { width: 100%; height: auto; display: block; }
+
+  .destaque-diff { text-align: center; margin: 24px 0 8px; }
+  .destaque-diff-val { font-family: "Cormorant Garamond", serif; font-size: 1.4rem; font-weight: 700; color: var(--dourado-claro); }
+
+  .fatores-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin: 24px 0; }
+  @media (max-width: 500px) { .fatores-grid { grid-template-columns: 1fr; } }
+  .fator-tag { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 15px 16px; font-size: 0.82rem; color: var(--texto-claro); }
+  .fator-tag-titulo { font-weight: 600; color: var(--dourado); font-size: 0.78rem; margin-bottom: 4px; display: flex; align-items: center; gap: 6px; }
+  .fator-tag-titulo::before { content: "▸"; }
+
+  .insight-box { background: linear-gradient(135deg, rgba(201,168,76,0.1) 0%, rgba(26,46,37,0.4) 100%); border: 1px solid rgba(201,168,76,0.25); border-left: 3px solid var(--dourado); border-radius: 4px; padding: 28px 32px; margin: 36px 0; }
+  .insight-box p { font-family: "Cormorant Garamond", serif; font-size: 1.1rem; color: var(--creme); line-height: 1.8; margin: 0; }
+  .warn-box { background: linear-gradient(135deg, rgba(201,69,69,0.08) 0%, rgba(26,46,37,0.4) 100%); border: 1px solid rgba(201,69,69,0.22); border-left: 3px solid #c94545; border-radius: 4px; padding: 24px 28px; margin: 32px 0; }
+  .warn-box p { font-size: 0.9rem; color: var(--texto-claro); margin: 0; line-height: 1.75; }
+
+  .estrategia-list { display: flex; flex-direction: column; gap: 10px; margin: 28px 0; }
+  .estrategia-item { display: flex; align-items: flex-start; gap: 16px; padding: 18px 20px; background: rgba(201,168,76,0.05); border: 1px solid rgba(201,168,76,0.15); border-radius: 5px; }
+  .estrategia-num { font-family: "Cormorant Garamond", serif; font-size: 1.8rem; font-weight: 700; color: rgba(201,168,76,0.3); flex-shrink: 0; width: 32px; text-align: center; }
+  .estrategia-titulo { font-size: 0.82rem; font-weight: 600; color: var(--dourado); margin-bottom: 3px; }
+  .estrategia-desc { font-size: 0.83rem; color: var(--texto-claro); line-height: 1.55; }
+
+  .conclusao { font-family: "Cormorant Garamond", serif; font-size: 1.1rem; font-weight: 400; line-height: 1.85; color: var(--creme); margin-top: 52px; padding: 40px; border: 1px solid rgba(201,168,76,0.2); border-radius: 6px; background: rgba(255,255,255,0.02); position: relative; }
+  .conclusao::before { content: "\201C"; position: absolute; top: -10px; left: 32px; font-size: 5rem; color: rgba(201,168,76,0.15); font-family: "Cormorant Garamond", serif; line-height: 1; }
+
+  .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .fade-in.visible { opacity: 1; transform: none; }
+  footer { position: relative; z-index: 1; border-top: 1px solid rgba(201,168,76,0.12); padding: 40px 8%; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+  .footer-name { font-family: "Cormorant Garamond", serif; font-size: 1.1rem; font-weight: 300; color: var(--texto-muted); }
+  .footer-contact { font-size: 0.75rem; color: rgba(245,237,224,0.25); line-height: 1.9; text-align: right; }
+  .footer-contact a { color: var(--dourado); text-decoration: none; }
+  @media (max-width: 640px) { .back-link,.hero { padding-left: 5%; padding-right: 5%; } article { padding: 48px 5% 64px; } footer { padding: 32px 5%; flex-direction: column; } .footer-contact { text-align: left; } }
+</style>
+</head>
+<body>
+
+<a class="back-link" href="index.html">Voltar</a>
+
+<header class="hero">
+  <div class="hero-tag">Memorando · Renda Fixa & Juros Reais</div>
+  <div class="hero-date">Setembro de 2026</div>
+  <h1>O que dez anos de NTN-B podem nos ensinar sobre <em>os próximos dez</em></h1>
+  <p class="hero-sub">Em junho de 2016, o investidor brasileiro se deparava com uma escolha que se parece bastante com a que temos hoje: ficar no CDI a 14% ou travar dez anos de juro real elevado. Agora conhecemos o resultado — e um caminhão de liquidez está prestes a precisar da mesma decisão outra vez.</p>
+  <div class="hero-fonte">Fontes: Mais Retorno (séries NTN-B Principal 15/08/2026, NTN-B com cupons e CDI, 30/06/2016–14/08/2026); Tesouro Nacional; Banco Central do Brasil; Copom, 05/08/2026</div>
+</header>
+
+<article>
+
+  <p class="lead">
+    Em junho de 2016, o país atravessava uma recessão, a Selic estava em <strong>14,25% ao ano</strong> e os títulos públicos indexados à inflação ofereciam taxas reais muito elevadas. Havia duas alternativas confortáveis: permanecer no pós-fixado, recebendo cerca de 14% ao ano com liquidez e baixa volatilidade, ou aceitar oscilações no preço e travar por dez anos uma remuneração composta por <strong>IPCA + uma taxa real elevada</strong>. Dez anos depois, podemos observar o resultado daquela decisão.
+  </p>
+
+  <div class="stat-hero fade-in">
+    <div class="stat-card dourado">
+      <div class="stat-card-val">R$ 297,8 mil</div>
+      <div class="stat-card-desc">NTN-B Principal 2026<br>R$ 100 mil aplicados em jun/2016</div>
+    </div>
+    <div class="stat-card azul">
+      <div class="stat-card-val">R$ 293,4 mil</div>
+      <div class="stat-card-desc">NTN-B 2026 com cupons<br>com reinvestimento dos juros</div>
+    </div>
+    <div class="stat-card neutro">
+      <div class="stat-card-val">R$ 248,6 mil</div>
+      <div class="stat-card-desc">CDI<br>mesmo período</div>
+    </div>
+  </div>
+
+  <div class="destaque-diff fade-in">
+    <div class="destaque-diff-val">≈ R$ 49,2 mil de diferença para cada R$ 100 mil investidos — NTN-B Principal terminou ~19,8% à frente do CDI</div>
+  </div>
+
+  <!-- GRÁFICO -->
+  <div class="grafico-wrap fade-in">
+    <div class="grafico-titulo">R$ 100 mil no fim de junho de 2016 · base 100</div>
+    <div class="grafico-sub">Trajetória anual aproximada · retorno nominal bruto, sem imposto ou taxas</div>
+    <svg class="fx-line-svg" viewBox="0 0 700 240" xmlns="http://www.w3.org/2000/svg">
+      <line x1="20" y1="220" x2="680" y2="220" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+      <line x1="20" y1="165.5" x2="680" y2="165.5" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+      <line x1="20" y1="120.0" x2="680" y2="120.0" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+      <line x1="20" y1="74.5" x2="680" y2="74.5" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+      <line x1="20" y1="29.1" x2="680" y2="29.1" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+      <text x="4" y="223" font-size="9" fill="rgba(245,237,224,0.35)">100</text>
+      <text x="4" y="169" font-size="9" fill="rgba(245,237,224,0.35)">150</text>
+      <text x="4" y="123.5" font-size="9" fill="rgba(245,237,224,0.35)">200</text>
+      <text x="4" y="78" font-size="9" fill="rgba(245,237,224,0.35)">250</text>
+      <text x="4" y="32.5" font-size="9" fill="rgba(245,237,224,0.35)">300</text>
+      <polyline points="20.0,210.9 52.7,204.5 85.3,197.3 118.0,190.9 150.7,185.5 183.4,180.0 216.0,174.5 248.7,169.1 281.4,165.5 314.1,160.9 346.7,154.5 379.4,145.5 412.1,136.4 444.8,124.5 477.4,115.5 510.1,106.4 542.8,100.0 575.4,92.7 608.1,85.5 640.8,80.0 680.0,75.8" fill="none" stroke="#8a8f8c" stroke-width="2"/>
+      <polyline points="20.0,210.9 52.7,204.5 85.3,195.5 118.0,185.5 150.7,191.8 183.4,176.4 216.0,165.5 248.7,153.6 281.4,141.8 314.1,137.3 346.7,140.9 379.4,126.4 412.1,117.3 444.8,103.6 477.4,92.7 510.1,77.3 542.8,66.4 575.4,55.5 608.1,46.4 640.8,40.0 680.0,35.1" fill="none" stroke="#4a90d9" stroke-width="2"/>
+      <polyline points="20.0,210.9 52.7,203.6 85.3,194.5 118.0,183.6 150.7,190.9 183.4,174.5 216.0,163.6 248.7,151.8 281.4,140.0 314.1,135.5 346.7,140.0 379.4,124.5 412.1,115.5 444.8,101.8 477.4,90.9 510.1,74.5 542.8,63.6 575.4,51.8 608.1,42.7 640.8,36.4 680.0,31.1" fill="none" stroke="#e2c47a" stroke-width="2.2"/>
+      <text x="46" y="234" font-size="9" fill="rgba(245,237,224,0.4)">2017</text>
+      <text x="176" y="234" font-size="9" fill="rgba(245,237,224,0.4)">2019</text>
+      <text x="307" y="234" font-size="9" fill="rgba(245,237,224,0.4)">2021</text>
+      <text x="438" y="234" font-size="9" fill="rgba(245,237,224,0.4)">2023</text>
+      <text x="569" y="234" font-size="9" fill="rgba(245,237,224,0.4)">2025</text>
+    </svg>
+    <div class="grafico-legenda">
+      <div class="leg-item"><div class="leg-line" style="background:#e2c47a;"></div>NTN-B Principal 2026<span class="leg-val" style="color:var(--dourado-claro);">R$ 297,8 mil</span></div>
+      <div class="leg-item"><div class="leg-line" style="background:#4a90d9;"></div>NTN-B 2026 com cupons<span class="leg-val" style="color:#7db3ea;">R$ 293,4 mil</span></div>
+      <div class="leg-item"><div class="leg-line" style="background:#8a8f8c;"></div>CDI<span class="leg-val" style="color:var(--texto-claro);">R$ 248,6 mil</span></div>
+    </div>
+    <div class="grafico-nota">Séries de 30/06/2016 a 14/08/2026, valores nominais brutos, sem imposto de renda ou taxa de custódia — o que favorece as três séries de forma desigual, já que o imposto pesa mais sobre quem rendeu mais. Fonte: Mais Retorno. Referência de curva, não recomendação.</div>
+  </div>
+
+  <!-- SEÇÃO: CAMINHO NÃO TRANQUILO -->
+  <div class="section-title fade-in"><span class="section-icon">📉</span> O caminho, porém, esteve longe de ser tranquilo</div>
+
+  <p>Observar apenas o ponto inicial e o ponto final esconde uma parte importante dessa história. Ao longo desses dez anos, a NTN-B passou por diversos períodos de forte marcação a mercado — foram aproximadamente <strong>26 meses negativos</strong> ao longo do percurso. Quem consultasse sua carteira nesses momentos poderia enxergar perdas temporárias relevantes, mesmo tendo contratado uma elevada taxa real no momento da compra.</p>
+
+  <p>Esse comportamento decorre da própria natureza dos títulos de prazo mais longo: quanto maior a <strong>duration</strong>, maior tende a ser a sensibilidade do preço às mudanças nas taxas de juros. Existe uma diferença fundamental entre o retorno contratado para quem pretende carregar o título até o vencimento e a oscilação do preço desse título durante o caminho.</p>
+
+  <!-- SEÇÃO: CARREGO -->
+  <div class="section-title fade-in"><span class="section-icon">⚓</span> O poder do carrego</div>
+
+  <p>A experiência de 2016 ajuda a ilustrar um conceito fundamental da renda fixa: <strong>carrego</strong>. Quando compramos uma NTN-B e carregamos o título até seu vencimento, contratamos uma remuneração real acima da inflação. Uma taxa de aproximadamente <strong>IPCA + 7,5% ao ano</strong>, por exemplo, significa buscar preservar o poder de compra do patrimônio e ainda acrescentar uma remuneração real elevada ao longo do período. O efeito da capitalização dessa taxa durante muitos anos é significativo — em horizontes longos, alguns décimos percentuais adicionais ao ano podem representar diferenças patrimoniais relevantes.</p>
+
+  <!-- SEÇÃO: CENÁRIO ATUAL -->
+  <div class="section-title fade-in"><span class="section-icon">🔁</span> Dez anos depois, o cenário voltou a chamar atenção</div>
+
+  <p>Em setembro de 2026, a Selic encontra-se novamente em <strong>14,00% ao ano</strong>, após a decisão do Copom de 5 de agosto. Ao mesmo tempo, títulos públicos indexados ao IPCA de prazos mais longos voltaram a negociar com <strong>taxas reais superiores a 7,5% ao ano</strong> em parte da curva. E há outro elemento importante: em <strong>15 de agosto de 2026</strong>, venceram aproximadamente <strong>R$ 258,7 bilhões</strong> dos Tesouros IPCA+ 2026 — um volume extraordinário de recursos que precisará encontrar um novo destino.</p>
+
+  <div class="stat-hero fade-in">
+    <div class="stat-card dourado">
+      <div class="stat-card-val">14,00%</div>
+      <div class="stat-card-desc">Selic a.a.<br>Copom, 05/08/2026</div>
+    </div>
+    <div class="stat-card azul">
+      <div class="stat-card-val">7,5%+</div>
+      <div class="stat-card-desc">taxa real das NTN-B<br>de prazo mais longo</div>
+    </div>
+    <div class="stat-card neutro">
+      <div class="stat-card-val">R$ 258,7 bi</div>
+      <div class="stat-card-desc">vencimento dos Tesouros<br>IPCA+ 2026 em 15/08</div>
+    </div>
+  </div>
+
+  <p>A questão relevante passa a ser: <strong>onde esse dinheiro será reinvestido?</strong></p>
+
+  <!-- SEÇÃO: DOIS RISCOS -->
+  <div class="section-title fade-in"><span class="section-icon">⚖️</span> O risco que muitas vezes passa despercebido: reinvestimento</div>
+
+  <p>Uma Selic de 14% torna o pós-fixado extremamente atraente no presente. Mas essa remuneração não está contratada pelos próximos dez anos — se a Selic cair, a remuneração futura do investimento pós-fixado cai junto, e o investidor precisará reinvestir continuamente seu patrimônio às taxas disponíveis em cada momento. A decisão envolve dois riscos diferentes:</p>
+
+  <div class="fatores-grid fade-in">
+    <div class="fator-tag"><div class="fator-tag-titulo">Na NTN-B</div>volatilidade de marcação a mercado durante o caminho</div>
+    <div class="fator-tag"><div class="fator-tag-titulo">No pós-fixado</div>risco de reinvestimento — não sabemos as taxas disponíveis daqui a dois, cinco ou dez anos</div>
+  </div>
+
+  <p>O período 2016–2026 oferece um exemplo interessante justamente porque o CDI começou extremamente elevado e, ainda assim, o carrego da NTN-B terminou significativamente à frente.</p>
+
+  <!-- SEÇÃO: ABANDONAR O CDI? -->
+  <div class="section-title fade-in"><span class="section-icon">🧭</span> Isso significa abandonar o CDI?</div>
+
+  <p>Não. CDI e títulos IPCA+ cumprem funções diferentes dentro de uma carteira. Recursos destinados à reserva de emergência, compromissos próximos e necessidades de liquidez continuam encontrando no pós-fixado uma ferramenta extremamente eficiente. Para patrimônio destinado ao longo prazo, entretanto, a análise muda: poder contratar hoje uma taxa real elevada por muitos anos pode representar uma oportunidade relevante de construção e preservação patrimonial. A decisão adequada depende principalmente de <strong>prazo, necessidade de liquidez, tolerância à volatilidade e objetivos do investidor</strong>.</p>
+
+  <!-- SEÇÃO: E SE SUBIR MAIS -->
+  <div class="section-title fade-in"><span class="section-icon">📐</span> E se as taxas subirem ainda mais?</div>
+
+  <p>É perfeitamente possível. Uma NTN-B negociando hoje a IPCA + 7,5% pode passar a oferecer IPCA + 8% — nesse cenário, quem comprou anteriormente verá temporariamente o preço do título cair, e quanto maior o prazo do papel, maior pode ser essa oscilação. Por isso, uma estratégia prudente não exige necessariamente escolher um único momento de entrada:</p>
+
+  <div class="estrategia-list fade-in">
+    <div class="estrategia-item">
+      <div class="estrategia-num">1</div>
+      <div>
+        <div class="estrategia-titulo">Distribuir as compras ao longo do tempo</div>
+        <div class="estrategia-desc">Em vez de buscar o ponto máximo exato da curva, construir a posição em aportes espaçados.</div>
+      </div>
+    </div>
+    <div class="estrategia-item">
+      <div class="estrategia-num">2</div>
+      <div>
+        <div class="estrategia-titulo">Diversificar vencimentos</div>
+        <div class="estrategia-desc">Combinar prazos diferentes reduz a dependência de acertar exatamente o melhor momento de entrada.</div>
+      </div>
+    </div>
+    <div class="estrategia-item">
+      <div class="estrategia-num">3</div>
+      <div>
+        <div class="estrategia-titulo">Construir gradualmente a carteira de taxas reais</div>
+        <div class="estrategia-desc">O objetivo deixa de ser encontrar o ponto máximo e passa a ser contratar níveis de remuneração compatíveis com os objetivos financeiros de longo prazo.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="insight-box fade-in">
+    <p>Em renda fixa de longo prazo, damos muita atenção à pergunta <strong>"a taxa pode subir mais?"</strong> — pode. Mas existe uma segunda pergunta igualmente importante: <strong>"se eu não contratar essa taxa agora, qual será a taxa disponível quando eu precisar reinvestir meu dinheiro?"</strong> Essa resposta ninguém conhece. Em junho de 2016, também não conhecíamos.</p>
+  </div>
+
+  <div class="warn-box fade-in">
+    <p>As três séries comparadas são brutas, sem imposto de renda e sem taxas — o que favorece as três de forma desigual, já que o imposto pesa proporcionalmente mais sobre quem rendeu mais. O CDI aplicado na prática (via fundo, CDB ou Tesouro Selic) também envolve taxa de administração, come-cotas e a necessidade de reaplicar a cada vencimento — dez anos de pós-fixado não são dez anos parado. Rentabilidade passada não garante resultado futuro.</p>
+  </div>
+
+  <div class="conclusao fade-in">
+    O placar dos últimos dez anos está aí: <strong>R$ 297,8 mil na NTN-B Principal contra R$ 248,6 mil no CDI</strong>, para cada R$ 100 mil aplicados em junho de 2016. A grande dúvida agora é se o dinheiro que retornou em 15 de agosto — e que precisa ser reaplicado — vai repetir esse resultado. Ninguém sabe o que vem pela frente, e a taxa pode abrir ainda mais. Mas travar uma taxa real elevada por dez anos, para a parcela do capital com objetivo de longo prazo, parece limitar bem um cenário adverso. Talvez a principal lição de 2016 não esteja em constatar qual investimento venceu a corrida — está em compreender o valor de conseguir <strong>contratar uma boa taxa por muito tempo</strong>. Os próximos dez anos começam agora.
+  </div>
+
+</article>
+
+<footer>
+  <div class="footer-name">Fábio Vogelaar Carlucci</div>
+  <div class="footer-contact">+55 (16) 98148-8260<br><a href="mailto:fabio.carlucci@ficus.capital">fabio.carlucci@ficus.capital</a></div>
+</footer>
+<div style="position:relative;z-index:1;padding:0 8% 28px;text-align:center;font-size:0.65rem;color:rgba(245,237,224,0.2);letter-spacing:0.08em;">
+  Fontes: Mais Retorno — séries NTN-B Principal 15/08/2026 (BRSTNCNTB4W2), NTN-B com cupons (BRSTNCNTB4U6) e CDI, 30/06/2016–14/08/2026; Tesouro Nacional; Banco Central do Brasil; Copom, 05/08/2026<br>
+  Valores nominais e brutos, sem IR, taxas ou custos de administração. Comparação de finalidade ilustrativa e educacional. Rentabilidade passada não representa garantia de rentabilidade futura. Não constitui recomendação individual de investimento.
+</div>
+
+<script>
+const faders = document.querySelectorAll(".fade-in");
+const obs = new IntersectionObserver(e => e.forEach(x => { if(x.isIntersecting){ x.target.classList.add("visible"); obs.unobserve(x.target); } }), { threshold: 0.1 });
+faders.forEach(f => obs.observe(f));
+</script>
+</body>
+</html>
