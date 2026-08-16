@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>14% no Brasil ou 4% em dólar? A conta que falta nessa comparação | Fábio Carlucci</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DBQSDSDRF3"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-DBQSDSDRF3");</script>
+<style>
+  :root {
+    --verde-escuro: #1a2e25;
+    --dourado: #c9a84c;
+    --dourado-claro: #e2c47a;
+    --creme: #f5ede0;
+    --texto-claro: rgba(245,237,224,0.85);
+    --texto-muted: rgba(245,237,224,0.45);
+    --azul: #4a90d9;
+    --verde-gain: #3dbf8a;
+    --vermelho: #c94545;
+    --laranja: #e07a35;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { background-color: var(--verde-escuro); color: var(--creme); font-family: "Jost", sans-serif; font-weight: 300; overflow-x: hidden; }
+  body::before {
+    content: ""; position: fixed; inset: 0;
+    background-image: radial-gradient(ellipse at 10% 10%, rgba(201,168,76,0.06) 0%, transparent 55%), radial-gradient(ellipse at 90% 90%, rgba(47,82,64,0.35) 0%, transparent 55%);
+    pointer-events: none; z-index: 0;
+  }
+  .back-link { position: relative; z-index: 10; display: inline-flex; align-items: center; gap: 8px; padding: 28px 8%; font-size: 0.7rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--texto-muted); text-decoration: none; transition: color 0.2s; }
+  .back-link:hover { color: var(--dourado); }
+  .back-link::before { content: "←"; font-size: 0.9rem; }
+  .hero { position: relative; z-index: 1; padding: 20px 8% 64px; border-bottom: 1px solid rgba(201,168,76,0.15); max-width: 900px; }
+  .hero-tag { font-size: 0.65rem; font-weight: 500; letter-spacing: 0.35em; text-transform: uppercase; color: var(--dourado); display: flex; align-items: center; gap: 12px; margin-bottom: 24px; opacity: 0; animation: fadeUp 0.7s ease 0.1s forwards; }
+  .hero-tag::before { content: ""; width: 30px; height: 1px; background: var(--dourado); }
+  .hero-date { font-size: 0.72rem; letter-spacing: 0.15em; color: var(--texto-muted); margin-bottom: 20px; opacity: 0; animation: fadeUp 0.7s ease 0.2s forwards; }
+  h1 { font-family: "Cormorant Garamond", serif; font-size: clamp(2rem, 5vw, 3.4rem); font-weight: 300; line-height: 1.12; color: var(--creme); opacity: 0; animation: fadeUp 0.7s ease 0.3s forwards; }
+  h1 em { font-style: italic; color: var(--dourado-claro); }
+  .hero-sub { font-size: 0.97rem; color: var(--texto-muted); line-height: 1.75; margin-top: 16px; max-width: 640px; opacity: 0; animation: fadeUp 0.7s ease 0.45s forwards; }
+  .hero-fonte { margin-top: 14px; font-size: 0.7rem; color: rgba(245,237,224,0.3); opacity: 0; animation: fadeUp 0.7s ease 0.55s forwards; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+  article { position: relative; z-index: 1; max-width: 800px; margin: 0 auto; padding: 64px 8% 88px; }
+  .lead { font-family: "Cormorant Garamond", serif; font-size: clamp(1.1rem, 2.5vw, 1.35rem); font-weight: 400; line-height: 1.8; color: var(--creme); margin-bottom: 48px; padding-bottom: 48px; border-bottom: 1px solid rgba(201,168,76,0.15); }
+  p { font-size: 0.97rem; line-height: 1.9; color: var(--texto-claro); margin-bottom: 24px; }
+  strong { font-weight: 600; color: var(--creme); }
+  .section-title { font-family: "Cormorant Garamond", serif; font-size: 1.5rem; font-weight: 600; color: var(--dourado-claro); margin: 56px 0 18px; padding-top: 44px; border-top: 1px solid rgba(201,168,76,0.12); display: flex; align-items: center; gap: 14px; }
+  .section-icon { font-size: 1.3rem; flex-shrink: 0; }
+
+  .stat-hero { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 32px 0; }
+  @media (max-width: 500px) { .stat-hero { grid-template-columns: 1fr; } }
+  .stat-card { border-radius: 8px; padding: 26px 22px; text-align: center; }
+  .stat-card.dourado { background: linear-gradient(135deg, rgba(201,168,76,0.14) 0%, rgba(47,82,64,0.4) 100%); border: 1px solid rgba(201,168,76,0.3); }
+  .stat-card.neutro { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); }
+  .stat-card-val { font-family: "Cormorant Garamond", serif; font-size: 2.8rem; font-weight: 700; line-height: 1; margin-bottom: 8px; }
+  .stat-card.dourado .stat-card-val { color: var(--dourado); }
+  .stat-card.neutro .stat-card-val { color: var(--texto-claro); }
+  .stat-card-desc { font-size: 0.8rem; color: var(--texto-muted); line-height: 1.5; }
+
+  .grafico-wrap { background: rgba(10,20,16,0.7); border: 1px solid rgba(255,255,255,0.07); border-radius: 8px; padding: 24px 20px 16px; margin: 32px 0; }
+  .grafico-titulo { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--dourado); margin-bottom: 4px; }
+  .grafico-sub { font-size: 0.72rem; color: var(--texto-muted); margin-bottom: 16px; }
+  .grafico-nota { font-size: 0.65rem; color: rgba(245,237,224,0.25); margin-top: 10px; line-height: 1.4; }
+
+  /* FÓRMULA */
+  .formula-box { background: rgba(201,168,76,0.06); border: 1px solid rgba(201,168,76,0.2); border-radius: 8px; padding: 22px 24px; margin: 24px 0; text-align: center; }
+  .formula-box .formula { font-family: "Cormorant Garamond", serif; font-size: 1.15rem; color: var(--dourado-claro); font-weight: 600; }
+  .formula-ex { display: flex; gap: 14px; justify-content: center; margin-top: 16px; flex-wrap: wrap; }
+  .formula-ex-item { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 10px 16px; font-size: 0.8rem; color: var(--texto-claro); }
+  .formula-ex-item strong { color: var(--dourado); }
+
+  /* LINE CHART SVG */
+  .fx-line-svg { width: 100%; height: auto; display: block; }
+
+  /* BAR CHART VARIAÇÃO */
+  .fx-bar-wrap { position: relative; overflow-x: auto; }
+  .fx-bar-chart { position: relative; display: flex; align-items: stretch; gap: 3px; height: 190px; min-width: 620px; padding-top: 6px; }
+  .fx-bar-col { flex: 1; position: relative; height: 100%; }
+  .fx-bar { position: absolute; left: 0; right: 0; border-radius: 1px; }
+  .fx-bar.bar-pos { bottom: 50%; background: linear-gradient(180deg, var(--dourado-claro) 0%, var(--dourado) 100%); }
+  .fx-bar.bar-neg { top: 50%; background: linear-gradient(0deg, #6fae8f 0%, #3f7a5f 100%); }
+  .fx-zero-line { position: absolute; left: 0; right: 0; top: 50%; height: 1px; background: rgba(255,255,255,0.15); }
+  .fx-avg-line { position: absolute; left: 0; right: 0; height: 0; border-top: 1px dashed rgba(226,196,122,0.55); }
+  .fx-avg-label { position: absolute; right: 0; font-size: 0.6rem; color: var(--dourado-claro); background: rgba(10,20,16,0.85); padding: 1px 6px; border-radius: 3px; white-space: nowrap; }
+  .fx-bar-label { position: absolute; bottom: -18px; left: 0; right: 0; text-align: center; font-size: 0.56rem; color: var(--texto-muted); }
+
+  .table-wrap { overflow-x: auto; margin: 28px 0; border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; background: rgba(10,20,16,0.5); }
+  .period-table { width: 100%; border-collapse: collapse; min-width: 400px; font-size: 0.85rem; }
+  .period-table th { text-align: left; color: var(--dourado); font-weight: 600; padding: 12px 16px; border-bottom: 1px solid rgba(201,168,76,0.25); font-size: 0.64rem; letter-spacing: 0.08em; text-transform: uppercase; }
+  .period-table td { padding: 11px 16px; border-bottom: 1px solid rgba(255,255,255,0.06); color: var(--texto-claro); }
+  .period-table tr:last-child td { border-bottom: none; }
+  .period-table tr.destaque td { background: rgba(201,168,76,0.1); color: var(--dourado-claro); font-weight: 600; }
+  .val-pos { color: #7ecbb0; font-weight: 600; }
+
+  .fatores-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin: 24px 0; }
+  @media (max-width: 500px) { .fatores-grid { grid-template-columns: 1fr; } }
+  .fator-tag { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 13px 14px; font-size: 0.8rem; color: var(--texto-claro); display: flex; align-items: center; gap: 8px; }
+  .fator-tag::before { content: "▸"; color: var(--dourado); flex-shrink: 0; }
+
+  .insight-box { background: linear-gradient(135deg, rgba(201,168,76,0.1) 0%, rgba(26,46,37,0.4) 100%); border: 1px solid rgba(201,168,76,0.25); border-left: 3px solid var(--dourado); border-radius: 4px; padding: 28px 32px; margin: 36px 0; }
+  .insight-box p { font-family: "Cormorant Garamond", serif; font-size: 1.1rem; color: var(--creme); line-height: 1.8; margin: 0; }
+  .warn-box { background: linear-gradient(135deg, rgba(201,69,69,0.08) 0%, rgba(26,46,37,0.4) 100%); border: 1px solid rgba(201,69,69,0.22); border-left: 3px solid #c94545; border-radius: 4px; padding: 24px 28px; margin: 32px 0; }
+  .warn-box p { font-size: 0.9rem; color: var(--texto-claro); margin: 0; line-height: 1.75; }
+
+  .estrategia-list { display: flex; flex-direction: column; gap: 10px; margin: 28px 0; }
+  .estrategia-item { display: flex; align-items: flex-start; gap: 16px; padding: 18px 20px; background: rgba(201,168,76,0.05); border: 1px solid rgba(201,168,76,0.15); border-radius: 5px; }
+  .estrategia-num { font-family: "Cormorant Garamond", serif; font-size: 1.8rem; font-weight: 700; color: rgba(201,168,76,0.3); flex-shrink: 0; width: 32px; text-align: center; }
+  .estrategia-titulo { font-size: 0.82rem; font-weight: 600; color: var(--dourado); margin-bottom: 3px; }
+  .estrategia-desc { font-size: 0.83rem; color: var(--texto-claro); line-height: 1.55; }
+
+  .conclusao { font-family: "Cormorant Garamond", serif; font-size: 1.1rem; font-weight: 400; line-height: 1.85; color: var(--creme); margin-top: 52px; padding: 40px; border: 1px solid rgba(201,168,76,0.2); border-radius: 6px; background: rgba(255,255,255,0.02); position: relative; }
+  .conclusao::before { content: "\201C"; position: absolute; top: -10px; left: 32px; font-size: 5rem; color: rgba(201,168,76,0.15); font-family: "Cormorant Garamond", serif; line-height: 1; }
+
+  .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .fade-in.visible { opacity: 1; transform: none; }
+  footer { position: relative; z-index: 1; border-top: 1px solid rgba(201,168,76,0.12); padding: 40px 8%; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+  .footer-name { font-family: "Cormorant Garamond", serif; font-size: 1.1rem; font-weight: 300; color: var(--texto-muted); }
+  .footer-contact { font-size: 0.75rem; color: rgba(245,237,224,0.25); line-height: 1.9; text-align: right; }
+  .footer-contact a { color: var(--dourado); text-decoration: none; }
+  @media (max-width: 640px) { .back-link,.hero { padding-left: 5%; padding-right: 5%; } article { padding: 48px 5% 64px; } footer { padding: 32px 5%; flex-direction: column; } .footer-contact { text-align: left; } }
+</style>
+</head>
+<body>
+
+<a class="back-link" href="index.html">Voltar</a>
+
+<header class="hero">
+  <div class="hero-tag">Memorando · Câmbio & Renda Fixa Internacional</div>
+  <div class="hero-date">Agosto de 2026</div>
+  <h1>14% no Brasil ou 4% em dólar?<br><em>A conta que falta nessa comparação</em></h1>
+  <p class="hero-sub">À primeira vista, uma diferença de dez pontos percentuais parece tornar a renda fixa brasileira claramente superior. Mas para um investidor que mede patrimônio em reais existe uma terceira variável nessa equação: o câmbio.</p>
+  <div class="hero-fonte">Fontes: Banco Central do Brasil — PTAX (série histórica, valores aproximados); Copom; Federal Reserve</div>
+</header>
+
+<article>
+
+  <p class="lead">
+    O Brasil oferece juros nominais próximos de <strong>14% ao ano</strong>, enquanto aplicações conservadoras nos Estados Unidos estão na região de <strong>4% ao ano</strong>. À primeira vista, essa diferença de aproximadamente dez pontos percentuais parece tornar a renda fixa brasileira claramente superior. Para um investidor brasileiro que mede seu patrimônio em reais, entretanto, existe uma terceira variável nessa equação — <strong>o câmbio</strong> — e, em horizontes suficientemente longos, ela pode modificar significativamente o resultado.
+  </p>
+
+  <div class="stat-hero fade-in">
+    <div class="stat-card dourado">
+      <div class="stat-card-val">14,25%</div>
+      <div class="stat-card-desc">Selic ao ano<br>Copom, junho de 2026</div>
+    </div>
+    <div class="stat-card neutro">
+      <div class="stat-card-val">3,50–3,75%</div>
+      <div class="stat-card-desc">Fed Funds ao ano<br>Federal Reserve, julho de 2026</div>
+    </div>
+  </div>
+
+  <!-- SEÇÃO 1: MESMA MOEDA -->
+  <div class="section-title fade-in"><span class="section-icon">🧮</span> O que realmente importa é o retorno em uma mesma moeda</div>
+
+  <p>Uma aplicação nos Estados Unidos, medida em reais, tem dois componentes: o retorno do investimento em dólar e a variação cambial. Uma aplicação que renda 4% em dólar acompanhada por uma valorização de 7% do dólar não gera simplesmente 11% — o resultado é composto:</p>
+
+  <div class="formula-box fade-in">
+    <div class="formula">Retorno em R$ = (1 + retorno em USD) × (1 + variação do dólar) − 1</div>
+    <div class="formula-ex">
+      <div class="formula-ex-item">4% USD + <strong>7%</strong> dólar → 1,04 × 1,07 − 1 = <strong>11,28%</strong></div>
+      <div class="formula-ex-item">4% USD + <strong>9%</strong> dólar → 1,04 × 1,09 − 1 = <strong>13,36%</strong></div>
+    </div>
+  </div>
+
+  <p>Com o dólar subindo, a diferença em relação aos juros brasileiros se torna muito menor do que os "10 pontos percentuais" aparentes.</p>
+
+  <!-- SEÇÃO 2: HISTÓRICO CAMBIAL -->
+  <div class="section-title fade-in"><span class="section-icon">📉</span> O que aconteceu com o real desde o Plano Real?</div>
+
+  <p>A história cambial brasileira é clara em um aspecto: o real perdeu valor frente ao dólar no longo prazo. A série do Banco Central mostra uma trajetória que saiu de menos de R$ 1 por dólar no início do Plano Real para níveis acima de R$ 5 três décadas depois — mas de forma extremamente irregular, com longos períodos de valorização da moeda brasileira pelo meio do caminho:</p>
+
+  <div class="grafico-wrap fade-in">
+    <div class="grafico-titulo">Dólar frente ao real desde o Plano Real</div>
+    <div class="grafico-sub">R$/US$, fim de período · valores aproximados</div>
+    <svg class="fx-line-svg" viewBox="0 0 700 240" xmlns="http://www.w3.org/2000/svg">
+      <line x1="20" y1="220" x2="680" y2="220" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+      <line x1="20" y1="158.5" x2="680" y2="158.5" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+      <line x1="20" y1="96.9" x2="680" y2="96.9" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+      <line x1="20" y1="35.4" x2="680" y2="35.4" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+      <text x="4" y="223" font-size="9" fill="rgba(245,237,224,0.35)">0</text>
+      <text x="4" y="161.5" font-size="9" fill="rgba(245,237,224,0.35)">2</text>
+      <text x="4" y="99.9" font-size="9" fill="rgba(245,237,224,0.35)">4</text>
+      <text x="4" y="38.4" font-size="9" fill="rgba(245,237,224,0.35)">6</text>
+      <polyline points="20.0,191.1 40.6,190.2 61.2,188.0 81.9,185.8 102.5,182.8 123.1,164.9 143.8,159.7 164.4,148.6 185.0,111.4 205.6,131.1 226.2,138.5 246.9,148.0 267.5,154.2 288.1,165.5 308.8,148.0 329.4,166.5 350.0,168.6 370.6,162.2 391.2,157.2 411.9,148.0 432.5,138.2 453.1,100.0 473.8,119.7 494.4,118.2 515.0,100.9 535.6,96.0 556.2,60.0 576.9,48.3 597.5,59.4 618.1,71.1 638.8,29.5 659.4,43.1 680.0,61.5" fill="none" stroke="#e2c47a" stroke-width="2"/>
+      <text x="16" y="234" font-size="9" fill="rgba(245,237,224,0.4)">1994</text>
+      <text x="96" y="234" font-size="9" fill="rgba(245,237,224,0.4)">1998</text>
+      <text x="178" y="234" font-size="9" fill="rgba(245,237,224,0.4)">2002</text>
+      <text x="260" y="234" font-size="9" fill="rgba(245,237,224,0.4)">2006</text>
+      <text x="342" y="234" font-size="9" fill="rgba(245,237,224,0.4)">2010</text>
+      <text x="425" y="234" font-size="9" fill="rgba(245,237,224,0.4)">2014</text>
+      <text x="507" y="234" font-size="9" fill="rgba(245,237,224,0.4)">2018</text>
+      <text x="589" y="234" font-size="9" fill="rgba(245,237,224,0.4)">2022</text>
+      <text x="662" y="234" font-size="9" fill="rgba(245,237,224,0.4)">2026</text>
+    </svg>
+    <div class="grafico-nota">Fonte: Banco Central do Brasil — série PTAX, valores aproximados de fim de período.</div>
+  </div>
+
+  <div class="grafico-wrap fade-in">
+    <div class="grafico-titulo">Variação cambial anual (desvalorização do real)</div>
+    <div class="grafico-sub">% ao ano · média histórica de referência tracejada</div>
+    <div class="fx-bar-wrap">
+      <div class="fx-bar-chart">
+        <div class="fx-zero-line"></div>
+        <div class="fx-avg-line" style="bottom:63.6%;"><span class="fx-avg-label">Média histórica: ~7% a.a.</span></div>
+        <div class="fx-bar-col"><div class="fx-bar bar-pos" style="height:6.1%;"></div><span class="fx-bar-label">95</span></div>
+        <div class="fx-bar-col"><div class="fx-bar bar-pos" style="height:13.8%;"></div><span class="fx-bar-label"></span></div>
+        <div class="fx-bar-col"><div class="fx-bar bar-pos" style="height:12.8%;"></div><span class="fx-bar-label"></span></div>
+        <div class="fx-bar-col"><div class="fx-bar bar-pos" style="height:17.2%;"></div><span class="fx-bar-label">98</span></div>
+        <div class="fx-bar-col"><div class="fx-bar bar-pos" style="height:91.8%;"></div><span class="fx-bar-label"></span></div>
+        <div class="fx-bar-col"><div class="fx-bar bar-pos" style="height:18.2%;"></div><span class="fx-bar-label"></span></div>
+        <div class="fx-bar-col"><div class="fx-bar bar-pos" style="height:35.2%;"></div><span class="fx-bar-label">01</span></div>
+        <div class="fx-bar-col"><div class="fx-bar bar-pos" style="height:100.0%;"></div><span class="fx-bar-label"></span></div>
+        <div class="fx-bar-col"><div class="fx-bar bar-neg" style="height:34.7%;"></div><span class="fx-bar-label"></span></div>
+        <div class="fx-bar-col"><div class="fx-bar bar-neg" style="height:15.9%;"></div><span class="fx-bar-label">04</span></div>
+        <div class="fx-bar-col"><div class="fx-bar bar-neg" style="height:22.4%;"></div><span class="fx-bar-label"></span></div>
+        <div class="fx-bar-col"><div class="fx-bar bar-neg" style="height:16.3%;"></div><span class="fx-bar-label"></span></div>
+        <div class="fx-bar-col"><div class="fx-bar bar-neg" style="height:33.1%;"></div><span class="fx-bar-label">07</span></div>
+        <div class="fx-bar-col"><div class="fx-bar bar-pos" style="height:61.7%;"></div><span class="fx-bar-label"></span></div>
+        <div class="fx-bar-col"><div class="fx-bar bar-neg" style="height:49.0%;"></div><span class="fx-bar-label"></span></div>
+        <div class="fx-bar-col"><div class="fx-bar bar-neg" style="height:7.7%;"></div><span class="fx-bar-label">10</span></div>
+        <div class="fx-bar-col"><div class="fx-bar bar-pos" style="height:24.1%;"></div><span class="fx-bar-label"></span></div>
+        <div class="fx-bar-col"><div class="fx-bar bar-pos" style="height:16.3%;"></div><span class="fx-bar-label"></span></div>
+        <div class="fx-bar-col"><div class="fx-bar bar-pos" style="height:28.2%;"></div><span class="fx-bar-label">13</span></div>
+        <div class="fx-bar-col"><div class="fx-bar bar-pos" style="height:26.2%;"></div><span class="fx-bar-label"></span></div>
+        <div class="fx-bar-col"><div class="fx-bar bar-pos" style="height:89.3%;"></div><span class="fx-bar-label"></span></div>
+        <div class="fx-bar-col"><div class="fx-bar bar-neg" style="height:31.4%;"></div><span class="fx-bar-label">16</span></div>
+        <div class="fx-bar-col"><div class="fx-bar bar-pos" style="height:2.9%;"></div><span class="fx-bar-label"></span></div>
+        <div class="fx-bar-col"><div class="fx-bar bar-pos" style="height:32.4%;"></div><span class="fx-bar-label"></span></div>
+        <div class="fx-bar-col"><div class="fx-bar bar-pos" style="height:7.9%;"></div><span class="fx-bar-label">19</span></div>
+        <div class="fx-bar-col"><div class="fx-bar bar-pos" style="height:55.6%;"></div><span class="fx-bar-label"></span></div>
+        <div class="fx-bar-col"><div class="fx-bar bar-pos" style="height:14.0%;"></div><span class="fx-bar-label"></span></div>
+        <div class="fx-bar-col"><div class="fx-bar bar-neg" style="height:12.5%;"></div><span class="fx-bar-label">22</span></div>
+        <div class="fx-bar-col"><div class="fx-bar bar-neg" style="height:14.0%;"></div><span class="fx-bar-label"></span></div>
+        <div class="fx-bar-col"><div class="fx-bar bar-pos" style="height:53.4%;"></div><span class="fx-bar-label"></span></div>
+        <div class="fx-bar-col"><div class="fx-bar bar-neg" style="height:13.6%;"></div><span class="fx-bar-label">25</span></div>
+        <div class="fx-bar-col"><div class="fx-bar bar-neg" style="height:19.9%;"></div><span class="fx-bar-label">26</span></div>
+      </div>
+    </div>
+    <div class="grafico-nota" style="margin-top:24px;">Barras douradas: desvalorização do real. Barras verdes: valorização do real. Fonte: Banco Central do Brasil — PTAX, valores aproximados.</div>
+  </div>
+
+  <!-- SEÇÃO 3: MÉDIA vs TAXA COMPOSTA -->
+  <div class="section-title fade-in"><span class="section-icon">⚠️</span> Média aritmética não é taxa composta</div>
+
+  <p>É comum ouvir que "o real perdeu em média 7% ao ano" — ou "9%, se tirarmos o superciclo de commodities de 2003–2007". Mas uma <strong>média aritmética</strong> das variações cambiais anuais não equivale à <strong>taxa composta</strong> de desvalorização da moeda ao longo de todo o período.</p>
+
+  <div class="stat-hero fade-in">
+    <div class="stat-card neutro">
+      <div class="stat-card-val">~7%</div>
+      <div class="stat-card-desc">média aritmética das variações cambiais anuais desde 1995</div>
+    </div>
+    <div class="stat-card dourado">
+      <div class="stat-card-val">~5–6%</div>
+      <div class="stat-card-desc"><strong style="color:var(--dourado)">taxa composta</strong> real de desvalorização — de R$ 0,94 (1994) a ~R$ 5,20 (2026), ao longo de 32 anos</div>
+    </div>
+  </div>
+
+  <p>Isso representa uma perda cambial enorme acumulada — um dólar que custava aproximadamente R$ 0,94 passou a valer mais de cinco vezes esse valor. Mas para projeções financeiras de longo prazo, é mais prudente trabalhar com <strong>cenários cambiais</strong> do que assumir que uma taxa fixa de 7% ou 9% será necessariamente repetida no futuro.</p>
+
+  <!-- SEÇÃO 4: 2003-2007 -->
+  <div class="section-title fade-in"><span class="section-icon">🔄</span> O episódio de 2003–2007 também ensina algo</div>
+
+  <p>O período entre 2003 e 2007 foi excepcionalmente favorável ao real: o dólar, que havia chegado perto de R$ 4 em 2002, iniciou um forte movimento de queda, em um ambiente internacional bastante favorável a commodities e emergentes. Retirar esse período da amostra para "corrigir" a média também cria um problema estatístico — estamos escolhendo justamente um trecho em que o real teve desempenho excepcionalmente bom. A mensagem mais defensável é: <strong>historicamente, o real apresentou uma tendência relevante de desvalorização frente ao dólar, mas essa trajetória foi extremamente irregular</strong> e incluiu longos períodos de valorização da moeda brasileira.</p>
+
+  <!-- SEÇÃO 5: MESMA RÉGUA -->
+  <div class="section-title fade-in"><span class="section-icon">📏</span> Vamos colocar os números na mesma régua</div>
+
+  <p>Considerando, de maneira ilustrativa, 14% a.a. na renda fixa brasileira versus 4% a.a. em dólares nos Estados Unidos, o resultado do investimento americano, medido em reais, varia conforme o câmbio:</p>
+
+  <div class="table-wrap fade-in">
+    <table class="period-table">
+      <tr><th>Variação do dólar</th><th>Retorno de 4% em USD convertido para R$</th></tr>
+      <tr><td>0%</td><td class="val-pos">4,0%</td></tr>
+      <tr><td>+3%</td><td class="val-pos">7,1%</td></tr>
+      <tr><td>+5%</td><td class="val-pos">9,2%</td></tr>
+      <tr><td>+6%</td><td class="val-pos">10,2%</td></tr>
+      <tr><td>+7%</td><td class="val-pos">11,3%</td></tr>
+      <tr><td>+8%</td><td class="val-pos">12,3%</td></tr>
+      <tr><td>+9%</td><td class="val-pos">13,4%</td></tr>
+      <tr class="destaque"><td>+9,6%*</td><td>≈ 14,0% (empata com o Brasil)</td></tr>
+      <tr><td>+10%</td><td class="val-pos">14,4%</td></tr>
+    </table>
+  </div>
+  <div class="grafico-nota" style="margin: -14px 0 24px;">*Com aproximadamente 9,6% de valorização do dólar no período, uma aplicação de 4% em USD alcançaria aproximadamente os mesmos 14% nominais em reais — antes de impostos, custos, risco de crédito e liquidez.</div>
+
+  <!-- SEÇÃO 6: IMPOSTOS -->
+  <div class="section-title fade-in"><span class="section-icon">🧾</span> E depois dos impostos?</div>
+
+  <div class="fatores-grid fade-in">
+    <div class="fator-tag">Brasil: IR regressivo, 15% para prazos acima de 721 dias (tabela começa em 22,5%)</div>
+    <div class="fator-tag">EUA: portfolio interest para não residentes pode ser isento de retenção, conforme requisitos legais</div>
+  </div>
+
+  <p>A tributação brasileira do investidor continua precisando ser considerada mesmo nesse cenário. A comparação correta precisa ser feita <strong>líquida de impostos e custos nas duas estruturas</strong>, e não apenas olhando as taxas anunciadas.</p>
+
+  <!-- SEÇÃO 7: FORMA MELHOR -->
+  <div class="section-title fade-in"><span class="section-icon">🧭</span> Uma forma melhor de enxergar a decisão</div>
+
+  <p>Para um investidor brasileiro, o retorno internacional pode ser pensado como três parcelas — a primeira conhecida no momento da aplicação (com um prefixado até o vencimento), a segunda desconhecida, e a terceira que não aparece diretamente na rentabilidade:</p>
+
+  <div class="estrategia-list fade-in">
+    <div class="estrategia-item">
+      <div class="estrategia-num">1</div>
+      <div>
+        <div class="estrategia-titulo">Juros em USD</div>
+        <div class="estrategia-desc">Conhecidos no momento da aplicação, quando se utiliza um título prefixado até o vencimento.</div>
+      </div>
+    </div>
+    <div class="estrategia-item">
+      <div class="estrategia-num">2</div>
+      <div>
+        <div class="estrategia-titulo">Variação cambial</div>
+        <div class="estrategia-desc">Desconhecida — pode ampliar ou reduzir fortemente o retorno em reais, como mostram as tabelas acima.</div>
+      </div>
+    </div>
+    <div class="estrategia-item">
+      <div class="estrategia-num">3</div>
+      <div>
+        <div class="estrategia-titulo">Diversificação</div>
+        <div class="estrategia-desc">Não aparece diretamente na rentabilidade, mas reduz a concentração econômica do investidor em um único país — renda, imóveis, empresa e previdência já costumam estar 100% em reais.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="insight-box fade-in">
+    <p>Existem períodos em que bolsa brasileira, títulos brasileiros e o real sofrem simultaneamente. Nesses momentos, ativos denominados em dólar podem funcionar como um <strong>importante amortecedor patrimonial</strong> — justamente quando o risco doméstico aumenta.</p>
+  </div>
+
+  <div class="warn-box fade-in">
+    <p><strong>Um cuidado importante:</strong> câmbio não é rendimento garantido. A desvalorização histórica do real não significa que o dólar subirá 5%, 7% ou 9% todos os anos — muito pelo contrário, como mostra o próprio gráfico acima. Um investidor pode comprar dólares e observar a moeda cair durante vários anos. Por isso, dolarização costuma fazer mais sentido como <strong>decisão estrutural de alocação patrimonial</strong> do que como aposta de curto prazo sobre a cotação do dólar.</p>
+  </div>
+
+  <div class="conclusao fade-in">
+    Os juros elevados brasileiros continuam extremamente atraentes e podem ocupar uma parcela importante de uma carteira. Ao mesmo tempo, comparar diretamente uma aplicação de 14% em reais com outra de 4% em dólares é uma simplificação: o investidor brasileiro recebe juros elevados, mas permanece exposto ao real; o investidor internacional recebe juros menores em dólares, mas passa a carregar um ativo denominado na principal moeda de reserva internacional. <strong>A decisão mais robusta raramente envolve escolher Brasil ou exterior — ela envolve determinar quanto do patrimônio faz sentido manter exposto a cada economia e a cada moeda</strong>, considerando objetivos, horizonte e tolerância a risco. A rentabilidade de uma carteira global só deve ser medida depois que juros, impostos, custos e câmbio são colocados na mesma régua.
+  </div>
+
+</article>
+
+<footer>
+  <div class="footer-name">Fábio Vogelaar Carlucci</div>
+  <div class="footer-contact">+55 (16) 98148-8260<br><a href="mailto:fabio.carlucci@ficus.capital">fabio.carlucci@ficus.capital</a></div>
+</footer>
+<div style="position:relative;z-index:1;padding:0 8% 28px;text-align:center;font-size:0.65rem;color:rgba(245,237,224,0.2);letter-spacing:0.08em;">
+  Fontes: Banco Central do Brasil — PTAX e Copom; Federal Reserve<br>
+  Material de caráter informativo e educacional. Os exemplos são simplificados e não constituem recomendação individual de investimento. Rentabilidades, taxas de juros e comportamento cambial passados não garantem resultados futuros.
+</div>
+
+<script>
+const faders = document.querySelectorAll(".fade-in");
+const obs = new IntersectionObserver(e => e.forEach(x => { if(x.isIntersecting){ x.target.classList.add("visible"); obs.unobserve(x.target); } }), { threshold: 0.1 });
+faders.forEach(f => obs.observe(f));
+</script>
+</body>
+</html>
