@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Asset Allocation: a decisão que vem antes dos investimentos | Fábio Carlucci</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DBQSDSDRF3"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-DBQSDSDRF3");</script>
+<style>
+  :root {
+    --verde-escuro: #1a2e25;
+    --dourado: #c9a84c;
+    --dourado-claro: #e2c47a;
+    --creme: #f5ede0;
+    --texto-claro: rgba(245,237,224,0.85);
+    --texto-muted: rgba(245,237,224,0.45);
+    --azul: #4a90d9;
+    --verde-gain: #3dbf8a;
+    --vermelho: #c94545;
+    --laranja: #e07a35;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { background-color: var(--verde-escuro); color: var(--creme); font-family: "Jost", sans-serif; font-weight: 300; overflow-x: hidden; }
+  body::before {
+    content: ""; position: fixed; inset: 0;
+    background-image: radial-gradient(ellipse at 10% 10%, rgba(201,168,76,0.06) 0%, transparent 55%), radial-gradient(ellipse at 90% 90%, rgba(47,82,64,0.35) 0%, transparent 55%);
+    pointer-events: none; z-index: 0;
+  }
+  .back-link { position: relative; z-index: 10; display: inline-flex; align-items: center; gap: 8px; padding: 28px 8%; font-size: 0.7rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--texto-muted); text-decoration: none; transition: color 0.2s; }
+  .back-link:hover { color: var(--dourado); }
+  .back-link::before { content: "←"; font-size: 0.9rem; }
+  .hero { position: relative; z-index: 1; padding: 20px 8% 64px; border-bottom: 1px solid rgba(201,168,76,0.15); max-width: 900px; }
+  .hero-tag { font-size: 0.65rem; font-weight: 500; letter-spacing: 0.35em; text-transform: uppercase; color: var(--dourado); display: flex; align-items: center; gap: 12px; margin-bottom: 24px; opacity: 0; animation: fadeUp 0.7s ease 0.1s forwards; }
+  .hero-tag::before { content: ""; width: 30px; height: 1px; background: var(--dourado); }
+  .hero-date { font-size: 0.72rem; letter-spacing: 0.15em; color: var(--texto-muted); margin-bottom: 20px; opacity: 0; animation: fadeUp 0.7s ease 0.2s forwards; }
+  h1 { font-family: "Cormorant Garamond", serif; font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 300; line-height: 1.12; color: var(--creme); opacity: 0; animation: fadeUp 0.7s ease 0.3s forwards; }
+  h1 em { font-style: italic; color: var(--dourado-claro); }
+  .hero-sub { font-size: 0.97rem; color: var(--texto-muted); line-height: 1.75; margin-top: 16px; max-width: 640px; opacity: 0; animation: fadeUp 0.7s ease 0.45s forwards; }
+  .hero-fonte { margin-top: 14px; font-size: 0.7rem; color: rgba(245,237,224,0.3); opacity: 0; animation: fadeUp 0.7s ease 0.55s forwards; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+  article { position: relative; z-index: 1; max-width: 800px; margin: 0 auto; padding: 64px 8% 88px; }
+  .lead { font-family: "Cormorant Garamond", serif; font-size: clamp(1.1rem, 2.5vw, 1.35rem); font-weight: 400; line-height: 1.8; color: var(--creme); margin-bottom: 48px; padding-bottom: 48px; border-bottom: 1px solid rgba(201,168,76,0.15); }
+  p { font-size: 0.97rem; line-height: 1.9; color: var(--texto-claro); margin-bottom: 24px; }
+  strong { font-weight: 600; color: var(--creme); }
+  .section-title { font-family: "Cormorant Garamond", serif; font-size: 1.5rem; font-weight: 600; color: var(--dourado-claro); margin: 56px 0 18px; padding-top: 44px; border-top: 1px solid rgba(201,168,76,0.12); display: flex; align-items: center; gap: 14px; }
+  .section-icon { font-size: 1.3rem; flex-shrink: 0; }
+
+  /* DUAS ABORDAGENS */
+  .compare-two { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 28px 0; }
+  @media (max-width: 560px) { .compare-two { grid-template-columns: 1fr; } }
+  .compare-col { border-radius: 8px; padding: 22px 20px; }
+  .compare-col.produto { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); }
+  .compare-col.carteira { background: linear-gradient(135deg, rgba(201,168,76,0.12) 0%, rgba(47,82,64,0.4) 100%); border: 1px solid rgba(201,168,76,0.28); }
+  .compare-col-titulo { font-size: 0.65rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--dourado); margin-bottom: 14px; }
+  .compare-quote { font-family: "Cormorant Garamond", serif; font-style: italic; font-size: 0.88rem; color: var(--texto-claro); padding: 6px 0; border-bottom: 1px dashed rgba(255,255,255,0.08); }
+  .compare-quote:last-child { border-bottom: none; }
+  .compare-step { font-size: 0.82rem; color: var(--texto-claro); padding: 8px 0; display: flex; gap: 8px; }
+  .compare-step-num { color: var(--dourado); font-weight: 700; flex-shrink: 0; }
+
+  .stat-hero { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 32px 0; }
+  @media (max-width: 500px) { .stat-hero { grid-template-columns: 1fr; } }
+  .stat-card { border-radius: 8px; padding: 26px 22px; text-align: center; }
+  .stat-card.dourado { background: linear-gradient(135deg, rgba(201,168,76,0.14) 0%, rgba(47,82,64,0.4) 100%); border: 1px solid rgba(201,168,76,0.3); }
+  .stat-card.neutro { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); }
+  .stat-card-val { font-family: "Cormorant Garamond", serif; font-size: 2.6rem; font-weight: 700; line-height: 1; margin-bottom: 8px; }
+  .stat-card.dourado .stat-card-val { color: var(--dourado); }
+  .stat-card.neutro .stat-card-val { color: var(--texto-claro); }
+  .stat-card-desc { font-size: 0.8rem; color: var(--texto-muted); line-height: 1.5; }
+
+  .grafico-wrap { background: rgba(10,20,16,0.7); border: 1px solid rgba(255,255,255,0.07); border-radius: 8px; padding: 24px 20px 16px; margin: 32px 0; }
+  .grafico-titulo { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--dourado); margin-bottom: 4px; }
+  .grafico-sub { font-size: 0.72rem; color: var(--texto-muted); margin-bottom: 16px; }
+  .grafico-nota { font-size: 0.65rem; color: rgba(245,237,224,0.25); margin-top: 10px; line-height: 1.4; }
+
+  /* BARRAS SPIVA */
+  .spiva-row { display: flex; align-items: center; gap: 14px; margin-bottom: 16px; }
+  .spiva-label { flex: 0 0 150px; font-size: 0.76rem; color: var(--texto-claro); line-height: 1.3; }
+  .spiva-bar-track { flex: 1; height: 20px; background: rgba(255,255,255,0.05); border-radius: 4px; overflow: hidden; position: relative; }
+  .spiva-bar-fill { height: 100%; background: linear-gradient(90deg, var(--dourado) 0%, var(--dourado-claro) 100%); border-radius: 4px; display: flex; align-items: center; justify-content: flex-end; padding-right: 8px; }
+  .spiva-bar-val { font-size: 0.7rem; font-weight: 700; color: var(--verde-escuro); white-space: nowrap; }
+
+  /* DONUT NORUEGA */
+  .donut-flex { display: flex; align-items: center; gap: 30px; flex-wrap: wrap; justify-content: center; }
+  .donut-chart { width: 168px; height: 168px; border-radius: 50%; flex-shrink: 0; background: conic-gradient(#c9a84c 0% 70%, #4a90d9 70% 100%); position: relative; }
+  .donut-center { position: absolute; inset: 22px; border-radius: 50%; background: #0e1c15; display: flex; align-items: center; justify-content: center; flex-direction: column; text-align: center; }
+  .donut-center-val { font-family: "Cormorant Garamond", serif; font-size: 1.1rem; font-weight: 700; color: var(--dourado-claro); line-height: 1.15; }
+  .donut-center-label { font-size: 0.5rem; color: var(--texto-muted); margin-top: 4px; letter-spacing: 0.05em; }
+  .donut-legend { display: flex; flex-direction: column; gap: 12px; }
+  .donut-leg-item { display: flex; align-items: center; gap: 10px; }
+  .donut-leg-dot { width: 12px; height: 12px; border-radius: 3px; flex-shrink: 0; }
+  .donut-leg-text { font-size: 0.8rem; color: var(--texto-claro); }
+  .donut-leg-pct { font-family: "Cormorant Garamond", serif; font-weight: 700; font-size: 1.05rem; margin-right: 4px; color: var(--dourado-claro); }
+
+  /* APORTE */
+  .compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 28px 0; }
+  @media (max-width: 500px) { .compare-grid { grid-template-columns: 1fr; } }
+  .compare-card { border-radius: 8px; padding: 22px 18px; text-align: center; }
+  .compare-card.a { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); }
+  .compare-card.b { background: linear-gradient(135deg, rgba(201,168,76,0.14) 0%, rgba(47,82,64,0.4) 100%); border: 1px solid rgba(201,168,76,0.3); }
+  .compare-label { font-size: 0.62rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--texto-muted); margin-bottom: 10px; }
+  .compare-val { font-family: "Cormorant Garamond", serif; font-size: 1.9rem; font-weight: 700; color: var(--creme); }
+  .compare-card.b .compare-val { color: var(--dourado); }
+  .compare-desc { font-size: 0.75rem; color: var(--texto-muted); margin-top: 6px; line-height: 1.5; }
+
+  /* PERGUNTAS CERTAS */
+  .perguntas-list { display: flex; flex-direction: column; gap: 8px; margin: 24px 0; }
+  .pergunta-item { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 13px 16px; font-family: "Cormorant Garamond", serif; font-size: 1rem; font-style: italic; color: var(--dourado-claro); display: flex; gap: 10px; align-items: flex-start; }
+  .pergunta-item::before { content: "?"; font-family: "Jost", sans-serif; font-style: normal; font-weight: 700; color: var(--dourado); flex-shrink: 0; }
+
+  /* ARQUITETURA DA CARTEIRA */
+  .arq-table { width: 100%; border-collapse: collapse; margin: 24px 0; }
+  .arq-table td { padding: 12px 14px; border-bottom: 1px solid rgba(255,255,255,0.07); font-size: 0.86rem; }
+  .arq-table tr:last-child td { border-bottom: none; }
+  .arq-classe { color: var(--dourado); font-weight: 600; white-space: nowrap; width: 38%; }
+  .arq-funcao { color: var(--texto-claro); }
+
+  .insight-box { background: linear-gradient(135deg, rgba(201,168,76,0.1) 0%, rgba(26,46,37,0.4) 100%); border: 1px solid rgba(201,168,76,0.25); border-left: 3px solid var(--dourado); border-radius: 4px; padding: 28px 32px; margin: 36px 0; }
+  .insight-box p { font-family: "Cormorant Garamond", serif; font-size: 1.1rem; color: var(--creme); line-height: 1.8; margin: 0; }
+
+  .conclusao { font-family: "Cormorant Garamond", serif; font-size: 1.15rem; font-weight: 400; line-height: 1.85; color: var(--creme); margin-top: 52px; padding: 40px; border: 1px solid rgba(201,168,76,0.2); border-radius: 6px; background: rgba(255,255,255,0.02); position: relative; }
+  .conclusao::before { content: "\201C"; position: absolute; top: -10px; left: 32px; font-size: 5rem; color: rgba(201,168,76,0.15); font-family: "Cormorant Garamond", serif; line-height: 1; }
+
+  .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .fade-in.visible { opacity: 1; transform: none; }
+  footer { position: relative; z-index: 1; border-top: 1px solid rgba(201,168,76,0.12); padding: 40px 8%; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+  .footer-name { font-family: "Cormorant Garamond", serif; font-size: 1.1rem; font-weight: 300; color: var(--texto-muted); }
+  .footer-contact { font-size: 0.75rem; color: rgba(245,237,224,0.25); line-height: 1.9; text-align: right; }
+  .footer-contact a { color: var(--dourado); text-decoration: none; }
+  @media (max-width: 640px) { .back-link,.hero { padding-left: 5%; padding-right: 5%; } article { padding: 48px 5% 64px; } footer { padding: 32px 5%; flex-direction: column; } .footer-contact { text-align: left; } .spiva-label { flex-basis: 110px; font-size: 0.68rem; } }
+</style>
+</head>
+<body>
+
+<a class="back-link" href="index.html">Voltar</a>
+
+<header class="hero">
+  <div class="hero-tag">Artigo · Planejamento Patrimonial</div>
+  <div class="hero-date">Setembro de 2026</div>
+  <h1>Asset Allocation: a decisão que <em>vem antes</em> dos investimentos</h1>
+  <p class="hero-sub">"Qual ativo você compraria hoje?" é a pergunta mais frequente em investimentos. Mas existe uma decisão anterior e muito mais estrutural: quanto do patrimônio deveria estar em cada classe de ativos — e qual função cada posição exerce dentro da carteira.</p>
+  <div class="hero-fonte">Fontes: Brinson, Hood & Beebower; William F. Sharpe; S&P Dow Jones Indices — SPIVA Latin America; Vanguard; Norges Bank Investment Management</div>
+</header>
+
+<article>
+
+  <p class="lead">
+    Escolher ações, fundos, títulos ou ETFs é a parte mais visível — e provavelmente mais interessante — do processo de investimento. Mas existe uma pergunta anterior: <strong>quanto em liquidez, quanto em renda fixa, quanto em inflação, quanto em ações, quanto no exterior?</strong> E, principalmente, qual função cada uma dessas posições exerce dentro do patrimônio. Esse é o campo do <strong>Asset Allocation</strong> — e boa parte da literatura financeira sugere que é justamente aí que começa a construção de um portfólio consistente.
+  </p>
+
+  <!-- SEÇÃO 1: DUAS FORMAS -->
+  <div class="section-title fade-in"><span class="section-icon">🧩</span> Antes de escolher investimentos, é preciso desenhar a carteira</div>
+
+  <p>Uma carteira pode ser construída de duas maneiras muito diferentes:</p>
+
+  <div class="compare-two fade-in">
+    <div class="compare-col produto">
+      <div class="compare-col-titulo">Acumulando produtos</div>
+      <div class="compare-quote">"Gostei desse fundo."</div>
+      <div class="compare-quote">"Essa ação parece barata."</div>
+      <div class="compare-quote">"Esse título está pagando IPCA + 7%."</div>
+      <div class="compare-quote">"Esse ETF subiu bastante."</div>
+      <div class="compare-quote">"Esse produto está na campanha do mês."</div>
+    </div>
+    <div class="compare-col carteira">
+      <div class="compare-col-titulo">Desenhando a carteira</div>
+      <div class="compare-step"><span class="compare-step-num">1</span>Objetivos, horizonte, liquidez e tolerância ao risco</div>
+      <div class="compare-step"><span class="compare-step-num">2</span>Quanto destinar a cada classe de ativos</div>
+      <div class="compare-step"><span class="compare-step-num">3</span>Só então, os instrumentos que preenchem cada espaço</div>
+    </div>
+  </div>
+
+  <p>A diferença parece pequena, mas muda completamente o processo. <strong>O produto deixa de determinar a carteira. A carteira passa a determinar quais produtos fazem sentido.</strong></p>
+
+  <!-- SEÇÃO 2: OS 90% -->
+  <div class="section-title fade-in"><span class="section-icon">📊</span> O que realmente significa dizer que "Asset Allocation explica 90%"?</div>
+
+  <p>Uma das frases mais repetidas em investimentos é que a alocação de ativos explicaria aproximadamente 90% dos retornos. Ela precisa de uma correção importante: o famoso estudo de <strong>Brinson, Hood e Beebower</strong> encontrou que a política de alocação explicava grande parte da <strong>variação dos retornos de um portfólio ao longo do tempo</strong> — não que 90% do retorno absoluto de qualquer investidor seja determinado mecanicamente pela alocação.</p>
+
+  <p>A interpretação correta segue extremamente relevante: a combinação estrutural entre as diferentes classes de ativos exerce enorme influência sobre o comportamento, o risco e a trajetória de longo prazo de uma carteira. Decidir entre 20%, 50% ou 80% de renda variável tende a alterar muito mais a trajetória de risco do que decidir qual ação vai ocupar uma pequena parcela desses percentuais.</p>
+
+  <!-- SEÇÃO 3: BUSCA PELO VENCEDOR -->
+  <div class="section-title fade-in"><span class="section-icon">🎯</span> O problema da busca permanente pelo ativo vencedor</div>
+
+  <p>Asset Allocation é relativamente estável, disciplinado e pouco emocionante. Seleção de ativos produz histórias: a ação que pode dobrar, o fundo que está entregando alfa, o setor que "vai explodir", o melhor momento para entrar. O problema surge quando a seleção de produtos ocupa o lugar da estratégia — o investidor passa a depender de identificar antecipadamente quais ativos superarão os demais <strong>e</strong> acertar quando entrar e quando sair deles. Quanto maior o número de decisões necessárias, maior o número de oportunidades para errar.</p>
+
+  <!-- SEÇÃO 4: SPIVA -->
+  <div class="section-title fade-in"><span class="section-icon">📉</span> Os números mostram como é difícil escolher consistentemente os vencedores</div>
+
+  <p>O levantamento SPIVA da S&P Dow Jones Indices acompanha fundos ativos e seus benchmarks. No Brasil, no período de dez anos encerrado em 2025:</p>
+
+  <div class="grafico-wrap fade-in">
+    <div class="grafico-titulo">Fundos que ficaram abaixo do benchmark</div>
+    <div class="grafico-sub">Brasil · janela de 10 anos encerrada em 2025</div>
+    <div class="spiva-row"><div class="spiva-label">Ações Brasil</div><div class="spiva-bar-track"><div class="spiva-bar-fill" style="width:90.8%;"><span class="spiva-bar-val">90,8%</span></div></div></div>
+    <div class="spiva-row"><div class="spiva-label">Renda fixa: títulos públicos</div><div class="spiva-bar-track"><div class="spiva-bar-fill" style="width:91.4%;"><span class="spiva-bar-val">91,4%</span></div></div></div>
+    <div class="spiva-row"><div class="spiva-label">Mid e small caps</div><div class="spiva-bar-track"><div class="spiva-bar-fill" style="width:84.9%;"><span class="spiva-bar-val">84,9%</span></div></div></div>
+    <div class="spiva-row"><div class="spiva-label">Large caps</div><div class="spiva-bar-track"><div class="spiva-bar-fill" style="width:80.5%;"><span class="spiva-bar-val">80,5%</span></div></div></div>
+    <div class="spiva-row" style="margin-bottom:0;"><div class="spiva-label">Crédito corporativo</div><div class="spiva-bar-track"><div class="spiva-bar-fill" style="width:76.3%;"><span class="spiva-bar-val">76,3%</span></div></div></div>
+    <div class="grafico-nota">Fonte: S&P Dow Jones Indices — SPIVA Latin America Scorecard, Year-End 2025.</div>
+  </div>
+
+  <p>Isso não significa que gestão ativa seja inútil — existem excelentes gestores e mercados menos eficientes. A dificuldade está em identificar antecipadamente quais serão os vencedores persistentes, o que é muito mais difícil do que olhar retrospectivamente para quem venceu. William Sharpe demonstrou essa lógica em <em>The Arithmetic of Active Management</em>: antes dos custos, investidores ativos e passivos, em conjunto, possuem necessariamente o retorno do próprio mercado. Depois dos custos, o investidor ativo médio precisa ficar abaixo. Gerar alfa é possível — <strong>transformá-lo em premissa estrutural de uma carteira é uma aposta muito mais exigente.</strong></p>
+
+  <!-- SEÇÃO 5: NORUEGA -->
+  <div class="section-title fade-in"><span class="section-icon">🇳🇴</span> O fundo de US$ trilhões que começa pela alocação</div>
+
+  <p>O <strong>Government Pension Fund Global</strong>, fundo soberano da Noruega, possui um benchmark estratégico amplamente diversificado — a espinha dorsal da estratégia, mesmo com componentes de gestão ativa, imóveis e infraestrutura:</p>
+
+  <div class="grafico-wrap fade-in">
+    <div class="grafico-titulo">Benchmark estratégico do GPFG</div>
+    <div class="grafico-sub">Fundo soberano da Noruega</div>
+    <div class="donut-flex">
+      <div class="donut-chart"><div class="donut-center"><div class="donut-center-val">GPFG</div><div class="donut-center-label">Noruega</div></div></div>
+      <div class="donut-legend">
+        <div class="donut-leg-item"><div class="donut-leg-dot" style="background:#c9a84c;"></div><span class="donut-leg-text"><span class="donut-leg-pct">70%</span>Ações — milhares de empresas globais</span></div>
+        <div class="donut-leg-item"><div class="donut-leg-dot" style="background:#4a90d9;"></div><span class="donut-leg-text"><span class="donut-leg-pct">30%</span>Renda fixa — milhares de títulos e emissores</span></div>
+      </div>
+    </div>
+    <div class="grafico-nota">Fonte: Norges Bank Investment Management. O fundo permite desvios táticos em torno desse benchmark estratégico.</div>
+  </div>
+
+  <p>É uma lição interessante: uma instituição que administra trilhões de dólares, com equipes altamente qualificadas e acesso a praticamente qualquer gestor do mundo, ainda coloca a <strong>alocação estratégica</strong> no centro do processo. Sofisticação financeira não precisa significar complexidade permanente.</p>
+
+  <!-- SEÇÃO 6: SIMPLICIDADE -->
+  <div class="section-title fade-in"><span class="section-icon">🔧</span> Simplicidade também pode ser uma forma de sofisticação</div>
+
+  <p>ETFs e outros veículos passivos às vezes são apresentados como produtos para o investidor iniciante — uma interpretação limitada. Um ETF pode simplesmente ser uma maneira eficiente de comprar uma exposição inteira: mercado acionário brasileiro, ações americanas, ações globais, títulos públicos, crédito, inflação, determinados fatores de risco. O investidor deixa de concentrar sua energia tentando descobrir continuamente qual empresa será vencedora e passa a decidir <strong>quanto risco daquela classe deseja carregar</strong>. O ponto central: <strong>o veículo deve servir à alocação — e não comandá-la.</strong></p>
+
+  <!-- SEÇÃO 7: APORTE -->
+  <div class="section-title fade-in"><span class="section-icon">⏳</span> Existe ainda um recurso que raramente entra na conta: tempo</div>
+
+  <p>Especialmente na fase de formação patrimonial, o aporte costuma ser subestimado:</p>
+
+  <div class="compare-grid fade-in">
+    <div class="compare-card a">
+      <div class="compare-label">2 p.p. extras de retorno</div>
+      <div class="compare-val">≈ R$ 2 mil</div>
+      <div class="compare-desc">sobre R$ 100 mil investidos, em um ano — resultado extraordinário e difícil de repetir</div>
+    </div>
+    <div class="compare-card b">
+      <div class="compare-label">R$ 20 mil a mais de poupança anual</div>
+      <div class="compare-val" style="color:var(--dourado);">Impacto muito maior</div>
+      <div class="compare-desc">aumentar a capacidade de aporte tende a superar o esforço de caçar alguns pontos de rentabilidade</div>
+    </div>
+  </div>
+
+  <p>Isso muda com o crescimento do patrimônio — quanto maior a carteira, maior a relevância de custos, tributação, eficiência e pequenas diferenças de retorno. Mas fica a conclusão: <strong>o investidor também deveria decidir onde obtém o maior retorno sobre seu próprio tempo.</strong></p>
+
+  <!-- SEÇÃO 8: PERGUNTAS CERTAS -->
+  <div class="section-title fade-in"><span class="section-icon">❓</span> Uma boa carteira começa pelas perguntas certas</div>
+
+  <p>Em vez de começar perguntando "qual investimento está pagando mais?", talvez seja mais útil perguntar:</p>
+
+  <div class="perguntas-list fade-in">
+    <div class="pergunta-item">Qual é o objetivo deste dinheiro, e quando ele poderá ser necessário?</div>
+    <div class="pergunta-item">Qual perda temporária consigo suportar sem abandonar a estratégia?</div>
+    <div class="pergunta-item">Quanto do patrimônio precisa estar protegido da inflação?</div>
+    <div class="pergunta-item">Quanto deveria estar exposto ao crescimento das empresas — e quanto fora do Brasil?</div>
+    <div class="pergunta-item">Quais riscos já existem fora da carteira financeira — empresa, imóveis, carreira, renda?</div>
+    <div class="pergunta-item">Qual papel cada investimento desempenha dentro do patrimônio?</div>
+  </div>
+
+  <p>Somente depois dessas respostas começa a seleção dos produtos.</p>
+
+  <!-- SEÇÃO 9: TESTE DA CARTEIRA -->
+  <div class="section-title fade-in"><span class="section-icon">🏛️</span> A carteira deveria sobreviver à troca dos produtos</div>
+
+  <p>Existe um teste simples: imagine retirar da carteira os nomes dos fundos, bancos, gestores, ações e títulos. Ainda seria possível entender a lógica do patrimônio? Deveria existir algo parecido com:</p>
+
+  <table class="arq-table fade-in">
+    <tr><td class="arq-classe">Liquidez</td><td class="arq-funcao">compromissos e oportunidades de curto prazo</td></tr>
+    <tr><td class="arq-classe">Pós-fixado</td><td class="arq-funcao">estabilidade e reserva tática</td></tr>
+    <tr><td class="arq-classe">Inflação</td><td class="arq-funcao">preservação do poder de compra no longo prazo</td></tr>
+    <tr><td class="arq-classe">Crédito</td><td class="arq-funcao">prêmio adicional de risco</td></tr>
+    <tr><td class="arq-classe">Renda variável</td><td class="arq-funcao">participação no crescimento das empresas</td></tr>
+    <tr><td class="arq-classe">Exterior</td><td class="arq-funcao">diversificação geográfica, econômica e cambial</td></tr>
+    <tr><td class="arq-classe">Alternativos</td><td class="arq-funcao">fontes adicionais e descorrelacionadas de retorno</td></tr>
+  </table>
+
+  <p>Se essa arquitetura continua fazendo sentido independentemente dos produtos utilizados, existe uma estratégia. Os produtos podem mudar — <strong>a lógica da carteira permanece.</strong></p>
+
+  <div class="insight-box fade-in">
+    <p>Mercados sempre produzirão novos vencedores: a ação do momento, o fundo do ano, o setor que parece inevitável. O desafio está em identificá-los antecipadamente e <strong>repetir esse processo durante décadas.</strong> Uma política de investimentos bem construída segue outra lógica — combinar fontes de retorno, diversificar riscos, controlar custos, rebalancear posições.</p>
+  </div>
+
+  <div class="conclusao fade-in">
+    Asset Allocation dificilmente produz a melhor história para contar sobre um investimento — é chato, tedioso e estável, como diz o ditado. <strong>Mas pode produzir uma história muito melhor para contar sobre o patrimônio.</strong> Talvez por isso receba menos atenção do que deveria: é mais fácil falar sobre a ação que pode dobrar do que sobre a proporção entre ações e renda fixa que sustenta o patrimônio ao longo de décadas.
+  </div>
+
+</article>
+
+<footer>
+  <div class="footer-name">Fábio Vogelaar Carlucci</div>
+  <div class="footer-contact">+55 (16) 98148-8260<br><a href="mailto:fabio.carlucci@ficus.capital">fabio.carlucci@ficus.capital</a></div>
+</footer>
+<div style="position:relative;z-index:1;padding:0 8% 28px;text-align:center;font-size:0.65rem;color:rgba(245,237,224,0.2);letter-spacing:0.08em;">
+  Fontes: Brinson, Hood & Beebower — Determinants of Portfolio Performance; William F. Sharpe — The Arithmetic of Active Management; S&P Dow Jones Indices — SPIVA Latin America Scorecard, Year-End 2025; Vanguard; Norges Bank Investment Management<br>
+  Conteúdo exclusivamente informativo e educacional. Não constitui recomendação de investimento.
+</div>
+
+<script>
+const faders = document.querySelectorAll(".fade-in");
+const obs = new IntersectionObserver(e => e.forEach(x => { if(x.isIntersecting){ x.target.classList.add("visible"); obs.unobserve(x.target); } }), { threshold: 0.1 });
+faders.forEach(f => obs.observe(f));
+</script>
+</body>
+</html>

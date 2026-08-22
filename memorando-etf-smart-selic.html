@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ETFs Smart Selic: uma nova alternativa para a reserva de liquidez? | Fábio Carlucci</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DBQSDSDRF3"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-DBQSDSDRF3");</script>
+<style>
+  :root {
+    --verde-escuro: #1a2e25;
+    --dourado: #c9a84c;
+    --dourado-claro: #e2c47a;
+    --creme: #f5ede0;
+    --texto-claro: rgba(245,237,224,0.85);
+    --texto-muted: rgba(245,237,224,0.45);
+    --azul: #4a90d9;
+    --verde-gain: #3dbf8a;
+    --vermelho: #c94545;
+    --laranja: #e07a35;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { background-color: var(--verde-escuro); color: var(--creme); font-family: "Jost", sans-serif; font-weight: 300; overflow-x: hidden; }
+  body::before {
+    content: ""; position: fixed; inset: 0;
+    background-image: radial-gradient(ellipse at 10% 10%, rgba(201,168,76,0.06) 0%, transparent 55%), radial-gradient(ellipse at 90% 90%, rgba(47,82,64,0.35) 0%, transparent 55%);
+    pointer-events: none; z-index: 0;
+  }
+  .back-link { position: relative; z-index: 10; display: inline-flex; align-items: center; gap: 8px; padding: 28px 8%; font-size: 0.7rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--texto-muted); text-decoration: none; transition: color 0.2s; }
+  .back-link:hover { color: var(--dourado); }
+  .back-link::before { content: "←"; font-size: 0.9rem; }
+  .hero { position: relative; z-index: 1; padding: 20px 8% 64px; border-bottom: 1px solid rgba(201,168,76,0.15); max-width: 900px; }
+  .hero-tag { font-size: 0.65rem; font-weight: 500; letter-spacing: 0.35em; text-transform: uppercase; color: var(--dourado); display: flex; align-items: center; gap: 12px; margin-bottom: 24px; opacity: 0; animation: fadeUp 0.7s ease 0.1s forwards; }
+  .hero-tag::before { content: ""; width: 30px; height: 1px; background: var(--dourado); }
+  .hero-date { font-size: 0.72rem; letter-spacing: 0.15em; color: var(--texto-muted); margin-bottom: 20px; opacity: 0; animation: fadeUp 0.7s ease 0.2s forwards; }
+  h1 { font-family: "Cormorant Garamond", serif; font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 300; line-height: 1.12; color: var(--creme); opacity: 0; animation: fadeUp 0.7s ease 0.3s forwards; }
+  h1 em { font-style: italic; color: var(--dourado-claro); }
+  .hero-sub { font-size: 0.97rem; color: var(--texto-muted); line-height: 1.75; margin-top: 16px; max-width: 640px; opacity: 0; animation: fadeUp 0.7s ease 0.45s forwards; }
+  .hero-fonte { margin-top: 14px; font-size: 0.7rem; color: rgba(245,237,224,0.3); opacity: 0; animation: fadeUp 0.7s ease 0.55s forwards; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+  article { position: relative; z-index: 1; max-width: 800px; margin: 0 auto; padding: 64px 8% 88px; }
+  .lead { font-family: "Cormorant Garamond", serif; font-size: clamp(1.1rem, 2.5vw, 1.35rem); font-weight: 400; line-height: 1.8; color: var(--creme); margin-bottom: 48px; padding-bottom: 48px; border-bottom: 1px solid rgba(201,168,76,0.15); }
+  p { font-size: 0.97rem; line-height: 1.9; color: var(--texto-claro); margin-bottom: 24px; }
+  strong { font-weight: 600; color: var(--creme); }
+  .section-title { font-family: "Cormorant Garamond", serif; font-size: 1.5rem; font-weight: 600; color: var(--dourado-claro); margin: 56px 0 18px; padding-top: 44px; border-top: 1px solid rgba(201,168,76,0.12); display: flex; align-items: center; gap: 14px; }
+  .section-icon { font-size: 1.3rem; flex-shrink: 0; }
+
+  .stat-hero { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; margin: 32px 0; }
+  @media (max-width: 560px) { .stat-hero { grid-template-columns: 1fr; } }
+  .stat-card { border-radius: 8px; padding: 22px 16px; text-align: center; }
+  .stat-card.dourado { background: linear-gradient(135deg, rgba(201,168,76,0.14) 0%, rgba(47,82,64,0.4) 100%); border: 1px solid rgba(201,168,76,0.3); }
+  .stat-card.neutro { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); }
+  .stat-card-val { font-family: "Cormorant Garamond", serif; font-size: 2rem; font-weight: 700; line-height: 1; margin-bottom: 8px; }
+  .stat-card.dourado .stat-card-val { color: var(--dourado); }
+  .stat-card.neutro .stat-card-val { color: var(--texto-claro); }
+  .stat-card-desc { font-size: 0.74rem; color: var(--texto-muted); line-height: 1.5; }
+
+  .grafico-wrap { background: rgba(10,20,16,0.7); border: 1px solid rgba(255,255,255,0.07); border-radius: 8px; padding: 24px 20px 16px; margin: 32px 0; }
+  .grafico-titulo { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--dourado); margin-bottom: 4px; }
+  .grafico-sub { font-size: 0.72rem; color: var(--texto-muted); margin-bottom: 16px; }
+  .grafico-nota { font-size: 0.65rem; color: rgba(245,237,224,0.25); margin-top: 10px; line-height: 1.4; }
+  .grafico-legenda { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 14px; }
+  .leg-item { display: flex; align-items: center; gap: 6px; font-size: 0.7rem; color: var(--texto-claro); }
+  .leg-line { width: 16px; height: 2px; border-radius: 1px; flex-shrink: 0; }
+  .leg-val { font-family: "Cormorant Garamond", serif; font-weight: 700; margin-left: 4px; }
+
+  /* DONUT COMPOSIÇÃO */
+  .donut-flex { display: flex; align-items: center; gap: 30px; flex-wrap: wrap; justify-content: center; }
+  .donut-chart { width: 168px; height: 168px; border-radius: 50%; flex-shrink: 0; background: conic-gradient(#c9a84c 0% 90%, #4a90d9 90% 99%, #6fae8f 99% 100%); position: relative; }
+  .donut-center { position: absolute; inset: 22px; border-radius: 50%; background: #0e1c15; display: flex; align-items: center; justify-content: center; flex-direction: column; text-align: center; }
+  .donut-center-val { font-family: "Cormorant Garamond", serif; font-size: 1.3rem; font-weight: 700; color: var(--dourado-claro); line-height: 1.15; }
+  .donut-center-label { font-size: 0.52rem; color: var(--texto-muted); margin-top: 4px; letter-spacing: 0.05em; }
+  .donut-legend { display: flex; flex-direction: column; gap: 12px; }
+  .donut-leg-item { display: flex; align-items: center; gap: 10px; }
+  .donut-leg-dot { width: 12px; height: 12px; border-radius: 3px; flex-shrink: 0; }
+  .donut-leg-text { font-size: 0.8rem; color: var(--texto-claro); }
+  .donut-leg-pct { font-family: "Cormorant Garamond", serif; font-weight: 700; font-size: 1.05rem; margin-right: 4px; color: var(--dourado-claro); }
+
+  /* BARRAS IR */
+  .ir-row { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+  .ir-label { flex: 0 0 100px; font-size: 0.75rem; color: var(--texto-claro); }
+  .ir-track { flex: 1; height: 26px; background: rgba(255,255,255,0.05); border-radius: 4px; overflow: hidden; display: flex; }
+  .ir-seg { height: 100%; display: flex; align-items: center; justify-content: center; font-size: 0.68rem; font-weight: 700; color: var(--verde-escuro); }
+  .ir-seg.cdb { background: linear-gradient(90deg,#8a8f8c,#a8ada9); }
+  .ir-seg.smart { background: linear-gradient(90deg, var(--dourado), var(--dourado-claro)); }
+
+  /* BARRAS VANTAGEM R$ */
+  .vant-chart { display: flex; align-items: flex-end; gap: 14px; height: 130px; padding-top: 20px; }
+  .vant-col { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; height: 100%; position: relative; }
+  .vant-bar { width: 100%; max-width: 52px; background: linear-gradient(180deg, var(--dourado-claro), var(--dourado)); border-radius: 3px 3px 0 0; position: relative; }
+  .vant-val { position: absolute; top: -18px; left: 50%; transform: translateX(-50%); font-size: 0.72rem; font-weight: 700; color: var(--dourado-claro); white-space: nowrap; }
+  .vant-label { margin-top: 8px; font-size: 0.66rem; color: var(--texto-muted); }
+
+  /* LINHA HISTÓRICO */
+  .hist-line-svg { width: 100%; height: auto; display: block; }
+
+  /* DESEMPENHO ANUAL */
+  .ano-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; margin: 24px 0; }
+  @media (max-width: 500px) { .ano-grid { grid-template-columns: 1fr; } }
+  .ano-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; padding: 16px; text-align: center; }
+  .ano-titulo { font-size: 0.66rem; color: var(--texto-muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 8px; }
+  .ano-vals { display: flex; justify-content: center; gap: 14px; }
+  .ano-val { text-align: center; }
+  .ano-val-num { font-family: "Cormorant Garamond", serif; font-weight: 700; font-size: 1.15rem; }
+  .ano-val-num.smart { color: var(--dourado); }
+  .ano-val-num.cdi { color: var(--texto-claro); }
+  .ano-val-label { font-size: 0.6rem; color: var(--texto-muted); margin-top: 2px; }
+
+  /* LIQUIDEZ STEPS */
+  .liq-steps { display: flex; flex-direction: column; gap: 10px; margin: 24px 0; }
+  .liq-item { display: flex; align-items: center; gap: 14px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 14px 16px; }
+  .liq-icon { font-size: 1.3rem; flex-shrink: 0; width: 30px; text-align: center; }
+  .liq-nome { font-size: 0.82rem; font-weight: 600; color: var(--dourado); margin-bottom: 2px; }
+  .liq-desc { font-size: 0.78rem; color: var(--texto-claro); }
+
+  /* CAMADAS PIRÂMIDE */
+  .camadas-wrap { display: flex; flex-direction: column; align-items: center; gap: 4px; margin: 28px 0; }
+  .camada { width: 100%; border-radius: 6px; padding: 18px 20px; text-align: center; }
+  .camada.topo { max-width: 60%; background: linear-gradient(135deg, rgba(201,168,76,0.16) 0%, rgba(47,82,64,0.4) 100%); border: 1px solid rgba(201,168,76,0.3); }
+  .camada.base { max-width: 100%; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); }
+  .camada-titulo { font-family: "Cormorant Garamond", serif; font-weight: 700; font-size: 1.05rem; color: var(--dourado-claro); }
+  .camada-desc { font-size: 0.76rem; color: var(--texto-claro); margin-top: 6px; line-height: 1.5; }
+
+  /* TABELA COMPARATIVA */
+  .table-wrap { overflow-x: auto; margin: 28px 0; border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; background: rgba(10,20,16,0.5); }
+  .comp-table { width: 100%; border-collapse: collapse; min-width: 560px; font-size: 0.8rem; }
+  .comp-table th { text-align: left; color: var(--dourado); font-weight: 600; padding: 11px 14px; border-bottom: 1px solid rgba(201,168,76,0.25); font-size: 0.62rem; letter-spacing: 0.06em; text-transform: uppercase; }
+  .comp-table td { padding: 10px 14px; border-bottom: 1px solid rgba(255,255,255,0.06); color: var(--texto-claro); }
+  .comp-table tr:last-child td { border-bottom: none; }
+  .comp-table td.destaque { color: var(--dourado-claro); font-weight: 600; }
+
+  .insight-box { background: linear-gradient(135deg, rgba(201,168,76,0.1) 0%, rgba(26,46,37,0.4) 100%); border: 1px solid rgba(201,168,76,0.25); border-left: 3px solid var(--dourado); border-radius: 4px; padding: 28px 32px; margin: 36px 0; }
+  .insight-box p { font-family: "Cormorant Garamond", serif; font-size: 1.1rem; color: var(--creme); line-height: 1.8; margin: 0; }
+  .warn-box { background: linear-gradient(135deg, rgba(201,69,69,0.08) 0%, rgba(26,46,37,0.4) 100%); border: 1px solid rgba(201,69,69,0.22); border-left: 3px solid #c94545; border-radius: 4px; padding: 24px 28px; margin: 32px 0; }
+  .warn-box p { font-size: 0.9rem; color: var(--texto-claro); margin: 0; line-height: 1.75; }
+
+  .conclusao { font-family: "Cormorant Garamond", serif; font-size: 1.1rem; font-weight: 400; line-height: 1.85; color: var(--creme); margin-top: 52px; padding: 40px; border: 1px solid rgba(201,168,76,0.2); border-radius: 6px; background: rgba(255,255,255,0.02); position: relative; }
+  .conclusao::before { content: "\201C"; position: absolute; top: -10px; left: 32px; font-size: 5rem; color: rgba(201,168,76,0.15); font-family: "Cormorant Garamond", serif; line-height: 1; }
+
+  .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .fade-in.visible { opacity: 1; transform: none; }
+  footer { position: relative; z-index: 1; border-top: 1px solid rgba(201,168,76,0.12); padding: 40px 8%; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+  .footer-name { font-family: "Cormorant Garamond", serif; font-size: 1.1rem; font-weight: 300; color: var(--texto-muted); }
+  .footer-contact { font-size: 0.75rem; color: rgba(245,237,224,0.25); line-height: 1.9; text-align: right; }
+  .footer-contact a { color: var(--dourado); text-decoration: none; }
+  @media (max-width: 640px) { .back-link,.hero { padding-left: 5%; padding-right: 5%; } article { padding: 48px 5% 64px; } footer { padding: 32px 5%; flex-direction: column; } .footer-contact { text-align: left; } .ir-label { flex-basis: 76px; font-size: 0.66rem; } }
+</style>
+</head>
+<body>
+
+<a class="back-link" href="index.html">Voltar</a>
+
+<header class="hero">
+  <div class="hero-tag">Artigo · Renda Fixa & Liquidez</div>
+  <div class="hero-date">Setembro de 2026</div>
+  <h1>ETFs Smart Selic: uma nova alternativa para a <em>reserva de liquidez</em>?</h1>
+  <p class="hero-sub">Uma nova categoria de ETFs de renda fixa combina Tesouro Selic com uma pequena parcela de IPCA+ longo para conquistar uma vantagem tributária pouco comum: 15% de IR desde o primeiro dia, sem come-cotas e sem IOF nos 30 dias iniciais.</p>
+  <div class="hero-fonte">Fontes: dados dos ETFs (B3), simulações próprias, comunidade Sala das Evidências</div>
+</header>
+
+<article>
+
+  <p class="lead">
+    Nos últimos meses, os chamados <strong>ETFs Smart Selic</strong> passaram a ganhar espaço entre investidores que buscam alternativas ao tradicional CDB de liquidez diária e ao Tesouro Selic. A proposta é relativamente simples: manter a maior parte da carteira em Tesouro Selic e uma parcela menor em Tesouro IPCA+ de prazo mais longo — o suficiente para se enquadrar em uma tributação bem mais eficiente.
+  </p>
+
+  <!-- SEÇÃO 1: O QUE É -->
+  <div class="section-title fade-in"><span class="section-icon">🧱</span> O que é um ETF Smart Selic?</div>
+
+  <div class="grafico-wrap fade-in">
+    <div class="grafico-titulo">Composição típica da carteira</div>
+    <div class="grafico-sub">Duration baixa (~1,0 a 1,4 ano) · risco de crédito soberano</div>
+    <div class="donut-flex">
+      <div class="donut-chart"><div class="donut-center"><div class="donut-center-val">Smart<br>Selic</div><div class="donut-center-label">ETF</div></div></div>
+      <div class="donut-legend">
+        <div class="donut-leg-item"><div class="donut-leg-dot" style="background:#c9a84c;"></div><span class="donut-leg-text"><span class="donut-leg-pct">~90%</span>Tesouro Selic (LFTs)</span></div>
+        <div class="donut-leg-item"><div class="donut-leg-dot" style="background:#4a90d9;"></div><span class="donut-leg-text"><span class="donut-leg-pct">~9%</span>NTN-B longa (Tesouro IPCA+)</span></div>
+        <div class="donut-leg-item"><div class="donut-leg-dot" style="background:#6fae8f;"></div><span class="donut-leg-text"><span class="donut-leg-pct">~1%</span>Caixa e ajustes</span></div>
+      </div>
+    </div>
+    <div class="grafico-nota">A parcela de NTN-B longa eleva o prazo médio de repactuação da carteira para acima de 720 dias, permitindo o enquadramento no IR de 15% desde o primeiro dia. Liquidação financeira: D+1, via negociação em bolsa (B3).</div>
+  </div>
+
+  <p>Enquanto aplicações tradicionais de renda fixa seguem a tabela regressiva — começando em 22,5% e chegando a 15% apenas depois de dois anos — alguns desses ETFs conseguem se enquadrar diretamente na alíquota de <strong>15% sobre o ganho, independentemente do prazo em que o investidor permaneça aplicado</strong>. Não há come-cotas, e não existe incidência de IOF sobre resgates realizados nos primeiros 30 dias.</p>
+
+  <!-- SEÇÃO 2: TRIBUTAÇÃO -->
+  <div class="section-title fade-in"><span class="section-icon">🧾</span> Onde está a vantagem: o Imposto de Renda</div>
+
+  <div class="grafico-wrap fade-in">
+    <div class="grafico-titulo">Comparativo de tributação (IR) por prazo do investidor</div>
+    <div class="grafico-sub">Smart Selic (%720 dias) vs. CDB 100% CDI / Tesouro Selic tradicional</div>
+    <div class="ir-row"><div class="ir-label">Até 180 dias</div><div class="ir-track"><div class="ir-seg smart" style="width:66.7%;">Smart Selic 15%</div><div class="ir-seg cdb" style="width:33.3%; background:transparent;"></div></div></div>
+    <div class="ir-row"><div class="ir-label">Até 180 dias</div><div class="ir-track"><div class="ir-seg cdb" style="width:100%;">CDB / Tesouro 22,5%</div></div></div>
+    <div class="ir-row"><div class="ir-label">181–360 dias</div><div class="ir-track"><div class="ir-seg smart" style="width:75%;">Smart Selic 15%</div></div></div>
+    <div class="ir-row"><div class="ir-label">181–360 dias</div><div class="ir-track"><div class="ir-seg cdb" style="width:100%;">CDB / Tesouro 20%</div></div></div>
+    <div class="ir-row"><div class="ir-label">361–720 dias</div><div class="ir-track"><div class="ir-seg smart" style="width:85.7%;">Smart Selic 15%</div></div></div>
+    <div class="ir-row"><div class="ir-label">361–720 dias</div><div class="ir-track"><div class="ir-seg cdb" style="width:100%;">CDB / Tesouro 17,5%</div></div></div>
+    <div class="ir-row" style="margin-bottom:0;"><div class="ir-label">Acima 720 dias</div><div class="ir-track"><div class="ir-seg smart" style="width:100%;">Ambos 15%</div></div></div>
+    <div class="grafico-nota">Larguras proporcionais à alíquota de IR (menor barra = menos imposto). A partir de 720 dias, CDB e Tesouro Selic também chegam a 15% — o Smart Selic antecipa esse patamar desde o primeiro dia.</div>
+  </div>
+
+  <!-- SEÇÃO 3: SIMULAÇÃO -->
+  <div class="section-title fade-in"><span class="section-icon">💰</span> Quanto isso representa na prática?</div>
+
+  <p>Simulação simplificada com <strong>R$ 100 mil</strong> aplicados, comparando o resultado líquido (retorno bruto de referência ~14% a.a.) entre um CDB 100% CDI e um ETF Smart Selic:</p>
+
+  <div class="grafico-wrap fade-in">
+    <div class="grafico-titulo">Vantagem líquida do Smart Selic sobre o CDB 100% CDI</div>
+    <div class="grafico-sub">R$ 100 mil aplicados · resultado após impostos, por prazo</div>
+    <div class="vant-chart">
+      <div class="vant-col"><span class="vant-val">+R$ 71</span><div class="vant-bar" style="height:13%;"></div><div class="vant-label">30 dias</div></div>
+      <div class="vant-col"><span class="vant-val">+R$ 214</span><div class="vant-bar" style="height:39%;"></div><div class="vant-label">90 dias</div></div>
+      <div class="vant-col"><span class="vant-val">+R$ 434</span><div class="vant-bar" style="height:79%;"></div><div class="vant-label">180 dias</div></div>
+      <div class="vant-col"><span class="vant-val">+R$ 547</span><div class="vant-bar" style="height:100%;"></div><div class="vant-label">360 dias</div></div>
+      <div class="vant-col"><span class="vant-val">+R$ 413</span><div class="vant-bar" style="height:75.5%;"></div><div class="vant-label">720 dias</div></div>
+    </div>
+    <div class="grafico-nota">Simulação simplificada: não considera marcação a mercado, custos de corretagem/custódia ou spread; inclui taxa do ETF de 0,15% a.a. A vantagem cresce até 1 ano e depois se reduz, já que o CDB também chega a 15% de IR após 2 anos.</div>
+  </div>
+
+  <!-- SEÇÃO 4: HISTÓRICO -->
+  <div class="section-title fade-in"><span class="section-icon">📈</span> O comportamento histórico frente ao CDI</div>
+
+  <p>Olhando para janelas móveis de 12 meses desde 2004, o índice que referencia esse tipo de estratégia (Smart Selic) e o CDI caminham de forma muito próxima — mas não idêntica:</p>
+
+  <div class="grafico-wrap fade-in">
+    <div class="grafico-titulo">Rentabilidade em janelas móveis de 12 meses</div>
+    <div class="grafico-sub">Smart Selic (Índice) vs. CDI · 2004–2026 · trajetória ilustrativa, valores aproximados</div>
+    <svg class="hist-line-svg" viewBox="0 0 900 280" xmlns="http://www.w3.org/2000/svg">
+      <line x1="40" y1="250" x2="860" y2="250" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+      <line x1="40" y1="187.3" x2="860" y2="187.3" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+      <line x1="40" y1="124.5" x2="860" y2="124.5" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+      <line x1="40" y1="61.8" x2="860" y2="61.8" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+      <text x="6" y="253" font-size="9" fill="rgba(245,237,224,0.35)">0%</text>
+      <text x="2" y="190.3" font-size="9" fill="rgba(245,237,224,0.35)">6%</text>
+      <text x="0" y="127.5" font-size="9" fill="rgba(245,237,224,0.35)">12%</text>
+      <text x="0" y="64.8" font-size="9" fill="rgba(245,237,224,0.35)">18%</text>
+      <polyline points="40.0,82.7 77.3,61.8 114.5,56.6 151.8,72.3 189.1,93.2 226.4,114.1 263.6,108.9 300.9,98.4 338.2,145.5 375.5,166.4 412.7,135.0 450.0,108.9 487.3,108.9 524.5,114.1 561.8,171.6 599.1,182.0 636.4,213.4 673.6,218.6 710.9,145.5 748.2,108.9 785.5,135.0 822.7,100.5 860.0,112.0" fill="none" stroke="#4a90d9" stroke-width="2"/>
+      <polyline points="40.0,72.3 77.3,51.4 114.5,46.1 151.8,72.3 189.1,114.1 226.4,124.5 263.6,103.6 300.9,93.2 338.2,155.9 375.5,176.8 412.7,135.0 450.0,103.6 487.3,82.7 524.5,93.2 561.8,155.9 599.1,187.3 636.4,218.6 673.6,229.1 710.9,155.9 748.2,114.1 785.5,145.5 822.7,98.4 860.0,114.1" fill="none" stroke="#c94545" stroke-width="2.2"/>
+      <text x="36" y="266" font-size="9" fill="rgba(245,237,224,0.4)">2004</text>
+      <text x="181" y="266" font-size="9" fill="rgba(245,237,224,0.4)">2008</text>
+      <text x="330" y="266" font-size="9" fill="rgba(245,237,224,0.4)">2012</text>
+      <text x="479" y="266" font-size="9" fill="rgba(245,237,224,0.4)">2016</text>
+      <text x="628" y="266" font-size="9" fill="rgba(245,237,224,0.4)">2020</text>
+      <text x="777" y="266" font-size="9" fill="rgba(245,237,224,0.4)">2024</text>
+    </svg>
+    <div class="grafico-legenda">
+      <div class="leg-item"><div class="leg-line" style="background:#c94545;"></div>Smart Selic (Índice)</div>
+      <div class="leg-item"><div class="leg-line" style="background:#4a90d9;"></div>CDI</div>
+    </div>
+    <div class="grafico-nota">Em levantamento com 264 janelas móveis de 1 ano desde 2004, o Smart Selic superou o CDI em 153 delas (58%) — o CDI levou vantagem nas 111 restantes (42%).</div>
+  </div>
+
+  <p>Isso confirma o ponto mais importante: <strong>Smart Selic não é exatamente igual ao CDI</strong>. A parcela de Tesouro IPCA+ longo possui maior sensibilidade às taxas de juros, então a cota pode oscilar — para cima ou para baixo — mais do que uma aplicação puramente pós-fixada.</p>
+
+  <div class="ano-grid fade-in">
+    <div class="ano-card">
+      <div class="ano-titulo">2024</div>
+      <div class="ano-vals"><div class="ano-val"><div class="ano-val-num smart">8,80%</div><div class="ano-val-label">Smart Selic</div></div><div class="ano-val"><div class="ano-val-num cdi">10,93%</div><div class="ano-val-label">CDI</div></div></div>
+    </div>
+    <div class="ano-card">
+      <div class="ano-titulo">2025</div>
+      <div class="ano-vals"><div class="ano-val"><div class="ano-val-num smart">14,48%</div><div class="ano-val-label">Smart Selic</div></div><div class="ano-val"><div class="ano-val-num cdi">14,27%</div><div class="ano-val-label">CDI</div></div></div>
+    </div>
+    <div class="ano-card">
+      <div class="ano-titulo">2026 (parcial)</div>
+      <div class="ano-vals"><div class="ano-val"><div class="ano-val-num smart">8,77%</div><div class="ano-val-label">Smart Selic</div></div><div class="ano-val"><div class="ano-val-num cdi">8,97%</div><div class="ano-val-label">CDI</div></div></div>
+    </div>
+  </div>
+
+  <div class="stat-hero fade-in">
+    <div class="stat-card neutro">
+      <div class="stat-card-val">~1,65%</div>
+      <div class="stat-card-desc">volatilidade anualizada desde o início</div>
+    </div>
+    <div class="stat-card neutro">
+      <div class="stat-card-val">~-0,99%</div>
+      <div class="stat-card-desc">máximo drawdown observado</div>
+    </div>
+    <div class="stat-card dourado">
+      <div class="stat-card-val">~61 dias</div>
+      <div class="stat-card-desc">tempo médio de recuperação após queda</div>
+    </div>
+  </div>
+
+  <!-- SEÇÃO 5: LIQUIDEZ -->
+  <div class="section-title fade-in"><span class="section-icon">⏱️</span> Liquidez também merece atenção</div>
+
+  <p>Os ETFs são negociados em bolsa. Para transformar a posição em dinheiro, é necessário vender as cotas durante o horário de negociação da B3, com liquidação financeira em <strong>D+1</strong>. Para a maior parte das necessidades financeiras essa diferença é pouco relevante — mas para uma emergência que exija dinheiro imediatamente, ela pode fazer diferença:</p>
+
+  <div class="liq-steps fade-in">
+    <div class="liq-item"><div class="liq-icon">📊</div><div><div class="liq-nome">ETF Smart Selic</div><div class="liq-desc">Venda durante o pregão da B3 → liquidação financeira em D+1</div></div></div>
+    <div class="liq-item"><div class="liq-icon">🏦</div><div><div class="liq-nome">Tesouro Selic</div><div class="liq-desc">Resgate em dia útil até 13h → disponível no mesmo dia a partir de 13h; após 13h, liquida em D+1</div></div></div>
+    <div class="liq-item"><div class="liq-icon">📱</div><div><div class="liq-nome">CDB de liquidez diária</div><div class="liq-desc">Resgate a qualquer momento (conforme o banco) → disponibilidade praticamente imediata</div></div></div>
+  </div>
+
+  <!-- SEÇÃO 6: CAMADAS -->
+  <div class="section-title fade-in"><span class="section-icon">🏛️</span> Reserva em camadas: uma possível arquitetura</div>
+
+  <p>Uma reserva de emergência não precisa estar concentrada em um único produto. Uma estrutura em camadas de liquidez pode ser mais eficiente — por exemplo, para uma família que mantenha seis meses de despesas como reserva:</p>
+
+  <div class="camadas-wrap fade-in">
+    <div class="camada topo">
+      <div class="camada-titulo">Camada 2 — Reserva financeira</div>
+      <div class="camada-desc">Excedente da reserva (3 a 6 meses de despesas) → <strong>Smart Selic</strong><br>foco em eficiência tributária e boa liquidez (D+1)</div>
+    </div>
+    <div class="camada base">
+      <div class="camada-titulo">Camada 1 — Emergência imediata</div>
+      <div class="camada-desc">1 a 2 meses de despesas → <strong>liquidez imediata</strong> (CDB 24/7, conta remunerada, Tesouro Selic em horário)<br>foco em disponibilidade total</div>
+    </div>
+  </div>
+
+  <!-- SEÇÃO 7: COMPARATIVO -->
+  <div class="section-title fade-in"><span class="section-icon">⚖️</span> Smart Selic x alternativas tradicionais</div>
+
+  <div class="table-wrap fade-in">
+    <table class="comp-table">
+      <tr><th>Característica</th><th>Smart Selic</th><th>CDB liquidez diária</th><th>Tesouro Selic</th></tr>
+      <tr><td>Risco de crédito</td><td>Muito baixo</td><td>Baixo*</td><td>Muito baixo</td></tr>
+      <tr><td>Liquidez</td><td class="destaque">D+1</td><td>Pode ser imediata</td><td>Alta</td></tr>
+      <tr><td>Oscilação da posição</td><td>Pequena</td><td>Praticamente inexistente</td><td>Muito pequena</td></tr>
+      <tr><td>IR no curto prazo</td><td class="destaque">15%</td><td>22,5% a 20%</td><td>22,5% a 20%</td></tr>
+      <tr><td>IR após 2 anos</td><td>15%</td><td>15%</td><td>15%</td></tr>
+      <tr><td>IOF nos primeiros 30 dias</td><td class="destaque">Não</td><td>Sim</td><td>Sim</td></tr>
+      <tr><td>Come-cotas</td><td>Não</td><td>Não</td><td>Não</td></tr>
+    </table>
+  </div>
+  <div class="grafico-nota" style="margin: -14px 0 24px;">*Considerando produtos dentro dos limites de cobertura do FGC.</div>
+
+  <p>O CDB tende a ser superior quando a prioridade absoluta é disponibilidade imediata e ausência de oscilação. O Tesouro Selic continua sendo referência de segurança e simplicidade. Já o Smart Selic introduz uma combinação particularmente interessante de <strong>baixo risco de crédito, boa liquidez e eficiência tributária</strong>.</p>
+
+  <div class="insight-box fade-in">
+    <p>A decisão mais importante talvez não seja escolher entre CDB, Tesouro Selic ou Smart Selic. Pode ser simplesmente definir <strong>quanto do patrimônio precisa estar disponível imediatamente e quanto pode esperar um dia útil</strong> para ser utilizado.</p>
+  </div>
+
+  <div class="warn-box fade-in">
+    <p><strong>Ressalva importante:</strong> a vantagem tributária não transforma o Smart Selic em uma aplicação totalmente equivalente a dinheiro em conta. Como envolve uma pequena parcela de NTN-B longa e liquidação em D+1, ele não oferece a mesma disponibilidade imediata e estabilidade de cota de um CDB de liquidez diária ou de uma aplicação puramente pós-fixada. Pode ser uma excelente opção como segunda camada da reserva, desde que o investidor entenda o funcionamento e mantenha uma parte da reserva em instrumentos de liquidez imediata para emergências.</p>
+  </div>
+
+  <div class="conclusao fade-in">
+    Os ETFs Smart Selic são uma inovação interessante dentro da renda fixa brasileira: conseguem combinar uma carteira predominantemente pós-fixada com <strong>IR de 15% desde o início da aplicação</strong>, ausência de come-cotas e uma estrutura de custos relativamente baixa. Não são substitutos diretos de toda reserva de emergência, mas podem representar uma alternativa bastante eficiente para uma parcela dela, ou para recursos de curto e médio prazo — desde que combinados com uma camada de liquidez verdadeiramente imediata.
+  </div>
+
+</article>
+
+<footer>
+  <div class="footer-name">Fábio Vogelaar Carlucci</div>
+  <div class="footer-contact">+55 (16) 98148-8260<br><a href="mailto:fabio.carlucci@ficus.capital">fabio.carlucci@ficus.capital</a></div>
+</footer>
+<div style="position:relative;z-index:1;padding:0 8% 28px;text-align:center;font-size:0.65rem;color:rgba(245,237,224,0.2);letter-spacing:0.08em;">
+  Este material possui caráter exclusivamente informativo e educacional e não constitui recomendação individual de investimento.
+</div>
+
+<script>
+const faders = document.querySelectorAll(".fade-in");
+const obs = new IntersectionObserver(e => e.forEach(x => { if(x.isIntersecting){ x.target.classList.add("visible"); obs.unobserve(x.target); } }), { threshold: 0.1 });
+faders.forEach(f => obs.observe(f));
+</script>
+</body>
+</html>

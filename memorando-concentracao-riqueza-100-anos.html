@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>100 anos de bolsa americana: a riqueza esteve em pouquíssimas ações | Fábio Carlucci</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DBQSDSDRF3"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-DBQSDSDRF3");</script>
+<style>
+  :root {
+    --verde-escuro: #1a2e25;
+    --dourado: #c9a84c;
+    --dourado-claro: #e2c47a;
+    --creme: #f5ede0;
+    --texto-claro: rgba(245,237,224,0.85);
+    --texto-muted: rgba(245,237,224,0.45);
+    --azul: #4a90d9;
+    --verde-gain: #3dbf8a;
+    --vermelho: #c94545;
+    --laranja: #e07a35;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { background-color: var(--verde-escuro); color: var(--creme); font-family: "Jost", sans-serif; font-weight: 300; overflow-x: hidden; }
+  body::before {
+    content: ""; position: fixed; inset: 0;
+    background-image: radial-gradient(ellipse at 10% 10%, rgba(201,168,76,0.06) 0%, transparent 55%), radial-gradient(ellipse at 90% 90%, rgba(47,82,64,0.35) 0%, transparent 55%);
+    pointer-events: none; z-index: 0;
+  }
+  .back-link { position: relative; z-index: 10; display: inline-flex; align-items: center; gap: 8px; padding: 28px 8%; font-size: 0.7rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--texto-muted); text-decoration: none; transition: color 0.2s; }
+  .back-link:hover { color: var(--dourado); }
+  .back-link::before { content: "←"; font-size: 0.9rem; }
+  .hero { position: relative; z-index: 1; padding: 20px 8% 64px; border-bottom: 1px solid rgba(201,168,76,0.15); max-width: 900px; }
+  .hero-tag { font-size: 0.65rem; font-weight: 500; letter-spacing: 0.35em; text-transform: uppercase; color: var(--dourado); display: flex; align-items: center; gap: 12px; margin-bottom: 24px; opacity: 0; animation: fadeUp 0.7s ease 0.1s forwards; }
+  .hero-tag::before { content: ""; width: 30px; height: 1px; background: var(--dourado); }
+  .hero-date { font-size: 0.72rem; letter-spacing: 0.15em; color: var(--texto-muted); margin-bottom: 20px; opacity: 0; animation: fadeUp 0.7s ease 0.2s forwards; }
+  h1 { font-family: "Cormorant Garamond", serif; font-size: clamp(2rem, 5vw, 3.7rem); font-weight: 300; line-height: 1.12; color: var(--creme); opacity: 0; animation: fadeUp 0.7s ease 0.3s forwards; }
+  h1 em { font-style: italic; color: var(--dourado-claro); }
+  .hero-sub { font-size: 0.97rem; color: var(--texto-muted); line-height: 1.75; margin-top: 16px; max-width: 640px; opacity: 0; animation: fadeUp 0.7s ease 0.45s forwards; }
+  .hero-fonte { margin-top: 14px; font-size: 0.7rem; color: rgba(245,237,224,0.3); opacity: 0; animation: fadeUp 0.7s ease 0.55s forwards; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+  article { position: relative; z-index: 1; max-width: 800px; margin: 0 auto; padding: 64px 8% 88px; }
+  .lead { font-family: "Cormorant Garamond", serif; font-size: clamp(1.1rem, 2.5vw, 1.35rem); font-weight: 400; line-height: 1.8; color: var(--creme); margin-bottom: 48px; padding-bottom: 48px; border-bottom: 1px solid rgba(201,168,76,0.15); }
+  p { font-size: 0.97rem; line-height: 1.9; color: var(--texto-claro); margin-bottom: 24px; }
+  strong { font-weight: 600; color: var(--creme); }
+  .section-title { font-family: "Cormorant Garamond", serif; font-size: 1.5rem; font-weight: 600; color: var(--dourado-claro); margin: 56px 0 18px; padding-top: 44px; border-top: 1px solid rgba(201,168,76,0.12); display: flex; align-items: center; gap: 14px; }
+  .section-icon { font-size: 1.3rem; flex-shrink: 0; }
+
+  /* STAT HERO */
+  .stat-hero { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 32px 0; }
+  @media (max-width: 500px) { .stat-hero { grid-template-columns: 1fr; } }
+  .stat-card { border-radius: 8px; padding: 26px 22px; text-align: center; }
+  .stat-card.neg { background: linear-gradient(135deg, rgba(201,69,69,0.14) 0%, rgba(47,82,64,0.4) 100%); border: 1px solid rgba(201,69,69,0.3); }
+  .stat-card.dourado { background: linear-gradient(135deg, rgba(201,168,76,0.14) 0%, rgba(47,82,64,0.4) 100%); border: 1px solid rgba(201,168,76,0.3); }
+  .stat-card-val { font-family: "Cormorant Garamond", serif; font-size: 3rem; font-weight: 700; line-height: 1; margin-bottom: 8px; }
+  .stat-card.neg .stat-card-val { color: #e07070; }
+  .stat-card.dourado .stat-card-val { color: var(--dourado); }
+  .stat-card-desc { font-size: 0.8rem; color: var(--texto-muted); line-height: 1.5; }
+
+  /* GRAFICOS */
+  .grafico-wrap { background: rgba(10,20,16,0.7); border: 1px solid rgba(255,255,255,0.07); border-radius: 8px; padding: 24px 20px 16px; margin: 32px 0; }
+  .grafico-titulo { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--dourado); margin-bottom: 4px; }
+  .grafico-sub { font-size: 0.72rem; color: var(--texto-muted); margin-bottom: 16px; }
+  .grafico-nota { font-size: 0.65rem; color: rgba(245,237,224,0.25); margin-top: 10px; line-height: 1.4; }
+
+  /* CONCENTRAÇÃO - small multiples */
+  .concentracao-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 28px 0; }
+  @media (max-width: 560px) { .concentracao-grid { grid-template-columns: 1fr; } }
+  .conc-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; padding: 22px 14px; text-align: center; }
+  .conc-firms { font-family: "Cormorant Garamond", serif; font-size: 1.7rem; font-weight: 700; color: var(--creme); }
+  .conc-firms-pct { font-size: 0.68rem; color: var(--texto-muted); margin-top: 2px; }
+  .conc-firms-label { font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--texto-muted); margin-top: 6px; }
+  .conc-arrow { color: var(--dourado); font-size: 1.1rem; margin: 10px 0; opacity: 0.6; }
+  .conc-wealth { font-family: "Cormorant Garamond", serif; font-size: 2.3rem; font-weight: 700; color: var(--dourado); line-height: 1; }
+  .conc-wealth-label { font-size: 0.68rem; color: var(--texto-claro); margin-top: 4px; }
+
+  /* CRESCIMENTO US$1 */
+  .crescimento-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 28px 0; }
+  @media (max-width: 560px) { .crescimento-grid { grid-template-columns: 1fr; } }
+  .cresc-card { border-radius: 8px; padding: 22px 14px; text-align: center; }
+  .cresc-card.mercado { background: linear-gradient(135deg, rgba(201,168,76,0.14) 0%, rgba(47,82,64,0.4) 100%); border: 1px solid rgba(201,168,76,0.3); }
+  .cresc-card.neutro { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); }
+  .cresc-val { font-family: "Cormorant Garamond", serif; font-weight: 700; line-height: 1; margin-bottom: 8px; }
+  .cresc-card.mercado .cresc-val { font-size: 2.3rem; color: var(--dourado); }
+  .cresc-card.neutro .cresc-val { font-size: 1.6rem; color: var(--texto-claro); }
+  .cresc-label { font-size: 0.7rem; color: var(--texto-muted); line-height: 1.4; }
+
+  /* MÉDIA vs MEDIANA (assimetria) */
+  .skew-row { display: flex; gap: 12px; margin: 26px 0; }
+  @media (max-width: 500px) { .skew-row { flex-direction: column; } }
+  .skew-card { flex: 1; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; padding: 20px; }
+  .skew-label { font-size: 0.62rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--texto-muted); margin-bottom: 8px; }
+  .skew-val { font-family: "Cormorant Garamond", serif; font-size: 2rem; font-weight: 700; color: var(--dourado-claro); }
+  .skew-desc { font-size: 0.76rem; color: var(--texto-claro); margin-top: 6px; line-height: 1.5; }
+
+  /* FATORES / EMPRESAS COM QUEDAS */
+  .fatores-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin: 24px 0; }
+  @media (max-width: 500px) { .fatores-grid { grid-template-columns: 1fr; } }
+  .fator-tag { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 13px 14px; font-size: 0.8rem; color: var(--texto-claro); display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+  .fator-tag::before { content: "▸"; color: var(--dourado); flex-shrink: 0; margin-right: 6px; }
+  .fator-tag span.queda { color: #e07070; font-weight: 600; font-size: 0.75rem; white-space: nowrap; }
+
+  /* INSIGHT */
+  .insight-box { background: linear-gradient(135deg, rgba(201,168,76,0.1) 0%, rgba(26,46,37,0.4) 100%); border: 1px solid rgba(201,168,76,0.25); border-left: 3px solid var(--dourado); border-radius: 4px; padding: 28px 32px; margin: 36px 0; }
+  .insight-box p { font-family: "Cormorant Garamond", serif; font-size: 1.1rem; color: var(--creme); line-height: 1.8; margin: 0; }
+
+  /* ESTRATÉGIA */
+  .estrategia-list { display: flex; flex-direction: column; gap: 10px; margin: 28px 0; }
+  .estrategia-item { display: flex; align-items: flex-start; gap: 16px; padding: 18px 20px; background: rgba(201,168,76,0.05); border: 1px solid rgba(201,168,76,0.15); border-radius: 5px; }
+  .estrategia-num { font-family: "Cormorant Garamond", serif; font-size: 1.8rem; font-weight: 700; color: rgba(201,168,76,0.3); flex-shrink: 0; width: 32px; text-align: center; }
+  .estrategia-titulo { font-size: 0.82rem; font-weight: 600; color: var(--dourado); margin-bottom: 3px; }
+  .estrategia-desc { font-size: 0.83rem; color: var(--texto-claro); line-height: 1.55; }
+
+  /* CONCLUSÃO */
+  .conclusao { font-family: "Cormorant Garamond", serif; font-size: 1.15rem; font-weight: 400; line-height: 1.85; color: var(--creme); margin-top: 52px; padding: 40px; border: 1px solid rgba(201,168,76,0.2); border-radius: 6px; background: rgba(255,255,255,0.02); position: relative; }
+  .conclusao::before { content: "\201C"; position: absolute; top: -10px; left: 32px; font-size: 5rem; color: rgba(201,168,76,0.15); font-family: "Cormorant Garamond", serif; line-height: 1; }
+
+  .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .fade-in.visible { opacity: 1; transform: none; }
+  footer { position: relative; z-index: 1; border-top: 1px solid rgba(201,168,76,0.12); padding: 40px 8%; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+  .footer-name { font-family: "Cormorant Garamond", serif; font-size: 1.1rem; font-weight: 300; color: var(--texto-muted); }
+  .footer-contact { font-size: 0.75rem; color: rgba(245,237,224,0.25); line-height: 1.9; text-align: right; }
+  .footer-contact a { color: var(--dourado); text-decoration: none; }
+  @media (max-width: 640px) { .back-link,.hero { padding-left: 5%; padding-right: 5%; } article { padding: 48px 5% 64px; } footer { padding: 32px 5%; flex-direction: column; } .footer-contact { text-align: left; } }
+</style>
+</head>
+<body>
+
+<a class="back-link" href="index.html">Voltar</a>
+
+<header class="hero">
+  <div class="hero-tag">Artigo · Renda Variável & Diversificação</div>
+  <div class="hero-date">Agosto de 2026</div>
+  <h1>100 anos de bolsa americana:<br>a riqueza esteve em <em>pouquíssimas ações</em></h1>
+  <p class="hero-sub">Um dos estudos mais abrangentes já feitos sobre o mercado acionário americano — quase 30 mil empresas, um século de dados — mostra que a criação de riqueza nas ações é extremamente concentrada. E isso muda a forma como deveríamos pensar sobre diversificação.</p>
+  <div class="hero-fonte">Fonte: Hendrik Bessembinder (2026), "One Hundred Years in the U.S. Stock Markets" — Arizona State University</div>
+</header>
+
+<article>
+
+  <p class="lead">
+    O professor <strong>Hendrik Bessembinder</strong>, da Arizona State University, analisou praticamente todas as empresas listadas nos Estados Unidos entre <strong>1926 e 2025</strong> — 29.081 ações ao longo de um século de mercado. O resultado reforça uma característica pouco intuitiva dos investimentos em ações: <strong>a criação de riqueza é extremamente concentrada em um número muito pequeno de empresas.</strong>
+  </p>
+
+  <!-- STAT HERO -->
+  <div class="stat-hero fade-in">
+    <div class="stat-card dourado">
+      <div class="stat-card-val">50%</div>
+      <div class="stat-card-desc">de toda a riqueza líquida criada em 100 anos veio de apenas <strong style="color:var(--dourado)">46 empresas</strong> — 0,16% do total analisado</div>
+    </div>
+    <div class="stat-card neg">
+      <div class="stat-card-val">59%</div>
+      <div class="stat-card-desc">das quase 30 mil empresas <strong style="color:#e07070">destruíram valor</strong> para seus acionistas ao longo de sua existência</div>
+    </div>
+  </div>
+
+  <!-- SEÇÃO 1: CONCENTRAÇÃO -->
+  <div class="section-title fade-in"><span class="section-icon">🏛️</span> Pouquíssimas empresas explicam quase toda a riqueza criada</div>
+
+  <p>Ao longo dos últimos 100 anos, o mercado americano gerou aproximadamente <strong>US$ 90,96 trilhões</strong> de riqueza líquida para os acionistas. O interessante é observar como essa riqueza foi distribuída entre as 29.081 empresas do estudo:</p>
+
+  <div class="concentracao-grid fade-in">
+    <div class="conc-card">
+      <div class="conc-firms">46</div>
+      <div class="conc-firms-pct">0,16% das empresas</div>
+      <div class="conc-arrow">↓</div>
+      <div class="conc-wealth">50%</div>
+      <div class="conc-wealth-label">da riqueza criada</div>
+    </div>
+    <div class="conc-card">
+      <div class="conc-firms">208</div>
+      <div class="conc-firms-pct">0,71% das empresas</div>
+      <div class="conc-arrow">↓</div>
+      <div class="conc-wealth">75%</div>
+      <div class="conc-wealth-label">da riqueza criada</div>
+    </div>
+    <div class="conc-card">
+      <div class="conc-firms">1.082</div>
+      <div class="conc-firms-pct">3,72% das empresas</div>
+      <div class="conc-arrow">↓</div>
+      <div class="conc-wealth">100%</div>
+      <div class="conc-wealth-label">da riqueza líquida</div>
+    </div>
+  </div>
+
+  <div class="grafico-nota" style="margin: -12px 0 24px;">Enquanto isso, 17.197 empresas (59,13% do total) tiveram criação líquida de riqueza negativa, somando −US$ 10,67 trilhões — compensados pelos US$ 101,63 trilhões gerados pelas 11.884 empresas vencedoras. Fonte: Bessembinder (2026), Tabela 7.</div>
+
+  <p>Isso evidencia como encontrar os grandes vencedores antecipadamente é um desafio extremamente complexo — e como uma carteira concentrada tem chance real de nunca captar os poucos nomes que, de fato, movem o resultado.</p>
+
+  <!-- SEÇÃO 2: MERCADO x EMPRESA MEDIANA -->
+  <div class="section-title fade-in"><span class="section-icon">📈</span> O mercado venceu. A empresa mediana, nem tanto.</div>
+
+  <p>Quem simplesmente investiu <strong>US$ 1 no mercado americano em 1926</strong> terminou 2025 com um valor muito superior ao de aplicações mais conservadoras — enquanto a empresa mediana individual teve desempenho muito inferior ao índice ao longo de sua vida como companhia aberta.</p>
+
+  <div class="crescimento-grid fade-in">
+    <div class="cresc-card mercado">
+      <div class="cresc-val">US$ 14.053</div>
+      <div class="cresc-label">Mercado acionário americano (US Market)</div>
+    </div>
+    <div class="cresc-card neutro">
+      <div class="cresc-val">US$ 34,59</div>
+      <div class="cresc-label">Títulos do Tesouro americano (T-Bills)</div>
+    </div>
+    <div class="cresc-card neutro">
+      <div class="cresc-val">US$ 18,12</div>
+      <div class="cresc-label">Inflação acumulada no período</div>
+    </div>
+  </div>
+  <div class="grafico-nota" style="margin: -12px 0 24px;">Valor acumulado de US$ 1 investido em 1926, em 31/12/2025. Fonte: Bessembinder (2026).</div>
+
+  <p>Isso acontece porque o retorno agregado do mercado é impulsionado por um grupo relativamente pequeno de empresas extraordinárias — capazes de crescer durante décadas e multiplicar seu valor inúmeras vezes. O próprio estudo mostra essa assimetria também em janelas de 10 anos:</p>
+
+  <div class="skew-row fade-in">
+    <div class="skew-card">
+      <div class="skew-label">Retorno médio por década</div>
+      <div class="skew-val">112%</div>
+      <div class="skew-desc">média de todas as janelas de 10 anos entre 1926 e 2025 (puxada para cima pelos vencedores extremos)</div>
+    </div>
+    <div class="skew-card">
+      <div class="skew-label">Retorno mediano por década</div>
+      <div class="skew-val" style="color:#e2a86a;">12%</div>
+      <div class="skew-desc">o que a ação "do meio" efetivamente entregou — e apenas 35,6% das ações superaram o mercado em sua década</div>
+    </div>
+  </div>
+
+  <!-- SEÇÃO 3: VOLATILIDADE DOS VENCEDORES -->
+  <div class="section-title fade-in"><span class="section-icon">🎢</span> Os grandes vencedores não foram uma linha reta</div>
+
+  <p>Outro aspecto interessante do estudo é que as maiores criadoras de riqueza da história passaram por períodos de forte volatilidade. Mesmo os nomes mais conhecidos enfrentaram, em diferentes momentos, quedas superiores a <strong>80% em relação às máximas anteriores</strong>:</p>
+
+  <div class="fatores-grid fade-in">
+    <div class="fator-tag">Apple <span class="queda">queda > 80%</span></div>
+    <div class="fator-tag">Microsoft <span class="queda">queda > 80%</span></div>
+    <div class="fator-tag">Amazon <span class="queda">queda > 80%</span></div>
+    <div class="fator-tag">Alphabet (Google) <span class="queda">queda > 80%</span></div>
+    <div class="fator-tag">Nvidia <span class="queda">queda > 80%</span></div>
+    <div class="fator-tag">Exxon <span class="queda">queda > 80%</span></div>
+  </div>
+
+  <p>Ou seja, identificar uma grande vencedora é apenas parte do desafio. Permanecer investido durante décadas, atravessando ciclos econômicos, crises e fortes correções de preço, costuma ser igualmente difícil.</p>
+
+  <div class="insight-box fade-in">
+    <p>Esse estudo <strong>não</strong> significa que stock picking seja uma estratégia inadequada — existem gestores capazes de selecionar excelentes empresas e superar o mercado ao longo do tempo. A reflexão é outra: como os maiores vencedores são raríssimos e difíceis de identificar antecipadamente, a <strong>diversificação</strong> passa a ter um papel fundamental na construção de patrimônio.</p>
+  </div>
+
+  <!-- SEÇÃO 4: LIÇÃO -->
+  <div class="section-title fade-in"><span class="section-icon">🧭</span> A principal lição para o investidor</div>
+
+  <p>É justamente essa lógica que explica o sucesso dos investimentos em índices amplos (ETFs) e das carteiras diversificadas de ações: ao ampliar a exposição ao mercado, aumenta-se a probabilidade de participar das empresas que realmente farão diferença na geração de riqueza nas próximas décadas.</p>
+
+  <div class="estrategia-list fade-in">
+    <div class="estrategia-item">
+      <div class="estrategia-num">1</div>
+      <div>
+        <div class="estrategia-titulo">Amplie a base, não reduza</div>
+        <div class="estrategia-desc">Como só 3,72% das empresas explicaram 100% da riqueza líquida criada em 100 anos, uma carteira concentrada corre o risco real de nunca incluir essas raras vencedoras.</div>
+      </div>
+    </div>
+    <div class="estrategia-item">
+      <div class="estrategia-num">2</div>
+      <div>
+        <div class="estrategia-titulo">Não confunda volatilidade com erro de tese</div>
+        <div class="estrategia-desc">Mesmo Apple, Microsoft, Amazon, Alphabet, Nvidia e Exxon passaram por quedas superiores a 80%. Vender no meio do caminho é o erro mais comum de quem, por sorte ou análise, acerta o nome certo.</div>
+      </div>
+    </div>
+    <div class="estrategia-item">
+      <div class="estrategia-num">3</div>
+      <div>
+        <div class="estrategia-titulo">Tempo de mercado &gt; timing de mercado</div>
+        <div class="estrategia-desc">Com apenas 35,6% das ações superando o mercado em janelas de 10 anos, permanecer investido e amplamente diversificado tende a ser mais determinante do que tentar prever qual ação vai liderar a próxima década.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="conclusao fade-in">
+    No fim das contas, talvez a maior vantagem do investidor paciente seja permitir que o tempo faça aquilo que é quase impossível prever com antecedência: <strong>identificar, hoje, quais serão as raríssimas empresas que vão carregar a riqueza dos próximos 100 anos.</strong>
+  </div>
+
+</article>
+
+<footer>
+  <div class="footer-name">Fábio Vogelaar Carlucci</div>
+  <div class="footer-contact">+55 (16) 98148-8260<br><a href="mailto:fabio.carlucci@ficus.capital">fabio.carlucci@ficus.capital</a></div>
+</footer>
+<div style="position:relative;z-index:1;padding:0 8% 28px;text-align:center;font-size:0.65rem;color:rgba(245,237,224,0.2);letter-spacing:0.08em;">
+  Fonte: Hendrik Bessembinder (2026), "One Hundred Years in the U.S. Stock Markets" — Arizona State University<br>
+  Conteúdo exclusivamente informativo e educacional. Não constitui recomendação de investimento.
+</div>
+
+<script>
+const faders = document.querySelectorAll(".fade-in");
+const obs = new IntersectionObserver(e => e.forEach(x => { if(x.isIntersecting){ x.target.classList.add("visible"); obs.unobserve(x.target); } }), { threshold: 0.1 });
+faders.forEach(f => obs.observe(f));
+</script>
+</body>
+</html>
