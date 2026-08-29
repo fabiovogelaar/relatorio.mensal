@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FGC: proteção não significa risco zero | Fábio Carlucci</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DBQSDSDRF3"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-DBQSDSDRF3");</script>
+<style>
+  :root {
+    --verde-escuro: #1a2e25;
+    --dourado: #c9a84c;
+    --dourado-claro: #e2c47a;
+    --creme: #f5ede0;
+    --texto-claro: rgba(245,237,224,0.85);
+    --texto-muted: rgba(245,237,224,0.45);
+    --azul: #4a90d9;
+    --verde-gain: #3dbf8a;
+    --vermelho: #c94545;
+    --laranja: #e07a35;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { background-color: var(--verde-escuro); color: var(--creme); font-family: "Jost", sans-serif; font-weight: 300; overflow-x: hidden; }
+  body::before {
+    content: ""; position: fixed; inset: 0;
+    background-image: radial-gradient(ellipse at 10% 10%, rgba(201,168,76,0.06) 0%, transparent 55%), radial-gradient(ellipse at 90% 90%, rgba(47,82,64,0.35) 0%, transparent 55%);
+    pointer-events: none; z-index: 0;
+  }
+  .back-link { position: relative; z-index: 10; display: inline-flex; align-items: center; gap: 8px; padding: 28px 8%; font-size: 0.7rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--texto-muted); text-decoration: none; transition: color 0.2s; }
+  .back-link:hover { color: var(--dourado); }
+  .back-link::before { content: "←"; font-size: 0.9rem; }
+  .hero { position: relative; z-index: 1; padding: 20px 8% 64px; border-bottom: 1px solid rgba(201,168,76,0.15); max-width: 900px; }
+  .hero-tag { font-size: 0.65rem; font-weight: 500; letter-spacing: 0.35em; text-transform: uppercase; color: var(--dourado); display: flex; align-items: center; gap: 12px; margin-bottom: 24px; opacity: 0; animation: fadeUp 0.7s ease 0.1s forwards; }
+  .hero-tag::before { content: ""; width: 30px; height: 1px; background: var(--dourado); }
+  .hero-date { font-size: 0.72rem; letter-spacing: 0.15em; color: var(--texto-muted); margin-bottom: 20px; opacity: 0; animation: fadeUp 0.7s ease 0.2s forwards; }
+  h1 { font-family: "Cormorant Garamond", serif; font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 300; line-height: 1.12; color: var(--creme); opacity: 0; animation: fadeUp 0.7s ease 0.3s forwards; }
+  h1 em { font-style: italic; color: var(--dourado-claro); }
+  .hero-sub { font-size: 0.97rem; color: var(--texto-muted); line-height: 1.75; margin-top: 16px; max-width: 640px; opacity: 0; animation: fadeUp 0.7s ease 0.45s forwards; }
+  .hero-fonte { margin-top: 14px; font-size: 0.7rem; color: rgba(245,237,224,0.3); opacity: 0; animation: fadeUp 0.7s ease 0.55s forwards; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+  article { position: relative; z-index: 1; max-width: 800px; margin: 0 auto; padding: 64px 8% 88px; }
+  .lead { font-family: "Cormorant Garamond", serif; font-size: clamp(1.1rem, 2.5vw, 1.35rem); font-weight: 400; line-height: 1.8; color: var(--creme); margin-bottom: 48px; padding-bottom: 48px; border-bottom: 1px solid rgba(201,168,76,0.15); }
+  p { font-size: 0.97rem; line-height: 1.9; color: var(--texto-claro); margin-bottom: 24px; }
+  strong { font-weight: 600; color: var(--creme); }
+  .section-title { font-family: "Cormorant Garamond", serif; font-size: 1.5rem; font-weight: 600; color: var(--dourado-claro); margin: 56px 0 18px; padding-top: 44px; border-top: 1px solid rgba(201,168,76,0.12); display: flex; align-items: center; gap: 14px; }
+  .section-icon { font-size: 1.3rem; flex-shrink: 0; }
+
+  /* GRÁFICO CENTRAL */
+  .chart-hero { background: linear-gradient(160deg, rgba(201,69,69,0.06) 0%, rgba(10,20,16,0.85) 55%); border: 1px solid rgba(201,168,76,0.25); border-radius: 12px; padding: 30px 22px 20px; margin: 40px 0 44px; }
+  .chart-hero-eyebrow { font-size: 0.62rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--dourado); margin-bottom: 6px; }
+  .chart-hero-titulo { font-family: "Cormorant Garamond", serif; font-size: 1.5rem; font-weight: 700; color: var(--creme); margin-bottom: 4px; }
+  .chart-hero-sub { font-size: 0.8rem; color: var(--texto-muted); margin-bottom: 16px; }
+  .credit-svg { width: 100%; height: auto; display: block; }
+  .chart-hero-nota { font-size: 0.66rem; color: rgba(245,237,224,0.3); margin-top: 14px; line-height: 1.5; }
+  .chart-legenda { display: flex; gap: 18px; flex-wrap: wrap; margin-top: 14px; }
+  .cl-item { display: flex; align-items: center; gap: 7px; font-size: 0.7rem; color: var(--texto-claro); }
+  .cl-dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
+  .cl-line { width: 16px; height: 0; border-top: 2px dashed var(--vermelho); flex-shrink: 0; }
+  .cl-area { width: 16px; height: 9px; background: rgba(201,69,69,0.18); border: 1px solid rgba(201,69,69,0.4); flex-shrink: 0; }
+
+  .stat-hero { display: grid; grid-template-columns: repeat(2,1fr); gap: 14px; margin: 32px 0; }
+  @media (max-width: 500px) { .stat-hero { grid-template-columns: 1fr; } }
+  .stat-card { border-radius: 8px; padding: 24px 20px; text-align: center; }
+  .stat-card.dourado { background: linear-gradient(135deg, rgba(201,168,76,0.14) 0%, rgba(47,82,64,0.4) 100%); border: 1px solid rgba(201,168,76,0.3); }
+  .stat-card.neg { background: linear-gradient(135deg, rgba(201,69,69,0.12) 0%, rgba(47,82,64,0.4) 100%); border: 1px solid rgba(201,69,69,0.28); }
+  .stat-card-val { font-family: "Cormorant Garamond", serif; font-size: 2.2rem; font-weight: 700; line-height: 1; margin-bottom: 8px; }
+  .stat-card.dourado .stat-card-val { color: var(--dourado); }
+  .stat-card.neg .stat-card-val { color: #e07070; }
+  .stat-card-desc { font-size: 0.78rem; color: var(--texto-muted); line-height: 1.5; }
+
+  .fatores-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin: 24px 0; }
+  @media (max-width: 500px) { .fatores-grid { grid-template-columns: 1fr; } }
+  .fator-tag { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 13px 14px; font-size: 0.8rem; color: var(--texto-claro); display: flex; align-items: center; gap: 8px; }
+  .fator-tag::before { content: "▸"; color: var(--dourado); flex-shrink: 0; }
+
+  /* PERGUNTAS */
+  .perguntas-list { display: flex; flex-direction: column; gap: 8px; margin: 24px 0; }
+  .pergunta-item { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 13px 16px; font-family: "Cormorant Garamond", serif; font-size: 1rem; font-style: italic; color: var(--dourado-claro); display: flex; gap: 10px; align-items: flex-start; }
+  .pergunta-item::before { content: "?"; font-family: "Jost", sans-serif; font-style: normal; font-weight: 700; color: var(--dourado); flex-shrink: 0; }
+
+  .insight-box { background: linear-gradient(135deg, rgba(201,168,76,0.1) 0%, rgba(26,46,37,0.4) 100%); border: 1px solid rgba(201,168,76,0.25); border-left: 3px solid var(--dourado); border-radius: 4px; padding: 28px 32px; margin: 36px 0; }
+  .insight-box p { font-family: "Cormorant Garamond", serif; font-size: 1.1rem; color: var(--creme); line-height: 1.8; margin: 0; }
+  .warn-box { background: linear-gradient(135deg, rgba(201,69,69,0.08) 0%, rgba(26,46,37,0.4) 100%); border: 1px solid rgba(201,69,69,0.22); border-left: 3px solid #c94545; border-radius: 4px; padding: 24px 28px; margin: 32px 0; }
+  .warn-box p { font-size: 0.9rem; color: var(--texto-claro); margin: 0; line-height: 1.75; }
+
+  .conclusao { font-family: "Cormorant Garamond", serif; font-size: 1.1rem; font-weight: 400; line-height: 1.85; color: var(--creme); margin-top: 52px; padding: 40px; border: 1px solid rgba(201,168,76,0.2); border-radius: 6px; background: rgba(255,255,255,0.02); position: relative; }
+  .conclusao::before { content: "\201C"; position: absolute; top: -10px; left: 32px; font-size: 5rem; color: rgba(201,168,76,0.15); font-family: "Cormorant Garamond", serif; line-height: 1; }
+
+  .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .fade-in.visible { opacity: 1; transform: none; }
+  footer { position: relative; z-index: 1; border-top: 1px solid rgba(201,168,76,0.12); padding: 40px 8%; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+  .footer-name { font-family: "Cormorant Garamond", serif; font-size: 1.1rem; font-weight: 300; color: var(--texto-muted); }
+  .footer-contact { font-size: 0.75rem; color: rgba(245,237,224,0.25); line-height: 1.9; text-align: right; }
+  .footer-contact a { color: var(--dourado); text-decoration: none; }
+  @media (max-width: 640px) { .back-link,.hero { padding-left: 5%; padding-right: 5%; } article { padding: 48px 5% 64px; } footer { padding: 32px 5%; flex-direction: column; } .footer-contact { text-align: left; } }
+</style>
+</head>
+<body>
+
+<a class="back-link" href="index.html">Voltar</a>
+
+<header class="hero">
+  <div class="hero-tag">Artigo · Renda Fixa & Crédito Privado</div>
+  <div class="hero-date">Setembro de 2026</div>
+  <h1>FGC: proteção <em>não significa</em> risco zero</h1>
+  <p class="hero-sub">Quando a garantia reduz a percepção de risco, o investidor precisa olhar com ainda mais atenção para a relação entre taxa, prazo e qualidade do emissor.</p>
+  <div class="hero-fonte">Referência: Guilherme Carter, "O preço invisível do 'risco zero'", Times Brasil | CNBC, 24 de agosto de 2026 — dados da Plataforma DataBay</div>
+</header>
+
+<article>
+
+  <p class="lead">
+    O Fundo Garantidor de Créditos (FGC) é uma das estruturas mais importantes de proteção do sistema financeiro brasileiro — uma camada adicional de segurança para produtos como CDBs, LCIs e LCAs, dentro de seus limites e condições. Mas existe uma diferença importante entre dizer que um investimento <strong>possui cobertura do FGC</strong> e afirmar que ele possui <strong>"risco zero"</strong>. Essa diferença pode ter consequências reais na construção de uma carteira.
+  </p>
+
+  <!-- GRÁFICO CENTRAL -->
+  <div class="chart-hero fade-in">
+    <div class="chart-hero-eyebrow">O ponto central deste artigo</div>
+    <div class="chart-hero-titulo">O selo do FGC achata a curva de risco</div>
+    <div class="chart-hero-sub">Dentro do limite de cobertura, a taxa de um CDB responde muito menos ao balanço do emissor do que a teoria exigiria</div>
+
+    <svg class="credit-svg" viewBox="0 0 900 430" xmlns="http://www.w3.org/2000/svg">
+      <!-- eixo e grid -->
+      <line x1="60" y1="380" x2="860" y2="380" stroke="rgba(255,255,255,0.18)" stroke-width="1"/>
+      <line x1="60" y1="351.7" x2="860" y2="351.7" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+      <line x1="60" y1="295.0" x2="860" y2="295.0" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+      <line x1="60" y1="238.3" x2="860" y2="238.3" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+      <line x1="60" y1="181.7" x2="860" y2="181.7" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+      <line x1="60" y1="125.0" x2="860" y2="125.0" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+      <line x1="60" y1="68.3" x2="860" y2="68.3" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+      <text x="14" y="384" font-size="10" fill="rgba(245,237,224,0.4)">100%</text>
+      <text x="14" y="299" font-size="10" fill="rgba(245,237,224,0.4)">120%</text>
+      <text x="14" y="242" font-size="10" fill="rgba(245,237,224,0.4)">140%</text>
+      <text x="14" y="185" font-size="10" fill="rgba(245,237,224,0.4)">160%</text>
+      <text x="14" y="129" font-size="10" fill="rgba(245,237,224,0.4)">180%</text>
+      <text x="14" y="72" font-size="10" fill="rgba(245,237,224,0.4)">200%</text>
+      <text x="4" y="40" font-size="9" letter-spacing="1" fill="rgba(245,237,224,0.35)" transform="rotate(-90 14,220)">% DO CDI</text>
+
+      <!-- divisor grau especulativo / investimento -->
+      <line x1="460.0" y1="40" x2="460.0" y2="380" stroke="rgba(245,237,224,0.15)" stroke-width="1" stroke-dasharray="3,4"/>
+      <text x="260" y="30" font-size="10" letter-spacing="1" fill="rgba(245,237,224,0.4)" text-anchor="middle">GRAU ESPECULATIVO</text>
+      <text x="660" y="30" font-size="10" letter-spacing="1" fill="rgba(245,237,224,0.4)" text-anchor="middle">GRAU DE INVESTIMENTO</text>
+
+      <!-- área do prêmio não capturado -->
+      <path d="M100.0,54.2 C160,100 190,150 202.9,167.5 C260,200 280,220 305.7,238.3 C350,255 380,265 408.6,275.2 C450,285 480,295 511.4,300.7 C550,305 580,310 614.3,317.7 C650,325 680,332 717.1,340.3 C750,345 790,348 820.0,351.7 L820.0,360.2 C790,357.3 750,357.3 717.1,357.3 C680,354.5 650,354.5 614.3,354.5 C580,351.7 550,351.7 511.4,351.7 C480,343.2 450,343.2 408.6,343.2 C380,329 350,329 305.7,329.0 C280,317.7 260,317.7 202.9,317.7 C190,300.7 160,300.7 100.0,300.7 Z" fill="rgba(201,69,69,0.14)" stroke="none"/>
+
+      <!-- curva teórica tracejada -->
+      <path d="M100.0,54.2 C160,100 190,150 202.9,167.5 C260,200 280,220 305.7,238.3 C350,255 380,265 408.6,275.2 C450,285 480,295 511.4,300.7 C550,305 580,310 614.3,317.7 C650,325 680,332 717.1,340.3 C750,345 790,348 820.0,351.7" fill="none" stroke="#c94545" stroke-width="1.8" stroke-dasharray="7,5"/>
+
+      <!-- faixa observada inferior (limite) -->
+      <path d="M100.0,300.7 C160,310 170,313 202.9,317.7 C250,323 280,326 305.7,329.0 C350,335 380,339 408.6,343.2 C450,347 480,350 511.4,351.7 C550,353 580,354 614.3,354.5 C650,355.5 680,356.5 717.1,357.3 C750,358 790,359 820.0,360.2" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+
+      <!-- linha 100% CDI -->
+      <line x1="60" y1="351.7" x2="860" y2="351.7" stroke="rgba(245,237,224,0.3)" stroke-width="1"/>
+
+      <!-- dots: grau especulativo (vermelho) D, CCC, B -->
+      <circle cx="88" cy="298" r="4" fill="#e07070"/><circle cx="98" cy="304" r="4" fill="#e07070"/><circle cx="108" cy="296" r="4" fill="#e07070"/><circle cx="92" cy="308" r="4" fill="#e07070"/><circle cx="112" cy="303" r="4" fill="#e07070"/>
+      <circle cx="190" cy="312" r="4" fill="#e07070"/><circle cx="200" cy="318" r="4" fill="#e07070"/><circle cx="210" cy="309" r="4" fill="#e07070"/><circle cx="195" cy="322" r="4" fill="#e07070"/><circle cx="215" cy="315" r="4" fill="#e07070"/>
+      <circle cx="293" cy="320" r="4" fill="#e07070"/><circle cx="303" cy="326" r="4" fill="#e07070"/><circle cx="313" cy="316" r="4" fill="#e07070"/><circle cx="298" cy="330" r="4" fill="#e07070"/><circle cx="318" cy="323" r="4" fill="#e07070"/>
+
+      <!-- dots: grau especulativo BB (transição) -->
+      <circle cx="396" cy="335" r="4" fill="#e0a86a"/><circle cx="406" cy="340" r="4" fill="#e0a86a"/><circle cx="416" cy="330" r="4" fill="#e0a86a"/><circle cx="401" cy="344" r="4" fill="#e0a86a"/><circle cx="421" cy="337" r="4" fill="#e0a86a"/>
+
+      <!-- dots: grau de investimento (dourado/azul) BBB, A, AA, AAA -->
+      <circle cx="499" cy="346" r="4" fill="#e2c47a"/><circle cx="509" cy="350" r="4" fill="#e2c47a"/><circle cx="519" cy="343" r="4" fill="#e2c47a"/><circle cx="504" cy="352" r="4" fill="#e2c47a"/><circle cx="524" cy="348" r="4" fill="#e2c47a"/>
+      <circle cx="602" cy="352" r="4" fill="#e2c47a"/><circle cx="612" cy="356" r="4" fill="#e2c47a"/><circle cx="622" cy="350" r="4" fill="#e2c47a"/><circle cx="607" cy="358" r="4" fill="#e2c47a"/><circle cx="627" cy="354" r="4" fill="#e2c47a"/>
+      <circle cx="705" cy="355" r="4" fill="#e2c47a"/><circle cx="715" cy="359" r="4" fill="#e2c47a"/><circle cx="725" cy="353" r="4" fill="#e2c47a"/><circle cx="710" cy="361" r="4" fill="#e2c47a"/><circle cx="730" cy="357" r="4" fill="#e2c47a"/>
+      <circle cx="808" cy="358" r="4" fill="#e2c47a"/><circle cx="818" cy="361" r="4" fill="#e2c47a"/><circle cx="828" cy="356" r="4" fill="#e2c47a"/><circle cx="813" cy="363" r="4" fill="#e2c47a"/><circle cx="833" cy="359" r="4" fill="#e2c47a"/>
+
+      <!-- rótulos eixo x -->
+      <text x="100" y="400" font-size="12" fill="rgba(245,237,224,0.6)" text-anchor="middle">D</text>
+      <text x="202.9" y="400" font-size="12" fill="rgba(245,237,224,0.6)" text-anchor="middle">CCC</text>
+      <text x="305.7" y="400" font-size="12" fill="rgba(245,237,224,0.6)" text-anchor="middle">B</text>
+      <text x="408.6" y="400" font-size="12" fill="rgba(245,237,224,0.6)" text-anchor="middle">BB</text>
+      <text x="511.4" y="400" font-size="12" fill="rgba(245,237,224,0.6)" text-anchor="middle">BBB</text>
+      <text x="614.3" y="400" font-size="12" fill="rgba(245,237,224,0.6)" text-anchor="middle">A</text>
+      <text x="717.1" y="400" font-size="12" fill="rgba(245,237,224,0.6)" text-anchor="middle">AA</text>
+      <text x="820" y="400" font-size="12" fill="rgba(245,237,224,0.6)" text-anchor="middle">AAA</text>
+      <text x="460" y="418" font-size="10" letter-spacing="1" fill="rgba(245,237,224,0.35)" text-anchor="middle">QUALIDADE DE CRÉDITO DO EMISSOR (ESCALA NACIONAL DE RATING)</text>
+    </svg>
+
+    <div class="chart-legenda">
+      <div class="cl-item"><div class="cl-line"></div>Taxa teoricamente exigida pelo risco de crédito</div>
+      <div class="cl-item"><div class="cl-dot" style="background:#e2c47a;"></div>Emissões observadas no varejo</div>
+      <div class="cl-item"><div class="cl-area"></div>Prêmio de risco não capturado pela taxa</div>
+    </div>
+    <div class="chart-hero-nota">Dentro do limite de cobertura do FGC (até R$ 250 mil por CPF e por conglomerado), o varejo trata emissores de perfis opostos como equivalentes — a compressão da taxa se concentra justamente onde o risco é maior. Linha de referência: 100% do CDI (Tesouro Selic). Ilustração baseada em dados da Plataforma DataBay. Fonte: Guilherme Carter, Times Brasil | CNBC, 24/08/2026.</div>
+  </div>
+
+  <!-- SEÇÃO 1 -->
+  <div class="section-title fade-in"><span class="section-icon">📉</span> O efeito do FGC sobre as taxas</div>
+
+  <p>Em condições normais, existe uma relação intuitiva no mercado de crédito: quanto maior o risco do emissor, maior deveria ser a remuneração exigida pelo investidor. Um banco com excelente qualidade de crédito deveria captar pagando menos; uma instituição com balanço mais frágil deveria oferecer uma taxa significativamente maior. Na prática, porém, a cobertura do FGC pode reduzir bastante essa diferença — como mostra o gráfico acima, as taxas observadas no varejo apresentam uma dispersão muito menor entre emissores de diferentes níveis de risco do que seria teoricamente esperado.</p>
+
+  <div class="insight-box fade-in">
+    <p>O FGC tende a "achatar" a curva de risco. Para o investidor, isso cria uma pergunta importante: <strong>estou sendo suficientemente remunerado pelo risco e pela iliquidez que estou assumindo?</strong></p>
+  </div>
+
+  <!-- SEÇÃO 2 -->
+  <div class="section-title fade-in"><span class="section-icon">🛡️</span> O problema não é o FGC</div>
+
+  <p>O FGC não deve ser encarado como um problema — é um mecanismo relevante de estabilidade do sistema financeiro e de proteção ao investidor. A questão está em utilizar a existência da garantia como <strong>substituto da análise do investimento</strong>. Quando dois bancos com qualidades de crédito muito diferentes conseguem captar pagando taxas relativamente próximas porque ambos possuem cobertura do FGC, parte do prêmio que normalmente seria exigido do emissor mais arriscado pode desaparecer. O investidor continua exposto a uma instituição mais frágil, mas recebe uma remuneração que talvez não seja proporcionalmente maior.</p>
+
+  <!-- SEÇÃO 3 -->
+  <div class="section-title fade-in"><span class="section-icon">💧</span> Garantia também não é sinônimo de liquidez</div>
+
+  <p>O FGC protege investimentos elegíveis dentro de suas regras e limites, mas isso não significa que o dinheiro esteja disponível imediatamente em qualquer circunstância. Em um evento de intervenção ou liquidação de uma instituição financeira, pode existir um intervalo entre a indisponibilidade do investimento e o efetivo ressarcimento. Durante esse período, o investidor pode enfrentar um <strong>custo de oportunidade</strong>: o patrimônio está protegido, mas não necessariamente disponível para despesas, investimentos ou oportunidades de mercado. Por isso, especialmente em recursos destinados à reserva de emergência, segurança de crédito e liquidez precisam ser analisadas separadamente.</p>
+
+  <!-- SEÇÃO 4 -->
+  <div class="section-title fade-in"><span class="section-icon">⏳</span> O prazo também precisa ser remunerado</div>
+
+  <p>Um CDB com vencimento em quatro ou cinco anos não deve ser analisado apenas pela pergunta "tem FGC?". A análise deveria considerar conjuntamente:</p>
+
+  <div class="fatores-grid fade-in">
+    <div class="fator-tag">Taxa oferecida</div>
+    <div class="fator-tag">Qualidade do emissor</div>
+    <div class="fator-tag">Prazo e liquidez</div>
+    <div class="fator-tag">Concentração e finalidade do recurso na carteira</div>
+  </div>
+
+  <p>Se o investidor está abrindo mão da liquidez durante vários anos, precisa existir uma remuneração adequada para essa decisão. Caso contrário, pode acontecer algo curioso: aceitar um prazo muito longo e um emissor de maior risco para receber apenas alguns pontos percentuais adicionais do CDI — quando essa diferença é pequena, talvez o prêmio simplesmente não seja suficiente.</p>
+
+  <!-- SEÇÃO 5 -->
+  <div class="section-title fade-in"><span class="section-icon">🔍</span> Há também uma questão de incentivos</div>
+
+  <p>Em modelos transacionais, alguns produtos podem gerar remuneração para o distribuidor no momento da aplicação, variando conforme título, prazo e condições comerciais. Isso não significa que todo CDB longo ou todo título com comissão seja inadequado — significa que existe um potencial conflito de interesses que precisa ser administrado com <strong>transparência e análise técnica</strong>. O produto deveria estar na carteira porque faz sentido para o investidor, não porque gera maior remuneração para quem o distribui. É por isso que modelos de remuneração por <strong>fee fixo</strong> ganharam espaço no mercado — ao reduzir a dependência da comissão individual de cada produto, aproximam a remuneração do profissional do acompanhamento global do patrimônio. Ainda assim, nenhum modelo elimina completamente os conflitos; o ponto central continua sendo transparência, adequação e qualidade do aconselhamento.</p>
+
+  <!-- SEÇÃO 6 -->
+  <div class="section-title fade-in"><span class="section-icon">❓</span> Então devemos evitar investimentos cobertos pelo FGC?</div>
+
+  <div class="stat-hero fade-in">
+    <div class="stat-card dourado">
+      <div class="stat-card-val">Não</div>
+      <div class="stat-card-desc">CDBs, LCIs, LCAs e outros instrumentos bancários podem desempenhar funções importantes em uma carteira</div>
+    </div>
+    <div class="stat-card neg">
+      <div class="stat-card-val">O cuidado</div>
+      <div class="stat-card-desc">está em não transformar a frase <strong style="color:#e07070">"tem FGC"</strong> no único critério de decisão</div>
+    </div>
+  </div>
+
+  <p>Antes de investir, vale fazer algumas perguntas:</p>
+
+  <div class="perguntas-list fade-in">
+    <div class="pergunta-item">A taxa compensa o risco do emissor?</div>
+    <div class="pergunta-item">Quanto estou recebendo a mais em relação a alternativas mais seguras?</div>
+    <div class="pergunta-item">Por quanto tempo meu dinheiro ficará comprometido, e existe liquidez antes do vencimento?</div>
+    <div class="pergunta-item">Esse recurso pode ser necessário durante esse período?</div>
+    <div class="pergunta-item">Quanto do meu patrimônio está concentrado naquele emissor ou conglomerado?</div>
+    <div class="pergunta-item">A taxa oferecida é realmente competitiva quando comparada a alternativas equivalentes?</div>
+  </div>
+
+  <div class="warn-box fade-in">
+    <p>O objetivo não é eliminar o risco da carteira. É garantir que, sempre que assumirmos um risco adicional, sejamos adequadamente remunerados por ele.</p>
+  </div>
+
+  <div class="conclusao fade-in">
+    O FGC deve ser entendido como <strong>uma camada de proteção, e não como justificativa para ignorar risco</strong>. Uma boa carteira de renda fixa não deveria ser simplesmente uma coleção de CDBs que pagam o maior percentual do CDI disponível na plataforma — ela deve ser construída considerando qualidade de crédito, liquidez, duration, diversificação, tributação e prêmio efetivamente recebido pelo risco assumido. Em alguns casos, aceitar um emissor de maior risco pode fazer sentido, desde que exista remuneração suficiente para isso. Em outros, a diferença de taxa será tão pequena que talvez seja mais racional permanecer em um ativo de melhor qualidade ou maior liquidez.
+  </div>
+
+</article>
+
+<footer>
+  <div class="footer-name">Fábio Vogelaar Carlucci</div>
+  <div class="footer-contact">+55 (16) 98148-8260<br><a href="mailto:fabio.carlucci@ficus.capital">fabio.carlucci@ficus.capital</a></div>
+</footer>
+<div style="position:relative;z-index:1;padding:0 8% 28px;text-align:center;font-size:0.65rem;color:rgba(245,237,224,0.2);letter-spacing:0.08em;">
+  Referência: Guilherme Carter, "O preço invisível do 'risco zero'", Times Brasil | CNBC, 24 de agosto de 2026 — dados da Plataforma DataBay<br>
+  Material de caráter informativo e educacional. Não constitui recomendação individual de investimento. A adequação de cada produto depende do perfil, dos objetivos, do horizonte de investimento e das necessidades de liquidez de cada investidor.
+</div>
+
+<script>
+const faders = document.querySelectorAll(".fade-in");
+const obs = new IntersectionObserver(e => e.forEach(x => { if(x.isIntersecting){ x.target.classList.add("visible"); obs.unobserve(x.target); } }), { threshold: 0.1 });
+faders.forEach(f => obs.observe(f));
+</script>
+</body>
+</html>
