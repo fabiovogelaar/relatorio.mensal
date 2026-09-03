@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Relatório Mensal — Agosto 2026 | Fábio Carlucci</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DBQSDSDRF3"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-DBQSDSDRF3");</script>
+<style>
+  :root {
+    --verde-escuro: #1a2e25;
+    --dourado: #c9a84c;
+    --dourado-claro: #e2c47a;
+    --creme: #f5ede0;
+    --texto-claro: rgba(245,237,224,0.85);
+    --texto-muted: rgba(245,237,224,0.45);
+    --azul: #4a90d9;
+    --verde-gain: #3dbf8a;
+    --vermelho: #c94545;
+    --laranja: #e07a35;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { background-color: var(--verde-escuro); color: var(--creme); font-family: "Jost", sans-serif; font-weight: 300; overflow-x: hidden; }
+  body::before {
+    content: ""; position: fixed; inset: 0;
+    background-image: radial-gradient(ellipse at 15% 15%, rgba(201,168,76,0.07) 0%, transparent 55%), radial-gradient(ellipse at 85% 85%, rgba(47,82,64,0.4) 0%, transparent 55%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none; z-index: 0;
+  }
+  .back-link { position: relative; z-index: 10; display: inline-flex; align-items: center; gap: 8px; padding: 28px 8%; font-size: 0.7rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--texto-muted); text-decoration: none; transition: color 0.2s; }
+  .back-link:hover { color: var(--dourado); }
+  .back-link::before { content: "←"; font-size: 0.9rem; }
+  .hero { position: relative; z-index: 1; padding: 20px 8% 64px; border-bottom: 1px solid rgba(201,168,76,0.15); }
+  .hero-tag { font-size: 0.65rem; font-weight: 500; letter-spacing: 0.35em; text-transform: uppercase; color: var(--dourado); display: flex; align-items: center; gap: 12px; margin-bottom: 20px; opacity: 0; animation: fadeUp 0.7s ease 0.1s forwards; }
+  .hero-tag::before { content: ""; width: 30px; height: 1px; background: var(--dourado); }
+  .hero-eyebrow { font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--texto-muted); margin-bottom: 16px; opacity: 0; animation: fadeUp 0.7s ease 0.2s forwards; }
+  h1 { font-family: "Cormorant Garamond", serif; font-size: clamp(3rem, 8vw, 6rem); font-weight: 300; line-height: 1.05; color: var(--creme); opacity: 0; animation: fadeUp 0.7s ease 0.3s forwards; }
+  h1 strong { font-weight: 700; color: var(--dourado-claro); display: block; }
+  .hero-month { font-size: clamp(0.8rem, 2vw, 0.95rem); letter-spacing: 0.3em; text-transform: uppercase; color: var(--texto-muted); margin-top: 16px; opacity: 0; animation: fadeUp 0.7s ease 0.5s forwards; }
+  .hero-assinatura { margin-top: 36px; opacity: 0; animation: fadeUp 0.7s ease 0.65s forwards; }
+  .assinatura-svg { width: 140px; height: auto; opacity: 0.85; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+  .section { position: relative; z-index: 1; padding: 64px 8%; max-width: 900px; margin: 0 auto; }
+  .section-tag { font-size: 0.65rem; font-weight: 500; letter-spacing: 0.35em; text-transform: uppercase; color: var(--dourado); display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
+  .section-tag::before { content: ""; width: 30px; height: 1px; background: var(--dourado); }
+  .section-title { font-family: "Cormorant Garamond", serif; font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 600; line-height: 1.15; color: var(--creme); margin-bottom: 36px; }
+  .divider { width: calc(100% - 16%); height: 1px; margin: 0 8%; background: linear-gradient(90deg, rgba(201,168,76,0.3) 0%, transparent 100%); }
+  .pills-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  @media (max-width: 580px) { .pills-grid { grid-template-columns: 1fr; } }
+  .pill { background: rgba(255,255,255,0.03); border: 1px solid rgba(201,168,76,0.2); border-left: 3px solid var(--dourado); border-radius: 4px; padding: 20px 22px; transition: background 0.3s, transform 0.3s; }
+  .pill:hover { background: rgba(201,168,76,0.07); transform: translateY(-2px); }
+  .pill-icon { font-size: 1.1rem; margin-bottom: 7px; display: block; }
+  .pill-title { font-weight: 600; font-size: 0.75rem; letter-spacing: 0.08em; color: var(--dourado); margin-bottom: 7px; }
+  .pill-text { font-size: 0.88rem; color: var(--texto-claro); line-height: 1.65; }
+  .block { margin-bottom: 40px; }
+  .block-title { font-family: "Cormorant Garamond", serif; font-size: 1.35rem; font-weight: 600; color: var(--dourado-claro); margin-bottom: 10px; border-bottom: 1px solid rgba(201,168,76,0.15); padding-bottom: 8px; }
+  .block-text { font-size: 0.95rem; color: var(--texto-claro); line-height: 1.85; }
+  .block-text strong { font-weight: 600; color: var(--creme); }
+  .implicacao { margin-top: 12px; padding: 14px 18px; background: rgba(201,168,76,0.07); border-left: 2px solid rgba(201,168,76,0.4); border-radius: 2px; font-size: 0.86rem; color: var(--texto-claro); line-height: 1.7; }
+  .implicacao strong { color: var(--dourado); font-weight: 600; }
+
+  .inflacao-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 20px 0; }
+  @media (max-width: 480px) { .inflacao-grid { grid-template-columns: 1fr; } }
+  .inflacao-card { border-radius: 6px; padding: 18px 16px; text-align: center; background: rgba(61,191,138,0.07); border: 1px solid rgba(61,191,138,0.2); }
+  .inflacao-label { font-size: 0.62rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--verde-gain); margin-bottom: 8px; }
+  .inflacao-val { font-family: "Cormorant Garamond", serif; font-size: 1.8rem; font-weight: 700; color: var(--verde-gain); line-height: 1; margin-bottom: 4px; }
+  .inflacao-desc { font-size: 0.75rem; color: var(--texto-muted); line-height: 1.4; }
+
+  .desemprego-card { background: linear-gradient(135deg, rgba(201,168,76,0.12) 0%, rgba(47,82,64,0.3) 100%); border: 1px solid rgba(201,168,76,0.3); border-radius: 8px; padding: 24px 28px; margin: 24px 0; display: flex; align-items: center; gap: 28px; flex-wrap: wrap; }
+  .desemprego-number { font-family: "Cormorant Garamond", serif; font-size: 3rem; font-weight: 700; color: var(--dourado); line-height: 1; }
+  .desemprego-label { font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--texto-muted); margin-top: 4px; }
+  .desemprego-desc { font-size: 0.88rem; color: var(--texto-claro); line-height: 1.7; flex: 1; min-width: 200px; }
+
+  .fed-box { background: rgba(74,144,217,0.07); border: 1px solid rgba(74,144,217,0.2); border-left: 3px solid var(--azul); border-radius: 4px; padding: 24px 26px; margin: 24px 0; }
+  .fed-title { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--azul); margin-bottom: 12px; }
+  .fed-votos { display: flex; align-items: center; gap: 16px; margin-top: 12px; flex-wrap: wrap; }
+  .fed-voto-bloco { text-align: center; }
+  .fed-voto-num { font-family: "Cormorant Garamond", serif; font-size: 2rem; font-weight: 700; line-height: 1; }
+  .fed-voto-bloco.manter .fed-voto-num { color: var(--verde-gain); }
+  .fed-voto-bloco.subir .fed-voto-num { color: #e07070; }
+  .fed-voto-label { font-size: 0.68rem; color: var(--texto-muted); margin-top: 4px; max-width: 120px; }
+
+  .copom-box { background: rgba(201,168,76,0.08); border: 1px solid rgba(201,168,76,0.22); border-left: 3px solid var(--dourado); border-radius: 4px; padding: 24px 26px; margin: 24px 0; }
+  .copom-title { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--dourado); margin-bottom: 14px; }
+  .copom-serie { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 10px; }
+  .copom-item { flex: 1; min-width: 90px; text-align: center; background: rgba(0,0,0,0.15); border-radius: 6px; padding: 12px 8px; }
+  .copom-item.atual { background: rgba(201,168,76,0.18); border: 1px solid rgba(201,168,76,0.4); }
+  .copom-mes { font-size: 0.6rem; color: var(--texto-muted); text-transform: uppercase; letter-spacing: 0.06em; }
+  .copom-val { font-family: "Cormorant Garamond", serif; font-size: 1.15rem; font-weight: 700; color: var(--dourado-claro); margin-top: 3px; }
+
+  .bc-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin: 24px 0; }
+  @media (max-width: 560px) { .bc-grid { grid-template-columns: 1fr 1fr; } }
+  .bc-card { border-radius: 6px; padding: 16px 12px; text-align: center; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07); }
+  .bc-pais { font-size: 0.62rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--texto-muted); margin-bottom: 6px; }
+  .bc-acao { font-size: 0.78rem; font-weight: 600; margin-bottom: 4px; color: var(--dourado); }
+  .bc-taxa { font-size: 0.68rem; color: var(--texto-muted); }
+
+  .mercado-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 20px 0; }
+  @media (max-width: 480px) { .mercado-grid { grid-template-columns: 1fr; } }
+  .mercado-card { border-radius: 6px; padding: 18px 16px; text-align: center; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); }
+  .mercado-label { font-size: 0.62rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--texto-muted); margin-bottom: 8px; }
+  .mercado-val { font-family: "Cormorant Garamond", serif; font-size: 1.7rem; font-weight: 700; line-height: 1; margin-bottom: 4px; }
+  .mercado-val.neg { color: #e07070; }
+  .mercado-val.pos { color: var(--verde-gain); }
+  .mercado-desc { font-size: 0.74rem; color: var(--texto-muted); line-height: 1.4; }
+
+  .nvidia-box { background: rgba(74,144,217,0.07); border: 1px solid rgba(74,144,217,0.2); border-left: 3px solid var(--azul); border-radius: 4px; padding: 24px 26px; margin: 24px 0; }
+  .nvidia-title { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--azul); margin-bottom: 14px; }
+  .nvidia-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 12px; }
+  @media (max-width: 500px) { .nvidia-grid { grid-template-columns: 1fr; } }
+  .nvidia-item { background: rgba(0,0,0,0.15); border-radius: 6px; padding: 14px 10px; text-align: center; }
+  .nvidia-val { font-family: "Cormorant Garamond", serif; font-size: 1.3rem; font-weight: 700; color: #7db3ea; line-height: 1; margin-bottom: 4px; }
+  .nvidia-label { font-size: 0.66rem; color: var(--texto-muted); line-height: 1.35; }
+
+  .alert-box { border-radius: 6px; padding: 22px 24px; margin-bottom: 28px; }
+  .alert-box.info { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); }
+  .alert-box.ai { background: rgba(74,144,217,0.07); border: 1px solid rgba(74,144,217,0.2); border-left: 3px solid var(--azul); }
+  .alert-title { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 8px; }
+  .alert-box.info .alert-title { color: var(--dourado); }
+  .alert-box.ai .alert-title { color: var(--azul); }
+  .alert-text { font-size: 0.9rem; color: var(--texto-claro); line-height: 1.75; }
+
+  .destaques-list { display: flex; flex-direction: column; gap: 12px; margin-top: 8px; }
+  .destaque-item { display: flex; align-items: flex-start; gap: 16px; padding: 18px 20px; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 5px; transition: border-color 0.25s, background 0.25s; }
+  .destaque-item:hover { border-color: rgba(201,168,76,0.2); background: rgba(201,168,76,0.04); }
+  .destaque-icon { font-size: 1.3rem; flex-shrink: 0; margin-top: 2px; }
+  .destaque-titulo { font-size: 0.8rem; font-weight: 600; color: var(--dourado); margin-bottom: 4px; }
+  .destaque-desc { font-size: 0.84rem; color: var(--texto-claro); line-height: 1.6; }
+
+  .glossario-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 8px; }
+  @media (max-width: 580px) { .glossario-grid { grid-template-columns: 1fr; } }
+  .glossario-item { padding: 14px 18px; border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .glossario-term { font-weight: 600; font-size: 0.78rem; color: var(--dourado); margin-bottom: 4px; }
+  .glossario-def { font-size: 0.8rem; color: var(--texto-muted); line-height: 1.6; }
+
+  .side-nav { position: fixed; right: 24px; top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; gap: 12px; z-index: 100; }
+  .side-dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(201,168,76,0.3); transition: background 0.3s, transform 0.3s; cursor: pointer; }
+  .side-dot.active { background: var(--dourado); transform: scale(1.5); }
+  .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .fade-in.visible { opacity: 1; transform: none; }
+  footer { position: relative; z-index: 1; border-top: 1px solid rgba(201,168,76,0.12); padding: 40px 8%; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+  .footer-name { font-family: "Cormorant Garamond", serif; font-size: 1.1rem; font-weight: 300; color: var(--texto-muted); }
+  .footer-contact { font-size: 0.75rem; color: rgba(245,237,224,0.25); line-height: 1.9; text-align: right; }
+  .footer-contact a { color: var(--dourado); text-decoration: none; }
+  @media (max-width: 768px) { .side-nav { display: none; } .hero,.section { padding-left: 5%; padding-right: 5%; } footer { padding: 32px 5%; flex-direction: column; } .footer-contact { text-align: left; } .desemprego-card { flex-direction: column; gap: 16px; } }
+</style>
+</head>
+<body>
+
+<nav class="side-nav">
+  <div class="side-dot active" data-section="hero"></div>
+  <div class="side-dot" data-section="resumo"></div>
+  <div class="side-dot" data-section="nacional"></div>
+  <div class="side-dot" data-section="global"></div>
+  <div class="side-dot" data-section="destaques"></div>
+  <div class="side-dot" data-section="glossario"></div>
+</nav>
+
+<a class="back-link" href="index.html">Voltar</a>
+
+<section class="hero" id="hero">
+  <div class="hero-tag">Relatório Mensal · Ficus Capital</div>
+  <div class="hero-eyebrow">Fábio Carlucci</div>
+  <h1>O que aconteceu<br><strong>em agosto?</strong></h1>
+  <p class="hero-month">Agosto de 2026</p>
+  <div class="hero-assinatura">
+    <svg class="assinatura-svg" viewBox="0 0 200 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M10 40 C20 20, 35 15, 50 30 C60 40, 55 50, 45 48 C35 46, 38 35, 50 28 C65 20, 80 22, 90 32 C100 42, 95 52, 85 50 C75 48, 77 38, 88 30 C100 22, 118 20, 130 35 C140 48, 135 55, 122 52" stroke="rgba(201,168,76,0.8)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      <path d="M128 30 C138 18, 155 15, 168 25 C178 32, 180 42, 172 48" stroke="rgba(201,168,76,0.8)" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+      <path d="M8 50 L195 50" stroke="rgba(201,168,76,0.2)" stroke-width="0.5"/>
+      <text x="8" y="58" font-family="Georgia, serif" font-size="7" fill="rgba(201,168,76,0.5)" letter-spacing="1">Fabio Carlucci</text>
+    </svg>
+  </div>
+</section>
+
+<!-- RESUMO -->
+<div class="divider"></div>
+<section class="section fade-in" id="resumo">
+  <div class="section-tag">01</div>
+  <h2 class="section-title">Resumo<br>Executivo</h2>
+  <div class="pills-grid">
+    <div class="pill fade-in">
+      <span class="pill-icon">🏦</span>
+      <div class="pill-title">Copom cortou a Selic para 14,00%</div>
+      <div class="pill-text">Quarto corte consecutivo do ciclo, decidido por unanimidade pelos sete membros do comitê. A mensagem seguiu cautelosa: sem compromisso com novos cortes, e o Focus projeta apenas mais um corte até o fim de 2026 (13,75%).</div>
+    </div>
+    <div class="pill fade-in">
+      <span class="pill-icon">🌡️</span>
+      <div class="pill-title">IPCA-15 de agosto trouxe deflação, com ressalva</div>
+      <div class="pill-text">Prévia da inflação caiu 0,40%, levando o acumulado em 12 meses a 4,24%. Parte relevante do alívio veio do bônus de Itaipu na conta de luz — um efeito pontual que não deve se repetir indefinidamente.</div>
+    </div>
+    <div class="pill fade-in">
+      <span class="pill-icon">👷</span>
+      <div class="pill-title">Emprego: estoque forte, fluxo mais fraco</div>
+      <div class="pill-text">O desemprego caiu para 5,3% no trimestre encerrado em julho, mínima da série. Mas o Caged mostrou apenas 58.568 vagas formais criadas no mês — o pior julho desde o início da série em 2020.</div>
+    </div>
+    <div class="pill fade-in">
+      <span class="pill-icon">📉</span>
+      <div class="pill-title">Ibovespa oscilou e quase zerou as perdas</div>
+      <div class="pill-text">Saída de capital estrangeiro, ruído eleitoral e tensão no Oriente Médio pressionaram a bolsa na primeira metade do mês. Petrobras e commodities ajudaram a recuperação, mas o índice ainda fechou agosto com leve queda de 0,33%, aos 177.419 pontos.</div>
+    </div>
+    <div class="pill fade-in">
+      <span class="pill-icon">💵</span>
+      <div class="pill-title">Dólar subiu 2,16% no mês</div>
+      <div class="pill-text">Depois de recuar 1,79% em julho, o dólar voltou a subir em agosto, fechando a R$ 5,18. O movimento reforça a exposição cambial como instrumento estrutural de proteção patrimonial, não apenas aposta de curto prazo.</div>
+    </div>
+    <div class="pill fade-in">
+      <span class="pill-icon">🇺🇸</span>
+      <div class="pill-title">Jackson Hole mudou o tom dos juros globais</div>
+      <div class="pill-text">Sem reunião do Fed em agosto, o principal evento do mês foi o discurso do presidente Kevin Warsh em Jackson Hole — mais duro sobre a inflação americana, elevando a probabilidade atribuída pelo mercado a uma alta de juros em setembro.</div>
+    </div>
+  </div>
+</section>
+
+<!-- NACIONAL -->
+<div class="divider"></div>
+<section class="section fade-in" id="nacional">
+  <div class="section-tag">02</div>
+  <h2 class="section-title">Visão<br>Nacional</h2>
+
+  <div class="block fade-in">
+    <div class="block-title">Copom reduz a Selic para 14,00%, mas mantém cautela</div>
+    <p class="block-text">Em reunião nos dias 4 e 5 de agosto, o Copom decidiu, <strong>por unanimidade</strong>, reduzir a Selic em 0,25 ponto percentual, para <strong>14,00% ao ano</strong> — o quarto corte consecutivo do ciclo, que já soma um ponto percentual de flexibilização desde o pico de 15,00%. Votaram pelo corte os sete membros do comitê: Gabriel Galípolo (presidente), Ailton de Aquino Santos, Gilneu Vivan, Izabela Correa, Nilton David, Paulo Picchetti e Rodrigo Teixeira.</p>
+    <div class="copom-box">
+      <div class="copom-title">🏦 Trajetória da Selic em 2026</div>
+      <div class="copom-serie">
+        <div class="copom-item"><div class="copom-mes">Jan</div><div class="copom-val">15,25%</div></div>
+        <div class="copom-item"><div class="copom-mes">Abr</div><div class="copom-val">14,75%</div></div>
+        <div class="copom-item"><div class="copom-mes">Jun</div><div class="copom-val">14,25%</div></div>
+        <div class="copom-item atual"><div class="copom-mes">Ago</div><div class="copom-val">14,00%</div></div>
+      </div>
+    </div>
+    <p class="block-text">A decisão confirmou que a inflação corrente perdeu força suficiente para permitir algum alívio monetário. Mas o comunicado evitou compromissos firmes com novos cortes, e o Boletim Focus projeta apenas mais uma redução até o fim do ano, para 13,75%.</p>
+    <div class="implicacao"><strong>Implicação:</strong> a queda da Selic favorece o preço dos ativos e reduz gradualmente o custo de capital, mas o processo de flexibilização não é automático — a inflação melhorou, mas segue acima do centro da meta, e o mercado de trabalho continua apertado.</div>
+  </div>
+
+  <div class="block fade-in">
+    <div class="block-title">Inflação corrente melhorou, mas com componente pontual</div>
+    <p class="block-text">O IPCA de julho desacelerou para <strong>0,07%</strong>, levando a inflação acumulada em 12 meses para <strong>4,44%</strong>. O IPCA-15 de agosto foi ainda mais benigno, com <strong>deflação de 0,40%</strong> e queda da taxa em 12 meses para <strong>4,24%</strong>.</p>
+    <div class="inflacao-grid">
+      <div class="inflacao-card">
+        <div class="inflacao-label">IPCA · Julho</div>
+        <div class="inflacao-val">+0,07%</div>
+        <div class="inflacao-desc">12 meses: 4,44%</div>
+      </div>
+      <div class="inflacao-card">
+        <div class="inflacao-label">IPCA-15 · Agosto</div>
+        <div class="inflacao-val">−0,40%</div>
+        <div class="inflacao-desc">12 meses: 4,24% (ante 4,44% em julho)</div>
+      </div>
+    </div>
+    <p class="block-text">O detalhe está na composição: parte relevante da deflação de agosto veio da <strong>energia elétrica residencial</strong>, influenciada pelo bônus de Itaipu — um efeito temporário — além de recuos em alimentos, combustíveis e passagens aéreas.</p>
+    <div class="implicacao"><strong>Implicação:</strong> o alívio é positivo, mas não deve ser confundido com vitória definitiva contra a inflação. Recomposição de preços administrados, petróleo e persistência da inflação de serviços seguem no radar.</div>
+  </div>
+
+  <div class="block fade-in">
+    <div class="block-title">Mercado de trabalho: o contraponto mais importante</div>
+    <p class="block-text">Pela PNAD Contínua, a taxa de desemprego caiu para <strong>5,3%</strong> no trimestre encerrado em julho — o menor patamar para o período na série histórica. Por outro lado, o Caged de julho registrou criação de apenas <strong>58.568 vagas formais</strong>, o pior resultado para o mês desde o início da série em 2020.</p>
+    <div class="desemprego-card">
+      <div>
+        <div class="desemprego-number">5,3%</div>
+        <div class="desemprego-label">Taxa de desemprego</div>
+      </div>
+      <div class="desemprego-desc">
+        <span style="color:#5ec98a;">▼</span> Mínima da série histórica da PNAD Contínua para o período.<br><br>
+        <strong style="color:var(--dourado)">O dilema:</strong> o estoque de emprego ainda é forte, sustentando renda e consumo — mas o fluxo de novas contratações já mostra perda de dinamismo, sinal de que os juros altos começam a produzir efeito.
+      </div>
+    </div>
+    <div class="implicacao"><strong>Implicação:</strong> um mercado de trabalho aquecido dificulta a convergência da inflação de serviços, mas a desaceleração no ritmo de contratações dá ao Copom algum conforto para continuar cortando — sem acelerar o ritmo.</div>
+  </div>
+
+  <div class="block fade-in">
+    <div class="block-title">Atividade perde tração e fiscal segue como trava</div>
+    <p class="block-text">A produção industrial de junho caiu <strong>1,8%</strong> frente a maio, eliminando parte dos ganhos acumulados nos meses anteriores. Os serviços ficaram estáveis, enquanto o varejo cresceu <strong>0,5%</strong> no mês. Em conjunto, os dados sugerem que a política monetária restritiva começou a afetar mais claramente a economia real.</p>
+    <p class="block-text">O governo central registrou superávit primário em julho, mas o acumulado do ano ainda mostra déficit relevante. A revisão do plano de financiamento da dívida chamou atenção: o Tesouro passou a projetar maior participação de títulos atrelados à Selic, refletindo a preferência do mercado por papéis de menor duration em ambiente de incerteza.</p>
+    <div class="implicacao"><strong>Implicação:</strong> mesmo com Selic em queda, a dívida pública continua muito sensível ao próprio nível dos juros — a curva longa segue pressionada por fiscal, eleições e juros globais, exigindo montagem gradual e diversificada em prefixados e IPCA+.</div>
+  </div>
+
+  <div class="block fade-in">
+    <div class="block-title">Bolsa volátil, dólar em alta no mês</div>
+    <p class="block-text">O Ibovespa viveu um mês de forte volatilidade: chegou a acumular perdas expressivas na primeira metade de agosto — pressionado por saída de investidores estrangeiros, ruído eleitoral, incerteza fiscal e petróleo mais caro — e chegou a operar abaixo dos 165 mil pontos no pior momento. Na reta final, Petrobras e commodities lideraram uma recuperação de nove pregões seguidos de alta, mas o índice ainda fechou o mês em <strong>177.418 pontos</strong>, queda de <strong>0,33%</strong>.</p>
+    <div class="mercado-grid">
+      <div class="mercado-card">
+        <div class="mercado-label">Ibovespa · Agosto</div>
+        <div class="mercado-val neg">−0,33%</div>
+        <div class="mercado-desc">177.418 pontos · mínima do mês abaixo de 165 mil</div>
+      </div>
+      <div class="mercado-card">
+        <div class="mercado-label">Dólar · Agosto</div>
+        <div class="mercado-val neg">+2,16%</div>
+        <div class="mercado-desc">Fechou a R$ 5,18, após queda de 1,79% em julho</div>
+      </div>
+    </div>
+    <div class="implicacao"><strong>Implicação:</strong> a bolsa local segue dependente de três condições para recuperação mais consistente — queda dos juros longos, redução do prêmio fiscal e retomada do fluxo estrangeiro. Até lá, seletividade continua sendo a postura mais adequada.</div>
+  </div>
+</section>
+
+<!-- GLOBAL -->
+<div class="divider"></div>
+<section class="section fade-in" id="global">
+  <div class="section-tag">03</div>
+  <h2 class="section-title">Visão<br>Global</h2>
+
+  <div class="block fade-in">
+    <div class="block-title">Jackson Hole: Warsh eleva o tom sobre a inflação</div>
+    <p class="block-text">O Federal Reserve não teve reunião de política monetária em agosto, mas isso não reduziu sua importância para os mercados. No simpósio anual de Jackson Hole, em 28 de agosto, o presidente do Fed, <strong>Kevin Warsh</strong>, reafirmou a meta de inflação de 2% e classificou o PCE em <strong>3,7%</strong> como "preocupante" — um tom mais duro do que o adotado após a reunião de julho, sinalizando que o banco central pode precisar elevar os juros caso a inflação não ceda.</p>
+    <div class="fed-box">
+      <div class="fed-title">🇺🇸 Probabilidade de alta de juros em setembro (CME FedWatch)</div>
+      <div class="fed-votos">
+        <div class="fed-voto-bloco manter">
+          <div class="fed-voto-num">~33%</div>
+          <div class="fed-voto-label">antes do discurso em Jackson Hole</div>
+        </div>
+        <div class="fed-voto-bloco subir">
+          <div class="fed-voto-num">~50%</div>
+          <div class="fed-voto-label">depois do discurso — virou "cara ou coroa"</div>
+        </div>
+      </div>
+    </div>
+    <div class="implicacao"><strong>Implicação:</strong> os dados de inflação americana ajudam a explicar a cautela — CPI de julho em 0,1% no mês (3,4% em 12 meses) e PCE em 0,2% no mês (3,7% em 12 meses, núcleo 3,3%). Ao mesmo tempo, o payroll de julho surpreendeu negativamente, com perda de 23 mil vagas. Para o investidor brasileiro, isso reduz o espaço para uma queda muito forte dos juros longos locais.</div>
+  </div>
+
+  <div class="block fade-in">
+    <div class="block-title">Bancos centrais globais: pausa, sem sinal de corte</div>
+    <p class="block-text">O padrão se repetiu nas principais economias: pausa nas taxas, atenção ao choque de energia e nenhum banco central disposto a comprometer-se com cortes.</p>
+    <div class="bc-grid">
+      <div class="bc-card">
+        <div class="bc-pais">🇺🇸 Fed</div>
+        <div class="bc-acao">Sem reunião</div>
+        <div class="bc-taxa">Jackson Hole reforçou tom duro</div>
+      </div>
+      <div class="bc-card">
+        <div class="bc-pais">🇪🇺 BCE</div>
+        <div class="bc-acao">Ata de julho</div>
+        <div class="bc-taxa">Foco no choque de energia</div>
+      </div>
+      <div class="bc-card">
+        <div class="bc-pais">🇬🇧 BoE</div>
+        <div class="bc-acao">Manteve</div>
+        <div class="bc-taxa">Postura cautelosa</div>
+      </div>
+      <div class="bc-card">
+        <div class="bc-pais">🇯🇵 BoJ</div>
+        <div class="bc-acao">Em debate</div>
+        <div class="bc-taxa">Mercado discute nova alta</div>
+      </div>
+    </div>
+    <div class="implicacao"><strong>Implicação:</strong> a normalização monetária japonesa, combinada com dólar forte, petróleo caro e Treasuries pressionadas, torna o custo global de capital mais elevado — reduzindo o apetite por risco em emergentes.</div>
+  </div>
+
+  <div class="alert-box info fade-in">
+    <div class="alert-title">🛢️ Petróleo segue como termômetro de risco geopolítico</div>
+    <p class="alert-text">O conflito no Oriente Médio e a instabilidade em torno do Estreito de Hormuz mantiveram o petróleo sob tensão ao longo de agosto, com o barril oscilando entre rumores de acordo e novas escaladas. O risco geopolítico passou a ter caráter mais persistente, afetando inflação, fretes, margens corporativas e política monetária globalmente.</p>
+  </div>
+
+  <div class="block fade-in">
+    <div class="block-title">China segue com recuperação desigual</div>
+    <p class="block-text">A produção industrial de julho cresceu, mas em ritmo inferior a junho, e as vendas no varejo vieram fracas. No fim de agosto, o PMI oficial da indústria melhorou, mas permaneceu abaixo de 50, indicando contração. A economia chinesa segue sustentada por exportações e manufatura avançada, mas sofre com consumo doméstico e mercado imobiliário.</p>
+    <div class="implicacao"><strong>Implicação:</strong> o crescimento chinês mais dependente de manufatura avançada não gera o mesmo impulso amplo para commodities tradicionais ligadas à construção civil — exigindo análise mais granular para exportadoras brasileiras.</div>
+  </div>
+
+  <div class="nvidia-box fade-in">
+    <div class="nvidia-title">🤖 Nvidia reforça a tese de IA com resultado recorde</div>
+    <p class="alert-text" style="margin-bottom:0;">Em 26 de agosto, a Nvidia divulgou receita de <strong>US$ 96,2 bilhões</strong> no segundo trimestre fiscal — alta de 106% na comparação anual — superando o consenso de analistas de US$ 92,3 bilhões.</p>
+    <div class="nvidia-grid">
+      <div class="nvidia-item"><div class="nvidia-val">US$ 96,2 bi</div><div class="nvidia-label">Receita total (+106% a/a)</div></div>
+      <div class="nvidia-item"><div class="nvidia-val">US$ 89,0 bi</div><div class="nvidia-label">Receita de data centers (+117% a/a)</div></div>
+      <div class="nvidia-item"><div class="nvidia-val">US$ 108 bi</div><div class="nvidia-label">Guidance para o próximo trimestre</div></div>
+    </div>
+  </div>
+  <div class="implicacao" style="margin-top:-14px; margin-bottom: 28px;"><strong>Implicação:</strong> a IA segue como principal tese estrutural das bolsas globais, mas grandes teses não eliminam risco de preço — quando poucos ativos explicam parcela relevante da alta dos índices, a carteira fica mais vulnerável a revisões de expectativa.</div>
+</section>
+
+<!-- DESTAQUES -->
+<div class="divider"></div>
+<section class="section fade-in" id="destaques">
+  <div class="section-tag">04</div>
+  <h2 class="section-title">O que vimos<br>em agosto</h2>
+  <div class="destaques-list fade-in">
+    <div class="destaque-item">
+      <span class="destaque-icon">🏦</span>
+      <div>
+        <div class="destaque-titulo">Copom cortou a Selic para 14,00%, mas manteve postura cautelosa</div>
+        <div class="destaque-desc">Corte de 0,25 p.p. por unanimidade confirmou a continuidade do ciclo, mas o Copom não se comprometeu com novos cortes — preservando o CDI como ativo muito competitivo.</div>
+      </div>
+    </div>
+    <div class="destaque-item">
+      <span class="destaque-icon">🌡️</span>
+      <div>
+        <div class="destaque-titulo">IPCA-15 de agosto mostrou deflação, mas com efeito pontual importante</div>
+        <div class="destaque-desc">Prévia caiu 0,40%, levando o acumulado em 12 meses a 4,24% — resultado positivo, mas puxado em parte pelo bônus de Itaipu, que não se repete indefinidamente.</div>
+      </div>
+    </div>
+    <div class="destaque-item">
+      <span class="destaque-icon">👷</span>
+      <div>
+        <div class="destaque-titulo">Mercado de trabalho mostrou força no estoque, mas desaceleração no fluxo</div>
+        <div class="destaque-desc">Desemprego em mínima histórica de 5,3%, mas o Caged criou apenas 58.568 vagas formais em julho — o pior resultado para o mês desde 2020.</div>
+      </div>
+    </div>
+    <div class="destaque-item">
+      <span class="destaque-icon">📊</span>
+      <div>
+        <div class="destaque-titulo">Ibovespa sofreu com saída estrangeira, mas recuperou parte das perdas no fim do mês</div>
+        <div class="destaque-desc">Nove pregões seguidos de alta, puxados por Petrobras e commodities, quase zeraram as perdas — mas o índice ainda fechou agosto em leve queda de 0,33%.</div>
+      </div>
+    </div>
+    <div class="destaque-item">
+      <span class="destaque-icon">🇺🇸</span>
+      <div>
+        <div class="destaque-titulo">Jackson Hole mudou a leitura dos juros globais</div>
+        <div class="destaque-desc">Discurso de Kevin Warsh elevou a probabilidade de alta de juros em setembro de cerca de um terço para próximo de 50%, pressionando Treasuries e fortalecendo o dólar globalmente.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GLOSSARIO -->
+<div class="divider"></div>
+<section class="section fade-in" id="glossario">
+  <div class="section-tag">05</div>
+  <h2 class="section-title">Glossário</h2>
+  <div class="glossario-grid fade-in">
+    <div class="glossario-item">
+      <div class="glossario-term">IPCA-15</div>
+      <div class="glossario-def">Prévia da inflação oficial brasileira, calculada pelo IBGE com período de coleta diferente do IPCA cheio.</div>
+    </div>
+    <div class="glossario-item">
+      <div class="glossario-term">Jackson Hole</div>
+      <div class="glossario-def">Simpósio anual de bancos centrais organizado pelo Federal Reserve de Kansas City, frequentemente usado para sinalizar mudanças de política monetária.</div>
+    </div>
+    <div class="glossario-item">
+      <div class="glossario-term">PCE</div>
+      <div class="glossario-def">Índice de inflação ao consumidor acompanhado de perto pelo Federal Reserve, referência para sua meta de 2%.</div>
+    </div>
+    <div class="glossario-item">
+      <div class="glossario-term">Caged</div>
+      <div class="glossario-def">Cadastro que mede a criação e destruição de empregos formais com carteira assinada no Brasil.</div>
+    </div>
+    <div class="glossario-item">
+      <div class="glossario-term">Duration</div>
+      <div class="glossario-def">Medida de sensibilidade de um título de renda fixa às variações nas taxas de juros.</div>
+    </div>
+    <div class="glossario-item">
+      <div class="glossario-term">Prêmio de risco</div>
+      <div class="glossario-def">Retorno adicional exigido pelo investidor para carregar incertezas, como fiscal, inflação, câmbio ou risco político.</div>
+    </div>
+    <div class="glossario-item">
+      <div class="glossario-term">PMI</div>
+      <div class="glossario-def">Índice de gerentes de compras que mede expansão ou contração da atividade econômica. Acima de 50 indica expansão; abaixo, contração.</div>
+    </div>
+    <div class="glossario-item">
+      <div class="glossario-term">Valuation</div>
+      <div class="glossario-def">Avaliação do preço de um ativo em relação aos seus fundamentos — lucro, crescimento, fluxo de caixa e risco.</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-name">Fábio Vogelaar Carlucci</div>
+  <div class="footer-contact">+55 (16) 98148-8260<br><a href="mailto:fabio.carlucci@ficus.capital">fabio.carlucci@ficus.capital</a></div>
+</footer>
+<div style="position:relative;z-index:1;padding:0 8% 28px;text-align:center;font-size:0.65rem;color:rgba(245,237,224,0.2);letter-spacing:0.08em;">
+  Fontes: Banco Central do Brasil · IBGE (PNAD Contínua, IPCA, IPCA-15) · Ministério do Trabalho e Emprego (Caged) · Tesouro Nacional · Federal Reserve · Banco Central Europeu · B3 · Nvidia · Reuters · Valor Econômico · CNBC · XP Research<br>
+  Este relatório possui caráter informativo e educacional. Não constitui recomendação individual de investimento.
+</div>
+
+<script>
+const faders = document.querySelectorAll(".fade-in");
+const obs = new IntersectionObserver(e => e.forEach(x => { if(x.isIntersecting){ x.target.classList.add("visible"); obs.unobserve(x.target); } }), { threshold: 0.1 });
+faders.forEach(f => obs.observe(f));
+const dots = document.querySelectorAll(".side-dot");
+const sections = ["hero","resumo","nacional","global","destaques","glossario"];
+function updateDots() {
+  const sy = window.scrollY + window.innerHeight / 2;
+  sections.forEach((id,i) => {
+    const el = document.getElementById(id); if(!el) return;
+    const t = el.getBoundingClientRect().top + window.scrollY;
+    if(sy >= t && sy < t + el.offsetHeight) { dots.forEach(d => d.classList.remove("active")); if(dots[i]) dots[i].classList.add("active"); }
+  });
+}
+window.addEventListener("scroll", updateDots, { passive: true });
+dots.forEach((d,i) => d.addEventListener("click", () => { const el = document.getElementById(sections[i]); if(el) el.scrollIntoView({ behavior:"smooth" }); }));
+</script>
+</body>
+</html>
