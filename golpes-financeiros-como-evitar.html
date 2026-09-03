@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Os Principais Golpes Financeiros e Como Evitá-los | Fábio Carlucci</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DBQSDSDRF3"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-DBQSDSDRF3");</script>
+<style>
+  :root {
+    --verde-escuro: #1a2e25;
+    --dourado: #c9a84c;
+    --dourado-claro: #e2c47a;
+    --creme: #f5ede0;
+    --texto-claro: rgba(245,237,224,0.85);
+    --texto-muted: rgba(245,237,224,0.45);
+    --azul: #4a90d9;
+    --verde-gain: #3dbf8a;
+    --vermelho: #c94545;
+    --laranja: #e07a35;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { background-color: var(--verde-escuro); color: var(--creme); font-family: "Jost", sans-serif; font-weight: 300; overflow-x: hidden; }
+  body::before {
+    content: ""; position: fixed; inset: 0;
+    background-image: radial-gradient(ellipse at 10% 10%, rgba(201,168,76,0.06) 0%, transparent 55%), radial-gradient(ellipse at 90% 90%, rgba(47,82,64,0.35) 0%, transparent 55%);
+    pointer-events: none; z-index: 0;
+  }
+  .back-link { position: relative; z-index: 10; display: inline-flex; align-items: center; gap: 8px; padding: 28px 8%; font-size: 0.7rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--texto-muted); text-decoration: none; transition: color 0.2s; }
+  .back-link:hover { color: var(--dourado); }
+  .back-link::before { content: "←"; font-size: 0.9rem; }
+  .hero { position: relative; z-index: 1; padding: 20px 8% 64px; border-bottom: 1px solid rgba(201,168,76,0.15); max-width: 900px; }
+  .hero-tag { font-size: 0.65rem; font-weight: 500; letter-spacing: 0.35em; text-transform: uppercase; color: var(--dourado); display: flex; align-items: center; gap: 12px; margin-bottom: 24px; opacity: 0; animation: fadeUp 0.7s ease 0.1s forwards; }
+  .hero-tag::before { content: ""; width: 30px; height: 1px; background: var(--dourado); }
+  h1 { font-family: "Cormorant Garamond", serif; font-size: clamp(2rem, 5vw, 3.6rem); font-weight: 300; line-height: 1.15; color: var(--creme); opacity: 0; animation: fadeUp 0.7s ease 0.2s forwards; }
+  h1 em { font-style: italic; color: var(--dourado-claro); }
+  .hero-sub { font-size: 0.97rem; color: var(--texto-muted); line-height: 1.75; margin-top: 16px; max-width: 640px; opacity: 0; animation: fadeUp 0.7s ease 0.35s forwards; }
+  .hero-fonte { margin-top: 14px; font-size: 0.7rem; color: rgba(245,237,224,0.3); opacity: 0; animation: fadeUp 0.7s ease 0.45s forwards; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+  article { position: relative; z-index: 1; max-width: 800px; margin: 0 auto; padding: 64px 8% 88px; }
+  .lead { font-family: "Cormorant Garamond", serif; font-size: clamp(1.1rem, 2.5vw, 1.35rem); font-weight: 400; line-height: 1.8; color: var(--creme); margin-bottom: 48px; padding-bottom: 48px; border-bottom: 1px solid rgba(201,168,76,0.15); }
+  p { font-size: 0.97rem; line-height: 1.9; color: var(--texto-claro); margin-bottom: 24px; }
+  strong { font-weight: 600; color: var(--creme); }
+  .section-title { font-family: "Cormorant Garamond", serif; font-size: 1.5rem; font-weight: 600; color: var(--dourado-claro); margin: 56px 0 18px; padding-top: 44px; border-top: 1px solid rgba(201,168,76,0.12); display: flex; align-items: center; gap: 14px; }
+  .section-icon { font-size: 1.3rem; flex-shrink: 0; }
+
+  /* SEQUENCIA DO GOLPE */
+  .fluxo-wrap { display: flex; flex-direction: column; gap: 8px; margin: 24px 0; }
+  .fluxo-item { display: flex; align-items: center; gap: 16px; padding: 14px 18px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 5px; }
+  .fluxo-num { font-family: "Cormorant Garamond", serif; font-size: 1.5rem; font-weight: 700; color: rgba(201,168,76,0.4); flex-shrink: 0; width: 28px; text-align: center; }
+  .fluxo-texto { font-size: 0.88rem; color: var(--texto-claro); }
+
+  /* ITEM DE GOLPE */
+  .item-card { border-radius: 8px; padding: 26px 26px; margin: 24px 0; }
+  .item-card.n1 { background: rgba(201,69,69,0.07); border: 1px solid rgba(201,69,69,0.2); }
+  .item-card.n2 { background: rgba(224,122,53,0.07); border: 1px solid rgba(224,122,53,0.18); }
+  .item-card.n3 { background: rgba(201,168,76,0.08); border: 1px solid rgba(201,168,76,0.22); }
+  .item-card.n4 { background: rgba(61,191,138,0.06); border: 1px solid rgba(61,191,138,0.16); }
+  .item-card.n5 { background: rgba(74,144,217,0.07); border: 1px solid rgba(74,144,217,0.2); }
+  .item-card.n6 { background: rgba(154,122,217,0.07); border: 1px solid rgba(154,122,217,0.18); }
+  .item-header { display: flex; align-items: center; gap: 14px; margin-bottom: 12px; }
+  .item-num { font-family: "Cormorant Garamond", serif; font-size: 1.8rem; font-weight: 700; line-height: 1; flex-shrink: 0; width: 34px; }
+  .item-card.n1 .item-num { color: #e07070; }
+  .item-card.n2 .item-num { color: var(--laranja); }
+  .item-card.n3 .item-num { color: var(--dourado); }
+  .item-card.n4 .item-num { color: var(--verde-gain); }
+  .item-card.n5 .item-num { color: var(--azul); }
+  .item-card.n6 .item-num { color: #9a7ad9; }
+  .item-titulo { font-family: "Cormorant Garamond", serif; font-size: 1.25rem; font-weight: 600; color: var(--creme); }
+  .item-desc { font-size: 0.9rem; color: var(--texto-claro); line-height: 1.75; }
+  .item-tip { margin-top: 14px; padding: 14px 16px; background: rgba(0,0,0,0.15); border-left: 2px solid rgba(201,168,76,0.4); border-radius: 2px; font-size: 0.84rem; color: var(--texto-claro); line-height: 1.7; }
+  .item-tip strong { color: var(--dourado); }
+  .item-tip ul { margin: 6px 0 0 18px; padding: 0; }
+  .item-tip li { margin-bottom: 4px; }
+
+  /* NUNCA FARÁ - lista vermelha */
+  .warn-box { background: linear-gradient(135deg, rgba(201,69,69,0.08) 0%, rgba(26,46,37,0.4) 100%); border: 1px solid rgba(201,69,69,0.22); border-radius: 6px; padding: 26px 28px; margin: 28px 0; }
+  .warn-titulo { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: #e07070; margin-bottom: 16px; }
+  .warn-list { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 16px; }
+  @media (max-width: 520px) { .warn-list { grid-template-columns: 1fr; } }
+  .warn-item { font-size: 0.85rem; color: var(--texto-claro); display: flex; align-items: flex-start; gap: 8px; }
+  .warn-item::before { content: "✕"; color: #e07070; font-weight: 700; flex-shrink: 0; }
+
+  /* AÇÃO IMEDIATA */
+  .acao-wrap { background: rgba(10,20,16,0.7); border: 1px solid rgba(255,255,255,0.07); border-radius: 8px; padding: 28px 26px; margin: 32px 0; }
+  .acao-titulo { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--dourado); margin-bottom: 18px; }
+  .acao-item { display: flex; align-items: flex-start; gap: 14px; padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+  .acao-item:last-child { border-bottom: none; }
+  .acao-num { font-family: "Cormorant Garamond", serif; font-size: 1.3rem; font-weight: 700; color: var(--dourado-claro); flex-shrink: 0; width: 22px; }
+  .acao-texto { font-size: 0.88rem; color: var(--texto-claro); line-height: 1.6; }
+
+  /* INSIGHT */
+  .insight-box { background: linear-gradient(135deg, rgba(201,168,76,0.1) 0%, rgba(26,46,37,0.4) 100%); border: 1px solid rgba(201,168,76,0.25); border-left: 3px solid var(--dourado); border-radius: 4px; padding: 28px 32px; margin: 36px 0; }
+  .insight-box p { font-family: "Cormorant Garamond", serif; font-size: 1.1rem; color: var(--creme); line-height: 1.8; margin: 0; }
+
+  /* CONCLUSÃO */
+  .conclusao { font-family: "Cormorant Garamond", serif; font-size: 1.15rem; font-weight: 400; line-height: 1.85; color: var(--creme); margin-top: 52px; padding: 40px; border: 1px solid rgba(201,168,76,0.2); border-radius: 6px; background: rgba(255,255,255,0.02); position: relative; }
+  .conclusao::before { content: "\201C"; position: absolute; top: -10px; left: 32px; font-size: 5rem; color: rgba(201,168,76,0.15); font-family: "Cormorant Garamond", serif; line-height: 1; }
+
+  .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .fade-in.visible { opacity: 1; transform: none; }
+  footer { position: relative; z-index: 1; border-top: 1px solid rgba(201,168,76,0.12); padding: 40px 8%; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+  .footer-name { font-family: "Cormorant Garamond", serif; font-size: 1.1rem; font-weight: 300; color: var(--texto-muted); }
+  .footer-contact { font-size: 0.75rem; color: rgba(245,237,224,0.25); line-height: 1.9; text-align: right; }
+  .footer-contact a { color: var(--dourado); text-decoration: none; }
+  @media (max-width: 640px) { .back-link,.hero { padding-left: 5%; padding-right: 5%; } article { padding: 48px 5% 64px; } footer { padding: 32px 5%; flex-direction: column; } .footer-contact { text-align: left; } }
+</style>
+</head>
+<body>
+
+<a class="back-link" href="index.html">Voltar</a>
+
+<header class="hero">
+  <div class="hero-tag">Segurança & Proteção Patrimonial</div>
+  <h1>Os Principais Golpes Financeiros<br>e <em>Como Evitá-los</em></h1>
+  <p class="hero-sub">O maior alvo dos criminosos não é a tecnologia. É o investidor. A maioria dos golpes modernos não ataca sistemas de bancos e corretoras — tenta convencer o próprio cliente a fornecer informações, autorizar movimentações ou baixar a guarda.</p>
+  <div class="hero-fonte">Fonte: Central de Segurança XP · Atendimento XP</div>
+</header>
+
+<article>
+
+  <p class="lead">
+    Quando pensamos em fraudes financeiras, é comum imaginar hackers invadindo sistemas complexos. Na prática, porém, a maioria dos golpes segue um caminho muito mais simples: em vez de atacar a tecnologia, os criminosos tentam convencer o próprio cliente a agir. Essa estratégia é conhecida como <strong>engenharia social</strong> e explora emoções como urgência, medo, confiança e curiosidade. Conhecer o funcionamento desses golpes é uma das formas mais eficazes de proteger seu patrimônio.
+  </p>
+
+  <!-- SEÇÃO 1: COMO FUNCIONA -->
+  <div class="section-title fade-in"><span class="section-icon">🧭</span> Antes de conhecer os golpes, entenda como eles funcionam</div>
+
+  <p>Embora existam inúmeras modalidades de fraude, quase todas seguem uma sequência semelhante:</p>
+
+  <div class="fluxo-wrap fade-in">
+    <div class="fluxo-item"><div class="fluxo-num">1</div><div class="fluxo-texto">O criminoso estabelece contato</div></div>
+    <div class="fluxo-item"><div class="fluxo-num">2</div><div class="fluxo-texto">Cria um senso de urgência ou oportunidade</div></div>
+    <div class="fluxo-item"><div class="fluxo-num">3</div><div class="fluxo-texto">Ganha a confiança da vítima</div></div>
+    <div class="fluxo-item"><div class="fluxo-num">4</div><div class="fluxo-texto">Solicita alguma ação aparentemente simples</div></div>
+    <div class="fluxo-item"><div class="fluxo-num">5</div><div class="fluxo-texto">Obtém acesso a informações ou recursos financeiros</div></div>
+  </div>
+
+  <p>Independentemente da história utilizada, o objetivo costuma ser sempre o mesmo: fazer com que a vítima tome uma decisão sem tempo para refletir.</p>
+
+  <div class="insight-box fade-in">
+    <p>Sempre que alguém tentar acelerar sua decisão financeira, vale a pena <strong>interromper a conversa</strong> e confirmar a informação por um canal oficial.</p>
+  </div>
+
+  <!-- SEÇÃO 2: OS GOLPES -->
+  <div class="section-title fade-in"><span class="section-icon">⚠️</span> Os golpes mais comuns</div>
+
+  <div class="item-card n1 fade-in">
+    <div class="item-header"><div class="item-num">1</div><div class="item-titulo">Golpe do falso assessor de investimentos</div></div>
+    <div class="item-desc">Um dos golpes mais frequentes envolvendo investidores. Os criminosos utilizam a foto, o nome e até informações públicas de assessores reais para criar perfis falsos em aplicativos de mensagens. A conversa costuma parecer legítima e pode envolver supostas oportunidades exclusivas, necessidade de atualização cadastral, confirmação de dados ou orientações para realização de investimentos.</div>
+    <div class="item-tip"><strong>Como se proteger:</strong>
+      <ul>
+        <li>Confirme qualquer solicitação utilizando os canais habituais de contato</li>
+        <li>Desconfie de mudanças inesperadas de número de telefone</li>
+        <li>Nunca realize transferências para contas de terceiros sem validação prévia</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="item-card n2 fade-in">
+    <div class="item-header"><div class="item-num">2</div><div class="item-titulo">Falsas centrais de atendimento</div></div>
+    <div class="item-desc">Ligações de pessoas que afirmam representar bancos, corretoras ou empresas de cartão de crédito, normalmente informando uma suposta tentativa de fraude ou movimentação suspeita. O objetivo é gerar preocupação suficiente para que a vítima forneça informações sigilosas ou autorize operações.</div>
+    <div class="item-tip"><strong>Nenhuma instituição financeira solicitará, por telefone:</strong>
+      <ul>
+        <li>sua senha</li>
+        <li>códigos recebidos por SMS</li>
+        <li>códigos do autenticador ou tokens de segurança</li>
+      </ul>
+      Em caso de dúvida, desligue e procure diretamente os canais oficiais da instituição.
+    </div>
+  </div>
+
+  <div class="item-card n3 fade-in">
+    <div class="item-header"><div class="item-num">3</div><div class="item-titulo">Links falsos e páginas clonadas</div></div>
+    <div class="item-desc">Golpistas frequentemente enviam mensagens com links que direcionam para páginas visualmente muito semelhantes às oficiais. Após inserir usuário e senha, a vítima acaba entregando suas credenciais aos criminosos.</div>
+    <div class="item-tip"><strong>Como se proteger:</strong>
+      <ul>
+        <li>Nunca acesse sua corretora por links recebidos em mensagens</li>
+        <li>Digite manualmente o endereço oficial ou use o aplicativo instalado</li>
+        <li>Confira cuidadosamente o endereço do site antes de inserir qualquer informação</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="item-card n4 fade-in">
+    <div class="item-header"><div class="item-num">4</div><div class="item-titulo">Golpes envolvendo PIX</div></div>
+    <div class="item-desc">A velocidade do PIX também passou a ser explorada por criminosos. É comum que aleguem a necessidade de uma transferência para validar cadastro, liberar investimentos, confirmar identidade, aumentar limites ou "proteger a conta". Esses procedimentos não fazem parte da rotina das instituições financeiras.</div>
+    <div class="item-tip"><strong>Como se proteger:</strong> se alguém solicitar um PIX com esse tipo de justificativa, interrompa imediatamente a conversa.</div>
+  </div>
+
+  <div class="item-card n5 fade-in">
+    <div class="item-header"><div class="item-num">5</div><div class="item-titulo">Compartilhamento de tela e acesso remoto</div></div>
+    <div class="item-desc">Em algumas situações, os criminosos orientam a vítima a instalar aplicativos que permitem controlar remotamente o celular ou computador, sob a justificativa de prestar suporte técnico. Após obter o acesso remoto, conseguem acompanhar ou executar operações financeiras.</div>
+    <div class="item-tip"><strong>Como se proteger:</strong> nunca instale aplicativos de acesso remoto por solicitação recebida por telefone, e-mail ou aplicativos de mensagens.</div>
+  </div>
+
+  <div class="item-card n6 fade-in">
+    <div class="item-header"><div class="item-num">6</div><div class="item-titulo">Inteligência Artificial e novos golpes</div></div>
+    <div class="item-desc">O avanço da inteligência artificial abriu espaço para novas formas de fraude. Já existem registros de criminosos utilizando tecnologias capazes de clonar vozes, produzir vídeos falsos (deepfakes), gerar mensagens extremamente convincentes e simular atendimentos automatizados.</div>
+    <div class="item-tip"><strong>Como se proteger:</strong> nem mesmo uma ligação com voz conhecida deve ser considerada prova suficiente de autenticidade quando envolver informações financeiras ou pedidos de transferência. Em situações sensíveis, confirme sempre por um segundo canal de comunicação.</div>
+  </div>
+
+  <!-- SEÇÃO 3: O QUE A XP NUNCA FARÁ -->
+  <div class="section-title fade-in"><span class="section-icon">🚫</span> O que a XP nunca fará</div>
+
+  <p>Independentemente da situação, desconfie imediatamente caso alguém solicite:</p>
+
+  <div class="warn-box fade-in">
+    <div class="warn-titulo">Sinais de alerta</div>
+    <div class="warn-list">
+      <div class="warn-item">Sua senha de acesso</div>
+      <div class="warn-item">Códigos enviados por SMS</div>
+      <div class="warn-item">Códigos do aplicativo autenticador</div>
+      <div class="warn-item">Tokens de segurança</div>
+      <div class="warn-item">Instalação de app de acesso remoto</div>
+      <div class="warn-item">PIX para "teste" ou "validação"</div>
+      <div class="warn-item">Transferência para uma "conta segura"</div>
+      <div class="warn-item">Compartilhamento da tela do celular</div>
+    </div>
+  </div>
+
+  <p>Essas solicitações não fazem parte dos procedimentos habituais de segurança da XP.</p>
+
+  <!-- SEÇÃO 4: SUSPEITOU -->
+  <div class="section-title fade-in"><span class="section-icon">🛑</span> Suspeitou de um golpe? Pare imediatamente</div>
+
+  <p>Se alguma situação parecer incomum, a melhor decisão costuma ser interromper a operação antes de prosseguir:</p>
+
+  <div class="acao-wrap fade-in">
+    <div class="acao-titulo">Em caso de dúvida</div>
+    <div class="acao-item"><div class="acao-num">1</div><div class="acao-texto">Encerre a conversa ou ligação</div></div>
+    <div class="acao-item"><div class="acao-num">2</div><div class="acao-texto">Não clique em links recebidos</div></div>
+    <div class="acao-item"><div class="acao-num">3</div><div class="acao-texto">Não forneça informações pessoais ou códigos de autenticação</div></div>
+    <div class="acao-item"><div class="acao-num">4</div><div class="acao-texto">Entre em contato com seu assessor ou diretamente pelos canais oficiais da instituição</div></div>
+    <div class="acao-item"><div class="acao-num">5</div><div class="acao-texto">Caso tenha compartilhado alguma credencial, altere imediatamente suas senhas e comunique a instituição financeira</div></div>
+  </div>
+
+  <p>Agir rapidamente pode reduzir significativamente os riscos e aumentar as chances de impedir movimentações indevidas.</p>
+
+  <div class="conclusao fade-in">
+    Os golpes financeiros evoluem continuamente, acompanhando novas tecnologias e mudanças de comportamento. No entanto, a maioria deles ainda depende do mesmo elemento: <strong>convencer o investidor a agir por impulso.</strong> Sempre que houver pressão para decidir rapidamente, pedidos de informações sensíveis ou solicitações fora do padrão, interrompa a conversa e confirme a situação por um canal oficial. Alguns minutos de verificação podem evitar prejuízos significativos e preservar um patrimônio construído ao longo de muitos anos.
+  </div>
+
+</article>
+
+<footer>
+  <div class="footer-name">Fábio Vogelaar Carlucci</div>
+  <div class="footer-contact">+55 (16) 98148-8260<br><a href="mailto:fabio.carlucci@ficus.capital">fabio.carlucci@ficus.capital</a></div>
+</footer>
+<div style="position:relative;z-index:1;padding:0 8% 28px;text-align:center;font-size:0.65rem;color:rgba(245,237,224,0.2);letter-spacing:0.08em;">
+  Fontes: Central de Segurança XP · Atendimento XP<br>
+  Conteúdo exclusivamente informativo e educacional.
+</div>
+
+<script>
+const faders = document.querySelectorAll(".fade-in");
+const obs = new IntersectionObserver(e => e.forEach(x => { if(x.isIntersecting){ x.target.classList.add("visible"); obs.unobserve(x.target); } }), { threshold: 0.1 });
+faders.forEach(f => obs.observe(f));
+</script>
+</body>
+</html>
