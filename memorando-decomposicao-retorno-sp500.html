@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A bolsa americana subiu. Mas de onde veio essa alta? | Fábio Carlucci</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DBQSDSDRF3"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-DBQSDSDRF3");</script>
+<style>
+  :root {
+    --verde-escuro: #1a2e25;
+    --dourado: #c9a84c;
+    --dourado-claro: #e2c47a;
+    --creme: #f5ede0;
+    --texto-claro: rgba(245,237,224,0.85);
+    --texto-muted: rgba(245,237,224,0.45);
+    --azul: #4a90d9;
+    --verde-gain: #3dbf8a;
+    --vermelho: #c94545;
+    --laranja: #e07a35;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { background-color: var(--verde-escuro); color: var(--creme); font-family: "Jost", sans-serif; font-weight: 300; overflow-x: hidden; }
+  body::before {
+    content: ""; position: fixed; inset: 0;
+    background-image: radial-gradient(ellipse at 10% 10%, rgba(201,168,76,0.06) 0%, transparent 55%), radial-gradient(ellipse at 90% 90%, rgba(47,82,64,0.35) 0%, transparent 55%);
+    pointer-events: none; z-index: 0;
+  }
+  .back-link { position: relative; z-index: 10; display: inline-flex; align-items: center; gap: 8px; padding: 28px 8%; font-size: 0.7rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--texto-muted); text-decoration: none; transition: color 0.2s; }
+  .back-link:hover { color: var(--dourado); }
+  .back-link::before { content: "←"; font-size: 0.9rem; }
+  .hero { position: relative; z-index: 1; padding: 20px 8% 64px; border-bottom: 1px solid rgba(201,168,76,0.15); max-width: 900px; }
+  .hero-tag { font-size: 0.65rem; font-weight: 500; letter-spacing: 0.35em; text-transform: uppercase; color: var(--dourado); display: flex; align-items: center; gap: 12px; margin-bottom: 24px; opacity: 0; animation: fadeUp 0.7s ease 0.1s forwards; }
+  .hero-tag::before { content: ""; width: 30px; height: 1px; background: var(--dourado); }
+  .hero-date { font-size: 0.72rem; letter-spacing: 0.15em; color: var(--texto-muted); margin-bottom: 20px; opacity: 0; animation: fadeUp 0.7s ease 0.2s forwards; }
+  h1 { font-family: "Cormorant Garamond", serif; font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 300; line-height: 1.15; color: var(--creme); opacity: 0; animation: fadeUp 0.7s ease 0.3s forwards; }
+  h1 em { font-style: italic; color: var(--dourado-claro); }
+  .hero-sub { font-size: 0.97rem; color: var(--texto-muted); line-height: 1.75; margin-top: 16px; max-width: 640px; opacity: 0; animation: fadeUp 0.7s ease 0.45s forwards; }
+  .hero-fonte { margin-top: 14px; font-size: 0.7rem; color: rgba(245,237,224,0.3); opacity: 0; animation: fadeUp 0.7s ease 0.55s forwards; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+  article { position: relative; z-index: 1; max-width: 800px; margin: 0 auto; padding: 64px 8% 88px; }
+  .lead { font-family: "Cormorant Garamond", serif; font-size: clamp(1.1rem, 2.5vw, 1.35rem); font-weight: 400; line-height: 1.8; color: var(--creme); margin-bottom: 48px; padding-bottom: 48px; border-bottom: 1px solid rgba(201,168,76,0.15); }
+  p { font-size: 0.97rem; line-height: 1.9; color: var(--texto-claro); margin-bottom: 24px; }
+  strong { font-weight: 600; color: var(--creme); }
+  .section-title { font-family: "Cormorant Garamond", serif; font-size: 1.5rem; font-weight: 600; color: var(--dourado-claro); margin: 56px 0 18px; padding-top: 44px; border-top: 1px solid rgba(201,168,76,0.12); display: flex; align-items: center; gap: 14px; }
+  .section-icon { font-size: 1.3rem; flex-shrink: 0; }
+
+  .stat-hero { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 32px 0; }
+  @media (max-width: 500px) { .stat-hero { grid-template-columns: 1fr; } }
+  .stat-card { border-radius: 8px; padding: 26px 22px; text-align: center; }
+  .stat-card.dourado { background: linear-gradient(135deg, rgba(201,168,76,0.14) 0%, rgba(47,82,64,0.4) 100%); border: 1px solid rgba(201,168,76,0.3); }
+  .stat-card.neutro { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); }
+  .stat-card-val { font-family: "Cormorant Garamond", serif; font-size: 2.6rem; font-weight: 700; line-height: 1; margin-bottom: 8px; }
+  .stat-card.dourado .stat-card-val { color: var(--dourado); }
+  .stat-card.neutro .stat-card-val { color: var(--texto-claro); }
+  .stat-card-desc { font-size: 0.8rem; color: var(--texto-muted); line-height: 1.5; }
+
+  /* GRÁFICO CENTRAL - DECOMPOSIÇÃO */
+  .chart-hero { background: linear-gradient(160deg, rgba(201,168,76,0.08) 0%, rgba(10,20,16,0.85) 55%); border: 1px solid rgba(201,168,76,0.3); border-radius: 12px; padding: 32px 24px 20px; margin: 40px 0 44px; }
+  .chart-hero-eyebrow { font-size: 0.62rem; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: var(--dourado); margin-bottom: 6px; }
+  .chart-hero-titulo { font-family: "Cormorant Garamond", serif; font-size: 1.5rem; font-weight: 700; color: var(--creme); margin-bottom: 4px; }
+  .chart-hero-sub { font-size: 0.8rem; color: var(--texto-muted); margin-bottom: 20px; }
+  .decomp-chart { position: relative; height: 220px; display: flex; align-items: stretch; gap: 26px; padding: 0 8px; }
+  .decomp-col { flex: 1; position: relative; height: 100%; }
+  .decomp-bar { position: absolute; left: 4px; right: 4px; border-radius: 3px; }
+  .decomp-bar.dividends { background: linear-gradient(180deg, #7ecbb0, #3dbf8a); }
+  .decomp-bar.earnings { background: linear-gradient(180deg, var(--dourado-claro), var(--dourado)); }
+  .decomp-bar.multiplo { background: linear-gradient(0deg, #c94545, #e07070); }
+  .decomp-bar.total { background: linear-gradient(180deg, #f5ede0, #cfc3ab); }
+  .decomp-val { position: absolute; left: 0; right: 0; text-align: center; font-family: "Cormorant Garamond", serif; font-weight: 700; font-size: 1rem; color: var(--creme); }
+  .decomp-zero { position: absolute; left: 0; right: 0; bottom: 79px; height: 1px; background: rgba(255,255,255,0.2); }
+  .decomp-label { position: absolute; bottom: -26px; left: 0; right: 0; text-align: center; font-size: 0.68rem; color: var(--texto-muted); }
+  .chart-hero-nota { font-size: 0.66rem; color: rgba(245,237,224,0.3); margin-top: 42px; line-height: 1.5; }
+
+  /* FORMULA / EXEMPLO */
+  .formula-box { background: rgba(201,168,76,0.06); border: 1px solid rgba(201,168,76,0.2); border-radius: 8px; padding: 24px 26px; margin: 28px 0; }
+  .formula-linha { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 10px 0; border-bottom: 1px dashed rgba(255,255,255,0.1); font-size: 0.88rem; color: var(--texto-claro); }
+  .formula-linha:last-child { border-bottom: none; font-weight: 600; color: var(--dourado-claro); }
+  .formula-linha strong { color: var(--dourado); }
+
+  .fatores-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin: 24px 0; }
+  @media (max-width: 500px) { .fatores-grid { grid-template-columns: 1fr; } }
+  .fator-tag { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 15px 16px; font-size: 0.85rem; color: var(--texto-claro); }
+  .fator-tag-titulo { font-weight: 600; color: var(--dourado); font-size: 0.78rem; margin-bottom: 4px; display: flex; align-items: center; gap: 6px; }
+  .fator-tag-titulo::before { content: "▸"; }
+
+  .insight-box { background: linear-gradient(135deg, rgba(201,168,76,0.1) 0%, rgba(26,46,37,0.4) 100%); border: 1px solid rgba(201,168,76,0.25); border-left: 3px solid var(--dourado); border-radius: 4px; padding: 28px 32px; margin: 36px 0; }
+  .insight-box p { font-family: "Cormorant Garamond", serif; font-size: 1.1rem; color: var(--creme); line-height: 1.8; margin: 0; }
+  .warn-box { background: linear-gradient(135deg, rgba(201,69,69,0.08) 0%, rgba(26,46,37,0.4) 100%); border: 1px solid rgba(201,69,69,0.22); border-left: 3px solid #c94545; border-radius: 4px; padding: 24px 28px; margin: 32px 0; }
+  .warn-box p { font-size: 0.9rem; color: var(--texto-claro); margin: 0; line-height: 1.75; }
+
+  .conclusao { font-family: "Cormorant Garamond", serif; font-size: 1.1rem; font-weight: 400; line-height: 1.85; color: var(--creme); margin-top: 52px; padding: 40px; border: 1px solid rgba(201,168,76,0.2); border-radius: 6px; background: rgba(255,255,255,0.02); position: relative; }
+  .conclusao::before { content: "\201C"; position: absolute; top: -10px; left: 32px; font-size: 5rem; color: rgba(201,168,76,0.15); font-family: "Cormorant Garamond", serif; line-height: 1; }
+
+  .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .fade-in.visible { opacity: 1; transform: none; }
+  footer { position: relative; z-index: 1; border-top: 1px solid rgba(201,168,76,0.12); padding: 40px 8%; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+  .footer-name { font-family: "Cormorant Garamond", serif; font-size: 1.1rem; font-weight: 300; color: var(--texto-muted); }
+  .footer-contact { font-size: 0.75rem; color: rgba(245,237,224,0.25); line-height: 1.9; text-align: right; }
+  .footer-contact a { color: var(--dourado); text-decoration: none; }
+  @media (max-width: 640px) { .back-link,.hero { padding-left: 5%; padding-right: 5%; } article { padding: 48px 5% 64px; } footer { padding: 32px 5%; flex-direction: column; } .footer-contact { text-align: left; } .decomp-chart { gap: 14px; } .decomp-val { font-size: 0.82rem; } }
+</style>
+</head>
+<body>
+
+<a class="back-link" href="index.html">Voltar</a>
+
+<header class="hero">
+  <div class="hero-tag">Artigo · Renda Variável & Mercados Globais</div>
+  <div class="hero-date">Outubro de 2026</div>
+  <h1>A bolsa americana subiu.<br>Mas <em>de onde veio</em> essa alta?</h1>
+  <p class="hero-sub">O S&P 500 acumulava, até 11 de setembro, retorno total de 12,77% em 2026. A pergunta mais importante não é só "quanto subiu?" — é o que explica essa alta.</p>
+  <div class="hero-fonte">Fonte: FactSet Research Systems / S&P 500, dados até 11/09/2026</div>
+</header>
+
+<article>
+
+  <p class="lead">
+    Depois de anos fortes para o mercado americano, uma valorização de 12,77% no ano pode reforçar uma preocupação comum: as ações estariam simplesmente ficando cada vez mais caras? A decomposição do retorno conta uma história mais interessante — e a resposta não é a que a maioria espera.
+  </p>
+
+  <!-- GRÁFICO CENTRAL -->
+  <div class="chart-hero fade-in">
+    <div class="chart-hero-eyebrow">O ponto central deste memorando</div>
+    <div class="chart-hero-titulo">De onde vieram os retornos das ações em 2026?</div>
+    <div class="chart-hero-sub">Retorno total do S&P 500 no ano, decomposto por contribuição de lucros, múltiplo P/L e dividendos</div>
+
+    <div class="decomp-chart">
+      <div class="decomp-zero"></div>
+      <div class="decomp-col">
+        <div class="decomp-val" style="bottom:88px;">+0,92%</div>
+        <div class="decomp-bar dividends" style="bottom:79px; height:5px;"></div>
+        <div class="decomp-label">Dividendos</div>
+      </div>
+      <div class="decomp-col">
+        <div class="decomp-val" style="bottom:217px;">+23,79%</div>
+        <div class="decomp-bar earnings" style="bottom:79px; height:134px;"></div>
+        <div class="decomp-label">Lucros</div>
+      </div>
+      <div class="decomp-col">
+        <div class="decomp-val" style="bottom:0px;">−11,94%</div>
+        <div class="decomp-bar multiplo" style="bottom:12px; height:67px;"></div>
+        <div class="decomp-label">Múltiplo P/L</div>
+      </div>
+      <div class="decomp-col">
+        <div class="decomp-val" style="bottom:155px;">12,77%</div>
+        <div class="decomp-bar total" style="bottom:79px; height:72px;"></div>
+        <div class="decomp-label">Total</div>
+      </div>
+    </div>
+
+    <div class="chart-hero-nota">Dividendos +0,92 p.p. · Lucros +23,79 p.p. · Múltiplo P/L −11,94 p.p. · Total 12,77%. Fonte: FactSet Research Systems, S&P 500, dados de 30/12/2025 a 11/09/2026.</div>
+  </div>
+
+  <!-- SEÇÃO 1 -->
+  <div class="section-title fade-in"><span class="section-icon">🧮</span> O que isso significa</div>
+
+  <p>O preço de uma ação pode subir por razões bastante diferentes. Uma delas é o crescimento dos lucros: se uma empresa passa a ganhar mais dinheiro, suas ações podem se valorizar mesmo sem que os investidores estejam dispostos a pagar mais por cada dólar de lucro produzido. A outra é o oposto — os lucros pouco mudam, mas o mercado passa a aceitar pagar múltiplos maiores por eles, e parte importante da valorização decorre de uma expansão de valuation.</p>
+
+  <p>Em 2026, até a data analisada, o primeiro fenômeno predominou com folga: os preços subiram, mas os lucros avançaram ainda mais. A mudança dos múltiplos teve contribuição negativa para o retorno — a alta do S&P 500 aconteceu com <strong>compressão de valuation</strong>, não com investidores aceitando pagar cada vez mais caro pelas mesmas empresas.</p>
+
+  <!-- SEÇÃO 2 -->
+  <div class="section-title fade-in"><span class="section-icon">📐</span> Uma maneira simples de visualizar</div>
+
+  <p>Imagine uma empresa que lucra US$ 10 por ação e negocia a 20 vezes seus lucros — seu preço seria aproximadamente US$ 200. Agora imagine que seus lucros avancem para US$ 13, mas o mercado reduza o múltiplo para 18 vezes:</p>
+
+  <div class="formula-box fade-in">
+    <div class="formula-linha"><span>Lucro por ação × Múltiplo (P/L)</span><span><strong>US$ 10</strong> × <strong>20x</strong> = US$ 200</span></div>
+    <div class="formula-linha"><span>Lucro por ação × Múltiplo (P/L)</span><span><strong>US$ 13</strong> × <strong>18x</strong> = US$ 234</span></div>
+    <div class="formula-linha">Resultado: ação sobe 17%, mesmo com o múltiplo caindo</div>
+  </div>
+
+  <p>Esse exemplo ajuda a entender por que observar somente a valorização de um índice pode produzir uma leitura incompleta. Preço e valuation são coisas diferentes.</p>
+
+  <!-- SEÇÃO 3 -->
+  <div class="section-title fade-in"><span class="section-icon">🔍</span> Então a bolsa americana está barata?</div>
+
+  <p>Essa conclusão também não deve ser tirada desses números. Um mercado pode apresentar múltiplos elevados em termos históricos e, simultaneamente, experimentar compressão desses múltiplos durante determinado período — são duas informações diferentes. A decomposição de 2026 não responde sozinha se o S&P 500 está barato ou caro; ela mostra algo mais específico: <strong>qual foi a origem da valorização observada neste ano</strong>. E, até aqui, a principal força veio dos fundamentos corporativos — especialmente do crescimento dos lucros — não de uma expansão adicional dos múltiplos.</p>
+
+  <!-- SEÇÃO 4 -->
+  <div class="section-title fade-in"><span class="section-icon">🎯</span> Por que isso importa para o investidor</div>
+
+  <p>Duas altas aparentemente iguais podem carregar histórias completamente diferentes:</p>
+
+  <div class="fatores-grid fade-in">
+    <div class="fator-tag"><div class="fator-tag-titulo">Alta via expansão de múltiplo</div>Depende cada vez mais da manutenção das expectativas dos investidores sobre o futuro</div>
+    <div class="fator-tag"><div class="fator-tag-titulo">Alta via crescimento de lucros</div>Parte do aumento dos preços é sustentada pela própria capacidade de geração de resultado das empresas</div>
+  </div>
+
+  <div class="warn-box fade-in">
+    <p>Isso não elimina riscos. Lucros podem desacelerar, expectativas podem mudar e múltiplos podem sofrer novas contrações. Também não significa que os preços atuais sejam necessariamente atrativos — mas acrescenta uma informação relevante à discussão sobre o mercado americano em 2026.</p>
+  </div>
+
+  <div class="insight-box fade-in">
+    <p>A pergunta mais importante não é apenas <strong>"quanto subiu?"</strong> É também: <strong>"o que explica essa alta?"</strong> Até 11 de setembro, a resposta para o S&P 500 era clara — o crescimento dos lucros foi o principal motor da valorização, enquanto a contração dos múltiplos trabalhou na direção contrária.</p>
+  </div>
+
+  <div class="conclusao fade-in">
+    Para o investidor de longo prazo, essa distinção importa. Olhar apenas para o preço mostra o que aconteceu. Entender lucros, dividendos e valuation ajuda a compreender <strong>por que aconteceu</strong> — e qual é a natureza do retorno que está sendo entregue.
+  </div>
+
+</article>
+
+<footer>
+  <div class="footer-name">Fábio Vogelaar Carlucci</div>
+  <div class="footer-contact">+55 (16) 98148-8260<br><a href="mailto:fabio.carlucci@ficus.capital">fabio.carlucci@ficus.capital</a></div>
+</footer>
+<div style="position:relative;z-index:1;padding:0 8% 28px;text-align:center;font-size:0.65rem;color:rgba(245,237,224,0.2);letter-spacing:0.08em;">
+  Fonte: FactSet Research Systems / S&P 500, dados até 11/09/2026. Os valores representam uma decomposição do retorno total do índice e podem conter efeitos metodológicos próprios do cálculo utilizado pela fonte.<br>
+  Material de caráter informativo e educacional. Não constitui recomendação de investimento.
+</div>
+
+<script>
+const faders = document.querySelectorAll(".fade-in");
+const obs = new IntersectionObserver(e => e.forEach(x => { if(x.isIntersecting){ x.target.classList.add("visible"); obs.unobserve(x.target); } }), { threshold: 0.1 });
+faders.forEach(f => obs.observe(f));
+</script>
+</body>
+</html>
