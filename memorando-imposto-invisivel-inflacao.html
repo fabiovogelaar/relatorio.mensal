@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>O imposto invisível: como a inflação corrói patrimônio | Fábio Carlucci</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DBQSDSDRF3"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-DBQSDSDRF3");</script>
+<style>
+  :root {
+    --verde-escuro: #1a2e25;
+    --dourado: #c9a84c;
+    --dourado-claro: #e2c47a;
+    --creme: #f5ede0;
+    --texto-claro: rgba(245,237,224,0.85);
+    --texto-muted: rgba(245,237,224,0.45);
+    --azul: #4a90d9;
+    --verde-gain: #3dbf8a;
+    --vermelho: #c94545;
+    --laranja: #e07a35;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { background-color: var(--verde-escuro); color: var(--creme); font-family: "Jost", sans-serif; font-weight: 300; overflow-x: hidden; }
+  body::before {
+    content: ""; position: fixed; inset: 0;
+    background-image: radial-gradient(ellipse at 10% 10%, rgba(201,168,76,0.06) 0%, transparent 55%), radial-gradient(ellipse at 90% 90%, rgba(47,82,64,0.35) 0%, transparent 55%);
+    pointer-events: none; z-index: 0;
+  }
+  .back-link { position: relative; z-index: 10; display: inline-flex; align-items: center; gap: 8px; padding: 28px 8%; font-size: 0.7rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--texto-muted); text-decoration: none; transition: color 0.2s; }
+  .back-link:hover { color: var(--dourado); }
+  .back-link::before { content: "←"; font-size: 0.9rem; }
+
+  /* HERO CENTRALIZADO — alinhado com a coluna do artigo */
+  .hero { position: relative; z-index: 1; padding: 20px 8% 56px; max-width: 800px; margin: 0 auto; text-align: center; border-bottom: 1px solid rgba(201,168,76,0.15); }
+  .hero-tag { font-size: 0.65rem; font-weight: 500; letter-spacing: 0.35em; text-transform: uppercase; color: var(--dourado); display: flex; align-items: center; justify-content: center; gap: 12px; margin-bottom: 24px; opacity: 0; animation: fadeUp 0.7s ease 0.1s forwards; }
+  .hero-tag::before, .hero-tag::after { content: ""; width: 26px; height: 1px; background: var(--dourado); }
+  h1 { font-family: "Cormorant Garamond", serif; font-size: clamp(1.9rem, 4.6vw, 3rem); font-weight: 300; line-height: 1.2; color: var(--creme); opacity: 0; animation: fadeUp 0.7s ease 0.2s forwards; }
+  h1 em { font-style: italic; color: var(--dourado-claro); }
+  .hero-sub { font-size: 1rem; color: var(--texto-muted); line-height: 1.75; margin: 18px auto 0; max-width: 620px; opacity: 0; animation: fadeUp 0.7s ease 0.35s forwards; }
+  .hero-date { font-size: 0.72rem; letter-spacing: 0.15em; color: var(--texto-muted); margin-top: 22px; opacity: 0; animation: fadeUp 0.7s ease 0.45s forwards; }
+  .hero-fonte { margin-top: 10px; font-size: 0.7rem; color: rgba(245,237,224,0.3); opacity: 0; animation: fadeUp 0.7s ease 0.55s forwards; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+
+  article { position: relative; z-index: 1; max-width: 800px; margin: 0 auto; padding: 56px 8% 88px; }
+  .lead { font-family: "Cormorant Garamond", serif; font-size: clamp(1.1rem, 2.5vw, 1.35rem); font-weight: 400; line-height: 1.8; color: var(--creme); margin-bottom: 48px; padding-bottom: 48px; border-bottom: 1px solid rgba(201,168,76,0.15); }
+  p { font-size: 0.97rem; line-height: 1.9; color: var(--texto-claro); margin-bottom: 24px; }
+  strong { font-weight: 600; color: var(--creme); }
+  .section-title { font-family: "Cormorant Garamond", serif; font-size: 1.5rem; font-weight: 600; color: var(--dourado-claro); margin: 56px 0 18px; padding-top: 44px; border-top: 1px solid rgba(201,168,76,0.12); display: flex; align-items: center; gap: 14px; }
+  .section-icon { font-size: 1.3rem; flex-shrink: 0; }
+
+  /* STAT DESTAQUE PRINCIPAL */
+  .stat-mega { text-align: center; margin: 36px 0; padding: 34px 20px; background: linear-gradient(135deg, rgba(201,69,69,0.1) 0%, rgba(47,82,64,0.4) 100%); border: 1px solid rgba(201,69,69,0.25); border-radius: 10px; }
+  .stat-mega-val { font-family: "Cormorant Garamond", serif; font-size: 3.2rem; font-weight: 700; color: #e07070; line-height: 1; }
+  .stat-mega-label { font-size: 0.85rem; color: var(--texto-claro); margin-top: 10px; line-height: 1.6; }
+  .stat-mega-sub { font-size: 0.75rem; color: var(--texto-muted); margin-top: 6px; }
+
+  .stat-hero { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; margin: 32px 0; }
+  @media (max-width: 560px) { .stat-hero { grid-template-columns: 1fr; } }
+  .stat-card { border-radius: 8px; padding: 22px 16px; text-align: center; }
+  .stat-card.dourado { background: linear-gradient(135deg, rgba(201,168,76,0.14) 0%, rgba(47,82,64,0.4) 100%); border: 1px solid rgba(201,168,76,0.3); }
+  .stat-card.neg { background: linear-gradient(135deg, rgba(201,69,69,0.1) 0%, rgba(47,82,64,0.4) 100%); border: 1px solid rgba(201,69,69,0.25); }
+  .stat-card.neutro { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); }
+  .stat-card-val { font-family: "Cormorant Garamond", serif; font-size: 1.9rem; font-weight: 700; line-height: 1; margin-bottom: 8px; }
+  .stat-card.dourado .stat-card-val { color: var(--dourado); }
+  .stat-card.neg .stat-card-val { color: #e07070; }
+  .stat-card.neutro .stat-card-val { color: var(--texto-claro); }
+  .stat-card-desc { font-size: 0.75rem; color: var(--texto-muted); line-height: 1.5; }
+
+  /* TABELA HEATMAP */
+  .grafico-wrap { background: rgba(10,20,16,0.7); border: 1px solid rgba(255,255,255,0.07); border-radius: 8px; padding: 24px 20px 16px; margin: 32px 0; }
+  .grafico-titulo { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--dourado); margin-bottom: 4px; }
+  .grafico-sub { font-size: 0.72rem; color: var(--texto-muted); margin-bottom: 16px; }
+  .grafico-nota { font-size: 0.65rem; color: rgba(245,237,224,0.25); margin-top: 12px; line-height: 1.4; }
+  .heatmap-wrap { overflow-x: auto; }
+  .heatmap-table { border-collapse: collapse; width: 100%; min-width: 620px; font-size: 0.7rem; }
+  .heatmap-table th { padding: 8px 6px; text-align: center; font-size: 0.62rem; font-weight: 600; letter-spacing: 0.04em; color: var(--texto-muted); text-transform: uppercase; border-bottom: 1px solid rgba(255,255,255,0.15); }
+  .heatmap-table th.th-anos { background: rgba(255,255,255,0.04); }
+  .heatmap-table td { padding: 7px 6px; text-align: center; color: var(--creme); font-weight: 500; white-space: nowrap; }
+  .heatmap-table .infl-label { background: rgba(0,0,0,0.4); font-weight: 700; color: var(--dourado-claro); }
+  .heatmap-table tr.linha-destaque td.infl-label { background: var(--dourado); color: var(--verde-escuro); }
+  .heatmap-table tr.linha-destaque td:not(.infl-label) { box-shadow: inset 0 0 0 1px rgba(226,196,122,0.6); }
+  .heatmap-legend { display: flex; align-items: center; gap: 10px; margin-top: 14px; font-size: 0.68rem; color: var(--texto-muted); }
+  .heatmap-bar { flex: 1; max-width: 220px; height: 8px; border-radius: 4px; background: linear-gradient(90deg, hsl(0,58%,30%), hsl(60,58%,30%), hsl(120,58%,30%)); }
+
+  /* FORMULA */
+  .formula-box { background: rgba(201,168,76,0.06); border: 1px solid rgba(201,168,76,0.2); border-radius: 8px; padding: 22px 24px; margin: 24px 0; text-align: center; }
+  .formula-box .formula { font-family: "Cormorant Garamond", serif; font-size: 1.05rem; color: var(--dourado-claro); font-weight: 600; }
+
+  /* TRÊS INVESTIMENTOS */
+  .invest-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; margin: 24px 0; }
+  @media (max-width: 560px) { .invest-grid { grid-template-columns: 1fr; } }
+  .invest-card { border-radius: 8px; padding: 18px 14px; text-align: center; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); }
+  .invest-nome { font-size: 0.65rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--texto-muted); margin-bottom: 8px; }
+  .invest-nominal { font-family: "Cormorant Garamond", serif; font-size: 1.3rem; font-weight: 700; color: var(--creme); }
+  .invest-real { font-size: 0.78rem; margin-top: 8px; padding-top: 8px; border-top: 1px dashed rgba(255,255,255,0.1); }
+  .invest-real.neg { color: #e07070; }
+  .invest-real.pos { color: var(--verde-gain); }
+
+  /* CAMADAS */
+  .camadas-flow { display: flex; align-items: center; gap: 6px; margin: 28px 0; flex-wrap: wrap; justify-content: center; }
+  .camada-box { flex: 1; min-width: 130px; text-align: center; padding: 16px 10px; border-radius: 6px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); font-size: 0.78rem; color: var(--texto-claro); }
+  .camada-box.destaque { background: rgba(201,168,76,0.1); border-color: rgba(201,168,76,0.3); color: var(--dourado-claro); font-weight: 600; }
+  .camada-seta { color: var(--dourado); font-size: 1.1rem; flex-shrink: 0; }
+
+  .fatores-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin: 24px 0; }
+  @media (max-width: 500px) { .fatores-grid { grid-template-columns: 1fr; } }
+  .fator-tag { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 14px 15px; font-size: 0.82rem; color: var(--texto-claro); display: flex; align-items: flex-start; gap: 8px; }
+  .fator-tag::before { content: "▸"; color: var(--dourado); flex-shrink: 0; }
+
+  .insight-box { background: linear-gradient(135deg, rgba(201,168,76,0.1) 0%, rgba(26,46,37,0.4) 100%); border: 1px solid rgba(201,168,76,0.25); border-left: 3px solid var(--dourado); border-radius: 4px; padding: 28px 32px; margin: 36px 0; }
+  .insight-box p { font-family: "Cormorant Garamond", serif; font-size: 1.1rem; color: var(--creme); line-height: 1.8; margin: 0; }
+  .warn-box { background: linear-gradient(135deg, rgba(201,69,69,0.08) 0%, rgba(26,46,37,0.4) 100%); border: 1px solid rgba(201,69,69,0.22); border-left: 3px solid #c94545; border-radius: 4px; padding: 24px 28px; margin: 32px 0; }
+  .warn-box p { font-size: 0.9rem; color: var(--texto-claro); margin: 0; line-height: 1.75; }
+
+  .conclusao { font-family: "Cormorant Garamond", serif; font-size: 1.12rem; font-weight: 400; line-height: 1.85; color: var(--creme); margin-top: 52px; padding: 40px; border: 1px solid rgba(201,168,76,0.2); border-radius: 6px; background: rgba(255,255,255,0.02); position: relative; }
+  .conclusao::before { content: "\201C"; position: absolute; top: -10px; left: 32px; font-size: 5rem; color: rgba(201,168,76,0.15); font-family: "Cormorant Garamond", serif; line-height: 1; }
+
+  .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .fade-in.visible { opacity: 1; transform: none; }
+  footer { position: relative; z-index: 1; border-top: 1px solid rgba(201,168,76,0.12); padding: 40px 8%; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+  .footer-name { font-family: "Cormorant Garamond", serif; font-size: 1.1rem; font-weight: 300; color: var(--texto-muted); }
+  .footer-contact { font-size: 0.75rem; color: rgba(245,237,224,0.25); line-height: 1.9; text-align: right; }
+  .footer-contact a { color: var(--dourado); text-decoration: none; }
+  @media (max-width: 640px) { .back-link,.hero { padding-left: 5%; padding-right: 5%; } article { padding: 48px 5% 64px; } footer { padding: 32px 5%; flex-direction: column; } .footer-contact { text-align: left; } .invest-grid { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<a class="back-link" href="index.html">Voltar</a>
+
+<header class="hero">
+  <div class="hero-tag">Artigo · Planejamento Patrimonial</div>
+  <h1>O imposto invisível: como a inflação corrói patrimônio<br><em>— e por que preservar poder de compra deve vir antes de buscar rentabilidade</em></h1>
+  <p class="hero-sub">Um investidor pode olhar para sua conta daqui a trinta anos e encontrar exatamente os mesmos R$ 1 milhão — e, ainda assim, ter perdido a maior parte de sua riqueza econômica.</p>
+  <div class="hero-date">Outubro de 2026</div>
+  <div class="hero-fonte">Fontes: IBGE — IPCA; Banco Central do Brasil — Copom</div>
+</header>
+
+<article>
+
+  <p class="lead">
+    Existe uma diferença importante entre <strong>preservar dinheiro</strong> e <strong>preservar patrimônio</strong>. Patrimônio não deveria ser medido apenas pela quantidade de reais acumulados, mas principalmente pelo que esses reais conseguem comprar. É nesse sentido que a inflação pode ser entendida como uma espécie de <strong>"imposto silencioso"</strong> sobre o patrimônio — tecnicamente não é um tributo, mas seu efeito econômico para quem mantém recursos sem remuneração suficiente é semelhante: uma parcela do poder de compra desaparece ao longo do tempo.
+  </p>
+
+  <!-- STAT PRINCIPAL -->
+  <div class="stat-mega fade-in">
+    <div class="stat-mega-val">−82,6%</div>
+    <div class="stat-mega-label">de perda de poder de compra em 30 anos, com inflação média de 6% ao ano</div>
+    <div class="stat-mega-sub">R$ 1.000.000 → equivalente a R$ 174 mil em poder de compra de hoje</div>
+  </div>
+
+  <!-- SEÇÃO 1: TABELA -->
+  <div class="section-title fade-in"><span class="section-icon">📊</span> A matemática silenciosa da inflação</div>
+
+  <p>O ponto mais importante está no efeito composto: a inflação de um ano incide sobre preços que já haviam aumentado nos anos anteriores. Por isso, uma taxa aparentemente moderada torna-se extremamente relevante quando acumulada durante décadas:</p>
+
+  <div class="grafico-wrap fade-in">
+    <div class="grafico-titulo">Poder de compra de R$ 1 milhão ao longo do tempo</div>
+    <div class="grafico-sub">Por taxa de inflação anual e horizonte, em valores de hoje</div>
+    <div class="heatmap-wrap">
+      <table class="heatmap-table">
+        <tr><th class="th-anos">Inflação anual</th><th>1 ano</th><th>5 anos</th><th>10 anos</th><th>15 anos</th><th>20 anos</th><th>25 anos</th><th>30 anos</th><th>40 anos</th></tr>
+        <tr><td class="infl-label">1%</td><td style="background:hsl(119,58%,24%);">R$ 990.099</td><td style="background:hsl(114,58%,24%);">R$ 951.466</td><td style="background:hsl(109,58%,24%);">R$ 905.287</td><td style="background:hsl(103,58%,24%);">R$ 861.349</td><td style="background:hsl(98,58%,24%);">R$ 819.544</td><td style="background:hsl(94,58%,24%);">R$ 779.768</td><td style="background:hsl(89,58%,24%);">R$ 741.923</td><td style="background:hsl(81,58%,24%);">R$ 671.653</td></tr>
+        <tr><td class="infl-label">2%</td><td style="background:hsl(118,58%,24%);">R$ 980.392</td><td style="background:hsl(109,58%,24%);">R$ 905.731</td><td style="background:hsl(98,58%,24%);">R$ 820.348</td><td style="background:hsl(89,58%,24%);">R$ 743.015</td><td style="background:hsl(81,58%,24%);">R$ 672.971</td><td style="background:hsl(73,58%,24%);">R$ 609.531</td><td style="background:hsl(66,58%,24%);">R$ 552.071</td><td style="background:hsl(54,58%,24%);">R$ 452.890</td></tr>
+        <tr><td class="infl-label">3%</td><td style="background:hsl(117,58%,24%);">R$ 970.874</td><td style="background:hsl(104,58%,24%);">R$ 862.609</td><td style="background:hsl(89,58%,24%);">R$ 744.094</td><td style="background:hsl(77,58%,24%);">R$ 641.862</td><td style="background:hsl(66,58%,24%);">R$ 553.676</td><td style="background:hsl(57,58%,24%);">R$ 477.606</td><td style="background:hsl(49,58%,24%);">R$ 411.987</td><td style="background:hsl(37,58%,24%);">R$ 306.557</td></tr>
+        <tr><td class="infl-label">4%</td><td style="background:hsl(115,58%,24%);">R$ 961.538</td><td style="background:hsl(99,58%,24%);">R$ 821.927</td><td style="background:hsl(81,58%,24%);">R$ 675.564</td><td style="background:hsl(67,58%,24%);">R$ 555.265</td><td style="background:hsl(55,58%,24%);">R$ 456.387</td><td style="background:hsl(45,58%,24%);">R$ 375.117</td><td style="background:hsl(37,58%,24%);">R$ 308.319</td><td style="background:hsl(25,58%,24%);">R$ 208.289</td></tr>
+        <tr><td class="infl-label">5%</td><td style="background:hsl(114,58%,24%);">R$ 952.381</td><td style="background:hsl(94,58%,24%);">R$ 783.526</td><td style="background:hsl(74,58%,24%);">R$ 613.913</td><td style="background:hsl(58,58%,24%);">R$ 481.017</td><td style="background:hsl(45,58%,24%);">R$ 376.889</td><td style="background:hsl(35,58%,24%);">R$ 295.303</td><td style="background:hsl(28,58%,24%);">R$ 231.377</td><td style="background:hsl(17,58%,24%);">R$ 142.046</td></tr>
+        <tr class="linha-destaque"><td class="infl-label">6%</td><td style="background:hsl(113,58%,24%);">R$ 943.396</td><td style="background:hsl(90,58%,24%);">R$ 747.258</td><td style="background:hsl(67,58%,24%);">R$ 558.395</td><td style="background:hsl(50,58%,24%);">R$ 417.265</td><td style="background:hsl(37,58%,24%);">R$ 311.805</td><td style="background:hsl(28,58%,24%);">R$ 232.999</td><td style="background:hsl(21,58%,24%);">R$ 174.110</td><td style="background:hsl(12,58%,24%);">R$ 97.222</td></tr>
+        <tr><td class="infl-label">7%</td><td style="background:hsl(112,58%,24%);">R$ 934.579</td><td style="background:hsl(86,58%,24%);">R$ 712.986</td><td style="background:hsl(61,58%,24%);">R$ 508.349</td><td style="background:hsl(43,58%,24%);">R$ 362.446</td><td style="background:hsl(31,58%,24%);">R$ 258.419</td><td style="background:hsl(22,58%,24%);">R$ 184.249</td><td style="background:hsl(16,58%,24%);">R$ 131.367</td><td style="background:hsl(8,58%,24%);">R$ 66.780</td></tr>
+        <tr><td class="infl-label">8%</td><td style="background:hsl(111,58%,24%);">R$ 925.926</td><td style="background:hsl(82,58%,24%);">R$ 680.583</td><td style="background:hsl(56,58%,24%);">R$ 463.193</td><td style="background:hsl(38,58%,24%);">R$ 315.242</td><td style="background:hsl(26,58%,24%);">R$ 214.548</td><td style="background:hsl(18,58%,24%);">R$ 146.018</td><td style="background:hsl(12,58%,24%);">R$ 99.377</td><td style="background:hsl(6,58%,24%);">R$ 46.031</td></tr>
+        <tr><td class="infl-label">9%</td><td style="background:hsl(110,58%,24%);">R$ 917.431</td><td style="background:hsl(78,58%,24%);">R$ 649.931</td><td style="background:hsl(51,58%,24%);">R$ 422.411</td><td style="background:hsl(33,58%,24%);">R$ 274.538</td><td style="background:hsl(21,58%,24%);">R$ 178.431</td><td style="background:hsl(14,58%,24%);">R$ 115.968</td><td style="background:hsl(9,58%,24%);">R$ 75.371</td><td style="background:hsl(4,58%,24%);">R$ 31.838</td></tr>
+        <tr><td class="infl-label">10%</td><td style="background:hsl(109,58%,24%);">R$ 909.091</td><td style="background:hsl(75,58%,24%);">R$ 620.921</td><td style="background:hsl(46,58%,24%);">R$ 385.543</td><td style="background:hsl(29,58%,24%);">R$ 239.392</td><td style="background:hsl(18,58%,24%);">R$ 148.644</td><td style="background:hsl(11,58%,24%);">R$ 92.296</td><td style="background:hsl(7,58%,24%);">R$ 57.309</td><td style="background:hsl(3,58%,24%);">R$ 22.095</td></tr>
+      </table>
+    </div>
+    <div class="heatmap-legend">Poder de compra: <div class="heatmap-bar"></div> baixo → alto</div>
+    <div class="grafico-nota">Poder de compra futuro = R$ 1.000.000 ÷ (1 + inflação)^tempo. Linha destacada: cenário de 6% a.a., próximo da média histórica brasileira desde o Plano Real.</div>
+  </div>
+
+  <!-- SEÇÃO 2: HISTÓRICO -->
+  <div class="section-title fade-in"><span class="section-icon">🇧🇷</span> E os 6% ao ano são uma hipótese razoável para o Brasil?</div>
+
+  <p>Os dados oficiais do IBGE mostram que, entre 1996 e 2025, o IPCA apresentou anos muito diferentes: 9,56% em 1996, 12,53% em 2002, 10,67% em 2015 e 10,06% em 2021, mas também períodos de inflação muito mais baixa, como 1,65% em 1998 e 2,95% em 2017.</p>
+
+  <div class="stat-hero fade-in">
+    <div class="stat-card dourado">
+      <div class="stat-card-val">5,95x</div>
+      <div class="stat-card-desc">o nível de preços de 1996, ao compor o IPCA acumulado até 2025</div>
+    </div>
+    <div class="stat-card neutro">
+      <div class="stat-card-val">6,12%</div>
+      <div class="stat-card-desc">taxa composta anual equivalente — muito próxima do exemplo de 6% da tabela</div>
+    </div>
+  </div>
+
+  <p>Em outras palavras, o exemplo dos 6% não é apenas uma simulação abstrata: é surpreendentemente próximo da experiência brasileira dos últimos 30 anos. Um bem ou cesta que custasse aproximadamente R$ 168 mil em 1996 precisaria de cerca de R$ 1 milhão ao final de 2025 para manter aproximadamente o mesmo poder de compra — tomando o IPCA como referência.</p>
+
+  <!-- SEÇÃO 3: NOMINAL VS REAL -->
+  <div class="section-title fade-in"><span class="section-icon">⚖️</span> O patrimônio nominal pode crescer enquanto o patrimônio real diminui</div>
+
+  <p>Imagine três investimentos de R$ 1 milhão durante um ano em que a inflação seja de 6%:</p>
+
+  <div class="invest-grid fade-in">
+    <div class="invest-card">
+      <div class="invest-nome">Investimento A · 0%</div>
+      <div class="invest-nominal">R$ 1.000.000</div>
+      <div class="invest-real neg">real: −5,7%</div>
+    </div>
+    <div class="invest-card">
+      <div class="invest-nome">Investimento B · 4%</div>
+      <div class="invest-nominal">R$ 1.040.000</div>
+      <div class="invest-real neg">real: −1,9%</div>
+    </div>
+    <div class="invest-card">
+      <div class="invest-nome">Investimento C · 10%</div>
+      <div class="invest-nominal">R$ 1.100.000</div>
+      <div class="invest-real pos">real: +3,8%</div>
+    </div>
+  </div>
+
+  <p>À primeira vista, até o investimento B "ganhou dinheiro". Economicamente, porém, ele perdeu poder de compra. A medida correta é a rentabilidade real:</p>
+
+  <div class="formula-box fade-in">
+    <div class="formula">Rentabilidade real = (1 + retorno nominal) ÷ (1 + inflação) − 1</div>
+  </div>
+
+  <p>O patrimônio aumentou no extrato e diminuiu no mundo real. Esse fenômeno ajuda a explicar por que a rentabilidade nominal isoladamente diz muito pouco sobre a evolução da riqueza de uma família.</p>
+
+  <!-- SEÇÃO 4: HOJE -->
+  <div class="section-title fade-in"><span class="section-icon">🎯</span> O desafio hoje é diferente do passado — mas não desapareceu</div>
+
+  <p>Desde janeiro de 2025, o Brasil trabalha com uma meta contínua de IPCA de 3% ao ano, com intervalo de tolerância entre 1,5% e 4,5%. Em agosto de 2026, o IPCA acumulado em 12 meses estava em <strong>4,22%</strong>. O Copom afirmou em setembro que a inflação vinha desacelerando e estava abaixo do teto do intervalo, embora ainda permanecesse acima da meta.</p>
+
+  <div class="stat-hero fade-in">
+    <div class="stat-card neutro">
+      <div class="stat-card-val">3,0%</div>
+      <div class="stat-card-desc">meta contínua de IPCA desde jan/2025 (intervalo 1,5% a 4,5%)</div>
+    </div>
+    <div class="stat-card dourado">
+      <div class="stat-card-val">4,22%</div>
+      <div class="stat-card-desc">IPCA acumulado em 12 meses até agosto de 2026</div>
+    </div>
+    <div class="stat-card neg">
+      <div class="stat-card-val">−59%</div>
+      <div class="stat-card-desc">poder de compra perdido em 30 anos, mesmo com inflação de apenas 3% a.a.</div>
+    </div>
+  </div>
+
+  <p>Mesmo inflação baixa exige planejamento patrimonial de longo prazo.</p>
+
+  <!-- SEÇÃO 5: BENCHMARK -->
+  <div class="section-title fade-in"><span class="section-icon">🧭</span> O verdadeiro benchmark de uma família</div>
+
+  <p>O primeiro objetivo de uma carteira de longo prazo não deveria ser simplesmente "render mais que o CDI". Antes disso, existe uma pergunta mais fundamental: <strong>o patrimônio está aumentando seu poder de compra ao longo do tempo?</strong> Isso significa separar pelo menos três camadas — e uma quarta, frequentemente esquecida:</p>
+
+  <div class="camadas-flow fade-in">
+    <div class="camada-box">Retorno nominal</div>
+    <div class="camada-seta">→</div>
+    <div class="camada-box">Inflação</div>
+    <div class="camada-seta">→</div>
+    <div class="camada-box">Impostos e custos</div>
+    <div class="camada-seta">→</div>
+    <div class="camada-box destaque">Retorno real líquido</div>
+  </div>
+
+  <p>Se uma aplicação rende 8%, a inflação é 5%, mas impostos e custos consomem 1,5 ponto percentual, o crescimento econômico efetivo do patrimônio é muito menor do que os 8% observados inicialmente. Famílias com horizontes de décadas deveriam prestar especial atenção à rentabilidade real líquida de impostos e custos.</p>
+
+  <!-- SEÇÃO 6: IPCA É MÉDIA -->
+  <div class="section-title fade-in"><span class="section-icon">🔎</span> IPCA é uma média — sua inflação pode ser diferente</div>
+
+  <p>O IPCA acompanha uma cesta representativa de consumo definida pelo IBGE, ponderando alimentação, habitação, transportes, saúde, educação e diversas outras categorias. Uma família que destina parcela proporcionalmente maior de seus gastos para educação privada, saúde, viagens internacionais, imóveis, serviços pessoais ou consumo dolarizado pode experimentar uma inflação patrimonial bastante diferente do índice oficial.</p>
+
+  <div class="insight-box fade-in">
+    <p>Proteger uma família contra inflação não significa necessariamente montar uma carteira que apenas acompanhe o IPCA. Para determinados patrimônios, faz sentido pensar também em <strong>inflação de estilo de vida</strong>, inflação de ativos e exposição cambial.</p>
+  </div>
+
+  <!-- SEÇÃO 7: ESTRATÉGIA -->
+  <div class="section-title fade-in"><span class="section-icon">🧱</span> Como transformar o conceito em estratégia de investimento</div>
+
+  <p>A proteção tende a ser mais robusta quando vem de diferentes fontes:</p>
+
+  <div class="fatores-grid fade-in">
+    <div class="fator-tag">Títulos ligados à inflação, para uma taxa real contratada</div>
+    <div class="fator-tag">Renda variável, para participar do crescimento dos lucros das empresas</div>
+    <div class="fator-tag">Ativos internacionais, para reduzir a dependência do real</div>
+    <div class="fator-tag">Imóveis e ativos reais, em determinadas situações</div>
+    <div class="fator-tag">Liquidez suficiente, para evitar vender investimentos de longo prazo em momentos desfavoráveis</div>
+  </div>
+
+  <div class="warn-box fade-in">
+    <p>Mesmo um Tesouro IPCA+ exige atenção ao horizonte: o título sofre marcação a mercado antes do vencimento, e mudanças nas taxas de juros podem fazer seu preço subir ou cair significativamente. Mantido até o vencimento, entrega a remuneração contratada na aquisição; se vendido antecipadamente, o resultado dependerá do preço de mercado naquele momento. Proteção contra inflação não significa ausência de risco — significa organizar os riscos de acordo com o horizonte e os objetivos do patrimônio.</p>
+  </div>
+
+  <!-- SEÇÃO 8: RISCO INVISÍVEL -->
+  <div class="section-title fade-in"><span class="section-icon">👁️</span> O risco que aparece e o risco que não aparece</div>
+
+  <p>Uma queda de 15% na Bolsa chama atenção imediatamente. A inflação é diferente: não existe uma linha vermelha no extrato mostrando "você perdeu R$ 50 mil de poder de compra este ano". O saldo permanece positivo, o dinheiro continua na conta e, em muitos casos, até cresce nominalmente. É justamente essa invisibilidade que torna a inflação particularmente perigosa para horizontes patrimoniais longos — uma família pode evitar volatilidade durante décadas e, ao mesmo tempo, assumir um risco muito maior: <strong>o de preservar o número e perder aquilo que o número representa.</strong></p>
+
+  <div class="conclusao fade-in">
+    Entre 1996 e 2025, a experiência do IPCA foi muito próxima de uma inflação composta de 6% ao ano. Nesse ritmo, R$ 1 milhão mantido sem remuneração durante três décadas preservaria apenas cerca de 17% de seu poder de compra original. Por isso, preservar patrimônio não significa simplesmente evitar perdas nominais — significa buscar, ao longo dos ciclos econômicos, <strong>crescimento real do patrimônio depois da inflação, dos impostos e dos custos</strong>, compatível com os objetivos, o horizonte e a necessidade de liquidez de cada família. No longo prazo, o verdadeiro objetivo não é preservar reais. É preservar — e idealmente ampliar — aquilo que esses reais conseguem comprar.
+  </div>
+
+</article>
+
+<footer>
+  <div class="footer-name">Fábio Vogelaar Carlucci</div>
+  <div class="footer-contact">+55 (16) 98148-8260<br><a href="mailto:fabio.carlucci@ficus.capital">fabio.carlucci@ficus.capital</a></div>
+</footer>
+<div style="position:relative;z-index:1;padding:0 8% 28px;text-align:center;font-size:0.65rem;color:rgba(245,237,224,0.2);letter-spacing:0.08em;">
+  Fontes: IBGE — Sistema Nacional de Índices de Preços ao Consumidor (IPCA); Banco Central do Brasil — Copom<br>
+  Conteúdo exclusivamente informativo e educacional. Não constitui recomendação de investimento.
+</div>
+
+<script>
+const faders = document.querySelectorAll(".fade-in");
+const obs = new IntersectionObserver(e => e.forEach(x => { if(x.isIntersecting){ x.target.classList.add("visible"); obs.unobserve(x.target); } }), { threshold: 0.1 });
+faders.forEach(f => obs.observe(f));
+</script>
+</body>
+</html>
