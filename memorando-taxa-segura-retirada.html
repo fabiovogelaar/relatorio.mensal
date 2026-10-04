@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Taxa segura de retirada: quanto do patrimônio pode virar renda? | Fábio Carlucci</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DBQSDSDRF3"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-DBQSDSDRF3");</script>
+<style>
+  :root {
+    --verde-escuro: #1a2e25;
+    --dourado: #c9a84c;
+    --dourado-claro: #e2c47a;
+    --creme: #f5ede0;
+    --texto-claro: rgba(245,237,224,0.85);
+    --texto-muted: rgba(245,237,224,0.45);
+    --azul: #4a90d9;
+    --verde-gain: #3dbf8a;
+    --vermelho: #c94545;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { background-color: var(--verde-escuro); color: var(--creme); font-family: "Jost", sans-serif; font-weight: 300; overflow-x: hidden; }
+  body::before {
+    content: ""; position: fixed; inset: 0;
+    background-image: radial-gradient(ellipse at 10% 10%, rgba(201,168,76,0.06) 0%, transparent 55%), radial-gradient(ellipse at 90% 90%, rgba(47,82,64,0.35) 0%, transparent 55%);
+    pointer-events: none; z-index: 0;
+  }
+  .back-link { position: relative; z-index: 10; display: inline-flex; align-items: center; gap: 8px; padding: 28px 8%; font-size: 0.7rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--texto-muted); text-decoration: none; transition: color 0.2s; }
+  .back-link:hover { color: var(--dourado); }
+  .back-link::before { content: "←"; font-size: 0.9rem; }
+
+  .hero { position: relative; z-index: 1; padding: 20px 8% 56px; max-width: 800px; margin: 0 auto; text-align: center; border-bottom: 1px solid rgba(201,168,76,0.15); }
+  .hero-tag { font-size: 0.65rem; font-weight: 500; letter-spacing: 0.35em; text-transform: uppercase; color: var(--dourado); display: flex; align-items: center; justify-content: center; gap: 12px; margin-bottom: 24px; opacity: 0; animation: fadeUp 0.7s ease 0.1s forwards; }
+  .hero-tag::before, .hero-tag::after { content: ""; width: 26px; height: 1px; background: var(--dourado); }
+  h1 { font-family: "Cormorant Garamond", serif; font-size: clamp(1.9rem, 4.6vw, 3rem); font-weight: 300; line-height: 1.2; color: var(--creme); opacity: 0; animation: fadeUp 0.7s ease 0.2s forwards; }
+  h1 em { font-style: italic; color: var(--dourado-claro); }
+  .hero-sub { font-size: 1rem; color: var(--texto-muted); line-height: 1.75; margin: 18px auto 0; max-width: 620px; opacity: 0; animation: fadeUp 0.7s ease 0.35s forwards; }
+  .hero-date { font-size: 0.72rem; letter-spacing: 0.15em; color: var(--texto-muted); margin-top: 22px; opacity: 0; animation: fadeUp 0.7s ease 0.45s forwards; }
+  .hero-fonte { margin-top: 10px; font-size: 0.7rem; color: rgba(245,237,224,0.3); opacity: 0; animation: fadeUp 0.7s ease 0.55s forwards; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+
+  article { position: relative; z-index: 1; max-width: 800px; margin: 0 auto; padding: 56px 8% 88px; }
+  .lead { font-family: "Cormorant Garamond", serif; font-size: clamp(1.1rem, 2.5vw, 1.35rem); font-weight: 400; line-height: 1.8; color: var(--creme); margin-bottom: 48px; padding-bottom: 48px; border-bottom: 1px solid rgba(201,168,76,0.15); }
+  p { font-size: 0.97rem; line-height: 1.9; color: var(--texto-claro); margin-bottom: 24px; }
+  strong { font-weight: 600; color: var(--creme); }
+  .section-title { font-family: "Cormorant Garamond", serif; font-size: 1.45rem; font-weight: 600; color: var(--dourado-claro); margin: 54px 0 18px; padding-top: 42px; border-top: 1px solid rgba(201,168,76,0.12); display: flex; align-items: center; gap: 14px; }
+  .section-icon { font-size: 1.25rem; flex-shrink: 0; }
+
+  .stat-mega { text-align: center; margin: 32px 0; padding: 30px 20px; background: linear-gradient(135deg, rgba(201,168,76,0.12) 0%, rgba(47,82,64,0.4) 100%); border: 1px solid rgba(201,168,76,0.28); border-radius: 10px; }
+  .stat-mega-val { font-family: "Cormorant Garamond", serif; font-size: 2.6rem; font-weight: 700; color: var(--dourado); line-height: 1; }
+  .stat-mega-label { font-size: 0.85rem; color: var(--texto-claro); margin-top: 10px; line-height: 1.6; }
+
+  .stat-hero { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; margin: 32px 0; }
+  @media (max-width: 560px) { .stat-hero { grid-template-columns: 1fr; } }
+  .stat-card { border-radius: 8px; padding: 22px 16px; text-align: center; }
+  .stat-card.dourado { background: linear-gradient(135deg, rgba(201,168,76,0.14) 0%, rgba(47,82,64,0.4) 100%); border: 1px solid rgba(201,168,76,0.3); }
+  .stat-card.neutro { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); }
+  .stat-card-val { font-family: "Cormorant Garamond", serif; font-size: 1.9rem; font-weight: 700; line-height: 1; margin-bottom: 8px; }
+  .stat-card.dourado .stat-card-val { color: var(--dourado); }
+  .stat-card.neutro .stat-card-val { color: var(--texto-claro); }
+  .stat-card-desc { font-size: 0.75rem; color: var(--texto-muted); line-height: 1.5; }
+
+  .grafico-wrap { background: rgba(10,20,16,0.7); border: 1px solid rgba(255,255,255,0.07); border-radius: 8px; padding: 24px 20px 16px; margin: 32px 0; }
+  .grafico-titulo { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--dourado); margin-bottom: 4px; }
+  .grafico-sub { font-size: 0.72rem; color: var(--texto-muted); margin-bottom: 16px; }
+  .grafico-nota { font-size: 0.65rem; color: rgba(245,237,224,0.25); margin-top: 12px; line-height: 1.4; }
+  .heatmap-wrap { overflow-x: auto; }
+  .heatmap-table { border-collapse: collapse; width: 100%; min-width: 560px; font-size: 0.78rem; }
+  .heatmap-table th { padding: 9px 10px; text-align: left; font-size: 0.62rem; font-weight: 600; letter-spacing: 0.04em; color: var(--texto-muted); text-transform: uppercase; border-bottom: 1px solid rgba(255,255,255,0.15); }
+  .heatmap-table td { padding: 9px 10px; text-align: left; color: var(--creme); font-weight: 500; white-space: nowrap; }
+  .heatmap-table .taxa-label { background: rgba(0,0,0,0.4); font-weight: 700; color: var(--dourado-claro); }
+
+  /* RENDA MENSAL BARS */
+  .renda-bars { display: flex; flex-direction: column; gap: 6px; margin: 20px 0; }
+  .renda-row { display: flex; align-items: center; gap: 10px; }
+  .renda-tag { flex: 0 0 40px; font-size: 0.72rem; color: var(--texto-muted); font-weight: 600; }
+  .renda-track { flex: 1; height: 18px; background: rgba(255,255,255,0.05); border-radius: 3px; overflow: hidden; }
+  .renda-fill { height: 100%; background: linear-gradient(90deg, var(--dourado), var(--dourado-claro)); display: flex; align-items: center; padding-right: 8px; justify-content: flex-end; }
+  .renda-val { font-size: 0.65rem; font-weight: 700; color: var(--verde-escuro); }
+
+  .fatores-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin: 24px 0; }
+  @media (max-width: 500px) { .fatores-grid { grid-template-columns: 1fr; } }
+  .fator-tag { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 14px 15px; font-size: 0.82rem; color: var(--texto-claro); display: flex; align-items: flex-start; gap: 8px; }
+  .fator-tag::before { content: "▸"; color: var(--dourado); flex-shrink: 0; }
+
+  .insight-box { background: linear-gradient(135deg, rgba(201,168,76,0.1) 0%, rgba(26,46,37,0.4) 100%); border: 1px solid rgba(201,168,76,0.25); border-left: 3px solid var(--dourado); border-radius: 4px; padding: 26px 30px; margin: 34px 0; }
+  .insight-box p { font-family: "Cormorant Garamond", serif; font-size: 1.08rem; color: var(--creme); line-height: 1.8; margin: 0; }
+  .warn-box { background: linear-gradient(135deg, rgba(201,69,69,0.08) 0%, rgba(26,46,37,0.4) 100%); border: 1px solid rgba(201,69,69,0.22); border-left: 3px solid #c94545; border-radius: 4px; padding: 22px 26px; margin: 30px 0; }
+  .warn-box p { font-size: 0.88rem; color: var(--texto-claro); margin: 0; line-height: 1.7; }
+
+  .conclusao { font-family: "Cormorant Garamond", serif; font-size: 1.1rem; font-weight: 400; line-height: 1.85; color: var(--creme); margin-top: 48px; padding: 38px; border: 1px solid rgba(201,168,76,0.2); border-radius: 6px; background: rgba(255,255,255,0.02); position: relative; }
+  .conclusao::before { content: "\201C"; position: absolute; top: -10px; left: 32px; font-size: 5rem; color: rgba(201,168,76,0.15); font-family: "Cormorant Garamond", serif; line-height: 1; }
+
+  .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .fade-in.visible { opacity: 1; transform: none; }
+  footer { position: relative; z-index: 1; border-top: 1px solid rgba(201,168,76,0.12); padding: 40px 8%; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+  .footer-name { font-family: "Cormorant Garamond", serif; font-size: 1.1rem; font-weight: 300; color: var(--texto-muted); }
+  .footer-contact { font-size: 0.75rem; color: rgba(245,237,224,0.25); line-height: 1.9; text-align: right; }
+  .footer-contact a { color: var(--dourado); text-decoration: none; }
+  @media (max-width: 640px) { .back-link,.hero { padding-left: 5%; padding-right: 5%; } article { padding: 48px 5% 64px; } footer { padding: 32px 5%; flex-direction: column; } .footer-contact { text-align: left; } }
+</style>
+</head>
+<body>
+
+<a class="back-link" href="index.html">Voltar</a>
+
+<header class="hero">
+  <div class="hero-tag">Artigo · Planejamento de Aposentadoria</div>
+  <h1>Taxa segura de retirada: quanto do patrimônio<br>pode virar <em>renda</em> sem comprometer o futuro?</h1>
+  <p class="hero-sub">Uma pessoa chega à aposentadoria com R$ 5 milhões investidos. Quanto ela poderia retirar todos os meses? A resposta não está na rentabilidade média da carteira.</p>
+  <div class="hero-date">Outubro de 2026</div>
+  <div class="hero-fonte">Fontes: William Bengen; Morningstar — State of Retirement Income; Vanguard</div>
+</header>
+
+<article>
+
+  <p class="lead">
+    Se os investimentos "rendem 1% ao mês", poderíamos concluir que uma retirada de R$ 50 mil mensais sobre R$ 5 milhões seria sustentável. O problema é que rentabilidade média e renda sustentável são conceitos completamente diferentes. Para responder a essa questão existe um dos campos mais estudados do planejamento de aposentadoria: a <strong>taxa segura de retirada</strong> (safe withdrawal rate).
+  </p>
+
+  <div class="stat-mega fade-in">
+    <div class="stat-mega-val">R$ 14,8 milhões</div>
+    <div class="stat-mega-label">é o valor que R$ 5 milhões de 2006 precisariam valer hoje apenas para preservar o mesmo poder de compra</div>
+  </div>
+
+  <!-- SEÇÃO 1 -->
+  <div class="section-title fade-in"><span class="section-icon">🧭</span> O que é a taxa segura de retirada?</div>
+
+  <p>Em vez de perguntar "quanto minha carteira rende por mês?", a pergunta passa a ser: <strong>quanto posso retirar do patrimônio, de forma recorrente e corrigida pela inflação, sem assumir um risco excessivo de ficar sem dinheiro ao longo da aposentadoria?</strong> Um dos trabalhos que popularizaram o conceito foi publicado em 1994 pelo planejador financeiro William Bengen, que analisou períodos históricos do mercado americano e identificou quanto um aposentado poderia retirar de uma carteira de ações e títulos sem esgotá-la durante 30 anos — a origem da conhecida <strong>"regra dos 4%"</strong>: retirar aproximadamente 4% do patrimônio no primeiro ano e, nos anos seguintes, corrigir esse valor pela inflação.</p>
+
+  <!-- SEÇÃO 2: TABELA -->
+  <div class="section-title fade-in"><span class="section-icon">📊</span> O que acontece quando aumentamos as retiradas?</div>
+
+  <p>Uma simulação com carteira global diversificada 50/50, partindo de um investidor que se aposentou em 2006 com R$ 5 milhões, compara retiradas iniciais entre 4% e 12% ao ano, corrigidas pela inflação a partir de então:</p>
+
+  <div class="grafico-wrap fade-in">
+    <div class="grafico-titulo">Resultado após 20 anos de retiradas</div>
+    <div class="grafico-sub">Patrimônio inicial de R$ 5 milhões em 2006, carteira global diversificada 50/50</div>
+    <div class="heatmap-wrap">
+      <table class="heatmap-table">
+        <tr><th>Taxa de retirada</th><th>Renda mensal inicial</th><th>Renda mensal final</th><th>Patrimônio hoje</th><th>Esgotado em</th></tr>
+        <tr><td class="taxa-label">4%</td><td>R$ 16.667</td><td>R$ 47.302</td><td style="background:hsl(120,45%,22%);">R$ 42.211.804</td><td style="color:#3dbf8a;">Não esgotou</td></tr>
+        <tr><td class="taxa-label">5%</td><td>R$ 20.833</td><td>R$ 59.127</td><td style="background:hsl(114,45%,22%);">R$ 33.765.447</td><td style="color:#3dbf8a;">Não esgotou</td></tr>
+        <tr><td class="taxa-label">6%</td><td>R$ 25.000</td><td>R$ 70.953</td><td style="background:hsl(108,45%,22%);">R$ 25.319.091</td><td style="color:#3dbf8a;">Não esgotou</td></tr>
+        <tr><td class="taxa-label">7%</td><td>R$ 29.167</td><td>R$ 82.778</td><td style="background:hsl(102,45%,22%);">R$ 16.872.735</td><td style="color:#3dbf8a;">Não esgotou</td></tr>
+        <tr><td class="taxa-label">8%</td><td>R$ 33.333</td><td>R$ 94.603</td><td style="background:hsl(96,45%,22%);">R$ 8.426.378</td><td style="color:#3dbf8a;">Não esgotou</td></tr>
+        <tr><td class="taxa-label">9%</td><td>R$ 37.500</td><td>R$ 106.429</td><td style="background:hsl(15,50%,24%);">—</td><td style="color:#e07070;">ago-26</td></tr>
+        <tr><td class="taxa-label">10%</td><td>R$ 41.667</td><td>R$ 118.254</td><td style="background:hsl(8,50%,24%);">—</td><td style="color:#e07070;">fev-22</td></tr>
+        <tr><td class="taxa-label">11%</td><td>R$ 45.833</td><td>R$ 130.080</td><td style="background:hsl(3,50%,24%);">—</td><td style="color:#e07070;">mar-19</td></tr>
+        <tr><td class="taxa-label">12%</td><td>R$ 50.000</td><td>R$ 141.905</td><td style="background:hsl(0,50%,24%);">—</td><td style="color:#e07070;">jul-17</td></tr>
+      </table>
+    </div>
+    <div class="grafico-nota">Simulação ilustrativa: retiradas entre 4% e 8% ainda deixariam patrimônio após 20 anos; a partir de 9%, o capital teria sido consumido antes do final do período.</div>
+  </div>
+
+  <div class="warn-box fade-in">
+    <p>"O dinheiro não acabou em 20 anos" não significa necessariamente que aquela seja uma taxa segura para uma aposentadoria inteira. Uma pessoa que se aposenta aos 60 anos pode precisar financiar 30 ou 35 anos de despesas — e quanto maior o horizonte, menor tende a ser a retirada sustentável.</p>
+  </div>
+
+  <!-- SEÇÃO 3: HORIZONTE -->
+  <div class="section-title fade-in"><span class="section-icon">⏳</span> O horizonte muda tudo</div>
+
+  <p>Pesquisas recentes da Morningstar ilustram exatamente isso. No modelo mais recente da instituição, a taxa inicial segura muda conforme o horizonte de aposentadoria considerado:</p>
+
+  <div class="stat-hero fade-in">
+    <div class="stat-card dourado">
+      <div class="stat-card-val">3,9%</div>
+      <div class="stat-card-desc">horizonte de 30 anos, 90% de probabilidade de sucesso</div>
+    </div>
+    <div class="stat-card neutro">
+      <div class="stat-card-val">3,5%</div>
+      <div class="stat-card-desc">horizonte de 35 anos</div>
+    </div>
+    <div class="stat-card neutro">
+      <div class="stat-card-val">3,3%</div>
+      <div class="stat-card-desc">horizonte de 40 anos</div>
+    </div>
+  </div>
+
+  <p>O estudo considera premissas específicas de carteira e mercado — esses percentuais não devem ser tratados como universais, mas como referência de como o horizonte afeta diretamente quanto se pode retirar com segurança.</p>
+
+  <!-- SEÇÃO 4: SEQUÊNCIA -->
+  <div class="section-title fade-in"><span class="section-icon">🔀</span> O grande inimigo: a sequência dos retornos</div>
+
+  <p>Duas pessoas com o mesmo patrimônio e a mesma rentabilidade média ao longo de décadas podem terminar em situações completamente diferentes. A razão está na ordem em que os retornos acontecem: se os primeiros anos da aposentadoria coincidem com uma queda de mercado, a pessoa continua pagando despesas e vendendo ativos justamente quando estão depreciados — e quando o mercado se recupera, existem menos ativos na carteira participando dessa recuperação. É o chamado <strong>risco de sequência de retornos</strong>, e ele é mais perigoso justamente na fase de retirada do que na fase de acumulação.</p>
+
+  <!-- SEÇÃO 5: NÃO É LEI -->
+  <div class="section-title fade-in"><span class="section-icon">⚖️</span> A regra dos 4% não é uma lei</div>
+
+  <p>O próprio conceito surgiu de um conjunto específico de premissas históricas e de mercado. Desde então, novas pesquisas passaram a incorporar projeções futuras, diferentes alocações e estratégias flexíveis. Curiosamente, no modelo da Morningstar, as maiores taxas iniciais aparecem em carteiras com aproximadamente 30% a 50% de ações: mais ações aumentam o potencial de patrimônio futuro, mas também a volatilidade e o risco de sequência. <strong>4% é uma referência. Não uma prescrição.</strong></p>
+
+  <!-- SEÇÃO 6: PRESERVAR OU CONSUMIR -->
+  <div class="section-title fade-in"><span class="section-icon">🎯</span> Preservar ou consumir o patrimônio?</div>
+
+  <p>Duas famílias com exatamente R$ 10 milhões podem chegar a taxas de retirada completamente diferentes: uma pode querer aproveitar o patrimônio em vida, sem necessidade de deixar todo o capital para os herdeiros; outra pode querer viver da carteira e preservar o patrimônio real para filhos e netos. São objetivos distintos — e existe uma consequência interessante da abordagem conservadora: em muitos cenários históricos, quem utilizou uma retirada inicial próxima de 4% terminou a aposentadoria com patrimônio substancialmente maior do que o necessário, porque a regra precisa sobreviver aos cenários ruins, e quando os mercados são mais favoráveis, sobra capital.</p>
+
+  <!-- SEÇÃO 7: FLEXÍVEL -->
+  <div class="section-title fade-in"><span class="section-icon">🔧</span> Retiradas flexíveis podem ser melhores que uma regra rígida</div>
+
+  <p>Na vida real, poucas famílias retiram um valor fixo reajustado pela inflação independentemente do comportamento da carteira. Em um ano excelente para os mercados, pode ser razoável aumentar certos gastos; depois de uma crise severa, talvez seja possível adiar uma viagem ou a troca de um automóvel. Essa pequena flexibilidade pode melhorar significativamente a sustentabilidade do patrimônio, embora produza uma renda menos previsível.</p>
+
+  <!-- SEÇÃO 8: BRASIL -->
+  <div class="section-title fade-in"><span class="section-icon">🇧🇷</span> E no Brasil?</div>
+
+  <p>Grande parte da literatura clássica sobre taxa segura de retirada nasceu nos Estados Unidos. Um investidor brasileiro possui outras variáveis:</p>
+
+  <div class="fatores-grid fade-in">
+    <div class="fator-tag">Inflação brasileira e juros reais domésticos</div>
+    <div class="fator-tag">Tributação e câmbio</div>
+    <div class="fator-tag">Investimentos internacionais e previdência</div>
+    <div class="fator-tag">Imóveis, aluguéis e aposentadoria pública</div>
+  </div>
+
+  <p>Por isso, não se deveria simplesmente importar o número de 4% e tratá-lo como verdade universal. Uma carteira brasileira diversificada globalmente também pode ter despesas denominadas predominantemente em reais, enquanto parte do patrimônio e do retorno está em dólares — o casamento entre ativos, moeda e despesas futuras passa a ser outra dimensão do planejamento.</p>
+
+  <div class="insight-box fade-in">
+    <p>Uma análise adequada deveria considerar, pelo menos: patrimônio disponível, idade, horizonte esperado, composição da carteira, inflação, tributação, despesas, outras fontes de renda, tolerância a oscilações, flexibilidade de gastos e objetivo sucessório. Ferramentas como simulações históricas e Monte Carlo tornam-se muito mais úteis do que simplesmente assumir uma rentabilidade anual fixa.</p>
+  </div>
+
+  <!-- SEÇÃO 9: VIVER DE RENDA -->
+  <div class="section-title fade-in"><span class="section-icon">💡</span> O verdadeiro significado de viver de renda</div>
+
+  <p>Durante muito tempo, "viver de renda" foi associado a encontrar investimentos que pagassem juros, dividendos ou cupons suficientes para cobrir as despesas. O planejamento financeiro moderno permite uma interpretação melhor: não importa tanto se a renda veio de dividendos, juros, cupons ou da venda programada de uma pequena parcela dos ativos. <strong>O que importa é a capacidade do patrimônio total de financiar o consumo ao longo do tempo.</strong></p>
+
+  <div class="conclusao fade-in">
+    Talvez a pergunta mais importante para quem acumulou patrimônio não seja "quanto meu dinheiro rende por mês?", mas <strong>quanto do meu patrimônio posso transformar em qualidade de vida todos os anos sem comprometer minha segurança financeira no futuro?</strong> A resposta dificilmente será um número universal como "1% ao mês" — será um intervalo construído a partir do patrimônio, do horizonte, da carteira, da inflação, da sequência de retornos e, principalmente, dos objetivos daquela família. Acumular patrimônio é apenas a primeira parte do planejamento. A segunda é descobrir como utilizá-lo de maneira sustentável ao longo da vida.
+  </div>
+
+</article>
+
+<footer>
+  <div class="footer-name">Fábio Vogelaar Carlucci</div>
+  <div class="footer-contact">+55 (16) 98148-8260<br><a href="mailto:fabio.carlucci@ficus.capital">fabio.carlucci@ficus.capital</a></div>
+</footer>
+<div style="position:relative;z-index:1;padding:0 8% 28px;text-align:center;font-size:0.65rem;color:rgba(245,237,224,0.2);letter-spacing:0.08em;">
+  Fontes: William Bengen; Morningstar — State of Retirement Income; Vanguard<br>
+  Conteúdo exclusivamente informativo e educacional. Não constitui recomendação de investimento.
+</div>
+
+<script>
+const faders = document.querySelectorAll(".fade-in");
+const obs = new IntersectionObserver(e => e.forEach(x => { if(x.isIntersecting){ x.target.classList.add("visible"); obs.unobserve(x.target); } }), { threshold: 0.1 });
+faders.forEach(f => obs.observe(f));
+</script>
+</body>
+</html>
