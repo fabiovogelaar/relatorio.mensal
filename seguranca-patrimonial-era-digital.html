@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Segurança Patrimonial na Era Digital | Fábio Carlucci</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DBQSDSDRF3"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-DBQSDSDRF3");</script>
+<style>
+  :root {
+    --verde-escuro: #1a2e25;
+    --dourado: #c9a84c;
+    --dourado-claro: #e2c47a;
+    --creme: #f5ede0;
+    --texto-claro: rgba(245,237,224,0.85);
+    --texto-muted: rgba(245,237,224,0.45);
+    --azul: #4a90d9;
+    --verde-gain: #3dbf8a;
+    --vermelho: #c94545;
+    --laranja: #e07a35;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { background-color: var(--verde-escuro); color: var(--creme); font-family: "Jost", sans-serif; font-weight: 300; overflow-x: hidden; }
+  body::before {
+    content: ""; position: fixed; inset: 0;
+    background-image: radial-gradient(ellipse at 10% 10%, rgba(201,168,76,0.06) 0%, transparent 55%), radial-gradient(ellipse at 90% 90%, rgba(47,82,64,0.35) 0%, transparent 55%);
+    pointer-events: none; z-index: 0;
+  }
+  .back-link { position: relative; z-index: 10; display: inline-flex; align-items: center; gap: 8px; padding: 28px 8%; font-size: 0.7rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--texto-muted); text-decoration: none; transition: color 0.2s; }
+  .back-link:hover { color: var(--dourado); }
+  .back-link::before { content: "←"; font-size: 0.9rem; }
+  .hero { position: relative; z-index: 1; padding: 20px 8% 64px; max-width: 900px; border-bottom: 1px solid rgba(201,168,76,0.15); }
+  .hero-tag { font-size: 0.65rem; font-weight: 500; letter-spacing: 0.35em; text-transform: uppercase; color: var(--dourado); display: flex; align-items: center; gap: 12px; margin-bottom: 24px; opacity: 0; animation: fadeUp 0.7s ease 0.1s forwards; }
+  .hero-tag::before { content: ""; width: 30px; height: 1px; background: var(--dourado); }
+  h1 { font-family: "Cormorant Garamond", serif; font-size: clamp(2rem, 5vw, 3.6rem); font-weight: 300; line-height: 1.15; color: var(--creme); opacity: 0; animation: fadeUp 0.7s ease 0.2s forwards; }
+  h1 em { font-style: italic; color: var(--dourado-claro); }
+  .hero-sub { font-size: 0.97rem; color: var(--texto-muted); line-height: 1.75; margin-top: 16px; max-width: 640px; opacity: 0; animation: fadeUp 0.7s ease 0.35s forwards; }
+  .hero-fonte { margin-top: 14px; font-size: 0.7rem; color: rgba(245,237,224,0.3); opacity: 0; animation: fadeUp 0.7s ease 0.45s forwards; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+  article { position: relative; z-index: 1; max-width: 800px; margin: 0 auto; padding: 64px 8% 88px; }
+  .lead { font-family: "Cormorant Garamond", serif; font-size: clamp(1.1rem, 2.5vw, 1.35rem); font-weight: 400; line-height: 1.8; color: var(--creme); margin-bottom: 48px; padding-bottom: 48px; border-bottom: 1px solid rgba(201,168,76,0.15); }
+  p { font-size: 0.97rem; line-height: 1.9; color: var(--texto-claro); margin-bottom: 24px; }
+  strong { font-weight: 600; color: var(--creme); }
+  .section-title { font-family: "Cormorant Garamond", serif; font-size: 1.5rem; font-weight: 600; color: var(--dourado-claro); margin: 56px 0 18px; padding-top: 44px; border-top: 1px solid rgba(201,168,76,0.12); display: flex; align-items: center; gap: 14px; }
+  .section-icon { font-size: 1.3rem; flex-shrink: 0; }
+
+  .fatores-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin: 24px 0; }
+  @media (max-width: 500px) { .fatores-grid { grid-template-columns: 1fr; } }
+  .fator-tag { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 13px 14px; font-size: 0.85rem; color: var(--texto-claro); display: flex; align-items: center; gap: 8px; }
+  .fator-tag::before { content: "🔑"; flex-shrink: 0; font-size: 0.9rem; }
+
+  .item-card { border-radius: 8px; padding: 24px 24px; margin: 24px 0; }
+  .item-card.n1 { background: rgba(201,168,76,0.08); border: 1px solid rgba(201,168,76,0.22); }
+  .item-card.n2 { background: rgba(224,122,53,0.07); border: 1px solid rgba(224,122,53,0.18); }
+  .item-header { display: flex; align-items: center; gap: 14px; margin-bottom: 12px; }
+  .item-icon { font-size: 1.5rem; flex-shrink: 0; }
+  .item-titulo { font-family: "Cormorant Garamond", serif; font-size: 1.2rem; font-weight: 600; color: var(--creme); }
+  .item-desc { font-size: 0.9rem; color: var(--texto-claro); line-height: 1.75; }
+  .item-tip { margin-top: 14px; padding: 14px 16px; background: rgba(0,0,0,0.15); border-left: 2px solid rgba(201,168,76,0.4); border-radius: 2px; font-size: 0.84rem; color: var(--texto-claro); line-height: 1.7; }
+  .item-tip strong { color: var(--dourado); }
+  .item-tip ul { margin: 6px 0 0 18px; padding: 0; }
+  .item-tip li { margin-bottom: 4px; }
+
+  .prep-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 24px 0; }
+  @media (max-width: 500px) { .prep-grid { grid-template-columns: 1fr; } }
+  .prep-item { background: rgba(61,191,138,0.06); border: 1px solid rgba(61,191,138,0.18); border-radius: 6px; padding: 13px 14px; font-size: 0.85rem; color: var(--texto-claro); display: flex; align-items: center; gap: 10px; }
+  .prep-item::before { content: "✓"; color: var(--verde-gain); font-weight: 700; flex-shrink: 0; }
+
+  .timeline-wrap { margin: 32px 0 20px; }
+  .timeline-stage { position: relative; padding-left: 38px; padding-bottom: 30px; border-left: 2px solid rgba(201,168,76,0.25); }
+  .timeline-stage:last-child { border-left: 2px solid transparent; padding-bottom: 0; }
+  .timeline-dot { position: absolute; left: -10px; top: 0; width: 18px; height: 18px; border-radius: 50%; background: var(--dourado); border: 3px solid var(--verde-escuro); box-shadow: 0 0 0 1px rgba(201,168,76,0.3); }
+  .timeline-label { font-family: "Cormorant Garamond", serif; font-weight: 700; font-size: 1.15rem; color: var(--dourado-claro); margin-bottom: 10px; }
+  .timeline-list { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+  .timeline-list li { font-size: 0.86rem; color: var(--texto-claro); display: flex; gap: 8px; line-height: 1.5; }
+  .timeline-list li::before { content: "→"; color: var(--dourado); flex-shrink: 0; }
+  .timeline-note { font-size: 0.8rem; color: var(--dourado-claro); font-style: italic; margin-top: 8px; padding-left: 16px; }
+
+  .plano-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 24px 0; }
+  @media (max-width: 500px) { .plano-grid { grid-template-columns: 1fr; } }
+  .plano-item { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 13px 14px; font-size: 0.85rem; color: var(--texto-claro); display: flex; align-items: center; gap: 8px; }
+  .plano-item::before { content: "▸"; color: var(--dourado); flex-shrink: 0; }
+
+  .checkup-wrap { background: rgba(10,20,16,0.7); border: 1px solid rgba(255,255,255,0.07); border-radius: 8px; padding: 26px 26px; margin: 28px 0; }
+  .checkup-titulo { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--dourado); margin-bottom: 16px; }
+  .checkup-item { display: flex; align-items: flex-start; gap: 12px; padding: 9px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+  .checkup-item:last-child { border-bottom: none; }
+  .checkup-box { width: 16px; height: 16px; border: 1.5px solid var(--dourado); border-radius: 3px; flex-shrink: 0; margin-top: 2px; }
+  .checkup-texto { font-size: 0.86rem; color: var(--texto-claro); line-height: 1.5; }
+
+  .insight-box { background: linear-gradient(135deg, rgba(201,168,76,0.1) 0%, rgba(26,46,37,0.4) 100%); border: 1px solid rgba(201,168,76,0.25); border-left: 3px solid var(--dourado); border-radius: 4px; padding: 28px 32px; margin: 36px 0; }
+  .insight-box p { font-family: "Cormorant Garamond", serif; font-size: 1.1rem; color: var(--creme); line-height: 1.8; margin: 0; }
+
+  .conclusao { font-family: "Cormorant Garamond", serif; font-size: 1.15rem; font-weight: 400; line-height: 1.85; color: var(--creme); margin-top: 52px; padding: 40px; border: 1px solid rgba(201,168,76,0.2); border-radius: 6px; background: rgba(255,255,255,0.02); position: relative; }
+  .conclusao::before { content: "\201C"; position: absolute; top: -10px; left: 32px; font-size: 5rem; color: rgba(201,168,76,0.15); font-family: "Cormorant Garamond", serif; line-height: 1; }
+
+  .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .fade-in.visible { opacity: 1; transform: none; }
+  footer { position: relative; z-index: 1; border-top: 1px solid rgba(201,168,76,0.12); padding: 40px 8%; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+  .footer-name { font-family: "Cormorant Garamond", serif; font-size: 1.1rem; font-weight: 300; color: var(--texto-muted); }
+  .footer-contact { font-size: 0.75rem; color: rgba(245,237,224,0.25); line-height: 1.9; text-align: right; }
+  .footer-contact a { color: var(--dourado); text-decoration: none; }
+  @media (max-width: 640px) { .back-link,.hero { padding-left: 5%; padding-right: 5%; } article { padding: 48px 5% 64px; } footer { padding: 32px 5%; flex-direction: column; } .footer-contact { text-align: left; } }
+</style>
+</head>
+<body>
+
+<a class="back-link" href="index.html">Voltar</a>
+
+<header class="hero">
+  <div class="hero-tag">Segurança & Proteção Patrimonial</div>
+  <h1>Segurança Patrimonial<br>na <em>Era Digital</em></h1>
+  <p class="hero-sub">Como proteger seu patrimônio antes e depois de um incidente. Hoje, grande parte da nossa vida financeira está concentrada em um único dispositivo — e perder o controle dele pode significar perder, temporariamente, o controle sobre boa parte do seu patrimônio.</p>
+  <div class="hero-fonte">Fonte: Central de Segurança XP · Atendimento XP</div>
+</header>
+
+<article>
+
+  <p class="lead">
+    Durante muito tempo, proteger o patrimônio significava guardar documentos em cofres, contratar seguros e manter controles sobre bens físicos. Hoje, é no smartphone que acessamos bancos, corretoras, cartões de crédito, e-mails, aplicativos de autenticação e diversos outros serviços essenciais. Algumas medidas simples, adotadas <strong>antes</strong> e <strong>depois</strong> de um incidente, reduzem significativamente esse risco.
+  </p>
+
+  <div class="section-title fade-in"><span class="section-icon">🔐</span> Entenda quais são as "chaves" do seu patrimônio</div>
+
+  <p>Muitas pessoas acreditam que seu patrimônio está protegido apenas pela senha do banco ou da corretora. Na realidade, existem ativos digitais que funcionam como verdadeiras chaves de acesso às suas contas — se um criminoso assumir o controle de um deles, pode tentar recuperar senhas, interceptar códigos de autenticação ou acessar outros serviços:</p>
+
+  <div class="fatores-grid fade-in">
+    <div class="fator-tag">Seu e-mail principal</div>
+    <div class="fator-tag">Seu número de telefone</div>
+    <div class="fator-tag">Seu smartphone</div>
+    <div class="fator-tag">Conta Apple (Apple ID) ou Google</div>
+    <div class="fator-tag">Aplicativos autenticadores</div>
+    <div class="fator-tag">Aplicativos bancários e de investimentos</div>
+  </div>
+
+  <p>Proteger essas "chaves digitais" é tão importante quanto proteger o próprio patrimônio.</p>
+
+  <div class="item-card n1 fade-in">
+    <div class="item-header"><span class="item-icon">✉️</span><div class="item-titulo">Seu e-mail é provavelmente sua conta mais importante</div></div>
+    <div class="item-desc">O e-mail costuma ser utilizado como principal meio de recuperação de acesso para bancos, corretoras, redes sociais e diversos outros serviços. Quem controla seu e-mail pode, em muitos casos, redefinir senhas de outras contas — por isso, ele merece um nível de proteção ainda maior do que os próprios aplicativos financeiros.</div>
+    <div class="item-tip"><strong>Recomendações:</strong>
+      <ul>
+        <li>Utilizar uma senha exclusiva</li>
+        <li>Manter a autenticação em dois fatores ativada</li>
+        <li>Revisar periodicamente dispositivos conectados</li>
+        <li>Acompanhar alertas de novos acessos</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="item-card n2 fade-in">
+    <div class="item-header"><span class="item-icon">📱</span><div class="item-titulo">O número do celular também faz parte do seu patrimônio</div></div>
+    <div class="item-desc">O telefone deixou de ser apenas um meio de comunicação: hoje é usado para recuperação de senhas, recebimento de códigos por SMS, autenticação de operações, acesso ao WhatsApp e confirmação de identidade. Por isso, golpes como o <strong>SIM Swap</strong> — em que criminosos tentam obter uma segunda via do chip telefônico — podem representar riscos relevantes.</div>
+    <div class="item-tip"><strong>Fique atento:</strong> sempre que perceber perda de sinal inesperada e prolongada, especialmente sem motivo aparente, entre em contato imediatamente com sua operadora.</div>
+  </div>
+
+  <div class="section-title fade-in"><span class="section-icon">⚙️</span> Prepare-se antes que aconteça</div>
+
+  <p>Uma situação de emergência costuma gerar estresse e dificultar decisões. Por isso, algumas configurações devem ser realizadas antecipadamente. Verifique se seu aparelho possui:</p>
+
+  <div class="prep-grid fade-in">
+    <div class="prep-item">Localização remota ativada</div>
+    <div class="prep-item">Bloqueio remoto habilitado</div>
+    <div class="prep-item">Apagamento remoto configurado</div>
+    <div class="prep-item">Backup automático funcionando</div>
+    <div class="prep-item">Bloqueio por biometria ou senha forte</div>
+  </div>
+
+  <div class="section-title fade-in"><span class="section-icon">⏱️</span> O que fazer nas primeiras duas horas após o roubo do celular</div>
+
+  <p>Os primeiros minutos costumam ser decisivos para reduzir riscos:</p>
+
+  <div class="timeline-wrap fade-in">
+    <div class="timeline-stage">
+      <div class="timeline-dot"></div>
+      <div class="timeline-label">Nos primeiros 10 minutos</div>
+      <ul class="timeline-list">
+        <li>Tente localizar o aparelho</li>
+        <li>Bloqueie o dispositivo remotamente</li>
+        <li>Acione o apagamento remoto, se necessário</li>
+      </ul>
+    </div>
+    <div class="timeline-stage">
+      <div class="timeline-dot"></div>
+      <div class="timeline-label">Nos primeiros 30 minutos</div>
+      <ul class="timeline-list">
+        <li>Solicite o bloqueio do chip junto à operadora</li>
+        <li>Altere imediatamente a senha do seu e-mail principal</li>
+      </ul>
+      <div class="timeline-note">Essa costuma ser a medida mais importante de todo o processo.</div>
+    </div>
+    <div class="timeline-stage">
+      <div class="timeline-dot"></div>
+      <div class="timeline-label">Na primeira hora</div>
+      <ul class="timeline-list">
+        <li>Altere a senha da sua conta Apple ou Google</li>
+        <li>Encerre sessões abertas em outros dispositivos</li>
+        <li>Revise aplicativos conectados</li>
+      </ul>
+    </div>
+    <div class="timeline-stage">
+      <div class="timeline-dot"></div>
+      <div class="timeline-label">Até duas horas</div>
+      <ul class="timeline-list">
+        <li>Entre em contato com bancos, corretoras, administradoras de cartão e seguradoras, quando aplicável</li>
+        <li>Solicite bloqueios preventivos e informe o ocorrido</li>
+        <li>Registre um boletim de ocorrência</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section-title fade-in"><span class="section-icon">📋</span> Tenha um Plano de Emergência Patrimonial</div>
+
+  <p>Assim como famílias elaboram planos para situações médicas ou incêndios, vale a pena manter um plano simples para incidentes digitais. Considere deixar registrado, em local seguro:</p>
+
+  <div class="plano-grid fade-in">
+    <div class="plano-item">Telefone da XP Investimentos</div>
+    <div class="plano-item">Telefone do seu assessor</div>
+    <div class="plano-item">Telefones dos principais bancos</div>
+    <div class="plano-item">Contato da operadora de telefonia</div>
+    <div class="plano-item">Procedimentos para bloqueio do aparelho</div>
+    <div class="plano-item">Contatos de uma pessoa de confiança</div>
+  </div>
+
+  <p>Ter essas informações disponíveis pode economizar tempo precioso em uma situação de emergência.</p>
+
+  <div class="section-title fade-in"><span class="section-icon">🗓️</span> Faça um check-up anual de segurança</div>
+
+  <p>Da mesma forma que revisamos uma carteira de investimentos periodicamente, também é recomendável revisar os principais pontos da sua segurança digital. Uma vez por ano, confirme se:</p>
+
+  <div class="checkup-wrap fade-in">
+    <div class="checkup-titulo">Checklist anual</div>
+    <div class="checkup-item"><div class="checkup-box"></div><div class="checkup-texto">Seu e-mail continua protegido por autenticação em dois fatores</div></div>
+    <div class="checkup-item"><div class="checkup-box"></div><div class="checkup-texto">Seu celular possui bloqueio por biometria ou senha forte</div></div>
+    <div class="checkup-item"><div class="checkup-box"></div><div class="checkup-texto">A localização e o apagamento remoto permanecem ativos</div></div>
+    <div class="checkup-item"><div class="checkup-box"></div><div class="checkup-texto">Seus backups estão funcionando corretamente</div></div>
+    <div class="checkup-item"><div class="checkup-box"></div><div class="checkup-texto">Seus dados de recuperação estão atualizados</div></div>
+    <div class="checkup-item"><div class="checkup-box"></div><div class="checkup-texto">Você conhece os procedimentos para bloquear rapidamente seus dispositivos e contas</div></div>
+  </div>
+
+  <div class="insight-box fade-in">
+    <p>Essa revisão leva poucos minutos e pode evitar consequências muito mais relevantes no futuro.</p>
+  </div>
+
+  <div class="conclusao fade-in">
+    A proteção patrimonial deixou de depender apenas da escolha de bons investimentos. Hoje, ela também envolve a proteção da identidade digital e a preparação para situações inesperadas. Um plano de ação previamente definido reduz o tempo de resposta, limita os riscos e aumenta significativamente as chances de preservar seu patrimônio. Assim como diversificamos investimentos para reduzir riscos financeiros, <strong>adotar boas práticas de segurança digital e ter um plano de contingência é uma forma de proteger aquilo que levou anos para ser construído.</strong>
+  </div>
+
+</article>
+
+<footer>
+  <div class="footer-name">Fábio Vogelaar Carlucci</div>
+  <div class="footer-contact">+55 (16) 98148-8260<br><a href="mailto:fabio.carlucci@ficus.capital">fabio.carlucci@ficus.capital</a></div>
+</footer>
+<div style="position:relative;z-index:1;padding:0 8% 28px;text-align:center;font-size:0.65rem;color:rgba(245,237,224,0.2);letter-spacing:0.08em;">
+  Fontes: Central de Segurança XP · Atendimento XP<br>
+  Conteúdo exclusivamente informativo e educacional.
+</div>
+
+<script>
+const faders = document.querySelectorAll(".fade-in");
+const obs = new IntersectionObserver(e => e.forEach(x => { if(x.isIntersecting){ x.target.classList.add("visible"); obs.unobserve(x.target); } }), { threshold: 0.1 });
+faders.forEach(f => obs.observe(f));
+</script>
+</body>
+</html>
