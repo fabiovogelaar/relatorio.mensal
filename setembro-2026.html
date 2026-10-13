@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Relatório Mensal — Setembro 2026 | Fábio Carlucci</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DBQSDSDRF3"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-DBQSDSDRF3");</script>
+<style>
+  :root {
+    --verde-escuro: #1a2e25;
+    --dourado: #c9a84c;
+    --dourado-claro: #e2c47a;
+    --creme: #f5ede0;
+    --texto-claro: rgba(245,237,224,0.85);
+    --texto-muted: rgba(245,237,224,0.45);
+    --azul: #4a90d9;
+    --verde-gain: #3dbf8a;
+    --vermelho: #c94545;
+    --laranja: #e07a35;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { background-color: var(--verde-escuro); color: var(--creme); font-family: "Jost", sans-serif; font-weight: 300; overflow-x: hidden; }
+  body::before {
+    content: ""; position: fixed; inset: 0;
+    background-image: radial-gradient(ellipse at 15% 15%, rgba(201,168,76,0.07) 0%, transparent 55%), radial-gradient(ellipse at 85% 85%, rgba(47,82,64,0.4) 0%, transparent 55%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none; z-index: 0;
+  }
+  .back-link { position: relative; z-index: 10; display: inline-flex; align-items: center; gap: 8px; padding: 28px 8%; font-size: 0.7rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--texto-muted); text-decoration: none; transition: color 0.2s; }
+  .back-link:hover { color: var(--dourado); }
+  .back-link::before { content: "←"; font-size: 0.9rem; }
+  .hero { position: relative; z-index: 1; padding: 20px 8% 64px; border-bottom: 1px solid rgba(201,168,76,0.15); }
+  .hero-tag { font-size: 0.65rem; font-weight: 500; letter-spacing: 0.35em; text-transform: uppercase; color: var(--dourado); display: flex; align-items: center; gap: 12px; margin-bottom: 20px; opacity: 0; animation: fadeUp 0.7s ease 0.1s forwards; }
+  .hero-tag::before { content: ""; width: 30px; height: 1px; background: var(--dourado); }
+  .hero-eyebrow { font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--texto-muted); margin-bottom: 16px; opacity: 0; animation: fadeUp 0.7s ease 0.2s forwards; }
+  h1 { font-family: "Cormorant Garamond", serif; font-size: clamp(3rem, 8vw, 6rem); font-weight: 300; line-height: 1.05; color: var(--creme); opacity: 0; animation: fadeUp 0.7s ease 0.3s forwards; }
+  h1 strong { font-weight: 700; color: var(--dourado-claro); display: block; }
+  .hero-month { font-size: clamp(0.8rem, 2vw, 0.95rem); letter-spacing: 0.3em; text-transform: uppercase; color: var(--texto-muted); margin-top: 16px; opacity: 0; animation: fadeUp 0.7s ease 0.5s forwards; }
+  .hero-assinatura { margin-top: 36px; opacity: 0; animation: fadeUp 0.7s ease 0.65s forwards; }
+  .assinatura-svg { width: 140px; height: auto; opacity: 0.85; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+  .section { position: relative; z-index: 1; padding: 64px 8%; max-width: 900px; margin: 0 auto; }
+  .section-tag { font-size: 0.65rem; font-weight: 500; letter-spacing: 0.35em; text-transform: uppercase; color: var(--dourado); display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
+  .section-tag::before { content: ""; width: 30px; height: 1px; background: var(--dourado); }
+  .section-title { font-family: "Cormorant Garamond", serif; font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 600; line-height: 1.15; color: var(--creme); margin-bottom: 36px; }
+  .divider { width: calc(100% - 16%); height: 1px; margin: 0 8%; background: linear-gradient(90deg, rgba(201,168,76,0.3) 0%, transparent 100%); }
+  .pills-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  @media (max-width: 580px) { .pills-grid { grid-template-columns: 1fr; } }
+  .pill { background: rgba(255,255,255,0.03); border: 1px solid rgba(201,168,76,0.2); border-left: 3px solid var(--dourado); border-radius: 4px; padding: 20px 22px; transition: background 0.3s, transform 0.3s; }
+  .pill:hover { background: rgba(201,168,76,0.07); transform: translateY(-2px); }
+  .pill-icon { font-size: 1.1rem; margin-bottom: 7px; display: block; }
+  .pill-title { font-weight: 600; font-size: 0.75rem; letter-spacing: 0.08em; color: var(--dourado); margin-bottom: 7px; }
+  .pill-text { font-size: 0.88rem; color: var(--texto-claro); line-height: 1.65; }
+  .block { margin-bottom: 40px; }
+  .block-title { font-family: "Cormorant Garamond", serif; font-size: 1.35rem; font-weight: 600; color: var(--dourado-claro); margin-bottom: 10px; border-bottom: 1px solid rgba(201,168,76,0.15); padding-bottom: 8px; }
+  .block-text { font-size: 0.95rem; color: var(--texto-claro); line-height: 1.85; }
+  .block-text strong { font-weight: 600; color: var(--creme); }
+  .implicacao { margin-top: 12px; padding: 14px 18px; background: rgba(201,168,76,0.07); border-left: 2px solid rgba(201,168,76,0.4); border-radius: 2px; font-size: 0.86rem; color: var(--texto-claro); line-height: 1.7; }
+  .implicacao strong { color: var(--dourado); font-weight: 600; }
+
+  .inflacao-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 20px 0; }
+  @media (max-width: 480px) { .inflacao-grid { grid-template-columns: 1fr; } }
+  .inflacao-card { border-radius: 6px; padding: 18px 16px; text-align: center; background: rgba(61,191,138,0.07); border: 1px solid rgba(61,191,138,0.2); }
+  .inflacao-label { font-size: 0.62rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--verde-gain); margin-bottom: 8px; }
+  .inflacao-val { font-family: "Cormorant Garamond", serif; font-size: 1.8rem; font-weight: 700; color: var(--verde-gain); line-height: 1; margin-bottom: 4px; }
+  .inflacao-desc { font-size: 0.75rem; color: var(--texto-muted); line-height: 1.4; }
+
+  .desemprego-card { background: linear-gradient(135deg, rgba(201,168,76,0.12) 0%, rgba(47,82,64,0.3) 100%); border: 1px solid rgba(201,168,76,0.3); border-radius: 8px; padding: 24px 28px; margin: 24px 0; display: flex; align-items: center; gap: 28px; flex-wrap: wrap; }
+  .desemprego-number { font-family: "Cormorant Garamond", serif; font-size: 3rem; font-weight: 700; color: var(--dourado); line-height: 1; }
+  .desemprego-label { font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--texto-muted); margin-top: 4px; }
+  .desemprego-desc { font-size: 0.88rem; color: var(--texto-claro); line-height: 1.7; flex: 1; min-width: 200px; }
+
+  .fed-box { background: rgba(74,144,217,0.07); border: 1px solid rgba(74,144,217,0.2); border-left: 3px solid var(--azul); border-radius: 4px; padding: 24px 26px; margin: 24px 0; }
+  .fed-title { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--azul); margin-bottom: 12px; }
+  .fed-votos { display: flex; align-items: center; gap: 16px; margin-top: 12px; flex-wrap: wrap; }
+  .fed-voto-bloco { text-align: center; }
+  .fed-voto-num { font-family: "Cormorant Garamond", serif; font-size: 2rem; font-weight: 700; line-height: 1; }
+  .fed-voto-bloco.manter .fed-voto-num { color: var(--verde-gain); }
+  .fed-voto-bloco.subir .fed-voto-num { color: #e07070; }
+  .fed-voto-label { font-size: 0.68rem; color: var(--texto-muted); margin-top: 4px; max-width: 120px; }
+
+  .copom-box { background: rgba(201,168,76,0.08); border: 1px solid rgba(201,168,76,0.22); border-left: 3px solid var(--dourado); border-radius: 4px; padding: 24px 26px; margin: 24px 0; }
+  .copom-title { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--dourado); margin-bottom: 14px; }
+  .copom-serie { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 10px; }
+  .copom-item { flex: 1; min-width: 90px; text-align: center; background: rgba(0,0,0,0.15); border-radius: 6px; padding: 12px 8px; }
+  .copom-item.atual { background: rgba(201,168,76,0.18); border: 1px solid rgba(201,168,76,0.4); }
+  .copom-mes { font-size: 0.6rem; color: var(--texto-muted); text-transform: uppercase; letter-spacing: 0.06em; }
+  .copom-val { font-family: "Cormorant Garamond", serif; font-size: 1.15rem; font-weight: 700; color: var(--dourado-claro); margin-top: 3px; }
+
+  .bc-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin: 24px 0; }
+  @media (max-width: 560px) { .bc-grid { grid-template-columns: 1fr 1fr; } }
+  .bc-card { border-radius: 6px; padding: 16px 12px; text-align: center; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07); }
+  .bc-pais { font-size: 0.62rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--texto-muted); margin-bottom: 6px; }
+  .bc-acao { font-size: 0.78rem; font-weight: 600; margin-bottom: 4px; color: var(--dourado); }
+  .bc-taxa { font-size: 0.68rem; color: var(--texto-muted); }
+
+  .mercado-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 20px 0; }
+  @media (max-width: 480px) { .mercado-grid { grid-template-columns: 1fr; } }
+  .mercado-card { border-radius: 6px; padding: 18px 16px; text-align: center; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); }
+  .mercado-label { font-size: 0.62rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--texto-muted); margin-bottom: 8px; }
+  .mercado-val { font-family: "Cormorant Garamond", serif; font-size: 1.7rem; font-weight: 700; line-height: 1; margin-bottom: 4px; }
+  .mercado-val.neg { color: #e07070; }
+  .mercado-val.pos { color: var(--verde-gain); }
+  .mercado-desc { font-size: 0.74rem; color: var(--texto-muted); line-height: 1.4; }
+
+  .nvidia-box { background: rgba(74,144,217,0.07); border: 1px solid rgba(74,144,217,0.2); border-left: 3px solid var(--azul); border-radius: 4px; padding: 24px 26px; margin: 24px 0; }
+  .nvidia-title { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--azul); margin-bottom: 14px; }
+  .nvidia-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 12px; }
+  @media (max-width: 500px) { .nvidia-grid { grid-template-columns: 1fr; } }
+  .nvidia-item { background: rgba(0,0,0,0.15); border-radius: 6px; padding: 14px 10px; text-align: center; }
+  .nvidia-val { font-family: "Cormorant Garamond", serif; font-size: 1.3rem; font-weight: 700; color: #7db3ea; line-height: 1; margin-bottom: 4px; }
+  .nvidia-label { font-size: 0.66rem; color: var(--texto-muted); line-height: 1.35; }
+
+  .alert-box { border-radius: 6px; padding: 22px 24px; margin-bottom: 28px; }
+  .alert-box.info { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); }
+  .alert-box.ai { background: rgba(74,144,217,0.07); border: 1px solid rgba(74,144,217,0.2); border-left: 3px solid var(--azul); }
+  .alert-title { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 8px; }
+  .alert-box.info .alert-title { color: var(--dourado); }
+  .alert-box.ai .alert-title { color: var(--azul); }
+  .alert-text { font-size: 0.9rem; color: var(--texto-claro); line-height: 1.75; }
+
+  .destaques-list { display: flex; flex-direction: column; gap: 12px; margin-top: 8px; }
+  .destaque-item { display: flex; align-items: flex-start; gap: 16px; padding: 18px 20px; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 5px; transition: border-color 0.25s, background 0.25s; }
+  .destaque-item:hover { border-color: rgba(201,168,76,0.2); background: rgba(201,168,76,0.04); }
+  .destaque-icon { font-size: 1.3rem; flex-shrink: 0; margin-top: 2px; }
+  .destaque-titulo { font-size: 0.8rem; font-weight: 600; color: var(--dourado); margin-bottom: 4px; }
+  .destaque-desc { font-size: 0.84rem; color: var(--texto-claro); line-height: 1.6; }
+
+  .glossario-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 8px; }
+  @media (max-width: 580px) { .glossario-grid { grid-template-columns: 1fr; } }
+  .glossario-item { padding: 14px 18px; border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .glossario-term { font-weight: 600; font-size: 0.78rem; color: var(--dourado); margin-bottom: 4px; }
+  .glossario-def { font-size: 0.8rem; color: var(--texto-muted); line-height: 1.6; }
+
+  .side-nav { position: fixed; right: 24px; top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; gap: 12px; z-index: 100; }
+  .side-dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(201,168,76,0.3); transition: background 0.3s, transform 0.3s; cursor: pointer; }
+  .side-dot.active { background: var(--dourado); transform: scale(1.5); }
+  .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .fade-in.visible { opacity: 1; transform: none; }
+  footer { position: relative; z-index: 1; border-top: 1px solid rgba(201,168,76,0.12); padding: 40px 8%; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+  .footer-name { font-family: "Cormorant Garamond", serif; font-size: 1.1rem; font-weight: 300; color: var(--texto-muted); }
+  .footer-contact { font-size: 0.75rem; color: rgba(245,237,224,0.25); line-height: 1.9; text-align: right; }
+  .footer-contact a { color: var(--dourado); text-decoration: none; }
+  @media (max-width: 768px) { .side-nav { display: none; } .hero,.section { padding-left: 5%; padding-right: 5%; } footer { padding: 32px 5%; flex-direction: column; } .footer-contact { text-align: left; } .desemprego-card { flex-direction: column; gap: 16px; } }
+</style>
+</head>
+<body>
+
+<nav class="side-nav">
+  <div class="side-dot active" data-section="hero"></div>
+  <div class="side-dot" data-section="resumo"></div>
+  <div class="side-dot" data-section="nacional"></div>
+  <div class="side-dot" data-section="global"></div>
+  <div class="side-dot" data-section="destaques"></div>
+  <div class="side-dot" data-section="glossario"></div>
+</nav>
+
+<a class="back-link" href="index.html">Voltar</a>
+
+<section class="hero" id="hero">
+  <div class="hero-tag">Relatório Mensal · Ficus Capital</div>
+  <div class="hero-eyebrow">Fábio Carlucci</div>
+  <h1>O que aconteceu<br><strong>em setembro?</strong></h1>
+  <p class="hero-month">Setembro de 2026</p>
+  <div class="hero-assinatura">
+    <svg class="assinatura-svg" viewBox="0 0 200 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M10 40 C20 20, 35 15, 50 30 C60 40, 55 50, 45 48 C35 46, 38 35, 50 28 C65 20, 80 22, 90 32 C100 42, 95 52, 85 50 C75 48, 77 38, 88 30 C100 22, 118 20, 130 35 C140 48, 135 55, 122 52" stroke="rgba(201,168,76,0.8)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      <path d="M128 30 C138 18, 155 15, 168 25 C178 32, 180 42, 172 48" stroke="rgba(201,168,76,0.8)" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+      <path d="M8 50 L195 50" stroke="rgba(201,168,76,0.2)" stroke-width="0.5"/>
+      <text x="8" y="58" font-family="Georgia, serif" font-size="7" fill="rgba(201,168,76,0.5)" letter-spacing="1">Fabio Carlucci</text>
+    </svg>
+  </div>
+</section>
+
+<!-- RESUMO -->
+<div class="divider"></div>
+<section class="section fade-in" id="resumo">
+  <div class="section-tag">01</div>
+  <h2 class="section-title">Resumo<br>Executivo</h2>
+  <div class="pills-grid">
+    <div class="pill fade-in">
+      <span class="pill-icon">🏦</span>
+      <div class="pill-title">Copom cortou a Selic para 13,75%</div>
+      <div class="pill-text">Quinto corte consecutivo de 0,25 ponto percentual, decidido por unanimidade. O comitê manteve tom cauteloso e dependente dos dados, e o Boletim Focus aponta Selic de 13,75% no fim de 2026, ou seja, sem novos cortes até dezembro.</div>
+    </div>
+    <div class="pill fade-in">
+      <span class="pill-icon">🌡️</span>
+      <div class="pill-title">Inflação voltou a acelerar</div>
+      <div class="pill-text">O IPCA subiu 0,82% em setembro, acima do esperado pelo mercado, e a taxa em 12 meses foi de 4,22% para 4,58%, acima do teto da meta. O fim do efeito do bônus de Itaipu na conta de luz foi a principal pressão.</div>
+    </div>
+    <div class="pill fade-in">
+      <span class="pill-icon">📉</span>
+      <div class="pill-title">PIB do 2º trimestre cresceu 0,5%</div>
+      <div class="pill-text">A atividade seguiu em expansão, puxada pela agropecuária, mas o consumo das famílias recuou 0,4% na margem. Sinal de que os juros altos começam a pesar sobre a demanda.</div>
+    </div>
+    <div class="pill fade-in">
+      <span class="pill-icon">👷</span>
+      <div class="pill-title">Emprego: surpresa positiva em agosto</div>
+      <div class="pill-text">O Caged registrou 165,8 mil vagas formais em agosto, quase o dobro do esperado, e o desemprego ficou em 5,3% no trimestre até agosto. No acumulado de 2026, porém, a criação de vagas segue abaixo da de 2025.</div>
+    </div>
+    <div class="pill fade-in">
+      <span class="pill-icon">📈</span>
+      <div class="pill-title">Ibovespa subiu 5% e dólar ficou estável</div>
+      <div class="pill-text">A bolsa teve o melhor mês desde janeiro, com alta de 5,03%, apoiada por fluxo estrangeiro e expectativa de juros menores. O dólar recuou 0,15% no mês e fechou a R$ 5,17.</div>
+    </div>
+    <div class="pill fade-in">
+      <span class="pill-icon">🌐</span>
+      <div class="pill-title">Fed voltou a subir juros</div>
+      <div class="pill-text">Primeira alta em mais de três anos, para 3,75% a 4,00% ao ano, em decisão unânime. BCE e Banco do Japão também elevaram suas taxas, e o custo global do dinheiro subiu.</div>
+    </div>
+  </div>
+</section>
+
+<!-- NACIONAL -->
+<div class="divider"></div>
+<section class="section fade-in" id="nacional">
+  <div class="section-tag">02</div>
+  <h2 class="section-title">Visão<br>Nacional</h2>
+
+  <div class="block fade-in">
+    <div class="block-title">Copom reduz a Selic para 13,75% e segue cauteloso</div>
+    <p class="block-text">Na reunião de 15 e 16 de setembro, o Copom decidiu por unanimidade reduzir a Selic em 0,25 ponto percentual, para <strong>13,75% ao ano</strong>. Foi o quinto corte consecutivo do ciclo, que já soma 1,25 ponto percentual de flexibilização desde o pico de 15,00%.</p>
+    <div class="copom-box">
+      <div class="copom-title">🏦 Selic ao longo do ciclo de cortes</div>
+      <div class="copom-serie">
+        <div class="copom-item"><div class="copom-mes">Pico</div><div class="copom-val">15,00%</div></div>
+        <div class="copom-item"><div class="copom-mes">Jun</div><div class="copom-val">14,25%</div></div>
+        <div class="copom-item"><div class="copom-mes">Ago</div><div class="copom-val">14,00%</div></div>
+        <div class="copom-item atual"><div class="copom-mes">Set</div><div class="copom-val">13,75%</div></div>
+      </div>
+    </div>
+    <p class="block-text">A decisão reconhece que a atividade começa a perder ritmo, mas a comunicação segue prudente: o Banco Central depende dos dados para os próximos passos, com expectativas de inflação acima da meta, cenário externo incerto e mercado de trabalho aquecido. O Boletim Focus projeta Selic de <strong>13,75% ao fim de 2026</strong>, o que sugere que setembro tende a ter sido o último corte do ano, e <strong>12,00% ao fim de 2027</strong>.</p>
+    <div class="implicacao"><strong>Implicação:</strong> a queda da Selic melhora a direção dos ativos domésticos, mas o CDI segue muito competitivo e alongar a carteira exige prêmio adequado. A parte curta da curva reflete os cortes; a parte longa continua sensível a fiscal, inflação prospectiva e risco eleitoral.</div>
+  </div>
+
+  <div class="block fade-in">
+    <div class="block-title">Inflação voltou a acelerar em setembro</div>
+    <p class="block-text">Depois da deflação observada em agosto, o IPCA de setembro subiu <strong>0,82%</strong>, acima da expectativa do mercado, e a inflação acumulada em 12 meses passou de 4,22% para <strong>4,58%</strong>, acima do teto de 4,50% do intervalo de tolerância da meta. No ano, o IPCA acumula 3,95%.</p>
+    <div class="inflacao-grid">
+      <div class="inflacao-card" style="background:rgba(201,69,69,0.08); border-color:rgba(201,69,69,0.25);">
+        <div class="inflacao-label" style="color:#e07070;">IPCA · Setembro</div>
+        <div class="inflacao-val" style="color:#e07070;">+0,82%</div>
+        <div class="inflacao-desc">acima do esperado pelo mercado</div>
+      </div>
+      <div class="inflacao-card" style="background:rgba(201,69,69,0.08); border-color:rgba(201,69,69,0.25);">
+        <div class="inflacao-label" style="color:#e07070;">IPCA em 12 meses</div>
+        <div class="inflacao-val" style="color:#e07070;">4,58%</div>
+        <div class="inflacao-desc">ante 4,22% em agosto · teto da meta: 4,50%</div>
+      </div>
+    </div>
+    <p class="block-text">A principal pressão veio da <strong>energia elétrica residencial</strong>, com o fim do efeito do bônus de Itaipu que havia derrubado a conta de luz em agosto. O movimento confirma que parte do alívio anterior era temporária e que a convergência para a meta de 3% ainda está longe de consolidada.</p>
+    <div class="implicacao"><strong>Implicação:</strong> inflação acima do teto reduz o espaço para uma leitura excessivamente otimista sobre o ciclo de cortes e reforça o valor de carregar proteção inflacionária, como títulos IPCA+, na carteira.</div>
+  </div>
+
+  <div class="block fade-in">
+    <div class="block-title">PIB cresce 0,5%, mas o consumo das famílias recua</div>
+    <p class="block-text">O PIB do segundo trimestre, divulgado pelo IBGE em 1º de setembro, avançou <strong>0,5%</strong> na comparação com o trimestre anterior e <strong>2,0%</strong> frente ao mesmo período de 2025. O avanço foi puxado pela agropecuária. Pelo lado da demanda, o consumo das famílias <strong>recuou 0,4%</strong>, um sinal de que juros altos já pesam sobre crédito e renda disponível.</p>
+    <div class="implicacao"><strong>Implicação:</strong> a economia segue crescendo, mas com composição menos favorável do que no início do ano. Para o Copom, isso dá algum conforto para continuar a calibragem gradual, sem pressa para acelerar o ritmo.</div>
+  </div>
+
+  <div class="block fade-in">
+    <div class="block-title">Mercado de trabalho surpreende positivamente</div>
+    <p class="block-text">O Caged registrou a criação de <strong>165,8 mil vagas formais</strong> em agosto, quase o dobro das cerca de 93 mil esperadas pelo mercado, recuperando a fraqueza de julho. A taxa de desemprego da PNAD Contínua ficou em <strong>5,3%</strong> no trimestre encerrado em agosto, o menor patamar para o período na série histórica, com recorde de pessoas ocupadas.</p>
+    <div class="desemprego-card">
+      <div>
+        <div class="desemprego-number">165,8 mil</div>
+        <div class="desemprego-label">Vagas formais · agosto</div>
+      </div>
+      <div class="desemprego-desc">
+        <span style="color:#5ec98a;">▲</span> Resultado muito acima do consenso, com desemprego em 5,3% (menor taxa para o período).<br><br>
+        <strong style="color:var(--dourado)">O contraponto:</strong> no acumulado de janeiro a agosto, foram cerca de 1,13 milhão de vagas, ante 1,52 milhão no mesmo período de 2025, queda de aproximadamente 25%. O estoque de emprego é forte, mas o ritmo anual de contratações é menor.
+      </div>
+    </div>
+    <div class="implicacao"><strong>Implicação:</strong> emprego e renda resilientes sustentam o consumo básico e a inadimplência controlada, porém dificultam a queda da inflação de serviços, um dos pontos de atenção do Banco Central.</div>
+  </div>
+
+  <div class="block fade-in">
+    <div class="block-title">Fiscal: déficit menor que o esperado, mas ainda relevante</div>
+    <p class="block-text">Em 29 de setembro, o Tesouro divulgou que o Governo Central teve <strong>déficit primário de R$ 13,6 bilhões em agosto</strong>, melhor que a mediana de R$ 16 bilhões do Prisma Fiscal e que o déficit de R$ 15,5 bilhões de agosto de 2025. No acumulado de janeiro a agosto, o déficit soma <strong>R$ 94,9 bilhões</strong>, ante R$ 85,9 bilhões no mesmo período do ano passado. Em 12 meses, o déficit é de R$ 68,7 bilhões, ou 0,53% do PIB. O resultado da Previdência foi deficitário em R$ 18,6 bilhões no mês.</p>
+    <div class="implicacao"><strong>Implicação:</strong> o dado mensal surpreendeu positivamente, mas a dificuldade de gerar superávits consistentes com juros altos e despesas pressionadas mantém o prêmio fiscal nos juros longos.</div>
+  </div>
+
+  <div class="block fade-in">
+    <div class="block-title">Ibovespa tem o melhor mês desde janeiro</div>
+    <p class="block-text">O Ibovespa avançou <strong>5,03%</strong> em setembro, o melhor desempenho mensal desde janeiro, acumulando alta de cerca de 15,7% em 2026. O movimento foi apoiado por bancos, commodities, entrada relevante de capital estrangeiro na B3 e expectativa de continuidade dos cortes da Selic. O dólar, por sua vez, recuou <strong>0,15%</strong> e fechou o mês a <strong>R$ 5,17</strong>.</p>
+    <div class="mercado-grid">
+      <div class="mercado-card">
+        <div class="mercado-label">Ibovespa · Setembro</div>
+        <div class="mercado-val pos">+5,03%</div>
+        <div class="mercado-desc">Melhor mês desde janeiro · reverteu o −0,33% de agosto</div>
+      </div>
+      <div class="mercado-card">
+        <div class="mercado-label">Dólar · Setembro</div>
+        <div class="mercado-val">−0,15%</div>
+        <div class="mercado-desc">Fechou a R$ 5,17, após alta de 2,16% em agosto</div>
+      </div>
+    </div>
+    <div class="implicacao"><strong>Implicação:</strong> a recuperação dos preços não elimina a necessidade de seletividade. Bancos, exportadoras de commodities e setores sensíveis a juros reagem de formas distintas, e a melhor abordagem segue sendo privilegiar empresas com balanço sólido, geração de caixa previsível e capacidade de atravessar ciclos. Para as famílias, a exposição internacional segue como instrumento de proteção patrimonial de longo prazo.</div>
+  </div>
+
+  <div class="block fade-in">
+    <div class="block-title">Renda fixa e crédito privado</div>
+    <p class="block-text">O carrego do CDI continua atrativo para reserva de liquidez e objetivos de curto prazo. Prefixados e IPCA+ ganham apelo com a queda da Selic, mas pedem montagem gradual, diversificada por vencimento e coerente com o horizonte de cada investidor. No crédito privado, a queda dos juros melhora o ambiente de refinanciamento, mas a qualidade do emissor segue valendo mais do que o excesso de spread.</p>
+  </div>
+</section>
+
+<!-- GLOBAL -->
+<div class="divider"></div>
+<section class="section fade-in" id="global">
+  <div class="section-tag">03</div>
+  <h2 class="section-title">Visão<br>Global</h2>
+
+  <div class="block fade-in">
+    <div class="block-title">Fed volta a subir juros pela primeira vez em mais de três anos</div>
+    <p class="block-text">Em 16 de setembro, o Federal Reserve elevou a taxa básica em 0,25 ponto percentual, para o intervalo de <strong>3,75% a 4,00% ao ano</strong>, em decisão <strong>unânime</strong>. Foi a primeira alta desde 2023 e a primeira sob a presidência de Kevin Warsh. O comitê justificou o movimento pela inflação ainda acima da meta de 2% e sinalizou a possibilidade de mais uma alta ao longo de 2026.</p>
+    <div class="fed-box">
+      <div class="fed-title">🇺🇸 Fed Funds Rate · decisão de setembro</div>
+      <div class="fed-votos">
+        <div class="fed-voto-bloco manter">
+          <div class="fed-voto-num">3,50–3,75%</div>
+          <div class="fed-voto-label">intervalo anterior</div>
+        </div>
+        <div class="fed-voto-bloco subir">
+          <div class="fed-voto-num">3,75–4,00%</div>
+          <div class="fed-voto-label">novo intervalo · decisão unânime</div>
+        </div>
+      </div>
+    </div>
+    <p class="block-text">A inflação americana segue como motivo da dureza: o PCE de agosto subiu 0,3% no mês e acumulou <strong>3,4% em 12 meses</strong>. Já o mercado de trabalho mostra desaceleração. O <strong>payroll de setembro, divulgado em 2 de outubro</strong>, trouxe apenas 29 mil vagas, bem abaixo das cerca de 85 a 90 mil esperadas, com desemprego subindo de 4,1% para 4,2% e revisões negativas em julho e agosto. Após o dado, a probabilidade de manutenção dos juros na reunião de outubro subiu para cerca de 80% no FedWatch.</p>
+    <div class="implicacao"><strong>Implicação:</strong> o dilema do Fed é conter a inflação sem acelerar demais a desaceleração do emprego. Para o investidor brasileiro, juros globais mais altos limitam a queda dos juros longos locais e mantêm o dólar sensível ao diferencial de taxas.</div>
+  </div>
+
+  <div class="block fade-in">
+    <div class="block-title">BCE e Banco do Japão também elevam juros</div>
+    <p class="block-text">O ciclo de aperto foi coletivo. O <strong>Banco Central Europeu</strong> elevou em 0,25 ponto percentual, em 10 de setembro, a taxa de depósito para <strong>2,50%</strong>, citando o choque de preços de energia e o conflito no Oriente Médio. O <strong>Banco do Japão</strong> subiu sua taxa para <strong>1,25%</strong>, o maior patamar em 31 anos. O <strong>Banco da Inglaterra</strong> manteve a taxa em 3,75%, mas com tom mais duro diante do risco de inflação mais alta nos próximos meses.</p>
+    <div class="bc-grid">
+      <div class="bc-card">
+        <div class="bc-pais">🇺🇸 Fed</div>
+        <div class="bc-acao">Alta de 0,25 p.p.</div>
+        <div class="bc-taxa">3,75% a 4,00%</div>
+      </div>
+      <div class="bc-card">
+        <div class="bc-pais">🇪🇺 BCE</div>
+        <div class="bc-acao">Alta de 0,25 p.p.</div>
+        <div class="bc-taxa">Depósito: 2,50%</div>
+      </div>
+      <div class="bc-card">
+        <div class="bc-pais">🇯🇵 BoJ</div>
+        <div class="bc-acao">Alta</div>
+        <div class="bc-taxa">1,25% · maior em 31 anos</div>
+      </div>
+      <div class="bc-card">
+        <div class="bc-pais">🇬🇧 BoE</div>
+        <div class="bc-acao">Manteve</div>
+        <div class="bc-taxa">3,75% · tom mais duro</div>
+      </div>
+    </div>
+    <div class="implicacao"><strong>Implicação:</strong> com Fed, BCE e BoJ endurecendo ao mesmo tempo, o custo global do dinheiro sobe de forma disseminada. A normalização japonesa merece atenção especial, pois altera fluxos, custo de hedge e a demanda por títulos globais.</div>
+  </div>
+
+  <div class="alert-box info fade-in">
+    <div class="alert-title">🛢️ Petróleo segue como variável central</div>
+    <p class="alert-text">O conflito no Oriente Médio manteve o mercado de energia sob tensão em setembro, e o próprio BCE citou o choque de preços de energia como motivo para elevar juros. Petróleo mais caro pressiona inflação, fretes, margens empresariais e as expectativas de política monetária em todo o mundo.</p>
+  </div>
+
+  <div class="block fade-in">
+    <div class="block-title">China volta à zona de expansão na indústria</div>
+    <p class="block-text">O PMI oficial da indústria chinesa subiu de 49,8 em agosto para <strong>50,1</strong> em setembro, encerrando dois meses de contração. O subíndice de produção avançou para 51,7 e o de novas encomendas ficou em 50,5. O PMI não manufatureiro, que cobre serviços e construção, subiu de 49,0 para 50,2. A melhora, porém, é estreita e desigual: o índice de emprego industrial caiu para 48,4, e o setor imobiliário e o consumo seguem como pontos frágeis.</p>
+    <div class="implicacao"><strong>Implicação:</strong> a China de 2026 depende mais de manufatura avançada e exportações do que do ciclo imobiliário, o que torna o impulso para commodities tradicionais menos homogêneo e exige análise mais granular das empresas brasileiras exportadoras.</div>
+  </div>
+
+  <div class="alert-box ai fade-in">
+    <div class="alert-title">🤖 Inteligência artificial segue como tese estrutural</div>
+    <p class="alert-text">A IA continua sendo um dos principais motores de crescimento e de investimento da economia americana, mas grandes teses estruturais não eliminam o risco de preço. Para carteiras globais, a exposição ao tema faz sentido, ao passo que concentração excessiva em poucas empresas aumenta a vulnerabilidade a revisões de expectativa. Empresas com fluxo de caixa real, vantagens competitivas e balanço forte tendem a se diferenciar das que dependem apenas da narrativa.</p>
+  </div>
+</section>
+
+<!-- DESTAQUES -->
+<div class="divider"></div>
+<section class="section fade-in" id="destaques">
+  <div class="section-tag">04</div>
+  <h2 class="section-title">O que vimos<br>em setembro</h2>
+  <div class="destaques-list fade-in">
+    <div class="destaque-item">
+      <span class="destaque-icon">🏦</span>
+      <div>
+        <div class="destaque-titulo">Copom reduziu a Selic para 13,75%, com tom prudente</div>
+        <div class="destaque-desc">Quinto corte consecutivo, por unanimidade. O Focus indica Selic estável em 13,75% até o fim do ano, e o CDI segue competitivo para reservas e objetivos de curto prazo.</div>
+      </div>
+    </div>
+    <div class="destaque-item">
+      <span class="destaque-icon">🌡️</span>
+      <div>
+        <div class="destaque-titulo">Inflação voltou a acelerar com o fim do bônus de Itaipu</div>
+        <div class="destaque-desc">IPCA de 0,82% no mês e 4,58% em 12 meses, acima do teto da meta, mostram que o alívio de agosto era em boa parte temporário.</div>
+      </div>
+    </div>
+    <div class="destaque-item">
+      <span class="destaque-icon">📉</span>
+      <div>
+        <div class="destaque-titulo">Atividade cresceu, mas o consumo das famílias recuou</div>
+        <div class="destaque-desc">PIB de +0,5% no 2º trimestre, sustentado pela agropecuária, com o consumo caindo 0,4% e sinalizando o efeito dos juros altos.</div>
+      </div>
+    </div>
+    <div class="destaque-item">
+      <span class="destaque-icon">📊</span>
+      <div>
+        <div class="destaque-titulo">Ibovespa subiu 5,03% e dólar recuou 0,15%</div>
+        <div class="destaque-desc">Melhor mês da bolsa desde janeiro, com apoio de bancos, commodities e fluxo estrangeiro. Seletividade segue necessária diante de fiscal, inflação e eleições.</div>
+      </div>
+    </div>
+    <div class="destaque-item">
+      <span class="destaque-icon">🇺🇸</span>
+      <div>
+        <div class="destaque-titulo">Fed, BCE e BoJ elevaram juros</div>
+        <div class="destaque-desc">O Fed subiu para 3,75% a 4,00% pela primeira vez em mais de três anos, o BCE para 2,50% e o Banco do Japão para 1,25%. O custo global de capital ficou mais alto.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GLOSSARIO -->
+<div class="divider"></div>
+<section class="section fade-in" id="glossario">
+  <div class="section-tag">05</div>
+  <h2 class="section-title">Glossário</h2>
+  <div class="glossario-grid fade-in">
+    <div class="glossario-item">
+      <div class="glossario-term">Boletim Focus</div>
+      <div class="glossario-def">Pesquisa semanal do Banco Central com as projeções de instituições financeiras para Selic, inflação, PIB e câmbio.</div>
+    </div>
+    <div class="glossario-item">
+      <div class="glossario-term">Resultado primário</div>
+      <div class="glossario-def">Diferença entre receitas e despesas do governo, sem contar os juros da dívida. Déficit significa que o governo gastou mais do que arrecadou.</div>
+    </div>
+    <div class="glossario-item">
+      <div class="glossario-term">Caged</div>
+      <div class="glossario-def">Cadastro que mede a criação e a destruição de empregos formais com carteira assinada no Brasil.</div>
+    </div>
+    <div class="glossario-item">
+      <div class="glossario-term">Payroll</div>
+      <div class="glossario-def">Relatório mensal do governo americano que mostra a criação de vagas fora do setor agrícola, acompanhado de perto pelo Fed.</div>
+    </div>
+    <div class="glossario-item">
+      <div class="glossario-term">FedWatch</div>
+      <div class="glossario-def">Ferramenta da CME que estima a probabilidade de alta, manutenção ou corte dos juros americanos a partir dos preços de mercado.</div>
+    </div>
+    <div class="glossario-item">
+      <div class="glossario-term">Prêmio de risco</div>
+      <div class="glossario-def">Retorno adicional exigido pelo investidor para carregar incertezas, como fiscal, inflação, câmbio ou risco político.</div>
+    </div>
+    <div class="glossario-item">
+      <div class="glossario-term">PMI</div>
+      <div class="glossario-def">Índice de gerentes de compras que mede expansão ou contração da atividade econômica. Acima de 50 indica expansão; abaixo, contração.</div>
+    </div>
+    <div class="glossario-item">
+      <div class="glossario-term">Duration</div>
+      <div class="glossario-def">Medida de sensibilidade de um título de renda fixa às variações nas taxas de juros.</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-name">Fábio Vogelaar Carlucci</div>
+  <div class="footer-contact">+55 (16) 98148-8260<br><a href="mailto:fabio.carlucci@ficus.capital">fabio.carlucci@ficus.capital</a></div>
+</footer>
+<div style="position:relative;z-index:1;padding:0 8% 28px;text-align:center;font-size:0.65rem;color:rgba(245,237,224,0.2);letter-spacing:0.08em;">
+  Fontes: Banco Central do Brasil (Copom, Boletim Focus) · IBGE (IPCA, PIB, PNAD Contínua) · Ministério do Trabalho e Emprego (Caged) · Tesouro Nacional · B3 · Federal Reserve · Bureau of Labor Statistics · Banco Central Europeu · Banco do Japão · Banco da Inglaterra · Escritório Nacional de Estatísticas da China · Reuters · Agência Brasil · Valor Econômico · CNN Brasil · InfoMoney<br>
+  Este relatório possui caráter informativo e educacional. Não constitui recomendação individual de investimento.
+</div>
+
+<script>
+const faders = document.querySelectorAll(".fade-in");
+const obs = new IntersectionObserver(e => e.forEach(x => { if(x.isIntersecting){ x.target.classList.add("visible"); obs.unobserve(x.target); } }), { threshold: 0.1 });
+faders.forEach(f => obs.observe(f));
+const dots = document.querySelectorAll(".side-dot");
+const sections = ["hero","resumo","nacional","global","destaques","glossario"];
+function updateDots() {
+  const sy = window.scrollY + window.innerHeight / 2;
+  sections.forEach((id,i) => {
+    const el = document.getElementById(id); if(!el) return;
+    const t = el.getBoundingClientRect().top + window.scrollY;
+    if(sy >= t && sy < t + el.offsetHeight) { dots.forEach(d => d.classList.remove("active")); if(dots[i]) dots[i].classList.add("active"); }
+  });
+}
+window.addEventListener("scroll", updateDots, { passive: true });
+dots.forEach((d,i) => d.addEventListener("click", () => { const el = document.getElementById(sections[i]); if(el) el.scrollIntoView({ behavior:"smooth" }); }));
+</script>
+</body>
+</html>
