@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>O S&P 500 sobe, mas uma em cada quatro empresas acumula perdas superiores a 40% | Fábio Carlucci</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DBQSDSDRF3"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-DBQSDSDRF3");</script>
+<style>
+  :root {
+    --verde-escuro: #1a2e25;
+    --dourado: #c9a84c;
+    --dourado-claro: #e2c47a;
+    --creme: #f5ede0;
+    --texto-claro: rgba(245,237,224,0.85);
+    --texto-muted: rgba(245,237,224,0.45);
+    --azul: #4a90d9;
+    --verde-gain: #3dbf8a;
+    --vermelho: #c94545;
+    --roxo: #9a7ad9;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { background-color: var(--verde-escuro); color: var(--creme); font-family: "Jost", sans-serif; font-weight: 300; overflow-x: hidden; }
+  body::before {
+    content: ""; position: fixed; inset: 0;
+    background-image: radial-gradient(ellipse at 10% 10%, rgba(201,168,76,0.06) 0%, transparent 55%), radial-gradient(ellipse at 90% 90%, rgba(47,82,64,0.35) 0%, transparent 55%);
+    pointer-events: none; z-index: 0;
+  }
+  .back-link { position: relative; z-index: 10; display: inline-flex; align-items: center; gap: 8px; padding: 28px 8%; font-size: 0.7rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--texto-muted); text-decoration: none; transition: color 0.2s; }
+  .back-link:hover { color: var(--dourado); }
+  .back-link::before { content: "←"; font-size: 0.9rem; }
+
+  .hero { position: relative; z-index: 1; padding: 20px 8% 56px; max-width: 800px; margin: 0 auto; text-align: center; border-bottom: 1px solid rgba(201,168,76,0.15); }
+  .hero-tag { font-size: 0.65rem; font-weight: 500; letter-spacing: 0.35em; text-transform: uppercase; color: var(--dourado); display: flex; align-items: center; justify-content: center; gap: 12px; margin-bottom: 24px; opacity: 0; animation: fadeUp 0.7s ease 0.1s forwards; }
+  .hero-tag::before, .hero-tag::after { content: ""; width: 26px; height: 1px; background: var(--dourado); }
+  h1 { font-family: "Cormorant Garamond", serif; font-size: clamp(1.85rem, 4.4vw, 2.9rem); font-weight: 300; line-height: 1.22; color: var(--creme); opacity: 0; animation: fadeUp 0.7s ease 0.2s forwards; }
+  h1 em { font-style: italic; color: var(--dourado-claro); }
+  .hero-sub { font-size: 1rem; color: var(--texto-muted); line-height: 1.75; margin: 18px auto 0; max-width: 620px; opacity: 0; animation: fadeUp 0.7s ease 0.35s forwards; }
+  .hero-date { font-size: 0.72rem; letter-spacing: 0.15em; color: var(--texto-muted); margin-top: 22px; opacity: 0; animation: fadeUp 0.7s ease 0.45s forwards; }
+  .hero-fonte { margin-top: 10px; font-size: 0.7rem; color: rgba(245,237,224,0.3); opacity: 0; animation: fadeUp 0.7s ease 0.55s forwards; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+
+  article { position: relative; z-index: 1; max-width: 800px; margin: 0 auto; padding: 56px 8% 88px; }
+  .lead { font-family: "Cormorant Garamond", serif; font-size: clamp(1.1rem, 2.5vw, 1.35rem); font-weight: 400; line-height: 1.8; color: var(--creme); margin-bottom: 48px; padding-bottom: 48px; border-bottom: 1px solid rgba(201,168,76,0.15); }
+  p { font-size: 0.97rem; line-height: 1.9; color: var(--texto-claro); margin-bottom: 24px; }
+  strong { font-weight: 600; color: var(--creme); }
+  .section-title { font-family: "Cormorant Garamond", serif; font-size: 1.45rem; font-weight: 600; color: var(--dourado-claro); margin: 54px 0 18px; padding-top: 42px; border-top: 1px solid rgba(201,168,76,0.12); display: flex; align-items: center; gap: 14px; }
+  .section-icon { font-size: 1.25rem; flex-shrink: 0; }
+
+  .stat-hero { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; margin: 32px 0; }
+  @media (max-width: 560px) { .stat-hero { grid-template-columns: 1fr; } }
+  .stat-card { border-radius: 8px; padding: 22px 16px; text-align: center; }
+  .stat-card.dourado { background: linear-gradient(135deg, rgba(201,168,76,0.14) 0%, rgba(47,82,64,0.4) 100%); border: 1px solid rgba(201,168,76,0.3); }
+  .stat-card.roxo { background: linear-gradient(135deg, rgba(154,122,217,0.12) 0%, rgba(47,82,64,0.4) 100%); border: 1px solid rgba(154,122,217,0.28); }
+  .stat-card.neutro { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); }
+  .stat-card-val { font-family: "Cormorant Garamond", serif; font-size: 1.9rem; font-weight: 700; line-height: 1; margin-bottom: 8px; }
+  .stat-card.dourado .stat-card-val { color: var(--dourado); }
+  .stat-card.roxo .stat-card-val { color: var(--roxo); }
+  .stat-card.neutro .stat-card-val { color: var(--texto-claro); }
+  .stat-card-desc { font-size: 0.75rem; color: var(--texto-muted); line-height: 1.5; }
+
+  .grafico-wrap { background: rgba(10,20,16,0.7); border: 1px solid rgba(255,255,255,0.07); border-radius: 8px; padding: 24px 20px 16px; margin: 32px 0; }
+  .grafico-titulo { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--dourado); margin-bottom: 4px; }
+  .grafico-sub { font-size: 0.72rem; color: var(--texto-muted); margin-bottom: 16px; }
+  .grafico-nota { font-size: 0.65rem; color: rgba(245,237,224,0.25); margin-top: 12px; line-height: 1.4; }
+  .grafico-legenda { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 14px; }
+  .leg-item { display: flex; align-items: center; gap: 6px; font-size: 0.7rem; color: var(--texto-claro); }
+  .leg-line { width: 16px; height: 2px; border-radius: 1px; flex-shrink: 0; }
+  .chart-svg { width: 100%; height: auto; display: block; }
+
+  .table-wrap { overflow-x: auto; margin: 24px 0; border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; background: rgba(10,20,16,0.5); }
+  .seq-table { width: 100%; border-collapse: collapse; min-width: 480px; font-size: 0.82rem; }
+  .seq-table th { text-align: left; color: var(--dourado); font-weight: 600; padding: 11px 14px; border-bottom: 1px solid rgba(201,168,76,0.25); font-size: 0.64rem; letter-spacing: 0.06em; text-transform: uppercase; }
+  .seq-table td { padding: 10px 14px; border-bottom: 1px solid rgba(255,255,255,0.06); color: var(--texto-claro); }
+  .seq-table tr:last-child td { border-bottom: none; }
+  .seq-table tr.final td { background: rgba(201,168,76,0.08); color: var(--dourado-claro); font-weight: 600; }
+
+  .fatores-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin: 24px 0; }
+  @media (max-width: 500px) { .fatores-grid { grid-template-columns: 1fr; } }
+  .fator-tag { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 14px 15px; font-size: 0.82rem; color: var(--texto-claro); display: flex; align-items: flex-start; gap: 8px; }
+  .fator-tag::before { content: "▸"; color: var(--dourado); flex-shrink: 0; }
+
+  /* BALDES */
+  .baldes-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; margin: 24px 0; }
+  @media (max-width: 560px) { .baldes-grid { grid-template-columns: 1fr; } }
+  .balde-card { border-radius: 8px; padding: 20px 16px; text-align: center; }
+  .balde-card.liq { background: rgba(74,144,217,0.08); border: 1px solid rgba(74,144,217,0.22); }
+  .balde-card.est { background: rgba(201,168,76,0.08); border: 1px solid rgba(201,168,76,0.22); }
+  .balde-card.cre { background: rgba(61,191,138,0.08); border: 1px solid rgba(61,191,138,0.22); }
+  .balde-titulo { font-family: "Cormorant Garamond", serif; font-weight: 700; font-size: 1.05rem; margin-bottom: 8px; }
+  .balde-card.liq .balde-titulo { color: #7db3ea; }
+  .balde-card.est .balde-titulo { color: var(--dourado); }
+  .balde-card.cre .balde-titulo { color: var(--verde-gain); }
+  .balde-desc { font-size: 0.78rem; color: var(--texto-claro); line-height: 1.55; }
+
+  /* PERGUNTAS */
+  .perguntas-list { display: flex; flex-direction: column; gap: 8px; margin: 24px 0; }
+  .pergunta-item { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 13px 16px; font-family: "Cormorant Garamond", serif; font-size: 0.98rem; font-style: italic; color: var(--dourado-claro); display: flex; gap: 10px; align-items: flex-start; }
+  .pergunta-item::before { content: "?"; font-family: "Jost", sans-serif; font-style: normal; font-weight: 700; color: var(--dourado); flex-shrink: 0; }
+
+  .insight-box { background: linear-gradient(135deg, rgba(201,168,76,0.1) 0%, rgba(26,46,37,0.4) 100%); border: 1px solid rgba(201,168,76,0.25); border-left: 3px solid var(--dourado); border-radius: 4px; padding: 26px 30px; margin: 34px 0; }
+  .insight-box p { font-family: "Cormorant Garamond", serif; font-size: 1.08rem; color: var(--creme); line-height: 1.8; margin: 0; }
+  .warn-box { background: linear-gradient(135deg, rgba(201,69,69,0.08) 0%, rgba(26,46,37,0.4) 100%); border: 1px solid rgba(201,69,69,0.22); border-left: 3px solid #c94545; border-radius: 4px; padding: 22px 26px; margin: 30px 0; }
+  .warn-box p { font-size: 0.88rem; color: var(--texto-claro); margin: 0; line-height: 1.7; }
+  .method-box { background: rgba(255,255,255,0.025); border: 1px dashed rgba(255,255,255,0.15); border-radius: 6px; padding: 20px 24px; margin: 32px 0; }
+  .method-box p { font-size: 0.8rem; color: var(--texto-muted); margin: 0; line-height: 1.65; }
+  .method-box .method-titulo { font-size: 0.62rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--texto-muted); margin-bottom: 8px; }
+
+  .conclusao { font-family: "Cormorant Garamond", serif; font-size: 1.1rem; font-weight: 400; line-height: 1.85; color: var(--creme); margin-top: 48px; padding: 38px; border: 1px solid rgba(201,168,76,0.2); border-radius: 6px; background: rgba(255,255,255,0.02); position: relative; }
+  .conclusao::before { content: "\201C"; position: absolute; top: -10px; left: 32px; font-size: 5rem; color: rgba(201,168,76,0.15); font-family: "Cormorant Garamond", serif; line-height: 1; }
+
+  .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .fade-in.visible { opacity: 1; transform: none; }
+  footer { position: relative; z-index: 1; border-top: 1px solid rgba(201,168,76,0.12); padding: 40px 8%; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+  .footer-name { font-family: "Cormorant Garamond", serif; font-size: 1.1rem; font-weight: 300; color: var(--texto-muted); }
+  .footer-contact { font-size: 0.75rem; color: rgba(245,237,224,0.25); line-height: 1.9; text-align: right; }
+  .footer-contact a { color: var(--dourado); text-decoration: none; }
+  @media (max-width: 640px) { .back-link,.hero { padding-left: 5%; padding-right: 5%; } article { padding: 48px 5% 64px; } footer { padding: 32px 5%; flex-direction: column; } .footer-contact { text-align: left; } }
+
+  /* ===== ESPECÍFICO DESTE ARTIGO ===== */
+  .stat-hero.dois { grid-template-columns: repeat(3,1fr); }
+  .heat-wrap { background: linear-gradient(160deg, rgba(201,69,69,0.07) 0%, rgba(10,20,16,0.9) 60%); border: 1px solid rgba(201,69,69,0.28); border-radius: 12px; padding: 28px 20px 18px; margin: 40px 0; }
+  .heat-eyebrow { font-size: 0.62rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: #e07070; margin-bottom: 6px; }
+  .heat-titulo { font-family: "Cormorant Garamond", serif; font-size: 1.5rem; font-weight: 700; color: var(--creme); margin-bottom: 4px; }
+  .heat-sub { font-size: 0.78rem; color: var(--texto-muted); margin-bottom: 18px; }
+  .tiles { display: grid; grid-template-columns: repeat(14, 1fr); gap: 4px; }
+  @media (max-width: 760px) { .tiles { grid-template-columns: repeat(7, 1fr); } }
+  .tile { border-radius: 4px; padding: 7px 2px 6px; text-align: center; display: flex; flex-direction: column; gap: 2px; border: 1px solid rgba(255,255,255,0.05); }
+  .tile .tk { font-size: 0.64rem; font-weight: 700; color: var(--creme); letter-spacing: 0.02em; }
+  .tile .dd { font-size: 0.56rem; color: rgba(245,237,224,0.78); }
+  @media (max-width: 760px) { .tile .tk { font-size: 0.7rem; } .tile .dd { font-size: 0.62rem; } }
+  .heat-legenda { display: flex; align-items: center; gap: 10px; margin-top: 16px; font-size: 0.66rem; color: var(--texto-muted); }
+  .heat-bar { flex: 1; max-width: 220px; height: 8px; border-radius: 4px; background: linear-gradient(90deg, rgba(201,69,69,0.2), rgba(201,69,69,0.9)); }
+  .faixa-row { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+  .faixa-label { flex: 0 0 96px; font-size: 0.76rem; color: var(--texto-claro); }
+  .faixa-track { flex: 1; height: 22px; background: rgba(255,255,255,0.05); border-radius: 4px; overflow: hidden; }
+  .faixa-fill { height: 100%; display: flex; align-items: center; justify-content: flex-end; padding-right: 8px; background: linear-gradient(90deg, rgba(201,69,69,0.55), rgba(224,112,112,0.95)); }
+  .faixa-val { font-size: 0.7rem; font-weight: 700; color: var(--verde-escuro); }
+  .dolar-grid { display: grid; grid-template-columns: repeat(10, 1fr); gap: 4px; max-width: 360px; margin: 8px auto 6px; }
+  .dolar-sq { aspect-ratio: 1; border-radius: 3px; background: rgba(255,255,255,0.07); }
+  .dolar-sq.top10 { background: rgba(201,168,76,0.55); }
+  .dolar-sq.nvda { background: #e2c47a; }
+  .dolar-leg { display: flex; justify-content: center; gap: 18px; flex-wrap: wrap; font-size: 0.68rem; color: var(--texto-claro); margin-top: 12px; }
+  .dolar-leg span::before { content: ""; display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 6px; vertical-align: -1px; }
+  .dolar-leg .l1::before { background: #e2c47a; } .dolar-leg .l2::before { background: rgba(201,168,76,0.55); } .dolar-leg .l3::before { background: rgba(255,255,255,0.12); }
+  .q3-chart { position: relative; height: 230px; display: flex; gap: 26px; padding: 0 10px; }
+  .q3-col { flex: 1; position: relative; height: 100%; }
+  .q3-bar { position: absolute; left: 6px; right: 6px; border-radius: 3px; }
+  .q3-bar.pos { background: linear-gradient(180deg, #e2c47a, #c9a84c); }
+  .q3-bar.neg { background: linear-gradient(0deg, #c94545, #e07070); }
+  .q3-bar.destaque { background: linear-gradient(180deg, #f5ede0, #cfc3ab); }
+  .q3-val { position: absolute; left: 0; right: 0; text-align: center; font-family: "Cormorant Garamond", serif; font-weight: 700; font-size: 1.05rem; color: var(--creme); }
+  .q3-zero { position: absolute; left: 0; right: 0; bottom: 100px; height: 1px; background: rgba(255,255,255,0.22); }
+  .q3-label { position: absolute; bottom: -30px; left: 0; right: 0; text-align: center; font-size: 0.68rem; color: var(--texto-muted); line-height: 1.25; }
+  .rec-row { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+  .rec-queda { flex: 0 0 64px; font-family: "Cormorant Garamond", serif; font-weight: 700; color: #e07070; font-size: 1.05rem; }
+  .rec-track { flex: 1; height: 22px; background: rgba(255,255,255,0.05); border-radius: 4px; overflow: hidden; }
+  .rec-fill { height: 100%; display: flex; align-items: center; justify-content: flex-end; padding-right: 8px; background: linear-gradient(90deg, var(--dourado), var(--dourado-claro)); }
+  .rec-val { font-size: 0.7rem; font-weight: 700; color: var(--verde-escuro); white-space: nowrap; }
+  .impl-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 24px 0; }
+  @media (max-width: 600px) { .impl-grid { grid-template-columns: 1fr; } }
+  .impl-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-top: 2px solid var(--dourado); border-radius: 6px; padding: 18px 16px; }
+  .impl-num { font-family: "Cormorant Garamond", serif; font-size: 1.6rem; font-weight: 700; color: rgba(201,168,76,0.45); line-height: 1; margin-bottom: 6px; }
+  .impl-tit { font-size: 0.82rem; font-weight: 600; color: var(--dourado); margin-bottom: 6px; }
+  .impl-txt { font-size: 0.8rem; color: var(--texto-claro); line-height: 1.6; }
+  .ref-list { font-size: 0.78rem; color: var(--texto-muted); line-height: 1.7; margin: 8px 0 0 18px; }
+</style>
+</head>
+<body>
+
+<a class="back-link" href="index.html">Voltar</a>
+
+<header class="hero">
+  <div class="hero-tag">Artigo · Mercado Internacional</div>
+  <h1>O S&P 500 sobe, mas uma em cada quatro empresas acumula <em>perdas superiores a 40%</em></h1>
+  <p class="hero-sub">A concentração dos ganhos em poucas gigantes de tecnologia esconde um mercado muito mais heterogêneo, e pode abrir espaço para novas oportunidades de investimento.</p>
+  <div class="hero-date">Outubro de 2026</div>
+  <div class="hero-fonte">Fontes: Fiscal.ai (dados de 08/10/2026) · Citadel Securities · S&P Dow Jones Indices</div>
+</header>
+
+<article>
+
+  <p class="lead">
+    O mercado acionário americano vive uma situação que, à primeira vista, parece contraditória. O S&P 500 alcança novas máximas históricas, enquanto dezenas das empresas que compõem esse mesmo índice acumulam perdas expressivas em relação aos seus maiores preços já registrados. Segundo a plataforma Fiscal.ai, com preços de 8 de outubro de 2026, <strong>134 empresas do índice estavam pelo menos 40% abaixo de suas máximas históricas</strong>.
+  </p>
+
+  <div class="stat-hero fade-in">
+    <div class="stat-card neutro">
+      <div class="stat-card-val" style="color:#e07070;">134</div>
+      <div class="stat-card-desc">empresas do S&P 500 com queda de 40% ou mais em relação à máxima histórica</div>
+    </div>
+    <div class="stat-card neutro">
+      <div class="stat-card-val" style="color:#e07070;">26,8%</div>
+      <div class="stat-card-desc">das 500 empresas de referência do índice, ou seja, mais de uma em cada quatro</div>
+    </div>
+    <div class="stat-card dourado">
+      <div class="stat-card-val">~13%</div>
+      <div class="stat-card-desc">de alta do S&P 500 no ano, com nova máxima histórica na mesma semana</div>
+    </div>
+  </div>
+
+  <!-- MAPA DE CALOR -->
+  <div class="heat-wrap fade-in">
+    <div class="heat-eyebrow">O ponto central deste artigo</div>
+    <div class="heat-titulo">134 ações do S&P 500 com queda de 40% ou pior</div>
+    <div class="heat-sub">Preço atual frente ao maior fechamento histórico, em 8 de outubro de 2026 · ordenadas da queda mais profunda para a mais rasa</div>
+    <div class="tiles">
+<div class="tile" style="background:rgba(201,69,69,0.90);"><span class="tk">AIG</span><span class="dd">−96%</span></div>
+<div class="tile" style="background:rgba(201,69,69,0.84);"><span class="tk">TTD</span><span class="dd">−91%</span></div>
+<div class="tile" style="background:rgba(201,69,69,0.82);"><span class="tk">PSKY</span><span class="dd">−90%</span></div>
+<div class="tile" style="background:rgba(201,69,69,0.80);"><span class="tk">MOS</span><span class="dd">−88%</span></div>
+<div class="tile" style="background:rgba(201,69,69,0.79);"><span class="tk">CHTR</span><span class="dd">−87%</span></div>
+<div class="tile" style="background:rgba(201,69,69,0.72);"><span class="tk">PCG</span><span class="dd">−82%</span></div>
+<div class="tile" style="background:rgba(201,69,69,0.72);"><span class="tk">PYPL</span><span class="dd">−82%</span></div>
+<div class="tile" style="background:rgba(201,69,69,0.72);"><span class="tk">LULU</span><span class="dd">−82%</span></div>
+<div class="tile" style="background:rgba(201,69,69,0.71);"><span class="tk">ALGN</span><span class="dd">−81%</span></div>
+<div class="tile" style="background:rgba(201,69,69,0.71);"><span class="tk">FISV</span><span class="dd">−81%</span></div>
+<div class="tile" style="background:rgba(201,69,69,0.70);"><span class="tk">NKE</span><span class="dd">−80%</span></div>
+<div class="tile" style="background:rgba(201,69,69,0.70);"><span class="tk">ARE</span><span class="dd">−80%</span></div>
+<div class="tile" style="background:rgba(201,69,69,0.69);"><span class="tk">AES</span><span class="dd">−79%</span></div>
+<div class="tile" style="background:rgba(201,69,69,0.68);"><span class="tk">FIS</span><span class="dd">−78%</span></div>
+<div class="tile" style="background:rgba(201,69,69,0.68);"><span class="tk">WY</span><span class="dd">−78%</span></div>
+<div class="tile" style="background:rgba(201,69,69,0.66);"><span class="tk">C</span><span class="dd">−77%</span></div>
+<div class="tile" style="background:rgba(201,69,69,0.66);"><span class="tk">VTRS</span><span class="dd">−77%</span></div>
+<div class="tile" style="background:rgba(201,69,69,0.65);"><span class="tk">NCLH</span><span class="dd">−76%</span></div>
+<div class="tile" style="background:rgba(201,69,69,0.64);"><span class="tk">APTV</span><span class="dd">−75%</span></div>
+<div class="tile" style="background:rgba(201,69,69,0.64);"><span class="tk">LVS</span><span class="dd">−75%</span></div>
+<div class="tile" style="background:rgba(201,69,69,0.64);"><span class="tk">EL</span><span class="dd">−75%</span></div>
+<div class="tile" style="background:rgba(201,69,69,0.64);"><span class="tk">BAX</span><span class="dd">−75%</span></div>
+<div class="tile" style="background:rgba(201,69,69,0.62);"><span class="tk">BLDR</span><span class="dd">−74%</span></div>
+<div class="tile" style="background:rgba(201,69,69,0.61);"><span class="tk">XYZ</span><span class="dd">−73%</span></div>
+<div class="tile" style="background:rgba(201,69,69,0.57);"><span class="tk">CSGP</span><span class="dd">−70%</span></div>
+<div class="tile" style="background:rgba(201,69,69,0.57);"><span class="tk">ZTS</span><span class="dd">−70%</span></div>
+<div class="tile" style="background:rgba(201,69,69,0.57);"><span class="tk">FICO</span><span class="dd">−70%</span></div>
+<div class="tile" style="background:rgba(201,69,69,0.57);"><span class="tk">MGM</span><span class="dd">−70%</span></div>
+<div class="tile" style="background:rgba(201,69,69,0.57);"><span class="tk">WYNN</span><span class="dd">−70%</span></div>
+<div class="tile" style="background:rgba(201,69,69,0.56);"><span class="tk">AKAM</span><span class="dd">−69%</span></div>
+<div class="tile" style="background:rgba(201,69,69,0.56);"><span class="tk">APA</span><span class="dd">−69%</span></div>
+<div class="tile" style="background:rgba(201,69,69,0.56);"><span class="tk">ALB</span><span class="dd">−69%</span></div>
+<div class="tile" style="background:rgba(201,69,69,0.54);"><span class="tk">CCI</span><span class="dd">−67%</span></div>
+<div class="tile" style="background:rgba(201,69,69,0.54);"><span class="tk">BF.B</span><span class="dd">−67%</span></div>
+<div class="tile" style="background:rgba(201,69,69,0.54);"><span class="tk">F</span><span class="dd">−67%</span></div>
+<div class="tile" style="background:rgba(201,69,69,0.53);"><span class="tk">DOC</span><span class="dd">−66%</span></div>
+<div class="tile" style="background:rgba(201,69,69,0.53);"><span class="tk">TAP</span><span class="dd">−66%</span></div>
+<div class="tile" style="background:rgba(201,69,69,0.53);"><span class="tk">CMCSA</span><span class="dd">−66%</span></div>
+<div class="tile" style="background:rgba(201,69,69,0.51);"><span class="tk">ADBE</span><span class="dd">−65%</span></div>
+<div class="tile" style="background:rgba(201,69,69,0.51);"><span class="tk">CLX</span><span class="dd">−65%</span></div>
+<div class="tile" style="background:rgba(201,69,69,0.51);"><span class="tk">IT</span><span class="dd">−65%</span></div>
+<div class="tile" style="background:rgba(201,69,69,0.51);"><span class="tk">HRL</span><span class="dd">−65%</span></div>
+<div class="tile" style="background:rgba(201,69,69,0.50);"><span class="tk">SMCI</span><span class="dd">−64%</span></div>
+<div class="tile" style="background:rgba(201,69,69,0.50);"><span class="tk">GIS</span><span class="dd">−64%</span></div>
+<div class="tile" style="background:rgba(201,69,69,0.50);"><span class="tk">CCL</span><span class="dd">−64%</span></div>
+<div class="tile" style="background:rgba(201,69,69,0.49);"><span class="tk">DECK</span><span class="dd">−63%</span></div>
+<div class="tile" style="background:rgba(201,69,69,0.49);"><span class="tk">INTU</span><span class="dd">−63%</span></div>
+<div class="tile" style="background:rgba(201,69,69,0.47);"><span class="tk">GPN</span><span class="dd">−62%</span></div>
+<div class="tile" style="background:rgba(201,69,69,0.47);"><span class="tk">APP</span><span class="dd">−62%</span></div>
+<div class="tile" style="background:rgba(201,69,69,0.47);"><span class="tk">PODD</span><span class="dd">−62%</span></div>
+<div class="tile" style="background:rgba(201,69,69,0.46);"><span class="tk">BSX</span><span class="dd">−61%</span></div>
+<div class="tile" style="background:rgba(201,69,69,0.46);"><span class="tk">DVN</span><span class="dd">−61%</span></div>
+<div class="tile" style="background:rgba(201,69,69,0.45);"><span class="tk">LEN</span><span class="dd">−60%</span></div>
+<div class="tile" style="background:rgba(201,69,69,0.45);"><span class="tk">WBD</span><span class="dd">−60%</span></div>
+<div class="tile" style="background:rgba(201,69,69,0.45);"><span class="tk">SWK</span><span class="dd">−60%</span></div>
+<div class="tile" style="background:rgba(201,69,69,0.45);"><span class="tk">BXP</span><span class="dd">−60%</span></div>
+<div class="tile" style="background:rgba(201,69,69,0.45);"><span class="tk">MRNA</span><span class="dd">−60%</span></div>
+<div class="tile" style="background:rgba(201,69,69,0.45);"><span class="tk">DOW</span><span class="dd">−60%</span></div>
+<div class="tile" style="background:rgba(201,69,69,0.44);"><span class="tk">UPS</span><span class="dd">−59%</span></div>
+<div class="tile" style="background:rgba(201,69,69,0.44);"><span class="tk">CIEN</span><span class="dd">−59%</span></div>
+<div class="tile" style="background:rgba(201,69,69,0.44);"><span class="tk">SWKS</span><span class="dd">−59%</span></div>
+<div class="tile" style="background:rgba(201,69,69,0.44);"><span class="tk">ORCL</span><span class="dd">−59%</span></div>
+<div class="tile" style="background:rgba(201,69,69,0.44);"><span class="tk">KIM</span><span class="dd">−59%</span></div>
+<div class="tile" style="background:rgba(201,69,69,0.44);"><span class="tk">SLB</span><span class="dd">−59%</span></div>
+<div class="tile" style="background:rgba(201,69,69,0.43);"><span class="tk">COIN</span><span class="dd">−58%</span></div>
+<div class="tile" style="background:rgba(201,69,69,0.43);"><span class="tk">ERIE</span><span class="dd">−58%</span></div>
+<div class="tile" style="background:rgba(201,69,69,0.43);"><span class="tk">BA</span><span class="dd">−58%</span></div>
+<div class="tile" style="background:rgba(201,69,69,0.41);"><span class="tk">CPRT</span><span class="dd">−57%</span></div>
+<div class="tile" style="background:rgba(201,69,69,0.40);"><span class="tk">MKC</span><span class="dd">−56%</span></div>
+<div class="tile" style="background:rgba(201,69,69,0.40);"><span class="tk">SBAC</span><span class="dd">−56%</span></div>
+<div class="tile" style="background:rgba(201,69,69,0.40);"><span class="tk">GNRC</span><span class="dd">−56%</span></div>
+<div class="tile" style="background:rgba(201,69,69,0.40);"><span class="tk">HAL</span><span class="dd">−56%</span></div>
+<div class="tile" style="background:rgba(201,69,69,0.39);"><span class="tk">STZ</span><span class="dd">−55%</span></div>
+<div class="tile" style="background:rgba(201,69,69,0.39);"><span class="tk">PFE</span><span class="dd">−55%</span></div>
+<div class="tile" style="background:rgba(201,69,69,0.38);"><span class="tk">BIIB</span><span class="dd">−54%</span></div>
+<div class="tile" style="background:rgba(201,69,69,0.38);"><span class="tk">PNR</span><span class="dd">−54%</span></div>
+<div class="tile" style="background:rgba(201,69,69,0.38);"><span class="tk">KEY</span><span class="dd">−54%</span></div>
+<div class="tile" style="background:rgba(201,69,69,0.36);"><span class="tk">TROW</span><span class="dd">−53%</span></div>
+<div class="tile" style="background:rgba(201,69,69,0.36);"><span class="tk">EFX</span><span class="dd">−53%</span></div>
+<div class="tile" style="background:rgba(201,69,69,0.35);"><span class="tk">COO</span><span class="dd">−52%</span></div>
+<div class="tile" style="background:rgba(201,69,69,0.35);"><span class="tk">DG</span><span class="dd">−52%</span></div>
+<div class="tile" style="background:rgba(201,69,69,0.35);"><span class="tk">AXON</span><span class="dd">−52%</span></div>
+<div class="tile" style="background:rgba(201,69,69,0.35);"><span class="tk">CMG</span><span class="dd">−52%</span></div>
+<div class="tile" style="background:rgba(201,69,69,0.35);"><span class="tk">GDDY</span><span class="dd">−52%</span></div>
+<div class="tile" style="background:rgba(201,69,69,0.34);"><span class="tk">ROL</span><span class="dd">−51%</span></div>
+<div class="tile" style="background:rgba(201,69,69,0.33);"><span class="tk">LYB</span><span class="dd">−50%</span></div>
+<div class="tile" style="background:rgba(201,69,69,0.33);"><span class="tk">ACN</span><span class="dd">−50%</span></div>
+<div class="tile" style="background:rgba(201,69,69,0.33);"><span class="tk">HBAN</span><span class="dd">−50%</span></div>
+<div class="tile" style="background:rgba(201,69,69,0.33);"><span class="tk">IVZ</span><span class="dd">−50%</span></div>
+<div class="tile" style="background:rgba(201,69,69,0.31);"><span class="tk">MAA</span><span class="dd">−49%</span></div>
+<div class="tile" style="background:rgba(201,69,69,0.31);"><span class="tk">TYL</span><span class="dd">−49%</span></div>
+<div class="tile" style="background:rgba(201,69,69,0.31);"><span class="tk">BRO</span><span class="dd">−49%</span></div>
+<div class="tile" style="background:rgba(201,69,69,0.31);"><span class="tk">ZBH</span><span class="dd">−49%</span></div>
+<div class="tile" style="background:rgba(201,69,69,0.30);"><span class="tk">IP</span><span class="dd">−48%</span></div>
+<div class="tile" style="background:rgba(201,69,69,0.30);"><span class="tk">ILMN</span><span class="dd">−48%</span></div>
+<div class="tile" style="background:rgba(201,69,69,0.30);"><span class="tk">DXCM</span><span class="dd">−48%</span></div>
+<div class="tile" style="background:rgba(201,69,69,0.29);"><span class="tk">TSN</span><span class="dd">−47%</span></div>
+<div class="tile" style="background:rgba(201,69,69,0.29);"><span class="tk">DIS</span><span class="dd">−47%</span></div>
+<div class="tile" style="background:rgba(201,69,69,0.29);"><span class="tk">WDC</span><span class="dd">−47%</span></div>
+<div class="tile" style="background:rgba(201,69,69,0.29);"><span class="tk">NFLX</span><span class="dd">−47%</span></div>
+<div class="tile" style="background:rgba(201,69,69,0.29);"><span class="tk">TSCO</span><span class="dd">−47%</span></div>
+<div class="tile" style="background:rgba(201,69,69,0.29);"><span class="tk">LII</span><span class="dd">−47%</span></div>
+<div class="tile" style="background:rgba(201,69,69,0.29);"><span class="tk">KKR</span><span class="dd">−47%</span></div>
+<div class="tile" style="background:rgba(201,69,69,0.28);"><span class="tk">TECH</span><span class="dd">−46%</span></div>
+<div class="tile" style="background:rgba(201,69,69,0.28);"><span class="tk">IFF</span><span class="dd">−46%</span></div>
+<div class="tile" style="background:rgba(201,69,69,0.28);"><span class="tk">FE</span><span class="dd">−46%</span></div>
+<div class="tile" style="background:rgba(201,69,69,0.28);"><span class="tk">OXY</span><span class="dd">−46%</span></div>
+<div class="tile" style="background:rgba(201,69,69,0.28);"><span class="tk">CDW</span><span class="dd">−46%</span></div>
+<div class="tile" style="background:rgba(201,69,69,0.28);"><span class="tk">CPT</span><span class="dd">−46%</span></div>
+<div class="tile" style="background:rgba(201,69,69,0.28);"><span class="tk">VRSK</span><span class="dd">−46%</span></div>
+<div class="tile" style="background:rgba(201,69,69,0.26);"><span class="tk">DPZ</span><span class="dd">−45%</span></div>
+<div class="tile" style="background:rgba(201,69,69,0.26);"><span class="tk">AMT</span><span class="dd">−45%</span></div>
+<div class="tile" style="background:rgba(201,69,69,0.26);"><span class="tk">BEN</span><span class="dd">−45%</span></div>
+<div class="tile" style="background:rgba(201,69,69,0.26);"><span class="tk">UDR</span><span class="dd">−45%</span></div>
+<div class="tile" style="background:rgba(201,69,69,0.25);"><span class="tk">T</span><span class="dd">−44%</span></div>
+<div class="tile" style="background:rgba(201,69,69,0.25);"><span class="tk">FSLR</span><span class="dd">−44%</span></div>
+<div class="tile" style="background:rgba(201,69,69,0.24);"><span class="tk">BX</span><span class="dd">−43%</span></div>
+<div class="tile" style="background:rgba(201,69,69,0.23);"><span class="tk">NRG</span><span class="dd">−42%</span></div>
+<div class="tile" style="background:rgba(201,69,69,0.23);"><span class="tk">FDS</span><span class="dd">−42%</span></div>
+<div class="tile" style="background:rgba(201,69,69,0.23);"><span class="tk">PPG</span><span class="dd">−42%</span></div>
+<div class="tile" style="background:rgba(201,69,69,0.23);"><span class="tk">RDDT</span><span class="dd">−42%</span></div>
+<div class="tile" style="background:rgba(201,69,69,0.23);"><span class="tk">HII</span><span class="dd">−42%</span></div>
+<div class="tile" style="background:rgba(201,69,69,0.23);"><span class="tk">TGT</span><span class="dd">−42%</span></div>
+<div class="tile" style="background:rgba(201,69,69,0.21);"><span class="tk">INVH</span><span class="dd">−41%</span></div>
+<div class="tile" style="background:rgba(201,69,69,0.21);"><span class="tk">ARES</span><span class="dd">−41%</span></div>
+<div class="tile" style="background:rgba(201,69,69,0.21);"><span class="tk">EXR</span><span class="dd">−41%</span></div>
+<div class="tile" style="background:rgba(201,69,69,0.21);"><span class="tk">SW</span><span class="dd">−41%</span></div>
+<div class="tile" style="background:rgba(201,69,69,0.21);"><span class="tk">HSY</span><span class="dd">−41%</span></div>
+<div class="tile" style="background:rgba(201,69,69,0.21);"><span class="tk">ON</span><span class="dd">−41%</span></div>
+<div class="tile" style="background:rgba(201,69,69,0.21);"><span class="tk">LDOS</span><span class="dd">−41%</span></div>
+<div class="tile" style="background:rgba(201,69,69,0.21);"><span class="tk">UNH</span><span class="dd">−41%</span></div>
+<div class="tile" style="background:rgba(201,69,69,0.21);"><span class="tk">GLW</span><span class="dd">−41%</span></div>
+<div class="tile" style="background:rgba(201,69,69,0.21);"><span class="tk">NOW</span><span class="dd">−41%</span></div>
+<div class="tile" style="background:rgba(201,69,69,0.21);"><span class="tk">BALL</span><span class="dd">−41%</span></div>
+    </div>
+    <div class="heat-legenda">Queda em relação à máxima: <span>−40%</span><div class="heat-bar"></div><span>−96%</span></div>
+    <div class="grafico-nota">Queda calculada entre o último fechamento e o maior fechamento histórico ajustado por desdobramentos, conforme metodologia da Fiscal.ai. Não representa perda acumulada em 2026 nem retorno total com dividendos. Fonte: Fiscal.ai.</div>
+  </div>
+
+  <p>Um detalhe importante: estar 40% abaixo da máxima histórica não significa ter caído 40% durante o ciclo de alta atual. A Fiscal.ai destaca que <strong>35 das 134 empresas</strong> registraram suas máximas antes de 2020, de modo que parte das quedas reflete trajetórias de muitos anos. Mesmo assim, cerca de uma em cada cinco empresas do índice estava mais de 40% abaixo de picos estabelecidos nos últimos seis anos.</p>
+
+  <!-- DISTRIBUIÇÃO -->
+  <div class="section-title fade-in"><span class="section-icon">📊</span> Quão profundas são essas quedas?</div>
+
+  <p>Contando os tiles do levantamento por faixa de queda, a distribuição mostra que o grupo vai bem além de empresas que apenas passaram do limite de 40%:</p>
+
+  <div class="grafico-wrap fade-in">
+    <div class="grafico-titulo">Distribuição das 134 ações por faixa de queda</div>
+    <div class="grafico-sub">Número de empresas em cada faixa de distância da máxima histórica</div>
+    <div class="faixa-row"><div class="faixa-label">−40% a −49%</div><div class="faixa-track"><div class="faixa-fill" style="width:100%;"><span class="faixa-val">45</span></div></div></div>
+    <div class="faixa-row"><div class="faixa-label">−50% a −59%</div><div class="faixa-track"><div class="faixa-fill" style="width:68.9%;"><span class="faixa-val">31</span></div></div></div>
+    <div class="faixa-row"><div class="faixa-label">−60% a −69%</div><div class="faixa-track"><div class="faixa-fill" style="width:64.4%;"><span class="faixa-val">29</span></div></div></div>
+    <div class="faixa-row"><div class="faixa-label">−70% a −79%</div><div class="faixa-track"><div class="faixa-fill" style="width:37.8%;"><span class="faixa-val">17</span></div></div></div>
+    <div class="faixa-row" style="margin-bottom:0;"><div class="faixa-label">−80% ou mais</div><div class="faixa-track"><div class="faixa-fill" style="width:26.7%;"><span class="faixa-val">12</span></div></div></div>
+    <div class="grafico-nota">Contagem feita a partir do mapa de calor da Fiscal.ai (08/10/2026). A queda mediana do grupo fica em torno de 58%.</div>
+  </div>
+
+  <p>As empresas citadas no levantamento vêm de setores variados, como PayPal, Lululemon, Nike, Adobe, Pfizer e Disney. Muitas têm marcas reconhecidas, operações globais e décadas de atuação, o que afasta a ideia de que o grupo seja formado apenas por companhias pequenas ou especulativas.</p>
+
+  <!-- CONCENTRAÇÃO -->
+  <div class="section-title fade-in"><span class="section-icon">🏗️</span> O S&P 500 não representa a empresa média americana</div>
+
+  <p>O S&P 500 tradicional pondera as empresas pelo valor de mercado ajustado pelas ações disponíveis para negociação. Quanto maior a companhia, maior a sua influência no resultado do índice. Na prática, a valorização de Nvidia, Microsoft ou Apple pode compensar a queda de dezenas de outras empresas.</p>
+
+  <div class="stat-hero fade-in" style="grid-template-columns: repeat(2,1fr);">
+    <div class="stat-card dourado">
+      <div class="stat-card-val">37,8%</div>
+      <div class="stat-card-desc">peso das 10 maiores empresas no S&P 500, em 31/08/2026 (S&P Dow Jones Indices)</div>
+    </div>
+    <div class="stat-card dourado">
+      <div class="stat-card-val">8,1%</div>
+      <div class="stat-card-desc">peso da maior empresa do índice na mesma data</div>
+    </div>
+  </div>
+
+  <div class="grafico-wrap fade-in">
+    <div class="grafico-titulo">Para cada US$ 100 investidos no S&P 500</div>
+    <div class="grafico-sub">Cada quadrado representa US$ 1 · cerca de US$ 41 estão nas 10 maiores empresas</div>
+    <div class="dolar-grid"><div class="dolar-sq top10 nvda"></div><div class="dolar-sq top10 nvda"></div><div class="dolar-sq top10 nvda"></div><div class="dolar-sq top10 nvda"></div><div class="dolar-sq top10 nvda"></div><div class="dolar-sq top10 nvda"></div><div class="dolar-sq top10 nvda"></div><div class="dolar-sq top10 nvda"></div><div class="dolar-sq top10"></div><div class="dolar-sq top10"></div><div class="dolar-sq top10"></div><div class="dolar-sq top10"></div><div class="dolar-sq top10"></div><div class="dolar-sq top10"></div><div class="dolar-sq top10"></div><div class="dolar-sq top10"></div><div class="dolar-sq top10"></div><div class="dolar-sq top10"></div><div class="dolar-sq top10"></div><div class="dolar-sq top10"></div><div class="dolar-sq top10"></div><div class="dolar-sq top10"></div><div class="dolar-sq top10"></div><div class="dolar-sq top10"></div><div class="dolar-sq top10"></div><div class="dolar-sq top10"></div><div class="dolar-sq top10"></div><div class="dolar-sq top10"></div><div class="dolar-sq top10"></div><div class="dolar-sq top10"></div><div class="dolar-sq top10"></div><div class="dolar-sq top10"></div><div class="dolar-sq top10"></div><div class="dolar-sq top10"></div><div class="dolar-sq top10"></div><div class="dolar-sq top10"></div><div class="dolar-sq top10"></div><div class="dolar-sq top10"></div><div class="dolar-sq top10"></div><div class="dolar-sq top10"></div><div class="dolar-sq top10"></div><div class="dolar-sq"></div><div class="dolar-sq"></div><div class="dolar-sq"></div><div class="dolar-sq"></div><div class="dolar-sq"></div><div class="dolar-sq"></div><div class="dolar-sq"></div><div class="dolar-sq"></div><div class="dolar-sq"></div><div class="dolar-sq"></div><div class="dolar-sq"></div><div class="dolar-sq"></div><div class="dolar-sq"></div><div class="dolar-sq"></div><div class="dolar-sq"></div><div class="dolar-sq"></div><div class="dolar-sq"></div><div class="dolar-sq"></div><div class="dolar-sq"></div><div class="dolar-sq"></div><div class="dolar-sq"></div><div class="dolar-sq"></div><div class="dolar-sq"></div><div class="dolar-sq"></div><div class="dolar-sq"></div><div class="dolar-sq"></div><div class="dolar-sq"></div><div class="dolar-sq"></div><div class="dolar-sq"></div><div class="dolar-sq"></div><div class="dolar-sq"></div><div class="dolar-sq"></div><div class="dolar-sq"></div><div class="dolar-sq"></div><div class="dolar-sq"></div><div class="dolar-sq"></div><div class="dolar-sq"></div><div class="dolar-sq"></div><div class="dolar-sq"></div><div class="dolar-sq"></div><div class="dolar-sq"></div><div class="dolar-sq"></div><div class="dolar-sq"></div><div class="dolar-sq"></div><div class="dolar-sq"></div><div class="dolar-sq"></div><div class="dolar-sq"></div><div class="dolar-sq"></div><div class="dolar-sq"></div><div class="dolar-sq"></div><div class="dolar-sq"></div><div class="dolar-sq"></div><div class="dolar-sq"></div><div class="dolar-sq"></div><div class="dolar-sq"></div><div class="dolar-sq"></div><div class="dolar-sq"></div><div class="dolar-sq"></div><div class="dolar-sq"></div></div>
+    <div class="dolar-leg"><span class="l1">Maior empresa (~US$ 8)</span><span class="l2">Demais das 10 maiores</span><span class="l3">Outras 490 empresas</span></div>
+    <div class="grafico-nota">Ilustração baseada na análise da Citadel Securities (&quot;October: The Q4 Reload&quot;), que aponta cerca de 41 centavos de cada dólar do índice nas 10 maiores empresas. Os pesos variam com a data-base e a metodologia.</div>
+  </div>
+
+  <p>A estrutura reflete a metodologia do índice e não indica erro de cálculo. Ela mostra que investir no S&P 500 equivale a ter parte relevante do patrimônio concentrada em poucas companhias, e não a distribuí-lo igualmente entre 500 empresas.</p>
+
+  <!-- DUAS VELOCIDADES -->
+  <div class="section-title fade-in"><span class="section-icon">⚡</span> Um mercado de duas velocidades</div>
+
+  <p>O levantamento da Citadel Securities para o terceiro trimestre de 2026 mostra o mesmo fenômeno em outro ângulo. O índice tradicional subiu, enquanto sua versão de pesos iguais e o índice de pequenas empresas recuaram:</p>
+
+  <div class="grafico-wrap fade-in">
+    <div class="grafico-titulo">Desempenho no terceiro trimestre de 2026</div>
+    <div class="grafico-sub">Variação no trimestre, em %</div>
+    <div class="q3-chart" style="margin-bottom:40px;">
+      <div class="q3-zero" style="bottom:94px;"></div>
+      <div class="q3-col"><div class="q3-val" style="bottom:213px;">+11%</div><div class="q3-bar pos" style="bottom:94px; height:115px;"></div><div class="q3-label">Magnificent 7</div></div>
+      <div class="q3-col"><div class="q3-val" style="bottom:119px;">+2%</div><div class="q3-bar destaque" style="bottom:94px; height:21px;"></div><div class="q3-label">S&P 500</div></div>
+      <div class="q3-col"><div class="q3-val" style="bottom:50px;">−2%</div><div class="q3-bar neg" style="bottom:73px; height:21px;"></div><div class="q3-label">S&P 500 Equal Weight</div></div>
+      <div class="q3-col"><div class="q3-val" style="bottom:-2px;">−7%</div><div class="q3-bar neg" style="bottom:21px; height:73px;"></div><div class="q3-label">Russell 2000</div></div>
+    </div>
+    <div class="grafico-nota">Fonte: Citadel Securities, dados compilados até 29/09/2026.</div>
+  </div>
+
+  <p>Outro dado da mesma análise chama atenção: Microsoft, Nvidia, Apple e Meta contribuíram juntas com cerca de 300 pontos para o S&P 500 no trimestre, enquanto o restante do índice subtraiu aproximadamente 150 pontos. A contribuição dessas quatro empresas correspondeu a mais de 200% de todo o ganho líquido do índice.</p>
+
+  <div class="insight-box fade-in">
+    <p>Acompanhar apenas a variação do S&P 500 pode ser insuficiente para entender a situação efetiva do mercado acionário americano.</p>
+  </div>
+
+  <!-- AMPLITUDE -->
+  <div class="section-title fade-in"><span class="section-icon">🔭</span> A importância de acompanhar a amplitude do mercado</div>
+
+  <p>No mercado financeiro, <strong>market breadth</strong> (amplitude) mede quantas empresas participam de um movimento de alta ou de baixa. Quando um índice sobe com a ajuda de muitas empresas, a participação é ampla. Quando sobe puxado por poucos papéis, os ganhos são concentrados. Em setembro, a Citadel Securities apontava que apenas 25% das empresas do S&P 500 estavam acima de suas médias móveis de 50 dias, e a Schwab também destacou, em sua análise de outubro, a deterioração dos indicadores de amplitude.</p>
+
+  <p>Esse comportamento, sozinho, não prevê queda do mercado. Movimentos concentrados podem durar bastante, sobretudo quando as líderes entregam crescimento robusto de lucros. Ele indica, porém, que a sustentação dos índices depende de um grupo limitado de companhias.</p>
+
+  <!-- OPORTUNIDADES -->
+  <div class="section-title fade-in"><span class="section-icon">🔍</span> Quedas expressivas podem representar oportunidades?</div>
+
+  <p>Podem, com análise criteriosa. Uma ação pode cair 40%, 50% ou 60% por razões muito diferentes. Em alguns casos, a queda reflete deterioração estrutural do negócio, perda de competitividade, endividamento excessivo ou perspectivas de crescimento permanentemente menores. Em outros, resulta de expectativas anteriormente exageradas, de mudanças temporárias no ambiente econômico ou de revisões de múltiplos que superam a evolução dos fundamentos.</p>
+
+  <p>Uma ação que caiu 50% pode continuar cara, e uma empresa próxima da máxima pode estar barata. O preço precisa ser comparado à geração de caixa, aos lucros esperados, à posição competitiva, ao endividamento e às perspectivas de crescimento. A oportunidade existe quando há diferença favorável entre o preço negociado e o valor econômico estimado da empresa, e a queda da cotação, isoladamente, não cria essa diferença.</p>
+
+  <div class="grafico-wrap fade-in">
+    <div class="grafico-titulo">A aritmética da recuperação</div>
+    <div class="grafico-sub">Alta necessária para voltar ao preço anterior, conforme a queda sofrida</div>
+    <div class="rec-row"><div class="rec-queda">−40%</div><div class="rec-track"><div class="rec-fill" style="width:7.4%; min-width:70px;"><span class="rec-val">+67%</span></div></div></div>
+    <div class="rec-row"><div class="rec-queda">−50%</div><div class="rec-track"><div class="rec-fill" style="width:11.1%; min-width:70px;"><span class="rec-val">+100%</span></div></div></div>
+    <div class="rec-row"><div class="rec-queda">−60%</div><div class="rec-track"><div class="rec-fill" style="width:16.7%; min-width:70px;"><span class="rec-val">+150%</span></div></div></div>
+    <div class="rec-row"><div class="rec-queda">−70%</div><div class="rec-track"><div class="rec-fill" style="width:25.9%; min-width:70px;"><span class="rec-val">+233%</span></div></div></div>
+    <div class="rec-row"><div class="rec-queda">−80%</div><div class="rec-track"><div class="rec-fill" style="width:44.4%; min-width:70px;"><span class="rec-val">+400%</span></div></div></div>
+    <div class="rec-row" style="margin-bottom:0;"><div class="rec-queda">−90%</div><div class="rec-track"><div class="rec-fill" style="width:100%;"><span class="rec-val">+900%</span></div></div></div>
+    <div class="grafico-nota">Alta necessária = 1 ÷ (1 − queda) − 1. Uma ação que caiu 50% precisa subir 100% para retornar ao preço anterior, o que mostra o risco de decidir apenas pela magnitude da desvalorização.</div>
+  </div>
+
+  <!-- CARTEIRAS -->
+  <div class="section-title fade-in"><span class="section-icon">🧱</span> O que isso significa para a construção de carteiras</div>
+
+  <div class="impl-grid fade-in">
+    <div class="impl-card">
+      <div class="impl-num">1</div>
+      <div class="impl-tit">Conheça a concentração efetiva</div>
+      <div class="impl-txt">Um ETF de S&P 500 dá exposição a centenas de companhias, mas sua rentabilidade segue muito influenciada pelas maiores posições.</div>
+    </div>
+    <div class="impl-card">
+      <div class="impl-num">2</div>
+      <div class="impl-tit">Considere outras estratégias</div>
+      <div class="impl-txt">Índices de pesos iguais (cerca de 0,2% por empresa), médias empresas, outros setores, valor e outros mercados reduzem a dependência de um único grupo, sem garantir resultado superior.</div>
+    </div>
+    <div class="impl-card">
+      <div class="impl-num">3</div>
+      <div class="impl-tit">Rebalanceie com disciplina</div>
+      <div class="impl-txt">Após longos períodos de valorização de um segmento, a carteira pode ficar mais concentrada do que o planejado. Revisar periodicamente preserva a coerência com horizonte e tolerância a risco.</div>
+    </div>
+  </div>
+
+  <div class="warn-box fade-in">
+    <p>O índice de pesos iguais tende a ficar atrás do tradicional nos períodos de forte liderança das gigantes de tecnologia, como mostra o terceiro trimestre acima. Nenhuma alternativa elimina o risco: o objetivo é reduzir a dependência de um único grupo de empresas ou de um único fator de retorno.</p>
+  </div>
+
+  <div class="conclusao fade-in">
+    O mercado americano é maior do que suas gigantes de tecnologia. A concentração dos ganhos aumenta a dependência do índice em relação ao crescimento e às avaliações de poucas companhias, e a dispersão de retornos pode criar oportunidades para quem identifica bons negócios a preços compatíveis com seus fundamentos. Antecipar uma queda das grandes empresas ou presumir a recuperação automática das que ficaram para trás são apostas que os dados não sustentam. Para o investidor de longo prazo, <strong>diversificação, disciplina e análise de fundamentos continuam tão importantes quanto identificar as tendências que lideram o mercado.</strong>
+  </div>
+
+  <div class="method-box fade-in">
+    <div class="method-titulo">Nota metodológica e referências</div>
+    <p>Os dados de queda da Fiscal.ai comparam as cotações de 08/10/2026 com as maiores cotações históricas de fechamento de cada ação, e não representam perdas acumuladas em 2026 nem retornos totais ajustados por dividendos. As estatísticas de concentração (31/08/2026), de desempenho trimestral (até 29/09/2026) e de amplitude (setembro de 2026) têm datas-base distintas. A distribuição por faixa foi calculada a partir do mapa de calor do levantamento.</p>
+    <ul class="ref-list">
+      <li>Fiscal.ai — "Carnage Under the AI Hood" (levantamento das 134 empresas)</li>
+      <li>Citadel Securities — "October: The Q4 Reload" (concentração e divergência entre índices)</li>
+      <li>S&P Dow Jones Indices — S&P 500 (metodologia e pesos)</li>
+      <li>Charles Schwab — Market Snapshot, outubro de 2026 (amplitude de mercado)</li>
+    </ul>
+  </div>
+
+</article>
+
+<footer>
+  <div class="footer-name">Fábio Vogelaar Carlucci</div>
+  <div class="footer-contact">+55 (16) 98148-8260<br><a href="mailto:fabio.carlucci@ficus.capital">fabio.carlucci@ficus.capital</a></div>
+</footer>
+<div style="position:relative;z-index:1;padding:0 8% 28px;text-align:center;font-size:0.65rem;color:rgba(245,237,224,0.2);letter-spacing:0.08em;">
+  Fontes: Fiscal.ai · Citadel Securities · S&P Dow Jones Indices · Charles Schwab<br>
+  Conteúdo informativo e educacional. Não constitui recomendação individualizada de compra ou venda de ativos. Investimentos em renda variável envolvem riscos, inclusive de perda de capital.
+</div>
+
+<script>
+const faders = document.querySelectorAll(".fade-in");
+const obs = new IntersectionObserver(e => e.forEach(x => { if(x.isIntersecting){ x.target.classList.add("visible"); obs.unobserve(x.target); } }), { threshold: 0.1 });
+faders.forEach(f => obs.observe(f));
+</script>
+</body>
+</html>
