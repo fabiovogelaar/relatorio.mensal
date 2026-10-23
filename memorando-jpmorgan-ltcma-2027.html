@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Os investimentos da próxima década: o que o J.P. Morgan projeta | Fábio Carlucci</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DBQSDSDRF3"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-DBQSDSDRF3");</script>
+<style>
+  :root {
+    --verde-escuro: #1a2e25;
+    --dourado: #c9a84c;
+    --dourado-claro: #e2c47a;
+    --creme: #f5ede0;
+    --texto-claro: rgba(245,237,224,0.85);
+    --texto-muted: rgba(245,237,224,0.45);
+    --azul: #4a90d9;
+    --verde-gain: #3dbf8a;
+    --vermelho: #c94545;
+    --roxo: #9a7ad9;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { background-color: var(--verde-escuro); color: var(--creme); font-family: "Jost", sans-serif; font-weight: 300; overflow-x: hidden; }
+  body::before {
+    content: ""; position: fixed; inset: 0;
+    background-image: radial-gradient(ellipse at 10% 10%, rgba(201,168,76,0.06) 0%, transparent 55%), radial-gradient(ellipse at 90% 90%, rgba(47,82,64,0.35) 0%, transparent 55%);
+    pointer-events: none; z-index: 0;
+  }
+  .back-link { position: relative; z-index: 10; display: inline-flex; align-items: center; gap: 8px; padding: 28px 8%; font-size: 0.7rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--texto-muted); text-decoration: none; transition: color 0.2s; }
+  .back-link:hover { color: var(--dourado); }
+  .back-link::before { content: "←"; font-size: 0.9rem; }
+
+  .hero { position: relative; z-index: 1; padding: 20px 8% 56px; max-width: 800px; margin: 0 auto; text-align: center; border-bottom: 1px solid rgba(201,168,76,0.15); }
+  .hero-tag { font-size: 0.65rem; font-weight: 500; letter-spacing: 0.35em; text-transform: uppercase; color: var(--dourado); display: flex; align-items: center; justify-content: center; gap: 12px; margin-bottom: 24px; opacity: 0; animation: fadeUp 0.7s ease 0.1s forwards; }
+  .hero-tag::before, .hero-tag::after { content: ""; width: 26px; height: 1px; background: var(--dourado); }
+  h1 { font-family: "Cormorant Garamond", serif; font-size: clamp(1.85rem, 4.4vw, 2.9rem); font-weight: 300; line-height: 1.22; color: var(--creme); opacity: 0; animation: fadeUp 0.7s ease 0.2s forwards; }
+  h1 em { font-style: italic; color: var(--dourado-claro); }
+  .hero-sub { font-size: 1rem; color: var(--texto-muted); line-height: 1.75; margin: 18px auto 0; max-width: 620px; opacity: 0; animation: fadeUp 0.7s ease 0.35s forwards; }
+  .hero-date { font-size: 0.72rem; letter-spacing: 0.15em; color: var(--texto-muted); margin-top: 22px; opacity: 0; animation: fadeUp 0.7s ease 0.45s forwards; }
+  .hero-fonte { margin-top: 10px; font-size: 0.7rem; color: rgba(245,237,224,0.3); opacity: 0; animation: fadeUp 0.7s ease 0.55s forwards; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+
+  article { position: relative; z-index: 1; max-width: 800px; margin: 0 auto; padding: 56px 8% 88px; }
+  .lead { font-family: "Cormorant Garamond", serif; font-size: clamp(1.1rem, 2.5vw, 1.35rem); font-weight: 400; line-height: 1.8; color: var(--creme); margin-bottom: 48px; padding-bottom: 48px; border-bottom: 1px solid rgba(201,168,76,0.15); }
+  p { font-size: 0.97rem; line-height: 1.9; color: var(--texto-claro); margin-bottom: 24px; }
+  strong { font-weight: 600; color: var(--creme); }
+  .section-title { font-family: "Cormorant Garamond", serif; font-size: 1.45rem; font-weight: 600; color: var(--dourado-claro); margin: 54px 0 18px; padding-top: 42px; border-top: 1px solid rgba(201,168,76,0.12); display: flex; align-items: center; gap: 14px; }
+  .section-icon { font-size: 1.25rem; flex-shrink: 0; }
+
+  .stat-hero { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; margin: 32px 0; }
+  @media (max-width: 560px) { .stat-hero { grid-template-columns: 1fr; } }
+  .stat-card { border-radius: 8px; padding: 22px 16px; text-align: center; }
+  .stat-card.dourado { background: linear-gradient(135deg, rgba(201,168,76,0.14) 0%, rgba(47,82,64,0.4) 100%); border: 1px solid rgba(201,168,76,0.3); }
+  .stat-card.roxo { background: linear-gradient(135deg, rgba(154,122,217,0.12) 0%, rgba(47,82,64,0.4) 100%); border: 1px solid rgba(154,122,217,0.28); }
+  .stat-card.neutro { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); }
+  .stat-card-val { font-family: "Cormorant Garamond", serif; font-size: 1.9rem; font-weight: 700; line-height: 1; margin-bottom: 8px; }
+  .stat-card.dourado .stat-card-val { color: var(--dourado); }
+  .stat-card.roxo .stat-card-val { color: var(--roxo); }
+  .stat-card.neutro .stat-card-val { color: var(--texto-claro); }
+  .stat-card-desc { font-size: 0.75rem; color: var(--texto-muted); line-height: 1.5; }
+
+  .grafico-wrap { background: rgba(10,20,16,0.7); border: 1px solid rgba(255,255,255,0.07); border-radius: 8px; padding: 24px 20px 16px; margin: 32px 0; }
+  .grafico-titulo { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--dourado); margin-bottom: 4px; }
+  .grafico-sub { font-size: 0.72rem; color: var(--texto-muted); margin-bottom: 16px; }
+  .grafico-nota { font-size: 0.65rem; color: rgba(245,237,224,0.25); margin-top: 12px; line-height: 1.4; }
+  .grafico-legenda { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 14px; }
+  .leg-item { display: flex; align-items: center; gap: 6px; font-size: 0.7rem; color: var(--texto-claro); }
+  .leg-line { width: 16px; height: 2px; border-radius: 1px; flex-shrink: 0; }
+  .chart-svg { width: 100%; height: auto; display: block; }
+
+  .table-wrap { overflow-x: auto; margin: 24px 0; border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; background: rgba(10,20,16,0.5); }
+  .seq-table { width: 100%; border-collapse: collapse; min-width: 480px; font-size: 0.82rem; }
+  .seq-table th { text-align: left; color: var(--dourado); font-weight: 600; padding: 11px 14px; border-bottom: 1px solid rgba(201,168,76,0.25); font-size: 0.64rem; letter-spacing: 0.06em; text-transform: uppercase; }
+  .seq-table td { padding: 10px 14px; border-bottom: 1px solid rgba(255,255,255,0.06); color: var(--texto-claro); }
+  .seq-table tr:last-child td { border-bottom: none; }
+  .seq-table tr.final td { background: rgba(201,168,76,0.08); color: var(--dourado-claro); font-weight: 600; }
+
+  .fatores-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin: 24px 0; }
+  @media (max-width: 500px) { .fatores-grid { grid-template-columns: 1fr; } }
+  .fator-tag { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 14px 15px; font-size: 0.82rem; color: var(--texto-claro); display: flex; align-items: flex-start; gap: 8px; }
+  .fator-tag::before { content: "▸"; color: var(--dourado); flex-shrink: 0; }
+
+  /* BALDES */
+  .baldes-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; margin: 24px 0; }
+  @media (max-width: 560px) { .baldes-grid { grid-template-columns: 1fr; } }
+  .balde-card { border-radius: 8px; padding: 20px 16px; text-align: center; }
+  .balde-card.liq { background: rgba(74,144,217,0.08); border: 1px solid rgba(74,144,217,0.22); }
+  .balde-card.est { background: rgba(201,168,76,0.08); border: 1px solid rgba(201,168,76,0.22); }
+  .balde-card.cre { background: rgba(61,191,138,0.08); border: 1px solid rgba(61,191,138,0.22); }
+  .balde-titulo { font-family: "Cormorant Garamond", serif; font-weight: 700; font-size: 1.05rem; margin-bottom: 8px; }
+  .balde-card.liq .balde-titulo { color: #7db3ea; }
+  .balde-card.est .balde-titulo { color: var(--dourado); }
+  .balde-card.cre .balde-titulo { color: var(--verde-gain); }
+  .balde-desc { font-size: 0.78rem; color: var(--texto-claro); line-height: 1.55; }
+
+  /* PERGUNTAS */
+  .perguntas-list { display: flex; flex-direction: column; gap: 8px; margin: 24px 0; }
+  .pergunta-item { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 13px 16px; font-family: "Cormorant Garamond", serif; font-size: 0.98rem; font-style: italic; color: var(--dourado-claro); display: flex; gap: 10px; align-items: flex-start; }
+  .pergunta-item::before { content: "?"; font-family: "Jost", sans-serif; font-style: normal; font-weight: 700; color: var(--dourado); flex-shrink: 0; }
+
+  .insight-box { background: linear-gradient(135deg, rgba(201,168,76,0.1) 0%, rgba(26,46,37,0.4) 100%); border: 1px solid rgba(201,168,76,0.25); border-left: 3px solid var(--dourado); border-radius: 4px; padding: 26px 30px; margin: 34px 0; }
+  .insight-box p { font-family: "Cormorant Garamond", serif; font-size: 1.08rem; color: var(--creme); line-height: 1.8; margin: 0; }
+  .warn-box { background: linear-gradient(135deg, rgba(201,69,69,0.08) 0%, rgba(26,46,37,0.4) 100%); border: 1px solid rgba(201,69,69,0.22); border-left: 3px solid #c94545; border-radius: 4px; padding: 22px 26px; margin: 30px 0; }
+  .warn-box p { font-size: 0.88rem; color: var(--texto-claro); margin: 0; line-height: 1.7; }
+  .method-box { background: rgba(255,255,255,0.025); border: 1px dashed rgba(255,255,255,0.15); border-radius: 6px; padding: 20px 24px; margin: 32px 0; }
+  .method-box p { font-size: 0.8rem; color: var(--texto-muted); margin: 0; line-height: 1.65; }
+  .method-box .method-titulo { font-size: 0.62rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--texto-muted); margin-bottom: 8px; }
+
+  .conclusao { font-family: "Cormorant Garamond", serif; font-size: 1.1rem; font-weight: 400; line-height: 1.85; color: var(--creme); margin-top: 48px; padding: 38px; border: 1px solid rgba(201,168,76,0.2); border-radius: 6px; background: rgba(255,255,255,0.02); position: relative; }
+  .conclusao::before { content: "\201C"; position: absolute; top: -10px; left: 32px; font-size: 5rem; color: rgba(201,168,76,0.15); font-family: "Cormorant Garamond", serif; line-height: 1; }
+
+  .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .fade-in.visible { opacity: 1; transform: none; }
+  footer { position: relative; z-index: 1; border-top: 1px solid rgba(201,168,76,0.12); padding: 40px 8%; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+  .footer-name { font-family: "Cormorant Garamond", serif; font-size: 1.1rem; font-weight: 300; color: var(--texto-muted); }
+  .footer-contact { font-size: 0.75rem; color: rgba(245,237,224,0.25); line-height: 1.9; text-align: right; }
+  .footer-contact a { color: var(--dourado); text-decoration: none; }
+  @media (max-width: 640px) { .back-link,.hero { padding-left: 5%; padding-right: 5%; } article { padding: 48px 5% 64px; } footer { padding: 32px 5%; flex-direction: column; } .footer-contact { text-align: left; } }
+
+  /* ===== ESPECÍFICO DESTE ARTIGO ===== */
+  .stat-hero.dois { grid-template-columns: repeat(3,1fr); }
+  .heat-wrap { background: linear-gradient(160deg, rgba(201,69,69,0.07) 0%, rgba(10,20,16,0.9) 60%); border: 1px solid rgba(201,69,69,0.28); border-radius: 12px; padding: 28px 20px 18px; margin: 40px 0; }
+  .heat-eyebrow { font-size: 0.62rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: #e07070; margin-bottom: 6px; }
+  .heat-titulo { font-family: "Cormorant Garamond", serif; font-size: 1.5rem; font-weight: 700; color: var(--creme); margin-bottom: 4px; }
+  .heat-sub { font-size: 0.78rem; color: var(--texto-muted); margin-bottom: 18px; }
+  .tiles { display: grid; grid-template-columns: repeat(14, 1fr); gap: 4px; }
+  @media (max-width: 760px) { .tiles { grid-template-columns: repeat(7, 1fr); } }
+  .tile { border-radius: 4px; padding: 7px 2px 6px; text-align: center; display: flex; flex-direction: column; gap: 2px; border: 1px solid rgba(255,255,255,0.05); }
+  .tile .tk { font-size: 0.64rem; font-weight: 700; color: var(--creme); letter-spacing: 0.02em; }
+  .tile .dd { font-size: 0.56rem; color: rgba(245,237,224,0.78); }
+  @media (max-width: 760px) { .tile .tk { font-size: 0.7rem; } .tile .dd { font-size: 0.62rem; } }
+  .heat-legenda { display: flex; align-items: center; gap: 10px; margin-top: 16px; font-size: 0.66rem; color: var(--texto-muted); }
+  .heat-bar { flex: 1; max-width: 220px; height: 8px; border-radius: 4px; background: linear-gradient(90deg, rgba(201,69,69,0.2), rgba(201,69,69,0.9)); }
+  .faixa-row { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+  .faixa-label { flex: 0 0 96px; font-size: 0.76rem; color: var(--texto-claro); }
+  .faixa-track { flex: 1; height: 22px; background: rgba(255,255,255,0.05); border-radius: 4px; overflow: hidden; }
+  .faixa-fill { height: 100%; display: flex; align-items: center; justify-content: flex-end; padding-right: 8px; background: linear-gradient(90deg, rgba(201,69,69,0.55), rgba(224,112,112,0.95)); }
+  .faixa-val { font-size: 0.7rem; font-weight: 700; color: var(--verde-escuro); }
+  .dolar-grid { display: grid; grid-template-columns: repeat(10, 1fr); gap: 4px; max-width: 360px; margin: 8px auto 6px; }
+  .dolar-sq { aspect-ratio: 1; border-radius: 3px; background: rgba(255,255,255,0.07); }
+  .dolar-sq.top10 { background: rgba(201,168,76,0.55); }
+  .dolar-sq.nvda { background: #e2c47a; }
+  .dolar-leg { display: flex; justify-content: center; gap: 18px; flex-wrap: wrap; font-size: 0.68rem; color: var(--texto-claro); margin-top: 12px; }
+  .dolar-leg span::before { content: ""; display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 6px; vertical-align: -1px; }
+  .dolar-leg .l1::before { background: #e2c47a; } .dolar-leg .l2::before { background: rgba(201,168,76,0.55); } .dolar-leg .l3::before { background: rgba(255,255,255,0.12); }
+  .q3-chart { position: relative; height: 230px; display: flex; gap: 26px; padding: 0 10px; }
+  .q3-col { flex: 1; position: relative; height: 100%; }
+  .q3-bar { position: absolute; left: 6px; right: 6px; border-radius: 3px; }
+  .q3-bar.pos { background: linear-gradient(180deg, #e2c47a, #c9a84c); }
+  .q3-bar.neg { background: linear-gradient(0deg, #c94545, #e07070); }
+  .q3-bar.destaque { background: linear-gradient(180deg, #f5ede0, #cfc3ab); }
+  .q3-val { position: absolute; left: 0; right: 0; text-align: center; font-family: "Cormorant Garamond", serif; font-weight: 700; font-size: 1.05rem; color: var(--creme); }
+  .q3-zero { position: absolute; left: 0; right: 0; bottom: 100px; height: 1px; background: rgba(255,255,255,0.22); }
+  .q3-label { position: absolute; bottom: -30px; left: 0; right: 0; text-align: center; font-size: 0.68rem; color: var(--texto-muted); line-height: 1.25; }
+  .rec-row { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+  .rec-queda { flex: 0 0 64px; font-family: "Cormorant Garamond", serif; font-weight: 700; color: #e07070; font-size: 1.05rem; }
+  .rec-track { flex: 1; height: 22px; background: rgba(255,255,255,0.05); border-radius: 4px; overflow: hidden; }
+  .rec-fill { height: 100%; display: flex; align-items: center; justify-content: flex-end; padding-right: 8px; background: linear-gradient(90deg, var(--dourado), var(--dourado-claro)); }
+  .rec-val { font-size: 0.7rem; font-weight: 700; color: var(--verde-escuro); white-space: nowrap; }
+  .impl-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 24px 0; }
+  @media (max-width: 600px) { .impl-grid { grid-template-columns: 1fr; } }
+  .impl-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-top: 2px solid var(--dourado); border-radius: 6px; padding: 18px 16px; }
+  .impl-num { font-family: "Cormorant Garamond", serif; font-size: 1.6rem; font-weight: 700; color: rgba(201,168,76,0.45); line-height: 1; margin-bottom: 6px; }
+  .impl-tit { font-size: 0.82rem; font-weight: 600; color: var(--dourado); margin-bottom: 6px; }
+  .impl-txt { font-size: 0.8rem; color: var(--texto-claro); line-height: 1.6; }
+  .ref-list { font-size: 0.78rem; color: var(--texto-muted); line-height: 1.7; margin: 8px 0 0 18px; }
+
+  /* ===== J.P. MORGAN LTCMA 2027 ===== */
+  .jpm-wrap { background: linear-gradient(160deg, rgba(201,168,76,0.10) 0%, rgba(10,20,16,0.92) 55%); border: 1px solid rgba(201,168,76,0.32); border-radius: 14px; padding: 30px 24px 22px; margin: 40px 0; box-shadow: 0 0 60px rgba(201,168,76,0.05); }
+  .jpm-eyebrow { font-size: 0.62rem; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: var(--dourado); margin-bottom: 6px; }
+  .jpm-titulo { font-family: "Cormorant Garamond", serif; font-size: 1.65rem; font-weight: 700; color: var(--creme); margin-bottom: 4px; }
+  .jpm-sub { font-size: 0.78rem; color: var(--texto-muted); margin-bottom: 26px; line-height: 1.5; }
+  .vbars { position: relative; height: 270px; display: flex; gap: 18px; padding: 0 6px 0 34px; border-bottom: 1px solid rgba(255,255,255,0.18); margin-bottom: 52px; }
+  .vgrid { position: absolute; left: 34px; right: 0; height: 1px; background: rgba(255,255,255,0.06); }
+  .vgrid span { position: absolute; left: -34px; top: -7px; font-size: 0.58rem; color: rgba(245,237,224,0.35); }
+  .vcol { flex: 1; position: relative; height: 100%; }
+  .vbar { position: absolute; left: 4px; right: 4px; bottom: 0; border-radius: 4px 4px 0 0; background: linear-gradient(180deg, rgba(245,237,224,0.34), rgba(245,237,224,0.16)); }
+  .vbar.btc { background: linear-gradient(180deg, #f3d98f, #c9a84c); box-shadow: 0 0 28px rgba(226,196,122,0.35); }
+  .vval { position: absolute; left: 0; right: 0; text-align: center; font-family: "Cormorant Garamond", serif; font-weight: 700; font-size: 1.15rem; color: var(--creme); }
+  .vcol.b .vval { color: var(--dourado-claro); font-size: 1.4rem; }
+  .vlab { position: absolute; top: calc(100% + 10px); left: -4px; right: -4px; text-align: center; font-size: 0.7rem; color: var(--texto-claro); line-height: 1.25; }
+  .vlab small { display: block; font-size: 0.58rem; color: var(--texto-muted); margin-top: 2px; }
+  .vcol.b .vlab { color: var(--dourado-claro); font-weight: 600; }
+  @media (max-width: 560px) { .vbars { gap: 8px; padding-left: 28px; } .vgrid { left: 28px; } .vval { font-size: 0.9rem; } .vcol.b .vval { font-size: 1.05rem; } .vlab { font-size: 0.6rem; } .vlab small { display: none; } }
+  .rk-row { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+  .rk-nome { flex: 0 0 170px; font-size: 0.74rem; color: var(--texto-claro); line-height: 1.25; }
+  .rk-track { flex: 1; height: 22px; background: rgba(255,255,255,0.05); border-radius: 4px; overflow: hidden; }
+  .rk-fill { height: 100%; display: flex; align-items: center; justify-content: flex-end; padding-right: 8px; }
+  .rk-val { font-size: 0.7rem; font-weight: 700; color: #14261d; }
+  .c-dig { background: linear-gradient(90deg, #c9a84c, #f3d98f); }
+  .c-alt { background: linear-gradient(90deg, #7d63bd, #a48ae0); }
+  .c-imo { background: linear-gradient(90deg, #3d78b5, #6aa6e0); }
+  .c-acao { background: linear-gradient(90deg, #2f8f6f, #5fd0a6); }
+  .c-rf { background: linear-gradient(90deg, #c4682a, #eb9a5a); }
+  .c-prot { background: linear-gradient(90deg, #b9ad92, #e8dec6); }
+  .c-cash { background: linear-gradient(90deg, #6e7672, #9aa19d); }
+  .c-carteira { background: repeating-linear-gradient(45deg, #e2c47a, #e2c47a 6px, #c9a84c 6px, #c9a84c 12px); }
+  @media (max-width: 560px) { .rk-nome { flex-basis: 108px; font-size: 0.66rem; } }
+  .rk-leg { display: flex; flex-wrap: wrap; gap: 8px 16px; margin-top: 14px; font-size: 0.66rem; color: var(--texto-claro); }
+  .rk-leg span::before { content: ""; display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 6px; vertical-align: -1px; background: var(--c); }
+  .line-svg { width: 100%; height: auto; display: block; }
+  .vs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 26px 0; }
+  @media (max-width: 560px) { .vs-grid { grid-template-columns: 1fr; } }
+  .vs-card { border-radius: 10px; padding: 26px 20px; text-align: center; }
+  .vs-card.ret { background: linear-gradient(135deg, rgba(201,168,76,0.16), rgba(47,82,64,0.4)); border: 1px solid rgba(201,168,76,0.32); }
+  .vs-card.risk { background: linear-gradient(135deg, rgba(201,69,69,0.14), rgba(47,82,64,0.4)); border: 1px solid rgba(201,69,69,0.3); }
+  .vs-label { font-size: 0.62rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--texto-muted); margin-bottom: 8px; }
+  .vs-val { font-family: "Cormorant Garamond", serif; font-size: 3.1rem; font-weight: 700; line-height: 1; }
+  .vs-card.ret .vs-val { color: var(--dourado-claro); } .vs-card.risk .vs-val { color: #e07070; }
+  .vs-desc { font-size: 0.78rem; color: var(--texto-claro); margin-top: 8px; line-height: 1.5; }
+  .tab-wrap { overflow-x: auto; margin: 24px 0; border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; background: rgba(10,20,16,0.5); }
+  .jtab { width: 100%; border-collapse: collapse; min-width: 480px; font-size: 0.82rem; }
+  .jtab th { text-align: left; color: var(--dourado); font-weight: 600; padding: 11px 14px; border-bottom: 1px solid rgba(201,168,76,0.25); font-size: 0.62rem; letter-spacing: 0.07em; text-transform: uppercase; }
+  .jtab td { padding: 10px 14px; border-bottom: 1px solid rgba(255,255,255,0.06); color: var(--texto-claro); }
+  .jtab tr:last-child td { border-bottom: none; }
+  .jtab td.hl { color: var(--dourado-claro); font-weight: 600; }
+  .jtab td.neg { color: #e07070; font-weight: 600; } .jtab td.pos { color: #7ecbb0; font-weight: 600; }
+  .stat-hero.quatro { grid-template-columns: repeat(4,1fr); }
+  @media (max-width: 700px) { .stat-hero.quatro { grid-template-columns: repeat(2,1fr); } }
+  .classe-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin: 24px 0; }
+  @media (max-width: 600px) { .classe-grid { grid-template-columns: 1fr; } }
+  .classe-card { border-radius: 8px; padding: 20px 18px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-left: 3px solid var(--cl, var(--dourado)); }
+  .classe-top { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; margin-bottom: 8px; }
+  .classe-nome { font-family: "Cormorant Garamond", serif; font-size: 1.1rem; font-weight: 700; color: var(--creme); }
+  .classe-ret { font-family: "Cormorant Garamond", serif; font-size: 1.7rem; font-weight: 700; color: var(--cl, var(--dourado)); line-height: 1; }
+  .classe-txt { font-size: 0.8rem; color: var(--texto-claro); line-height: 1.6; }
+  .classe-txt strong { color: var(--creme); }
+</style>
+</head>
+<body>
+
+<a class="back-link" href="index.html">Voltar</a>
+
+<header class="hero">
+  <div class="hero-tag">Artigo · Perspectivas de Mercado</div>
+  <h1>Os investimentos da próxima década: o que o J.P. Morgan projeta para <em>ações, renda fixa, ouro e Bitcoin</em></h1>
+  <p class="hero-sub">Um dos maiores gestores do mundo revisou suas expectativas para os próximos 10 a 15 anos, apontou oportunidades em várias classes de ativos e, pela primeira vez, colocou um número no Bitcoin.</p>
+  <div class="hero-date">Novembro de 2026</div>
+  <div class="hero-fonte">Fonte: J.P. Morgan Asset Management — 2027 Long-Term Capital Market Assumptions (divulgado em 19/10/2026)</div>
+</header>
+
+<article>
+
+  <p class="lead">
+    Todos os anos, o J.P. Morgan Asset Management publica o <strong>Long-Term Capital Market Assumptions (LTCMA)</strong>, uma das referências mais usadas por gestores, consultores e investidores institucionais para estimar retorno, risco e correlação das classes de ativos. A edição de 2027, a 31ª da série, traz uma visão construtiva sobre o crescimento global e uma novidade que chamou a atenção do mercado: o <strong>Bitcoin entrou nas projeções</strong>, com retorno anual composto de 10% e volatilidade de cerca de 55%.
+  </p>
+
+  <div class="stat-hero quatro fade-in">
+    <div class="stat-card dourado"><div class="stat-card-val">31ª</div><div class="stat-card-desc">edição do estudo anual do J.P. Morgan</div></div>
+    <div class="stat-card neutro"><div class="stat-card-val">200+</div><div class="stat-card-desc">classes de ativos com projeções de retorno, risco e correlação</div></div>
+    <div class="stat-card neutro"><div class="stat-card-val">10–15</div><div class="stat-card-desc">anos de horizonte das estimativas</div></div>
+    <div class="stat-card dourado"><div class="stat-card-val">10%</div><div class="stat-card-desc">retorno anual composto projetado para o Bitcoin (caso-base de 10 anos)</div></div>
+  </div>
+
+  <!-- TESE -->
+  <div class="section-title fade-in"><span class="section-icon">🌍</span> Um novo ciclo de investimentos produtivos</div>
+
+  <p>A tese central do relatório é que a economia mundial atravessa um ciclo de investimento ligado à inteligência artificial, à modernização da infraestrutura, à segurança energética e à reorganização das cadeias produtivas. O J.P. Morgan estima que esse movimento, que se estende até 2040, eleve a produtividade total dos fatores em 50%, para 120 pontos-base ao ano.</p>
+
+  <div class="stat-hero quatro fade-in">
+    <div class="stat-card dourado"><div class="stat-card-val">2,1%</div><div class="stat-card-desc">crescimento real projetado da economia americana ao ano</div></div>
+    <div class="stat-card neutro"><div class="stat-card-val">4,2%</div><div class="stat-card-desc">crescimento nominal projetado dos países desenvolvidos</div></div>
+    <div class="stat-card neutro"><div class="stat-card-val">+50%</div><div class="stat-card-desc">de alta na produtividade total dos fatores até 2040</div></div>
+    <div class="stat-card dourado"><div class="stat-card-val">7,0%</div><div class="stat-card-desc">retorno de uma carteira 60/40 em dólares, 0,6 p.p. acima da edição anterior</div></div>
+  </div>
+
+  <p>Para o J.P. Morgan, esse ambiente tende a favorecer lucros corporativos e criar oportunidades em várias frentes. A conclusão principal do estudo aponta para a <strong>diversificação</strong>: com boas oportunidades espalhadas por diferentes classes de ativos, nenhuma delas precisa carregar sozinha o resultado da carteira.</p>
+
+  <!-- GRÁFICO CENTRAL -->
+  <div class="jpm-wrap fade-in">
+    <div class="jpm-eyebrow">O gráfico central do estudo</div>
+    <div class="jpm-titulo">Long-Term Return Outlook</div>
+    <div class="jpm-sub">Retornos anuais compostos projetados · ativos selecionados · em dólares<br>Bitcoin: caso-base de 10 anos, volatilidade esperada de 55% ao ano · Demais ativos: horizonte de 10 a 15 anos</div>
+    <div class="vbars"><div class="vgrid" style="bottom:0px;"><span>0%</span></div><div class="vgrid" style="bottom:49px;"><span>2%</span></div><div class="vgrid" style="bottom:98px;"><span>4%</span></div><div class="vgrid" style="bottom:147px;"><span>6%</span></div><div class="vgrid" style="bottom:196px;"><span>8%</span></div><div class="vgrid" style="bottom:245px;"><span>10%</span></div><div class="vcol b"><div class="vval" style="bottom:251px;">10,0%</div><div class="vbar btc" style="height:245px;"></div><div class="vlab">Bitcoin<small>Caso-base</small></div></div><div class="vcol"><div class="vval" style="bottom:207px;">8,2%</div><div class="vbar" style="height:201px;"></div><div class="vlab">REITs EUA<small>Imóveis listados</small></div></div><div class="vcol"><div class="vval" style="bottom:190px;">7,5%</div><div class="vbar" style="height:184px;"></div><div class="vlab">Ações EUA<small>Large caps</small></div></div><div class="vcol"><div class="vval" style="bottom:143px;">5,6%</div><div class="vbar" style="height:137px;"></div><div class="vlab">Títulos EUA<small>Agregado</small></div></div><div class="vcol"><div class="vval" style="bottom:141px;">5,5%</div><div class="vbar" style="height:135px;"></div><div class="vlab">Ouro<small></small></div></div><div class="vcol"><div class="vval" style="bottom:85px;">3,2%</div><div class="vbar" style="height:79px;"></div><div class="vlab">Caixa EUA<small></small></div></div></div>
+    <div class="grafico-nota">Fonte: J.P. Morgan Asset Management, 2027 LTCMA, p. 47, posição de 30/09/2026. As projeções são estimativas e não representam garantia de resultado.</div>
+  </div>
+
+  <!-- RANKING -->
+  <div class="section-title fade-in"><span class="section-icon">🏁</span> O mapa completo de retornos esperados</div>
+
+  <p>O gráfico acima mostra seis ativos selecionados. Ao ampliar a lista com outras projeções divulgadas na edição de 2027, o quadro fica mais completo. Os ativos aparecem em ordem de retorno esperado e coloridos por categoria:</p>
+
+  <div class="grafico-wrap fade-in">
+    <div class="grafico-titulo">Retorno anual composto projetado · LTCMA 2027</div>
+    <div class="grafico-sub">Em dólares, por classe de ativos</div>
+    <div class="rk-row"><div class="rk-nome">Bitcoin (caso-base)</div><div class="rk-track"><div class="rk-fill c-dig" style="width:100.0%; min-width:62px;"><span class="rk-val">10,0%</span></div></div></div><div class="rk-row"><div class="rk-nome">Private equity</div><div class="rk-track"><div class="rk-fill c-alt" style="width:98.0%; min-width:62px;"><span class="rk-val">9,8%</span></div></div></div><div class="rk-row"><div class="rk-nome">REITs EUA</div><div class="rk-track"><div class="rk-fill c-imo" style="width:82.0%; min-width:62px;"><span class="rk-val">8,2%</span></div></div></div><div class="rk-row"><div class="rk-nome">Imóveis core EUA</div><div class="rk-track"><div class="rk-fill c-imo" style="width:81.0%; min-width:62px;"><span class="rk-val">8,1%</span></div></div></div><div class="rk-row"><div class="rk-nome">Ações EUA small caps</div><div class="rk-track"><div class="rk-fill c-acao" style="width:77.0%; min-width:62px;"><span class="rk-val">7,7%</span></div></div></div><div class="rk-row"><div class="rk-nome">Ações EUA large caps</div><div class="rk-track"><div class="rk-fill c-acao" style="width:75.0%; min-width:62px;"><span class="rk-val">7,5%</span></div></div></div><div class="rk-row"><div class="rk-nome">Ações de mercados emergentes</div><div class="rk-track"><div class="rk-fill c-acao" style="width:71.0%; min-width:62px;"><span class="rk-val">7,1%</span></div></div></div><div class="rk-row"><div class="rk-nome">Imóveis core Europa</div><div class="rk-track"><div class="rk-fill c-imo" style="width:71.0%; min-width:62px;"><span class="rk-val">7,1%</span></div></div></div><div class="rk-row"><div class="rk-nome">Carteira 60/40 (USD)</div><div class="rk-track"><div class="rk-fill c-carteira" style="width:70.0%; min-width:62px;"><span class="rk-val">7,0%</span></div></div></div><div class="rk-row"><div class="rk-nome">Florestas (timberland)</div><div class="rk-track"><div class="rk-fill c-alt" style="width:62.0%; min-width:62px;"><span class="rk-val">6,2%</span></div></div></div><div class="rk-row"><div class="rk-nome">Títulos agregados EUA</div><div class="rk-track"><div class="rk-fill c-rf" style="width:56.0%; min-width:62px;"><span class="rk-val">5,6%</span></div></div></div><div class="rk-row"><div class="rk-nome">Ouro</div><div class="rk-track"><div class="rk-fill c-prot" style="width:55.0%; min-width:62px;"><span class="rk-val">5,5%</span></div></div></div><div class="rk-row"><div class="rk-nome">Títulos agregados globais</div><div class="rk-track"><div class="rk-fill c-rf" style="width:53.0%; min-width:62px;"><span class="rk-val">5,3%</span></div></div></div><div class="rk-row"><div class="rk-nome">Commodities amplas</div><div class="rk-track"><div class="rk-fill c-prot" style="width:48.0%; min-width:62px;"><span class="rk-val">4,8%</span></div></div></div><div class="rk-row"><div class="rk-nome">Caixa EUA</div><div class="rk-track"><div class="rk-fill c-cash" style="width:32.0%; min-width:62px;"><span class="rk-val">3,2%</span></div></div></div>
+    <div class="rk-leg"><span style="--c:#e2c47a;">Digital</span><span style="--c:#9a7ad9;">Alternativos</span><span style="--c:#4a90d9;">Imobiliário</span><span style="--c:#3dbf8a;">Ações</span><span style="--c:#eb9a5a;">Renda fixa</span><span style="--c:#d9ceb3;">Proteção</span><span style="--c:#8a908c;">Caixa</span><span style="--c:#e2c47a;">Carteira balanceada</span></div>
+    <div class="grafico-nota">Seleção de projeções divulgadas pelo J.P. Morgan Asset Management. As classes diferem em risco, liquidez e horizonte, e não são perfeitamente comparáveis entre si. Estimativas estatísticas de longo prazo, e não rentabilidades garantidas.</div>
+  </div>
+
+  <div class="warn-box fade-in">
+    <p>Esses números descrevem expectativas médias para uma década ou mais. Um ativo com retorno esperado de 10% pode atravessar vários anos de perdas antes de alcançar a rentabilidade projetada, ou mesmo sem alcançá-la.</p>
+  </div>
+
+  <!-- AÇÕES -->
+  <div class="section-title fade-in"><span class="section-icon">📈</span> Ações: tecnologia sustenta os lucros, mas os preços já refletem parte do otimismo</div>
+
+  <div class="classe-grid fade-in">
+    <div class="classe-card" style="--cl:#5fd0a6;">
+      <div class="classe-top"><div class="classe-nome">Ações EUA, large caps</div><div class="classe-ret">7,5%</div></div>
+      <div class="classe-txt">Revisão de <strong>6,7% para 7,5%</strong> ao ano (+80 pontos-base), apoiada em produtividade, margens corporativas elevadas e adoção de inteligência artificial. O próprio relatório lembra que valuations altos e concentração em poucas empresas seguem como pontos de atenção.</div>
+    </div>
+    <div class="classe-card" style="--cl:#5fd0a6;">
+      <div class="classe-top"><div class="classe-nome">Ações EUA, small caps</div><div class="classe-ret">7,7%</div></div>
+      <div class="classe-txt">Retorno projetado ligeiramente acima das large caps, o que reforça a importância de olhar além das maiores empresas do índice.</div>
+    </div>
+    <div class="classe-card" style="--cl:#5fd0a6;">
+      <div class="classe-top"><div class="classe-nome">Ações de mercados emergentes</div><div class="classe-ret">7,1%</div></div>
+      <div class="classe-txt">Projeção de 7,1% ao ano, abaixo da estimada para ações de países desenvolvidos.</div>
+    </div>
+    <div class="classe-card" style="--cl:#e2c47a;">
+      <div class="classe-top"><div class="classe-nome">Desenvolvidos x emergentes</div><div class="classe-ret">1ª vez</div></div>
+      <div class="classe-txt">Pela primeira vez na história do estudo, as projeções para ações de países desenvolvidos superam as dos emergentes.</div>
+    </div>
+  </div>
+
+  <p>A lição prática é que uma empresa excelente não é necessariamente um excelente investimento a qualquer preço. Para o investidor brasileiro, a discussão ganha um segundo ângulo: patrimônio em dólares ou em ativos internacionais reduz a dependência de um único país, moeda e ciclo econômico, e a decisão de internacionalizar tem motivos estruturais, independentes de apostas na cotação do dólar.</p>
+
+  <!-- RENDA FIXA -->
+  <div class="section-title fade-in"><span class="section-icon">🏦</span> Renda fixa: os juros voltaram a pagar</div>
+
+  <div class="stat-hero fade-in">
+    <div class="stat-card dourado"><div class="stat-card-val">5,3%</div><div class="stat-card-desc">retorno projetado para títulos agregados globais, o maior em duas décadas</div></div>
+    <div class="stat-card neutro"><div class="stat-card-val">5,6%</div><div class="stat-card-desc">títulos agregados dos Estados Unidos</div></div>
+    <div class="stat-card neutro"><div class="stat-card-val">3,2%</div><div class="stat-card-desc">caixa americano, referência de retorno sem risco</div></div>
+  </div>
+
+  <p>Depois de um longo período de juros muito baixos nas economias desenvolvidas, os retornos esperados da renda fixa internacional voltaram a níveis mais atraentes. O estudo faz uma ressalva importante: títulos de prazo mais longo podem proteger menos a carteira contra quedas das ações em períodos de inflação persistente ou de preocupação fiscal. Por isso, vale olhar além da taxa prometida e considerar prazo, duration, qualidade de crédito e liquidez.</p>
+
+  <!-- REAIS -->
+  <div class="section-title fade-in"><span class="section-icon">🏢</span> Imóveis, ouro e ativos reais</div>
+
+  <div class="classe-grid fade-in">
+    <div class="classe-card" style="--cl:#6aa6e0;">
+      <div class="classe-top"><div class="classe-nome">REITs EUA</div><div class="classe-ret">8,2%</div></div>
+      <div class="classe-txt">Combinam renda distribuída, potencial de valorização e acesso a segmentos como logística e infraestrutura digital. Seguem sensíveis ao custo de capital e às condições de financiamento.</div>
+    </div>
+    <div class="classe-card" style="--cl:#6aa6e0;">
+      <div class="classe-top"><div class="classe-nome">Imóveis core EUA e Europa</div><div class="classe-ret">8,1% | 7,1%</div></div>
+      <div class="classe-txt">O retorno projetado para imóveis core americanos é de 8,1% ao ano. Na Europa, a projeção sobe de 6,9% para 7,1%.</div>
+    </div>
+    <div class="classe-card" style="--cl:#e8dec6;">
+      <div class="classe-top"><div class="classe-nome">Ouro</div><div class="classe-ret">5,5%</div></div>
+      <div class="classe-txt">Não paga dividendos, juros ou aluguéis, e o retorno depende da variação de preço. Seu papel está na resiliência da carteira em ambientes de instabilidade monetária e tensão geopolítica, sem funcionar como proteção perfeita contra qualquer choque.</div>
+    </div>
+    <div class="classe-card" style="--cl:#a48ae0;">
+      <div class="classe-top"><div class="classe-nome">Commodities e florestas</div><div class="classe-ret">4,8% | 6,2%</div></div>
+      <div class="classe-txt">Commodities amplas têm retorno projetado de 4,8% e florestas (timberland) de 6,2%, como parte do conjunto de ativos reais que buscam resiliência à inflação.</div>
+    </div>
+  </div>
+
+  <!-- ALTERNATIVOS -->
+  <div class="section-title fade-in"><span class="section-icon">🧩</span> Alternativos: um pouco mais de retorno e eficiência</div>
+
+  <p>Um dos resultados mais citados do estudo vem da comparação entre carteiras. Uma carteira tradicional 60/40 tem retorno projetado de 7,0% ao ano. Ao destinar 30% do patrimônio a alternativos diversificados, a projeção sobe para até 7,5%, com uma melhora de cerca de 21% no índice de Sharpe, medida de retorno por unidade de risco.</p>
+
+  <div class="grafico-wrap fade-in">
+    <div class="grafico-titulo">Carteira 60/40 tradicional x 60/40 com 30% em alternativos</div>
+    <div class="grafico-sub">Retorno anual projetado e eficiência (índice de Sharpe, 60/40 = 100)</div>
+    <div class="rk-row"><div class="rk-nome">Retorno · 60/40 tradicional</div><div class="rk-track"><div class="rk-fill c-cash" style="width:93.3%;"><span class="rk-val">7,0%</span></div></div></div>
+    <div class="rk-row"><div class="rk-nome">Retorno · com 30% alternativos</div><div class="rk-track"><div class="rk-fill c-dig" style="width:100%;"><span class="rk-val">7,5%</span></div></div></div>
+    <div class="rk-row" style="margin-top:16px;"><div class="rk-nome">Sharpe · 60/40 tradicional</div><div class="rk-track"><div class="rk-fill c-cash" style="width:82.6%;"><span class="rk-val">100</span></div></div></div>
+    <div class="rk-row"><div class="rk-nome">Sharpe · com 30% alternativos</div><div class="rk-track"><div class="rk-fill c-dig" style="width:100%;"><span class="rk-val">121</span></div></div></div>
+    <div class="grafico-nota">Fonte: J.P. Morgan Asset Management, LTCMA 2027 (comunicado de 19/10/2026). Índice de Sharpe do 60/40 normalizado em 100 para fins de comparação.</div>
+  </div>
+
+  <p>O private equity aparece com retorno projetado de 9,8% ao ano, e os hedge funds diversificados tiveram a projeção elevada em 1,4 ponto percentual. Esses investimentos têm menor liquidez, estruturas de custo mais complexas e forte dependência da qualidade do gestor. A seleção do instrumento e o encaixe com as necessidades do investidor pesam tanto quanto a expectativa de retorno.</p>
+
+  <!-- BITCOIN -->
+  <div class="section-title fade-in"><span class="section-icon">₿</span> Bitcoin: a grande novidade do relatório</div>
+
+  <p>Em 31 edições, é a primeira vez que o Bitcoin aparece na tabela. O J.P. Morgan descreve a inclusão como um primeiro olhar sobre o ativo e apresenta uma faixa de retorno, com caso-base de <strong>10% ao ano</strong> ao longo de dez anos, acima das projeções para ações americanas, títulos e ouro. O comunicado oficial traz um limite claro: o Bitcoin <strong>não é incluído como alocação</strong>, e o ativo fica fora das principais matrizes de covariância do modelo.</p>
+
+  <div class="vs-grid fade-in">
+    <div class="vs-card ret"><div class="vs-label">Retorno projetado</div><div class="vs-val">10%</div><div class="vs-desc">ao ano, em termos compostos, no caso-base de 10 anos</div></div>
+    <div class="vs-card risk"><div class="vs-label">Volatilidade esperada</div><div class="vs-val">~55%</div><div class="vs-desc">ao ano, cerca de três vezes a de ações americanas e a do ouro</div></div>
+  </div>
+
+  <div class="grafico-wrap fade-in">
+    <div class="grafico-titulo">Volatilidade anual esperada</div>
+    <div class="grafico-sub">Dispersão estatística dos retornos, em % ao ano</div>
+    <div class="rk-row"><div class="rk-nome">Bitcoin</div><div class="rk-track"><div class="rk-fill c-dig" style="width:91.7%; min-width:62px;"><span class="rk-val">~55%</span></div></div></div><div class="rk-row"><div class="rk-nome">Ações EUA large caps</div><div class="rk-track"><div class="rk-fill c-acao" style="width:30.0%; min-width:62px;"><span class="rk-val">~18%</span></div></div></div><div class="rk-row"><div class="rk-nome">Ouro</div><div class="rk-track"><div class="rk-fill c-prot" style="width:28.7%; min-width:62px;"><span class="rk-val">~17,2%</span></div></div></div>
+    <div class="grafico-nota">Volatilidade é uma medida de dispersão e não indica perda certa de 55% em determinado ano. Valores de ações americanas e ouro arredondados a partir das premissas divulgadas na cobertura do LTCMA 2027.</div>
+  </div>
+
+  <p>Existe ainda um detalhe técnico de grande importância: o retorno de 10% é <strong>composto</strong> (geométrico). A média aritmética dos retornos anuais é bem maior, perto de 20,9%. A diferença de quase 11 pontos percentuais é o chamado arrasto da volatilidade, e mostra quanto da dispersão extrema dos resultados anuais se perde ao longo do tempo quando o ativo oscila muito.</p>
+
+  <div class="grafico-wrap fade-in">
+    <div class="grafico-titulo">Média aritmética x retorno composto do Bitcoin</div>
+    <div class="grafico-sub">Projeção do J.P. Morgan, em % ao ano</div>
+    <div class="rk-row"><div class="rk-nome">Média aritmética</div><div class="rk-track"><div class="rk-fill c-cash" style="width:83.6%; min-width:62px;"><span class="rk-val">20,9%</span></div></div></div><div class="rk-row"><div class="rk-nome">Retorno composto</div><div class="rk-track"><div class="rk-fill c-dig" style="width:40.0%; min-width:62px;"><span class="rk-val">10,0%</span></div></div></div>
+    <div class="grafico-nota">A diferença entre as duas medidas reflete o efeito da volatilidade sobre o crescimento composto do capital.</div>
+  </div>
+
+  <!-- SIMULAÇÃO -->
+  <div class="section-title fade-in"><span class="section-icon">🧮</span> O que significam 10% ao ano durante uma década</div>
+
+  <p>Para dimensionar a projeção, considere um investimento hipotético de US$ 10 mil mantido por dez anos, com capitalização composta a taxas constantes, sem impostos, custos ou variação cambial:</p>
+
+  <div class="grafico-wrap fade-in">
+    <div class="grafico-titulo">US$ 10 mil investidos hoje, após 10 anos</div>
+    <div class="grafico-sub">Simulação matemática com os retornos anuais compostos projetados</div>
+    <div class="rk-row"><div class="rk-nome">Bitcoin</div><div class="rk-track"><div class="rk-fill c-dig" style="width:100.0%; min-width:96px;"><span class="rk-val">US$ 25.937</span></div></div></div><div class="rk-row"><div class="rk-nome">Private equity</div><div class="rk-track"><div class="rk-fill c-alt" style="width:98.2%; min-width:96px;"><span class="rk-val">US$ 25.470</span></div></div></div><div class="rk-row"><div class="rk-nome">REITs EUA</div><div class="rk-track"><div class="rk-fill c-imo" style="width:84.8%; min-width:96px;"><span class="rk-val">US$ 21.992</span></div></div></div><div class="rk-row"><div class="rk-nome">Ações EUA large caps</div><div class="rk-track"><div class="rk-fill c-acao" style="width:79.5%; min-width:96px;"><span class="rk-val">US$ 20.610</span></div></div></div><div class="rk-row"><div class="rk-nome">Carteira 60/40</div><div class="rk-track"><div class="rk-fill c-carteira" style="width:75.8%; min-width:96px;"><span class="rk-val">US$ 19.672</span></div></div></div><div class="rk-row"><div class="rk-nome">Títulos agregados EUA</div><div class="rk-track"><div class="rk-fill c-rf" style="width:66.5%; min-width:96px;"><span class="rk-val">US$ 17.244</span></div></div></div><div class="rk-row"><div class="rk-nome">Ouro</div><div class="rk-track"><div class="rk-fill c-prot" style="width:65.9%; min-width:96px;"><span class="rk-val">US$ 17.081</span></div></div></div><div class="rk-row"><div class="rk-nome">Caixa EUA</div><div class="rk-track"><div class="rk-fill c-cash" style="width:52.8%; min-width:96px;"><span class="rk-val">US$ 13.702</span></div></div></div>
+    <div class="grafico-nota">Exercício aritmético com taxas constantes, sem representar previsão de valores futuros. Na prática, os retornos reais variam ano a ano e podem diferir de forma substancial. No caso do Bitcoin, a trajetória tende a ser muito mais irregular.</div>
+  </div>
+
+  <div class="grafico-wrap fade-in">
+    <div class="grafico-titulo">Crescimento ano a ano em três cenários</div>
+    <div class="grafico-sub">US$ 10 mil com taxas constantes: Bitcoin (10,0%), carteira 60/40 (7,0%) e caixa (3,2%)</div>
+    <svg class="line-svg" viewBox="0 0 900 290" xmlns="http://www.w3.org/2000/svg"><line x1="60" y1="250.0" x2="860" y2="250.0" stroke="rgba(255,255,255,0.14)" stroke-width="1"/><text x="6" y="253.0" font-size="9" fill="rgba(245,237,224,0.38)">US$ 0 mil</text><line x1="60" y1="176.7" x2="860" y2="176.7" stroke="rgba(255,255,255,0.06)" stroke-width="1"/><text x="6" y="179.7" font-size="9" fill="rgba(245,237,224,0.38)">US$ 10 mil</text><line x1="60" y1="103.3" x2="860" y2="103.3" stroke="rgba(255,255,255,0.06)" stroke-width="1"/><text x="6" y="106.3" font-size="9" fill="rgba(245,237,224,0.38)">US$ 20 mil</text><line x1="60" y1="30.0" x2="860" y2="30.0" stroke="rgba(255,255,255,0.06)" stroke-width="1"/><text x="6" y="33.0" font-size="9" fill="rgba(245,237,224,0.38)">US$ 30 mil</text><text x="54" y="272" font-size="9" fill="rgba(245,237,224,0.4)">0</text><text x="214" y="272" font-size="9" fill="rgba(245,237,224,0.4)">2</text><text x="374" y="272" font-size="9" fill="rgba(245,237,224,0.4)">4</text><text x="534" y="272" font-size="9" fill="rgba(245,237,224,0.4)">6</text><text x="694" y="272" font-size="9" fill="rgba(245,237,224,0.4)">8</text><text x="854" y="272" font-size="9" fill="rgba(245,237,224,0.4)">10</text>
+<text x="430" y="286" font-size="9" fill="rgba(245,237,224,0.35)">anos</text>
+<polyline points="60.0,176.7 140.0,174.3 220.0,171.9 300.0,169.4 380.0,166.8 460.0,164.2 540.0,161.4 620.0,158.6 700.0,155.7 780.0,152.6 860.0,149.5" fill="none" stroke="#8a908c" stroke-width="2"/>
+<polyline points="60.0,176.7 140.0,171.5 220.0,166.0 300.0,160.2 380.0,153.9 460.0,147.1 540.0,139.9 620.0,132.2 700.0,124.0 780.0,115.2 860.0,105.7" fill="none" stroke="#4a90d9" stroke-width="2.2"/>
+<polyline points="60.0,176.7 140.0,169.3 220.0,161.3 300.0,152.4 380.0,142.6 460.0,131.9 540.0,120.1 620.0,107.1 700.0,92.8 780.0,77.1 860.0,59.8" fill="none" stroke="#e2c47a" stroke-width="3"/>
+<circle cx="860" cy="59.8" r="4" fill="#e2c47a"/><text x="800" y="49.8" font-size="11" font-weight="700" fill="#e2c47a">US$ 25.937</text>
+<circle cx="860" cy="105.7" r="3.5" fill="#4a90d9"/><text x="800" y="96.7" font-size="10" font-weight="700" fill="#6aa6e0">US$ 19.672</text>
+<circle cx="860" cy="149.5" r="3.5" fill="#8a908c"/><text x="800" y="140.5" font-size="10" font-weight="700" fill="#aeb4b0">US$ 13.702</text>
+</svg>
+    <div class="grafico-legenda">
+      <div class="leg-item"><div class="leg-line" style="background:#e2c47a;"></div>Bitcoin · 10,0% a.a.</div>
+      <div class="leg-item"><div class="leg-line" style="background:#4a90d9;"></div>Carteira 60/40 · 7,0% a.a.</div>
+      <div class="leg-item"><div class="leg-line" style="background:#8a908c;"></div>Caixa EUA · 3,2% a.a.</div>
+    </div>
+    <div class="grafico-nota">A linha do Bitcoin é uma média suavizada. O ativo pode atravessar quedas profundas antes de entregar, ou sem entregar, o retorno composto projetado.</div>
+  </div>
+
+  <!-- BTC x OURO -->
+  <div class="section-title fade-in"><span class="section-icon">⚖️</span> O Bitcoin é o novo ouro digital?</div>
+
+  <p>A comparação tornou-se comum por causa da oferta limitada e da independência em relação à emissão monetária dos governos. As diferenças, porém, são relevantes:</p>
+
+  <div class="tab-wrap fade-in">
+    <table class="jtab">
+      <tr><th>Característica</th><th>Bitcoin</th><th>Ouro</th></tr>
+      <tr><td>Retorno projetado (LTCMA 2027)</td><td class="hl">10,0% a.a.</td><td class="hl">5,5% a.a.</td></tr>
+      <tr><td>Volatilidade esperada</td><td class="neg">~55% a.a.</td><td>~17,2% a.a.</td></tr>
+      <tr><td>Oferta</td><td>Limitada a 21 milhões de unidades</td><td>Mineral, com crescimento lento</td></tr>
+      <tr><td>Histórico monetário</td><td>Ativo digital recente, em amadurecimento</td><td>Milenar, com demanda de bancos centrais</td></tr>
+      <tr><td>Fluxo de caixa</td><td>Nenhum</td><td>Nenhum</td></tr>
+      <tr><td>Tratamento no modelo do J.P. Morgan</td><td>Fora das principais matrizes de covariância; sem alocação</td><td>Com premissas de retorno e risco integradas</td></tr>
+    </table>
+  </div>
+
+  <p>A escassez programada é uma característica importante, mas não garante valorização, porque o preço continua dependendo da demanda. De acordo com a cobertura da imprensa especializada, o próprio J.P. Morgan mostra cautela diante da tese de que a desvalorização das moedas tradicionais levaria a uma migração generalizada para criptoativos, e cita a volatilidade e as correlações instáveis como obstáculos à inclusão estrutural do Bitcoin nas carteiras.</p>
+
+  <!-- PESO -->
+  <div class="section-title fade-in"><span class="section-icon">🎚️</span> Qual deveria ser o papel do Bitcoin em uma carteira?</div>
+
+  <p>A pergunta mais útil é se uma exposição melhora a relação entre risco e retorno da carteira como um todo, e a comparação de retorno entre ativos responde apenas parte dela. Como exercício aritmético, a tabela abaixo mostra quanto cada peso adicionaria ao retorno esperado, caso o restante da carteira rendesse 7,0% (referência do 60/40) e o Bitcoin entregasse os 10% do caso-base:</p>
+
+  <div class="tab-wrap fade-in">
+    <table class="jtab">
+      <tr><th>Peso do Bitcoin na carteira</th><th>Retorno adicional estimado</th><th>Retorno esperado da carteira</th></tr>
+      <tr><td>1%</td><td class="pos">+0,03 p.p.</td><td>7,03%</td></tr><tr><td>3%</td><td class="pos">+0,09 p.p.</td><td>7,09%</td></tr><tr><td>5%</td><td class="pos">+0,15 p.p.</td><td>7,15%</td></tr><tr><td>10%</td><td class="pos">+0,30 p.p.</td><td>7,30%</td></tr>
+    </table>
+  </div>
+  <div class="grafico-nota" style="margin: -12px 0 24px;">Aproximação simplificada, sem rebalanceamento, correlações, impostos ou custos. Ilustra a ordem de grandeza do retorno adicional, sem medir o risco adicional.</div>
+
+  <p>Para pesos pequenos, o ganho de retorno esperado é modesto, e o principal efeito da posição passa a ser o risco. Uma participação reduzida oferece exposição a uma eventual valorização expressiva sem comprometer parcela relevante do patrimônio. Uma concentração elevada pode transformar um investimento pensado como diversificador no principal fator de risco do portfólio. A decisão depende de capacidade de suportar perdas, horizonte, necessidade de liquidez e objetivos patrimoniais, e vale separar uma alocação estratégica permanente de uma posição oportunística, sujeita a limites e a rebalanceamento.</p>
+
+  <div class="insight-box fade-in">
+    <p>O J.P. Morgan passou a estimar o retorno do Bitcoin, o que é diferente de recomendar sua inclusão em todas as carteiras. O reconhecimento institucional é um avanço na análise da classe de ativos, e os riscos que sempre a acompanharam seguem presentes.</p>
+  </div>
+
+  <!-- BRASIL -->
+  <div class="section-title fade-in"><span class="section-icon">🇧🇷</span> O que isso significa para o investidor brasileiro</div>
+
+  <p>As estimativas são expressas em dólares. Para quem mede o patrimônio em reais, o retorno final combina o retorno em dólar com a variação cambial, pela fórmula <strong>(1 + retorno em USD) × (1 + variação do dólar) − 1</strong>. A tabela mostra como o mesmo retorno projetado muda de acordo com o câmbio:</p>
+
+  <div class="tab-wrap fade-in">
+    <table class="jtab">
+      <tr><th>Cenário cambial (ao ano)</th><th>Ações EUA large caps (7,5% em USD)</th><th>Ouro (5,5% em USD)</th></tr>
+      <tr><td>Dólar cai 5% ao ano</td><td>2,1%</td><td>0,2%</td></tr><tr><td>Dólar cai 3% ao ano</td><td>4,3%</td><td>2,3%</td></tr><tr><td>Dólar estável</td><td>7,5%</td><td>5,5%</td></tr><tr><td>Dólar sobe 3% ao ano</td><td>10,7%</td><td>8,7%</td></tr><tr><td>Dólar sobe 5% ao ano</td><td>12,9%</td><td>10,8%</td></tr>
+    </table>
+  </div>
+  <div class="grafico-nota" style="margin: -12px 0 24px;">Retornos nominais em reais, antes de impostos e custos. Cenários cambiais ilustrativos, sem representar previsão.</div>
+
+  <p>Dessas projeções saem quatro orientações práticas. A construção de patrimônio não precisa depender só das oportunidades do mercado doméstico. Retornos nominais em reais não se comparam diretamente com retornos em dólares, e é preciso considerar inflação, câmbio, tributação e risco. O horizonte importa tanto quanto a escolha dos ativos, e recursos de curto prazo pedem segurança e liquidez, enquanto parcelas de longo prazo comportam maior exposição a ativos de crescimento. Por fim, novas classes de ativos merecem estudo rigoroso, sem preconceito e sem entusiasmo excessivo.</p>
+
+  <div class="conclusao fade-in">
+    As projeções do J.P. Morgan para 2027 mostram um cenário com oportunidades em ações, renda fixa, imóveis, ouro e alternativos, e o Bitcoin surge como a grande novidade, com potencial de retorno acima das classes tradicionais e riscos excepcionalmente elevados. Investir bem envolve construir uma estratégia que transforme oportunidades em resultados consistentes, respeitando os riscos e as necessidades de cada investidor, e a escolha do ativo de maior retorno esperado cumpre apenas uma parte desse caminho. A próxima década pode trazer transformações profundas, e <strong>o patrimônio segue sendo construído com planejamento, diversificação, disciplina e decisões fundamentadas</strong>, em vez de previsões isoladas sobre qual investimento será o vencedor.
+  </div>
+
+  <div class="method-box fade-in">
+    <div class="method-titulo">Nota metodológica e fontes</div>
+    <p>Os dados deste artigo vêm do comunicado oficial do J.P. Morgan Asset Management de 19/10/2026, do gráfico divulgado do LTCMA 2027 (p. 47, posição de 30/09/2026) e de cobertura especializada sobre a edição. Não houve revisão página a página do relatório completo. As projeções são retornos anuais compostos em dólares, estimados para horizontes de 10 a 15 anos (10 anos no caso-base do Bitcoin), e não incorporam impostos, custos ou particularidades de cada investidor. As simulações do artigo usam taxas constantes e têm finalidade apenas ilustrativa.</p>
+    <ul class="ref-list">
+      <li>J.P. Morgan Asset Management — 2027 Long-Term Capital Market Assumptions (comunicado de imprensa e relatório)</li>
+      <li>Cobertura da edição de 2027 por Decrypt, Forkast, Bitcoin.com e outros veículos especializados</li>
+    </ul>
+  </div>
+
+</article>
+
+<footer>
+  <div class="footer-name">Fábio Vogelaar Carlucci</div>
+  <div class="footer-contact">+55 (16) 98148-8260<br><a href="mailto:fabio.carlucci@ficus.capital">fabio.carlucci@ficus.capital</a></div>
+</footer>
+<div style="position:relative;z-index:1;padding:0 8% 28px;text-align:center;font-size:0.65rem;color:rgba(245,237,224,0.2);letter-spacing:0.08em;">
+  Fonte: J.P. Morgan Asset Management — 2027 Long-Term Capital Market Assumptions<br>
+  Conteúdo informativo e educacional. As projeções são estimativas de longo prazo, não garantias de retorno nem recomendações individualizadas. Investimentos envolvem riscos, inclusive de perda de capital.
+</div>
+
+<script>
+const faders = document.querySelectorAll(".fade-in");
+const obs = new IntersectionObserver(e => e.forEach(x => { if(x.isIntersecting){ x.target.classList.add("visible"); obs.unobserve(x.target); } }), { threshold: 0.1 });
+faders.forEach(f => obs.observe(f));
+</script>
+</body>
+</html>
