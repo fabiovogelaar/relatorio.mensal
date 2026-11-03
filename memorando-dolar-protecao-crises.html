@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>O dólar como proteção patrimonial: o que as crises nos ensinam | Fábio Carlucci</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DBQSDSDRF3"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-DBQSDSDRF3");</script>
+<style>
+  :root {
+    --verde-escuro: #1a2e25;
+    --dourado: #c9a84c;
+    --dourado-claro: #e2c47a;
+    --creme: #f5ede0;
+    --texto-claro: rgba(245,237,224,0.85);
+    --texto-muted: rgba(245,237,224,0.45);
+    --azul: #4a90d9;
+    --verde-gain: #3dbf8a;
+    --vermelho: #c94545;
+    --roxo: #9a7ad9;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { background-color: var(--verde-escuro); color: var(--creme); font-family: "Jost", sans-serif; font-weight: 300; overflow-x: hidden; }
+  body::before {
+    content: ""; position: fixed; inset: 0;
+    background-image: radial-gradient(ellipse at 10% 10%, rgba(201,168,76,0.06) 0%, transparent 55%), radial-gradient(ellipse at 90% 90%, rgba(47,82,64,0.35) 0%, transparent 55%);
+    pointer-events: none; z-index: 0;
+  }
+  .back-link { position: relative; z-index: 10; display: inline-flex; align-items: center; gap: 8px; padding: 28px 8%; font-size: 0.7rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--texto-muted); text-decoration: none; transition: color 0.2s; }
+  .back-link:hover { color: var(--dourado); }
+  .back-link::before { content: "←"; font-size: 0.9rem; }
+
+  .hero { position: relative; z-index: 1; padding: 20px 8% 56px; max-width: 800px; margin: 0 auto; text-align: center; border-bottom: 1px solid rgba(201,168,76,0.15); }
+  .hero-tag { font-size: 0.65rem; font-weight: 500; letter-spacing: 0.35em; text-transform: uppercase; color: var(--dourado); display: flex; align-items: center; justify-content: center; gap: 12px; margin-bottom: 24px; opacity: 0; animation: fadeUp 0.7s ease 0.1s forwards; }
+  .hero-tag::before, .hero-tag::after { content: ""; width: 26px; height: 1px; background: var(--dourado); }
+  h1 { font-family: "Cormorant Garamond", serif; font-size: clamp(1.85rem, 4.4vw, 2.9rem); font-weight: 300; line-height: 1.22; color: var(--creme); opacity: 0; animation: fadeUp 0.7s ease 0.2s forwards; }
+  h1 em { font-style: italic; color: var(--dourado-claro); }
+  .hero-sub { font-size: 1rem; color: var(--texto-muted); line-height: 1.75; margin: 18px auto 0; max-width: 620px; opacity: 0; animation: fadeUp 0.7s ease 0.35s forwards; }
+  .hero-date { font-size: 0.72rem; letter-spacing: 0.15em; color: var(--texto-muted); margin-top: 22px; opacity: 0; animation: fadeUp 0.7s ease 0.45s forwards; }
+  .hero-fonte { margin-top: 10px; font-size: 0.7rem; color: rgba(245,237,224,0.3); opacity: 0; animation: fadeUp 0.7s ease 0.55s forwards; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+
+  article { position: relative; z-index: 1; max-width: 800px; margin: 0 auto; padding: 56px 8% 88px; }
+  .lead { font-family: "Cormorant Garamond", serif; font-size: clamp(1.1rem, 2.5vw, 1.35rem); font-weight: 400; line-height: 1.8; color: var(--creme); margin-bottom: 48px; padding-bottom: 48px; border-bottom: 1px solid rgba(201,168,76,0.15); }
+  p { font-size: 0.97rem; line-height: 1.9; color: var(--texto-claro); margin-bottom: 24px; }
+  strong { font-weight: 600; color: var(--creme); }
+  .section-title { font-family: "Cormorant Garamond", serif; font-size: 1.45rem; font-weight: 600; color: var(--dourado-claro); margin: 54px 0 18px; padding-top: 42px; border-top: 1px solid rgba(201,168,76,0.12); display: flex; align-items: center; gap: 14px; }
+  .section-icon { font-size: 1.25rem; flex-shrink: 0; }
+
+  .stat-hero { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; margin: 32px 0; }
+  @media (max-width: 560px) { .stat-hero { grid-template-columns: 1fr; } }
+  .stat-card { border-radius: 8px; padding: 22px 16px; text-align: center; }
+  .stat-card.dourado { background: linear-gradient(135deg, rgba(201,168,76,0.14) 0%, rgba(47,82,64,0.4) 100%); border: 1px solid rgba(201,168,76,0.3); }
+  .stat-card.roxo { background: linear-gradient(135deg, rgba(154,122,217,0.12) 0%, rgba(47,82,64,0.4) 100%); border: 1px solid rgba(154,122,217,0.28); }
+  .stat-card.neutro { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); }
+  .stat-card-val { font-family: "Cormorant Garamond", serif; font-size: 1.9rem; font-weight: 700; line-height: 1; margin-bottom: 8px; }
+  .stat-card.dourado .stat-card-val { color: var(--dourado); }
+  .stat-card.roxo .stat-card-val { color: var(--roxo); }
+  .stat-card.neutro .stat-card-val { color: var(--texto-claro); }
+  .stat-card-desc { font-size: 0.75rem; color: var(--texto-muted); line-height: 1.5; }
+
+  .grafico-wrap { background: rgba(10,20,16,0.7); border: 1px solid rgba(255,255,255,0.07); border-radius: 8px; padding: 24px 20px 16px; margin: 32px 0; }
+  .grafico-titulo { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--dourado); margin-bottom: 4px; }
+  .grafico-sub { font-size: 0.72rem; color: var(--texto-muted); margin-bottom: 16px; }
+  .grafico-nota { font-size: 0.65rem; color: rgba(245,237,224,0.25); margin-top: 12px; line-height: 1.4; }
+  .grafico-legenda { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 14px; }
+  .leg-item { display: flex; align-items: center; gap: 6px; font-size: 0.7rem; color: var(--texto-claro); }
+  .leg-line { width: 16px; height: 2px; border-radius: 1px; flex-shrink: 0; }
+  .chart-svg { width: 100%; height: auto; display: block; }
+
+  .table-wrap { overflow-x: auto; margin: 24px 0; border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; background: rgba(10,20,16,0.5); }
+  .seq-table { width: 100%; border-collapse: collapse; min-width: 480px; font-size: 0.82rem; }
+  .seq-table th { text-align: left; color: var(--dourado); font-weight: 600; padding: 11px 14px; border-bottom: 1px solid rgba(201,168,76,0.25); font-size: 0.64rem; letter-spacing: 0.06em; text-transform: uppercase; }
+  .seq-table td { padding: 10px 14px; border-bottom: 1px solid rgba(255,255,255,0.06); color: var(--texto-claro); }
+  .seq-table tr:last-child td { border-bottom: none; }
+  .seq-table tr.final td { background: rgba(201,168,76,0.08); color: var(--dourado-claro); font-weight: 600; }
+
+  .fatores-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin: 24px 0; }
+  @media (max-width: 500px) { .fatores-grid { grid-template-columns: 1fr; } }
+  .fator-tag { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 14px 15px; font-size: 0.82rem; color: var(--texto-claro); display: flex; align-items: flex-start; gap: 8px; }
+  .fator-tag::before { content: "▸"; color: var(--dourado); flex-shrink: 0; }
+
+  /* BALDES */
+  .baldes-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; margin: 24px 0; }
+  @media (max-width: 560px) { .baldes-grid { grid-template-columns: 1fr; } }
+  .balde-card { border-radius: 8px; padding: 20px 16px; text-align: center; }
+  .balde-card.liq { background: rgba(74,144,217,0.08); border: 1px solid rgba(74,144,217,0.22); }
+  .balde-card.est { background: rgba(201,168,76,0.08); border: 1px solid rgba(201,168,76,0.22); }
+  .balde-card.cre { background: rgba(61,191,138,0.08); border: 1px solid rgba(61,191,138,0.22); }
+  .balde-titulo { font-family: "Cormorant Garamond", serif; font-weight: 700; font-size: 1.05rem; margin-bottom: 8px; }
+  .balde-card.liq .balde-titulo { color: #7db3ea; }
+  .balde-card.est .balde-titulo { color: var(--dourado); }
+  .balde-card.cre .balde-titulo { color: var(--verde-gain); }
+  .balde-desc { font-size: 0.78rem; color: var(--texto-claro); line-height: 1.55; }
+
+  /* PERGUNTAS */
+  .perguntas-list { display: flex; flex-direction: column; gap: 8px; margin: 24px 0; }
+  .pergunta-item { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 13px 16px; font-family: "Cormorant Garamond", serif; font-size: 0.98rem; font-style: italic; color: var(--dourado-claro); display: flex; gap: 10px; align-items: flex-start; }
+  .pergunta-item::before { content: "?"; font-family: "Jost", sans-serif; font-style: normal; font-weight: 700; color: var(--dourado); flex-shrink: 0; }
+
+  .insight-box { background: linear-gradient(135deg, rgba(201,168,76,0.1) 0%, rgba(26,46,37,0.4) 100%); border: 1px solid rgba(201,168,76,0.25); border-left: 3px solid var(--dourado); border-radius: 4px; padding: 26px 30px; margin: 34px 0; }
+  .insight-box p { font-family: "Cormorant Garamond", serif; font-size: 1.08rem; color: var(--creme); line-height: 1.8; margin: 0; }
+  .warn-box { background: linear-gradient(135deg, rgba(201,69,69,0.08) 0%, rgba(26,46,37,0.4) 100%); border: 1px solid rgba(201,69,69,0.22); border-left: 3px solid #c94545; border-radius: 4px; padding: 22px 26px; margin: 30px 0; }
+  .warn-box p { font-size: 0.88rem; color: var(--texto-claro); margin: 0; line-height: 1.7; }
+  .method-box { background: rgba(255,255,255,0.025); border: 1px dashed rgba(255,255,255,0.15); border-radius: 6px; padding: 20px 24px; margin: 32px 0; }
+  .method-box p { font-size: 0.8rem; color: var(--texto-muted); margin: 0; line-height: 1.65; }
+  .method-box .method-titulo { font-size: 0.62rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--texto-muted); margin-bottom: 8px; }
+
+  .conclusao { font-family: "Cormorant Garamond", serif; font-size: 1.1rem; font-weight: 400; line-height: 1.85; color: var(--creme); margin-top: 48px; padding: 38px; border: 1px solid rgba(201,168,76,0.2); border-radius: 6px; background: rgba(255,255,255,0.02); position: relative; }
+  .conclusao::before { content: "\201C"; position: absolute; top: -10px; left: 32px; font-size: 5rem; color: rgba(201,168,76,0.15); font-family: "Cormorant Garamond", serif; line-height: 1; }
+
+  .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .fade-in.visible { opacity: 1; transform: none; }
+  footer { position: relative; z-index: 1; border-top: 1px solid rgba(201,168,76,0.12); padding: 40px 8%; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+  .footer-name { font-family: "Cormorant Garamond", serif; font-size: 1.1rem; font-weight: 300; color: var(--texto-muted); }
+  .footer-contact { font-size: 0.75rem; color: rgba(245,237,224,0.25); line-height: 1.9; text-align: right; }
+  .footer-contact a { color: var(--dourado); text-decoration: none; }
+  @media (max-width: 640px) { .back-link,.hero { padding-left: 5%; padding-right: 5%; } article { padding: 48px 5% 64px; } footer { padding: 32px 5%; flex-direction: column; } .footer-contact { text-align: left; } }
+
+  /* ===== ESPECÍFICO DESTE ARTIGO ===== */
+  .stat-hero.dois { grid-template-columns: repeat(3,1fr); }
+  .heat-wrap { background: linear-gradient(160deg, rgba(201,69,69,0.07) 0%, rgba(10,20,16,0.9) 60%); border: 1px solid rgba(201,69,69,0.28); border-radius: 12px; padding: 28px 20px 18px; margin: 40px 0; }
+  .heat-eyebrow { font-size: 0.62rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: #e07070; margin-bottom: 6px; }
+  .heat-titulo { font-family: "Cormorant Garamond", serif; font-size: 1.5rem; font-weight: 700; color: var(--creme); margin-bottom: 4px; }
+  .heat-sub { font-size: 0.78rem; color: var(--texto-muted); margin-bottom: 18px; }
+  .tiles { display: grid; grid-template-columns: repeat(14, 1fr); gap: 4px; }
+  @media (max-width: 760px) { .tiles { grid-template-columns: repeat(7, 1fr); } }
+  .tile { border-radius: 4px; padding: 7px 2px 6px; text-align: center; display: flex; flex-direction: column; gap: 2px; border: 1px solid rgba(255,255,255,0.05); }
+  .tile .tk { font-size: 0.64rem; font-weight: 700; color: var(--creme); letter-spacing: 0.02em; }
+  .tile .dd { font-size: 0.56rem; color: rgba(245,237,224,0.78); }
+  @media (max-width: 760px) { .tile .tk { font-size: 0.7rem; } .tile .dd { font-size: 0.62rem; } }
+  .heat-legenda { display: flex; align-items: center; gap: 10px; margin-top: 16px; font-size: 0.66rem; color: var(--texto-muted); }
+  .heat-bar { flex: 1; max-width: 220px; height: 8px; border-radius: 4px; background: linear-gradient(90deg, rgba(201,69,69,0.2), rgba(201,69,69,0.9)); }
+  .faixa-row { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+  .faixa-label { flex: 0 0 96px; font-size: 0.76rem; color: var(--texto-claro); }
+  .faixa-track { flex: 1; height: 22px; background: rgba(255,255,255,0.05); border-radius: 4px; overflow: hidden; }
+  .faixa-fill { height: 100%; display: flex; align-items: center; justify-content: flex-end; padding-right: 8px; background: linear-gradient(90deg, rgba(201,69,69,0.55), rgba(224,112,112,0.95)); }
+  .faixa-val { font-size: 0.7rem; font-weight: 700; color: var(--verde-escuro); }
+  .dolar-grid { display: grid; grid-template-columns: repeat(10, 1fr); gap: 4px; max-width: 360px; margin: 8px auto 6px; }
+  .dolar-sq { aspect-ratio: 1; border-radius: 3px; background: rgba(255,255,255,0.07); }
+  .dolar-sq.top10 { background: rgba(201,168,76,0.55); }
+  .dolar-sq.nvda { background: #e2c47a; }
+  .dolar-leg { display: flex; justify-content: center; gap: 18px; flex-wrap: wrap; font-size: 0.68rem; color: var(--texto-claro); margin-top: 12px; }
+  .dolar-leg span::before { content: ""; display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 6px; vertical-align: -1px; }
+  .dolar-leg .l1::before { background: #e2c47a; } .dolar-leg .l2::before { background: rgba(201,168,76,0.55); } .dolar-leg .l3::before { background: rgba(255,255,255,0.12); }
+  .q3-chart { position: relative; height: 230px; display: flex; gap: 26px; padding: 0 10px; }
+  .q3-col { flex: 1; position: relative; height: 100%; }
+  .q3-bar { position: absolute; left: 6px; right: 6px; border-radius: 3px; }
+  .q3-bar.pos { background: linear-gradient(180deg, #e2c47a, #c9a84c); }
+  .q3-bar.neg { background: linear-gradient(0deg, #c94545, #e07070); }
+  .q3-bar.destaque { background: linear-gradient(180deg, #f5ede0, #cfc3ab); }
+  .q3-val { position: absolute; left: 0; right: 0; text-align: center; font-family: "Cormorant Garamond", serif; font-weight: 700; font-size: 1.05rem; color: var(--creme); }
+  .q3-zero { position: absolute; left: 0; right: 0; bottom: 100px; height: 1px; background: rgba(255,255,255,0.22); }
+  .q3-label { position: absolute; bottom: -30px; left: 0; right: 0; text-align: center; font-size: 0.68rem; color: var(--texto-muted); line-height: 1.25; }
+  .rec-row { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+  .rec-queda { flex: 0 0 64px; font-family: "Cormorant Garamond", serif; font-weight: 700; color: #e07070; font-size: 1.05rem; }
+  .rec-track { flex: 1; height: 22px; background: rgba(255,255,255,0.05); border-radius: 4px; overflow: hidden; }
+  .rec-fill { height: 100%; display: flex; align-items: center; justify-content: flex-end; padding-right: 8px; background: linear-gradient(90deg, var(--dourado), var(--dourado-claro)); }
+  .rec-val { font-size: 0.7rem; font-weight: 700; color: var(--verde-escuro); white-space: nowrap; }
+  .impl-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 24px 0; }
+  @media (max-width: 600px) { .impl-grid { grid-template-columns: 1fr; } }
+  .impl-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-top: 2px solid var(--dourado); border-radius: 6px; padding: 18px 16px; }
+  .impl-num { font-family: "Cormorant Garamond", serif; font-size: 1.6rem; font-weight: 700; color: rgba(201,168,76,0.45); line-height: 1; margin-bottom: 6px; }
+  .impl-tit { font-size: 0.82rem; font-weight: 600; color: var(--dourado); margin-bottom: 6px; }
+  .impl-txt { font-size: 0.8rem; color: var(--texto-claro); line-height: 1.6; }
+  .ref-list { font-size: 0.78rem; color: var(--texto-muted); line-height: 1.7; margin: 8px 0 0 18px; }
+
+  /* ===== J.P. MORGAN LTCMA 2027 ===== */
+  .jpm-wrap { background: linear-gradient(160deg, rgba(201,168,76,0.10) 0%, rgba(10,20,16,0.92) 55%); border: 1px solid rgba(201,168,76,0.32); border-radius: 14px; padding: 30px 24px 22px; margin: 40px 0; box-shadow: 0 0 60px rgba(201,168,76,0.05); }
+  .jpm-eyebrow { font-size: 0.62rem; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: var(--dourado); margin-bottom: 6px; }
+  .jpm-titulo { font-family: "Cormorant Garamond", serif; font-size: 1.65rem; font-weight: 700; color: var(--creme); margin-bottom: 4px; }
+  .jpm-sub { font-size: 0.78rem; color: var(--texto-muted); margin-bottom: 26px; line-height: 1.5; }
+  .vbars { position: relative; height: 270px; display: flex; gap: 18px; padding: 0 6px 0 34px; border-bottom: 1px solid rgba(255,255,255,0.18); margin-bottom: 52px; }
+  .vgrid { position: absolute; left: 34px; right: 0; height: 1px; background: rgba(255,255,255,0.06); }
+  .vgrid span { position: absolute; left: -34px; top: -7px; font-size: 0.58rem; color: rgba(245,237,224,0.35); }
+  .vcol { flex: 1; position: relative; height: 100%; }
+  .vbar { position: absolute; left: 4px; right: 4px; bottom: 0; border-radius: 4px 4px 0 0; background: linear-gradient(180deg, rgba(245,237,224,0.34), rgba(245,237,224,0.16)); }
+  .vbar.btc { background: linear-gradient(180deg, #f3d98f, #c9a84c); box-shadow: 0 0 28px rgba(226,196,122,0.35); }
+  .vval { position: absolute; left: 0; right: 0; text-align: center; font-family: "Cormorant Garamond", serif; font-weight: 700; font-size: 1.15rem; color: var(--creme); }
+  .vcol.b .vval { color: var(--dourado-claro); font-size: 1.4rem; }
+  .vlab { position: absolute; top: calc(100% + 10px); left: -4px; right: -4px; text-align: center; font-size: 0.7rem; color: var(--texto-claro); line-height: 1.25; }
+  .vlab small { display: block; font-size: 0.58rem; color: var(--texto-muted); margin-top: 2px; }
+  .vcol.b .vlab { color: var(--dourado-claro); font-weight: 600; }
+  @media (max-width: 560px) { .vbars { gap: 8px; padding-left: 28px; } .vgrid { left: 28px; } .vval { font-size: 0.9rem; } .vcol.b .vval { font-size: 1.05rem; } .vlab { font-size: 0.6rem; } .vlab small { display: none; } }
+  .rk-row { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+  .rk-nome { flex: 0 0 170px; font-size: 0.74rem; color: var(--texto-claro); line-height: 1.25; }
+  .rk-track { flex: 1; height: 22px; background: rgba(255,255,255,0.05); border-radius: 4px; overflow: hidden; }
+  .rk-fill { height: 100%; display: flex; align-items: center; justify-content: flex-end; padding-right: 8px; }
+  .rk-val { font-size: 0.7rem; font-weight: 700; color: #14261d; }
+  .c-dig { background: linear-gradient(90deg, #c9a84c, #f3d98f); }
+  .c-alt { background: linear-gradient(90deg, #7d63bd, #a48ae0); }
+  .c-imo { background: linear-gradient(90deg, #3d78b5, #6aa6e0); }
+  .c-acao { background: linear-gradient(90deg, #2f8f6f, #5fd0a6); }
+  .c-rf { background: linear-gradient(90deg, #c4682a, #eb9a5a); }
+  .c-prot { background: linear-gradient(90deg, #b9ad92, #e8dec6); }
+  .c-cash { background: linear-gradient(90deg, #6e7672, #9aa19d); }
+  .c-carteira { background: repeating-linear-gradient(45deg, #e2c47a, #e2c47a 6px, #c9a84c 6px, #c9a84c 12px); }
+  @media (max-width: 560px) { .rk-nome { flex-basis: 108px; font-size: 0.66rem; } }
+  .rk-leg { display: flex; flex-wrap: wrap; gap: 8px 16px; margin-top: 14px; font-size: 0.66rem; color: var(--texto-claro); }
+  .rk-leg span::before { content: ""; display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 6px; vertical-align: -1px; background: var(--c); }
+  .line-svg { width: 100%; height: auto; display: block; }
+  .vs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 26px 0; }
+  @media (max-width: 560px) { .vs-grid { grid-template-columns: 1fr; } }
+  .vs-card { border-radius: 10px; padding: 26px 20px; text-align: center; }
+  .vs-card.ret { background: linear-gradient(135deg, rgba(201,168,76,0.16), rgba(47,82,64,0.4)); border: 1px solid rgba(201,168,76,0.32); }
+  .vs-card.risk { background: linear-gradient(135deg, rgba(201,69,69,0.14), rgba(47,82,64,0.4)); border: 1px solid rgba(201,69,69,0.3); }
+  .vs-label { font-size: 0.62rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--texto-muted); margin-bottom: 8px; }
+  .vs-val { font-family: "Cormorant Garamond", serif; font-size: 3.1rem; font-weight: 700; line-height: 1; }
+  .vs-card.ret .vs-val { color: var(--dourado-claro); } .vs-card.risk .vs-val { color: #e07070; }
+  .vs-desc { font-size: 0.78rem; color: var(--texto-claro); margin-top: 8px; line-height: 1.5; }
+  .tab-wrap { overflow-x: auto; margin: 24px 0; border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; background: rgba(10,20,16,0.5); }
+  .jtab { width: 100%; border-collapse: collapse; min-width: 480px; font-size: 0.82rem; }
+  .jtab th { text-align: left; color: var(--dourado); font-weight: 600; padding: 11px 14px; border-bottom: 1px solid rgba(201,168,76,0.25); font-size: 0.62rem; letter-spacing: 0.07em; text-transform: uppercase; }
+  .jtab td { padding: 10px 14px; border-bottom: 1px solid rgba(255,255,255,0.06); color: var(--texto-claro); }
+  .jtab tr:last-child td { border-bottom: none; }
+  .jtab td.hl { color: var(--dourado-claro); font-weight: 600; }
+  .jtab td.neg { color: #e07070; font-weight: 600; } .jtab td.pos { color: #7ecbb0; font-weight: 600; }
+  .stat-hero.quatro { grid-template-columns: repeat(4,1fr); }
+  @media (max-width: 700px) { .stat-hero.quatro { grid-template-columns: repeat(2,1fr); } }
+  .classe-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin: 24px 0; }
+  @media (max-width: 600px) { .classe-grid { grid-template-columns: 1fr; } }
+  .classe-card { border-radius: 8px; padding: 20px 18px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-left: 3px solid var(--cl, var(--dourado)); }
+  .classe-top { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; margin-bottom: 8px; }
+  .classe-nome { font-family: "Cormorant Garamond", serif; font-size: 1.1rem; font-weight: 700; color: var(--creme); }
+  .classe-ret { font-family: "Cormorant Garamond", serif; font-size: 1.7rem; font-weight: 700; color: var(--cl, var(--dourado)); line-height: 1; }
+  .classe-txt { font-size: 0.8rem; color: var(--texto-claro); line-height: 1.6; }
+  .classe-txt strong { color: var(--creme); }
+
+  /* ===== DÓLAR / CRISES ===== */
+  .ev-wrap { background: linear-gradient(160deg, rgba(201,168,76,0.09) 0%, rgba(10,20,16,0.92) 55%); border: 1px solid rgba(201,168,76,0.3); border-radius: 14px; padding: 28px 18px 20px; margin: 40px 0; }
+  .ev-scroll { overflow-x: auto; }
+  .ev-head, .ev-row { display: grid; grid-template-columns: minmax(190px,2.3fr) repeat(4, minmax(78px,1fr)); gap: 6px; align-items: center; min-width: 640px; }
+  .ev-head { padding: 0 10px 10px; font-size: 0.62rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--texto-muted); text-align: center; border-bottom: 1px solid rgba(255,255,255,0.12); margin-bottom: 8px; }
+  .ev-head div:first-child { text-align: left; } .ev-head .brl { color: #7db3ea; }
+  .ev-row { padding: 9px 10px; margin-bottom: 5px; border-radius: 8px; background: rgba(255,255,255,0.035); }
+  .ev-row .nome { display: flex; flex-direction: column; gap: 3px; }
+  .ev-row .nome b { font-size: 0.86rem; font-weight: 600; color: var(--creme); }
+  .ev-row .nome span.dt { font-size: 0.64rem; color: var(--texto-muted); }
+  .ev-tag { display: inline-block; font-size: 0.52rem; font-weight: 700; letter-spacing: 0.1em; padding: 2px 6px; border-radius: 3px; margin-right: 8px; vertical-align: 1px; }
+  .ev-tag.g { background: rgba(122,140,160,0.25); color: #b9c7d6; } .ev-tag.b { background: rgba(201,168,76,0.22); color: var(--dourado-claro); }
+  .ev-row .v { text-align: center; font-family: "Cormorant Garamond", serif; font-size: 1.08rem; font-weight: 700; }
+  .v.neg { color: #e07070; } .v.pos { color: #5fd0a6; } .v.zero { color: var(--texto-muted); }
+  .ev-row .v.brl { background: rgba(74,144,217,0.12); border-radius: 6px; padding: 5px 0; }
+  .ev-nota { font-size: 0.62rem; color: rgba(245,237,224,0.3); margin-top: 12px; line-height: 1.5; }
+  .dv-bloco { margin-bottom: 14px; }
+  .dv-nome { font-size: 0.74rem; color: var(--texto-claro); margin-bottom: 4px; }
+  .dv-nome small { color: var(--texto-muted); font-size: 0.62rem; margin-left: 6px; }
+  .dv-row { display: flex; align-items: center; gap: 8px; margin-bottom: 3px; }
+  .dv-lab { flex: 0 0 62px; font-size: 0.6rem; color: var(--texto-muted); text-align: right; }
+  .dv-track { position: relative; flex: 1; height: 14px; }
+  .dv-track::before { content: ""; position: absolute; left: var(--z); top: -2px; bottom: -2px; width: 1px; background: rgba(255,255,255,0.22); }
+  .dv-bar { position: absolute; top: 1px; bottom: 1px; border-radius: 3px; }
+  .dv-bar.ib { background: linear-gradient(90deg, #c94545, #e07070); }
+  .dv-bar.sp { background: linear-gradient(90deg, #c9a84c, #f3d98f); }
+  .dv-bar.spn { background: linear-gradient(90deg, #8d7a3c, #c9a84c); }
+  .dv-bar.pt { background: linear-gradient(90deg, #4a90d9, #6aa6e0); }
+  .dv-val { position: absolute; top: -1px; font-size: 0.64rem; font-weight: 700; color: var(--creme); white-space: nowrap; }
+  .dv-leg { display: flex; flex-wrap: wrap; gap: 8px 18px; font-size: 0.66rem; color: var(--texto-claro); margin-bottom: 16px; }
+  .dv-leg span::before { content: ""; display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 6px; vertical-align: -1px; background: var(--c); }
+  .flow3 { display: grid; grid-template-columns: 1fr auto 1fr auto 1fr; gap: 10px; align-items: stretch; margin: 26px 0; }
+  @media (max-width: 640px) { .flow3 { grid-template-columns: 1fr; } .flow3 .seta { transform: rotate(90deg); justify-self: center; } }
+  .flow-card { border-radius: 10px; padding: 20px 14px; text-align: center; background: rgba(255,255,255,0.035); border: 1px solid rgba(255,255,255,0.09); }
+  .flow-card.fim { background: linear-gradient(135deg, rgba(201,168,76,0.16), rgba(47,82,64,0.4)); border-color: rgba(201,168,76,0.35); }
+  .flow-step { font-size: 0.58rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--texto-muted); margin-bottom: 8px; }
+  .flow-val { font-family: "Cormorant Garamond", serif; font-size: 1.55rem; font-weight: 700; color: var(--creme); line-height: 1.1; }
+  .flow-card.fim .flow-val { color: var(--dourado-claro); }
+  .flow-desc { font-size: 0.7rem; color: var(--texto-claro); margin-top: 8px; line-height: 1.45; }
+  .seta { align-self: center; font-size: 1.4rem; color: var(--dourado); }
+  .formula-box { background: rgba(201,168,76,0.06); border: 1px solid rgba(201,168,76,0.2); border-radius: 8px; padding: 20px 24px; margin: 22px 0; text-align: center; font-family: "Cormorant Garamond", serif; font-size: 1.1rem; color: var(--dourado-claro); font-weight: 600; }
+  .pill-link { color: var(--dourado-claro); text-decoration: underline; text-decoration-color: rgba(226,196,122,0.4); }
+</style>
+</head>
+<body>
+
+<a class="back-link" href="index.html">Voltar</a>
+
+<header class="hero">
+  <div class="hero-tag">Artigo · Diversificação Internacional</div>
+  <h1>O dólar como <em>proteção patrimonial</em>: o que as crises nos ensinam</h1>
+  <p class="hero-sub">Como a diversificação internacional ajuda a preservar o patrimônio dos investidores brasileiros em momentos de instabilidade econômica e política.</p>
+  <div class="hero-date">Novembro de 2026</div>
+  <div class="hero-fonte">Análise de dez episódios de estresse entre 2008 e 2026 · Ibovespa, dólar e S&P 500 em dólares e em reais</div>
+</header>
+
+<article>
+
+  <p class="lead">
+    Em momentos de crise, sejam eles domésticos ou globais, o dólar costuma se valorizar frente ao real. Para o investidor brasileiro, isso faz da exposição internacional algo além de diversificação geográfica: <strong>parte do patrimônio em dólar pode funcionar como um mecanismo de proteção</strong>, reduzindo o impacto das crises sobre o valor consolidado dos investimentos. Dez episódios entre 2008 e 2026 ajudam a ver esse efeito em números.
+  </p>
+
+  <div class="stat-hero quatro fade-in">
+    <div class="stat-card dourado"><div class="stat-card-val">10 de 10</div><div class="stat-card-desc">episódios com valorização do dólar frente ao real</div></div>
+    <div class="stat-card neutro"><div class="stat-card-val">+1,4% a +9,2%</div><div class="stat-card-desc">faixa de alta do dólar nos dias analisados</div></div>
+    <div class="stat-card neutro"><div class="stat-card-val">7 + 3</div><div class="stat-card-desc">sete crises domésticas e três crises globais</div></div>
+    <div class="stat-card dourado"><div class="stat-card-val">+8,7 p.p.</div><div class="stat-card-desc">vantagem média do S&P 500 em reais sobre o Ibovespa nesses dias</div></div>
+  </div>
+
+  <!-- TABELA -->
+  <div class="ev-wrap fade-in">
+    <div class="jpm-eyebrow">O quadro completo</div>
+    <div class="jpm-titulo">Dólar é um seguro para o brasileiro</div>
+    <div class="jpm-sub">Desempenho dos mercados em dez episódios de instabilidade, em um único dia de pregão</div>
+    <div class="ev-scroll">
+      <div class="ev-head"><div>Evento</div><div>Ibovespa</div><div>Dólar</div><div>S&amp;P 500<br>em dólar</div><div class="brl">S&amp;P 500<br>em reais</div></div>
+      <div class="ev-row"><div class="nome"><b><span class="ev-tag g">GLOBAL</span>Crise do Subprime</b><span class="dt">15/10/2008</span></div><div class="v neg">−11,4%</div><div class="v pos">+3,7%</div><div class="v neg">−9,0%</div><div class="v brl neg">−5,7%</div></div><div class="ev-row"><div class="nome"><b><span class="ev-tag b">BRASIL</span>Reeleição de Dilma</b><span class="dt">27/10/2014</span></div><div class="v neg">−2,8%</div><div class="v pos">+2,2%</div><div class="v neg">−0,1%</div><div class="v brl pos">+2,0%</div></div><div class="ev-row"><div class="nome"><b><span class="ev-tag b">BRASIL</span>Joesley Day</b><span class="dt">18/05/2017</span></div><div class="v neg">−8,8%</div><div class="v pos">+8,8%</div><div class="v pos">+0,4%</div><div class="v brl pos">+9,2%</div></div><div class="ev-row"><div class="nome"><b><span class="ev-tag b">BRASIL</span>Greve dos caminhoneiros</b><span class="dt">28/05/2018</span></div><div class="v neg">−4,5%</div><div class="v pos">+1,4%</div><div class="v zero">0,0%</div><div class="v brl pos">+1,4%</div></div><div class="ev-row"><div class="nome"><b><span class="ev-tag g">GLOBAL</span>Covid-19</b><span class="dt">16/03/2020</span></div><div class="v neg">−13,9%</div><div class="v pos">+4,5%</div><div class="v neg">−12,0%</div><div class="v brl neg">−8,1%</div></div><div class="ev-row"><div class="nome"><b><span class="ev-tag b">BRASIL</span>Intervenção na Petrobras</b><span class="dt">22/02/2021</span></div><div class="v neg">−4,9%</div><div class="v pos">+2,1%</div><div class="v neg">−0,8%</div><div class="v brl pos">+1,3%</div></div><div class="ev-row"><div class="nome"><b><span class="ev-tag b">BRASIL</span>Crise do teto de gastos</b><span class="dt">21/10/2021</span></div><div class="v neg">−2,8%</div><div class="v pos">+1,5%</div><div class="v pos">+0,3%</div><div class="v brl pos">+1,8%</div></div><div class="ev-row"><div class="nome"><b><span class="ev-tag b">BRASIL</span>Fala de Lula sobre gastos</b><span class="dt">10/11/2022</span></div><div class="v neg">−3,3%</div><div class="v pos">+2,8%</div><div class="v pos">+5,6%</div><div class="v brl pos">+8,5%</div></div><div class="ev-row"><div class="nome"><b><span class="ev-tag g">GLOBAL</span>Tarifaço de Trump</b><span class="dt">04/04/2025</span></div><div class="v neg">−3,0%</div><div class="v pos">+3,0%</div><div class="v neg">−6,0%</div><div class="v brl neg">−3,1%</div></div><div class="ev-row"><div class="nome"><b><span class="ev-tag b">BRASIL</span>Lula Day</b><span class="dt">26/10/2026</span></div><div class="v neg">−13,9%</div><div class="v pos">+9,2%</div><div class="v pos">+0,7%</div><div class="v brl pos">+10,0%</div></div>
+    </div>
+    <div class="ev-nota">Variações referentes às datas indicadas, calculadas sobre os fechamentos de cada pregão. A medida do dólar (PTAX ou fechamento comercial) pode alterar as casas decimais. Retornos do S&amp;P 500 em reais apresentados com arredondamentos: em cada linha, o resultado em reais corresponde a (1 + retorno em dólar) × (1 + variação do dólar) − 1.</div>
+  </div>
+
+  <p>Três características aparecem nos números. <strong>Primeiro</strong>, o dólar se valorizou nos dez episódios, em datas marcadas por perdas relevantes na bolsa brasileira. <strong>Segundo</strong>, a proteção cambial foi mais expressiva nas crises domésticas, quando os ativos internacionais frequentemente preservaram ou aumentaram seu valor em reais enquanto o Ibovespa caía. <strong>Terceiro</strong>, nas crises globais o dólar não impediu as perdas, e ajudou a amortecê-las. A amostra é de episódios de estresse selecionados, o que impede concluir que o dólar subirá em toda crise.</p>
+
+  <!-- DIVERGENTE -->
+  <div class="section-title fade-in"><span class="section-icon">⚖️</span> Ibovespa x S&P 500 em reais, dia a dia</div>
+
+  <p>O gráfico abaixo coloca lado a lado, em cada episódio, a variação do Ibovespa e a do S&amp;P 500 convertido para reais. As barras para a esquerda indicam perda, e para a direita, ganho:</p>
+
+  <div class="grafico-wrap fade-in">
+    <div class="grafico-titulo">Dois mercados, o mesmo dia</div>
+    <div class="grafico-sub">Variação em um único pregão, em %</div>
+    <div class="dv-leg"><span style="--c:#e07070;">Ibovespa</span><span style="--c:#f3d98f;">S&amp;P 500 em reais (ganho)</span><span style="--c:#c9a84c;">S&amp;P 500 em reais (perda)</span></div>
+    <div class="dv-bloco"><div class="dv-nome">Crise do Subprime<small>15/10/2008</small></div><div class="dv-row"><div class="dv-lab">Ibovespa</div><div class="dv-track" style="--z:56.67%;"><div class="dv-bar ib" style="left:18.67%; width:38.00%;"></div><div class="dv-val" style="right:calc(81.33% + 4px);">−11,4%</div></div></div><div class="dv-row"><div class="dv-lab">S&amp;P em R$</div><div class="dv-track" style="--z:56.67%;"><div class="dv-bar spn" style="left:37.67%; width:19.00%;"></div><div class="dv-val" style="right:calc(62.33% + 4px);">−5,7%</div></div></div></div><div class="dv-bloco"><div class="dv-nome">Reeleição de Dilma<small>27/10/2014</small></div><div class="dv-row"><div class="dv-lab">Ibovespa</div><div class="dv-track" style="--z:56.67%;"><div class="dv-bar ib" style="left:47.33%; width:9.33%;"></div><div class="dv-val" style="right:calc(52.67% + 4px);">−2,8%</div></div></div><div class="dv-row"><div class="dv-lab">S&amp;P em R$</div><div class="dv-track" style="--z:56.67%;"><div class="dv-bar sp" style="left:56.67%; width:6.67%;"></div><div class="dv-val" style="left:calc(63.33% + 4px);">+2,0%</div></div></div></div><div class="dv-bloco"><div class="dv-nome">Joesley Day<small>18/05/2017</small></div><div class="dv-row"><div class="dv-lab">Ibovespa</div><div class="dv-track" style="--z:56.67%;"><div class="dv-bar ib" style="left:27.33%; width:29.33%;"></div><div class="dv-val" style="right:calc(72.67% + 4px);">−8,8%</div></div></div><div class="dv-row"><div class="dv-lab">S&amp;P em R$</div><div class="dv-track" style="--z:56.67%;"><div class="dv-bar sp" style="left:56.67%; width:30.67%;"></div><div class="dv-val" style="left:calc(87.33% + 4px);">+9,2%</div></div></div></div><div class="dv-bloco"><div class="dv-nome">Greve dos caminhoneiros<small>28/05/2018</small></div><div class="dv-row"><div class="dv-lab">Ibovespa</div><div class="dv-track" style="--z:56.67%;"><div class="dv-bar ib" style="left:41.67%; width:15.00%;"></div><div class="dv-val" style="right:calc(58.33% + 4px);">−4,5%</div></div></div><div class="dv-row"><div class="dv-lab">S&amp;P em R$</div><div class="dv-track" style="--z:56.67%;"><div class="dv-bar sp" style="left:56.67%; width:4.67%;"></div><div class="dv-val" style="left:calc(61.33% + 4px);">+1,4%</div></div></div></div><div class="dv-bloco"><div class="dv-nome">Covid-19<small>16/03/2020</small></div><div class="dv-row"><div class="dv-lab">Ibovespa</div><div class="dv-track" style="--z:56.67%;"><div class="dv-bar ib" style="left:10.33%; width:46.33%;"></div><div class="dv-val" style="right:calc(89.67% + 4px);">−13,9%</div></div></div><div class="dv-row"><div class="dv-lab">S&amp;P em R$</div><div class="dv-track" style="--z:56.67%;"><div class="dv-bar spn" style="left:29.67%; width:27.00%;"></div><div class="dv-val" style="right:calc(70.33% + 4px);">−8,1%</div></div></div></div><div class="dv-bloco"><div class="dv-nome">Intervenção na Petrobras<small>22/02/2021</small></div><div class="dv-row"><div class="dv-lab">Ibovespa</div><div class="dv-track" style="--z:56.67%;"><div class="dv-bar ib" style="left:40.33%; width:16.33%;"></div><div class="dv-val" style="right:calc(59.67% + 4px);">−4,9%</div></div></div><div class="dv-row"><div class="dv-lab">S&amp;P em R$</div><div class="dv-track" style="--z:56.67%;"><div class="dv-bar sp" style="left:56.67%; width:4.33%;"></div><div class="dv-val" style="left:calc(61.00% + 4px);">+1,3%</div></div></div></div><div class="dv-bloco"><div class="dv-nome">Crise do teto de gastos<small>21/10/2021</small></div><div class="dv-row"><div class="dv-lab">Ibovespa</div><div class="dv-track" style="--z:56.67%;"><div class="dv-bar ib" style="left:47.33%; width:9.33%;"></div><div class="dv-val" style="right:calc(52.67% + 4px);">−2,8%</div></div></div><div class="dv-row"><div class="dv-lab">S&amp;P em R$</div><div class="dv-track" style="--z:56.67%;"><div class="dv-bar sp" style="left:56.67%; width:6.00%;"></div><div class="dv-val" style="left:calc(62.67% + 4px);">+1,8%</div></div></div></div><div class="dv-bloco"><div class="dv-nome">Fala de Lula sobre gastos<small>10/11/2022</small></div><div class="dv-row"><div class="dv-lab">Ibovespa</div><div class="dv-track" style="--z:56.67%;"><div class="dv-bar ib" style="left:45.67%; width:11.00%;"></div><div class="dv-val" style="right:calc(54.33% + 4px);">−3,3%</div></div></div><div class="dv-row"><div class="dv-lab">S&amp;P em R$</div><div class="dv-track" style="--z:56.67%;"><div class="dv-bar sp" style="left:56.67%; width:28.33%;"></div><div class="dv-val" style="left:calc(85.00% + 4px);">+8,5%</div></div></div></div><div class="dv-bloco"><div class="dv-nome">Tarifaço de Trump<small>04/04/2025</small></div><div class="dv-row"><div class="dv-lab">Ibovespa</div><div class="dv-track" style="--z:56.67%;"><div class="dv-bar ib" style="left:46.67%; width:10.00%;"></div><div class="dv-val" style="right:calc(53.33% + 4px);">−3,0%</div></div></div><div class="dv-row"><div class="dv-lab">S&amp;P em R$</div><div class="dv-track" style="--z:56.67%;"><div class="dv-bar spn" style="left:46.33%; width:10.33%;"></div><div class="dv-val" style="right:calc(53.67% + 4px);">−3,1%</div></div></div></div><div class="dv-bloco"><div class="dv-nome">Lula Day<small>26/10/2026</small></div><div class="dv-row"><div class="dv-lab">Ibovespa</div><div class="dv-track" style="--z:56.67%;"><div class="dv-bar ib" style="left:10.33%; width:46.33%;"></div><div class="dv-val" style="right:calc(89.67% + 4px);">−13,9%</div></div></div><div class="dv-row"><div class="dv-lab">S&amp;P em R$</div><div class="dv-track" style="--z:56.67%;"><div class="dv-bar sp" style="left:56.67%; width:33.33%;"></div><div class="dv-val" style="left:calc(90.00% + 4px);">+10,0%</div></div></div></div>
+    <div class="grafico-nota">Em oito dos dez episódios, o S&amp;P 500 em reais terminou o dia acima do Ibovespa por margem clara. Em todos os dez, o resultado em reais superou o resultado em dólar da mesma carteira.</div>
+  </div>
+
+  <!-- GAP -->
+  <div class="grafico-wrap fade-in">
+    <div class="grafico-titulo">Diferença entre o S&amp;P 500 em reais e o Ibovespa</div>
+    <div class="grafico-sub">Em pontos percentuais, no mesmo dia · ordenado da maior para a menor diferença</div>
+    <div class="rk-row"><div class="rk-nome">Lula Day</div><div class="rk-track"><div class="rk-fill c-dig" style="width:99,6%; min-width:84px;"><span class="rk-val">+23,9 p.p.</span></div></div></div><div class="rk-row"><div class="rk-nome">Joesley Day</div><div class="rk-track"><div class="rk-fill c-dig" style="width:75,0%; min-width:84px;"><span class="rk-val">+18,0 p.p.</span></div></div></div><div class="rk-row"><div class="rk-nome">Fala de Lula sobre gastos</div><div class="rk-track"><div class="rk-fill c-dig" style="width:49,2%; min-width:84px;"><span class="rk-val">+11,8 p.p.</span></div></div></div><div class="rk-row"><div class="rk-nome">Intervenção na Petrobras</div><div class="rk-track"><div class="rk-fill c-dig" style="width:25,8%; min-width:84px;"><span class="rk-val">+6,2 p.p.</span></div></div></div><div class="rk-row"><div class="rk-nome">Greve dos caminhoneiros</div><div class="rk-track"><div class="rk-fill c-dig" style="width:24,6%; min-width:84px;"><span class="rk-val">+5,9 p.p.</span></div></div></div><div class="rk-row"><div class="rk-nome">Covid-19</div><div class="rk-track"><div class="rk-fill c-dig" style="width:24,2%; min-width:84px;"><span class="rk-val">+5,8 p.p.</span></div></div></div><div class="rk-row"><div class="rk-nome">Crise do Subprime</div><div class="rk-track"><div class="rk-fill c-dig" style="width:23,8%; min-width:84px;"><span class="rk-val">+5,7 p.p.</span></div></div></div><div class="rk-row"><div class="rk-nome">Reeleição de Dilma</div><div class="rk-track"><div class="rk-fill c-dig" style="width:20,0%; min-width:84px;"><span class="rk-val">+4,8 p.p.</span></div></div></div><div class="rk-row"><div class="rk-nome">Crise do teto de gastos</div><div class="rk-track"><div class="rk-fill c-dig" style="width:19,2%; min-width:84px;"><span class="rk-val">+4,6 p.p.</span></div></div></div><div class="rk-row"><div class="rk-nome">Tarifaço de Trump</div><div class="rk-track"><div class="rk-fill c-cash" style="width:3,0%; min-width:84px;"><span class="rk-val">−0,1 p.p.</span></div></div></div>
+    <div class="grafico-nota">Média dos dez episódios: +8,7 p.p. Nas sete crises domésticas, a média é de +10,7 p.p.; nas três globais, de +3,8 p.p. No tarifaço de 2025, a queda em reais do S&amp;P 500 (−3,1%) praticamente igualou a do Ibovespa (−3,0%).</div>
+  </div>
+
+  <!-- CRISES BRASILEIRAS -->
+  <div class="section-title fade-in"><span class="section-icon">🇧🇷</span> Quando a crise é brasileira, a proteção é mais expressiva</div>
+
+  <p>Os episódios de instabilidade política e fiscal do país oferecem os exemplos mais claros. Dois deles se destacam pela magnitude:</p>
+
+  <div class="vs-grid fade-in">
+    <div class="vs-card risk">
+      <div class="vs-label">Joesley Day · 18/05/2017</div>
+      <div class="vs-val" style="font-size:2.3rem;">18 p.p.</div>
+      <div class="vs-desc">Ibovespa −8,8% e S&amp;P 500 em reais +9,2%. A diferença em um único pregão chegou a 18 pontos percentuais.</div>
+    </div>
+    <div class="vs-card ret">
+      <div class="vs-label">Lula Day · 26/10/2026</div>
+      <div class="vs-val" style="font-size:2.3rem;">23,9 p.p.</div>
+      <div class="vs-desc">Ibovespa −13,9% e S&amp;P 500 em reais +10,0%. A diferença foi a maior da amostra.</div>
+    </div>
+  </div>
+
+  <p>No segundo turno de 2026, o resultado eleitoral não era o cenário que os preços de mercado tinham incorporado. Segundo a cobertura da imprensa financeira, o Ibovespa fechou em queda de 13,88%, aos 176.608 pontos, a maior queda diária desde março de 2020, com acionamento do circuit breaker na abertura. O dólar comercial subiu 8,21% no fechamento (R$ 5,40), e 9,2% pela PTAX, a medida usada neste levantamento. Em dia assim, quem tinha todo o patrimônio em ativos brasileiros sentiu o impacto integral, e quem tinha parte em ativos internacionais viu a valorização do dólar atuar como contrapeso.</p>
+
+  <p>A mesma lógica pode ser aplicada a uma carteira com diferentes proporções no exterior. O exercício abaixo supõe que a parte brasileira se comporte como o Ibovespa e a parte internacional como o S&amp;P 500 em reais:</p>
+
+  <div class="grafico-wrap fade-in">
+    <div class="grafico-titulo">Efeito do peso internacional na carteira, em dois dias de estresse</div>
+    <div class="grafico-sub">Retorno de uma carteira dividida entre Ibovespa e S&amp;P 500 em reais</div>
+    <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 26px;" class="duas-col">
+      <div><div class="dv-nome" style="margin-bottom:8px;">Joesley Day · 18/05/2017</div><div class="dv-row"><div class="dv-lab">0% fora</div><div class="dv-track" style="--z:78.57%;"><div class="dv-bar ib" style="left:15.71%; width:62.86%;"></div><div class="dv-val" style="right:calc(84.29% + 4px);">−8,8%</div></div></div><div class="dv-row"><div class="dv-lab">10% fora</div><div class="dv-track" style="--z:78.57%;"><div class="dv-bar pt" style="left:28.57%; width:50.00%;"></div><div class="dv-val" style="right:calc(71.43% + 4px);">−7,0%</div></div></div><div class="dv-row"><div class="dv-lab">20% fora</div><div class="dv-track" style="--z:78.57%;"><div class="dv-bar pt" style="left:41.43%; width:37.14%;"></div><div class="dv-val" style="right:calc(58.57% + 4px);">−5,2%</div></div></div><div class="dv-row"><div class="dv-lab">30% fora</div><div class="dv-track" style="--z:78.57%;"><div class="dv-bar pt" style="left:54.29%; width:24.29%;"></div><div class="dv-val" style="right:calc(45.71% + 4px);">−3,4%</div></div></div><div class="dv-row"><div class="dv-lab">50% fora</div><div class="dv-track" style="--z:78.57%;"><div class="dv-bar pt" style="left:78.57%; width:1.43%;"></div><div class="dv-val" style="left:calc(80.00% + 4px);">+0,2%</div></div></div></div>
+      <div><div class="dv-nome" style="margin-bottom:8px;">Lula Day · 26/10/2026</div><div class="dv-row"><div class="dv-lab">0% fora</div><div class="dv-track" style="--z:80.00%;"><div class="dv-bar ib" style="left:10.50%; width:69.50%;"></div><div class="dv-val" style="right:calc(89.50% + 4px);">−13,9%</div></div></div><div class="dv-row"><div class="dv-lab">10% fora</div><div class="dv-track" style="--z:80.00%;"><div class="dv-bar pt" style="left:22.45%; width:57.55%;"></div><div class="dv-val" style="right:calc(77.55% + 4px);">−11,5%</div></div></div><div class="dv-row"><div class="dv-lab">20% fora</div><div class="dv-track" style="--z:80.00%;"><div class="dv-bar pt" style="left:34.40%; width:45.60%;"></div><div class="dv-val" style="right:calc(65.60% + 4px);">−9,1%</div></div></div><div class="dv-row"><div class="dv-lab">30% fora</div><div class="dv-track" style="--z:80.00%;"><div class="dv-bar pt" style="left:46.35%; width:33.65%;"></div><div class="dv-val" style="right:calc(53.65% + 4px);">−6,7%</div></div></div><div class="dv-row"><div class="dv-lab">50% fora</div><div class="dv-track" style="--z:80.00%;"><div class="dv-bar pt" style="left:70.25%; width:9.75%;"></div><div class="dv-val" style="right:calc(29.75% + 4px);">−2,0%</div></div></div></div>
+    </div>
+    <div class="grafico-nota">Exercício simplificado: sem rebalanceamento, custos, impostos ou spread cambial, e com o Ibovespa como proxy de toda a carteira brasileira. A linha "0% fora" representa o patrimônio inteiramente no Brasil.</div>
+  </div>
+
+  <div class="tab-wrap fade-in">
+    <table class="jtab">
+      <tr><th>Parcela do patrimônio no exterior</th><th>Joesley Day (2017)</th><th>Lula Day (2026)</th></tr>
+      <tr><td>0%</td><td class="neg">−8,8%</td><td class="neg">−13,9%</td></tr><tr><td>10%</td><td class="neg">−7,0%</td><td class="neg">−11,5%</td></tr><tr><td>20%</td><td class="neg">−5,2%</td><td class="neg">−9,1%</td></tr><tr><td>30%</td><td class="neg">−3,4%</td><td class="neg">−6,7%</td></tr><tr><td>50%</td><td class="pos">+0,2%</td><td class="neg">−2,0%</td></tr>
+    </table>
+  </div>
+
+  <!-- CRISES GLOBAIS -->
+  <div class="section-title fade-in"><span class="section-icon">🌐</span> Nas crises globais, o dólar funciona como amortecedor</div>
+
+  <p>Quando o estresse atinge os principais mercados do mundo, as bolsas americanas também caem. A valorização do dólar frente ao real, porém, reduziu a perda do investidor brasileiro nos três episódios globais da amostra:</p>
+
+  <div class="tab-wrap fade-in">
+    <table class="jtab">
+      <tr><th>Crise global</th><th>S&amp;P 500 em US$</th><th>S&amp;P 500 em R$</th><th>Redução da perda</th></tr>
+      <tr><td>Crise do Subprime</td><td class="neg">−9,0%</td><td class="neg">−5,7%</td><td class="pos">3,3 p.p.</td></tr><tr><td>Covid-19</td><td class="neg">−12,0%</td><td class="neg">−8,1%</td><td class="pos">3,9 p.p.</td></tr><tr><td>Tarifaço de Trump</td><td class="neg">−6,0%</td><td class="neg">−3,1%</td><td class="pos">2,9 p.p.</td></tr>
+    </table>
+  </div>
+
+  <p>Na Covid-19, por exemplo, o S&amp;P 500 recuou 12% em dólares, mas o dólar subiu 4,5% e a perda em reais foi de cerca de 8,1%. O mecanismo não elimina o risco dos ativos no exterior. Ele mostra que o investidor brasileiro está exposto a duas variáveis, o desempenho dos ativos e o câmbio, que em certos momentos atuam em sentidos opostos e reduzem a volatilidade do patrimônio medido em reais.</p>
+
+  <!-- MATEMÁTICA -->
+  <div class="section-title fade-in"><span class="section-icon">🧮</span> A matemática da proteção cambial</div>
+
+  <div class="formula-box fade-in">Rentabilidade em reais = (1 + retorno do ativo em dólar) × (1 + variação do dólar) − 1</div>
+
+  <p>Considere R$ 1 milhão aplicado em ativos internacionais, com o dólar a R$ 5,00. Em um episódio de instabilidade, o mercado americano cai 5% e o dólar sobe 10%:</p>
+
+  <div class="flow3 fade-in">
+    <div class="flow-card"><div class="flow-step">1 · Ponto de partida</div><div class="flow-val">US$ 200 mil</div><div class="flow-desc">R$ 1.000.000 convertidos a R$ 5,00 por dólar</div></div>
+    <div class="seta">→</div>
+    <div class="flow-card"><div class="flow-step">2 · Mercado cai 5%</div><div class="flow-val">US$ 190 mil</div><div class="flow-desc">perda de 5% medida em dólares</div></div>
+    <div class="seta">→</div>
+    <div class="flow-card fim"><div class="flow-step">3 · Dólar sobe 10%</div><div class="flow-val">R$ 1.045.000</div><div class="flow-desc">US$ 190 mil a R$ 5,50: ganho de 4,5% em reais</div></div>
+  </div>
+
+  <p>Mesmo com a queda dos ativos americanos, o patrimônio convertido para reais cresceu. A proteção depende do tipo de investimento internacional, já que caixa em dólar, ações americanas e títulos de longa duração se comportam de formas diferentes. O câmbio protege o valor em reais quando o dólar sobe e deixa intactos os riscos próprios de cada ativo.</p>
+
+  <!-- NÃO É APOSTA -->
+  <div class="section-title fade-in"><span class="section-icon">🛡️</span> Diversificação internacional vai além de rentabilidade</div>
+
+  <p>Um erro comum é avaliar investimentos internacionais apenas pela expectativa de valorização das bolsas americanas ou pela tentativa de antecipar o dólar. Essa abordagem deixa de lado uma função central: <strong>reduzir a dependência do patrimônio em relação aos riscos econômicos, políticos, fiscais e monetários de um único país</strong>. Quem mantém todos os recursos no mercado doméstico concentra a exposição na economia e também na moeda brasileira, de modo que um evento capaz de pressionar ao mesmo tempo a bolsa, as expectativas fiscais e a confiança na moeda atinge vários componentes do patrimônio de uma vez.</p>
+
+  <div class="warn-box fade-in">
+    <p>A amostra reúne dias de estresse, e o dólar não sobe em linha reta. Houve longos períodos de valorização do real, em que ativos dolarizados renderam menos que o CDI, como discutimos no artigo <a class="pill-link" href="memorando-14-brasil-ou-4-dolar.html">"14% no Brasil ou 4% em dólar?"</a>. Por isso, a dolarização faz mais sentido como decisão estrutural de alocação, tomada com antecedência, do que como aposta de curto prazo. A proporção adequada depende de objetivos, compromissos financeiros, necessidade de liquidez e perfil de risco, e dolarizar tudo raramente faz sentido.</p>
+  </div>
+
+  <div class="insight-box fade-in">
+    <p>A principal vantagem de uma carteira diversificada é possuir os mecanismos de proteção antes que os episódios de instabilidade aconteçam, e sem depender de prever quando será a próxima crise.</p>
+  </div>
+
+  <div class="conclusao fade-in">
+    A análise dos dez episódios sugere que, em momentos de instabilidade, a exposição internacional desempenhou um papel de proteção para o investidor brasileiro. Nas crises domésticas, a valorização do dólar transformou cenários de perdas expressivas no mercado local em ganhos para investimentos internacionais convertidos em reais. Nas crises globais, o câmbio reduziu as perdas das bolsas americanas. O benefício da dolarização aparece menos nos períodos de normalidade e mais nos momentos em que a proteção se torna necessária, e por isso a exposição internacional cabe como componente estrutural de uma estratégia de preservação patrimonial. Diversificar convive bem com a confiança no Brasil, porque a segurança de um patrimônio de longo prazo se apoia em mais de uma economia e mais de uma moeda. <strong>A pergunta mais útil para o planejamento é quanto do patrimônio estará protegido se o Brasil enfrentar uma nova crise.</strong>
+  </div>
+
+  <div class="method-box fade-in">
+    <div class="method-titulo">Nota metodológica</div>
+    <p>Os dados dos dez episódios foram reproduzidos de levantamento de referência, e a coerência aritmética entre as colunas foi verificada. As informações do pregão de 26/10/2026 foram conferidas na cobertura da imprensa financeira. Os episódios formam uma amostra selecionada de dias de estresse e não representam estatisticamente todos os períodos de crise. A variação do dólar depende da medida utilizada (PTAX ou fechamento comercial). Os retornos não consideram custos operacionais, spreads cambiais, tributação e despesas dos investimentos. Rentabilidade passada não representa garantia de resultados futuros.</p>
+  </div>
+
+</article>
+
+<footer>
+  <div class="footer-name">Fábio Vogelaar Carlucci</div>
+  <div class="footer-contact">+55 (16) 98148-8260<br><a href="mailto:fabio.carlucci@ficus.capital">fabio.carlucci@ficus.capital</a></div>
+</footer>
+<div style="position:relative;z-index:1;padding:0 8% 28px;text-align:center;font-size:0.65rem;color:rgba(245,237,224,0.2);letter-spacing:0.08em;">
+  Conteúdo informativo e educacional. Não constitui recomendação individualizada de investimento. Investimentos no exterior envolvem riscos de mercado e cambiais, inclusive de perda de capital.
+</div>
+
+<script>
+const faders = document.querySelectorAll(".fade-in");
+const obs = new IntersectionObserver(e => e.forEach(x => { if(x.isIntersecting){ x.target.classList.add("visible"); obs.unobserve(x.target); } }), { threshold: 0.1 });
+faders.forEach(f => obs.observe(f));
+</script>
+<style>@media (max-width: 640px) { .duas-col { grid-template-columns: 1fr !important; } }</style>
+</body>
+</html>
