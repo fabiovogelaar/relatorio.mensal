@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>O preço da perda de credibilidade monetária: o que a Turquia ensina | Fábio Carlucci</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DBQSDSDRF3"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-DBQSDSDRF3");</script>
+<style>
+  :root {
+    --verde-escuro: #1a2e25;
+    --dourado: #c9a84c;
+    --dourado-claro: #e2c47a;
+    --creme: #f5ede0;
+    --texto-claro: rgba(245,237,224,0.85);
+    --texto-muted: rgba(245,237,224,0.45);
+    --azul: #4a90d9;
+    --verde-gain: #3dbf8a;
+    --vermelho: #c94545;
+    --roxo: #9a7ad9;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { background-color: var(--verde-escuro); color: var(--creme); font-family: "Jost", sans-serif; font-weight: 300; overflow-x: hidden; }
+  body::before {
+    content: ""; position: fixed; inset: 0;
+    background-image: radial-gradient(ellipse at 10% 10%, rgba(201,168,76,0.06) 0%, transparent 55%), radial-gradient(ellipse at 90% 90%, rgba(47,82,64,0.35) 0%, transparent 55%);
+    pointer-events: none; z-index: 0;
+  }
+  .back-link { position: relative; z-index: 10; display: inline-flex; align-items: center; gap: 8px; padding: 28px 8%; font-size: 0.7rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--texto-muted); text-decoration: none; transition: color 0.2s; }
+  .back-link:hover { color: var(--dourado); }
+  .back-link::before { content: "←"; font-size: 0.9rem; }
+
+  .hero { position: relative; z-index: 1; padding: 20px 8% 56px; max-width: 800px; margin: 0 auto; text-align: center; border-bottom: 1px solid rgba(201,168,76,0.15); }
+  .hero-tag { font-size: 0.65rem; font-weight: 500; letter-spacing: 0.35em; text-transform: uppercase; color: var(--dourado); display: flex; align-items: center; justify-content: center; gap: 12px; margin-bottom: 24px; opacity: 0; animation: fadeUp 0.7s ease 0.1s forwards; }
+  .hero-tag::before, .hero-tag::after { content: ""; width: 26px; height: 1px; background: var(--dourado); }
+  h1 { font-family: "Cormorant Garamond", serif; font-size: clamp(1.85rem, 4.4vw, 2.9rem); font-weight: 300; line-height: 1.22; color: var(--creme); opacity: 0; animation: fadeUp 0.7s ease 0.2s forwards; }
+  h1 em { font-style: italic; color: var(--dourado-claro); }
+  .hero-sub { font-size: 1rem; color: var(--texto-muted); line-height: 1.75; margin: 18px auto 0; max-width: 620px; opacity: 0; animation: fadeUp 0.7s ease 0.35s forwards; }
+  .hero-date { font-size: 0.72rem; letter-spacing: 0.15em; color: var(--texto-muted); margin-top: 22px; opacity: 0; animation: fadeUp 0.7s ease 0.45s forwards; }
+  .hero-fonte { margin-top: 10px; font-size: 0.7rem; color: rgba(245,237,224,0.3); opacity: 0; animation: fadeUp 0.7s ease 0.55s forwards; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+
+  article { position: relative; z-index: 1; max-width: 800px; margin: 0 auto; padding: 56px 8% 88px; }
+  .lead { font-family: "Cormorant Garamond", serif; font-size: clamp(1.1rem, 2.5vw, 1.35rem); font-weight: 400; line-height: 1.8; color: var(--creme); margin-bottom: 48px; padding-bottom: 48px; border-bottom: 1px solid rgba(201,168,76,0.15); }
+  p { font-size: 0.97rem; line-height: 1.9; color: var(--texto-claro); margin-bottom: 24px; }
+  strong { font-weight: 600; color: var(--creme); }
+  .section-title { font-family: "Cormorant Garamond", serif; font-size: 1.45rem; font-weight: 600; color: var(--dourado-claro); margin: 54px 0 18px; padding-top: 42px; border-top: 1px solid rgba(201,168,76,0.12); display: flex; align-items: center; gap: 14px; }
+  .section-icon { font-size: 1.25rem; flex-shrink: 0; }
+
+  .stat-hero { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; margin: 32px 0; }
+  @media (max-width: 560px) { .stat-hero { grid-template-columns: 1fr; } }
+  .stat-card { border-radius: 8px; padding: 22px 16px; text-align: center; }
+  .stat-card.dourado { background: linear-gradient(135deg, rgba(201,168,76,0.14) 0%, rgba(47,82,64,0.4) 100%); border: 1px solid rgba(201,168,76,0.3); }
+  .stat-card.roxo { background: linear-gradient(135deg, rgba(154,122,217,0.12) 0%, rgba(47,82,64,0.4) 100%); border: 1px solid rgba(154,122,217,0.28); }
+  .stat-card.neutro { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); }
+  .stat-card-val { font-family: "Cormorant Garamond", serif; font-size: 1.9rem; font-weight: 700; line-height: 1; margin-bottom: 8px; }
+  .stat-card.dourado .stat-card-val { color: var(--dourado); }
+  .stat-card.roxo .stat-card-val { color: var(--roxo); }
+  .stat-card.neutro .stat-card-val { color: var(--texto-claro); }
+  .stat-card-desc { font-size: 0.75rem; color: var(--texto-muted); line-height: 1.5; }
+
+  .grafico-wrap { background: rgba(10,20,16,0.7); border: 1px solid rgba(255,255,255,0.07); border-radius: 8px; padding: 24px 20px 16px; margin: 32px 0; }
+  .grafico-titulo { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--dourado); margin-bottom: 4px; }
+  .grafico-sub { font-size: 0.72rem; color: var(--texto-muted); margin-bottom: 16px; }
+  .grafico-nota { font-size: 0.65rem; color: rgba(245,237,224,0.25); margin-top: 12px; line-height: 1.4; }
+  .grafico-legenda { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 14px; }
+  .leg-item { display: flex; align-items: center; gap: 6px; font-size: 0.7rem; color: var(--texto-claro); }
+  .leg-line { width: 16px; height: 2px; border-radius: 1px; flex-shrink: 0; }
+  .chart-svg { width: 100%; height: auto; display: block; }
+
+  .table-wrap { overflow-x: auto; margin: 24px 0; border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; background: rgba(10,20,16,0.5); }
+  .seq-table { width: 100%; border-collapse: collapse; min-width: 480px; font-size: 0.82rem; }
+  .seq-table th { text-align: left; color: var(--dourado); font-weight: 600; padding: 11px 14px; border-bottom: 1px solid rgba(201,168,76,0.25); font-size: 0.64rem; letter-spacing: 0.06em; text-transform: uppercase; }
+  .seq-table td { padding: 10px 14px; border-bottom: 1px solid rgba(255,255,255,0.06); color: var(--texto-claro); }
+  .seq-table tr:last-child td { border-bottom: none; }
+  .seq-table tr.final td { background: rgba(201,168,76,0.08); color: var(--dourado-claro); font-weight: 600; }
+
+  .fatores-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin: 24px 0; }
+  @media (max-width: 500px) { .fatores-grid { grid-template-columns: 1fr; } }
+  .fator-tag { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 14px 15px; font-size: 0.82rem; color: var(--texto-claro); display: flex; align-items: flex-start; gap: 8px; }
+  .fator-tag::before { content: "▸"; color: var(--dourado); flex-shrink: 0; }
+
+  /* BALDES */
+  .baldes-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; margin: 24px 0; }
+  @media (max-width: 560px) { .baldes-grid { grid-template-columns: 1fr; } }
+  .balde-card { border-radius: 8px; padding: 20px 16px; text-align: center; }
+  .balde-card.liq { background: rgba(74,144,217,0.08); border: 1px solid rgba(74,144,217,0.22); }
+  .balde-card.est { background: rgba(201,168,76,0.08); border: 1px solid rgba(201,168,76,0.22); }
+  .balde-card.cre { background: rgba(61,191,138,0.08); border: 1px solid rgba(61,191,138,0.22); }
+  .balde-titulo { font-family: "Cormorant Garamond", serif; font-weight: 700; font-size: 1.05rem; margin-bottom: 8px; }
+  .balde-card.liq .balde-titulo { color: #7db3ea; }
+  .balde-card.est .balde-titulo { color: var(--dourado); }
+  .balde-card.cre .balde-titulo { color: var(--verde-gain); }
+  .balde-desc { font-size: 0.78rem; color: var(--texto-claro); line-height: 1.55; }
+
+  /* PERGUNTAS */
+  .perguntas-list { display: flex; flex-direction: column; gap: 8px; margin: 24px 0; }
+  .pergunta-item { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 13px 16px; font-family: "Cormorant Garamond", serif; font-size: 0.98rem; font-style: italic; color: var(--dourado-claro); display: flex; gap: 10px; align-items: flex-start; }
+  .pergunta-item::before { content: "?"; font-family: "Jost", sans-serif; font-style: normal; font-weight: 700; color: var(--dourado); flex-shrink: 0; }
+
+  .insight-box { background: linear-gradient(135deg, rgba(201,168,76,0.1) 0%, rgba(26,46,37,0.4) 100%); border: 1px solid rgba(201,168,76,0.25); border-left: 3px solid var(--dourado); border-radius: 4px; padding: 26px 30px; margin: 34px 0; }
+  .insight-box p { font-family: "Cormorant Garamond", serif; font-size: 1.08rem; color: var(--creme); line-height: 1.8; margin: 0; }
+  .warn-box { background: linear-gradient(135deg, rgba(201,69,69,0.08) 0%, rgba(26,46,37,0.4) 100%); border: 1px solid rgba(201,69,69,0.22); border-left: 3px solid #c94545; border-radius: 4px; padding: 22px 26px; margin: 30px 0; }
+  .warn-box p { font-size: 0.88rem; color: var(--texto-claro); margin: 0; line-height: 1.7; }
+  .method-box { background: rgba(255,255,255,0.025); border: 1px dashed rgba(255,255,255,0.15); border-radius: 6px; padding: 20px 24px; margin: 32px 0; }
+  .method-box p { font-size: 0.8rem; color: var(--texto-muted); margin: 0; line-height: 1.65; }
+  .method-box .method-titulo { font-size: 0.62rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--texto-muted); margin-bottom: 8px; }
+
+  .conclusao { font-family: "Cormorant Garamond", serif; font-size: 1.1rem; font-weight: 400; line-height: 1.85; color: var(--creme); margin-top: 48px; padding: 38px; border: 1px solid rgba(201,168,76,0.2); border-radius: 6px; background: rgba(255,255,255,0.02); position: relative; }
+  .conclusao::before { content: "\201C"; position: absolute; top: -10px; left: 32px; font-size: 5rem; color: rgba(201,168,76,0.15); font-family: "Cormorant Garamond", serif; line-height: 1; }
+
+  .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .fade-in.visible { opacity: 1; transform: none; }
+  footer { position: relative; z-index: 1; border-top: 1px solid rgba(201,168,76,0.12); padding: 40px 8%; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+  .footer-name { font-family: "Cormorant Garamond", serif; font-size: 1.1rem; font-weight: 300; color: var(--texto-muted); }
+  .footer-contact { font-size: 0.75rem; color: rgba(245,237,224,0.25); line-height: 1.9; text-align: right; }
+  .footer-contact a { color: var(--dourado); text-decoration: none; }
+  @media (max-width: 640px) { .back-link,.hero { padding-left: 5%; padding-right: 5%; } article { padding: 48px 5% 64px; } footer { padding: 32px 5%; flex-direction: column; } .footer-contact { text-align: left; } }
+
+  /* ===== ESPECÍFICO DESTE ARTIGO ===== */
+  .stat-hero.dois { grid-template-columns: repeat(3,1fr); }
+  .heat-wrap { background: linear-gradient(160deg, rgba(201,69,69,0.07) 0%, rgba(10,20,16,0.9) 60%); border: 1px solid rgba(201,69,69,0.28); border-radius: 12px; padding: 28px 20px 18px; margin: 40px 0; }
+  .heat-eyebrow { font-size: 0.62rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: #e07070; margin-bottom: 6px; }
+  .heat-titulo { font-family: "Cormorant Garamond", serif; font-size: 1.5rem; font-weight: 700; color: var(--creme); margin-bottom: 4px; }
+  .heat-sub { font-size: 0.78rem; color: var(--texto-muted); margin-bottom: 18px; }
+  .tiles { display: grid; grid-template-columns: repeat(14, 1fr); gap: 4px; }
+  @media (max-width: 760px) { .tiles { grid-template-columns: repeat(7, 1fr); } }
+  .tile { border-radius: 4px; padding: 7px 2px 6px; text-align: center; display: flex; flex-direction: column; gap: 2px; border: 1px solid rgba(255,255,255,0.05); }
+  .tile .tk { font-size: 0.64rem; font-weight: 700; color: var(--creme); letter-spacing: 0.02em; }
+  .tile .dd { font-size: 0.56rem; color: rgba(245,237,224,0.78); }
+  @media (max-width: 760px) { .tile .tk { font-size: 0.7rem; } .tile .dd { font-size: 0.62rem; } }
+  .heat-legenda { display: flex; align-items: center; gap: 10px; margin-top: 16px; font-size: 0.66rem; color: var(--texto-muted); }
+  .heat-bar { flex: 1; max-width: 220px; height: 8px; border-radius: 4px; background: linear-gradient(90deg, rgba(201,69,69,0.2), rgba(201,69,69,0.9)); }
+  .faixa-row { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+  .faixa-label { flex: 0 0 96px; font-size: 0.76rem; color: var(--texto-claro); }
+  .faixa-track { flex: 1; height: 22px; background: rgba(255,255,255,0.05); border-radius: 4px; overflow: hidden; }
+  .faixa-fill { height: 100%; display: flex; align-items: center; justify-content: flex-end; padding-right: 8px; background: linear-gradient(90deg, rgba(201,69,69,0.55), rgba(224,112,112,0.95)); }
+  .faixa-val { font-size: 0.7rem; font-weight: 700; color: var(--verde-escuro); }
+  .dolar-grid { display: grid; grid-template-columns: repeat(10, 1fr); gap: 4px; max-width: 360px; margin: 8px auto 6px; }
+  .dolar-sq { aspect-ratio: 1; border-radius: 3px; background: rgba(255,255,255,0.07); }
+  .dolar-sq.top10 { background: rgba(201,168,76,0.55); }
+  .dolar-sq.nvda { background: #e2c47a; }
+  .dolar-leg { display: flex; justify-content: center; gap: 18px; flex-wrap: wrap; font-size: 0.68rem; color: var(--texto-claro); margin-top: 12px; }
+  .dolar-leg span::before { content: ""; display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 6px; vertical-align: -1px; }
+  .dolar-leg .l1::before { background: #e2c47a; } .dolar-leg .l2::before { background: rgba(201,168,76,0.55); } .dolar-leg .l3::before { background: rgba(255,255,255,0.12); }
+  .q3-chart { position: relative; height: 230px; display: flex; gap: 26px; padding: 0 10px; }
+  .q3-col { flex: 1; position: relative; height: 100%; }
+  .q3-bar { position: absolute; left: 6px; right: 6px; border-radius: 3px; }
+  .q3-bar.pos { background: linear-gradient(180deg, #e2c47a, #c9a84c); }
+  .q3-bar.neg { background: linear-gradient(0deg, #c94545, #e07070); }
+  .q3-bar.destaque { background: linear-gradient(180deg, #f5ede0, #cfc3ab); }
+  .q3-val { position: absolute; left: 0; right: 0; text-align: center; font-family: "Cormorant Garamond", serif; font-weight: 700; font-size: 1.05rem; color: var(--creme); }
+  .q3-zero { position: absolute; left: 0; right: 0; bottom: 100px; height: 1px; background: rgba(255,255,255,0.22); }
+  .q3-label { position: absolute; bottom: -30px; left: 0; right: 0; text-align: center; font-size: 0.68rem; color: var(--texto-muted); line-height: 1.25; }
+  .rec-row { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+  .rec-queda { flex: 0 0 64px; font-family: "Cormorant Garamond", serif; font-weight: 700; color: #e07070; font-size: 1.05rem; }
+  .rec-track { flex: 1; height: 22px; background: rgba(255,255,255,0.05); border-radius: 4px; overflow: hidden; }
+  .rec-fill { height: 100%; display: flex; align-items: center; justify-content: flex-end; padding-right: 8px; background: linear-gradient(90deg, var(--dourado), var(--dourado-claro)); }
+  .rec-val { font-size: 0.7rem; font-weight: 700; color: var(--verde-escuro); white-space: nowrap; }
+  .impl-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 24px 0; }
+  @media (max-width: 600px) { .impl-grid { grid-template-columns: 1fr; } }
+  .impl-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-top: 2px solid var(--dourado); border-radius: 6px; padding: 18px 16px; }
+  .impl-num { font-family: "Cormorant Garamond", serif; font-size: 1.6rem; font-weight: 700; color: rgba(201,168,76,0.45); line-height: 1; margin-bottom: 6px; }
+  .impl-tit { font-size: 0.82rem; font-weight: 600; color: var(--dourado); margin-bottom: 6px; }
+  .impl-txt { font-size: 0.8rem; color: var(--texto-claro); line-height: 1.6; }
+  .ref-list { font-size: 0.78rem; color: var(--texto-muted); line-height: 1.7; margin: 8px 0 0 18px; }
+
+  /* ===== J.P. MORGAN LTCMA 2027 ===== */
+  .jpm-wrap { background: linear-gradient(160deg, rgba(201,168,76,0.10) 0%, rgba(10,20,16,0.92) 55%); border: 1px solid rgba(201,168,76,0.32); border-radius: 14px; padding: 30px 24px 22px; margin: 40px 0; box-shadow: 0 0 60px rgba(201,168,76,0.05); }
+  .jpm-eyebrow { font-size: 0.62rem; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: var(--dourado); margin-bottom: 6px; }
+  .jpm-titulo { font-family: "Cormorant Garamond", serif; font-size: 1.65rem; font-weight: 700; color: var(--creme); margin-bottom: 4px; }
+  .jpm-sub { font-size: 0.78rem; color: var(--texto-muted); margin-bottom: 26px; line-height: 1.5; }
+  .vbars { position: relative; height: 270px; display: flex; gap: 18px; padding: 0 6px 0 34px; border-bottom: 1px solid rgba(255,255,255,0.18); margin-bottom: 52px; }
+  .vgrid { position: absolute; left: 34px; right: 0; height: 1px; background: rgba(255,255,255,0.06); }
+  .vgrid span { position: absolute; left: -34px; top: -7px; font-size: 0.58rem; color: rgba(245,237,224,0.35); }
+  .vcol { flex: 1; position: relative; height: 100%; }
+  .vbar { position: absolute; left: 4px; right: 4px; bottom: 0; border-radius: 4px 4px 0 0; background: linear-gradient(180deg, rgba(245,237,224,0.34), rgba(245,237,224,0.16)); }
+  .vbar.btc { background: linear-gradient(180deg, #f3d98f, #c9a84c); box-shadow: 0 0 28px rgba(226,196,122,0.35); }
+  .vval { position: absolute; left: 0; right: 0; text-align: center; font-family: "Cormorant Garamond", serif; font-weight: 700; font-size: 1.15rem; color: var(--creme); }
+  .vcol.b .vval { color: var(--dourado-claro); font-size: 1.4rem; }
+  .vlab { position: absolute; top: calc(100% + 10px); left: -4px; right: -4px; text-align: center; font-size: 0.7rem; color: var(--texto-claro); line-height: 1.25; }
+  .vlab small { display: block; font-size: 0.58rem; color: var(--texto-muted); margin-top: 2px; }
+  .vcol.b .vlab { color: var(--dourado-claro); font-weight: 600; }
+  @media (max-width: 560px) { .vbars { gap: 8px; padding-left: 28px; } .vgrid { left: 28px; } .vval { font-size: 0.9rem; } .vcol.b .vval { font-size: 1.05rem; } .vlab { font-size: 0.6rem; } .vlab small { display: none; } }
+  .rk-row { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+  .rk-nome { flex: 0 0 170px; font-size: 0.74rem; color: var(--texto-claro); line-height: 1.25; }
+  .rk-track { flex: 1; height: 22px; background: rgba(255,255,255,0.05); border-radius: 4px; overflow: hidden; }
+  .rk-fill { height: 100%; display: flex; align-items: center; justify-content: flex-end; padding-right: 8px; }
+  .rk-val { font-size: 0.7rem; font-weight: 700; color: #14261d; }
+  .c-dig { background: linear-gradient(90deg, #c9a84c, #f3d98f); }
+  .c-alt { background: linear-gradient(90deg, #7d63bd, #a48ae0); }
+  .c-imo { background: linear-gradient(90deg, #3d78b5, #6aa6e0); }
+  .c-acao { background: linear-gradient(90deg, #2f8f6f, #5fd0a6); }
+  .c-rf { background: linear-gradient(90deg, #c4682a, #eb9a5a); }
+  .c-prot { background: linear-gradient(90deg, #b9ad92, #e8dec6); }
+  .c-cash { background: linear-gradient(90deg, #6e7672, #9aa19d); }
+  .c-carteira { background: repeating-linear-gradient(45deg, #e2c47a, #e2c47a 6px, #c9a84c 6px, #c9a84c 12px); }
+  @media (max-width: 560px) { .rk-nome { flex-basis: 108px; font-size: 0.66rem; } }
+  .rk-leg { display: flex; flex-wrap: wrap; gap: 8px 16px; margin-top: 14px; font-size: 0.66rem; color: var(--texto-claro); }
+  .rk-leg span::before { content: ""; display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 6px; vertical-align: -1px; background: var(--c); }
+  .line-svg { width: 100%; height: auto; display: block; }
+  .vs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 26px 0; }
+  @media (max-width: 560px) { .vs-grid { grid-template-columns: 1fr; } }
+  .vs-card { border-radius: 10px; padding: 26px 20px; text-align: center; }
+  .vs-card.ret { background: linear-gradient(135deg, rgba(201,168,76,0.16), rgba(47,82,64,0.4)); border: 1px solid rgba(201,168,76,0.32); }
+  .vs-card.risk { background: linear-gradient(135deg, rgba(201,69,69,0.14), rgba(47,82,64,0.4)); border: 1px solid rgba(201,69,69,0.3); }
+  .vs-label { font-size: 0.62rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--texto-muted); margin-bottom: 8px; }
+  .vs-val { font-family: "Cormorant Garamond", serif; font-size: 3.1rem; font-weight: 700; line-height: 1; }
+  .vs-card.ret .vs-val { color: var(--dourado-claro); } .vs-card.risk .vs-val { color: #e07070; }
+  .vs-desc { font-size: 0.78rem; color: var(--texto-claro); margin-top: 8px; line-height: 1.5; }
+  .tab-wrap { overflow-x: auto; margin: 24px 0; border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; background: rgba(10,20,16,0.5); }
+  .jtab { width: 100%; border-collapse: collapse; min-width: 480px; font-size: 0.82rem; }
+  .jtab th { text-align: left; color: var(--dourado); font-weight: 600; padding: 11px 14px; border-bottom: 1px solid rgba(201,168,76,0.25); font-size: 0.62rem; letter-spacing: 0.07em; text-transform: uppercase; }
+  .jtab td { padding: 10px 14px; border-bottom: 1px solid rgba(255,255,255,0.06); color: var(--texto-claro); }
+  .jtab tr:last-child td { border-bottom: none; }
+  .jtab td.hl { color: var(--dourado-claro); font-weight: 600; }
+  .jtab td.neg { color: #e07070; font-weight: 600; } .jtab td.pos { color: #7ecbb0; font-weight: 600; }
+  .stat-hero.quatro { grid-template-columns: repeat(4,1fr); }
+  @media (max-width: 700px) { .stat-hero.quatro { grid-template-columns: repeat(2,1fr); } }
+  .classe-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin: 24px 0; }
+  @media (max-width: 600px) { .classe-grid { grid-template-columns: 1fr; } }
+  .classe-card { border-radius: 8px; padding: 20px 18px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-left: 3px solid var(--cl, var(--dourado)); }
+  .classe-top { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; margin-bottom: 8px; }
+  .classe-nome { font-family: "Cormorant Garamond", serif; font-size: 1.1rem; font-weight: 700; color: var(--creme); }
+  .classe-ret { font-family: "Cormorant Garamond", serif; font-size: 1.7rem; font-weight: 700; color: var(--cl, var(--dourado)); line-height: 1; }
+  .classe-txt { font-size: 0.8rem; color: var(--texto-claro); line-height: 1.6; }
+  .classe-txt strong { color: var(--creme); }
+
+  /* ===== DÓLAR / CRISES ===== */
+  .ev-wrap { background: linear-gradient(160deg, rgba(201,168,76,0.09) 0%, rgba(10,20,16,0.92) 55%); border: 1px solid rgba(201,168,76,0.3); border-radius: 14px; padding: 28px 18px 20px; margin: 40px 0; }
+  .ev-scroll { overflow-x: auto; }
+  .ev-head, .ev-row { display: grid; grid-template-columns: minmax(190px,2.3fr) repeat(4, minmax(78px,1fr)); gap: 6px; align-items: center; min-width: 640px; }
+  .ev-head { padding: 0 10px 10px; font-size: 0.62rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--texto-muted); text-align: center; border-bottom: 1px solid rgba(255,255,255,0.12); margin-bottom: 8px; }
+  .ev-head div:first-child { text-align: left; } .ev-head .brl { color: #7db3ea; }
+  .ev-row { padding: 9px 10px; margin-bottom: 5px; border-radius: 8px; background: rgba(255,255,255,0.035); }
+  .ev-row .nome { display: flex; flex-direction: column; gap: 3px; }
+  .ev-row .nome b { font-size: 0.86rem; font-weight: 600; color: var(--creme); }
+  .ev-row .nome span.dt { font-size: 0.64rem; color: var(--texto-muted); }
+  .ev-tag { display: inline-block; font-size: 0.52rem; font-weight: 700; letter-spacing: 0.1em; padding: 2px 6px; border-radius: 3px; margin-right: 8px; vertical-align: 1px; }
+  .ev-tag.g { background: rgba(122,140,160,0.25); color: #b9c7d6; } .ev-tag.b { background: rgba(201,168,76,0.22); color: var(--dourado-claro); }
+  .ev-row .v { text-align: center; font-family: "Cormorant Garamond", serif; font-size: 1.08rem; font-weight: 700; }
+  .v.neg { color: #e07070; } .v.pos { color: #5fd0a6; } .v.zero { color: var(--texto-muted); }
+  .ev-row .v.brl { background: rgba(74,144,217,0.12); border-radius: 6px; padding: 5px 0; }
+  .ev-nota { font-size: 0.62rem; color: rgba(245,237,224,0.3); margin-top: 12px; line-height: 1.5; }
+  .dv-bloco { margin-bottom: 14px; }
+  .dv-nome { font-size: 0.74rem; color: var(--texto-claro); margin-bottom: 4px; }
+  .dv-nome small { color: var(--texto-muted); font-size: 0.62rem; margin-left: 6px; }
+  .dv-row { display: flex; align-items: center; gap: 8px; margin-bottom: 3px; }
+  .dv-lab { flex: 0 0 62px; font-size: 0.6rem; color: var(--texto-muted); text-align: right; }
+  .dv-track { position: relative; flex: 1; height: 14px; }
+  .dv-track::before { content: ""; position: absolute; left: var(--z); top: -2px; bottom: -2px; width: 1px; background: rgba(255,255,255,0.22); }
+  .dv-bar { position: absolute; top: 1px; bottom: 1px; border-radius: 3px; }
+  .dv-bar.ib { background: linear-gradient(90deg, #c94545, #e07070); }
+  .dv-bar.sp { background: linear-gradient(90deg, #c9a84c, #f3d98f); }
+  .dv-bar.spn { background: linear-gradient(90deg, #8d7a3c, #c9a84c); }
+  .dv-bar.pt { background: linear-gradient(90deg, #4a90d9, #6aa6e0); }
+  .dv-val { position: absolute; top: -1px; font-size: 0.64rem; font-weight: 700; color: var(--creme); white-space: nowrap; }
+  .dv-leg { display: flex; flex-wrap: wrap; gap: 8px 18px; font-size: 0.66rem; color: var(--texto-claro); margin-bottom: 16px; }
+  .dv-leg span::before { content: ""; display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 6px; vertical-align: -1px; background: var(--c); }
+  .flow3 { display: grid; grid-template-columns: 1fr auto 1fr auto 1fr; gap: 10px; align-items: stretch; margin: 26px 0; }
+  @media (max-width: 640px) { .flow3 { grid-template-columns: 1fr; } .flow3 .seta { transform: rotate(90deg); justify-self: center; } }
+  .flow-card { border-radius: 10px; padding: 20px 14px; text-align: center; background: rgba(255,255,255,0.035); border: 1px solid rgba(255,255,255,0.09); }
+  .flow-card.fim { background: linear-gradient(135deg, rgba(201,168,76,0.16), rgba(47,82,64,0.4)); border-color: rgba(201,168,76,0.35); }
+  .flow-step { font-size: 0.58rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--texto-muted); margin-bottom: 8px; }
+  .flow-val { font-family: "Cormorant Garamond", serif; font-size: 1.55rem; font-weight: 700; color: var(--creme); line-height: 1.1; }
+  .flow-card.fim .flow-val { color: var(--dourado-claro); }
+  .flow-desc { font-size: 0.7rem; color: var(--texto-claro); margin-top: 8px; line-height: 1.45; }
+  .seta { align-self: center; font-size: 1.4rem; color: var(--dourado); }
+  .formula-box { background: rgba(201,168,76,0.06); border: 1px solid rgba(201,168,76,0.2); border-radius: 8px; padding: 20px 24px; margin: 22px 0; text-align: center; font-family: "Cormorant Garamond", serif; font-size: 1.1rem; color: var(--dourado-claro); font-weight: 600; }
+  .pill-link { color: var(--dourado-claro); text-decoration: underline; text-decoration-color: rgba(226,196,122,0.4); }
+
+  .tr-wrap { background: linear-gradient(160deg, rgba(201,168,76,0.09) 0%, rgba(10,20,16,0.93) 55%); border: 1px solid rgba(201,168,76,0.3); border-radius: 14px; padding: 28px 20px 18px; margin: 40px 0; }
+  .tr-svg { width: 100%; height: auto; display: block; }
+  .tr-leg { display: flex; flex-wrap: wrap; gap: 8px 22px; margin-top: 14px; font-size: 0.7rem; color: var(--texto-claro); }
+  .tr-leg .ln { display: inline-block; width: 22px; height: 0; border-top: 3px solid #e2c47a; vertical-align: 3px; margin-right: 7px; }
+  .tr-leg .ln.d { border-top: 3px dashed #5fd0a6; }
+  .tr-leg .bx { display: inline-block; width: 14px; height: 10px; background: rgba(224,122,53,0.28); border: 1px solid rgba(224,122,53,0.5); margin-right: 7px; vertical-align: -1px; }
+  .tl { margin: 30px 0 10px; }
+  .tl-item { position: relative; padding-left: 36px; padding-bottom: 26px; border-left: 2px solid rgba(201,168,76,0.25); }
+  .tl-item:last-child { border-left-color: transparent; padding-bottom: 0; }
+  .tl-dot { position: absolute; left: -9px; top: 2px; width: 16px; height: 16px; border-radius: 50%; background: var(--dourado); border: 3px solid var(--verde-escuro); }
+  .tl-item.red .tl-dot { background: #e07070; } .tl-item.grn .tl-dot { background: #5fd0a6; }
+  .tl-data { font-size: 0.64rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--texto-muted); margin-bottom: 3px; }
+  .tl-tit { font-family: "Cormorant Garamond", serif; font-size: 1.15rem; font-weight: 700; color: var(--dourado-claro); margin-bottom: 4px; }
+  .tl-txt { font-size: 0.84rem; color: var(--texto-claro); line-height: 1.6; }
+  .ciclo { display: grid; grid-template-columns: 1fr auto 1fr auto 1fr auto 1fr; gap: 8px; align-items: stretch; margin: 26px 0 8px; }
+  @media (max-width: 760px) { .ciclo { grid-template-columns: 1fr; } .ciclo .seta { transform: rotate(90deg); justify-self: center; } }
+  .ciclo-no { border-radius: 10px; padding: 16px 10px; text-align: center; background: rgba(201,69,69,0.08); border: 1px solid rgba(201,69,69,0.25); font-size: 0.78rem; color: var(--texto-claro); line-height: 1.45; }
+  .ciclo-no b { display: block; font-family: "Cormorant Garamond", serif; font-size: 1rem; color: #e07070; margin-bottom: 4px; }
+  .ciclo-volta { text-align: center; font-size: 0.7rem; color: var(--texto-muted); margin-bottom: 20px; letter-spacing: 0.08em; }
+  .cmp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 24px 0; }
+  @media (max-width: 600px) { .cmp-grid { grid-template-columns: 1fr; } }
+  .cmp-card { border-radius: 10px; padding: 22px 18px; background: rgba(255,255,255,0.035); border: 1px solid rgba(255,255,255,0.09); }
+  .cmp-card h4 { font-family: "Cormorant Garamond", serif; font-size: 1.15rem; color: var(--creme); margin-bottom: 14px; }
+  .cmp-linha { display: flex; justify-content: space-between; gap: 10px; font-size: 0.8rem; color: var(--texto-claro); padding: 7px 0; border-bottom: 1px dashed rgba(255,255,255,0.1); }
+  .cmp-linha:last-child { border-bottom: none; } .cmp-linha b { color: var(--dourado-claro); font-weight: 600; }
+  .cmp-real { margin-top: 14px; padding: 12px; border-radius: 8px; text-align: center; background: rgba(201,168,76,0.1); }
+  .cmp-real .n { font-family: "Cormorant Garamond", serif; font-size: 1.9rem; font-weight: 700; color: var(--dourado-claro); line-height: 1; }
+  .cmp-real .t { font-size: 0.64rem; color: var(--texto-muted); margin-top: 4px; letter-spacing: 0.06em; }
+</style>
+</head>
+<body>
+
+<a class="back-link" href="index.html">Voltar</a>
+
+<header class="hero">
+  <div class="hero-tag">Artigo · Moedas e Credibilidade</div>
+  <h1>O preço da perda de credibilidade monetária: o que a <em>Turquia</em> ensina sobre juros, câmbio e proteção patrimonial</h1>
+  <p class="hero-sub">Como decisões de política monetária podem comprometer o valor de uma moeda, e por que a diversificação internacional deve fazer parte de uma estratégia de preservação de patrimônio.</p>
+  <div class="hero-date">Novembro de 2026</div>
+  <div class="hero-fonte">Fontes: Banco Central da Turquia (TCMB) · Reuters · Trading Economics</div>
+</header>
+
+<article>
+
+  <p class="lead">A experiência recente da Turquia é um dos exemplos mais emblemáticos dos riscos da interferência política na condução da política monetária. Entre 2021 e 2023, com a inflação pressionada, o Banco Central turco reduziu os juros contra a orientação tradicional de combate à inflação. O resultado foi a perda de confiança na moeda e uma desvalorização expressiva da lira. Em agosto de 2021, um dólar valia cerca de <strong>8,3 liras</strong>, e em outubro de 2026 a cotação chegou perto de <strong>50 liras</strong>.</p>
+
+  <div class="stat-hero quatro fade-in">
+    <div class="stat-card dourado"><div class="stat-card-val">−83,3%</div><div class="stat-card-desc">desvalorização da lira frente ao dólar, de ago/2021 a out/2026</div></div>
+    <div class="stat-card neutro"><div class="stat-card-val">+499%</div><div class="stat-card-desc">alta da cotação do dólar em liras no mesmo período</div></div>
+    <div class="stat-card neutro"><div class="stat-card-val">19% → 8,5%</div><div class="stat-card-desc">corte da taxa básica entre set/2021 e fev/2023</div></div>
+    <div class="stat-card dourado"><div class="stat-card-val">50%</div><div class="stat-card-desc">pico da taxa básica, atingido em março de 2024</div></div>
+  </div>
+
+  <div class="tr-wrap fade-in">
+    <div class="jpm-eyebrow">Turquia · câmbio x juros</div>
+    <div class="jpm-titulo">O preço de cortar juros na marra</div>
+    <div class="jpm-sub">Quando a política manda no juro, quem paga é a moeda: juros cortados com a inflação sem freio e o dólar indo de 8 para quase 50 liras</div>
+    <svg class="tr-svg" viewBox="0 0 900 410" xmlns="http://www.w3.org/2000/svg"><line x1="70" y1="370.0" x2="860" y2="370.0" stroke="rgba(255,255,255,0.18)"/><text x="62" y="373.0" font-size="9" text-anchor="end" fill="rgba(245,237,224,0.4)">0</text><line x1="70" y1="310.0" x2="860" y2="310.0" stroke="rgba(255,255,255,0.06)"/><text x="62" y="313.0" font-size="9" text-anchor="end" fill="rgba(245,237,224,0.4)">10</text><line x1="70" y1="250.0" x2="860" y2="250.0" stroke="rgba(255,255,255,0.06)"/><text x="62" y="253.0" font-size="9" text-anchor="end" fill="rgba(245,237,224,0.4)">20</text><line x1="70" y1="190.0" x2="860" y2="190.0" stroke="rgba(255,255,255,0.06)"/><text x="62" y="193.0" font-size="9" text-anchor="end" fill="rgba(245,237,224,0.4)">30</text><line x1="70" y1="130.0" x2="860" y2="130.0" stroke="rgba(255,255,255,0.06)"/><text x="62" y="133.0" font-size="9" text-anchor="end" fill="rgba(245,237,224,0.4)">40</text><line x1="70" y1="70.0" x2="860" y2="70.0" stroke="rgba(255,255,255,0.06)"/><text x="62" y="73.0" font-size="9" text-anchor="end" fill="rgba(245,237,224,0.4)">50</text><text x="72.0" y="386" font-size="9" fill="rgba(245,237,224,0.45)">2020</text><text x="186.5" y="386" font-size="9" fill="rgba(245,237,224,0.45)">2021</text><text x="301.0" y="386" font-size="9" fill="rgba(245,237,224,0.45)">2022</text><text x="415.5" y="386" font-size="9" fill="rgba(245,237,224,0.45)">2023</text><text x="530.0" y="386" font-size="9" fill="rgba(245,237,224,0.45)">2024</text><text x="644.5" y="386" font-size="9" fill="rgba(245,237,224,0.45)">2025</text><text x="759.0" y="386" font-size="9" fill="rgba(245,237,224,0.45)">2026</text>
+<rect x="264.6" y="40" width="200.4" height="330" fill="rgba(224,122,53,0.13)"/>
+<text x="272.6" y="58" font-size="11" font-weight="700" fill="#eb9a5a">Corte forçado de juros</text><text x="272.6" y="73" font-size="11" font-weight="700" fill="#eb9a5a">19% → 8,5%</text>
+<polygon points="70.0,370 70.0,334.0 98.6,330.4 121.5,328.3 138.7,326.2 161.6,322.6 170.8,319.0 178.8,325.0 201.7,325.6 218.8,320.2 241.7,317.8 258.9,320.2 270.4,311.8 281.8,289.6 292.1,289.6 294.4,259.6 301.3,289.0 321.9,281.8 339.1,271.0 356.2,263.2 373.4,259.0 396.3,258.4 419.2,257.2 447.8,253.6 465.0,244.6 473.0,214.0 482.2,208.0 493.6,208.6 505.1,199.6 523.4,193.0 539.4,185.2 550.9,176.8 573.8,175.6 596.7,172.0 608.1,166.0 631.0,162.4 648.2,155.8 665.4,150.4 676.8,142.0 694.0,133.6 711.2,127.6 722.6,122.8 739.8,115.6 757.0,112.0 779.9,106.0 785.6,103.3 814.2,92.8 837.1,80.8 850.8,71.0 850.8,370" fill="rgba(226,196,122,0.06)"/>
+<path d="M70.0,302.5 L121.5,302.5 L121.5,320.5 L152.4,320.5 L152.4,308.5 L170.8,308.5 L170.8,280.0 L176.5,280.0 L176.5,268.0 L207.4,268.0 L207.4,256.0 L264.6,256.0 L264.6,262.0 L273.8,262.0 L273.8,274.0 L284.1,274.0 L284.1,280.0 L293.3,280.0 L293.3,286.0 L367.7,286.0 L367.7,292.0 L376.8,292.0 L376.8,298.0 L388.3,298.0 L388.3,307.0 L399.7,307.0 L399.7,316.0 L427.2,316.0 L427.2,319.0 L465.0,319.0 L465.0,280.0 L476.4,280.0 L476.4,265.0 L486.8,265.0 L486.8,220.0 L498.2,220.0 L498.2,190.0 L505.1,190.0 L505.1,160.0 L514.2,160.0 L514.2,130.0 L523.4,130.0 L523.4,115.0 L533.7,115.0 L533.7,100.0 L550.9,100.0 L550.9,70.0 L639.0,70.0 L639.0,85.0 L645.9,85.0 L645.9,100.0 L667.7,100.0 L667.7,115.0 L676.8,115.0 L676.8,94.0 L705.4,94.0 L705.4,112.0 L722.6,112.0 L722.6,127.0 L734.1,127.0 L734.1,133.0 L751.2,133.0 L751.2,142.0 L760.4,142.0 L760.4,148.0 L849.7,148.0 L849.7,154.0 L857.7,154.0" fill="none" stroke="#5fd0a6" stroke-width="2" stroke-dasharray="6,4"/>
+<polyline points="70.0,334.0 98.6,330.4 121.5,328.3 138.7,326.2 161.6,322.6 170.8,319.0 178.8,325.0 201.7,325.6 218.8,320.2 241.7,317.8 258.9,320.2 270.4,311.8 281.8,289.6 292.1,289.6 294.4,259.6 301.3,289.0 321.9,281.8 339.1,271.0 356.2,263.2 373.4,259.0 396.3,258.4 419.2,257.2 447.8,253.6 465.0,244.6 473.0,214.0 482.2,208.0 493.6,208.6 505.1,199.6 523.4,193.0 539.4,185.2 550.9,176.8 573.8,175.6 596.7,172.0 608.1,166.0 631.0,162.4 648.2,155.8 665.4,150.4 676.8,142.0 694.0,133.6 711.2,127.6 722.6,122.8 739.8,115.6 757.0,112.0 779.9,106.0 785.6,103.3 814.2,92.8 837.1,80.8 850.8,71.0" fill="none" stroke="#e2c47a" stroke-width="3" stroke-linejoin="round"/>
+<circle cx="258.9" cy="320.2" r="4.5" fill="#e2c47a"/><text x="232.9" y="346.2" font-size="11" font-weight="700" fill="#e2c47a">Ago/21: 8,3</text>
+<circle cx="465.0" cy="244.6" r="4.5" fill="#e2c47a"/>
+<text x="475.0" y="298.0" font-size="10" fill="rgba(245,237,224,0.65)">Jun/23: governo recua</text><text x="475.0" y="310.0" font-size="10" fill="rgba(245,237,224,0.65)">(Şimşek assume) e juros disparam</text>
+<text x="528.0" y="62.0" font-size="11" font-weight="700" fill="#5fd0a6">juros no teto: 50%</text>
+<circle cx="850.8" cy="71.0" r="5" fill="#e2c47a"/><text x="758.8" y="45.0" font-size="11" font-weight="700" fill="#f5ede0">Out/26: ~49,8 liras por dólar</text>
+<text x="798.8" y="172.0" font-size="10" fill="#5fd0a6">juros: 36%</text></svg>
+    <div class="tr-leg"><span><i class="ln"></i>Cotação do dólar (em liras)</span><span><i class="ln d"></i>Juros definidos pelo BC (% a.a.)</span><span><i class="bx"></i>Período do corte forçado</span></div>
+    <div class="grafico-nota">Fonte: TCMB, Reuters, Trading Economics. Câmbio: fechamento mensal aproximado USD/TRY. Taxa de juros: taxa básica, com pontos intermediários aproximados; o último ponto reflete o corte de 100 pontos-base, para 36%, em 22/10/2026.</div>
+  </div>
+
+  <div class="section-title fade-in"><span class="section-icon">📉</span> A dimensão da desvalorização cambial</div>
+  <p>Dólar valorizado e moeda desvalorizada descrevem o mesmo fenômeno com números diferentes. A cotação do dólar passou a custar cerca de seis vezes mais liras (alta de 499%), e a lira perdeu aproximadamente 83% do seu valor em dólares:</p>
+
+  <div class="tab-wrap fade-in"><table class="jtab">
+    <tr><th>Indicador</th><th>Valor aproximado</th></tr>
+    <tr><td>Câmbio em agosto de 2021</td><td class="hl">8,3 TRY/USD</td></tr>
+    <tr><td>Câmbio em outubro de 2026</td><td class="hl">49,7 TRY/USD</td></tr>
+    <tr><td>Aumento da cotação do dólar em liras</td><td class="neg">+499%</td></tr>
+    <tr><td>Desvalorização da lira frente ao dólar</td><td class="neg">−83,3%</td></tr>
+    <tr><td>Taxa básica antes do ciclo de cortes</td><td>19% a.a.</td></tr>
+    <tr><td>Menor taxa básica em 2023</td><td>8,5% a.a.</td></tr>
+    <tr><td>Pico posterior da taxa básica</td><td>50% a.a.</td></tr>
+  </table></div>
+  <div class="grafico-nota" style="margin:-12px 0 24px;">A variação acumulada abrange todo o período de 2021 a 2026, e vai além da fase de redução dos juros. O dólar chegou a cerca de 49,9 liras no fim de outubro de 2026, segundo a imprensa.</div>
+
+  <div class="flow3 fade-in">
+    <div class="flow-card"><div class="flow-step">Agosto de 2021</div><div class="flow-val">US$ 100 mil</div><div class="flow-desc">patrimônio mantido integralmente em liras, a 8,3 por dólar</div></div>
+    <div class="seta">→</div>
+    <div class="flow-card"><div class="flow-step">Cinco anos depois</div><div class="flow-val">49,7 por dólar</div><div class="flow-desc">cotação em outubro de 2026, sem rendimentos considerados</div></div>
+    <div class="seta">→</div>
+    <div class="flow-card fim"><div class="flow-step">Valor em dólares</div><div class="flow-val">US$ 16,7 mil</div><div class="flow-desc">exemplo hipotético, sem rendimentos, impostos ou movimentações</div></div>
+  </div>
+  <p>Uma moeda pode continuar representando o mesmo valor nominal dentro de uma conta bancária e, ao mesmo tempo, perder grande parte da capacidade de adquirir bens, serviços e ativos internacionais.</p>
+
+  <div class="section-title fade-in"><span class="section-icon">🕰️</span> A trajetória em cinco atos</div>
+  <div class="tl fade-in">
+    <div class="tl-item red"><div class="tl-dot"></div><div class="tl-data">Setembro de 2021</div><div class="tl-tit">Início do ciclo de cortes</div><div class="tl-txt">Com a inflação persistente, o Banco Central reduz os juros a partir de 19%, em linha com a tese do presidente Recep Tayyip Erdoğan de que juros altos alimentam a inflação.</div></div>
+    <div class="tl-item red"><div class="tl-dot"></div><div class="tl-data">Dezembro de 2021</div><div class="tl-tit">Primeiro choque cambial</div><div class="tl-txt">A cotação do dólar dispara de cerca de 8 para mais de 18 liras em poucas semanas, antes de recuar parcialmente.</div></div>
+    <div class="tl-item red"><div class="tl-dot"></div><div class="tl-data">Fevereiro de 2023</div><div class="tl-tit">Piso de 8,5%</div><div class="tl-txt">A taxa básica chega a 8,5%, com a inflação ainda elevada e a lira em desvalorização contínua.</div></div>
+    <div class="tl-item"><div class="tl-dot"></div><div class="tl-data">Junho de 2023</div><div class="tl-tit">O governo recua</div><div class="tl-txt">Com a entrada de Mehmet Şimşek na condução econômica, a política se torna mais convencional e os juros sobem em sequência, até 50% em março de 2024.</div></div>
+    <div class="tl-item grn"><div class="tl-dot"></div><div class="tl-data">Outubro de 2026</div><div class="tl-tit">Juros em 36%, lira ainda sob pressão</div><div class="tl-txt">O Banco Central corta a taxa em 100 pontos-base, para 36%, com a inflação anual em 29,7% em setembro, a primeira leitura abaixo de 30% desde o fim de 2021. O dólar, porém, alcança cerca de 49,9 liras.</div></div>
+  </div>
+
+  <div class="section-title fade-in"><span class="section-icon">🏗️</span> A tentativa de recuperar a credibilidade</div>
+  <p>A reversão da política de juros, a partir de junho de 2023, buscava conter a inflação, reancorar as expectativas e recuperar a confiança dos investidores. Mesmo assim, a lira continuou sofrendo pressões: em 2026, o dólar acumula alta de cerca de 16% frente à lira, e de 19% em 12 meses, com a taxa básica acima de 30%.</p>
+  <p>O câmbio responde a mais do que a taxa de juros vigente. Ele incorpora expectativas de inflação futura, riscos fiscais, estabilidade institucional, reservas internacionais e a confiança na capacidade das autoridades de sustentar uma política consistente. Uma vez comprometida, a credibilidade pode levar muito tempo para ser reconstruída.</p>
+  <div class="insight-box fade-in"><p>Aumentar os juros pode ser uma decisão relativamente rápida. Recuperar a confiança de investidores e consumidores é um processo muito mais demorado.</p></div>
+
+  <div class="section-title fade-in"><span class="section-icon">🔁</span> Por que juros artificialmente baixos enfraquecem uma moeda</div>
+  <p>Quando os juros caem de maneira incompatível com o cenário inflacionário, três movimentos ocorrem ao mesmo tempo. A remuneração real dos investimentos domésticos diminui. Cresce a procura por moedas estrangeiras e ativos reais, como dólar, euro, ouro e imóveis. E a desvalorização cambial alimenta a própria inflação, porque encarece energia, matérias-primas e bens importados. O resultado é um círculo vicioso:</p>
+  <div class="ciclo fade-in">
+    <div class="ciclo-no"><b>Inflação alta</b>juros reais caem ou ficam negativos</div><div class="seta">→</div>
+    <div class="ciclo-no"><b>Perda de confiança</b>fuga para dólar, ouro e imóveis</div><div class="seta">→</div>
+    <div class="ciclo-no"><b>Moeda desvaloriza</b>importados e energia ficam mais caros</div><div class="seta">→</div>
+    <div class="ciclo-no"><b>Nova pressão inflacionária</b>e o ciclo recomeça</div>
+  </div>
+  <div class="ciclo-volta">↺ o processo se retroalimenta quando os agentes deixam de confiar na independência do Banco Central</div>
+
+  <div class="section-title fade-in"><span class="section-icon">🇧🇷</span> O que isso ensina ao investidor brasileiro</div>
+  <p>A realidade brasileira difere da turca em pontos importantes: regime de metas de inflação, câmbio flutuante, instituições monetárias próprias e um mercado financeiro estruturado. Os números atuais ilustram a diferença no nível de juro real:</p>
+  <div class="cmp-grid fade-in">
+    <div class="cmp-card"><h4>🇧🇷 Brasil</h4>
+      <div class="cmp-linha"><span>Selic (set/2026)</span><b>13,75%</b></div>
+      <div class="cmp-linha"><span>IPCA em 12 meses (set/2026)</span><b>4,58%</b></div>
+      <div class="cmp-linha"><span>Regime cambial</span><b>Flutuante</b></div>
+      <div class="cmp-real"><div class="n">≈ 8,8%</div><div class="t">JURO REAL EX-POST APROXIMADO</div></div></div>
+    <div class="cmp-card"><h4>🇹🇷 Turquia</h4>
+      <div class="cmp-linha"><span>Taxa básica (out/2026)</span><b>36%</b></div>
+      <div class="cmp-linha"><span>Inflação em 12 meses (set/2026)</span><b>29,7%</b></div>
+      <div class="cmp-linha"><span>Dólar em 2026 (até 29/10)</span><b>+16%</b></div>
+      <div class="cmp-real"><div class="n">≈ 4,9%</div><div class="t">JURO REAL EX-POST APROXIMADO</div></div></div>
+  </div>
+  <div class="grafico-nota" style="margin:-12px 0 24px;">Juro real ex-post aproximado = (1 + juro nominal) ÷ (1 + inflação em 12 meses) − 1, com os dados mais recentes de cada país. Comparação simplificada, sem ajuste por expectativas, impostos ou diferenças metodológicas entre os índices.</div>
+  <p>Seria impróprio presumir que o Brasil repetiria a trajetória turca. O episódio, contudo, traz três ensinamentos para quem concentra o patrimônio em uma única moeda:</p>
+  <div class="impl-grid fade-in">
+    <div class="impl-card"><div class="impl-num">1</div><div class="impl-tit">Juro nominal alto não garante preservação</div><div class="impl-txt">Uma aplicação pode render muito em moeda local e, mesmo assim, entregar resultado pouco satisfatório depois da inflação e da evolução cambial.</div></div>
+    <div class="impl-card"><div class="impl-num">2</div><div class="impl-tit">Credibilidade institucional tem valor econômico</div><div class="impl-txt">Independência do Banco Central, disciplina fiscal e previsibilidade das políticas influenciam o prêmio de risco e a confiança na moeda.</div></div>
+    <div class="impl-card"><div class="impl-num">3</div><div class="impl-tit">Concentração cambial passa despercebida</div><div class="impl-txt">Imóveis, renda profissional, participações empresariais e investimentos financeiros costumam estar quase todos em reais, expostos aos mesmos fatores domésticos.</div></div>
+  </div>
+
+  <div class="section-title fade-in"><span class="section-icon">🌐</span> Diversificação internacional: além da busca por rentabilidade</div>
+  <p>Internacionalizar parte do patrimônio atende, antes de tudo, ao objetivo de reduzir a dependência de uma única economia, de uma única estrutura institucional e de uma única moeda. Investimentos internacionais dão acesso a outros mercados, setores e emissores, e ativos em moedas fortes, sem proteção cambial para o real, podem ajudar a preservar o patrimônio em cenários de desvalorização da moeda brasileira.</p>
+  <div class="warn-box fade-in"><p>Isso não garante que o dólar se valorizará, nem que investimentos internacionais estejam livres de risco. Ações estrangeiras podem cair, títulos de renda fixa internacional oscilam e moedas estrangeiras também podem se desvalorizar frente ao real. A diversificação deve ser construída com equilíbrio, considerando objetivos, horizonte, necessidade de liquidez e tolerância a risco. Para ver como o dólar se comportou em dias de estresse no Brasil, leia nosso artigo <a class="pill-link" href="memorando-dolar-protecao-crises.html">"O dólar como proteção patrimonial"</a>.</p></div>
+  <p>A experiência turca reforça a diferença entre rentabilidade nominal e preservação efetiva de riqueza. Vale avaliar o patrimônio pelo poder de compra e, quando pertinente, pelo valor em moedas internacionais, o que importa especialmente para famílias que pretendem viajar, financiar estudos no exterior, adquirir bens importados ou manter opções de residência e consumo em outros países. Mesmo sem despesas previstas em dólar, a exposição internacional diversifica riscos econômicos e institucionais.</p>
+
+  <div class="conclusao fade-in">A trajetória da Turquia mostra que decisões equivocadas de política monetária podem ter consequências duradouras sobre a inflação, a confiança dos investidores e o valor de uma moeda. A redução dos juros em um ambiente de inflação elevada contribuiu para agravar desequilíbrios que depois exigiram uma resposta monetária muito mais dura. A principal lição vai além do nível das taxas de juros: ela trata do valor da credibilidade econômica e da necessidade de olhar para a preservação patrimonial além da rentabilidade nominal. Para o investidor brasileiro, isso reforça a construção de carteiras diversificadas entre classes de ativos, economias e moedas. <strong>Uma boa estratégia patrimonial dispensa prever a próxima crise cambial: estrutura o patrimônio para que ele não dependa exclusivamente da estabilidade de uma única moeda.</strong></div>
+
+  <div class="method-box fade-in">
+    <div class="method-titulo">Nota metodológica e fontes</div>
+    <p>Os valores de câmbio são aproximados e baseados em fechamentos mensais do USD/TRY. A trajetória da taxa básica no gráfico usa pontos intermediários aproximados, e as informações de outubro de 2026 (corte para 36% em 22/10, inflação de 29,7% em setembro e cotação próxima de 49,9 liras) foram conferidas na cobertura da imprensa financeira. O exemplo de US$ 100 mil é hipotético e desconsidera rendimentos, impostos e movimentações. Este material não constitui recomendação individualizada de investimento.</p>
+    <ul class="ref-list">
+      <li>Banco Central da República da Turquia (TCMB), histórico de decisões de política monetária e taxas de juros</li>
+      <li>Reuters, cobertura da política econômica turca e da transição monetária iniciada em 2023</li>
+      <li>Trading Economics, séries históricas de juros e câmbio USD/TRY</li>
+    </ul>
+  </div>
+
+</article>
+
+<footer>
+  <div class="footer-name">Fábio Vogelaar Carlucci</div>
+  <div class="footer-contact">+55 (16) 98148-8260<br><a href="mailto:fabio.carlucci@ficus.capital">fabio.carlucci@ficus.capital</a></div>
+</footer>
+<div style="position:relative;z-index:1;padding:0 8% 28px;text-align:center;font-size:0.65rem;color:rgba(245,237,224,0.2);letter-spacing:0.08em;">
+  Fontes: TCMB · Reuters · Trading Economics<br>
+  Conteúdo informativo e educacional. Investimentos no exterior envolvem riscos de mercado, crédito, liquidez e variação cambial.
+</div>
+
+<script>
+const faders = document.querySelectorAll(".fade-in");
+const obs = new IntersectionObserver(e => e.forEach(x => { if(x.isIntersecting){ x.target.classList.add("visible"); obs.unobserve(x.target); } }), { threshold: 0.1 });
+faders.forEach(f => obs.observe(f));
+</script>
+</body>
+</html>
